@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="{{ asset('images/logo_smkn2.png') }}">
   <title>@yield('title', 'SMK Negeri 2 Mojokerto — Beranda')</title>
   <meta name="description" content="Website resmi SMK Negeri 2 Mojokerto — Sekolah Menengah Kejuruan unggulan di Kota Mojokerto, Jawa Timur." />
 
@@ -87,11 +88,24 @@
     }
     #preloader.done{opacity:0;visibility:hidden;pointer-events:none}
     .preloader-logo{
-      width:92px;height:92px;border-radius:24px;display:flex;align-items:center;justify-content:center;
-      background:rgba(255,255,255,.96);padding:14px;
-      box-shadow:0 0 0 0 rgba(40,169,225,.5);animation:pulse-ring 1.6s infinite;
-    }
-    .preloader-logo img{width:100%;height:100%;object-fit:contain;display:block}
+  width:92px;
+  height:92px;
+  border-radius:24px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:transparent;
+  padding:0;
+  box-shadow:0 0 0 0 rgba(40,169,225,.5);
+  animation:pulse-ring 1.6s infinite;
+}
+
+.preloader-logo img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  display:block;
+}
     @keyframes pulse-ring{
       0%{box-shadow:0 0 0 0 rgba(40,169,225,.55)}
       70%{box-shadow:0 0 0 26px rgba(40,169,225,0)}
@@ -144,12 +158,22 @@
     #navbar.scrolled{top:8px}
     #navbar.scrolled .nav-inner{background:linear-gradient(135deg,#0a2f57,#13518c);box-shadow:0 14px 44px rgba(13,58,102,.5);padding:.55rem 1.2rem}
     .nav-brand{display:flex;align-items:center;gap:.7rem}
-    .nav-logo{
-      width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;
-      background:rgba(255,255,255,.96);padding:5px;overflow:hidden;
-      box-shadow:0 6px 16px rgba(13,58,102,.25),inset 0 0 0 1px rgba(255,255,255,.55);animation:logoFloat 4s ease-in-out infinite;
-    }
-    .nav-logo img{width:100%;height:100%;object-fit:contain;display:block}
+    .nav-logo {
+    background: transparent;
+    border: none;
+    padding: 0;
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-logo img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    background: transparent;
+}
     @keyframes logoFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
     .nav-brand-text strong{display:block;font-size:.95rem;color:#fff;line-height:1.2;text-shadow:0 1px 2px rgba(0,0,0,.25)}
     .nav-brand-text strong .num-2{color:#ffd54f;text-shadow:0 1px 3px rgba(0,0,0,.35)}
