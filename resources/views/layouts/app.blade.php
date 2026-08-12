@@ -139,17 +139,17 @@
     /* ====================== NAVBAR FULL WIDTH ====================== */
     #navbar{position:sticky;top:0;left:0;z-index:100;width:100%;margin:0;padding:0;transition:all .4s var(--ease);background:transparent}
     #navbar.scrolled{top:0}
-    .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.7rem 2rem;border-radius:0;background:linear-gradient(135deg,#0d3a66,#1d6fb8);backdrop-filter:blur(18px) saturate(160%);-webkit-backdrop-filter:blur(18px) saturate(160%);border:0;border-bottom:1px solid rgba(255,255,255,.18);box-shadow:0 10px 34px rgba(13,58,102,.35),inset 0 1px 0 rgba(255,255,255,.25);transition:all .4s var(--ease);width:100%;max-width:100%;margin:0}
-    #navbar.scrolled .nav-inner{background:linear-gradient(135deg,#0a2f57,#13518c);box-shadow:0 14px 44px rgba(13,58,102,.5);padding:.55rem 2rem;border-radius:0;border:0;border-bottom:1px solid rgba(255,255,255,.12)}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.95rem 2rem;border-radius:0;background:linear-gradient(135deg,#0d3a66,#1d6fb8);backdrop-filter:blur(18px) saturate(160%);-webkit-backdrop-filter:blur(18px) saturate(160%);border:0;border-bottom:1px solid rgba(255,255,255,.18);box-shadow:0 10px 34px rgba(13,58,102,.35),inset 0 1px 0 rgba(255,255,255,.25);transition:all .4s var(--ease);width:100%;max-width:100%;margin:0}
+    #navbar.scrolled .nav-inner{background:linear-gradient(135deg,#0a2f57,#13518c);box-shadow:0 14px 44px rgba(13,58,102,.5);padding:.8rem 2rem;border-radius:0;border:0;border-bottom:1px solid rgba(255,255,255,.12)}
     #navbar::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:1px;background:rgba(255,255,255,.06);opacity:.4;pointer-events:none}
     .nav-inner > *{position:relative;z-index:1}
     .nav-brand{display:flex;align-items:center;gap:.7rem;flex-shrink:0}
     .nav-logo{background:transparent;border:none;padding:0;border-radius:0;display:flex;align-items:center;justify-content:center}
-    .nav-logo img{width:48px;height:48px;object-fit:contain;background:transparent}
+    .nav-logo img{width:56px;height:56px;object-fit:contain;background:transparent}
     .nav-brand-text strong{
       display:block;
       font-family:'Poppins',sans-serif;
-      font-size:1.38rem;
+      font-size:1.48rem;
       color:#fff;
       line-height:1.15;
       font-weight:700;
@@ -162,13 +162,21 @@
     .num-2{color:#f9a825;font-style:normal}
     .nav-menu{display:flex;align-items:center;gap:.12rem;list-style:none;margin:0;padding:0}
     .nav-link{display:inline-flex;align-items:center;gap:.4rem;padding:.58rem .72rem;border-radius:10px;font-size:.84rem;font-weight:600;color:rgba(255,255,255,.95);transition:all .25s var(--ease);position:relative;white-space:nowrap}
-    .nav-link i{font-size:.65rem;transition:transform .25s var(--ease)}
+    .nav-link i{font-size:.68rem;transition:transform .25s var(--ease)}
     .nav-item.dropdown-open > .nav-link i{transform:rotate(180deg)}
     .nav-link:hover,.nav-link.active{color:#fff;background:rgba(255,255,255,.14)}
     .nav-link.active::after{content:"";position:absolute;bottom:2px;left:50%;transform:translateX(-50%);width:18px;height:2.5px;border-radius:99px;background:#fff}
     .nav-item{position:relative}
     .dropdown-menu{position:absolute;top:calc(100% + 10px);left:0;min-width:250px;padding:.55rem;border-radius:14px;background:rgba(255,255,255,.97);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(29,111,184,.25);box-shadow:0 20px 50px rgba(13,58,102,.18);opacity:0;visibility:hidden;transform:translateY(12px);transition:all .3s var(--ease);z-index:200}
     .nav-item.dropdown-open .dropdown-menu{opacity:1;visibility:visible;transform:translateY(0)}
+    /* Hover hanya menampilkan dropdown sementara; klik menggunakan .dropdown-open agar tetap terbuka */
+    @media (min-width:901px){
+      .nav-item:hover > .dropdown-menu{
+        opacity:1;
+        visibility:visible;
+        transform:translateY(0);
+      }
+    }
     .dropdown-menu a{display:flex;align-items:center;gap:.65rem;padding:.62rem .72rem;border-radius:9px;font-size:.82rem;font-weight:500;color:var(--ink);transition:all .2s}
     .dropdown-menu a i{width:19px;color:#1d6fb8;flex-shrink:0}
     .dropdown-menu a:hover{background:rgba(29,111,184,.1);color:#0d3a66;transform:translateX(4px)}
@@ -201,8 +209,8 @@
     /* ---------- RESPONSIVE DASAR ---------- */
     @media(max-width:1024px){
       .announce-bar .container{padding:0 1.5rem}
-      .nav-inner{padding:.7rem 1.5rem}
-      #navbar.scrolled .nav-inner{padding:.55rem 1.5rem}
+      .nav-inner{padding:.9rem 1.5rem}
+      #navbar.scrolled .nav-inner{padding:.75rem 1.5rem}
     }
     @media(max-width:900px){
       .section-py{padding:72px 0}
@@ -217,14 +225,14 @@
       .dropdown-menu{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;border:0;background:rgba(29,111,184,.05);margin-top:.3rem;display:none;min-width:0}
       .nav-item.dropdown-open .dropdown-menu{display:block}
       .announce-bar .container{padding:0 1rem}
-      .nav-inner{padding:.7rem 1rem;border-radius:0}
-      #navbar.scrolled .nav-inner{padding:.55rem 1rem}
+      .nav-inner{padding:.85rem 1rem;border-radius:0}
+      #navbar.scrolled .nav-inner{padding:.7rem 1rem}
     }
     @media(max-width:600px){
       .section-py{padding:60px 0}
       .announce-bar .container{padding:0 .8rem}
-      .nav-inner{padding:.6rem .8rem;border-radius:0}
-      #navbar.scrolled .nav-inner{padding:.5rem .8rem}
+      .nav-inner{padding:.75rem .8rem;border-radius:0}
+      #navbar.scrolled .nav-inner{padding:.65rem .8rem}
     }
 
     @media(prefers-reduced-motion:reduce){
@@ -382,26 +390,43 @@
       });
     }
 
-    // Dropdown toggle untuk semua menu navbar
+    // Dropdown: hover = muncul sementara, klik = tetap terbuka
     const dropdownTriggers = document.querySelectorAll('.dropdown-trigger');
+    const dropdownItems = document.querySelectorAll('.nav-item');
+
     dropdownTriggers.forEach(trigger => {
       trigger.addEventListener('click', (e) => {
         e.preventDefault();
+
         const parent = trigger.closest('.nav-item');
+
+        // Tutup dropdown lain
         document.querySelectorAll('.nav-item.dropdown-open').forEach(item => {
           if (item !== parent) item.classList.remove('dropdown-open');
         });
+
+        // Klik membuat dropdown menjadi tetap terbuka
         parent.classList.toggle('dropdown-open');
       });
     });
 
-    // Tutup dropdown saat klik di luar navbar
+    // Klik di luar navbar menutup dropdown yang sedang terbuka
     document.addEventListener('click', (e) => {
       if (!e.target.closest('#navbar')) {
         document.querySelectorAll('.nav-item.dropdown-open').forEach(item => {
           item.classList.remove('dropdown-open');
         });
       }
+    });
+
+    // Jika mouse masuk ke dropdown lain, dropdown yang terbuka tetap ditutup
+    // hanya jika belum dikunci melalui klik.
+    dropdownItems.forEach(item => {
+      item.addEventListener('mouseenter', () => {
+        document.querySelectorAll('.nav-item.dropdown-open').forEach(openItem => {
+          if (openItem !== item) openItem.classList.remove('dropdown-open');
+        });
+      });
     });
 
     // Back to top
