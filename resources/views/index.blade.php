@@ -1,4 +1,4 @@
-@include('partials.header')
+@include('layouts.app')
 
 <!-- ================= PROFIL SECTION ================= -->
 <section class="profil-section section-py" id="profil">

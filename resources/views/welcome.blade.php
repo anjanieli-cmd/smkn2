@@ -1,223 +1,1533 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+{{-- ============================================================
+     SMK NEGERI 2 MOJOKERTO — BERANDA (LAYOUT-AWARE VERSION)
+     ============================================================
+     File ini MEMAKAI layout layouts.app (app.blade.php), sehingga:
+       • head + CSS global  → partials.header (di layout)
+       • announce bar + navbar full-width → partials.header
+       • hero section      → partials.header (di layout)
+       • footer, SIBOT, a11y, back-to-top, JS global → partials.footer
+     Bagian yang DIISI file ini (via @section):
+       • title    → judul halaman
+       • content  → Profil (flipbook), Sambutan (kepsek window),
+                    Jurusan (carousel), Roadmap, Kontak + CSS-nya
+       • scripts  → JS konten (reveal, journey map, counter, flipbook,
+                    kepsek window, carousel jurusan)
+     ------------------------------------------------------------
+     CARA PAKAI:
+       1. app.blade.php    → resources/views/layouts/app.blade.php
+       2. header.blade.php → resources/views/partials/header.blade.php
+       3. footer.blade.php → resources/views/partials/footer.blade.php
+       4. file ini         → resources/views/welcome.blade.php
+     ============================================================ --}}
+@extends('layouts.app')
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+@section('title', 'SMK Negeri 2 Mojokerto — Beranda')
 
-        @fonts
+@section('content')
+<style>
+  /* ============================================================
+     CSS KHUSUS KONTEN BERANDA
+     (dipertahankan dari welcome.blade.php v4 — hanya bagian konten)
+     ============================================================ */
+    /* ---------- SECTION COMMON ---------- */
+    .section-label{display:inline-flex;align-items:center;gap:.5rem;font-size:.78rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);margin-bottom:.9rem}
+    .section-label::before{content:"";width:26px;height:3px;border-radius:99px;background:linear-gradient(90deg,var(--teal),var(--mint))}
+    .section-title{font-family:var(--font-display);font-size:clamp(1.7rem,3.4vw,2.5rem);color:var(--ink);line-height:1.2;margin-bottom:.8rem}
+    .section-title .accent{background:linear-gradient(100deg,var(--teal),var(--teal-light));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .section-title .gold{background:linear-gradient(100deg,var(--gold),var(--gold-dark));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .section-desc{color:var(--text-muted);max-width:640px;font-size:.96rem}
+    .section-header.center{text-align:center}
+    .section-header.center .section-desc{margin:0 auto}
+    .section-header.center .section-label::before{display:none}
 
-        <!-- Styles / Scripts -->
-        @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
-            @vite(['resources/css/app.css', 'resources/js/app.js'])
-        @else
-            <style>
-                /*! tailwindcss v4.0.7 | MIT License | https://tailwindcss.com */ @layer properties{@supports (((-webkit-hyphens:none)) and (not (margin-trim:inline))) or ((-moz-orient:inline) and (not (color:rgb(from red r g b)))){*,:before,:after,::backdrop{--tw-translate-x:0;--tw-translate-y:0;--tw-translate-z:0;--tw-rotate-x:initial;--tw-rotate-y:initial;--tw-rotate-z:initial;--tw-skew-x:initial;--tw-skew-y:initial;--tw-space-x-reverse:0;--tw-border-style:solid;--tw-leading:initial;--tw-font-weight:initial;--tw-tracking:initial;--tw-shadow:0 0 #0000;--tw-shadow-color:initial;--tw-shadow-alpha:100%;--tw-inset-shadow:0 0 #0000;--tw-inset-shadow-color:initial;--tw-inset-shadow-alpha:100%;--tw-ring-color:initial;--tw-ring-shadow:0 0 #0000;--tw-inset-ring-color:initial;--tw-inset-ring-shadow:0 0 #0000;--tw-ring-inset:initial;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-offset-shadow:0 0 #0000;--tw-blur:initial;--tw-brightness:initial;--tw-contrast:initial;--tw-grayscale:initial;--tw-hue-rotate:initial;--tw-invert:initial;--tw-opacity:initial;--tw-saturate:initial;--tw-sepia:initial;--tw-drop-shadow:initial;--tw-drop-shadow-color:initial;--tw-drop-shadow-alpha:100%;--tw-drop-shadow-size:initial;--tw-duration:initial;--tw-ease:initial;--tw-content:""}}}@layer theme{:root,:host{--font-sans:"Instrument Sans", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";--font-serif:ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;--font-mono:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;--color-red-50:oklch(97.1% .013 17.38);--color-red-100:oklch(93.6% .032 17.717);--color-red-200:oklch(88.5% .062 18.334);--color-red-300:oklch(80.8% .114 19.571);--color-red-400:oklch(70.4% .191 22.216);--color-red-500:oklch(63.7% .237 25.331);--color-red-600:oklch(57.7% .245 27.325);--color-red-700:oklch(50.5% .213 27.518);--color-red-800:oklch(44.4% .177 26.899);--color-red-900:oklch(39.6% .141 25.723);--color-red-950:oklch(25.8% .092 26.042);--color-orange-50:oklch(98% .016 73.684);--color-orange-100:oklch(95.4% .038 75.164);--color-orange-200:oklch(90.1% .076 70.697);--color-orange-300:oklch(83.7% .128 66.29);--color-orange-400:oklch(75% .183 55.934);--color-orange-500:oklch(70.5% .213 47.604);--color-orange-600:oklch(64.6% .222 41.116);--color-orange-700:oklch(55.3% .195 38.402);--color-orange-800:oklch(47% .157 37.304);--color-orange-900:oklch(40.8% .123 38.172);--color-orange-950:oklch(26.6% .079 36.259);--color-amber-50:oklch(98.7% .022 95.277);--color-amber-100:oklch(96.2% .059 95.617);--color-amber-200:oklch(92.4% .12 95.746);--color-amber-300:oklch(87.9% .169 91.605);--color-amber-400:oklch(82.8% .189 84.429);--color-amber-500:oklch(76.9% .188 70.08);--color-amber-600:oklch(66.6% .179 58.318);--color-amber-700:oklch(55.5% .163 48.998);--color-amber-800:oklch(47.3% .137 46.201);--color-amber-900:oklch(41.4% .112 45.904);--color-amber-950:oklch(27.9% .077 45.635);--color-yellow-50:oklch(98.7% .026 102.212);--color-yellow-100:oklch(97.3% .071 103.193);--color-yellow-200:oklch(94.5% .129 101.54);--color-yellow-300:oklch(90.5% .182 98.111);--color-yellow-400:oklch(85.2% .199 91.936);--color-yellow-500:oklch(79.5% .184 86.047);--color-yellow-600:oklch(68.1% .162 75.834);--color-yellow-700:oklch(55.4% .135 66.442);--color-yellow-800:oklch(47.6% .114 61.907);--color-yellow-900:oklch(42.1% .095 57.708);--color-yellow-950:oklch(28.6% .066 53.813);--color-lime-50:oklch(98.6% .031 120.757);--color-lime-100:oklch(96.7% .067 122.328);--color-lime-200:oklch(93.8% .127 124.321);--color-lime-300:oklch(89.7% .196 126.665);--color-lime-400:oklch(84.1% .238 128.85);--color-lime-500:oklch(76.8% .233 130.85);--color-lime-600:oklch(64.8% .2 131.684);--color-lime-700:oklch(53.2% .157 131.589);--color-lime-800:oklch(45.3% .124 130.933);--color-lime-900:oklch(40.5% .101 131.063);--color-lime-950:oklch(27.4% .072 132.109);--color-green-50:oklch(98.2% .018 155.826);--color-green-100:oklch(96.2% .044 156.743);--color-green-200:oklch(92.5% .084 155.995);--color-green-300:oklch(87.1% .15 154.449);--color-green-400:oklch(79.2% .209 151.711);--color-green-500:oklch(72.3% .219 149.579);--color-green-600:oklch(62.7% .194 149.214);--color-green-700:oklch(52.7% .154 150.069);--color-green-800:oklch(44.8% .119 151.328);--color-green-900:oklch(39.3% .095 152.535);--color-green-950:oklch(26.6% .065 152.934);--color-emerald-50:oklch(97.9% .021 166.113);--color-emerald-100:oklch(95% .052 163.051);--color-emerald-200:oklch(90.5% .093 164.15);--color-emerald-300:oklch(84.5% .143 164.978);--color-emerald-400:oklch(76.5% .177 163.223);--color-emerald-500:oklch(69.6% .17 162.48);--color-emerald-600:oklch(59.6% .145 163.225);--color-emerald-700:oklch(50.8% .118 165.612);--color-emerald-800:oklch(43.2% .095 166.913);--color-emerald-900:oklch(37.8% .077 168.94);--color-emerald-950:oklch(26.2% .051 172.552);--color-teal-50:oklch(98.4% .014 180.72);--color-teal-100:oklch(95.3% .051 180.801);--color-teal-200:oklch(91% .096 180.426);--color-teal-300:oklch(85.5% .138 181.071);--color-teal-400:oklch(77.7% .152 181.912);--color-teal-500:oklch(70.4% .14 182.503);--color-teal-600:oklch(60% .118 184.704);--color-teal-700:oklch(51.1% .096 186.391);--color-teal-800:oklch(43.7% .078 188.216);--color-teal-900:oklch(38.6% .063 188.416);--color-teal-950:oklch(27.7% .046 192.524);--color-cyan-50:oklch(98.4% .019 200.873);--color-cyan-100:oklch(95.6% .045 203.388);--color-cyan-200:oklch(91.7% .08 205.041);--color-cyan-300:oklch(86.5% .127 207.078);--color-cyan-400:oklch(78.9% .154 211.53);--color-cyan-500:oklch(71.5% .143 215.221);--color-cyan-600:oklch(60.9% .126 221.723);--color-cyan-700:oklch(52% .105 223.128);--color-cyan-800:oklch(45% .085 224.283);--color-cyan-900:oklch(39.8% .07 227.392);--color-cyan-950:oklch(30.2% .056 229.695);--color-sky-50:oklch(97.7% .013 236.62);--color-sky-100:oklch(95.1% .026 236.824);--color-sky-200:oklch(90.1% .058 230.902);--color-sky-300:oklch(82.8% .111 230.318);--color-sky-400:oklch(74.6% .16 232.661);--color-sky-500:oklch(68.5% .169 237.323);--color-sky-600:oklch(58.8% .158 241.966);--color-sky-700:oklch(50% .134 242.749);--color-sky-800:oklch(44.3% .11 240.79);--color-sky-900:oklch(39.1% .09 240.876);--color-sky-950:oklch(29.3% .066 243.157);--color-blue-50:oklch(97% .014 254.604);--color-blue-100:oklch(93.2% .032 255.585);--color-blue-200:oklch(88.2% .059 254.128);--color-blue-300:oklch(80.9% .105 251.813);--color-blue-400:oklch(70.7% .165 254.624);--color-blue-500:oklch(62.3% .214 259.815);--color-blue-600:oklch(54.6% .245 262.881);--color-blue-700:oklch(48.8% .243 264.376);--color-blue-800:oklch(42.4% .199 265.638);--color-blue-900:oklch(37.9% .146 265.522);--color-blue-950:oklch(28.2% .091 267.935);--color-indigo-50:oklch(96.2% .018 272.314);--color-indigo-100:oklch(93% .034 272.788);--color-indigo-200:oklch(87% .065 274.039);--color-indigo-300:oklch(78.5% .115 274.713);--color-indigo-400:oklch(67.3% .182 276.935);--color-indigo-500:oklch(58.5% .233 277.117);--color-indigo-600:oklch(51.1% .262 276.966);--color-indigo-700:oklch(45.7% .24 277.023);--color-indigo-800:oklch(39.8% .195 277.366);--color-indigo-900:oklch(35.9% .144 278.697);--color-indigo-950:oklch(25.7% .09 281.288);--color-violet-50:oklch(96.9% .016 293.756);--color-violet-100:oklch(94.3% .029 294.588);--color-violet-200:oklch(89.4% .057 293.283);--color-violet-300:oklch(81.1% .111 293.571);--color-violet-400:oklch(70.2% .183 293.541);--color-violet-500:oklch(60.6% .25 292.717);--color-violet-600:oklch(54.1% .281 293.009);--color-violet-700:oklch(49.1% .27 292.581);--color-violet-800:oklch(43.2% .232 292.759);--color-violet-900:oklch(38% .189 293.745);--color-violet-950:oklch(28.3% .141 291.089);--color-purple-50:oklch(97.7% .014 308.299);--color-purple-100:oklch(94.6% .033 307.174);--color-purple-200:oklch(90.2% .063 306.703);--color-purple-300:oklch(82.7% .119 306.383);--color-purple-400:oklch(71.4% .203 305.504);--color-purple-500:oklch(62.7% .265 303.9);--color-purple-600:oklch(55.8% .288 302.321);--color-purple-700:oklch(49.6% .265 301.924);--color-purple-800:oklch(43.8% .218 303.724);--color-purple-900:oklch(38.1% .176 304.987);--color-purple-950:oklch(29.1% .149 302.717);--color-fuchsia-50:oklch(97.7% .017 320.058);--color-fuchsia-100:oklch(95.2% .037 318.852);--color-fuchsia-200:oklch(90.3% .076 319.62);--color-fuchsia-300:oklch(83.3% .145 321.434);--color-fuchsia-400:oklch(74% .238 322.16);--color-fuchsia-500:oklch(66.7% .295 322.15);--color-fuchsia-600:oklch(59.1% .293 322.896);--color-fuchsia-700:oklch(51.8% .253 323.949);--color-fuchsia-800:oklch(45.2% .211 324.591);--color-fuchsia-900:oklch(40.1% .17 325.612);--color-fuchsia-950:oklch(29.3% .136 325.661);--color-pink-50:oklch(97.1% .014 343.198);--color-pink-100:oklch(94.8% .028 342.258);--color-pink-200:oklch(89.9% .061 343.231);--color-pink-300:oklch(82.3% .12 346.018);--color-pink-400:oklch(71.8% .202 349.761);--color-pink-500:oklch(65.6% .241 354.308);--color-pink-600:oklch(59.2% .249 .584);--color-pink-700:oklch(52.5% .223 3.958);--color-pink-800:oklch(45.9% .187 3.815);--color-pink-900:oklch(40.8% .153 2.432);--color-pink-950:oklch(28.4% .109 3.907);--color-rose-50:oklch(96.9% .015 12.422);--color-rose-100:oklch(94.1% .03 12.58);--color-rose-200:oklch(89.2% .058 10.001);--color-rose-300:oklch(81% .117 11.638);--color-rose-400:oklch(71.2% .194 13.428);--color-rose-500:oklch(64.5% .246 16.439);--color-rose-600:oklch(58.6% .253 17.585);--color-rose-700:oklch(51.4% .222 16.935);--color-rose-800:oklch(45.5% .188 13.697);--color-rose-900:oklch(41% .159 10.272);--color-rose-950:oklch(27.1% .105 12.094);--color-slate-50:oklch(98.4% .003 247.858);--color-slate-100:oklch(96.8% .007 247.896);--color-slate-200:oklch(92.9% .013 255.508);--color-slate-300:oklch(86.9% .022 252.894);--color-slate-400:oklch(70.4% .04 256.788);--color-slate-500:oklch(55.4% .046 257.417);--color-slate-600:oklch(44.6% .043 257.281);--color-slate-700:oklch(37.2% .044 257.287);--color-slate-800:oklch(27.9% .041 260.031);--color-slate-900:oklch(20.8% .042 265.755);--color-slate-950:oklch(12.9% .042 264.695);--color-gray-50:oklch(98.5% .002 247.839);--color-gray-100:oklch(96.7% .003 264.542);--color-gray-200:oklch(92.8% .006 264.531);--color-gray-300:oklch(87.2% .01 258.338);--color-gray-400:oklch(70.7% .022 261.325);--color-gray-500:oklch(55.1% .027 264.364);--color-gray-600:oklch(44.6% .03 256.802);--color-gray-700:oklch(37.3% .034 259.733);--color-gray-800:oklch(27.8% .033 256.848);--color-gray-900:oklch(21% .034 264.665);--color-gray-950:oklch(13% .028 261.692);--color-zinc-50:oklch(98.5% 0 0);--color-zinc-100:oklch(96.7% .001 286.375);--color-zinc-200:oklch(92% .004 286.32);--color-zinc-300:oklch(87.1% .006 286.286);--color-zinc-400:oklch(70.5% .015 286.067);--color-zinc-500:oklch(55.2% .016 285.938);--color-zinc-600:oklch(44.2% .017 285.786);--color-zinc-700:oklch(37% .013 285.805);--color-zinc-800:oklch(27.4% .006 286.033);--color-zinc-900:oklch(21% .006 285.885);--color-zinc-950:oklch(14.1% .005 285.823);--color-neutral-50:oklch(98.5% 0 0);--color-neutral-100:oklch(97% 0 0);--color-neutral-200:oklch(92.2% 0 0);--color-neutral-300:oklch(87% 0 0);--color-neutral-400:oklch(70.8% 0 0);--color-neutral-500:oklch(55.6% 0 0);--color-neutral-600:oklch(43.9% 0 0);--color-neutral-700:oklch(37.1% 0 0);--color-neutral-800:oklch(26.9% 0 0);--color-neutral-900:oklch(20.5% 0 0);--color-neutral-950:oklch(14.5% 0 0);--color-stone-50:oklch(98.5% .001 106.423);--color-stone-100:oklch(97% .001 106.424);--color-stone-200:oklch(92.3% .003 48.717);--color-stone-300:oklch(86.9% .005 56.366);--color-stone-400:oklch(70.9% .01 56.259);--color-stone-500:oklch(55.3% .013 58.071);--color-stone-600:oklch(44.4% .011 73.639);--color-stone-700:oklch(37.4% .01 67.558);--color-stone-800:oklch(26.8% .007 34.298);--color-stone-900:oklch(21.6% .006 56.043);--color-stone-950:oklch(14.7% .004 49.25);--color-black:#000;--color-white:#fff;--spacing:.25rem;--breakpoint-sm:40rem;--breakpoint-md:48rem;--breakpoint-lg:64rem;--breakpoint-xl:80rem;--breakpoint-2xl:96rem;--container-3xs:16rem;--container-2xs:18rem;--container-xs:20rem;--container-sm:24rem;--container-md:28rem;--container-lg:32rem;--container-xl:36rem;--container-2xl:42rem;--container-3xl:48rem;--container-4xl:56rem;--container-5xl:64rem;--container-6xl:72rem;--container-7xl:80rem;--text-xs:.75rem;--text-xs--line-height:calc(1 / .75);--text-sm:.875rem;--text-sm--line-height:calc(1.25 / .875);--text-base:1rem;--text-base--line-height: 1.5 ;--text-lg:1.125rem;--text-lg--line-height:calc(1.75 / 1.125);--text-xl:1.25rem;--text-xl--line-height:calc(1.75 / 1.25);--text-2xl:1.5rem;--text-2xl--line-height:calc(2 / 1.5);--text-3xl:1.875rem;--text-3xl--line-height: 1.2 ;--text-4xl:2.25rem;--text-4xl--line-height:calc(2.5 / 2.25);--text-5xl:3rem;--text-5xl--line-height:1;--text-6xl:3.75rem;--text-6xl--line-height:1;--text-7xl:4.5rem;--text-7xl--line-height:1;--text-8xl:6rem;--text-8xl--line-height:1;--text-9xl:8rem;--text-9xl--line-height:1;--font-weight-thin:100;--font-weight-extralight:200;--font-weight-light:300;--font-weight-normal:400;--font-weight-medium:500;--font-weight-semibold:600;--font-weight-bold:700;--font-weight-extrabold:800;--font-weight-black:900;--tracking-tighter:-.05em;--tracking-tight:-.025em;--tracking-normal:0em;--tracking-wide:.025em;--tracking-wider:.05em;--tracking-widest:.1em;--leading-tight:1.25;--leading-snug:1.375;--leading-normal:1.5;--leading-relaxed:1.625;--leading-loose:2;--radius-xs:.125rem;--radius-sm:.25rem;--radius-md:.375rem;--radius-lg:.5rem;--radius-xl:.75rem;--radius-2xl:1rem;--radius-3xl:1.5rem;--radius-4xl:2rem;--shadow-2xs:0 1px #0000000d;--shadow-xs:0 1px 2px 0 #0000000d;--shadow-sm:0 1px 3px 0 #0000001a, 0 1px 2px -1px #0000001a;--shadow-md:0 4px 6px -1px #0000001a, 0 2px 4px -2px #0000001a;--shadow-lg:0 10px 15px -3px #0000001a, 0 4px 6px -4px #0000001a;--shadow-xl:0 20px 25px -5px #0000001a, 0 8px 10px -6px #0000001a;--shadow-2xl:0 25px 50px -12px #00000040;--inset-shadow-2xs:inset 0 1px #0000000d;--inset-shadow-xs:inset 0 1px 1px #0000000d;--inset-shadow-sm:inset 0 2px 4px #0000000d;--drop-shadow-xs:0 1px 1px #0000000d;--drop-shadow-sm:0 1px 2px #00000026;--drop-shadow-md:0 3px 3px #0000001f;--drop-shadow-lg:0 4px 4px #00000026;--drop-shadow-xl:0 9px 7px #0000001a;--drop-shadow-2xl:0 25px 25px #00000026;--ease-in:cubic-bezier(.4, 0, 1, 1);--ease-out:cubic-bezier(0, 0, .2, 1);--ease-in-out:cubic-bezier(.4, 0, .2, 1);--animate-spin:spin 1s linear infinite;--animate-ping:ping 1s cubic-bezier(0, 0, .2, 1) infinite;--animate-pulse:pulse 2s cubic-bezier(.4, 0, .6, 1) infinite;--animate-bounce:bounce 1s infinite;--blur-xs:4px;--blur-sm:8px;--blur-md:12px;--blur-lg:16px;--blur-xl:24px;--blur-2xl:40px;--blur-3xl:64px;--perspective-dramatic:100px;--perspective-near:300px;--perspective-normal:500px;--perspective-midrange:800px;--perspective-distant:1200px;--aspect-video:16 / 9;--default-transition-duration:.15s;--default-transition-timing-function:cubic-bezier(.4, 0, .2, 1);--default-font-family:var(--font-sans);--default-mono-font-family:var(--font-mono)}}@layer base{*,:after,:before,::backdrop{box-sizing:border-box;border:0 solid;margin:0;padding:0}::file-selector-button{box-sizing:border-box;border:0 solid;margin:0;padding:0}html,:host{-webkit-text-size-adjust:100%;tab-size:4;line-height:1.5;font-family:var(--default-font-family,ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji");font-feature-settings:var(--default-font-feature-settings,normal);font-variation-settings:var(--default-font-variation-settings,normal);-webkit-tap-highlight-color:transparent}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;-webkit-text-decoration:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,samp,pre{font-family:var(--default-mono-font-family,ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace);font-feature-settings:var(--default-mono-font-feature-settings,normal);font-variation-settings:var(--default-mono-font-variation-settings,normal);font-size:1em}small{font-size:80%}sub,sup{vertical-align:baseline;font-size:75%;line-height:0;position:relative}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}:-moz-focusring{outline:auto}progress{vertical-align:baseline}summary{display:list-item}ol,ul,menu{list-style:none}img,svg,video,canvas,audio,iframe,embed,object{vertical-align:middle;display:block}img,video{max-width:100%;height:auto}button,input,select,optgroup,textarea{font:inherit;font-feature-settings:inherit;font-variation-settings:inherit;letter-spacing:inherit;color:inherit;opacity:1;background-color:#0000;border-radius:0}::file-selector-button{font:inherit;font-feature-settings:inherit;font-variation-settings:inherit;letter-spacing:inherit;color:inherit;opacity:1;background-color:#0000;border-radius:0}:where(select:is([multiple],[size])) optgroup{font-weight:bolder}:where(select:is([multiple],[size])) optgroup option{padding-inline-start:20px}::file-selector-button{margin-inline-end:4px}::placeholder{opacity:1}@supports (not ((-webkit-appearance:-apple-pay-button))) or (contain-intrinsic-size:1px){::placeholder{color:currentColor}@supports (color:color-mix(in lab,red,red)){::placeholder{color:color-mix(in oklab,currentcolor 50%,transparent)}}}textarea{resize:vertical}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-date-and-time-value{min-height:1lh;text-align:inherit}::-webkit-datetime-edit{display:inline-flex}::-webkit-datetime-edit-fields-wrapper{padding:0}::-webkit-datetime-edit{padding-block:0}::-webkit-datetime-edit-year-field{padding-block:0}::-webkit-datetime-edit-month-field{padding-block:0}::-webkit-datetime-edit-day-field{padding-block:0}::-webkit-datetime-edit-hour-field{padding-block:0}::-webkit-datetime-edit-minute-field{padding-block:0}::-webkit-datetime-edit-second-field{padding-block:0}::-webkit-datetime-edit-millisecond-field{padding-block:0}::-webkit-datetime-edit-meridiem-field{padding-block:0}::-webkit-calendar-picker-indicator{line-height:1}:-moz-ui-invalid{box-shadow:none}button,input:where([type=button],[type=reset],[type=submit]){appearance:button}::file-selector-button{appearance:button}::-webkit-inner-spin-button{height:auto}::-webkit-outer-spin-button{height:auto}[hidden]:where(:not([hidden=until-found])){display:none!important}}@layer components;@layer utilities{.absolute{position:absolute}.fixed{position:fixed}.relative{position:relative}.static{position:static}.inset-0{inset:calc(var(--spacing) * 0)}.start{inset-inline-start:var(--spacing)}.top-0{top:calc(var(--spacing) * 0)}.right-0{right:calc(var(--spacing) * 0)}.container{width:100%}@media(min-width:40rem){.container{max-width:40rem}}@media(min-width:48rem){.container{max-width:48rem}}@media(min-width:64rem){.container{max-width:64rem}}@media(min-width:80rem){.container{max-width:80rem}}@media(min-width:96rem){.container{max-width:96rem}}.mx-auto{margin-inline:auto}.-mt-\[6\.6rem\]{margin-top:-6.6rem}.-mt-px{margin-top:-1px}.mt-2{margin-top:calc(var(--spacing) * 2)}.mt-4{margin-top:calc(var(--spacing) * 4)}.mt-6{margin-top:calc(var(--spacing) * 6)}.mt-8{margin-top:calc(var(--spacing) * 8)}.mr-2{margin-right:calc(var(--spacing) * 2)}.-mb-px{margin-bottom:-1px}.mb-1{margin-bottom:calc(var(--spacing) * 1)}.mb-2{margin-bottom:calc(var(--spacing) * 2)}.mb-4{margin-bottom:calc(var(--spacing) * 4)}.mb-6{margin-bottom:calc(var(--spacing) * 6)}.-ml-8{margin-left:calc(var(--spacing) * -8)}.-ml-px{margin-left:-1px}.ml-1{margin-left:calc(var(--spacing) * 1)}.ml-2{margin-left:calc(var(--spacing) * 2)}.ml-4{margin-left:calc(var(--spacing) * 4)}.ml-12{margin-left:calc(var(--spacing) * 12)}.contents{display:contents}.flex{display:flex}.grid{display:grid}.hidden{display:none}.inline-block{display:inline-block}.inline-flex{display:inline-flex}.table{display:table}.aspect-\[335\/364\]{aspect-ratio:335/364}.h-1{height:calc(var(--spacing) * 1)}.h-1\.5{height:calc(var(--spacing) * 1.5)}.h-2{height:calc(var(--spacing) * 2)}.h-2\.5{height:calc(var(--spacing) * 2.5)}.h-3{height:calc(var(--spacing) * 3)}.h-3\.5{height:calc(var(--spacing) * 3.5)}.h-5{height:calc(var(--spacing) * 5)}.h-8{height:calc(var(--spacing) * 8)}.h-14{height:calc(var(--spacing) * 14)}.h-14\.5{height:calc(var(--spacing) * 14.5)}.h-16{height:calc(var(--spacing) * 16)}.min-h-screen{min-height:100vh}.w-1{width:calc(var(--spacing) * 1)}.w-1\.5{width:calc(var(--spacing) * 1.5)}.w-2{width:calc(var(--spacing) * 2)}.w-2\.5{width:calc(var(--spacing) * 2.5)}.w-3{width:calc(var(--spacing) * 3)}.w-3\.5{width:calc(var(--spacing) * 3.5)}.w-5{width:calc(var(--spacing) * 5)}.w-8{width:calc(var(--spacing) * 8)}.w-\[438px\]{width:438px}.w-auto{width:auto}.w-full{width:100%}.max-w-6xl{max-width:var(--container-6xl)}.max-w-\[335px\]{max-width:335px}.max-w-none{max-width:none}.max-w-xl{max-width:var(--container-xl)}.flex-1{flex:1}.shrink-0{flex-shrink:0}.translate-y-0{--tw-translate-y:calc(var(--spacing) * 0);translate:var(--tw-translate-x) var(--tw-translate-y)}.transform{transform:var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,)}.cursor-default{cursor:default}.cursor-not-allowed{cursor:not-allowed}.grid-cols-1{grid-template-columns:repeat(1,minmax(0,1fr))}.flex-col{flex-direction:column}.flex-col-reverse{flex-direction:column-reverse}.items-center{align-items:center}.justify-between{justify-content:space-between}.justify-center{justify-content:center}.justify-end{justify-content:flex-end}.justify-items-center{justify-items:center}.gap-2{gap:calc(var(--spacing) * 2)}.gap-3{gap:calc(var(--spacing) * 3)}.gap-4{gap:calc(var(--spacing) * 4)}:where(.space-x-1>:not(:last-child)){--tw-space-x-reverse:0;margin-inline-start:calc(calc(var(--spacing) * 1) * var(--tw-space-x-reverse));margin-inline-end:calc(calc(var(--spacing) * 1) * calc(1 - var(--tw-space-x-reverse)))}.overflow-hidden{overflow:hidden}.rounded-full{border-radius:3.40282e38px}.rounded-md{border-radius:var(--radius-md)}.rounded-sm{border-radius:var(--radius-sm)}.rounded-t-lg{border-top-left-radius:var(--radius-lg);border-top-right-radius:var(--radius-lg)}.rounded-l-md{border-top-left-radius:var(--radius-md);border-bottom-left-radius:var(--radius-md)}.rounded-r-md{border-top-right-radius:var(--radius-md);border-bottom-right-radius:var(--radius-md)}.rounded-br-lg{border-bottom-right-radius:var(--radius-lg)}.rounded-bl-lg{border-bottom-left-radius:var(--radius-lg)}.border{border-style:var(--tw-border-style);border-width:1px}.border-t{border-top-style:var(--tw-border-style);border-top-width:1px}.border-r{border-right-style:var(--tw-border-style);border-right-width:1px}.border-\[\#19140035\]{border-color:#19140035}.border-\[\#e3e3e0\]{border-color:#e3e3e0}.border-black{border-color:var(--color-black)}.border-gray-200{border-color:var(--color-gray-200)}.border-gray-300{border-color:var(--color-gray-300)}.border-gray-400{border-color:var(--color-gray-400)}.border-transparent{border-color:#0000}.bg-\[\#1b1b18\]{background-color:#1b1b18}.bg-\[\#FDFDFC\]{background-color:#fdfdfc}.bg-\[\#dbdbd7\]{background-color:#dbdbd7}.bg-\[\#fff2f2\]{background-color:#fff2f2}.bg-gray-100{background-color:var(--color-gray-100)}.bg-gray-200{background-color:var(--color-gray-200)}.bg-white{background-color:var(--color-white)}.p-6{padding:calc(var(--spacing) * 6)}.px-2{padding-inline:calc(var(--spacing) * 2)}.px-4{padding-inline:calc(var(--spacing) * 4)}.px-5{padding-inline:calc(var(--spacing) * 5)}.px-6{padding-inline:calc(var(--spacing) * 6)}.py-1{padding-block:calc(var(--spacing) * 1)}.py-1\.5{padding-block:calc(var(--spacing) * 1.5)}.py-2{padding-block:calc(var(--spacing) * 2)}.py-4{padding-block:calc(var(--spacing) * 4)}.pt-8{padding-top:calc(var(--spacing) * 8)}.pb-6{padding-bottom:calc(var(--spacing) * 6)}.pb-12{padding-bottom:calc(var(--spacing) * 12)}.text-center{text-align:center}.text-lg{font-size:var(--text-lg);line-height:var(--tw-leading,var(--text-lg--line-height))}.text-sm{font-size:var(--text-sm);line-height:var(--tw-leading,var(--text-sm--line-height))}.text-\[13px\]{font-size:13px}.leading-5{--tw-leading:calc(var(--spacing) * 5);line-height:calc(var(--spacing) * 5)}.leading-7{--tw-leading:calc(var(--spacing) * 7);line-height:calc(var(--spacing) * 7)}.leading-\[20px\]{--tw-leading:20px;line-height:20px}.leading-normal{--tw-leading:var(--leading-normal);line-height:var(--leading-normal)}.font-medium{--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium)}.font-semibold{--tw-font-weight:var(--font-weight-semibold);font-weight:var(--font-weight-semibold)}.tracking-wider{--tw-tracking:var(--tracking-wider);letter-spacing:var(--tracking-wider)}.text-\[\#1B1B18\],.text-\[\#1b1b18\]{color:#1b1b18}.text-\[\#706f6c\]{color:#706f6c}.text-\[\#F3BEC7\]{color:#f3bec7}.text-\[\#F8B803\]{color:#f8b803}.text-\[\#F53003\],.text-\[\#f53003\]{color:#f53003}.text-gray-200{color:var(--color-gray-200)}.text-gray-300{color:var(--color-gray-300)}.text-gray-400{color:var(--color-gray-400)}.text-gray-500{color:var(--color-gray-500)}.text-gray-600{color:var(--color-gray-600)}.text-gray-700{color:var(--color-gray-700)}.text-gray-800{color:var(--color-gray-800)}.text-gray-900{color:var(--color-gray-900)}.text-white{color:var(--color-white)}.uppercase{text-transform:uppercase}.underline{text-decoration-line:underline}.underline-offset-4{text-underline-offset:4px}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.opacity-100{opacity:1}.mix-blend-color{mix-blend-mode:color}.mix-blend-darken{mix-blend-mode:darken}.mix-blend-hard-light{mix-blend-mode:hard-light}.mix-blend-multiply{mix-blend-mode:multiply}.shadow{--tw-shadow:0 1px 3px 0 var(--tw-shadow-color,#0000001a), 0 1px 2px -1px var(--tw-shadow-color,#0000001a);box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}.shadow-\[0px_0px_1px_0px_rgba\(0\,0\,0\,0\.03\)\,0px_1px_2px_0px_rgba\(0\,0\,0\,0\.06\)\]{--tw-shadow:0px 0px 1px 0px var(--tw-shadow-color,#00000008), 0px 1px 2px 0px var(--tw-shadow-color,#0000000f);box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}.shadow-\[inset_0px_0px_0px_1px_rgba\(26\,26\,0\,0\.16\)\]{--tw-shadow:inset 0px 0px 0px 1px var(--tw-shadow-color,#1a1a0029);box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}.shadow-sm{--tw-shadow:0 1px 3px 0 var(--tw-shadow-color,#0000001a), 0 1px 2px -1px var(--tw-shadow-color,#0000001a);box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}.ring-gray-300{--tw-ring-color:var(--color-gray-300)}.filter{filter:var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,)}.transition{transition-property:color,background-color,border-color,outline-color,text-decoration-color,fill,stroke,--tw-gradient-from,--tw-gradient-via,--tw-gradient-to,opacity,box-shadow,transform,translate,scale,rotate,filter,-webkit-backdrop-filter,backdrop-filter,display,content-visibility,overlay,pointer-events;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))}.transition-all{transition-property:all;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))}.transition-opacity{transition-property:opacity;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))}.delay-200{transition-delay:.2s}.delay-300{transition-delay:.3s}.delay-400{transition-delay:.4s}.duration-150{--tw-duration:.15s;transition-duration:.15s}.duration-750{--tw-duration:.75s;transition-duration:.75s}.ease-in-out{--tw-ease:var(--ease-in-out);transition-timing-function:var(--ease-in-out)}.\[--stroke-color\:\#1B1B18\]{--stroke-color:#1b1b18}.not-has-\[nav\]\:hidden:not(:has(:is(nav))){display:none}.before\:absolute:before{content:var(--tw-content);position:absolute}.before\:top-0:before{content:var(--tw-content);top:calc(var(--spacing) * 0)}.before\:top-1\/2:before{content:var(--tw-content);top:50%}.before\:bottom-0:before{content:var(--tw-content);bottom:calc(var(--spacing) * 0)}.before\:bottom-1\/2:before{content:var(--tw-content);bottom:50%}.before\:left-\[0\.4rem\]:before{content:var(--tw-content);left:.4rem}.before\:border-l:before{content:var(--tw-content);border-left-style:var(--tw-border-style);border-left-width:1px}.before\:border-\[\#e3e3e0\]:before{content:var(--tw-content);border-color:#e3e3e0}@media(hover:hover){.hover\:border-\[\#1915014a\]:hover{border-color:#1915014a}.hover\:border-\[\#19140035\]:hover{border-color:#19140035}.hover\:border-black:hover{border-color:var(--color-black)}.hover\:bg-black:hover{background-color:var(--color-black)}.hover\:bg-gray-100:hover{background-color:var(--color-gray-100)}.hover\:text-gray-400:hover{color:var(--color-gray-400)}.hover\:text-gray-700:hover{color:var(--color-gray-700)}}.focus\:border-blue-300:focus{border-color:var(--color-blue-300)}.focus\:ring:focus{--tw-ring-shadow:var(--tw-ring-inset,) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color,currentcolor);box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}.focus\:outline-none:focus{--tw-outline-style:none;outline-style:none}.active\:bg-gray-100:active{background-color:var(--color-gray-100)}.active\:text-gray-500:active{color:var(--color-gray-500)}.active\:text-gray-700:active{color:var(--color-gray-700)}.active\:text-gray-800:active{color:var(--color-gray-800)}@media(min-width:40rem){.sm\:flex{display:flex}.sm\:hidden{display:none}.sm\:flex-1{flex:1}.sm\:items-center{align-items:center}.sm\:justify-between{justify-content:space-between}.sm\:justify-start{justify-content:flex-start}.sm\:gap-2{gap:calc(var(--spacing) * 2)}.sm\:px-6{padding-inline:calc(var(--spacing) * 6)}.sm\:pt-0{padding-top:calc(var(--spacing) * 0)}}@media(min-width:64rem){.lg\:mt-10{margin-top:calc(var(--spacing) * 10)}.lg\:mb-0{margin-bottom:calc(var(--spacing) * 0)}.lg\:mb-6{margin-bottom:calc(var(--spacing) * 6)}.lg\:-ml-px{margin-left:-1px}.lg\:ml-0{margin-left:calc(var(--spacing) * 0)}.lg\:block{display:block}.lg\:aspect-auto{aspect-ratio:auto}.lg\:w-\[438px\]{width:438px}.lg\:max-w-4xl{max-width:var(--container-4xl)}.lg\:grow{flex-grow:1}.lg\:flex-row{flex-direction:row}.lg\:justify-center{justify-content:center}.lg\:rounded-t-none{border-top-left-radius:0;border-top-right-radius:0}.lg\:rounded-tl-lg{border-top-left-radius:var(--radius-lg)}.lg\:rounded-r-lg{border-top-right-radius:var(--radius-lg);border-bottom-right-radius:var(--radius-lg)}.lg\:rounded-br-none{border-bottom-right-radius:0}.lg\:p-8{padding:calc(var(--spacing) * 8)}.lg\:p-20{padding:calc(var(--spacing) * 20)}.lg\:px-8{padding-inline:calc(var(--spacing) * 8)}.lg\:pb-10{padding-bottom:calc(var(--spacing) * 10)}}.rtl\:flex-row-reverse:where(:dir(rtl),[dir=rtl],[dir=rtl] *){flex-direction:row-reverse}@media(prefers-color-scheme:dark){.dark\:border-\[\#3E3E3A\]{border-color:#3e3e3a}.dark\:border-\[\#eeeeec\]{border-color:#eeeeec}.dark\:border-gray-600{border-color:var(--color-gray-600)}.dark\:bg-\[\#0a0a0a\]{background-color:#0a0a0a}.dark\:bg-\[\#1D0002\]{background-color:#1d0002}.dark\:bg-\[\#3E3E3A\]{background-color:#3e3e3a}.dark\:bg-\[\#161615\]{background-color:#161615}.dark\:bg-\[\#eeeeec\]{background-color:#eeeeec}.dark\:bg-gray-700{background-color:var(--color-gray-700)}.dark\:bg-gray-800{background-color:var(--color-gray-800)}.dark\:bg-gray-900{background-color:var(--color-gray-900)}.dark\:text-\[\#1C1C1A\]{color:#1c1c1a}.dark\:text-\[\#4B0600\]{color:#4b0600}.dark\:text-\[\#391800\]{color:#391800}.dark\:text-\[\#733000\]{color:#733000}.dark\:text-\[\#A1A09A\]{color:#a1a09a}.dark\:text-\[\#EDEDEC\]{color:#ededec}.dark\:text-\[\#F61500\]{color:#f61500}.dark\:text-\[\#FF4433\]{color:#f43}.dark\:text-black{color:var(--color-black)}.dark\:text-gray-200{color:var(--color-gray-200)}.dark\:text-gray-300{color:var(--color-gray-300)}.dark\:text-gray-400{color:var(--color-gray-400)}.dark\:text-gray-600{color:var(--color-gray-600)}.dark\:mix-blend-hard-light{mix-blend-mode:hard-light}.dark\:mix-blend-normal{mix-blend-mode:normal}.dark\:shadow-\[inset_0px_0px_0px_1px_\#fffaed2d\]{--tw-shadow:inset 0px 0px 0px 1px var(--tw-shadow-color,#fffaed2d);box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}.dark\:\[--stroke-color\:\#FF750F\]{--stroke-color:#ff750f}.dark\:before\:border-\[\#3E3E3A\]:before{content:var(--tw-content);border-color:#3e3e3a}@media(hover:hover){.dark\:hover\:border-\[\#3E3E3A\]:hover{border-color:#3e3e3a}.dark\:hover\:border-\[\#62605b\]:hover{border-color:#62605b}.dark\:hover\:border-white:hover{border-color:var(--color-white)}.dark\:hover\:bg-gray-900:hover{background-color:var(--color-gray-900)}.dark\:hover\:bg-white:hover{background-color:var(--color-white)}.dark\:hover\:text-gray-200:hover{color:var(--color-gray-200)}.dark\:hover\:text-gray-300:hover{color:var(--color-gray-300)}}.dark\:focus\:border-blue-700:focus{border-color:var(--color-blue-700)}.dark\:focus\:border-blue-800:focus{border-color:var(--color-blue-800)}.dark\:active\:bg-gray-700:active{background-color:var(--color-gray-700)}.dark\:active\:text-gray-300:active{color:var(--color-gray-300)}}@starting-style{.starting\:opacity-0{opacity:0}}@media(prefers-reduced-motion:no-preference){@starting-style{.motion-safe\:starting\:-translate-x-\[26px\]{--tw-translate-x: -26px ;translate:var(--tw-translate-x) var(--tw-translate-y)}}@starting-style{.motion-safe\:starting\:-translate-x-\[51px\]{--tw-translate-x: -51px ;translate:var(--tw-translate-x) var(--tw-translate-y)}}@starting-style{.motion-safe\:starting\:-translate-x-\[78px\]{--tw-translate-x: -78px ;translate:var(--tw-translate-x) var(--tw-translate-y)}}@starting-style{.motion-safe\:starting\:-translate-x-\[102px\]{--tw-translate-x: -102px ;translate:var(--tw-translate-x) var(--tw-translate-y)}}@starting-style{.motion-safe\:starting\:translate-y-6{--tw-translate-y:calc(var(--spacing) * 6);translate:var(--tw-translate-x) var(--tw-translate-y)}}}}@property --tw-translate-x{syntax:"*";inherits:false;initial-value:0}@property --tw-translate-y{syntax:"*";inherits:false;initial-value:0}@property --tw-translate-z{syntax:"*";inherits:false;initial-value:0}@property --tw-rotate-x{syntax:"*";inherits:false}@property --tw-rotate-y{syntax:"*";inherits:false}@property --tw-rotate-z{syntax:"*";inherits:false}@property --tw-skew-x{syntax:"*";inherits:false}@property --tw-skew-y{syntax:"*";inherits:false}@property --tw-space-x-reverse{syntax:"*";inherits:false;initial-value:0}@property --tw-border-style{syntax:"*";inherits:false;initial-value:solid}@property --tw-leading{syntax:"*";inherits:false}@property --tw-font-weight{syntax:"*";inherits:false}@property --tw-tracking{syntax:"*";inherits:false}@property --tw-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-shadow-color{syntax:"*";inherits:false}@property --tw-shadow-alpha{syntax:"<percentage>";inherits:false;initial-value:100%}@property --tw-inset-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-inset-shadow-color{syntax:"*";inherits:false}@property --tw-inset-shadow-alpha{syntax:"<percentage>";inherits:false;initial-value:100%}@property --tw-ring-color{syntax:"*";inherits:false}@property --tw-ring-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-inset-ring-color{syntax:"*";inherits:false}@property --tw-inset-ring-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-ring-inset{syntax:"*";inherits:false}@property --tw-ring-offset-width{syntax:"<length>";inherits:false;initial-value:0}@property --tw-ring-offset-color{syntax:"*";inherits:false;initial-value:#fff}@property --tw-ring-offset-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-blur{syntax:"*";inherits:false}@property --tw-brightness{syntax:"*";inherits:false}@property --tw-contrast{syntax:"*";inherits:false}@property --tw-grayscale{syntax:"*";inherits:false}@property --tw-hue-rotate{syntax:"*";inherits:false}@property --tw-invert{syntax:"*";inherits:false}@property --tw-opacity{syntax:"*";inherits:false}@property --tw-saturate{syntax:"*";inherits:false}@property --tw-sepia{syntax:"*";inherits:false}@property --tw-drop-shadow{syntax:"*";inherits:false}@property --tw-drop-shadow-color{syntax:"*";inherits:false}@property --tw-drop-shadow-alpha{syntax:"<percentage>";inherits:false;initial-value:100%}@property --tw-drop-shadow-size{syntax:"*";inherits:false}@property --tw-duration{syntax:"*";inherits:false}@property --tw-ease{syntax:"*";inherits:false}@property --tw-content{syntax:"*";inherits:false;initial-value:""}@keyframes spin{to{transform:rotate(360deg)}}@keyframes ping{75%,to{opacity:0;transform:scale(2)}}@keyframes pulse{50%{opacity:.5}}@keyframes bounce{0%,to{animation-timing-function:cubic-bezier(.8,0,1,1);transform:translateY(-25%)}50%{animation-timing-function:cubic-bezier(0,0,.2,1);transform:none}}
-            </style>
-        @endif
-    </head>
-    <body class="bg-[#FDFDFC] dark:bg-[#0a0a0a] text-[#1b1b18] flex p-6 lg:p-8 items-center lg:justify-center min-h-screen flex-col">
-        <header class="w-full lg:max-w-4xl max-w-[335px] text-sm mb-6 not-has-[nav]:hidden">
-            @if (Route::has('login'))
-                <nav class="flex items-center justify-end gap-4">
-                    @auth
-                        <a
-                            href="{{ url('/dashboard') }}"
-                            class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] border-[#19140035] hover:border-[#1915014a] border text-[#1b1b18] dark:border-[#3E3E3A] dark:hover:border-[#62605b] rounded-sm text-sm leading-normal"
-                        >
-                            Dashboard
-                        </a>
-                    @else
-                        <a
-                            href="{{ route('login') }}"
-                            class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] text-[#1b1b18] border border-transparent hover:border-[#19140035] dark:hover:border-[#3E3E3A] rounded-sm text-sm leading-normal"
-                        >
-                            Log in
-                        </a>
+    /* ---------- SCROLL REVEAL ---------- */
+    [data-reveal]{opacity:0;transform:translateY(36px);transition:opacity .85s var(--ease),transform .85s var(--ease);will-change:opacity,transform}
+    [data-reveal="left"]{transform:translateX(-46px)}
+    [data-reveal="right"]{transform:translateX(46px)}
+    [data-reveal].revealed{opacity:1;transform:none}
+    [data-reveal]{transition-delay:calc(var(--d,0)*90ms)}
 
-                        @if (Route::has('register'))
-                            <a
-                                href="{{ route('register') }}"
-                                class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] border-[#19140035] hover:border-[#1915014a] border text-[#1b1b18] dark:border-[#3E3E3A] dark:hover:border-[#62605b] rounded-sm text-sm leading-normal">
-                                Register
-                            </a>
-                        @endif
-                    @endauth
-                </nav>
-            @endif
-        </header>
-        <div class="flex items-center justify-center w-full transition-opacity opacity-100 duration-750 lg:grow starting:opacity-0">
-            <main class="flex max-w-[335px] w-full flex-col-reverse lg:max-w-4xl lg:flex-row">
-                <div class="text-[13px] leading-[20px] flex-1 p-6 pb-6 lg:p-20 lg:pb-10 bg-white dark:bg-[#161615] dark:text-[#EDEDEC] shadow-[inset_0px_0px_0px_1px_rgba(26,26,0,0.16)] dark:shadow-[inset_0px_0px_0px_1px_#fffaed2d] rounded-bl-lg rounded-br-lg lg:rounded-tl-lg lg:rounded-br-none">
-                    <h1 class="mb-1 font-medium">Let's get started</h1>
-                    <p class="mb-2 text-[#706f6c] dark:text-[#A1A09A]">With so many options available to you,<br /> we suggest you start with the following:</p>
-                    <ul class="flex flex-col mb-4 lg:mb-6">
-                        <li class="flex items-center gap-4 py-2 relative before:border-l before:border-[#e3e3e0] dark:before:border-[#3E3E3A] before:top-1/2 before:bottom-0 before:left-[0.4rem] before:absolute">
-                            <span class="relative py-1 bg-white dark:bg-[#161615]">
-                                <span class="flex items-center justify-center rounded-full bg-[#FDFDFC] dark:bg-[#161615] shadow-[0px_0px_1px_0px_rgba(0,0,0,0.03),0px_1px_2px_0px_rgba(0,0,0,0.06)] w-3.5 h-3.5 border dark:border-[#3E3E3A] border-[#e3e3e0]">
-                                    <span class="rounded-full bg-[#dbdbd7] dark:bg-[#3E3E3A] w-1.5 h-1.5"></span>
-                                </span>
-                            </span>
-                            <span>
-                                Read the
-                                <a href="https://laravel.com/docs" target="_blank" class="inline-flex items-center space-x-1 font-medium underline underline-offset-4 text-[#f53003] dark:text-[#FF4433] ml-1">
-                                    <span>Documentation</span>
-                                    <svg
-                                        width="10"
-                                        height="11"
-                                        viewBox="0 0 10 11"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        class="w-2.5 h-2.5"
-                                    >
-                                        <path
-                                            d="M7.70833 6.95834V2.79167H3.54167M2.5 8L7.5 3.00001"
-                                            stroke="currentColor"
-                                            stroke-linecap="square"
-                                        />
-                                    </svg>
-                                </a>
-                            </span>
-                        </li>
-                        <li class="flex items-center gap-4 py-2 relative before:border-l before:border-[#e3e3e0] dark:before:border-[#3E3E3A] before:bottom-1/2 before:top-0 before:left-[0.4rem] before:absolute">
-                            <span class="relative py-1 bg-white dark:bg-[#161615]">
-                                <span class="flex items-center justify-center rounded-full bg-[#FDFDFC] dark:bg-[#161615] shadow-[0px_0px_1px_0px_rgba(0,0,0,0.03),0px_1px_2px_0px_rgba(0,0,0,0.06)] w-3.5 h-3.5 border dark:border-[#3E3E3A] border-[#e3e3e0]">
-                                    <span class="rounded-full bg-[#dbdbd7] dark:bg-[#3E3E3A] w-1.5 h-1.5"></span>
-                                </span>
-                            </span>
-                            <span>
-                                Watch video tutorials at
-                                <a href="https://laracasts.com" target="_blank" class="inline-flex items-center space-x-1 font-medium underline underline-offset-4 text-[#f53003] dark:text-[#FF4433] ml-1">
-                                    <span>Laracasts</span>
-                                    <svg
-                                        width="10"
-                                        height="11"
-                                        viewBox="0 0 10 11"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        class="w-2.5 h-2.5"
-                                    >
-                                        <path
-                                            d="M7.70833 6.95834V2.79167H3.54167M2.5 8L7.5 3.00001"
-                                            stroke="currentColor"
-                                            stroke-linecap="square"
-                                        />
-                                    </svg>
-                                </a>
-                            </span>
-                        </li>
-                    </ul>
-                    <ul class="flex gap-3 text-sm leading-normal">
-                        <li>
-                            <a href="https://cloud.laravel.com" target="_blank" class="inline-block dark:bg-[#eeeeec] dark:border-[#eeeeec] dark:text-[#1C1C1A] dark:hover:bg-white dark:hover:border-white hover:bg-black hover:border-black px-5 py-1.5 bg-[#1b1b18] rounded-sm border border-black text-white text-sm leading-normal">
-                                Deploy now
-                            </a>
-                        </li>
-                    </ul>
+        /* ---------- PROFIL: FLIPBOOK BUKU SEJARAH ---------- */
+    .flipbook{position:relative}
+    .flipbook-stage{position:relative;display:flex;align-items:stretch;gap:1.1rem}
+    .flip-nav{flex-shrink:0;width:54px;height:54px;border-radius:50%;border:0;cursor:pointer;color:#fff;font-size:1.05rem;background:linear-gradient(135deg,var(--teal),var(--teal-dark));box-shadow:0 12px 26px rgba(13,58,102,.35);transition:all .3s var(--ease);z-index:6;align-self:center}
+    .flip-nav:hover{transform:translateY(-3px) scale(1.06);box-shadow:0 16px 34px rgba(13,58,102,.45)}
+    .flip-nav:disabled{opacity:.35;cursor:not-allowed;transform:none;box-shadow:none}
+    .book3d{position:relative;flex:1;min-width:0;aspect-ratio:2.05/1;min-height:430px;perspective:2400px;border-radius:20px;overflow:hidden;box-shadow:0 40px 90px rgba(13,58,102,.28)}
+    .book-sheet{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr;border-radius:20px;visibility:hidden;opacity:0;transform-style:preserve-3d;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+    .book-sheet.active{visibility:visible;opacity:1;z-index:2}
+    .book-sheet.reveal-under{visibility:visible;opacity:1;z-index:1}
+    .book-sheet.turning-fwd{position:absolute;z-index:4;visibility:visible;opacity:1;transform-origin:left center;animation:flipFwd .9s var(--ease) forwards}
+    .book-sheet.turning-bwd{position:absolute;z-index:4;visibility:visible;opacity:1;transform-origin:right center;animation:flipBwd .9s var(--ease) forwards}
+    @keyframes flipFwd{0%{transform:rotateY(0)}100%{transform:rotateY(-180deg)}}
+    @keyframes flipBwd{0%{transform:rotateY(0)}100%{transform:rotateY(180deg)}}
+    .book-spine{position:absolute;left:50%;top:0;bottom:0;width:26px;transform:translateX(-50%);z-index:3;pointer-events:none;background:linear-gradient(90deg,rgba(0,0,0,.18),rgba(255,255,255,.12) 30%,rgba(0,0,0,.06) 50%,rgba(255,255,255,.12) 70%,rgba(0,0,0,.18));box-shadow:0 0 16px rgba(0,0,0,.14)}
+    .book-spine::after{content:"";position:absolute;left:50%;top:6px;bottom:6px;width:1px;background:rgba(0,0,0,.28)}
+    .book-leaf{position:relative;display:flex;flex-direction:column;overflow:hidden;padding:1.8rem 2.1rem;height:100%;min-height:0}
+    .book-leaf:first-child{border-radius:20px 4px 4px 20px}
+    .book-leaf:last-child{border-radius:4px 20px 20px 4px}
+    .book-leaf.cover,.book-leaf.back{background:linear-gradient(150deg,#0d3a66 0%,#15569c 55%,#1d6fb8 100%);color:#fff}
+    .book-leaf.cover{box-shadow:inset -3px 0 6px rgba(0,0,0,.18)}
+    .book-leaf.back{box-shadow:inset 3px 0 6px rgba(0,0,0,.18);align-items:center;justify-content:center;text-align:center;gap:.9rem}
+    .book-leaf.paper{background:linear-gradient(115deg,#fdf9ec,#f8efdc 55%,#f5ead2);color:#44403a;box-shadow:inset 3px 0 6px rgba(0,0,0,.08)}
+    .book-leaf.paper::before{content:"";position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(180deg,transparent 0 26px,rgba(120,100,60,.09) 26px 27px)}
+    .book-leaf.paper:last-child::after{content:"";position:absolute;right:0;bottom:0;width:64px;height:64px;background:linear-gradient(225deg,transparent 50%,rgba(120,100,60,.14) 50%,rgba(120,100,60,.24));border-radius:0 0 12px 0}
+    .book-cover-top{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:.8rem}
+    .profil-akreditasi{display:inline-flex;align-items:center;gap:.5rem;font-size:.72rem;font-weight:700;color:#0d3a66;background:linear-gradient(135deg,var(--gold),#ffd54f);padding:.4rem .85rem;border-radius:99px;box-shadow:0 8px 20px rgba(249,168,37,.4)}
+    .book-cover-kicker{font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.75);white-space:nowrap}
+    .book-cover-photo{position:relative;z-index:2;flex:1;min-height:0;display:flex;margin:1rem 0;border-radius:14px;overflow:hidden;border:3px solid rgba(255,255,255,.85);box-shadow:0 18px 36px rgba(0,0,0,.35)}
+    .book-cover-photo img{width:100%;height:100%;object-fit:cover;display:block}
+    .book-cover-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 52%,rgba(13,58,102,.5))}
+    .book-cover-title{position:relative;z-index:2}
+    .book-cover-eyebrow{font-size:.74rem;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);font-weight:800}
+    .book-cover-school{font-family:var(--font-display);font-size:clamp(1.3rem,2.1vw,1.8rem);line-height:1.15;text-transform:uppercase;margin:.35rem 0 .4rem}
+    .book-cover-school .num-2{color:#ffb300}
+    .book-cover-sub{font-size:.8rem;color:rgba(255,255,255,.78)}
+    .book-page-head{position:relative;z-index:2;display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;margin-bottom:1rem}
+    .book-page-kicker{font-size:.66rem;letter-spacing:.26em;text-transform:uppercase;color:var(--teal);font-weight:800;margin-bottom:.3rem}
+    .book-page-title{font-family:var(--font-display);font-size:clamp(1rem,1.7vw,1.35rem);color:#234a75;line-height:1.2}
+    .book-page-title .num-2{color:#f57c00}
+    .book-page-no{font-family:var(--font-display);font-size:2rem;color:rgba(120,100,60,.35);line-height:1}
+    .book-page-text{position:relative;z-index:2;font-size:.84rem;line-height:1.82;color:#4d463c;margin-bottom:.65rem;text-align:justify}
+    .book-page-text:first-of-type::first-letter{font-family:var(--font-display);font-size:2.3em;float:left;line-height:.9;padding:0 .18em 0 0;color:var(--teal);font-weight:800}
+    .book-timeline{position:relative;z-index:2;margin:.7rem 0 .9rem;border-top:1px dashed rgba(120,100,60,.35);padding-top:.75rem;display:flex;flex-direction:column;gap:.45rem}
+    .book-milestone{display:flex;gap:.8rem;align-items:baseline}
+    .book-year{flex-shrink:0;font-family:var(--font-display);font-weight:800;font-size:.82rem;color:var(--teal);min-width:50px}
+    .book-mile-text{font-size:.75rem;color:#4d463c;line-height:1.5}
+    .book-stats{position:relative;z-index:2;display:grid;grid-template-columns:repeat(3,1fr);gap:.55rem;margin-top:auto}
+    .book-stat{background:rgba(255,255,255,.78);border:1px solid rgba(120,100,60,.18);border-radius:12px;padding:.6rem .35rem;text-align:center;box-shadow:0 6px 14px rgba(120,100,60,.12)}
+    .book-stat strong{display:block;font-family:var(--font-display);font-size:1.2rem;color:var(--teal)}
+    .book-stat span{font-size:.64rem;color:#6b6255}
+    .book-quote{position:relative;z-index:2;margin-top:auto;background:rgba(255,255,255,.72);border-left:4px solid var(--gold);border-radius:0 12px 12px 0;padding:.7rem .9rem;font-style:italic;font-size:.8rem;color:#5b5244;box-shadow:0 8px 18px rgba(120,100,60,.14)}
+    .book-quote strong{color:var(--teal);font-style:normal}
+    .vm-text{position:relative;z-index:2;font-size:.94rem;color:#3d3a34;font-style:italic;border-left:4px solid var(--teal);padding:.6rem 0 .6rem 1rem;background:linear-gradient(90deg,rgba(29,111,184,.08),transparent);border-radius:0 12px 12px 0;margin-bottom:1rem}
+    .misi-list{position:relative;z-index:2;display:flex;flex-direction:column;gap:.6rem}
+    .misi-item{display:flex;gap:.85rem;align-items:flex-start;background:rgba(255,255,255,.82);border:1px solid rgba(120,100,60,.18);border-radius:12px;padding:.7rem .85rem;transition:all .3s var(--ease)}
+    .misi-item:hover{transform:translateX(6px);border-color:var(--teal);box-shadow:0 10px 22px rgba(120,100,60,.16)}
+    .misi-num{flex-shrink:0;width:27px;height:27px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.78rem;color:#0d3a66;background:linear-gradient(135deg,var(--mint),var(--teal-light))}
+    .misi-text{position:relative;z-index:2;font-size:.8rem;color:#4d463c;line-height:1.55}
+    .book-back-logo img{width:96px;filter:drop-shadow(0 10px 22px rgba(0,0,0,.3))}
+    .book-back-title{font-family:var(--font-display);font-size:1.15rem;text-transform:uppercase;line-height:1.3}
+    .book-back-title .num-2{color:#ffb300}
+    .book-back-sub{font-size:.78rem;color:rgba(255,255,255,.78);max-width:300px}
+    .book-back-badge{display:inline-flex;align-items:center;gap:.5rem;font-size:.68rem;font-weight:700;color:#0d3a66;background:linear-gradient(135deg,var(--gold),#ffd54f);padding:.35rem .8rem;border-radius:99px;box-shadow:0 8px 18px rgba(249,168,37,.35)}
+    .flip-controls{display:flex;align-items:center;justify-content:center;gap:1.3rem;margin-top:1.7rem;flex-wrap:wrap}
+    .flip-restart{display:inline-flex;align-items:center;gap:.5rem;border:0;cursor:pointer;font-weight:700;font-size:.82rem;color:#fff;background:linear-gradient(135deg,var(--gold),var(--gold-dark));padding:.6rem 1.2rem;border-radius:99px;box-shadow:0 10px 24px rgba(249,168,37,.4);transition:all .3s var(--ease)}
+    .flip-restart:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(249,168,37,.5)}
+    .flip-dots{display:flex;gap:.5rem}
+    .flip-dot{width:11px;height:11px;border-radius:50%;background:var(--border);border:0;cursor:pointer;padding:0;transition:all .3s var(--ease)}
+    .flip-dot.active{background:linear-gradient(135deg,var(--gold),var(--gold-dark));transform:scale(1.25);box-shadow:0 4px 10px rgba(249,168,37,.45)}
+    .flip-counter{font-size:.82rem;font-weight:700;color:var(--text-muted)}
+    .flip-hint{text-align:center;font-size:.72rem;color:var(--text-muted);margin-top:.7rem;letter-spacing:.04em}
 
-                    <p class="mt-6 lg:mt-10 text-[#706f6c] dark:text-[#A1A09A]">
-                        v{{ app()->version() }}
-                        <a href="https://github.com/laravel/framework/blob/13.x/CHANGELOG.md" target="_blank" class="inline-flex items-center space-x-1 font-medium underline underline-offset-4 text-[#f53003] dark:text-[#FF4433] ml-1">
-                            <span>View changelog</span>
-                            <svg
-                                width="10"
-                                height="11"
-                                viewBox="0 0 10 11"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                                class="w-2.5 h-2.5"
-                            >
-                                <path
-                                    d="M7.70833 6.95834V2.79167H3.54167M2.5 8L7.5 3.00001"
-                                    stroke="currentColor"
-                                    stroke-linecap="square"
-                                />
-                            </svg>
-                        </a>
-                    </p>
+    /* ---------- JENDELA KEPALA SEKOLAH (corporate glass window) ---------- */
+    .window-section{position:relative;background:linear-gradient(140deg,#0b2d50,#114d84 55%,#114d84);color:#fff;padding:96px 0;overflow:hidden;transition:background .9s var(--ease)}
+    .window-section::before{content:"";position:absolute;inset:0;background:
+      repeating-linear-gradient(90deg,transparent 0 118px,rgba(255,255,255,.03) 118px 120px),
+      repeating-linear-gradient(0deg,transparent 0 118px,rgba(255,255,255,.03) 118px 120px);pointer-events:none;z-index:1}
+    .window-bg{position:absolute;inset:0;z-index:0;background:url('{{ asset('images/hero-sekolah.jpg') }}') center/cover no-repeat;
+      filter:blur(9px) brightness(.55) saturate(.85);transform:scale(1.06);opacity:.5;pointer-events:none}
+    .window-section .section-label,.window-section .section-title{color:#fff}
+    .window-section .section-desc{color:rgba(255,255,255,.72)}
+    .window-section .accent{background:linear-gradient(100deg,#ffd54a,#f9a825);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+    .window-stage{position:relative;max-width:1120px;margin:2.2rem auto 0;z-index:2}
+    .window-frame{position:relative;aspect-ratio:2.25/1;min-height:480px;border-radius:18px;overflow:hidden;
+      background:#0a2747;
+      border:1px solid rgba(255,255,255,.16);outline:1px solid rgba(249,168,37,.4);outline-offset:5px;
+      box-shadow:0 34px 80px rgba(0,0,0,.45),0 0 0 1px rgba(255,255,255,.06);transition:box-shadow .9s var(--ease),outline-color .9s}
+    .window-frame::before{content:"";position:absolute;inset:0;z-index:3;pointer-events:none;border-radius:18px;
+      background:linear-gradient(90deg,rgba(255,255,255,.05) 0 49.7%,rgba(255,255,255,.14) 49.7% 50.3%,rgba(255,255,255,.05) 50.3% 100%);
+      mix-blend-mode:overlay}
+    .window-frame::after{content:"";position:absolute;inset:0;z-index:9;pointer-events:none;border-radius:18px;
+      box-shadow:inset 0 0 0 1px rgba(255,255,255,.08),inset 0 16px 44px rgba(0,0,0,.22)}
+
+    /* interior: isi sambutan (terlihat setelah jendela terbuka) */
+    .window-scene{position:absolute;inset:0;z-index:2;overflow:hidden;transition:filter 1s var(--ease);
+      background:linear-gradient(135deg,#0d3a66 0%,#114d84 62%,#15599a 100%)}
+    .window-section.open .window-scene{filter:brightness(1.12)}
+    .ws-inner{position:absolute;inset:0;display:grid;grid-template-columns:minmax(250px,34%) 1fr;gap:2.6rem;align-items:center;padding:3.2rem 3.6rem}
+
+    /* foto kepala sekolah */
+    .ws-left{display:flex;flex-direction:column;align-items:center;text-align:center;gap:.7rem}
+    .ws-photo-frame{position:relative;width:min(240px,82%);aspect-ratio:3/3.6;border-radius:6px;padding:9px;
+      background:rgba(255,255,255,.055);border:1px solid rgba(249,168,37,.55);
+      box-shadow:0 20px 44px rgba(0,0,0,.35);display:flex;align-items:flex-end;justify-content:center;overflow:hidden}
+    .ws-photo-frame::before{content:"";position:absolute;inset:9px;border:1px solid rgba(255,255,255,.16);border-radius:3px;pointer-events:none}
+    .ws-photo{position:relative;height:100%;width:100%;object-fit:contain;filter:drop-shadow(0 14px 26px rgba(0,0,0,.3))}
+    .ws-photo-cap{font-weight:800;font-size:1rem;color:#fff;letter-spacing:.02em}
+    .ws-photo-role{font-size:.68rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#ffd54a}
+    .ws-photo-role .num-2{color:#ffd54a}
+
+    /* teks sambutan */
+    .ws-right{text-align:left;color:#fff}
+    .ws-kicker{display:flex;align-items:center;gap:.7rem;font-size:.72rem;font-weight:700;letter-spacing:.34em;text-transform:uppercase;color:#ffd54a;margin-bottom:1rem}
+    .ws-kicker-line{width:44px;height:1px;background:linear-gradient(90deg,#ffd54a,transparent);flex-shrink:0}
+    .ws-welcome{font-family:var(--font-display);font-size:clamp(1.7rem,3.4vw,2.6rem);line-height:1.08;color:#fff;text-transform:uppercase;letter-spacing:.02em}
+    .ws-quote{margin-top:1rem;font-size:clamp(1rem,1.7vw,1.22rem);font-style:italic;color:#ffd54a;line-height:1.55;border-left:3px solid rgba(255,213,74,.55);padding-left:1rem}
+    .ws-msg{margin-top:1rem;font-size:.88rem;line-height:1.8;color:rgba(255,255,255,.82);max-width:52ch}
+    .ws-sign{margin-top:1.4rem;padding-top:1.1rem;border-top:1px solid rgba(255,255,255,.16)}
+    .ws-sign-name{font-weight:800;font-size:1.05rem;color:#fff}
+    .ws-sign-role{font-size:.68rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#ffd54a;margin-top:.2rem}
+    .ws-sign-role .num-2{color:#ffd54a}
+
+    /* kaca jendela (panel bergeser ke samping saat terbuka) */
+    .window-glass{position:absolute;top:0;bottom:0;width:50.5%;z-index:5;transition:transform 1.05s var(--ease);will-change:transform}
+    .window-glass.left{left:0}
+    .window-glass.right{right:0}
+    .window-pane-glass{position:absolute;inset:0;
+      background:linear-gradient(120deg,rgba(178,216,255,.16),rgba(178,216,255,.05) 46%,rgba(255,255,255,.1));
+      backdrop-filter:blur(5px) saturate(1.05);-webkit-backdrop-filter:blur(5px) saturate(1.05);
+      box-shadow:inset 1px 0 0 rgba(255,255,255,.2),inset -1px 0 0 rgba(255,255,255,.12)}
+    .window-glass.left .window-pane-glass{border-right:1px solid rgba(255,255,255,.18)}
+    .window-glass.right .window-pane-glass{border-left:1px solid rgba(255,255,255,.18)}
+    .window-glass::after{content:"";position:absolute;inset:0;pointer-events:none;
+      background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.14) 44%,transparent 58%);
+      animation:glassShine 9s ease-in-out infinite}
+    .window-section.open .window-glass.left{transform:translateX(-104%) skewX(2deg)}
+    .window-section.open .window-glass.right{transform:translateX(104%) skewX(-2deg)}
+
+    /* state tertutup: FROM THE PRINCIPAL'S OFFICE */
+    .window-knock{position:absolute;inset:0;z-index:7;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;text-align:center;padding:1rem;
+      background:linear-gradient(180deg,rgba(7,26,48,.42),rgba(7,26,48,.6));backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);
+      transition:opacity .6s var(--ease),visibility .6s}
+    .window-section.open .window-knock{opacity:0;visibility:hidden}
+    .wk-label{display:flex;align-items:center;gap:.8rem;font-size:.72rem;font-weight:700;letter-spacing:.42em;text-transform:uppercase;color:#ffd54a}
+    .wk-label::before,.wk-label::after{content:"";width:34px;height:1px;background:rgba(255,213,74,.5)}
+    .wk-title{font-family:var(--font-display);font-size:clamp(1.5rem,3.6vw,2.5rem);letter-spacing:.06em;color:#fff;line-height:1.15;
+      text-shadow:0 6px 24px rgba(0,0,0,.45)}
+    .wk-silhouette{width:88px;height:88px;border-radius:50%;overflow:hidden;border:1px solid rgba(255,213,74,.65);
+      box-shadow:0 0 0 6px rgba(255,255,255,.05),0 14px 30px rgba(0,0,0,.35);margin-top:.2rem}
+    .wk-silhouette img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) brightness(.5) contrast(1.08)}
+    .wk-btn{position:relative;display:inline-flex;align-items:center;gap:.9rem;margin-top:.7rem;padding:.85rem 2.1rem;border-radius:4px;
+      border:1px solid #ffd54a;background:rgba(13,58,102,.35);color:#fff;font-weight:800;font-size:.82rem;letter-spacing:.22em;text-transform:uppercase;cursor:pointer;
+      box-shadow:0 14px 30px rgba(0,0,0,.3);transition:all .35s var(--ease);backdrop-filter:blur(4px)}
+    .wk-btn:hover{background:#ffd54a;color:#0d3a66;transform:translateY(-2px);box-shadow:0 18px 38px rgba(249,168,37,.35)}
+    .wk-btn:active{transform:scale(.98)}
+
+    /* tombol tutup jendela */
+    .ws-close{position:absolute;right:16px;bottom:16px;z-index:8;display:inline-flex;align-items:center;gap:.45rem;padding:.55rem 1.15rem;border-radius:4px;
+      border:1px solid rgba(255,213,74,.55);background:rgba(8,30,56,.6);color:#fff;font-size:.72rem;font-weight:700;letter-spacing:.08em;cursor:pointer;
+      backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);opacity:0;visibility:hidden;transform:translateY(8px);transition:all .45s var(--ease)}
+    .window-section.open .ws-close{opacity:1;visibility:visible;transform:none}
+    .ws-close:hover{background:#ffd54a;color:#0d3a66}
+
+    /* cahaya masuk saat jendela terbuka */
+    .ws-glow{position:absolute;inset:0;z-index:4;pointer-events:none;background:linear-gradient(115deg,transparent 32%,rgba(255,236,170,.22) 47%,transparent 62%);transform:translateX(-120%);transition:transform 1.3s var(--ease)}
+    .window-section.open .ws-glow{transform:translateX(120%)}
+    .window-section.open .window-frame{outline-color:rgba(255,213,74,.75);box-shadow:0 34px 90px rgba(0,0,0,.5),0 0 70px rgba(255,213,74,.22),0 0 0 1px rgba(255,255,255,.1)}
+    .window-section.open{background:linear-gradient(140deg,#114d84,#1d6fb8 55%,#1d6fb8)}
+
+    @keyframes glassShine{0%,55%{opacity:.5;transform:translateX(-8%)}85%,100%{opacity:.9;transform:translateX(8%)}}
+
+    @media(max-width:900px){
+      .window-frame{aspect-ratio:auto;min-height:640px}
+      .ws-inner{grid-template-columns:1fr;grid-template-rows:auto 1fr;gap:1.4rem;padding:2.2rem 2rem;text-align:center}
+      .ws-left{gap:.4rem}
+      .ws-photo-frame{width:min(190px,60%)}
+      .ws-right{text-align:center}
+      .ws-kicker{justify-content:center}
+      .ws-kicker-line{display:none}
+      .ws-quote{border-left:0;padding-left:0;border-top:1px solid rgba(255,213,74,.4);padding-top:.8rem}
+      .ws-msg{margin-left:auto;margin-right:auto}
+    }
+    @media(max-width:600px){
+      .window-frame{min-height:720px}
+      .ws-inner{padding:1.6rem 1.2rem}
+      .ws-photo-frame{width:min(160px,62%)}
+      .ws-welcome{font-size:1.35rem}
+      .ws-msg{font-size:.82rem}
+      .wk-title{font-size:1.3rem;letter-spacing:.04em}
+      .wk-label{font-size:.62rem;letter-spacing:.28em}
+      .wk-btn{font-size:.72rem;letter-spacing:.16em;padding:.75rem 1.5rem}
+    }
+    /* ---------- JURUSAN: FEATURED PROGRAM CAROUSEL ---------- */
+    .jurusan-section{position:relative;background:var(--bg);overflow:hidden}
+    .jurusan-section::before{
+      content:"";position:absolute;top:52%;left:50%;width:900px;height:560px;transform:translate(-50%,-50%);
+      background:radial-gradient(ellipse at center,rgba(40,169,225,.10),rgba(40,169,225,0) 65%);
+      pointer-events:none;z-index:0;
+    }
+    .jurusan-carousel{position:relative;z-index:1;margin-top:5.2rem}
+    .carousel-stage{
+      position:relative;height:600px;max-width:1240px;margin:0 auto;
+      display:flex;align-items:flex-end;justify-content:center;gap:2.4rem;
+      padding-top:110px; /* ruang untuk foto cutout yang menonjol ke atas */
+    }
+    .carousel-card{
+      position:relative;flex-shrink:0;width:300px;height:560px;order:4;
+      cursor:pointer;
+      transition:transform .6s var(--ease),opacity .6s var(--ease),width .6s var(--ease);
+      will-change:transform,opacity;
+      display:flex;flex-direction:column;align-items:center;
+    }
+    .carousel-card .card-inner{position:relative;width:100%;height:100%;display:flex;flex-direction:column;align-items:center}
+    /* --- states: previous — ACTIVE — next, terpisah jelas, tanpa saling menutupi --- */
+    .carousel-card.active{
+      width:390px;height:560px;transform:translateY(0) scale(1);opacity:1;z-index:3;order:2;
+    }
+    .carousel-card.prev,.carousel-card.next{
+      transform:translateY(34px) scale(.84);opacity:.72;z-index:2;
+    }
+    .carousel-card.prev{order:1}
+    .carousel-card.next{order:3}
+    .carousel-card.hidden{display:none}
+    .carousel-card.no-anim{transition:none!important}
+    /* --- foto siswa: cutout transparan berdiri bebas, TANPA kotak/border/shadow box --- */
+    .cc-photo{position:relative;width:100%;height:330px;flex-shrink:0;z-index:1;overflow:visible;display:flex;align-items:flex-end;justify-content:center}
+    .cc-photo img{
+      display:block;position:relative;
+      height:auto;width:auto;max-height:408px;max-width:100%;object-fit:contain;
+      filter:drop-shadow(0 20px 30px rgba(13,58,102,.22));
+      transform:translateY(0) scale(1);
+      transition:transform .6s var(--ease),opacity .6s var(--ease);
+    }
+    .carousel-card.active .cc-photo img{transform:translateY(0) scale(1);opacity:1}
+    .carousel-card:not(.active) .cc-photo img{transform:translateY(-8px) scale(.84);opacity:.72}
+    /* --- icon badge kecil (subtle) --- */
+    
+    /* --- teks di bawah foto (tanpa box) --- */
+    .cc-body{
+      position:relative;z-index:2;width:100%;padding:2.9rem 1rem .2rem;
+      display:flex;flex-direction:column;align-items:center;text-align:center;flex:1;
+    }
+    
+    .cc-abbr{position:relative;z-index:1;font-family:var(--font-display);font-size:1.55rem;color:#1796cb;letter-spacing:.02em;line-height:1.1}
+    /* Brand color per jurusan — diambil dari warna dominan logo masing-masing */
+    .carousel-card[data-index="0"] .cc-abbr{color:#E8A800}   /* APHP: kuning logo */
+    .carousel-card[data-index="1"] .cc-abbr{color:#D80A86}   /* DKV: pink logo */
+    .carousel-card[data-index="2"] .cc-abbr{color:#FE8D03}   /* KULINER: oranye logo */
+    .carousel-card[data-index="3"] .cc-abbr{color:#049747}   /* LPS: hijau logo */
+    .carousel-card[data-index="4"] .cc-abbr{color:#DB1320}   /* RPL: merah logo */
+    .cc-line{width:36px;height:3px;border-radius:99px;background:linear-gradient(90deg,var(--gold),var(--gold-dark));margin:.5rem 0 .55rem}
+    .cc-full{font-size:.85rem;font-weight:600;color:var(--text-muted);line-height:1.45}
+    .cc-desc{font-size:.8rem;color:var(--text-muted);line-height:1.55;margin-top:.45rem;max-width:340px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+    .cc-stats{display:flex;gap:.55rem;margin-top:.8rem;flex-wrap:wrap;justify-content:center}
+    .cc-stat{font-size:.68rem;font-weight:700;letter-spacing:.02em;padding:.32rem .65rem;border-radius:99px;background:#eef6fd;color:var(--teal-dark);border:1px solid #dcebf7}
+    .cc-stat.gold{background:#fff7e0;color:#a56b00;border-color:#f5e2ae}
+    .cc-cta{
+      display:inline-flex;align-items:center;gap:.45rem;margin-top:.85rem;font-size:.82rem;font-weight:800;
+      color:var(--teal);transition:all .3s var(--ease);text-decoration:none;
+    }
+    .cc-cta i{font-size:.74rem;transition:transform .3s var(--ease)}
+    .carousel-card.active:hover .cc-cta i{transform:translateX(4px)}
+    .cc-hint{font-size:.72rem;font-weight:600;color:var(--text-muted);margin-top:auto;padding-top:.7rem;letter-spacing:.04em;text-transform:uppercase}
+    .carousel-card:not(.active) .cc-body{opacity:.9}
+    .carousel-card.active .cc-body{opacity:1}
+    /* --- nav & indicator --- */
+    .carousel-nav{display:flex;align-items:center;justify-content:center;gap:1.3rem;margin-top:2.2rem}
+    .carousel-nav-btn{
+      width:46px;height:46px;border-radius:50%;border:1px solid var(--border);background:#fff;color:var(--teal);
+      display:flex;align-items:center;justify-content:center;font-size:1rem;cursor:pointer;
+      transition:all .3s var(--ease);box-shadow:var(--shadow);
+    }
+    .carousel-nav-btn:hover{background:var(--teal);color:#fff;border-color:var(--teal);transform:translateY(-2px)}
+    .carousel-indicator{font-family:var(--font-display);font-size:1.05rem;color:var(--ink);letter-spacing:.06em;min-width:72px;text-align:center}
+    .carousel-indicator em{font-style:normal;color:var(--gold-dark)}
+
+    /* ---------- ROADMAP ---------- */
+    /* ============ JOURNEY TO 2028 MAP ============ */
+    .roadmap-preview-section{position:relative;background:linear-gradient(180deg,rgba(11,61,104,.88) 0%,rgba(14,78,125,.85) 55%,rgba(8,56,95,.92) 100%),url('{{ asset('images/hero-sekolah.jpg') }}') center/cover no-repeat;color:#fff;padding:110px 0 120px;overflow:hidden}
+    .j2k8-map{position:absolute;inset:0;pointer-events:none;opacity:.38}
+    .j2k8-contours{position:absolute;inset:0;background:
+      radial-gradient(ellipse 46% 42% at 12% 22%,transparent 58%,rgba(255,255,255,.10) 60%,transparent 62%),
+      radial-gradient(ellipse 52% 48% at 12% 22%,transparent 60%,rgba(255,255,255,.08) 62%,transparent 64%),
+      radial-gradient(ellipse 60% 56% at 12% 22%,transparent 62%,rgba(255,255,255,.06) 64%,transparent 66%),
+      radial-gradient(ellipse 40% 38% at 84% 78%,transparent 58%,rgba(255,255,255,.09) 60%,transparent 62%),
+      radial-gradient(ellipse 48% 44% at 84% 78%,transparent 60%,rgba(255,255,255,.07) 62%,transparent 64%),
+      radial-gradient(ellipse 58% 54% at 84% 78%,transparent 62%,rgba(255,255,255,.05) 64%,transparent 66%),
+      radial-gradient(ellipse 36% 34% at 55% 95%,transparent 56%,rgba(255,255,255,.07) 58%,transparent 60%);
+      opacity:.32}
+    .j2k8-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(160,210,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(160,210,255,.045) 1px,transparent 1px);background-size:44px 44px;mask-image:radial-gradient(ellipse 78% 72% at 50% 44%,#000 55%,transparent 100%);-webkit-mask-image:radial-gradient(ellipse 78% 72% at 50% 44%,#000 55%,transparent 100%)}
+    .j2k8-coords{position:absolute;inset:0}
+    .j2k8-coords i{position:absolute;font-style:normal;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.6rem;letter-spacing:.18em;color:rgba(170,215,255,.16)}
+    .j2k8-coords .cd-dot{position:absolute;width:5px;height:5px;border-radius:50%;background:rgba(170,215,255,.20)}
+    .j2k8-coords .cd-dash{position:absolute;width:26px;height:1px;background:rgba(170,215,255,.15)}
+    .j2k8-compass{position:absolute;top:26px;right:28px;width:52px;height:52px;opacity:.92;color:#bfe6ff}
+    .j2k8-compass svg{width:100%;height:100%;display:block}
+    .j2k8-compass .n{fill:#7fd4ff}
+    .roadmap-preview-inner{position:relative;z-index:2}
+    .roadmap-preview-header{max-width:820px;margin:0 auto .4rem;text-align:center}
+    .j2k8-label{display:inline-block;font-size:.66rem;font-weight:800;letter-spacing:.3em;text-transform:uppercase;color:#29b6f6;margin-bottom:.95rem}
+    .roadmap-preview-section .section-title{color:#fff;font-size:2.25rem;margin-bottom:.85rem}
+    .roadmap-preview-section .accent{background:linear-gradient(100deg,#ffd54a,#f2b632);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .roadmap-preview-section .section-desc{color:rgba(255,255,255,.75);font-size:.95rem;line-height:1.75;max-width:640px;margin:0 auto}
+    .j2k8-legend{display:flex;align-items:center;justify-content:center;gap:1.6rem;flex-wrap:wrap;margin-top:.85rem;font-size:.72rem;color:rgba(255,255,255,.72)}
+    .j2k8-legend span{display:inline-flex;align-items:center;gap:.45rem}
+    .j2k8-legend .lg-ic{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);font-size:.62rem;color:#fff}
+    .j2k8-legend .lg-done{color:#7ee2a8}
+    .j2k8-legend .lg-running{color:#7cc9ff}
+    .j2k8-legend .lg-goal{color:#ffd54f}
+    .j2k8-stage{position:relative;min-height:1150px;margin-top:.1rem}
+    .j2k8-route{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}
+    .j2k8-route .route-base{stroke:rgba(255,255,255,.13);stroke-width:4;fill:none;stroke-linecap:round}
+    .j2k8-route .route-dash{stroke:#29b6f6;stroke-width:3.5;fill:none;stroke-linecap:round;stroke-dasharray:10 14;opacity:.5;animation:routeDashMove 22s linear infinite}
+    .j2k8-route .route-glow{stroke:#29b6f6;stroke-width:5;fill:none;stroke-linecap:round;filter:drop-shadow(0 0 6px rgba(41,182,246,.6));opacity:0;stroke-dasharray:2800;stroke-dashoffset:2800;transition:stroke-dashoffset 1.6s cubic-bezier(.4,0,.2,1)}
+    .j2k8-stage.drawn .j2k8-route .route-glow{opacity:1;stroke-dashoffset:0}
+    @keyframes routeDashMove{to{stroke-dashoffset:-48}}
+    .j2k8-checkpoint{position:absolute;z-index:3;display:flex;flex-direction:column;align-items:center;transform:translate(-50%,-50%);opacity:0;transition:opacity .5s ease,transform .5s ease}
+    .j2k8-stage.drawn .j2k8-checkpoint{opacity:1}
+    .j2k8-node{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(10,38,64,.88);border:2px solid rgba(41,182,246,.55);color:#7fd4ff;font-size:1rem;box-shadow:0 0 0 5px rgba(41,182,246,.14),0 6px 18px rgba(0,0,0,.4);transition:transform .3s var(--ease),border-color .3s,box-shadow .3s}
+    .j2k8-checkpoint:hover .j2k8-node,.j2k8-checkpoint:focus-visible .j2k8-node{transform:scale(1.22);border-color:#29b6f6;box-shadow:0 0 0 8px rgba(41,182,246,.2),0 0 26px rgba(41,182,246,.65)}
+    .j2k8-node .fas{filter:drop-shadow(0 0 6px rgba(41,182,246,.6))}
+    .j2k8-cp-year{margin-top:.55rem;font-weight:800;font-size:.8rem;letter-spacing:.08em;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.6)}
+    .j2k8-cp-tag{margin-top:.15rem;font-size:.58rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+    .j2k8-start .j2k8-node{border-color:rgba(126,226,168,.6);color:#7ee2a8;box-shadow:0 0 0 5px rgba(46,204,113,.16),0 6px 18px rgba(0,0,0,.4)}
+    .j2k8-goal .j2k8-node{width:56px;height:56px;background:linear-gradient(135deg,rgba(255,213,79,.22),rgba(242,182,50,.14));border:2px solid #f2b632;color:#ffd54f;font-size:1.35rem;box-shadow:0 0 0 8px rgba(242,182,50,.18),0 0 34px rgba(242,182,50,.55);animation:goalPulse 3s ease-in-out infinite}
+    .j2k8-goal .j2k8-cp-year{color:#ffd54f;font-size:.95rem}
+    .j2k8-goal .j2k8-cp-tag{color:#ffd54f}
+    .j2k8-card{position:absolute;z-index:4;width:312px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:18px;padding:1.15rem 1.2rem 1.25rem;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 16px 40px rgba(0,0,0,.28);transition:transform .35s var(--ease),border-color .35s,background .35s,box-shadow .35s;opacity:0}
+    .j2k8-stage.drawn .j2k8-card{animation:cardIn .6s cubic-bezier(.22,1,.36,1) forwards}
+    .j2k8-card:hover{transform:translateY(-6px);border-color:rgba(41,182,246,.55);background:rgba(255,255,255,.13);box-shadow:0 24px 52px rgba(0,0,0,.4)}
+    .j2k8-connector{position:absolute;z-index:2;height:1px;background:linear-gradient(90deg,rgba(41,182,246,.55),rgba(41,182,246,.12));transform-origin:left center;pointer-events:none}
+    .j2k8-connector::after{content:"";position:absolute;right:-5px;top:-3px;width:7px;height:7px;border-radius:50%;background:#29b6f6;opacity:.8}
+    .j2k8-connector.v{width:1px;height:44px;background:linear-gradient(180deg,rgba(41,182,246,.55),rgba(41,182,246,.12))}
+    .j2k8-connector.v::after{right:auto;left:-3px;top:auto;bottom:-3px}
+    .j2k8-arrow{position:absolute;z-index:2;width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-bottom:13px solid rgba(41,182,246,.75);filter:drop-shadow(0 0 6px rgba(41,182,246,.5));pointer-events:none}
+    .j2k8-card-top{display:flex;align-items:center;justify-content:space-between;gap:.5rem;margin-bottom:.5rem}
+    .j2k8-num{font-size:.7rem;font-weight:800;letter-spacing:.16em;color:rgba(255,255,255,.5)}
+    .j2k8-status{display:inline-flex;align-items:center;gap:.4rem;font-size:.58rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .62rem;border-radius:99px;background:rgba(255,255,255,.12);white-space:nowrap}
+    .j2k8-status-dot{width:7px;height:7px;border-radius:50%}
+    .s-done{color:#7ee2a8;background:rgba(46,204,113,.16)}
+    .s-done .j2k8-status-dot{background:#2ecc71;box-shadow:0 0 8px rgba(46,204,113,.8)}
+    .s-running{color:#7cc9ff;background:rgba(37,184,242,.16)}
+    .s-running .j2k8-status-dot{background:#25b8f2;box-shadow:0 0 8px rgba(37,184,242,.8);animation:journeyBlink 1.6s ease-in-out infinite}
+    .s-goal{color:#ffd54f;background:rgba(242,182,50,.18)}
+    .s-goal .j2k8-status-dot{background:#f2b632;box-shadow:0 0 8px rgba(242,182,50,.85)}
+    .j2k8-year{font-size:.78rem;font-weight:800;letter-spacing:.06em;color:#fff;margin-bottom:.3rem}
+    .j2k8-name{font-family:var(--font-display);font-size:.95rem;line-height:1.35;color:#fff;margin-bottom:.4rem}
+    .j2k8-desc{font-size:.74rem;line-height:1.6;color:rgba(255,255,255,.72)}
+    .j2k8-goal-card{width:352px;border-color:rgba(242,182,50,.5);background:rgba(242,182,50,.1);box-shadow:0 0 0 1px rgba(242,182,50,.22),0 20px 48px rgba(0,0,0,.34)}
+    .j2k8-goal-card .j2k8-year{color:#ffd54f;font-size:.86rem}
+    .j2k8-goal-card .j2k8-name{color:#ffd54f;font-size:1.05rem}
+    .j2k8-goal-card:hover{border-color:rgba(242,182,50,.75);background:rgba(242,182,50,.16)}
+    .j2k8-start-flag{position:absolute;z-index:4;display:flex;align-items:center;gap:.5rem;font-size:.6rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#7ee2a8;background:rgba(46,204,113,.12);border:1px solid rgba(126,226,168,.35);padding:.34rem .8rem;border-radius:99px;white-space:nowrap}
+    .j2k8-cta{display:inline-flex;align-items:center;gap:.55rem;padding:.7rem 1.3rem;border-radius:99px;font-weight:700;font-size:.82rem;color:#dff2ff;background:rgba(41,182,246,.16);border:1px solid rgba(41,182,246,.4);backdrop-filter:blur(8px);transition:all .3s var(--ease)}
+    .j2k8-cta:hover{background:rgba(41,182,246,.28);transform:translateY(-2px);box-shadow:0 12px 30px rgba(41,182,246,.3)}
+    @keyframes journeyBlink{0%,100%{opacity:1}50%{opacity:.35}}
+    @keyframes goalPulse{0%,100%{box-shadow:0 0 0 8px rgba(242,182,50,.18),0 0 34px rgba(242,182,50,.55)}50%{box-shadow:0 0 0 13px rgba(242,182,50,.1),0 0 48px rgba(242,182,50,.75)}}
+    @keyframes cardIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+    @media(max-width:1100px){
+      .j2k8-stage{display:flex;flex-direction:column;gap:2.4rem;min-height:0;padding-left:8px}
+      .j2k8-stage::before{content:"";position:absolute;left:31px;top:6px;bottom:6px;width:3px;border-radius:99px;background:linear-gradient(180deg,#29b6f6,rgba(41,182,246,.25));opacity:.55}
+      .j2k8-route{display:none}
+      .j2k8-connector{display:none}
+      .j2k8-arrow{display:none}
+      .j2k8-milestone{position:relative;display:grid;grid-template-columns:64px 1fr;gap:1.1rem;align-items:start;min-height:0}
+      .j2k8-checkpoint{position:static;transform:none;opacity:1;flex-direction:row;align-items:center;gap:0}
+      .j2k8-stage.drawn .j2k8-checkpoint{opacity:1}
+      .j2k8-checkpoint .j2k8-cp-year{margin-top:0;margin-left:.6rem;font-size:.82rem}
+      .j2k8-checkpoint .j2k8-cp-tag{display:none}
+      .j2k8-node{width:44px;height:44px}
+      .j2k8-goal .j2k8-node{width:52px;height:52px}
+      .j2k8-card{position:static;opacity:1;animation:none;width:100%;transform:none}
+      .j2k8-stage.drawn .j2k8-card{animation:none;opacity:1}
+      .j2k8-goal-card{width:100%}
+      .j2k8-start-flag{position:static;justify-content:flex-start;margin:0 0 .2rem 74px}
+      .j2k8-compass{display:none}
+      .roadmap-preview-header{margin-bottom:.4rem}
+    }
+
+
+    /* ---------- KONTAK : FIND US ---------- */
+    .ft-wrap{max-width:1200px;margin:0 auto}
+    .ft-head{text-align:center;margin-bottom:2.6rem}
+    .ft-eyebrow{display:inline-flex;align-items:center;gap:.55rem;font-size:.78rem;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--teal);margin-bottom:.9rem}
+    .ft-eyebrow::before,.ft-eyebrow::after{content:"";width:22px;height:2px;border-radius:99px;background:linear-gradient(90deg,var(--gold),var(--gold-dark))}
+    .ft-title{font-family:var(--font-display);font-size:clamp(1.7rem,3.4vw,2.5rem);color:var(--ink);line-height:1.2;margin-bottom:.6rem}
+    .ft-title .ft-gold{background:linear-gradient(100deg,var(--gold),var(--gold-dark));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .ft-sub{color:var(--text-muted);font-size:.96rem;margin-bottom:.3rem}
+    .ft-line{color:var(--text-muted);font-size:.84rem;opacity:.85}
+    .ft-map{position:relative;height:520px;border-radius:24px;overflow:hidden;box-shadow:var(--shadow-lg);background:#d7e5f2}
+    .ft-map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
+    .ft-map[data-reveal]{transform:scale(.98)}
+    .ft-map[data-reveal].revealed{transform:none}
+    .ft-pin{position:absolute;top:16%;left:50%;z-index:3;display:flex;flex-direction:column;align-items:center;pointer-events:none}
+    .ft-pin-badge{position:relative;z-index:2;width:54px;height:54px;border-radius:50% 50% 50% 4px;transform:rotate(-45deg);background:linear-gradient(135deg,#f59e0b,#ffb43a);display:flex;align-items:center;justify-content:center;box-shadow:0 12px 26px rgba(245,158,11,.5);border:3px solid #fff}
+    .ft-pin-badge img{width:28px;height:28px;transform:rotate(45deg);object-fit:contain}
+    .ft-pin-ring{position:absolute;top:27px;left:0;width:54px;height:54px;border-radius:50%;background:rgba(245,158,11,.4);animation:ftPulse 2.8s cubic-bezier(.22,.61,.36,1) infinite}
+    .ft-pin-ring.r2{animation-delay:1.4s}
+    @keyframes ftPulse{0%{transform:scale(.35);opacity:.9}70%{transform:scale(1.9);opacity:0}100%{transform:scale(1.9);opacity:0}}
+    .ft-card{position:absolute;left:0;right:0;bottom:26px;margin:0 auto;width:min(600px,calc(100% - 3rem));z-index:4;background:#fff;border-radius:20px;box-shadow:0 24px 60px rgba(18,59,96,.28);padding:1.25rem 1.5rem 0}
+    .ft-card[data-reveal]{transform:translateY(20px)}
+    .ft-card[data-reveal].revealed{transform:none}
+    .ft-card-head{display:flex;align-items:center;gap:.85rem;margin-bottom:.9rem}
+    .ft-card-logo{width:46px;height:46px;border-radius:13px;overflow:hidden;background:linear-gradient(135deg,#123b60,#1e5b92);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .ft-card-logo img{width:34px;height:34px;object-fit:contain}
+    .ft-card-title{font-family:var(--font-display);font-size:1.02rem;color:var(--ink);line-height:1.25}
+    .ft-card-title small{display:block;font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+    .ft-card-div{height:1px;background:linear-gradient(90deg,var(--gold),#e8d5b0 55%,transparent);margin:0 0 .7rem}
+    .ft-row{display:flex;align-items:flex-start;gap:.8rem;padding:.42rem 0}
+    .ft-row-icon{flex-shrink:0;width:38px;height:38px;border-radius:11px;background:#f5f8fc;border:1px solid var(--border);color:var(--gold);display:flex;align-items:center;justify-content:center;font-size:.85rem}
+    .ft-row-label{font-size:.68rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);margin-bottom:.1rem}
+    .ft-row-value{font-size:.9rem;font-weight:600;color:var(--ink);line-height:1.45}
+    .ft-row-value a{color:var(--ink);text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(245,158,11,.55)}
+    .ft-row-value a:hover{color:var(--gold)}
+    .ft-stub{border:0;border-top:2px dashed #d5e2ee;margin:.9rem -1.5rem .9rem}
+    .ft-map-btn{display:flex;align-items:center;justify-content:center;gap:.55rem;width:100%;border:0;border-radius:14px;background:linear-gradient(135deg,#123b60,#1e5b92);color:#fff;font-size:.9rem;font-weight:800;letter-spacing:.06em;padding:.95rem 1rem;cursor:pointer;transition:all .3s var(--ease)}
+    .ft-map-btn:hover{background:linear-gradient(135deg,#0f3153,#185081);transform:translateY(-2px);box-shadow:0 14px 30px rgba(18,59,96,.35)}
+    .ft-map-btn i{color:var(--gold);transition:transform .3s var(--ease)}
+    .ft-map-btn:hover i{transform:translate(3px,-3px)}
+    .ft-cta{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:1.1rem;margin-top:2.4rem;text-align:center}
+    .ft-cta p{margin:0;color:var(--text-muted);font-size:.92rem;max-width:520px}
+    .ft-cta-btn{display:inline-flex;align-items:center;gap:.55rem;border:0;border-radius:99px;background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:#123b60;font-weight:800;font-size:.86rem;letter-spacing:.05em;padding:.78rem 1.5rem;cursor:pointer;transition:all .3s var(--ease);box-shadow:0 12px 26px rgba(245,158,11,.35)}
+    .ft-cta-btn:hover{transform:translateY(-3px);box-shadow:0 16px 32px rgba(245,158,11,.45)}
+    .ft-cta-btn i{transition:transform .3s var(--ease)}
+    .ft-cta-btn:hover i{transform:translateX(4px)}
+    @media(max-width:768px){
+      .ft-map{height:430px}
+      .ft-card{position:static;width:100%;margin:1.3rem auto 0;box-shadow:0 18px 44px rgba(18,59,96,.2)}
+      .ft-card[data-reveal],.ft-card[data-reveal].revealed{transform:none}
+    }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media(max-width:1024px){
+      .book3d{aspect-ratio:1.95/1;min-height:400px}
+      .flipbook-stage{gap:.7rem}
+      .footer-nav{gap:1.8rem 2.2rem}
+      .footer-nav-group{width:100%;text-align:center}
+      .footer-nav-links{justify-content:center}
+    }
+    @media(max-width:900px){
+      .section-py{padding:72px 0}
+      .hero-stats-inner{grid-template-columns:repeat(2,1fr)}
+    }
+    @media(max-width:600px){
+      .section-py{padding:60px 0}
+      .hero-headline{font-size:2.35rem}
+      .hero-stats-inner{padding:1rem}
+      .footer-nav{gap:1.5rem}
+      .footer-bottom-inner{justify-content:center;text-align:center}
+      .footer-copy{justify-content:center}
+      .footer-legal{justify-content:center}
+      .hero-stat-label{font-size:.68rem}
+      .window-section,.roadmap-preview-section{padding:72px 0}
+      .carousel-stage{height:560px;gap:1.4rem;padding-top:100px}
+      .carousel-card{width:270px;height:540px}
+      .carousel-card.active{width:360px;height:540px}
+      .cc-photo{height:320px}
+      .cc-photo img{max-height:398px}
+    }
+
+    @media(max-width:900px){
+      .carousel-stage{height:540px;gap:1rem;padding-top:92px}
+      .carousel-card{width:270px;height:520px}
+      .carousel-card.active{width:340px;height:520px}
+      .carousel-card.next{display:none}
+      .cc-photo{height:310px}
+      .cc-photo img{max-height:388px}
+    }
+    @media(max-width:640px){
+      .carousel-stage{height:540px;padding-top:88px}
+      .carousel-card{width:300px;height:540px}
+      .carousel-card.prev,.carousel-card.next{display:none}
+      .carousel-card.active{width:300px;height:540px;transform:none}
+      .cc-photo{height:330px}
+      .cc-photo img{max-height:408px}
+    }
+    @media(max-width:400px){
+      .carousel-stage{height:520px;padding-top:84px}
+      .carousel-card,.carousel-card.active{width:280px;height:520px}
+      .cc-photo{height:320px}
+      .cc-photo img{max-height:398px}
+    }
+    @media(min-width:641px) and (max-width:1024px){
+      .carousel-stage{height:560px;gap:1.2rem;padding-top:100px}
+      .carousel-card{width:280px;height:540px}
+      .carousel-card.active{width:360px;height:540px}
+      .carousel-card.next{display:none}
+      .cc-photo{height:325px}
+      .cc-photo img{max-height:403px}
+    }
+
+    @media(max-width:640px){
+      .book3d{aspect-ratio:auto;min-height:420px}
+      .book-leaf{padding:1.05rem 1.1rem}
+      .book-cover-photo img{height:112px}
+      .book-cover-top{gap:.5rem}
+      .profil-akreditasi{font-size:.6rem;padding:.32rem .6rem}
+      .book-cover-kicker{font-size:.58rem}
+      .book-cover-school{font-size:1.05rem}
+      .book-cover-sub{font-size:.7rem}
+      .book-page-head{margin-bottom:.6rem}
+      .book-page-kicker{font-size:.58rem}
+      .book-page-title{font-size:.95rem}
+      .book-page-text{font-size:.74rem;line-height:1.65;margin-bottom:.5rem}
+      .book-page-no{font-size:1.4rem}
+      .book-timeline{margin:.5rem 0 .7rem;padding-top:.55rem;gap:.35rem}
+      .book-year{font-size:.74rem;min-width:44px}
+      .book-mile-text{font-size:.68rem}
+      .book-stats{gap:.4rem}
+      .book-stat{padding:.5rem .3rem}
+      .book-stat strong{font-size:1rem}
+      .book-stat span{font-size:.58rem}
+      .vm-text{font-size:.78rem;padding:.45rem 0 .45rem .8rem}
+      .misi-item{padding:.55rem .7rem;gap:.6rem}
+      .misi-num{width:24px;height:24px;font-size:.72rem;border-radius:7px}
+      .misi-text{font-size:.72rem;line-height:1.55}
+      .flip-nav{display:none}
+      .flipbook-stage{gap:0}
+      .flip-controls{gap:.8rem;margin-top:1.2rem}
+      .flip-counter{font-size:.74rem}
+      .book-back-logo img{width:74px}
+      .book-back-title{font-size:1rem}
+      .book-back-sub{font-size:.72rem}
+    }
+
+    /* ---------- REDUCED MOTION ---------- */
+    @media(prefers-reduced-motion:reduce){
+      *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
+      [data-reveal]{opacity:1;transform:none}
+      html{scroll-behavior:auto}
+    }
+  /* v35-spacing-final */</style>
+
+<!-- ============================================================
+     HERO BARU SMKN 2 MOJOKERTO — CINEMATIC + INTRO VIDEO
+     (ditambahkan di halaman beranda; hero lama dari layout
+      disembunyikan via CSS override scoped di bawah)
+     ============================================================ -->
+<style>
+  /* -------- Sembunyikan hero lama dari layout (hanya halaman ini) -------- */
+  .page-hero-bg, #beranda.hero { display:none !important; }
+
+  /* -------- INTRO VIDEO FULLSCREEN --------
+     Layer: header existing (announce-bar z-60, #navbar z-100) tetap DI ATAS
+     intro (z-50) sehingga header tetap terlihat & bisa diklik saat intro. */
+  .hd-intro{position:fixed;inset:0;z-index:50;background:#0a1622;overflow:hidden}
+  .hd-intro video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .hd-intro::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.2)}
+  .hd-intro-skip{position:absolute;bottom:34px;right:40px;z-index:3;display:inline-flex;align-items:center;gap:.55rem;padding:.62rem 1.25rem;border:1px solid rgba(255,255,255,.55);border-radius:10px;background:rgba(255,255,255,.07);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);color:#fff;font-family:var(--font-body);font-size:.84rem;font-weight:600;letter-spacing:.05em;cursor:pointer;transition:all .35s var(--ease)}
+  .hd-intro-skip i{font-size:.7rem;transition:transform .35s var(--ease)}
+  .hd-intro-skip:hover{background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.9)}
+  .hd-intro-skip:hover i{transform:translateX(4px)}
+  .hd-intro.hd-hidden{opacity:0;visibility:hidden;pointer-events:none;transition:opacity .7s var(--ease),visibility 0s .7s}
+
+  /* -------- HERO UTAMA (cinematic fullscreen, foto = background) -------- */
+  .hd-hero{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden;
+    background-image:url('{{ asset('images/hero-sekolah.jpg') }}');
+    background-size:cover;background-position:center;background-repeat:no-repeat}
+  .hd-hero::before{content:"";position:absolute;inset:0;z-index:1;
+    background:linear-gradient(100deg,rgba(7,22,42,.82) 0%,rgba(9,30,54,.55) 45%,rgba(9,30,54,.18) 78%,rgba(9,30,54,.08) 100%)}
+  .hd-hero-inner{position:relative;z-index:2;max-width:1240px;margin:0 auto;width:100%;padding:clamp(5rem,10vh,7rem) clamp(1.2rem,5vw,2.5rem)}
+
+  .hd-eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-size:.8rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:#ffd98a;margin-bottom:1.4rem;animation:hdFadeUp .7s .1s var(--ease) both}
+  .hd-eyebrow::before{content:"";width:30px;height:2px;background:var(--gold);border-radius:2px}
+  .hd-title{font-family:var(--font-display);font-size:clamp(3rem,7vw,6.2rem);line-height:1.04;color:#fff;letter-spacing:.01em;margin-bottom:1.3rem;max-width:680px;animation:hdFadeUp .8s .22s var(--ease) both}
+  .hd-desc{color:rgba(234,244,252,.92);font-size:clamp(.98rem,1.3vw,1.12rem);max-width:520px;line-height:1.7;margin-bottom:2.3rem;animation:hdFadeUp .8s .38s var(--ease) both}
+  .hd-actions{display:flex;align-items:center;gap:1.4rem;flex-wrap:wrap;animation:hdFadeUp .8s .52s var(--ease) both}
+  .hd-btn{display:inline-flex;align-items:center;gap:.6rem;padding:1rem 2.1rem;border-radius:99px;font-family:var(--font-body);font-size:.96rem;font-weight:700;letter-spacing:.03em;text-decoration:none;transition:all .35s var(--ease)}
+  .hd-btn i{font-size:.85rem;transition:transform .35s var(--ease)}
+  .hd-btn-primary{background:#f9a825;color:#0d3a66;box-shadow:0 14px 34px rgba(249,168,37,.28)}
+  .hd-btn-primary:hover{transform:translateY(-3px);box-shadow:0 20px 44px rgba(249,168,37,.4)}
+  .hd-btn-primary:hover i{transform:translateX(5px)}
+  @keyframes hdFadeUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+
+  /* -------- RESPONSIVE -------- */
+  @media(max-width:900px){
+    .hd-hero{min-height:100svh;background-position:70% center}
+    .hd-hero-inner{max-width:600px;padding:clamp(5rem,12vh,6.5rem) 1.3rem 4rem}
+    .hd-title{font-size:clamp(2.4rem,9.5vw,3.6rem)}
+  }
+  @media(max-width:600px){
+    .hd-hero{background-position:72% center}
+    .hd-hero-inner{padding:5rem 1.1rem 3.5rem}
+    .hd-actions{gap:1rem}
+    .hd-btn{width:100%;justify-content:center}
+    .hd-intro-skip{bottom:24px;right:20px;padding:.58rem 1.1rem;font-size:.8rem}
+  }
+</style>
+
+<!-- ===== INTRO VIDEO FULLSCREEN ===== -->
+<div class="hd-intro" id="hdIntro" aria-hidden="true">
+  <video id="hdIntroVideo" autoplay muted playsinline preload="auto">
+    <source src="{{ asset('images/videos/video-sekolah.mp4') }}" type="video/mp4">
+  </video>
+  <button class="hd-intro-skip" id="hdIntroSkip" type="button">
+    Lewati Intro <i class="fa-solid fa-chevron-right"></i>
+  </button>
+</div>
+
+<!-- ===== HERO UTAMA (foto sekolah = background fullscreen) ===== -->
+<section class="hd-hero" id="home" aria-label="Beranda">
+  <div class="hd-hero-inner">
+    <div class="hd-hero-copy">
+      <div class="hd-eyebrow">Disiplin, Berprestasi</div>
+      <h1 class="hd-title">SMKN 2<br>MOJOKERTO</h1>
+      <p class="hd-desc">Mewujudkan pendidikan vokasi yang unggul, berkarakter, dan siap menghadapi masa depan.</p>
+      <div class="hd-actions">
+        <a href="#profil" class="hd-btn hd-btn-primary">Jelajahi Sekolah <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="profil-section section-py" id="profil">
+  <div class="container">
+    <div class="section-header center" data-reveal>
+      <div class="section-label">Buku Sejarah SMKN 2</div>
+      <h2 class="section-title">Profil <span class="accent">Sekolah</span></h2>
+      <p class="section-desc">Mengenal lebih dekat sejarah, visi, misi, dan komitmen SMK Negeri 2 Mojokerto dalam mencetak lulusan vokasi berkualitas. Buka buku ini halaman demi halaman &mdash; seperti membaca buku sejarah sungguhan.</p>
+    </div>
+
+    <div class="flipbook" data-reveal style="margin-top:2.6rem">
+      <div class="flipbook-stage" id="flipbook">
+        <button class="flip-nav flip-prev" aria-label="Halaman sebelumnya"><i class="fas fa-chevron-left"></i></button>
+
+        <div class="book3d">
+          <div class="book-spine"></div>
+
+          <!-- Sheet 1: Cover + Tentang Kami -->
+          <div class="book-sheet active" data-sheet="0">
+            <div class="book-leaf cover">
+              <div class="book-cover-top">
+                <div class="profil-akreditasi"><i class="fas fa-certificate"></i> Akreditasi A &mdash; BAN-SM 2023</div>
+                <div class="book-cover-kicker">Buku Sejarah</div>
+              </div>
+              <div class="book-cover-photo">
+                <img src="{{ asset('images/smkn-guru.jpg') }}" alt="Para Guru dan Staf SMK Negeri 2 Mojokerto">
+              </div>
+              <div class="book-cover-title">
+                <div class="book-cover-eyebrow">Est. 1968</div>
+                <div class="book-cover-school">SMK Negeri <em class="num-2">2</em><br>Kota Mojokerto</div>
+                <div class="book-cover-sub">Kisah perjalanan sekolah vokasi unggulan Kota Mojokerto sejak tahun 1968.</div>
+              </div>
+            </div>
+            <div class="book-leaf paper">
+              <div class="book-page-head">
+                <div>
+                  <div class="book-page-kicker">Tentang Kami</div>
+                  <div class="book-page-title">Profil <span class="num-2">Sekolah</span></div>
                 </div>
-                <div class="bg-[#fff2f2] dark:bg-[#1D0002] relative lg:-ml-px -mb-px lg:mb-0 rounded-t-lg lg:rounded-t-none lg:rounded-r-lg aspect-[335/364] lg:aspect-auto w-full lg:w-[438px] shrink-0 overflow-hidden">
-                    {{-- Laravel Logo --}}
-                    <svg class="w-full text-[#F53003] dark:text-[#F61500] transition-all translate-y-0 opacity-100 max-w-none duration-750 starting:opacity-0 motion-safe:starting:translate-y-6" viewBox="0 0 438 104" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M17.2036 -3H0V102.197H49.5189V86.7187H17.2036V-3Z" fill="currentColor" />
-                        <path d="M110.256 41.6337C108.061 38.1275 104.945 35.3731 100.905 33.3681C96.8667 31.3647 92.8016 30.3618 88.7131 30.3618C83.4247 30.3618 78.5885 31.3389 74.201 33.2923C69.8111 35.2456 66.0474 37.928 62.9059 41.3333C59.7643 44.7401 57.3198 48.6726 55.5754 53.1293C53.8287 57.589 52.9572 62.274 52.9572 67.1813C52.9572 72.1925 53.8287 76.8995 55.5754 81.3069C57.3191 85.7173 59.7636 89.6241 62.9059 93.0293C66.0474 96.4361 69.8119 99.1155 74.201 101.069C78.5885 103.022 83.4247 103.999 88.7131 103.999C92.8016 103.999 96.8667 102.997 100.905 100.994C104.945 98.9911 108.061 96.2359 110.256 92.7282V102.195H126.563V32.1642H110.256V41.6337ZM108.76 75.7472C107.762 78.4531 106.366 80.8078 104.572 82.8112C102.776 84.8161 100.606 86.4183 98.0637 87.6206C95.5202 88.823 92.7004 89.4238 89.6103 89.4238C86.5178 89.4238 83.7252 88.823 81.2324 87.6206C78.7388 86.4183 76.5949 84.8161 74.7998 82.8112C73.004 80.8078 71.6319 78.4531 70.6856 75.7472C69.7356 73.0421 69.2644 70.1868 69.2644 67.1821C69.2644 64.1758 69.7356 61.3205 70.6856 58.6154C71.6319 55.9102 73.004 53.5571 74.7998 51.5522C76.5949 49.5495 78.738 47.9451 81.2324 46.7427C83.7252 45.5404 86.5178 44.9396 89.6103 44.9396C92.7012 44.9396 95.5202 45.5404 98.0637 46.7427C100.606 47.9451 102.776 49.5487 104.572 51.5522C106.367 53.5571 107.762 55.9102 108.76 58.6154C109.756 61.3205 110.256 64.1758 110.256 67.1821C110.256 70.1868 109.756 73.0421 108.76 75.7472Z" fill="currentColor" />
-                        <path d="M242.805 41.6337C240.611 38.1275 237.494 35.3731 233.455 33.3681C229.416 31.3647 225.351 30.3618 221.262 30.3618C215.974 30.3618 211.138 31.3389 206.75 33.2923C202.36 35.2456 198.597 37.928 195.455 41.3333C192.314 44.7401 189.869 48.6726 188.125 53.1293C186.378 57.589 185.507 62.274 185.507 67.1813C185.507 72.1925 186.378 76.8995 188.125 81.3069C189.868 85.7173 192.313 89.6241 195.455 93.0293C198.597 96.4361 202.361 99.1155 206.75 101.069C211.138 103.022 215.974 103.999 221.262 103.999C225.351 103.999 229.416 102.997 233.455 100.994C237.494 98.9911 240.611 96.2359 242.805 92.7282V102.195H259.112V32.1642H242.805V41.6337ZM241.31 75.7472C240.312 78.4531 238.916 80.8078 237.122 82.8112C235.326 84.8161 233.156 86.4183 230.614 87.6206C228.07 88.823 225.251 89.4238 222.16 89.4238C219.068 89.4238 216.275 88.823 213.782 87.6206C211.289 86.4183 209.145 84.8161 207.35 82.8112C205.554 80.8078 204.182 78.4531 203.236 75.7472C202.286 73.0421 201.814 70.1868 201.814 67.1821C201.814 64.1758 202.286 61.3205 203.236 58.6154C204.182 55.9102 205.554 53.5571 207.35 51.5522C209.145 49.5495 211.288 47.9451 213.782 46.7427C216.275 45.5404 219.068 44.9396 222.16 44.9396C225.251 44.9396 228.07 45.5404 230.614 46.7427C233.156 47.9451 235.326 49.5487 237.122 51.5522C238.917 53.5571 240.312 55.9102 241.31 58.6154C242.306 61.3205 242.806 64.1758 242.806 67.1821C242.805 70.1868 242.305 73.0421 241.31 75.7472Z" fill="currentColor" />
-                        <path d="M438 -3H421.694V102.197H438V-3Z" fill="currentColor" />
-                        <path d="M139.43 102.197H155.735V48.2834H183.712V32.1665H139.43V102.197Z" fill="currentColor" />
-                        <path d="M324.49 32.1665L303.995 85.794L283.498 32.1665H266.983L293.748 102.197H314.242L341.006 32.1665H324.49Z" fill="currentColor" />
-                        <path d="M376.571 30.3656C356.603 30.3656 340.797 46.8497 340.797 67.1828C340.797 89.6597 356.094 104 378.661 104C391.29 104 399.354 99.1488 409.206 88.5848L398.189 80.0226C398.183 80.031 389.874 90.9895 377.468 90.9895C363.048 90.9895 356.977 79.3111 356.977 73.269H411.075C413.917 50.1328 398.775 30.3656 376.571 30.3656ZM357.02 61.0967C357.145 59.7487 359.023 43.3761 376.442 43.3761C393.861 43.3761 395.978 59.7464 396.099 61.0967H357.02Z" fill="currentColor" />
-                    </svg>
+                <div class="book-page-no">01</div>
+              </div>
+              <p class="book-page-text">Mengenal lebih dekat visi, misi, dan komitmen SMK Negeri <em class="num-2">2</em> Mojokerto dalam mencetak lulusan vokasi berkualitas.</p>
+              <p class="book-page-text">Selamat datang di Buku Sejarah SMK Negeri 2 Mojokerto. Susuri perjalanan sekolah vokasi unggulan Kota Mojokerto ini halaman demi halaman &mdash; dari fondasi pendidikan kejuruan, program keahlian, hingga prestasi di tingkat provinsi dan nasional.</p>
+              <div class="book-quote"><strong>&ldquo;Membentuk generasi vokasi yang beriman, berkarakter, dan berdaya saing global.&rdquo;</strong></div>
+            </div>
+          </div>
 
-                    {{-- 13 --}}
-                    <svg class="w-[438px] max-w-none relative -mt-[6.6rem] -ml-8 lg:ml-0 [--stroke-color:#1B1B18] dark:[--stroke-color:#FF750F]" viewBox="0 0 440 392" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <g class="mix-blend-darken dark:mix-blend-normal transition-all delay-300 opacity-100 duration-750 starting:opacity-0 text-[#1B1B18] dark:text-black">
-                            <mask id="path-1-mask" maskUnits="userSpaceOnUse" x="-0.328613" y="103" width="338" height="299" fill="black">
-                                <rect fill="white" x="-0.328613" y="103" width="338" height="299"/>
-                                <path d="M234.936 400.8C204.136 400.8 178.936 392.4 159.336 375.6C140.136 358.8 130.536 337 130.536 310.2H200.736C200.736 318.2 203.736 324.8 209.736 330C215.736 335.2 223.736 337.8 233.736 337.8C243.336 337.8 251.136 335 257.136 329.4C263.536 323.8 266.736 316.6 266.736 307.8C266.736 299.8 263.936 293.2 258.336 288C252.736 282.8 245.536 280.2 236.736 280.2H199.536V218.4H236.736C243.536 218.4 249.336 216 254.136 211.2C258.936 206.4 261.336 200.4 261.336 193.2C261.336 184.8 258.736 178.2 253.536 173.4C248.336 168.6 241.736 166.2 233.736 166.2C226.536 166.2 220.336 168.4 215.136 172.8C210.336 177.2 207.936 182.8 207.936 189.6H141.336C141.336 164.8 150.136 144.6 167.736 129C185.336 113 207.936 105 235.536 105C263.136 105 285.536 112.2 302.736 126.6C320.336 141 329.136 160 329.136 183.6C329.136 200.8 324.536 214.8 315.336 225.6C306.136 236 294.336 243.2 279.936 247.2C297.136 252 310.736 260.2 320.736 271.8C331.136 283.4 336.336 298 336.336 315.6C336.336 340.4 326.936 360.8 308.136 376.8C289.336 392.8 264.936 400.8 234.936 400.8Z"/>
-                                <path d="M26.8714 167.6H1.67139V105.2H94.6714V400.2H26.8714V167.6Z"/>
-                            </mask>
-                            <path d="M234.936 400.8C204.136 400.8 178.936 392.4 159.336 375.6C140.136 358.8 130.536 337 130.536 310.2H200.736C200.736 318.2 203.736 324.8 209.736 330C215.736 335.2 223.736 337.8 233.736 337.8C243.336 337.8 251.136 335 257.136 329.4C263.536 323.8 266.736 316.6 266.736 307.8C266.736 299.8 263.936 293.2 258.336 288C252.736 282.8 245.536 280.2 236.736 280.2H199.536V218.4H236.736C243.536 218.4 249.336 216 254.136 211.2C258.936 206.4 261.336 200.4 261.336 193.2C261.336 184.8 258.736 178.2 253.536 173.4C248.336 168.6 241.736 166.2 233.736 166.2C226.536 166.2 220.336 168.4 215.136 172.8C210.336 177.2 207.936 182.8 207.936 189.6H141.336C141.336 164.8 150.136 144.6 167.736 129C185.336 113 207.936 105 235.536 105C263.136 105 285.536 112.2 302.736 126.6C320.336 141 329.136 160 329.136 183.6C329.136 200.8 324.536 214.8 315.336 225.6C306.136 236 294.336 243.2 279.936 247.2C297.136 252 310.736 260.2 320.736 271.8C331.136 283.4 336.336 298 336.336 315.6C336.336 340.4 326.936 360.8 308.136 376.8C289.336 392.8 264.936 400.8 234.936 400.8Z" fill="currentColor"/>
-                            <path d="M26.8714 167.6H1.67139V105.2H94.6714V400.2H26.8714V167.6Z" fill="currentColor"/>
-                            <path d="M234.936 400.8C204.136 400.8 178.936 392.4 159.336 375.6C140.136 358.8 130.536 337 130.536 310.2H200.736C200.736 318.2 203.736 324.8 209.736 330C215.736 335.2 223.736 337.8 233.736 337.8C243.336 337.8 251.136 335 257.136 329.4C263.536 323.8 266.736 316.6 266.736 307.8C266.736 299.8 263.936 293.2 258.336 288C252.736 282.8 245.536 280.2 236.736 280.2H199.536V218.4H236.736C243.536 218.4 249.336 216 254.136 211.2C258.936 206.4 261.336 200.4 261.336 193.2C261.336 184.8 258.736 178.2 253.536 173.4C248.336 168.6 241.736 166.2 233.736 166.2C226.536 166.2 220.336 168.4 215.136 172.8C210.336 177.2 207.936 182.8 207.936 189.6H141.336C141.336 164.8 150.136 144.6 167.736 129C185.336 113 207.936 105 235.536 105C263.136 105 285.536 112.2 302.736 126.6C320.336 141 329.136 160 329.136 183.6C329.136 200.8 324.536 214.8 315.336 225.6C306.136 236 294.336 243.2 279.936 247.2C297.136 252 310.736 260.2 320.736 271.8C331.136 283.4 336.336 298 336.336 315.6C336.336 340.4 326.936 360.8 308.136 376.8C289.336 392.8 264.936 400.8 234.936 400.8Z" stroke="var(--stroke-color)" stroke-width="2.4" mask="url(#path-1-mask)"/>
-                            <path d="M26.8714 167.6H1.67139V105.2H94.6714V400.2H26.8714V167.6Z" stroke="var(--stroke-color)" stroke-width="2.4" mask="url(#path-1-mask)"/>
-                        </g>
-
-                        <g class="transition-all delay-400 opacity-100 duration-750 starting:opacity-0 motion-safe:starting:-translate-x-[26px] text-[#F3BEC7] dark:text-[#4B0600]">
-                            <mask id="path-2-mask" maskUnits="userSpaceOnUse" x="25.3357" y="103" width="338" height="299" fill="black">
-                                <rect fill="white" x="25.3357" y="103" width="338" height="299"/>
-                                <path d="M260.6 400.8C229.8 400.8 204.6 392.4 185 375.6C165.8 358.8 156.2 337 156.2 310.2H226.4C226.4 318.2 229.4 324.8 235.4 330C241.4 335.2 249.4 337.8 259.4 337.8C269 337.8 276.8 335 282.8 329.4C289.2 323.8 292.4 316.6 292.4 307.8C292.4 299.8 289.6 293.2 284 288C278.4 282.8 271.2 280.2 262.4 280.2H225.2V218.4H262.4C269.2 218.4 275 216 279.8 211.2C284.6 206.4 287 200.4 287 193.2C287 184.8 284.4 178.2 279.2 173.4C274 168.6 267.4 166.2 259.4 166.2C252.2 166.2 246 168.4 240.8 172.8C236 177.2 233.6 182.8 233.6 189.6H167C167 164.8 175.8 144.6 193.4 129C211 113 233.6 105 261.2 105C288.8 105 311.2 112.2 328.4 126.6C346 141 354.8 160 354.8 183.6C354.8 200.8 350.2 214.8 341 225.6C331.8 236 320 243.2 305.6 247.2C322.8 252 336.4 260.2 346.4 271.8C356.8 283.4 362 298 362 315.6C362 340.4 352.6 360.8 333.8 376.8C315 392.8 290.6 400.8 260.6 400.8Z"/>
-                                <path d="M52.5357 167.6H27.3357V105.2H120.336V400.2H52.5357V167.6Z"/>
-                            </mask>
-                            <path d="M260.6 400.8C229.8 400.8 204.6 392.4 185 375.6C165.8 358.8 156.2 337 156.2 310.2H226.4C226.4 318.2 229.4 324.8 235.4 330C241.4 335.2 249.4 337.8 259.4 337.8C269 337.8 276.8 335 282.8 329.4C289.2 323.8 292.4 316.6 292.4 307.8C292.4 299.8 289.6 293.2 284 288C278.4 282.8 271.2 280.2 262.4 280.2H225.2V218.4H262.4C269.2 218.4 275 216 279.8 211.2C284.6 206.4 287 200.4 287 193.2C287 184.8 284.4 178.2 279.2 173.4C274 168.6 267.4 166.2 259.4 166.2C252.2 166.2 246 168.4 240.8 172.8C236 177.2 233.6 182.8 233.6 189.6H167C167 164.8 175.8 144.6 193.4 129C211 113 233.6 105 261.2 105C288.8 105 311.2 112.2 328.4 126.6C346 141 354.8 160 354.8 183.6C354.8 200.8 350.2 214.8 341 225.6C331.8 236 320 243.2 305.6 247.2C322.8 252 336.4 260.2 346.4 271.8C356.8 283.4 362 298 362 315.6C362 340.4 352.6 360.8 333.8 376.8C315 392.8 290.6 400.8 260.6 400.8Z" fill="currentColor"/>
-                            <path d="M52.5357 167.6H27.3357V105.2H120.336V400.2H52.5357V167.6Z" fill="currentColor"/>
-                            <path d="M260.6 400.8C229.8 400.8 204.6 392.4 185 375.6C165.8 358.8 156.2 337 156.2 310.2H226.4C226.4 318.2 229.4 324.8 235.4 330C241.4 335.2 249.4 337.8 259.4 337.8C269 337.8 276.8 335 282.8 329.4C289.2 323.8 292.4 316.6 292.4 307.8C292.4 299.8 289.6 293.2 284 288C278.4 282.8 271.2 280.2 262.4 280.2H225.2V218.4H262.4C269.2 218.4 275 216 279.8 211.2C284.6 206.4 287 200.4 287 193.2C287 184.8 284.4 178.2 279.2 173.4C274 168.6 267.4 166.2 259.4 166.2C252.2 166.2 246 168.4 240.8 172.8C236 177.2 233.6 182.8 233.6 189.6H167C167 164.8 175.8 144.6 193.4 129C211 113 233.6 105 261.2 105C288.8 105 311.2 112.2 328.4 126.6C346 141 354.8 160 354.8 183.6C354.8 200.8 350.2 214.8 341 225.6C331.8 236 320 243.2 305.6 247.2C322.8 252 336.4 260.2 346.4 271.8C356.8 283.4 362 298 362 315.6C362 340.4 352.6 360.8 333.8 376.8C315 392.8 290.6 400.8 260.6 400.8Z" stroke="var(--stroke-color)" stroke-width="2.4" mask="url(#path-2-mask)"/>
-                            <path d="M52.5357 167.6H27.3357V105.2H120.336V400.2H52.5357V167.6Z" stroke="var(--stroke-color)" stroke-width="2.4" mask="url(#path-2-mask)"/>
-                        </g>
-                        
-                        <g class="mix-blend-color dark:mix-blend-hard-light transition-all delay-400 opacity-100 duration-750 starting:opacity-0 motion-safe:starting:-translate-x-[51px] text-[#F8B803] dark:text-[#391800]">
-                            <mask id="path-3-mask" maskUnits="userSpaceOnUse" x="51" y="103" width="338" height="299" fill="black">
-                                <rect fill="white" x="51" y="103" width="338" height="299"/>
-                                <path d="M286.264 400.8C255.464 400.8 230.264 392.4 210.664 375.6C191.464 358.8 181.864 337 181.864 310.2H252.064C252.064 318.2 255.064 324.8 261.064 330C267.064 335.2 275.064 337.8 285.064 337.8C294.664 337.8 302.464 335 308.464 329.4C314.864 323.8 318.064 316.6 318.064 307.8C318.064 299.8 315.264 293.2 309.664 288C304.064 282.8 296.864 280.2 288.064 280.2H250.864V218.4H288.064C294.864 218.4 300.664 216 305.464 211.2C310.264 206.4 312.664 200.4 312.664 193.2C312.664 184.8 310.064 178.2 304.864 173.4C299.664 168.6 293.064 166.2 285.064 166.2C277.864 166.2 271.664 168.4 266.464 172.8C261.664 177.2 259.264 182.8 259.264 189.6H192.664C192.664 164.8 201.464 144.6 219.064 129C236.664 113 259.264 105 286.864 105C314.464 105 336.864 112.2 354.064 126.6C371.664 141 380.464 160 380.464 183.6C380.464 200.8 375.864 214.8 366.664 225.6C357.464 236 345.664 243.2 331.264 247.2C348.464 252 362.064 260.2 372.064 271.8C382.464 283.4 387.664 298 387.664 315.6C387.664 340.4 378.264 360.8 359.464 376.8C340.664 392.8 316.264 400.8 286.264 400.8Z"/>
-                                <path d="M78.2 167.6H53V105.2H146V400.2H78.2V167.6Z"/>
-                            </mask>
-                            <path d="M286.264 400.8C255.464 400.8 230.264 392.4 210.664 375.6C191.464 358.8 181.864 337 181.864 310.2H252.064C252.064 318.2 255.064 324.8 261.064 330C267.064 335.2 275.064 337.8 285.064 337.8C294.664 337.8 302.464 335 308.464 329.4C314.864 323.8 318.064 316.6 318.064 307.8C318.064 299.8 315.264 293.2 309.664 288C304.064 282.8 296.864 280.2 288.064 280.2H250.864V218.4H288.064C294.864 218.4 300.664 216 305.464 211.2C310.264 206.4 312.664 200.4 312.664 193.2C312.664 184.8 310.064 178.2 304.864 173.4C299.664 168.6 293.064 166.2 285.064 166.2C277.864 166.2 271.664 168.4 266.464 172.8C261.664 177.2 259.264 182.8 259.264 189.6H192.664C192.664 164.8 201.464 144.6 219.064 129C236.664 113 259.264 105 286.864 105C314.464 105 336.864 112.2 354.064 126.6C371.664 141 380.464 160 380.464 183.6C380.464 200.8 375.864 214.8 366.664 225.6C357.464 236 345.664 243.2 331.264 247.2C348.464 252 362.064 260.2 372.064 271.8C382.464 283.4 387.664 298 387.664 315.6C387.664 340.4 378.264 360.8 359.464 376.8C340.664 392.8 316.264 400.8 286.264 400.8Z" fill="currentColor"/>
-                            <path d="M78.2 167.6H53V105.2H146V400.2H78.2V167.6Z" fill="currentColor"/>
-                            <path d="M286.264 400.8C255.464 400.8 230.264 392.4 210.664 375.6C191.464 358.8 181.864 337 181.864 310.2H252.064C252.064 318.2 255.064 324.8 261.064 330C267.064 335.2 275.064 337.8 285.064 337.8C294.664 337.8 302.464 335 308.464 329.4C314.864 323.8 318.064 316.6 318.064 307.8C318.064 299.8 315.264 293.2 309.664 288C304.064 282.8 296.864 280.2 288.064 280.2H250.864V218.4H288.064C294.864 218.4 300.664 216 305.464 211.2C310.264 206.4 312.664 200.4 312.664 193.2C312.664 184.8 310.064 178.2 304.864 173.4C299.664 168.6 293.064 166.2 285.064 166.2C277.864 166.2 271.664 168.4 266.464 172.8C261.664 177.2 259.264 182.8 259.264 189.6H192.664C192.664 164.8 201.464 144.6 219.064 129C236.664 113 259.264 105 286.864 105C314.464 105 336.864 112.2 354.064 126.6C371.664 141 380.464 160 380.464 183.6C380.464 200.8 375.864 214.8 366.664 225.6C357.464 236 345.664 243.2 331.264 247.2C348.464 252 362.064 260.2 372.064 271.8C382.464 283.4 387.664 298 387.664 315.6C387.664 340.4 378.264 360.8 359.464 376.8C340.664 392.8 316.264 400.8 286.264 400.8Z" stroke="var(--stroke-color)" stroke-width="2.4" mask="url(#path-3-mask)"/>
-                            <path d="M78.2 167.6H53V105.2H146V400.2H78.2V167.6Z" stroke="var(--stroke-color)" stroke-width="2.4" mask="url(#path-3-mask)"/>
-                        </g>
-                        
-                        <g class="mix-blend-multiply dark:mix-blend-normal transition-all delay-400 opacity-100 duration-750 starting:opacity-0 motion-safe:starting:-translate-x-[78px] text-[#F3BEC7] dark:text-[#733000]">
-                            <mask id="path-4-mask" maskUnits="userSpaceOnUse" x="76.6643" y="103" width="338" height="299" fill="black">
-                                <rect fill="white" x="76.6643" y="103" width="338" height="299"/>
-                                <path d="M311.929 400.8C281.129 400.8 255.929 392.4 236.329 375.6C217.129 358.8 207.529 337 207.529 310.2H277.729C277.729 318.2 280.729 324.8 286.729 330C292.729 335.2 300.729 337.8 310.729 337.8C320.329 337.8 328.129 335 334.129 329.4C340.529 323.8 343.729 316.6 343.729 307.8C343.729 299.8 340.929 293.2 335.329 288C329.729 282.8 322.529 280.2 313.729 280.2H276.529V218.4H313.729C320.529 218.4 326.329 216 331.129 211.2C335.929 206.4 338.329 200.4 338.329 193.2C338.329 184.8 335.729 178.2 330.529 173.4C325.329 168.6 318.729 166.2 310.729 166.2C303.529 166.2 297.329 168.4 292.129 172.8C287.329 177.2 284.929 182.8 284.929 189.6H218.329C218.329 164.8 227.129 144.6 244.729 129C262.329 113 284.929 105 312.529 105C340.129 105 362.529 112.2 379.729 126.6C397.329 141 406.129 160 406.129 183.6C406.129 200.8 401.529 214.8 392.329 225.6C383.129 236 371.329 243.2 356.929 247.2C374.129 252 387.729 260.2 397.729 271.8C408.129 283.4 413.329 298 413.329 315.6C413.329 340.4 403.929 360.8 385.129 376.8C366.329 392.8 341.929 400.8 311.929 400.8Z"/>
-                                <path d="M103.864 167.6H78.6643V105.2H171.664V400.2H103.864V167.6Z"/>
-                            </mask>
-                            <path d="M311.929 400.8C281.129 400.8 255.929 392.4 236.329 375.6C217.129 358.8 207.529 337 207.529 310.2H277.729C277.729 318.2 280.729 324.8 286.729 330C292.729 335.2 300.729 337.8 310.729 337.8C320.329 337.8 328.129 335 334.129 329.4C340.529 323.8 343.729 316.6 343.729 307.8C343.729 299.8 340.929 293.2 335.329 288C329.729 282.8 322.529 280.2 313.729 280.2H276.529V218.4H313.729C320.529 218.4 326.329 216 331.129 211.2C335.929 206.4 338.329 200.4 338.329 193.2C338.329 184.8 335.729 178.2 330.529 173.4C325.329 168.6 318.729 166.2 310.729 166.2C303.529 166.2 297.329 168.4 292.129 172.8C287.329 177.2 284.929 182.8 284.929 189.6H218.329C218.329 164.8 227.129 144.6 244.729 129C262.329 113 284.929 105 312.529 105C340.129 105 362.529 112.2 379.729 126.6C397.329 141 406.129 160 406.129 183.6C406.129 200.8 401.529 214.8 392.329 225.6C383.129 236 371.329 243.2 356.929 247.2C374.129 252 387.729 260.2 397.729 271.8C408.129 283.4 413.329 298 413.329 315.6C413.329 340.4 403.929 360.8 385.129 376.8C366.329 392.8 341.929 400.8 311.929 400.8Z" fill="currentColor"/>
-                            <path d="M103.864 167.6H78.6643V105.2H171.664V400.2H103.864V167.6Z" fill="currentColor"/>
-                            <path d="M311.929 400.8C281.129 400.8 255.929 392.4 236.329 375.6C217.129 358.8 207.529 337 207.529 310.2H277.729C277.729 318.2 280.729 324.8 286.729 330C292.729 335.2 300.729 337.8 310.729 337.8C320.329 337.8 328.129 335 334.129 329.4C340.529 323.8 343.729 316.6 343.729 307.8C343.729 299.8 340.929 293.2 335.329 288C329.729 282.8 322.529 280.2 313.729 280.2H276.529V218.4H313.729C320.529 218.4 326.329 216 331.129 211.2C335.929 206.4 338.329 200.4 338.329 193.2C338.329 184.8 335.729 178.2 330.529 173.4C325.329 168.6 318.729 166.2 310.729 166.2C303.529 166.2 297.329 168.4 292.129 172.8C287.329 177.2 284.929 182.8 284.929 189.6H218.329C218.329 164.8 227.129 144.6 244.729 129C262.329 113 284.929 105 312.529 105C340.129 105 362.529 112.2 379.729 126.6C397.329 141 406.129 160 406.129 183.6C406.129 200.8 401.529 214.8 392.329 225.6C383.129 236 371.329 243.2 356.929 247.2C374.129 252 387.729 260.2 397.729 271.8C408.129 283.4 413.329 298 413.329 315.6C413.329 340.4 403.929 360.8 385.129 376.8C366.329 392.8 341.929 400.8 311.929 400.8Z" stroke="var(--stroke-color)" stroke-width="2.4" mask="url(#path-4-mask)"/>
-                            <path d="M103.864 167.6H78.6643V105.2H171.664V400.2H103.864V167.6Z" stroke="var(--stroke-color)" stroke-width="2.4" mask="url(#path-4-mask)"/>
-                        </g>
-                        
-                        <g class="mix-blend-hard-light transition-all delay-400 opacity-100 duration-750 starting:opacity-0 motion-safe:starting:-translate-x-[102px] text-[#F3BEC7] dark:text-[#4B0600]">
-                            <mask id="path-5-mask" maskUnits="userSpaceOnUse" x="102.329" y="103" width="338" height="299" fill="black">
-                                <rect fill="white" x="102.329" y="103" width="338" height="299"/>
-                                <path d="M337.593 400.8C306.793 400.8 281.593 392.4 261.993 375.6C242.793 358.8 233.193 337 233.193 310.2H303.393C303.393 318.2 306.393 324.8 312.393 330C318.393 335.2 326.393 337.8 336.393 337.8C345.993 337.8 353.793 335 359.793 329.4C366.193 323.8 369.393 316.6 369.393 307.8C369.393 299.8 366.593 293.2 360.993 288C355.393 282.8 348.193 280.2 339.393 280.2H302.193V218.4H339.393C346.193 218.4 351.993 216 356.793 211.2C361.593 206.4 363.993 200.4 363.993 193.2C363.993 184.8 361.393 178.2 356.193 173.4C350.993 168.6 344.393 166.2 336.393 166.2C329.193 166.2 322.993 168.4 317.793 172.8C312.993 177.2 310.593 182.8 310.593 189.6H243.993C243.993 164.8 252.793 144.6 270.393 129C287.993 113 310.593 105 338.193 105C365.793 105 388.193 112.2 405.393 126.6C422.993 141 431.793 160 431.793 183.6C431.793 200.8 427.193 214.8 417.993 225.6C408.793 236 396.993 243.2 382.593 247.2C399.793 252 413.393 260.2 423.393 271.8C433.793 283.4 438.993 298 438.993 315.6C438.993 340.4 429.593 360.8 410.793 376.8C391.993 392.8 367.593 400.8 337.593 400.8Z"/>
-                                <path d="M129.529 167.6H104.329V105.2H197.329V400.2H129.529V167.6Z"/>
-                            </mask>
-                            <path d="M337.593 400.8C306.793 400.8 281.593 392.4 261.993 375.6C242.793 358.8 233.193 337 233.193 310.2H303.393C303.393 318.2 306.393 324.8 312.393 330C318.393 335.2 326.393 337.8 336.393 337.8C345.993 337.8 353.793 335 359.793 329.4C366.193 323.8 369.393 316.6 369.393 307.8C369.393 299.8 366.593 293.2 360.993 288C355.393 282.8 348.193 280.2 339.393 280.2H302.193V218.4H339.393C346.193 218.4 351.993 216 356.793 211.2C361.593 206.4 363.993 200.4 363.993 193.2C363.993 184.8 361.393 178.2 356.193 173.4C350.993 168.6 344.393 166.2 336.393 166.2C329.193 166.2 322.993 168.4 317.793 172.8C312.993 177.2 310.593 182.8 310.593 189.6H243.993C243.993 164.8 252.793 144.6 270.393 129C287.993 113 310.593 105 338.193 105C365.793 105 388.193 112.2 405.393 126.6C422.993 141 431.793 160 431.793 183.6C431.793 200.8 427.193 214.8 417.993 225.6C408.793 236 396.993 243.2 382.593 247.2C399.793 252 413.393 260.2 423.393 271.8C433.793 283.4 438.993 298 438.993 315.6C438.993 340.4 429.593 360.8 410.793 376.8C391.993 392.8 367.593 400.8 337.593 400.8Z" fill="currentColor"/>
-                            <path d="M129.529 167.6H104.329V105.2H197.329V400.2H129.529V167.6Z" fill="currentColor"/>
-                            <path d="M337.593 400.8C306.793 400.8 281.593 392.4 261.993 375.6C242.793 358.8 233.193 337 233.193 310.2H303.393C303.393 318.2 306.393 324.8 312.393 330C318.393 335.2 326.393 337.8 336.393 337.8C345.993 337.8 353.793 335 359.793 329.4C366.193 323.8 369.393 316.6 369.393 307.8C369.393 299.8 366.593 293.2 360.993 288C355.393 282.8 348.193 280.2 339.393 280.2H302.193V218.4H339.393C346.193 218.4 351.993 216 356.793 211.2C361.593 206.4 363.993 200.4 363.993 193.2C363.993 184.8 361.393 178.2 356.193 173.4C350.993 168.6 344.393 166.2 336.393 166.2C329.193 166.2 322.993 168.4 317.793 172.8C312.993 177.2 310.593 182.8 310.593 189.6H243.993C243.993 164.8 252.793 144.6 270.393 129C287.993 113 310.593 105 338.193 105C365.793 105 388.193 112.2 405.393 126.6C422.993 141 431.793 160 431.793 183.6C431.793 200.8 427.193 214.8 417.993 225.6C408.793 236 396.993 243.2 382.593 247.2C399.793 252 413.393 260.2 423.393 271.8C433.793 283.4 438.993 298 438.993 315.6C438.993 340.4 429.593 360.8 410.793 376.8C391.993 392.8 367.593 400.8 337.593 400.8Z" stroke="var(--stroke-color)" stroke-width="2.4" mask="url(#path-5-mask)"/>
-                            <path d="M129.529 167.6H104.329V105.2H197.329V400.2H129.529V167.6Z" stroke="var(--stroke-color)" stroke-width="2.4" mask="url(#path-5-mask)"/>
-                        </g>
-                    </svg>
-                    <div class="absolute inset-0 rounded-t-lg lg:rounded-t-none lg:rounded-r-lg shadow-[inset_0px_0px_0px_1px_rgba(26,26,0,0.16)] dark:shadow-[inset_0px_0px_0px_1px_#fffaed2d]"></div>
+          <!-- Sheet 2: Sejarah -->
+          <div class="book-sheet" data-sheet="1">
+            <div class="book-leaf paper">
+              <div class="book-page-head">
+                <div>
+                  <div class="book-page-kicker">BAB I &mdash; Sejarah</div>
+                  <div class="book-page-title">Merintis Generasi Vokasi Sejak 1968</div>
                 </div>
-            </main>
+                <div class="book-page-no">02</div>
+              </div>
+              <p class="book-page-text">Berdiri sejak 1968, SMK Negeri <em class="num-2">2</em> Mojokerto telah menjadi pilihan utama keluarga Mojokerto dalam menyiapkan generasi vokasi yang kompeten, berkarakter, dan siap bersaing di era global.</p>
+              <p class="book-page-text">Dari masa ke masa, sekolah ini terus bertumbuh: membuka program keahlian baru, membangun kemitraan dengan dunia usaha dan industri, hingga meraih akreditasi A dan sederet prestasi tingkat provinsi maupun nasional.</p>
+              <div class="book-timeline">
+                <div class="book-milestone"><span class="book-year">1968</span><span class="book-mile-text">Berdiri dan membuka pendidikan kejuruan pertama</span></div>
+                <div class="book-milestone"><span class="book-year">2023</span><span class="book-mile-text">Meraih Akreditasi A dari BAN-SM</span></div>
+                <div class="book-milestone"><span class="book-year">2024</span><span class="book-mile-text">Juara 1 LKS Provinsi Jawa Timur</span></div>
+              </div>
+            </div>
+            <div class="book-leaf paper">
+              <div class="book-page-head">
+                <div>
+                  <div class="book-page-kicker">BAB I &mdash; Sejarah (Lanjutan)</div>
+                  <div class="book-page-title">Tumbuh, Berprestasi, dan Mendunia</div>
+                </div>
+                <div class="book-page-no">03</div>
+              </div>
+              <p class="book-page-text">SMK Negeri 2 Mojokerto kini menjadi sekolah kejuruan yang dinamis dengan berbagai program keahlian yang relevan dengan kebutuhan industri &mdash; mulai dari teknologi rekayasa hingga ekonomi kreatif.</p>
+              <p class="book-page-text">Dukungan 80+ pendidik dan tenaga kependidikan yang kompeten serta lingkungan belajar yang modern menjadikan sekolah ini rumah bagi lebih dari 1200 siswa aktif.</p>
+              <div class="book-stats">
+                <div class="book-stat"><strong>57+</strong><span>Tahun Berdiri</span></div>
+                <div class="book-stat"><strong>80+</strong><span>Guru &amp; Staff</span></div>
+                <div class="book-stat"><strong>1200+</strong><span>Siswa Aktif</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sheet 3: Visi & Misi -->
+          <div class="book-sheet" data-sheet="2">
+            <div class="book-leaf paper">
+              <div class="book-page-head">
+                <div>
+                  <div class="book-page-kicker">BAB II &mdash; Visi</div>
+                  <div class="book-page-title">Visi Sekolah</div>
+                </div>
+                <div class="book-page-no">04</div>
+              </div>
+              <p class="book-page-text" style="margin-bottom:1rem">Visi SMK Negeri <em class="num-2">2</em> Mojokerto:</p>
+              <div class="vm-text">&ldquo;Menjadi sekolah menengah kejuruan yang menghasilkan lulusan beriman, bertaqwa, berkarakter, kompeten, berwawasan lingkungan, dan mampu bersaing di tingkat nasional maupun internasional.&rdquo;</div>
+              <div class="book-quote">Visi ini menjadi kompas bagi seluruh program dan kegiatan sekolah dalam mencetak lulusan yang siap kerja, siap kuliah, dan berkarakter.</div>
+            </div>
+            <div class="book-leaf paper">
+              <div class="book-page-head">
+                <div>
+                  <div class="book-page-kicker">BAB II &mdash; Misi</div>
+                  <div class="book-page-title">Misi Sekolah</div>
+                </div>
+                <div class="book-page-no">05</div>
+              </div>
+              <div class="misi-list">
+                <div class="misi-item"><div class="misi-num">1</div><div class="misi-text">Menyelenggarakan pendidikan dan pelatihan berbasis kompetensi yang relevan dengan kebutuhan industri</div></div>
+                <div class="misi-item"><div class="misi-num">2</div><div class="misi-text">Mengembangkan karakter siswa yang berakhlak mulia, disiplin, dan bertanggung jawab</div></div>
+                <div class="misi-item"><div class="misi-num">3</div><div class="misi-text">Membangun kemitraan strategis dengan dunia usaha dan industri untuk peningkatan kualitas lulusan</div></div>
+                <div class="misi-item"><div class="misi-num">4</div><div class="misi-text">Menciptakan lingkungan belajar yang inovatif, kreatif, dan berwawasan teknologi</div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sheet 4: Penutup + Back Cover -->
+          <div class="book-sheet" data-sheet="3">
+            <div class="book-leaf paper">
+              <div class="book-page-head">
+                <div>
+                  <div class="book-page-kicker">Penutup</div>
+                  <div class="book-page-title">Komitmen Kami</div>
+                </div>
+                <div class="book-page-no">06</div>
+              </div>
+              <p class="book-page-text">Buku ini adalah awal dari perjalanan panjang. SMK Negeri <em class="num-2">2</em> Mojokerto terus berkomitmen mencetak lulusan yang beriman, bertaqwa, berkarakter, kompeten, berwawasan lingkungan, dan siap bersaing di tingkat nasional maupun internasional.</p>
+              <p class="book-page-text">Terima kasih telah membaca buku sejarah kami. Mari bersama mencetak generasi vokasi unggulan Kota Mojokerto.</p>
+              <div class="book-quote"><strong>Disiplin, Berprestasi &mdash; SMK Negeri 2 Mojokerto.</strong></div>
+            </div>
+            <div class="book-leaf back">
+              <div class="book-back-logo"><img src="{{ asset('images/logo_smkn2.png') }}" alt="Logo SMK Negeri 2 Mojokerto"></div>
+              <div class="book-back-title">SMK Negeri <em class="num-2">2</em><br>Kota Mojokerto</div>
+              <div class="book-back-sub">Terima kasih telah membaca Buku Sejarah kami.</div>
+              <div class="book-back-badge"><i class="fas fa-award"></i> Akreditasi A &mdash; Est. 1968</div>
+            </div>
+          </div>
         </div>
 
-        @if (Route::has('login'))
-            <div class="h-14.5 hidden lg:block"></div>
-        @endif
-    </body>
-</html>
+        <button class="flip-nav flip-next" aria-label="Halaman berikutnya"><i class="fas fa-chevron-right"></i></button>
+      </div>
+
+      <div class="flip-controls">
+        <button class="flip-restart" onclick="flipRestart()"><i class="fas fa-book-open"></i> Baca dari Awal</button>
+        <div class="flip-dots">
+          <button class="flip-dot active" data-dot="0" aria-label="Halaman 1-2"></button>
+          <button class="flip-dot" data-dot="1" aria-label="Halaman 3-4"></button>
+          <button class="flip-dot" data-dot="2" aria-label="Halaman 5-6"></button>
+          <button class="flip-dot" data-dot="3" aria-label="Halaman 7-8"></button>
+        </div>
+        <div class="flip-counter">Halaman <span id="flip-cur">1&ndash;2</span> dari <span id="flip-total">8</span></div>
+      </div>
+      <div class="flip-hint"><i class="fas fa-hand-pointer"></i> Klik sisi kiri/kanan buku atau gunakan tombol panah untuk membalik halaman</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= JENDELA KEPALA SEKOLAH (corporate glass window) ================= -->
+<section class="window-section" id="sambutan">
+  <div class="window-bg"></div>
+  <div class="container">
+    <div class="section-header center" data-reveal style="margin-bottom:1.2rem">
+      <div class="section-label">Sambutan</div>
+      <h2 class="section-title">Kepala <span class="accent">Sekolah</span></h2>
+      <p class="section-desc">Jendela kaca modern menuju ruang kepala sekolah &mdash; buka pesan untuk melihat sambutannya.</p>
+    </div>
+
+    <div class="window-stage" data-reveal>
+      <div class="window-frame" id="kepsekWindow">
+        <!-- INTERIOR: isi sambutan (terlihat setelah jendela terbuka) -->
+        <div class="window-scene">
+          <div class="ws-inner">
+            <div class="ws-left">
+              <div class="ws-photo-frame">
+                <img class="ws-photo" src="{{ asset('images/kepsek-nobg.png') }}" alt="Kepala Sekolah" loading="lazy" />
+              </div>
+              <div class="ws-photo-cap">Iswahyudi, S.ST. M.Pd</div>
+              <div class="ws-photo-role">Kepala SMK Negeri <span class="num-2">2</span> Mojokerto</div>
+            </div>
+            <div class="ws-right">
+              <div class="ws-kicker"><span class="ws-kicker-line"></span>Welcome Message</div>
+              <div class="ws-welcome">Sambutan Kepala Sekolah</div>
+              <div class="ws-quote">&ldquo;Pendidikan adalah proses untuk menyiapkan generasi menghadapi masa depan.&rdquo;</div>
+              <p class="ws-msg">Assalamu&rsquo;alaikum warahmatullahi wabarakatuh. Selamat datang di website resmi SMK Negeri 2 Mojokerto. Kami berkomitmen mencetak generasi vokasi yang kompeten, berkarakter, dan siap bersaing di dunia industri global. Bersama seluruh civitas akademika, kami terus berinovasi demi masa depan pendidikan vokasi yang lebih baik.</p>
+              <div class="ws-sign">
+                <div class="ws-sign-name">Iswahyudi, S.ST. M.Pd</div>
+                <div class="ws-sign-role">Kepala SMK Negeri <span class="num-2">2</span> Mojokerto</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- KACA JENDELA -->
+        <div class="window-glass left">
+          <div class="window-pane-glass"></div>
+        </div>
+        <div class="window-glass right">
+          <div class="window-pane-glass"></div>
+        </div>
+
+        <!-- STATE TERTUTUP: FROM THE PRINCIPAL'S OFFICE -->
+        <div class="window-knock">
+          <div class="wk-label">From The Principal&rsquo;s Office</div>
+          <div class="wk-title">SAMBUTAN<br />KEPALA SEKOLAH</div>
+          <div class="wk-silhouette"><img src="{{ asset('images/kepsek-nobg.png') }}" alt="" loading="lazy" /></div>
+          <button class="wk-btn" id="kepsekKnockBtn">[ Open Message ] <i class="fas fa-arrow-right"></i></button>
+        </div>
+
+        <!-- CAHAYA MASUK -->
+        <div class="ws-glow"></div>
+
+        <button class="ws-close" id="kepsekCloseBtn"><i class="fas fa-times"></i> Tutup Jendela</button>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ================= JURUSAN SECTION ================= -->
+<section class="jurusan-section section-py" id="jurusan">
+  <div class="container">
+    <div class="section-header center" data-reveal>
+      <div class="section-label">Program Keahlian</div>
+      <h2 class="section-title">5 <span class="accent">Jurusan</span> <span class="gold">Unggulan</span></h2>
+      <p class="section-desc">Temukan bidang yang sesuai dengan minat dan bakatmu. Setiap jurusan dibimbing oleh guru profesional dan terhubung langsung dengan dunia industri.</p>
+    </div>
+
+    <div class="jurusan-carousel" data-reveal>
+      <div class="carousel-stage" id="carouselStage" role="region" aria-label="Carousel jurusan unggulan">
+        <!-- 01 APHP -->
+        <article class="carousel-card hidden" data-index="0" data-pos="hidden" tabindex="0" role="button" aria-label="Jurusan APHP">
+          <div class="card-inner">
+            <div class="cc-photo p-aphp">
+              <img src="{{ asset('images/aphp.png') }}" alt="Siswa APHP SMK Negeri 2 Mojokerto" loading="lazy">
+            </div>
+            <div class="cc-body">
+              <div class="cc-abbr">APHP</div>
+              <div class="cc-line"></div>
+              <div class="cc-full">Agribisnis Pengolahan Hasil Pertanian</div>
+              <div class="cc-desc">Mengolah hasil pertanian menjadi produk bernilai jual tinggi dengan standar industri pangan.</div>
+              <div class="cc-stats">
+                <span class="cc-stat">160 Siswa</span>
+                <span class="cc-stat gold">88% Terserap</span>
+              </div>
+              <a href="career-roadmap.html" class="cc-cta">Lihat Jurusan <i class="fas fa-arrow-right"></i></a>
+              <div class="cc-hint">Klik untuk melihat</div>
+            </div>
+          </div>
+        </article>
+        <!-- 02 DKV -->
+        <article class="carousel-card hidden" data-index="1" data-pos="hidden" tabindex="0" role="button" aria-label="Jurusan DKV">
+          <div class="card-inner">
+            <div class="cc-photo p-dkv">
+              <img src="{{ asset('images/dkv.png') }}" alt="Siswa DKV SMK Negeri 2 Mojokerto" loading="lazy">
+            </div>
+            <div class="cc-body">
+              <div class="cc-abbr">DKV</div>
+              <div class="cc-line"></div>
+              <div class="cc-full">Desain Komunikasi Visual</div>
+              <div class="cc-desc">Menciptakan karya desain, ilustrasi, dan media kreatif untuk kebutuhan industri kreatif.</div>
+              <div class="cc-stats">
+                <span class="cc-stat">150 Siswa</span>
+                <span class="cc-stat gold">90% Terserap</span>
+              </div>
+              <a href="career-roadmap.html" class="cc-cta">Lihat Jurusan <i class="fas fa-arrow-right"></i></a>
+              <div class="cc-hint">Klik untuk melihat</div>
+            </div>
+          </div>
+        </article>
+        <!-- 03 KULINER -->
+        <article class="carousel-card hidden" data-index="2" data-pos="hidden" tabindex="0" role="button" aria-label="Jurusan Kuliner">
+          <div class="card-inner">
+            <div class="cc-photo p-kuliner">
+              <img src="{{ asset('images/kuliner.png') }}" alt="Siswa Kuliner SMK Negeri 2 Mojokerto" loading="lazy">
+            </div>
+            <div class="cc-body">
+              <div class="cc-abbr">KULINER</div>
+              <div class="cc-line"></div>
+              <div class="cc-full">Tata Boga &amp; Kuliner</div>
+              <div class="cc-desc">Menguasai seni memasak, pastry, dan manajemen usaha kuliner kelas profesional.</div>
+              <div class="cc-stats">
+                <span class="cc-stat">180 Siswa</span>
+                <span class="cc-stat gold">90% Terserap</span>
+              </div>
+              <a href="career-roadmap.html" class="cc-cta">Lihat Jurusan <i class="fas fa-arrow-right"></i></a>
+              <div class="cc-hint">Klik untuk melihat</div>
+            </div>
+          </div>
+        </article>
+        <!-- 04 LPS -->
+        <article class="carousel-card hidden" data-index="3" data-pos="hidden" tabindex="0" role="button" aria-label="Jurusan LPS">
+          <div class="card-inner">
+            <div class="cc-photo p-lps">
+              <img src="{{ asset('images/lps.png') }}" alt="Siswa LPS SMK Negeri 2 Mojokerto" loading="lazy">
+            </div>
+            <div class="cc-body">
+              <div class="cc-abbr">LPS</div>
+              <div class="cc-line"></div>
+              <div class="cc-full">Layanan Perbankan Syariah</div>
+              <div class="cc-desc">Mempersiapkan tenaga profesional perbankan syariah dan lembaga keuangan mikro.</div>
+              <div class="cc-stats">
+                <span class="cc-stat">140 Siswa</span>
+                <span class="cc-stat gold">92% Terserap</span>
+              </div>
+              <a href="career-roadmap.html" class="cc-cta">Lihat Jurusan <i class="fas fa-arrow-right"></i></a>
+              <div class="cc-hint">Klik untuk melihat</div>
+            </div>
+          </div>
+        </article>
+        <!-- 05 RPL -->
+        <article class="carousel-card active" data-index="4" data-pos="active" tabindex="0" role="button" aria-label="Jurusan RPL">
+          <div class="card-inner">
+            <div class="cc-photo p-rpl">
+              <img src="{{ asset('images/rpl.png') }}" alt="Siswa RPL SMK Negeri 2 Mojokerto" loading="lazy">
+            </div>
+            <div class="cc-body">
+              <div class="cc-abbr">RPL</div>
+              <div class="cc-line"></div>
+              <div class="cc-full">Rekayasa Perangkat Lunak</div>
+              <div class="cc-desc">Membangun aplikasi web, mobile, dan solusi digital dengan teknologi terkini.</div>
+              <div class="cc-stats">
+                <span class="cc-stat">240 Siswa</span>
+                <span class="cc-stat gold">95% Terserap</span>
+              </div>
+              <a href="career-roadmap.html" class="cc-cta">Lihat Jurusan <i class="fas fa-arrow-right"></i></a>
+              <div class="cc-hint">Klik untuk melihat</div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="carousel-nav">
+        <button class="carousel-nav-btn" id="carouselPrev" aria-label="Jurusan sebelumnya"><i class="fas fa-chevron-left"></i></button>
+        <div class="carousel-indicator"><span id="carouselCur">05</span> / <em>05</em></div>
+        <button class="carousel-nav-btn" id="carouselNext" aria-label="Jurusan berikutnya"><i class="fas fa-chevron-right"></i></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= JOURNEY TIMELINE / ROADMAP ================= -->
+<section class="roadmap-preview-section" id="roadmap-preview">
+  <!-- Map background: contours + blueprint grid + coords + compass -->
+  <div class="j2k8-map" aria-hidden="true">
+    <div class="j2k8-grid"></div>
+    <div class="j2k8-contours"></div>
+    <div class="j2k8-coords">
+      <i style="top:11%;left:4%">122.42&deg; E</i>
+      <i style="top:16%;right:6%">07.47&deg; S</i>
+      <i style="bottom:8%;left:13%">GRID 4B</i>
+      <span class="cd-dot" style="top:20%;left:23%"></span>
+      <span class="cd-dot" style="top:66%;left:84%"></span>
+      <span class="cd-dot" style="top:40%;left:47%"></span>
+      <span class="cd-dash" style="top:30%;left:58%"></span>
+      <span class="cd-dash" style="top:76%;left:32%"></span>
+    </div>
+    <div class="j2k8-compass">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" stroke-width="2.5" opacity=".7"/>
+        <circle cx="50" cy="50" r="38" fill="none" stroke="currentColor" stroke-width="1" opacity=".4"/>
+        <path d="M50 14 L56 44 L50 38 L44 44 Z" fill="currentColor" opacity=".85"/>
+        <path d="M50 86 L44 56 L50 62 L56 56 Z" fill="currentColor" opacity=".4"/>
+        <text x="50" y="11" text-anchor="middle" font-size="13" font-weight="700" fill="#7fd4ff" font-family="ui-monospace,monospace">N</text>
+      </svg>
+    </div>
+  </div>
+
+  <div class="container roadmap-preview-inner">
+    <div class="roadmap-preview-header">
+      <span class="j2k8-label">Roadmap Pengembangan Sekolah</span>
+      <h2 class="section-title">Roadmap <span class="accent">Pengembangan</span> Sekolah</h2>
+      <p class="section-desc">Perjalanan transformasi SMK Negeri 2 Mojokerto menuju sekolah vokasi rujukan nasional.</p>
+      <div class="j2k8-legend">
+        <span><span class="lg-ic lg-done"><i class="fas fa-check"></i></span> Selesai</span>
+        <span><span class="lg-ic lg-running"><i class="fas fa-circle"></i></span> Berjalan</span>
+        <span><span class="lg-ic lg-goal"><i class="fas fa-star"></i></span> Target</span>
+      </div>
+    </div>
+
+    <div class="j2k8-stage" id="j2k8Stage">
+      <svg class="j2k8-route" viewBox="0 0 1200 1150" preserveAspectRatio="none" aria-hidden="true">
+        <path class="route-base" d="M120,934 C192,790.3 268,532.2 336,503 C404,473.8 468,739.3 528,759 C588,778.7 612,709.2 696,621 C780,532.8 912,230 1032,230"/>
+        <path class="route-dash" d="M120,934 C192,790.3 268,532.2 336,503 C404,473.8 468,739.3 528,759 C588,778.7 612,709.2 696,621 C780,532.8 912,230 1032,230"/>
+        <path class="route-glow" d="M120,934 C192,790.3 268,532.2 336,503 C404,473.8 468,739.3 528,759 C588,778.7 612,709.2 696,621 C780,532.8 912,230 1032,230"/>
+      </svg>
+      <span class="j2k8-arrow" style="left:19%;top:60%"></span>
+      <span class="j2k8-arrow" style="left:47%;top:65%"></span>
+      <span class="j2k8-arrow" style="left:72%;top:37%"></span>
+
+      <!-- 01 | 2020-2022 | Fondasi Sekolah (START - bottom-left) -->
+      <div class="j2k8-milestone j2k8-start">
+        <span class="j2k8-start-flag" style="left:3%;top:71.9%"><i class="fas fa-flag-checkered"></i> Awal Perjalanan</span>
+        <div class="j2k8-checkpoint" style="left:10%;top:81.25%" tabindex="0" role="button" aria-label="2020, awal perjalanan">
+          <div class="j2k8-node"><i class="fas fa-school"></i></div>
+          <span class="j2k8-cp-year">2020</span>
+        </div>
+        <span class="j2k8-connector v" style="left:10%;top:82.3%;height:55px"></span>
+        <div class="j2k8-card" style="left:1%;top:86.25%">
+          <div class="j2k8-card-top">
+            <span class="j2k8-num">01</span>
+            <span class="j2k8-status s-done"><span class="j2k8-status-dot"></span> Selesai</span>
+          </div>
+          <div class="j2k8-year">2020&ndash;2022</div>
+          <h3 class="j2k8-name">Fondasi Sekolah</h3>
+          <p class="j2k8-desc">Renovasi laboratorium, Akreditasi A, dan penguatan kemitraan industri.</p>
+        </div>
+      </div>
+
+      <!-- 02 | 2023-2024 | Digitalisasi Sekolah (top-left) -->
+      <div class="j2k8-milestone">
+        <div class="j2k8-checkpoint" style="left:28%;top:43.75%" tabindex="0" role="button" aria-label="2023, digitalisasi sekolah">
+          <div class="j2k8-node"><i class="fas fa-laptop-code"></i></div>
+          <span class="j2k8-cp-year">2023</span>
+        </div>
+        <span class="j2k8-connector v" style="left:28%;top:38.35%;height:40px"></span>
+        <div class="j2k8-card" style="left:12%;top:24%">
+          <div class="j2k8-card-top">
+            <span class="j2k8-num">02</span>
+            <span class="j2k8-status s-done"><span class="j2k8-status-dot"></span> Selesai</span>
+          </div>
+          <div class="j2k8-year">2023&ndash;2024</div>
+          <h3 class="j2k8-name">Digitalisasi Sekolah</h3>
+          <p class="j2k8-desc">Digitalisasi perpustakaan serta penguatan sertifikasi Cisco &amp; Oracle.</p>
+        </div>
+      </div>
+
+      <!-- 03 | 2025 | Transformasi Vokasi (middle-left) -->
+      <div class="j2k8-milestone">
+        <div class="j2k8-checkpoint" style="left:44%;top:66%" tabindex="0" role="button" aria-label="2025, transformasi vokasi">
+          <div class="j2k8-node"><i class="fas fa-gear"></i></div>
+          <span class="j2k8-cp-year">2025</span>
+        </div>
+        <span class="j2k8-connector v" style="left:44%;top:68.8%;height:60px"></span>
+        <div class="j2k8-card" style="left:28%;top:73%">
+          <div class="j2k8-card-top">
+            <span class="j2k8-num">03</span>
+            <span class="j2k8-status s-running"><span class="j2k8-status-dot"></span> Berjalan</span>
+          </div>
+          <div class="j2k8-year">2025</div>
+          <h3 class="j2k8-name">Transformasi Vokasi</h3>
+          <p class="j2k8-desc">Penguatan pembelajaran berbasis industri dan kompetensi siswa.</p>
+        </div>
+      </div>
+
+      <!-- 04 | 2026 | Penguatan Ekosistem (middle-right) -->
+      <div class="j2k8-milestone">
+        <div class="j2k8-checkpoint" style="left:58%;top:54%" tabindex="0" role="button" aria-label="2026, penguatan ekosistem">
+          <div class="j2k8-node"><i class="fas fa-handshake"></i></div>
+          <span class="j2k8-cp-year">2026</span>
+        </div>
+        <span class="j2k8-connector v" style="left:58%;top:47.5%;height:36px"></span>
+        <div class="j2k8-card" style="left:40%;top:36%">
+          <div class="j2k8-card-top">
+            <span class="j2k8-num">04</span>
+            <span class="j2k8-status s-running"><span class="j2k8-status-dot"></span> Berjalan</span>
+          </div>
+          <div class="j2k8-year">2026</div>
+          <h3 class="j2k8-name">Penguatan Ekosistem</h3>
+          <p class="j2k8-desc">Pengembangan program keahlian, fasilitas, dan kemitraan industri.</p>
+        </div>
+      </div>
+
+      <!-- 05 | 2028 | Destination (right) -->
+      <div class="j2k8-milestone j2k8-goal">
+        <div class="j2k8-checkpoint" style="left:86%;top:20%" tabindex="0" role="button" aria-label="2028, target sekolah vokasi rujukan nasional">
+          <div class="j2k8-node"><i class="fas fa-star"></i></div>
+          <span class="j2k8-cp-year">2028</span>
+          <span class="j2k8-cp-tag">Target</span>
+        </div>
+        <span class="j2k8-connector v" style="left:86%;top:22.7%;height:95px"></span>
+        <div class="j2k8-card j2k8-goal-card" style="left:70%;top:29%">
+          <div class="j2k8-card-top">
+            <span class="j2k8-num">05</span>
+            <span class="j2k8-status s-goal"><span class="j2k8-status-dot"></span> Target</span>
+          </div>
+          <div class="j2k8-year">2028</div>
+          <h3 class="j2k8-name">Sekolah Vokasi Rujukan Nasional</h3>
+          <p class="j2k8-desc">Target utama perjalanan transformasi SMK Negeri 2 Mojokerto.</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;justify-content:center;margin-top:4.5rem">
+      <a href="school-roadmap.html" class="j2k8-cta">Jelajahi Perjalanan <i class="fas fa-arrow-right"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= KONTAK & FOOTER ================= -->
+<section class="kontak-section section-py" id="kontak" aria-label="Kontak dan lokasi sekolah">
+  <div class="container">
+    <div class="ft-wrap">
+      <div class="ft-head" data-reveal>
+        <div class="ft-eyebrow">Temukan Kami</div>
+        <h2 class="ft-title">Temukan <span class="ft-gold">Kami</span></h2>
+        <p class="ft-sub">Kami siap membantu Anda.</p>
+        <p class="ft-line">Informasi sekolah, PPDB, dan program keahlian.</p>
+      </div>
+      <div class="ft-map" data-reveal>
+        <div class="ft-pin" aria-hidden="true">
+          <div class="ft-pin-badge"><img src="{{ asset('images/logo_smkn2.png') }}" alt="" /></div>
+          <div class="ft-pin-ring"></div>
+          <div class="ft-pin-ring r2"></div>
+        </div>
+        <iframe title="Lokasi SMK Negeri 2 Mojokerto" src="https://www.google.com/maps?q=Jl.%20Raya%20Pulorejo%2C%20Kel.%20Pulorejo%2C%20Kec.%20Prajurit%20Kulon%2C%20Kota%20Mojokerto%2C%20Jawa%20Timur%2061325&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        <div class="ft-card" data-reveal>
+          <div class="ft-card-head">
+            <div class="ft-card-logo"><img src="{{ asset('images/logo_smkn2.png') }}" alt="Logo SMKN 2 Mojokerto" /></div>
+            <div class="ft-card-title">SMKN 2 MOJOKERTO<small>Kontak &amp; Informasi</small></div>
+          </div>
+          <div class="ft-card-div"></div>
+          <div class="ft-row">
+            <div class="ft-row-icon"><i class="fas fa-location-dot"></i></div>
+            <div>
+              <div class="ft-row-label">Alamat</div>
+              <div class="ft-row-value">Jl. Raya Pulorejo, Kel. Pulorejo, Kec. Prajurit Kulon, Kota Mojokerto, Jawa Timur 61325</div>
+            </div>
+          </div>
+          <div class="ft-row">
+            <div class="ft-row-icon"><i class="fas fa-phone"></i></div>
+            <div>
+              <div class="ft-row-label">Telepon</div>
+              <div class="ft-row-value"><a href="tel:031222929922">0312 2292 9922</a></div>
+            </div>
+          </div>
+          <div class="ft-row">
+            <div class="ft-row-icon"><i class="fas fa-envelope"></i></div>
+            <div>
+              <div class="ft-row-label">Email</div>
+              <div class="ft-row-value"><a href="mailto:info@smkn2mojokerto.sch.id">info@smkn2mojokerto.sch.id</a></div>
+            </div>
+          </div>
+          <div class="ft-row">
+            <div class="ft-row-icon"><i class="fas fa-clock"></i></div>
+            <div>
+              <div class="ft-row-label">Jam Operasional</div>
+              <div class="ft-row-value">Senin&ndash;Jumat &middot; 07.00&ndash;16.00 WIB</div>
+            </div>
+          </div>
+          <hr class="ft-stub" />
+          <a class="ft-map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=Jalan+Raya+Pulorejo%2C+Kelurahan+Pulorejo%2C+Kecamatan+Prajurit+Kulon%2C+Kota+Mojokerto%2C+Jawa+Timur+61325" target="_blank" rel="noopener">
+            Buka di Google Maps <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
+        </div>
+      </div>
+      <div class="ft-cta" data-reveal>
+        <p>Punya pertanyaan? Kami siap membantu memberikan informasi seputar sekolah dan PPDB.</p>
+        <button type="button" class="ft-cta-btn" onclick="toggleSibot()">Hubungi Kami <i class="fa-solid fa-arrow-right"></i></button>
+      </div>
+    </div>
+  </div>
+</section>
+@endsection
+
+@push('scripts')
+<script>
+  /* ============================================================
+     JS KHUSUS KONTEN BERANDA
+     (dipertahankan dari welcome.blade.php v4 — hanya bagian konten)
+     ============================================================ */
+
+  /* ---- Intro Video Fullscreen (skip + auto lanjut ke hero) ---- */
+  (function() {
+    var introEl  = document.getElementById('hdIntro');
+    var introVid = document.getElementById('hdIntroVideo');
+    var skipBtn  = document.getElementById('hdIntroSkip');
+    if (!introEl || !introVid || !skipBtn) return;
+
+    var done = false;
+    function closeIntro() {
+      if (done) return;               // hanya boleh jalan SATU KALI
+      done = true;
+      introEl.classList.add('hd-hidden');
+      document.body.style.overflow = '';
+      try { introVid.pause(); } catch(e) {}
+    }
+    skipBtn.addEventListener('click', closeIntro);
+    introVid.addEventListener('ended', closeIntro);
+
+    /* Kunci scroll selama intro; video diputar SATU KALI (tanpa loop).
+       play() diberi fallback aman: jika autoplay diblokir, intro tetap bisa
+       dilewati via tombol. Tidak ada interval/RAF berulang untuk video. */
+    document.body.style.overflow = 'hidden';
+    var p = introVid.play();
+    if (p && p.catch) p.catch(function(){});
+  })();
+
+  /* ---- Scroll Reveal ---- */
+  var revealEls = document.querySelectorAll('[data-reveal]');
+  var revealObs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) { if(e.isIntersecting) { e.target.classList.add('revealed'); revealObs.unobserve(e.target); } });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+  revealEls.forEach(function(el){ revealObs.observe(el); });
+
+  /* Safety-net: elemen yang sebenarnya sudah masuk viewport wajib tampil
+     (mencakup full-page capture / observer yang tidak sempat menembak) */
+  (function(){
+    var pending = Array.prototype.slice.call(revealEls);
+    var checks = 0;
+    var iv = setInterval(function(){
+      checks++;
+      var vh = window.innerHeight;
+      pending = pending.filter(function(el){
+        if(el.classList.contains('revealed')) return false;
+        var r = el.getBoundingClientRect();
+        if(r.top < vh + 220 && r.bottom > -40){ el.classList.add('revealed'); return false; }
+        return true;
+      });
+      /* Force reveal semua yang tersisa setelah ~3.6 detik agar konten
+         tidak pernah selamanya tersembunyi (mis. hero lebih tinggi dari viewport) */
+      if(checks >= 8){
+        pending.forEach(function(el){ el.classList.add('revealed'); });
+        clearInterval(iv);
+      } else if(pending.length === 0){
+        clearInterval(iv);
+      }
+    }, 450);
+  })();
+
+  /* ---- Journey to 2028 Map reveal + route draw ---- */
+  var j2k8Stage = document.getElementById('j2k8Stage');
+  if (j2k8Stage) {
+    var j2k8Obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) {
+          j2k8Stage.classList.add('drawn');
+          var glow = j2k8Stage.querySelector('.route-glow');
+          if (glow) {
+            var len = glow.getTotalLength ? glow.getTotalLength() : 1200;
+            glow.style.strokeDasharray = len;
+            glow.style.strokeDashoffset = len;
+            requestAnimationFrame(function(){ requestAnimationFrame(function(){ glow.style.strokeDashoffset = '0'; }); });
+          }
+          j2k8Obs.unobserve(j2k8Stage);
+        }
+      });
+    }, { threshold: 0.18 });
+    j2k8Obs.observe(j2k8Stage);
+  }
+
+    /* Parallax halus: konten hero bergeser perlahan saat scroll (efek depth di atas foto) */
+    var heroMainEl = document.querySelector('.hero-main');
+    var heroSectionEl = document.getElementById('beranda');
+    function heroParallax(){
+      if(!heroMainEl || !heroSectionEl) return;
+      var r = heroSectionEl.getBoundingClientRect();
+      if(r.bottom < 0 || r.top > window.innerHeight) return;
+      var p = Math.min(Math.max(-r.top, 0), window.innerHeight);
+      heroMainEl.style.transform = 'translateY(' + (p * 0.14).toFixed(1) + 'px)';
+    }
+    window.addEventListener('scroll', heroParallax, {passive:true});
+    heroParallax();
+
+  /* ---- Counter Animation ---- */
+  function animateCounter(el, target) {
+    var start = 0; var duration = 2000; var step = target / (duration/16);
+    var hasSuffix = el.innerHTML.indexOf('+') !== -1 ? '+' : el.innerHTML.indexOf('%') !== -1 ? '%' : '';
+    var timer = setInterval(function() {
+      start += step;
+      if(start >= target) { start = target; clearInterval(timer); }
+      el.innerHTML = Math.floor(start) + (hasSuffix ? '<span>'+hasSuffix+'</span>' : '');
+    }, 16);
+  }
+  var counterObs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if(e.isIntersecting) {
+        var el = e.target;
+        var target = parseInt(el.dataset.count, 10);
+        animateCounter(el, target);
+        counterObs.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+  var counterEls = document.querySelectorAll('[data-count]');
+  counterEls.forEach(function(el){ counterObs.observe(el); });
+
+  /* safety-net counter: angka statistik harus terisi walau observer belum menembak */
+  (function(){
+    var pending = Array.prototype.slice.call(counterEls);
+    var checks = 0;
+    var iv = setInterval(function(){
+      checks++;
+      var vh = window.innerHeight;
+      pending = pending.filter(function(el){
+        if(el.dataset.animated) return false;
+        var r = el.getBoundingClientRect();
+        if(r.top < vh + 220 && r.bottom > -40){
+          el.dataset.animated = '1';
+          animateCounter(el, parseInt(el.dataset.count, 10));
+          return false;
+        }
+        return true;
+      });
+      if(pending.length === 0 || checks > 20) clearInterval(iv);
+    }, 450);
+  })();
+
+  /* ---- Flipbook Buku Sejarah ---- */
+  (function(){
+    var stage = document.getElementById('flipbook');
+    if(!stage) return;
+    var sheets = Array.prototype.slice.call(stage.querySelectorAll('.book-sheet'));
+    var book = stage.querySelector('.book3d');
+    var prevBtn = stage.querySelector('.flip-prev');
+    var nextBtn = stage.querySelector('.flip-next');
+    var dots = Array.prototype.slice.call(stage.querySelectorAll('.flip-dot'));
+    var cur = 0, turning = false, total = sheets.length;
+    var curEl = document.getElementById('flip-cur');
+    var totEl = document.getElementById('flip-total');
+    if(totEl) totEl.textContent = total * 2;
+    function render(){
+      sheets.forEach(function(s,i){
+        s.classList.toggle('active', i === cur);
+        s.classList.remove('reveal-under','turning-fwd','turning-bwd');
+      });
+      if(prevBtn) prevBtn.disabled = (cur === 0);
+      if(nextBtn) nextBtn.disabled = (cur === total - 1);
+      dots.forEach(function(d,i){ d.classList.toggle('active', i === cur); });
+      if(curEl) curEl.innerHTML = (cur*2+1) + '&ndash;' + (cur*2+2);
+    }
+    function go(n){
+      if(turning || n < 0 || n >= total || n === cur) return;
+      turning = true;
+      var from = sheets[cur];
+      var dir = n > cur ? 'fwd' : 'bwd';
+      if(sheets[n]) sheets[n].classList.add('reveal-under');
+      from.classList.add('turning-' + dir);
+      window.setTimeout(function(){
+        from.classList.remove('turning-' + dir);
+        cur = n;
+        render();
+        turning = false;
+      }, 900);
+    }
+    window.flipRestart = function(){ go(0); };
+    if(prevBtn) prevBtn.addEventListener('click', function(e){ e.stopPropagation(); go(cur - 1); });
+    if(nextBtn) nextBtn.addEventListener('click', function(e){ e.stopPropagation(); go(cur + 1); });
+    dots.forEach(function(d,i){ d.addEventListener('click', function(e){ e.stopPropagation(); go(i); }); });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'ArrowRight') go(cur + 1);
+      if(e.key === 'ArrowLeft') go(cur - 1);
+    });
+    if(book) book.addEventListener('click', function(e){
+      if(e.target.closest('a,button,.flip-nav')) return;
+      var r = book.getBoundingClientRect();
+      var x = e.clientX - r.left;
+      if(x < r.width * 0.45){ go(cur - 1); } else { go(cur + 1); }
+    });
+    render();
+  })();
+
+
+</script>
+<script>
+    // ---------- JENDELA KEPALA SEKOLAH (corporate glass window) ----------
+    (function(){
+      var winSection=document.getElementById('sambutan');
+      var frame=document.getElementById('kepsekWindow');
+      var btn=document.getElementById('kepsekKnockBtn');
+      var closeBtn=document.getElementById('kepsekCloseBtn');
+      if(!frame||!winSection)return;
+
+      function openWindow(){
+        if(winSection.classList.contains('open'))return;
+        winSection.classList.add('open');
+      }
+      function closeWindow(){winSection.classList.remove('open');}
+
+      if(btn){btn.addEventListener('click',function(e){e.stopPropagation();openWindow();});}
+      if(closeBtn){closeBtn.addEventListener('click',function(e){e.stopPropagation();closeWindow();});}
+      if(frame){frame.addEventListener('click',function(e){
+        if(e.target===closeBtn)return;
+        if(!winSection.classList.contains('open')){openWindow();}
+      });}
+      if(btn){btn.addEventListener('keydown',function(e){
+        if(e.key==='Enter'||e.key===' '){e.preventDefault();openWindow();}
+      });}
+    })();
+</script>
+<script>
+  // ---------- JURUSAN: FEATURED PROGRAM CAROUSEL (prev - active - next) ----------
+  (function(){
+    var stage = document.getElementById('carouselStage');
+    if(!stage) return;
+    var cards = Array.prototype.slice.call(stage.querySelectorAll('.carousel-card'));
+    var prevBtn = document.getElementById('carouselPrev');
+    var nextBtn = document.getElementById('carouselNext');
+    var curEl = document.getElementById('carouselCur');
+    var total = cards.length;
+    var active = 4; // mulai dari RPL (index 4)
+    var locked = false;
+
+    var DUR = 650; // durasi transisi (ms) — harus sinkron dengan CSS .6s
+
+    function computePos(i){
+      if(i === active) return 'active';
+      if(i === (active + 1) % total) return 'next';
+      if(i === (active - 1 + total) % total) return 'prev';
+      return 'hidden';
+    }
+
+    // Fase 1: kartu yang akan "pergi" dipindah ke hidden TERLEBIH DAHULU (tanpa transisi),
+    // supaya kartu baru tidak berpindah melintasi stage (penyebab slide patah-patah).
+    function setActive(idx){
+      active = (idx + total) % total;
+      cards.forEach(function(c, i){
+        var pos = computePos(i);
+        if(c.getAttribute('data-pos') === 'hidden' && pos !== 'hidden'){
+          c.classList.add('no-anim');
+          c.className = 'carousel-card hidden';
+          void c.offsetWidth; // reflow: terapkan kelas hidden tanpa transisi
+          c.classList.remove('no-anim');
+        } else if(c.getAttribute('data-pos') !== 'hidden' && pos === 'hidden'){
+          c.classList.add('no-anim');
+          c.className = 'carousel-card hidden';
+          void c.offsetWidth;
+          c.classList.remove('no-anim');
+        }
+        c.className = 'carousel-card ' + pos;
+        c.setAttribute('data-pos', pos);
+      });
+      if(curEl) curEl.textContent = ('0' + (active + 1)).slice(-2);
+    }
+    function goNext(){
+      if(locked) return;
+      locked = true;
+      setActive(active + 1);
+      setTimeout(function(){ locked = false; }, DUR);
+    }
+    function goPrev(){
+      if(locked) return;
+      locked = true;
+      setActive(active - 1);
+      setTimeout(function(){ locked = false; }, DUR);
+    }
+
+    cards.forEach(function(c){
+      c.addEventListener('click', function(e){
+        if(e.target.closest('a')) return; // biarkan link "Lihat Jurusan" bernavigasi
+        var p = c.getAttribute('data-pos');
+        if(p === 'next') goNext();
+        else if(p === 'prev') goPrev();
+      });
+      c.addEventListener('keydown', function(e){
+        if(e.key === 'Enter' || e.key === ' '){
+          e.preventDefault();
+          var p = c.getAttribute('data-pos');
+          if(p === 'next') goNext(); else if(p === 'prev') goPrev();
+        }
+      });
+    });
+    if(prevBtn) prevBtn.addEventListener('click', goPrev);
+    if(nextBtn) nextBtn.addEventListener('click', goNext);
+
+    document.addEventListener('keydown', function(e){
+      var s = document.getElementById('sambutan');
+      if(s && s.classList.contains('open')) return; // jangan ganggu saat jendela terbuka
+      if(e.key === 'ArrowLeft') goPrev();
+      if(e.key === 'ArrowRight') goNext();
+    });
+
+    var startX = 0;
+    stage.addEventListener('touchstart', function(e){ startX = e.touches[0].clientX; }, {passive:true});
+    stage.addEventListener('touchend', function(e){
+      var dx = e.changedTouches[0].clientX - startX;
+      if(Math.abs(dx) > 40){ if(dx < 0) goNext(); else goPrev(); }
+    }, {passive:true});
+
+    window.setActive(active);
+  })();
+
+</script>
+
+@endpush
