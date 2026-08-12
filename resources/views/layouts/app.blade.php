@@ -9,6 +9,7 @@
   <meta name="description" content="@yield('description', 'Website resmi SMK Negeri 2 Mojokerto — Sekolah Menengah Kejuruan unggulan di Kota Mojokerto, Jawa Timur.')" />
 
   <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
@@ -136,259 +137,48 @@
     .announce-item i{color:var(--gold);animation:tada 3s infinite}
 
     /* ====================== NAVBAR FULL WIDTH ====================== */
-    #navbar {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      width: 100%;
-      margin: 0;
-      padding: 0;
-      transition: all .4s var(--ease);
-      background: transparent;
+    #navbar{position:sticky;top:0;left:0;z-index:100;width:100%;margin:0;padding:0;transition:all .4s var(--ease);background:transparent}
+    #navbar.scrolled{top:0}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.7rem 2rem;border-radius:0;background:linear-gradient(135deg,#0d3a66,#1d6fb8);backdrop-filter:blur(18px) saturate(160%);-webkit-backdrop-filter:blur(18px) saturate(160%);border:0;border-bottom:1px solid rgba(255,255,255,.18);box-shadow:0 10px 34px rgba(13,58,102,.35),inset 0 1px 0 rgba(255,255,255,.25);transition:all .4s var(--ease);width:100%;max-width:100%;margin:0}
+    #navbar.scrolled .nav-inner{background:linear-gradient(135deg,#0a2f57,#13518c);box-shadow:0 14px 44px rgba(13,58,102,.5);padding:.55rem 2rem;border-radius:0;border:0;border-bottom:1px solid rgba(255,255,255,.12)}
+    #navbar::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:1px;background:rgba(255,255,255,.06);opacity:.4;pointer-events:none}
+    .nav-inner > *{position:relative;z-index:1}
+    .nav-brand{display:flex;align-items:center;gap:.7rem;flex-shrink:0}
+    .nav-logo{background:transparent;border:none;padding:0;border-radius:0;display:flex;align-items:center;justify-content:center}
+    .nav-logo img{width:48px;height:48px;object-fit:contain;background:transparent}
+    .nav-brand-text strong{
+      display:block;
+      font-family:'Poppins',sans-serif;
+      font-size:1.38rem;
+      color:#fff;
+      line-height:1.15;
+      font-weight:700;
+      letter-spacing:.01em;
+      text-shadow:0 1px 2px rgba(0,0,0,.25);
+      white-space:nowrap;
     }
-
-    #navbar.scrolled {
-      top: 0;
-    }
-
-    .nav-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      padding: .7rem 2rem;
-      border-radius: 0 0 18px 18px;
-      background: linear-gradient(135deg, #0d3a66, #1d6fb8);
-      backdrop-filter: blur(18px) saturate(160%);
-      -webkit-backdrop-filter: blur(18px) saturate(160%);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      border-top: none;
-      box-shadow: 0 10px 34px rgba(13, 58, 102, .35), inset 0 1px 0 rgba(255, 255, 255, .25);
-      transition: all .4s var(--ease);
-      width: 100%;
-      max-width: 100%;
-      margin: 0;
-    }
-
-    #navbar.scrolled .nav-inner {
-      background: linear-gradient(135deg, #0a2f57, #13518c);
-      box-shadow: 0 14px 44px rgba(13, 58, 102, .5);
-      padding: .55rem 2rem;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-top: none;
-    }
-
-    /* Subtle white outline - very thin */
-    #navbar::after {
-      content: '';
-      position: absolute;
-      bottom: -1px;
-      left: 0;
-      right: 0;
-      height: 1px;
-      background: rgba(255, 255, 255, 0.06);
-      opacity: 0.4;
-      pointer-events: none;
-    }
-
-    .nav-inner > * {
-      position: relative;
-      z-index: 1;
-    }
-
-    .nav-brand {
-      display: flex;
-      align-items: center;
-      gap: .7rem;
-      flex-shrink: 0;
-    }
-
-    .nav-logo {
-      background: transparent;
-      border: none;
-      padding: 0;
-      border-radius: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .nav-logo img {
-      width: 48px;
-      height: 48px;
-      object-fit: contain;
-      background: transparent;
-    }
-
-    .nav-brand-text strong {
-      display: block;
-      font-size: .95rem;
-      color: #fff;
-      line-height: 1.2;
-      text-shadow: 0 1px 2px rgba(0, 0, 0, .25);
-    }
-
-    .nav-brand-text strong .num-2 {
-      color: #ffd54f;
-      text-shadow: 0 1px 3px rgba(0, 0, 0, .35);
-    }
-
-    .nav-brand-text span {
-      font-size: .72rem;
-      color: rgba(255, 255, 255, .88);
-      font-weight: 700;
-    }
-
-    .num-2 {
-      color: #f9a825;
-      font-style: normal;
-    }
-
-    .nav-menu {
-      display: flex;
-      align-items: center;
-      gap: .2rem;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
-
-    .nav-link {
-      display: inline-flex;
-      align-items: center;
-      gap: .4rem;
-      padding: .55rem .85rem;
-      border-radius: 10px;
-      font-size: .86rem;
-      font-weight: 600;
-      color: rgba(255, 255, 255, .95);
-      transition: all .25s var(--ease);
-      position: relative;
-    }
-
-    .nav-link:hover,
-    .nav-link.active {
-      color: #fff;
-      background: rgba(255, 255, 255, .12);
-    }
-
-    .nav-link.active::after {
-      content: "";
-      position: absolute;
-      bottom: 2px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 18px;
-      height: 2.5px;
-      border-radius: 99px;
-      background: #fff;
-    }
-
-    .nav-item {
-      position: relative;
-    }
-
-    .dropdown-menu {
-      position: absolute;
-      top: calc(100% + 10px);
-      left: 0;
-      min-width: 230px;
-      padding: .55rem;
-      border-radius: 14px;
-      background: rgba(255, 255, 255, .97);
-      backdrop-filter: blur(14px);
-      border: 1px solid rgba(29, 111, 184, .25);
-      box-shadow: 0 20px 50px rgba(13, 58, 102, .18);
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(12px);
-      transition: all .3s var(--ease);
-    }
-
-    .nav-item.dropdown-open .dropdown-menu {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-    }
-
-    .dropdown-menu a {
-      display: flex;
-      align-items: center;
-      gap: .6rem;
-      padding: .55rem .7rem;
-      border-radius: 9px;
-      font-size: .84rem;
-      font-weight: 500;
-      color: var(--ink);
-      transition: all .2s;
-    }
-
-    .dropdown-menu a i {
-      width: 18px;
-      color: #1d6fb8;
-    }
-
-    .dropdown-menu a:hover {
-      background: rgba(29, 111, 184, .1);
-      color: #0d3a66;
-      transform: translateX(4px);
-    }
-
-    .nav-cta {
-      background: linear-gradient(135deg, #ff6d00, #f4511e);
-      color: #fff !important;
-      box-shadow: 0 4px 16px rgba(244, 81, 30, .35), inset 0 0 0 1.5px rgba(255, 255, 255, .4);
-      position: relative;
-      overflow: hidden;
-      animation: ctaGlow 2.2s ease-in-out infinite;
-    }
-
-    .nav-cta:hover,
-    .nav-cta.active {
-      color: #fff !important;
-      background: linear-gradient(135deg, #ff8f00, #ff5722);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(244, 81, 30, .5), inset 0 0 0 1.5px rgba(255, 255, 255, .6);
-    }
-
-    .nav-cta::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, .3) 50%, transparent 70%);
-      transform: translateX(-120%);
-      transition: transform .6s;
-    }
-
-    .nav-cta:hover::after {
-      transform: translateX(120%);
-    }
-
-    @keyframes ctaGlow {
-      0%, 100% {
-        box-shadow: 0 4px 16px rgba(244, 81, 30, .3), inset 0 0 0 1.5px rgba(255, 255, 255, .4);
-      }
-      50% {
-        box-shadow: 0 4px 24px rgba(255, 109, 0, .5), inset 0 0 0 1.5px rgba(255, 255, 255, .6);
-      }
-    }
-
-    .nav-toggle {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      background: none;
-      border: 0;
-      padding: .5rem;
-    }
-
-    .nav-toggle span {
-      width: 24px;
-      height: 2.6px;
-      border-radius: 99px;
-      background: #fff;
-      transition: all .3s;
-    }
+    .nav-brand-text strong .num-2{color:#ffd54f;text-shadow:0 1px 3px rgba(0,0,0,.35)}
+    .nav-brand-text span{display:none}
+    .num-2{color:#f9a825;font-style:normal}
+    .nav-menu{display:flex;align-items:center;gap:.12rem;list-style:none;margin:0;padding:0}
+    .nav-link{display:inline-flex;align-items:center;gap:.4rem;padding:.58rem .72rem;border-radius:10px;font-size:.84rem;font-weight:600;color:rgba(255,255,255,.95);transition:all .25s var(--ease);position:relative;white-space:nowrap}
+    .nav-link i{font-size:.65rem;transition:transform .25s var(--ease)}
+    .nav-item.dropdown-open > .nav-link i{transform:rotate(180deg)}
+    .nav-link:hover,.nav-link.active{color:#fff;background:rgba(255,255,255,.14)}
+    .nav-link.active::after{content:"";position:absolute;bottom:2px;left:50%;transform:translateX(-50%);width:18px;height:2.5px;border-radius:99px;background:#fff}
+    .nav-item{position:relative}
+    .dropdown-menu{position:absolute;top:calc(100% + 10px);left:0;min-width:250px;padding:.55rem;border-radius:14px;background:rgba(255,255,255,.97);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(29,111,184,.25);box-shadow:0 20px 50px rgba(13,58,102,.18);opacity:0;visibility:hidden;transform:translateY(12px);transition:all .3s var(--ease);z-index:200}
+    .nav-item.dropdown-open .dropdown-menu{opacity:1;visibility:visible;transform:translateY(0)}
+    .dropdown-menu a{display:flex;align-items:center;gap:.65rem;padding:.62rem .72rem;border-radius:9px;font-size:.82rem;font-weight:500;color:var(--ink);transition:all .2s}
+    .dropdown-menu a i{width:19px;color:#1d6fb8;flex-shrink:0}
+    .dropdown-menu a:hover{background:rgba(29,111,184,.1);color:#0d3a66;transform:translateX(4px)}
+    .nav-cta{background:linear-gradient(135deg,#ff6d00,#f4511e);color:#fff!important;box-shadow:0 4px 16px rgba(244,81,30,.35),inset 0 0 0 1.5px rgba(255,255,255,.4);position:relative;overflow:hidden;animation:ctaGlow 2.2s ease-in-out infinite}
+    .nav-cta:hover,.nav-cta.active{color:#fff!important;background:linear-gradient(135deg,#ff8f00,#ff5722);transform:translateY(-2px);box-shadow:0 8px 24px rgba(244,81,30,.5),inset 0 0 0 1.5px rgba(255,255,255,.6)}
+    .nav-cta::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.3) 50%,transparent 70%);transform:translateX(-120%);transition:transform .6s}
+    .nav-cta:hover::after{transform:translateX(120%)}
+    @keyframes ctaGlow{0%,100%{box-shadow:0 4px 16px rgba(244,81,30,.3),inset 0 0 0 1.5px rgba(255,255,255,.4)}50%{box-shadow:0 4px 24px rgba(255,109,0,.5),inset 0 0 0 1.5px rgba(255,255,255,.6)}}
+    .nav-toggle{display:none;flex-direction:column;gap:5px;background:none;border:0;padding:.5rem}
+    .nav-toggle span{width:24px;height:2.6px;border-radius:99px;background:#fff;transition:all .3s}
 
     /* ---------- SECTION COMMON ---------- */
     .section-label{display:inline-flex;align-items:center;gap:.5rem;font-size:.78rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);margin-bottom:.9rem}
@@ -427,13 +217,13 @@
       .dropdown-menu{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;border:0;background:rgba(29,111,184,.05);margin-top:.3rem;display:none;min-width:0}
       .nav-item.dropdown-open .dropdown-menu{display:block}
       .announce-bar .container{padding:0 1rem}
-      .nav-inner{padding:.7rem 1rem;border-radius:0 0 14px 14px}
+      .nav-inner{padding:.7rem 1rem;border-radius:0}
       #navbar.scrolled .nav-inner{padding:.55rem 1rem}
     }
     @media(max-width:600px){
       .section-py{padding:60px 0}
       .announce-bar .container{padding:0 .8rem}
-      .nav-inner{padding:.6rem .8rem;border-radius:0 0 12px 12px}
+      .nav-inner{padding:.6rem .8rem;border-radius:0}
       #navbar.scrolled .nav-inner{padding:.5rem .8rem}
     }
 
@@ -486,30 +276,62 @@
   <nav id="navbar">
     <div class="nav-inner">
       <a href="{{ route('home') }}" class="nav-brand">
-        <div class="nav-logo"><img src="{{ asset('images/logo_smkn2.png') }}" alt="Logo SMK Negeri 2 Mojokerto" /></div>
+        <div class="nav-logo"><img src="{{ asset('images/logo_smkn2.png') }}" alt="Logo SMK Negeri 2" /></div>
         <div class="nav-brand-text">
           <strong>SMK Negeri <em class="num-2">2</em></strong>
-          <span>Kota Mojokerto</span>
         </div>
       </a>
+
       <ul class="nav-menu" id="navMenu">
         <li class="nav-item"><a href="{{ route('home') }}" class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}">Beranda</a></li>
+
         <li class="nav-item">
-          <a href="#" class="nav-link" id="profilDropdown">Profil <i class="fas fa-chevron-down"></i></a>
+          <a href="#" class="nav-link dropdown-trigger">Profil <i class="fas fa-chevron-down"></i></a>
           <div class="dropdown-menu">
             <a href="#"><i class="fas fa-history"></i> Sejarah Sekolah</a>
             <a href="#"><i class="fas fa-eye"></i> Visi &amp; Misi</a>
             <a href="#"><i class="fas fa-sitemap"></i> Struktur Organisasi</a>
-            <a href="#"><i class="fas fa-certificate"></i> Akreditasi</a>
             <a href="#"><i class="fas fa-chalkboard-user"></i> Guru &amp; Staf</a>
             <a href="#"><i class="fas fa-road"></i> Roadmap Pengembangan</a>
           </div>
         </li>
-        <li class="nav-item"><a href="{{ route('program-keahlian') }}" class="nav-link {{ request()->routeIs('program-keahlian') ? 'active' : '' }}">Program Keahlian</a></li>
-        <li class="nav-item"><a href="{{ route('karya-siswa') }}" class="nav-link {{ request()->routeIs('karya-siswa') ? 'active' : '' }}">Karya Siswa</a></li>
+
+        <li class="nav-item">
+          <a href="#" class="nav-link dropdown-trigger">Program Keahlian <i class="fas fa-chevron-down"></i></a>
+          <div class="dropdown-menu">
+            <a href="#"><i class="fas fa-seedling"></i> Agriteknologi Pengolahan Hasil Pertanian</a>
+            <a href="#"><i class="fas fa-palette"></i> Desain Komunikasi Visual</a>
+            <a href="#"><i class="fas fa-utensils"></i> Kuliner</a>
+            <a href="#"><i class="fas fa-calculator"></i> Akuntansi dan Keuangan Lembaga</a>
+            <a href="#"><i class="fas fa-code"></i> Pengembangan Perangkat Lunak dan Gim</a>
+          </div>
+        </li>
+
+        <li class="nav-item"><a href="{{ route('ppdb') }}" class="nav-link {{ request()->routeIs('ppdb') ? 'active' : '' }}">PPDB</a></li>
+
+        <li class="nav-item">
+          <a href="#" class="nav-link dropdown-trigger">Siswa <i class="fas fa-chevron-down"></i></a>
+          <div class="dropdown-menu">
+            <a href="{{ route('karya-siswa') }}"><i class="fas fa-lightbulb"></i> Karya Siswa</a>
+            <a href="#"><i class="fas fa-trophy"></i> Prestasi Siswa</a>
+            <a href="#"><i class="fas fa-people-group"></i> Ekstrakurikuler</a>
+          </div>
+        </li>
+
+        <li class="nav-item"><a href="#berita" class="nav-link">Berita</a></li>
+
+        <li class="nav-item">
+          <a href="#" class="nav-link dropdown-trigger">Galeri <i class="fas fa-chevron-down"></i></a>
+          <div class="dropdown-menu">
+            <a href="#galeri"><i class="fas fa-school"></i> Kegiatan Sekolah</a>
+            <a href="#galeri"><i class="fas fa-medal"></i> Prestasi Sekolah</a>
+          </div>
+        </li>
+
         <li class="nav-item"><a href="{{ route('pkl-alumni') }}" class="nav-link {{ request()->routeIs('pkl-alumni') ? 'active' : '' }}">PKL &amp; Alumni</a></li>
         <li class="nav-item"><a href="{{ route('ppdb') }}" class="nav-link nav-cta">Daftar PPDB</a></li>
       </ul>
+
       <button class="nav-toggle" id="navToggle" aria-label="Menu">
         <span></span><span></span><span></span>
       </button>
@@ -560,15 +382,27 @@
       });
     }
 
-    // Dropdown toggle for Profile
-    const profilDropdown = document.getElementById('profilDropdown');
-    if (profilDropdown) {
-      profilDropdown.addEventListener('click', (e) => {
+    // Dropdown toggle untuk semua menu navbar
+    const dropdownTriggers = document.querySelectorAll('.dropdown-trigger');
+    dropdownTriggers.forEach(trigger => {
+      trigger.addEventListener('click', (e) => {
         e.preventDefault();
-        const parent = profilDropdown.closest('.nav-item');
+        const parent = trigger.closest('.nav-item');
+        document.querySelectorAll('.nav-item.dropdown-open').forEach(item => {
+          if (item !== parent) item.classList.remove('dropdown-open');
+        });
         parent.classList.toggle('dropdown-open');
       });
-    }
+    });
+
+    // Tutup dropdown saat klik di luar navbar
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('#navbar')) {
+        document.querySelectorAll('.nav-item.dropdown-open').forEach(item => {
+          item.classList.remove('dropdown-open');
+        });
+      }
+    });
 
     // Back to top
     const backToTop = document.getElementById('backToTop');
