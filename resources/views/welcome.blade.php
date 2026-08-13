@@ -32,7 +32,7 @@
     /* ---------- SECTION COMMON ---------- */
     .section-label{display:inline-flex;align-items:center;gap:.5rem;font-size:.78rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);margin-bottom:.9rem}
     .section-label::before{content:"";width:26px;height:3px;border-radius:99px;background:linear-gradient(90deg,var(--teal),var(--mint))}
-    .section-title{font-family:var(--font-display);font-size:clamp(1.7rem,3.4vw,2.5rem);font-weight:800;font-style:normal;text-transform:none;letter-spacing:.015em;color:var(--ink);line-height:1.2;margin-bottom:.8rem;text-shadow:0 2px 10px rgba(13,58,102,.06)}
+    .section-title{font-family:var(--font-display);font-size:clamp(1.50rem,2.99vw,2.20rem);font-weight:800;font-style:normal;text-transform:none;letter-spacing:.015em;color:var(--ink);line-height:1.2;margin-bottom:.8rem;text-shadow:0 2px 10px rgba(13,58,102,.06)}
     .section-title .accent{background:linear-gradient(135deg,#ffd54a 0%,#ffb300 45%,#ff7a00 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
     .section-title .gold{background:linear-gradient(135deg,#ffd54a 0%,#ffb300 45%,#ff7a00 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
 
@@ -144,14 +144,13 @@
     .flip-hint{text-align:center;font-size:.72rem;color:var(--text-muted);margin-top:.7rem;letter-spacing:.04em}
 
     /* ---------- JENDELA KEPALA SEKOLAH (corporate glass window) ---------- */
-    .window-section{position:relative;background:linear-gradient(140deg,#0b2d50,#114d84 55%,#114d84);color:#fff;padding:96px 0;overflow:hidden;transition:background .9s var(--ease)}
+    .window-section{position:relative;background:#f7f9fc;color:#0d2d50;padding:96px 0;overflow:hidden;transition:background .9s var(--ease)}
     .window-section::before{content:"";position:absolute;inset:0;background:
       repeating-linear-gradient(90deg,transparent 0 118px,rgba(255,255,255,.03) 118px 120px),
       repeating-linear-gradient(0deg,transparent 0 118px,rgba(255,255,255,.03) 118px 120px);pointer-events:none;z-index:1}
-    .window-bg{position:absolute;inset:0;z-index:0;background:url('{{ asset('images/hero-sekolah.jpg') }}') center/cover no-repeat;
-      filter:blur(9px) brightness(.55) saturate(.85);transform:scale(1.06);opacity:.5;pointer-events:none}
-    .window-section .section-label,.window-section .section-title{color:#fff}.window-section .section-title .accent{color:#FA5E11;background:none;-webkit-text-fill-color:#FA5E11}
-    .window-section .section-desc{color:rgba(255,255,255,.72)}
+    .window-bg{position:absolute;inset:0;z-index:0;background:none!important;opacity:0!important;pointer-events:none}
+    .window-section .section-label,.window-section .section-title{color:#0d2d50}.window-section .section-title .accent{color:#FFB300;background:none;-webkit-text-fill-color:#FFB300}
+    .window-section .section-desc{color:#66788c}
     .window-section .accent{background:linear-gradient(100deg,#ffd54a,#f9a825);-webkit-background-clip:text;background-clip:text;color:transparent}
 
     .window-stage{position:relative;max-width:1120px;margin:2.2rem auto 0;z-index:2}
@@ -167,7 +166,7 @@
 
     /* interior: isi sambutan (terlihat setelah jendela terbuka) */
     .window-scene{position:absolute;inset:0;z-index:2;overflow:hidden;transition:filter 1s var(--ease);
-      background:linear-gradient(135deg,#0d3a66 0%,#114d84 62%,#15599a 100%)}
+      background:transparent}
     .window-section.open .window-scene{filter:brightness(1.12)}
     .ws-inner{position:absolute;inset:0;display:grid;grid-template-columns:minmax(250px,34%) 1fr;gap:2.6rem;align-items:center;padding:3.2rem 3.6rem}
 
@@ -264,142 +263,161 @@
       .wk-label{font-size:.62rem;letter-spacing:.28em}
       .wk-btn{font-size:.72rem;letter-spacing:.16em;padding:.75rem 1.5rem}
     }
-    /* ---------- JURUSAN: FEATURED PROGRAM CAROUSEL ---------- */
-
-    /* ---------- ORNAMEN ORIGINAL JURUSAN — SIDE SAFE ZONE ---------- */
-    .jurusan-decor{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
-    .jurusan-decor svg{position:absolute;inset:0;width:100%;height:100%;display:block;overflow:hidden}
-    .jd-line{fill:none;stroke:#ff6500;stroke-width:2.1;stroke-linecap:round;opacity:.42}
-    .jd-line.soft{opacity:.18;stroke-width:1.3}
-    .jd-node{fill:#fff;stroke:#ff6500;stroke-width:2.1;opacity:.78}
-    .jd-orange{fill:#ff6500;opacity:.88}
-    .jd-navy{fill:#17204f;opacity:.9}
-    .jd-dot{fill:#17204f;opacity:.68}
-    /* Content-safe mask: decorations stay in the outer sides and corners. */
+        /* ============================================================
+       JURUSAN — FEATURED PROGRAMS (carousel 3 kartu — center active)
+       Tampilan: kiri kecil — tengah besar (active) — kanan kecil, loop infinite
+       ============================================================ */
+    .jurusan-section{position:relative;background:#ffffff;overflow:hidden}
+    .jurusan-section::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+      background:radial-gradient(ellipse 80% 55% at 50% 0%,rgba(255,170,60,.07),transparent 62%)}
     .jurusan-section>.container{position:relative;z-index:2}
     .jurusan-section .jurusan-carousel{position:relative;z-index:3}
-    @media(max-width:900px){
-      .jurusan-decor{opacity:.62}
-      .jurusan-decor .jd-line{stroke-width:1.7}
+
+    /* Dekor JURUSAN: bahasa visual geometris/teknologi — sengaja berbeda dari Profil */
+    .jurusan-decor{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+    .jurusan-decor svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+    .jd-grid{stroke:#0d3a66;stroke-width:1;opacity:.08}
+    .jd-diag{fill:none;stroke:#ff9f00;stroke-width:2.2;stroke-linecap:round;opacity:.24}
+    .jd-diag-soft{fill:none;stroke:#0d3a66;stroke-width:1.4;stroke-linecap:round;opacity:.12}
+    .jd-square{fill:none;stroke:#ff9f00;stroke-width:2;opacity:.42}
+    .jd-square-fill{fill:#ffb300;opacity:.13}
+    .jd-hex{fill:none;stroke:#0d3a66;stroke-width:2;opacity:.18}
+    .jd-node{fill:#ff9f00;opacity:.55}
+    .jd-plus{stroke:#0d3a66;stroke-width:2;stroke-linecap:round;opacity:.24}
+    .jd-corner{fill:none;stroke:#ff9f00;stroke-width:3;stroke-linecap:square;opacity:.32}
+    @media(max-width:640px){.jurusan-decor{opacity:.62}}
+
+    /* Header section: JURUSAN UNGGULAN — disamakan dengan judul Sambutan Sekolah */
+    .jurusan-section .section-label{
+      color:#ff9f00!important;
+      letter-spacing:.22em;
+      font-weight:800;
     }
-    @media(max-width:640px){
-      .jurusan-decor{opacity:.48}
-      .jurusan-decor .jd-line{stroke-width:1.4}
-      .jurusan-decor .jd-node{stroke-width:1.5}
+    .jurusan-section .section-title{
+      color:#102f51!important;
+      font-family:var(--font-display);
+      font-size:clamp(2.5rem,5vw,4.3rem)!important;
+      line-height:.98;
+      text-transform:uppercase;
+      letter-spacing:.015em;
+      margin-top:.35rem;
     }
-    .jurusan-section{position:relative;background:var(--bg);overflow:hidden}
-    .jurusan-section::before{
-      content:"";position:absolute;top:52%;left:50%;width:900px;height:560px;transform:translate(-50%,-50%);
-      background:radial-gradient(ellipse at center,rgba(40,169,225,.10),rgba(40,169,225,0) 65%);
-      pointer-events:none;z-index:0;
+    .jurusan-section .section-title .accent{
+      color:#ffb300!important;
+      background:none!important;
+      -webkit-text-fill-color:#ffb300!important;
     }
-    .jurusan-carousel{position:relative;z-index:1;margin-top:5.2rem}
-    .carousel-stage{
-      position:relative;height:600px;max-width:1240px;margin:0 auto;
-      display:flex;align-items:flex-end;justify-content:center;gap:2.4rem;
-      padding-top:110px; /* ruang untuk foto cutout yang menonjol ke atas */
-    }
-    .carousel-card{
-      position:relative;flex-shrink:0;width:300px;height:560px;order:4;
-      cursor:pointer;
-      transition:transform .6s var(--ease),opacity .6s var(--ease),width .6s var(--ease);
-      will-change:transform,opacity;
-      display:flex;flex-direction:column;align-items:center;
-    }
-    .carousel-card .card-inner{position:relative;width:100%;height:100%;display:flex;flex-direction:column;align-items:center}
-    /* --- states: previous — ACTIVE — next, terpisah jelas, tanpa saling menutupi --- */
-    .carousel-card.active{
-      width:390px;height:560px;transform:translateY(0) scale(1);opacity:1;z-index:3;order:2;
-    }
-    .carousel-card.prev,.carousel-card.next{
-      transform:translateY(34px) scale(.84);opacity:.72;z-index:2;
-    }
-    .carousel-card.prev{order:1}
-    .carousel-card.next{order:3}
-    .carousel-card.hidden{display:none}
-    .carousel-card.no-anim{transition:none!important}
-    /* --- foto siswa: cutout transparan berdiri bebas, TANPA kotak/border/shadow box --- */
-    .cc-photo{position:relative;width:100%;height:330px;flex-shrink:0;z-index:1;overflow:visible;display:flex;align-items:flex-end;justify-content:center}
-    /* Glow lembut di belakang foto — warna mengikuti jurusan aktif (var --jur-glow per data-index) */
-    .cc-photo::before{
-      content:"";position:absolute;left:50%;bottom:4px;transform:translateX(-50%);
-      width:86%;height:78%;border-radius:50%;
+    .jurusan-section .section-desc{display:none!important}
+
+    /* Stage: semua kartu absolute di tengah — posisi dikendalikan data-pos */
+    .jurusan-carousel{margin-top:4.4rem}
+    .carousel-stage{position:relative;width:100%;max-width:1180px;margin:0 auto;
+      min-height:660px;touch-action:pan-y;user-select:none;-webkit-user-select:none}
+    .carousel-card{position:absolute;left:50%;top:0;width:320px;margin-left:-160px;
+      cursor:pointer;will-change:transform,opacity;pointer-events:none;
+      transition:transform .6s cubic-bezier(.22,.61,.36,1),opacity .55s ease;
+      visibility:hidden;opacity:0}
+    .carousel-card .card-inner{position:relative;width:100%;display:flex;flex-direction:column;align-items:center}
+    /* Posisi melingkar: active di tengah (scale 1), prev/next di samping (kecil + turun), lainnya jauh */
+    .carousel-card[data-pos="active"]{transform:translateX(0) translateY(0) scale(1);
+      z-index:3;opacity:1;visibility:visible;pointer-events:auto}
+    .carousel-card[data-pos="next"]{transform:translateX(352px) translateY(30px) scale(.8);
+      z-index:2;opacity:.92;visibility:visible;pointer-events:auto}
+    .carousel-card[data-pos="prev"]{transform:translateX(-352px) translateY(30px) scale(.8);
+      z-index:2;opacity:.92;visibility:visible;pointer-events:auto}
+    .carousel-card[data-pos="far-r"]{transform:translateX(704px) translateY(30px) scale(.8);
+      z-index:1;opacity:0;visibility:hidden}
+    .carousel-card[data-pos="far-l"]{transform:translateX(-704px) translateY(30px) scale(.8);
+      z-index:1;opacity:0;visibility:hidden}
+
+    /* Foto cutout siswa + glow lingkaran warna tema */
+    .cc-photo{position:relative;width:100%;height:400px;flex-shrink:0;z-index:1;
+      display:flex;align-items:flex-end;justify-content:center;overflow:visible}
+    .cc-photo::before{content:"";position:absolute;left:50%;bottom:8px;transform:translateX(-50%);
+      width:92%;height:86%;border-radius:50%;
       background:radial-gradient(ellipse at center,var(--jur-glow) 0%,transparent 66%);
-      filter:blur(8px);
-      opacity:0;transition:opacity .6s var(--ease);
-      pointer-events:none;z-index:0;
-    }
-    .cc-photo img{
-      display:block;position:relative;z-index:1;
-      height:auto;width:auto;max-height:408px;max-width:100%;object-fit:contain;
-      filter:drop-shadow(0 18px 28px var(--jur-shadow));
-      transform:translateY(0) scale(1);
-      transition:transform .6s var(--ease),opacity .6s var(--ease),filter .6s var(--ease);
-    }
-    .carousel-card.active .cc-photo::before{opacity:1}
-    .carousel-card:not(.active) .cc-photo::before{opacity:0}
-    .carousel-card.active .cc-photo img{transform:translateY(0) scale(1);opacity:1}
-    .carousel-card:not(.active) .cc-photo img{transform:translateY(-8px) scale(.84);opacity:.72}
-    /* --- icon badge kecil (subtle) --- */
-    
-    /* --- teks di bawah foto (tanpa box) --- */
-    .cc-body{
-      position:relative;z-index:2;width:100%;padding:2.9rem 1rem .2rem;
-      display:flex;flex-direction:column;align-items:center;text-align:center;flex:1;
-    }
-    
-    .cc-abbr{position:relative;z-index:1;font-family:var(--font-display);font-size:1.55rem;color:#1796cb;letter-spacing:.02em;line-height:1.1}
-    /* Brand color per jurusan \u2014 diambil dari warna dominan logo masing-masing */
-    /* Glow/shadow foto ikut warna jurusan: --jur-glow untuk ::before, --jur-shadow untuk drop-shadow img */
-    .carousel-card[data-index="0"]{--jur-glow:rgba(232,168,0,.50);--jur-shadow:rgba(232,168,0,.30)}   /* APHP: kuning/emas logo */
-    .carousel-card[data-index="1"]{--jur-glow:rgba(216,10,134,.45);--jur-shadow:rgba(216,10,134,.26)}  /* DKV: pink logo */
-    .carousel-card[data-index="2"]{--jur-glow:rgba(254,141,3,.50);--jur-shadow:rgba(254,141,3,.28)}    /* KULINER: oranye logo */
-    .carousel-card[data-index="3"]{--jur-glow:rgba(4,151,71,.45);--jur-shadow:rgba(4,151,71,.26)}      /* LPS: hijau logo */
-    .carousel-card[data-index="4"]{--jur-glow:rgba(219,19,32,.50);--jur-shadow:rgba(219,19,32,.28)}    /* RPL: merah logo */
-    .carousel-card[data-index="0"] .cc-abbr{color:#E8A800}   /* APHP: kuning logo */
-    .carousel-card[data-index="1"] .cc-abbr{color:#D80A86}   /* DKV: pink logo */
-    .carousel-card[data-index="2"] .cc-abbr{color:#FE8D03}   /* KULINER: oranye logo */
-    .carousel-card[data-index="3"] .cc-abbr{color:#049747}   /* LPS: hijau logo */
-    .carousel-card[data-index="4"] .cc-abbr{color:#DB1320}   /* RPL: merah logo */
-    .cc-line{width:36px;height:3px;border-radius:99px;background:linear-gradient(90deg,var(--gold),var(--gold-dark));margin:.5rem 0 .55rem}
-    .cc-full{font-size:.85rem;font-weight:600;color:var(--text-muted);line-height:1.45}
-    .cc-desc{font-size:.8rem;color:var(--text-muted);line-height:1.55;margin-top:.45rem;max-width:340px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-    .cc-stats{display:flex;gap:.55rem;margin-top:.8rem;flex-wrap:wrap;justify-content:center}
-    .cc-stat{font-size:.68rem;font-weight:700;letter-spacing:.02em;padding:.32rem .65rem;border-radius:99px;background:#eef6fd;color:var(--teal-dark);border:1px solid #dcebf7}
-    .cc-stat.gold{background:#fff7e0;color:#a56b00;border-color:#f5e2ae}
-    .cc-cta{
-      display:inline-flex;align-items:center;gap:.45rem;margin-top:.85rem;font-size:.82rem;font-weight:800;
-      color:var(--teal);transition:all .3s var(--ease);text-decoration:none;
-    }
-    .cc-cta i{font-size:.74rem;transition:transform .3s var(--ease)}
-    .carousel-card.active:hover .cc-cta i{transform:translateX(4px)}
-    .cc-hint{font-size:.72rem;font-weight:600;color:var(--text-muted);margin-top:auto;padding-top:.7rem;letter-spacing:.04em;text-transform:uppercase}
-    .carousel-card:not(.active) .cc-body{opacity:.9}
-    .carousel-card.active .cc-body{opacity:1}
-    /* --- nav & indicator --- */
-    .carousel-nav{display:flex;align-items:center;justify-content:center;gap:1.3rem;margin-top:2.2rem}
-    .carousel-nav-btn{
-      width:46px;height:46px;border-radius:50%;border:1px solid var(--border);background:#fff;color:var(--teal);
-      display:flex;align-items:center;justify-content:center;font-size:1rem;cursor:pointer;
-      transition:all .3s var(--ease);box-shadow:var(--shadow);
-    }
-    .carousel-nav-btn:hover{background:var(--teal);color:#fff;border-color:var(--teal);transform:translateY(-2px)}
-    .carousel-indicator{font-family:var(--font-display);font-size:1.05rem;color:var(--ink);letter-spacing:.06em;min-width:72px;text-align:center}
-    .carousel-indicator em{font-style:normal;color:var(--gold-dark)}
-    /* --- nav arrows menyamping area foto (pola flipbook Buku Sejarah) --- */
+      filter:blur(10px);opacity:.95;pointer-events:none;z-index:0}
+    .cc-photo img{position:relative;z-index:1;display:block;width:auto;height:400px;
+      max-height:400px;max-width:100%;object-fit:contain;
+      filter:drop-shadow(0 16px 26px var(--jur-shadow))}
+
+    /* Brand color per jurusan */
+    .carousel-card[data-index="0"]{--jur-color:#E8A800;--jur-glow:rgba(232,168,0,.50);--jur-shadow:rgba(232,168,0,.30)} /* APHP kuning */
+    .carousel-card[data-index="1"]{--jur-color:#D80A86;--jur-glow:rgba(216,10,134,.45);--jur-shadow:rgba(216,10,134,.26)} /* DKV pink */
+    .carousel-card[data-index="2"]{--jur-color:#FE8D03;--jur-glow:rgba(254,141,3,.50);--jur-shadow:rgba(254,141,3,.28)} /* KULINER oranye */
+    .carousel-card[data-index="3"]{--jur-color:#049747;--jur-glow:rgba(4,151,71,.45);--jur-shadow:rgba(4,151,71,.26)} /* LPS hijau */
+    .carousel-card[data-index="4"]{--jur-color:#DB1320;--jur-glow:rgba(219,19,32,.50);--jur-shadow:rgba(219,19,32,.28)} /* RPL merah */
+
+    /* Box putih MENEMPEL LANGSUNG di bawah foto — isi: singkatan + nama lengkap + tombol */
+    .cc-body{position:relative;z-index:2;width:100%;background:#fff;
+      border-radius:0 0 18px 18px;padding:1.1rem 1.1rem 1.15rem;text-align:center;
+      border:1px solid rgba(23,32,79,.06);border-top:0;
+      box-shadow:0 20px 42px rgba(23,32,79,.15)}
+    .cc-abbr{font-family:var(--font-display);font-size:1.45rem;font-weight:800;
+      letter-spacing:.04em;color:var(--jur-color);line-height:1.1}
+    .cc-full{font-size:.98rem;font-weight:700;color:#26344f;line-height:1.4;margin-top:.22rem}
+    .cc-cta{display:flex;align-items:center;justify-content:center;gap:.45rem;margin-top:.85rem;
+      padding:.62rem .9rem;border-radius:12px;font-size:.78rem;font-weight:800;color:#fff;
+      background:var(--jur-color);text-decoration:none;letter-spacing:.02em;
+      box-shadow:0 8px 18px var(--jur-shadow);
+      transition:transform .3s var(--ease),gap .3s var(--ease),filter .3s var(--ease)}
+    .cc-cta:hover{transform:translateY(-2px);filter:brightness(1.08);gap:.6rem}
+    .cc-cta i{font-size:.68rem}
+
+    /* Nav: panah bulat navy di sisi stage + dots oranye di bawah */
+    .carousel-nav{display:flex;align-items:center;justify-content:center;gap:1.5rem;margin-top:2.4rem}
+    .carousel-nav-btn{width:52px;height:52px;border-radius:50%;border:0;cursor:pointer;color:#fff;
+      font-size:1.05rem;display:flex;align-items:center;justify-content:center;
+      background:linear-gradient(135deg,#17204f,#0d3a66);
+      box-shadow:0 10px 22px rgba(23,32,79,.32);transition:all .3s var(--ease)}
+    .carousel-nav-btn:hover{transform:translateY(-3px);
+      background:linear-gradient(135deg,#ff7a00,#ffb300);box-shadow:0 14px 30px rgba(255,122,0,.4)}
+    .carousel-dots{display:flex;align-items:center;gap:.55rem}
+    .carousel-dot{width:9px;height:9px;border-radius:99px;background:#d3dbea;border:0;padding:0;
+      cursor:pointer;transition:all .3s var(--ease)}
+    .carousel-dot.active{width:26px;background:linear-gradient(90deg,#ff7a00,#ffb300);
+      box-shadow:0 3px 9px rgba(255,122,0,.42)}
+    .carousel-dot:hover{background:#ffb300}
+
+    /* Panah menyamping area foto */
     .carousel-stage .carousel-nav-btn{position:absolute;top:38%;transform:translateY(-50%);z-index:8;margin:0}
-    .carousel-stage .carousel-nav-btn:hover{transform:translateY(-50%) translateY(-2px)}
-    .carousel-stage #carouselPrev{left:30px}
-    .carousel-stage #carouselNext{right:30px}
-    @media(max-width:1024px){
-      .carousel-stage .carousel-nav-btn{width:44px;height:44px;font-size:.95rem}
-      .carousel-stage #carouselPrev{left:14px}
-      .carousel-stage #carouselNext{right:14px}
+    .carousel-stage .carousel-nav-btn:hover{transform:translateY(-50%) translateY(-3px)}
+    .carousel-stage #carouselPrev{left:-4px}
+    .carousel-stage #carouselNext{right:-4px}
+
+    /* Responsive */
+    @media(max-width:1100px){
+      .carousel-card{width:280px;margin-left:-140px}
+      .carousel-card[data-pos="next"]{transform:translateX(308px) translateY(28px) scale(.8)}
+      .carousel-card[data-pos="prev"]{transform:translateX(-308px) translateY(28px) scale(.8)}
+      .carousel-card[data-pos="far-r"]{transform:translateX(616px) translateY(28px) scale(.8)}
+      .carousel-card[data-pos="far-l"]{transform:translateX(-616px) translateY(28px) scale(.8)}
+      .cc-photo{height:350px}
+      .cc-photo img{height:350px;max-height:350px}
+      .carousel-stage{min-height:600px}
+    }
+    @media(max-width:860px){
+      .carousel-stage{min-height:510px}
+      .carousel-stage .carousel-nav-btn{width:46px;height:46px;font-size:.95rem}
+      .carousel-stage #carouselPrev{left:0}
+      .carousel-stage #carouselNext{right:0}
     }
     @media(max-width:640px){
-      .carousel-stage .carousel-nav-btn{width:42px;height:42px;font-size:.9rem}
-      .carousel-stage #carouselPrev{left:6px}
-      .carousel-stage #carouselNext{right:6px}
+      .jurusan-carousel{margin-top:3.2rem}
+      .carousel-stage{min-height:430px}
+      .carousel-card{width:44vw;margin-left:-22vw}
+      .carousel-card[data-pos="next"]{transform:translateX(40vw) translateY(22px) scale(.78)}
+      .carousel-card[data-pos="prev"]{transform:translateX(-40vw) translateY(22px) scale(.78)}
+      .carousel-card[data-pos="far-r"]{transform:translateX(80vw) translateY(22px) scale(.78)}
+      .carousel-card[data-pos="far-l"]{transform:translateX(-80vw) translateY(22px) scale(.78)}
+      .cc-photo{height:38vw;min-height:170px}
+      .cc-photo img{height:38vw;min-height:170px;max-height:250px}
+      .cc-body{padding:.9rem .85rem .95rem}
+      .cc-abbr{font-size:1.18rem}
+      .cc-full{font-size:.84rem}
+      .cc-cta{font-size:.72rem;padding:.55rem .7rem;margin-top:.7rem}
+      .carousel-stage .carousel-nav-btn{top:34%;width:42px;height:42px;font-size:.88rem}
+      .carousel-nav{margin-top:1.8rem}
     }
 
     /* ---------- ROADMAP ---------- */
@@ -425,7 +443,7 @@
     .j2k8-compass .n{fill:#7fd4ff}
     .roadmap-preview-inner{position:relative;z-index:2}
     .roadmap-preview-header{max-width:820px;margin:0 auto .4rem;text-align:center}
-    .j2k8-label{display:inline-block;font-size:.66rem;font-weight:800;letter-spacing:.3em;text-transform:uppercase;color:#29b6f6;margin-bottom:.95rem}
+    .j2k8-label{display:inline-block;font-size:.66rem;font-weight:800;letter-spacing:.3em;text-transform:uppercase;color:#ffab00;margin-bottom:.95rem}
     .roadmap-preview-section .section-title{color:#fff;font-size:clamp(1.7rem,3.4vw,2.5rem);margin-bottom:.85rem}
     .roadmap-preview-section .accent{background:linear-gradient(100deg,#ffd54a,#f2b632);-webkit-background-clip:text;background-clip:text;color:transparent}
     .roadmap-preview-section .section-desc{color:rgba(255,255,255,.75);font-size:.95rem;line-height:1.75;max-width:640px;margin:0 auto}
@@ -580,43 +598,8 @@
       .footer-legal{justify-content:center}
       .hero-stat-label{font-size:.68rem}
       .window-section,.roadmap-preview-section{padding:72px 0}
-      .carousel-stage{height:560px;gap:1.4rem;padding-top:100px}
-      .carousel-card{width:270px;height:540px}
-      .carousel-card.active{width:360px;height:540px}
-      .cc-photo{height:320px}
-      .cc-photo img{max-height:398px}
     }
 
-    @media(max-width:900px){
-      .carousel-stage{height:540px;gap:1rem;padding-top:92px}
-      .carousel-card{width:270px;height:520px}
-      .carousel-card.active{width:340px;height:520px}
-      .carousel-card.next{display:none}
-      .cc-photo{height:310px}
-      .cc-photo img{max-height:388px}
-    }
-    @media(max-width:640px){
-      .carousel-stage{height:540px;padding-top:88px}
-      .carousel-card{width:300px;height:540px}
-      .carousel-card.prev,.carousel-card.next{display:none}
-      .carousel-card.active{width:300px;height:540px;transform:none}
-      .cc-photo{height:330px}
-      .cc-photo img{max-height:408px}
-    }
-    @media(max-width:400px){
-      .carousel-stage{height:520px;padding-top:84px}
-      .carousel-card,.carousel-card.active{width:280px;height:520px}
-      .cc-photo{height:320px}
-      .cc-photo img{max-height:398px}
-    }
-    @media(min-width:641px) and (max-width:1024px){
-      .carousel-stage{height:560px;gap:1.2rem;padding-top:100px}
-      .carousel-card{width:280px;height:540px}
-      .carousel-card.active{width:360px;height:540px}
-      .carousel-card.next{display:none}
-      .cc-photo{height:325px}
-      .cc-photo img{max-height:403px}
-    }
 
     @media(max-width:640px){
       .book3d{aspect-ratio:auto;min-height:420px}
@@ -658,7 +641,61 @@
       [data-reveal]{opacity:1;transform:none}
       html{scroll-behavior:auto}
     }
-  /* v35-spacing-final */</style>
+  /* v35-spacing-final */
+/* ---------- ROADMAP — COMPACT & RAPI ---------- */
+.roadmap-preview-section{
+  padding:82px 0 88px;
+}
+.roadmap-preview-header{
+  max-width:760px;
+  margin:0 auto .2rem;
+}
+.roadmap-preview-section .section-title{
+  font-size:clamp(1.9rem,3.6vw,3rem);
+  line-height:1.08;
+  margin-bottom:.65rem;
+}
+.roadmap-preview-section .section-desc{
+  font-size:.88rem;
+  line-height:1.6;
+}
+.j2k8-legend{margin-top:.65rem}
+.j2k8-stage{
+  min-height:940px;
+  margin-top:0;
+}
+.j2k8-card{
+  width:286px;
+  padding:1rem 1.05rem 1.08rem;
+  border-radius:16px;
+}
+.j2k8-goal-card{width:320px}
+.j2k8-name{font-size:.9rem}
+.j2k8-desc{font-size:.7rem;line-height:1.5}
+.j2k8-node{width:40px;height:40px}
+.j2k8-goal .j2k8-node{width:50px;height:50px}
+.j2k8-cp-year{font-size:.75rem}
+
+@media(max-width:900px){
+  .roadmap-preview-section{padding:68px 0 74px}
+  .j2k8-stage{min-height:900px}
+  .j2k8-card{width:260px}
+  .j2k8-goal-card{width:290px}
+}
+@media(max-width:640px){
+  .roadmap-preview-section{padding:58px 0 64px}
+  .roadmap-preview-section .section-title{
+    font-size:clamp(1.75rem,8vw,2.35rem);
+  }
+  .j2k8-stage{
+    min-height:0;
+    margin-top:.8rem;
+  }
+  .j2k8-card,.j2k8-goal-card{width:100%}
+  .j2k8-node{width:40px;height:40px}
+}
+
+</style>
 
 <!-- ============================================================
      HERO BARU SMKN 2 MOJOKERTO — CINEMATIC + INTRO VIDEO
@@ -839,7 +876,7 @@
   <div class="container">
     <div class="section-header center" data-reveal>
       <div class="section-label">Buku Sejarah SMKN 2</div>
-      <h2 class="section-title">Profil <span class="accent">Sekolah</span></h2>
+      <h2 class="section-title">PROFIL <span class="accent">SEKOLAH</span></h2>
     </div>
 
     <div class="flipbook" data-reveal style="margin-top:2.6rem">
@@ -1115,6 +1152,12 @@
 .window-knock{
   background:linear-gradient(135deg,rgba(5,27,48,.82),rgba(8,42,74,.76));
 }
+/* Closed state: only the principal photo and Open Message remain. */
+.window-knock .wk-label,
+.window-knock .wk-title{display:none!important}
+.window-knock{gap:1.15rem}
+.window-knock .wk-silhouette{margin-bottom:.2rem}
+.window-knock .wk-btn{margin-top:.15rem}
 .wk-label{color:#ffd45a}
 .wk-title{font-family:var(--font-display);font-size:clamp(2.2rem,4.5vw,4rem);line-height:.98;letter-spacing:.01em}
 .wk-btn{
@@ -1151,19 +1194,219 @@
   .ws-quote{font-size:.9rem}
   .wk-title{font-size:2.4rem}
 }
+
+  /* ===== ORNAMEN KHUSUS SAMBUTAN KEPALA SEKOLAH — desain baru, ringan ===== */
+  .principal-section-ornament{position:absolute;pointer-events:none;z-index:1;opacity:.78}
+
+  /* kiri: orbit arc + garis pendek, bukan pola lingkaran seperti section lain */
+  .principal-section-ornament-left{left:-72px;top:145px;width:210px;height:210px;border:1px solid rgba(13,58,102,.16);border-right-color:transparent;border-bottom-color:transparent;border-radius:50%;transform:rotate(-28deg)}
+  .principal-section-ornament-left::before{content:"";position:absolute;left:30px;top:30px;width:150px;height:150px;border:1px solid rgba(255,179,0,.48);border-left-color:transparent;border-bottom-color:transparent;border-radius:50%;transform:rotate(18deg)}
+  .principal-section-ornament-left::after{content:"";position:absolute;width:48px;height:6px;left:130px;top:27px;background:linear-gradient(90deg,#0d3a66 0 58%,#ffb300 58% 100%);transform:rotate(22deg);border-radius:10px}
+  .principal-section-ornament-left span{position:absolute;width:8px;height:8px;background:#FFB300;border-radius:50%;left:142px;top:104px}
+  .principal-section-ornament-left i{position:absolute;width:18px;height:1px;background:#0d3a66;left:45px;bottom:37px;transform:rotate(-35deg)}
+  .principal-section-ornament-left b{position:absolute;width:6px;height:6px;border:1px solid #FFB300;border-radius:50%;left:75px;bottom:28px}
+
+  /* kanan: tiga sweep line + aksen kotak kecil */
+  .principal-section-ornament-right{right:-45px;bottom:90px;width:220px;height:145px;transform:rotate(-7deg)}
+  .principal-section-ornament-right::before{content:"";position:absolute;right:0;bottom:12px;width:185px;height:95px;border-top:1px solid rgba(13,58,102,.18);border-radius:55% 45% 0 0;transform:rotate(-8deg)}
+  .principal-section-ornament-right::after{content:"";position:absolute;right:24px;bottom:30px;width:120px;height:65px;border-top:1px solid rgba(255,179,0,.55);border-radius:55% 45% 0 0;transform:rotate(-8deg)}
+  .principal-section-ornament-right span{position:absolute;width:12px;height:12px;border:1px solid #0d3a66;right:70px;top:23px;transform:rotate(45deg)}
+  .principal-section-ornament-right i{position:absolute;width:7px;height:7px;background:#FFB300;border-radius:50%;right:42px;bottom:68px}
+  .principal-section-ornament-right b{position:absolute;width:34px;height:1px;background:#0d3a66;right:106px;top:49px;transform:rotate(-18deg)}
+
+  /* Ornamen saat jendela terbuka: hanya aksen sudut agar isi tetap fokus */
+  .window-frame{position:relative;overflow:hidden}
+  .principal-open-ornament{position:absolute;z-index:1;pointer-events:none;opacity:.62}
+  .principal-open-ornament-left{left:24px;top:25px;width:82px;height:82px;border-left:1px solid rgba(255,179,0,.7);border-top:1px solid rgba(255,179,0,.7);border-radius:14px 0 0 0}
+  .principal-open-ornament-left::before{content:"";position:absolute;left:18px;top:18px;width:30px;height:1px;background:#0d3a66;transform:rotate(45deg)}
+  .principal-open-ornament-left span{position:absolute;width:7px;height:7px;border-radius:50%;background:#FFB300;left:38px;top:38px}
+  .principal-open-ornament-left i{position:absolute;width:16px;height:16px;border:1px solid rgba(13,58,102,.5);right:4px;bottom:4px;transform:rotate(45deg)}
+
+  .principal-open-ornament-right{right:24px;bottom:26px;width:88px;height:68px}
+  .principal-open-ornament-right::before{content:"";position:absolute;right:0;bottom:0;width:62px;height:1px;background:#FFB300;transform:rotate(-24deg)}
+  .principal-open-ornament-right::after{content:"";position:absolute;right:12px;bottom:12px;width:38px;height:38px;border:1px solid rgba(255,179,0,.45);border-left-color:transparent;border-radius:50%}
+  .principal-open-ornament-right span{position:absolute;width:6px;height:6px;background:#0d3a66;border-radius:50%;right:45px;bottom:31px}
+  .principal-open-ornament-right i{position:absolute;width:18px;height:1px;background:rgba(13,58,102,.55);right:55px;bottom:48px;transform:rotate(20deg)}
+
+  /* Open state: area luar tetap putih, box utama tetap navy */
+  .window-section.open{background:#f7f9fc!important;color:#0d2d50!important}
+  .window-section.open .window-bg{opacity:0!important}
+  .window-section.open::before{background:none!important}
+  .window-section.open::after{background:none!important}
+
+  /* State tertutup: cukup foto + Open Message */
+  .wk-title{display:none!important}
+  .wk-label{color:#FFB300}
+  .wk-silhouette{width:104px;height:104px}
+  .wk-btn{margin-top:.2rem}
+
+  @media(max-width:600px){
+    .principal-section-ornament-left{left:-105px;top:165px;transform:scale(.68) rotate(-28deg)}
+    .principal-section-ornament-right{right:-105px;bottom:75px;transform:scale(.68) rotate(-7deg)}
+    .principal-open-ornament-left{left:12px;top:14px;transform:scale(.72)}
+    .principal-open-ornament-right{right:12px;bottom:14px;transform:scale(.72)}
+  }
+
+/* ---------- ORNAMEN SAMBUTAN + JURUSAN: LEBIH TERLIHAT ---------- */
+
+/* Sambutan */
+.sambutan-section .sambutan-decor,
+.sambutan .sambutan-decor,
+.sambutan-decor{
+  opacity:1 !important;
+}
+.sambutan-decor .sd-ring{
+  stroke-width:3px !important;
+  opacity:.42 !important;
+}
+.sambutan-decor .sd-dot{
+  opacity:.58 !important;
+}
+.sambutan-decor .sd-line{
+  stroke-width:2.4px !important;
+  opacity:.46 !important;
+}
+.sambutan-decor .sd-line.soft{
+  opacity:.28 !important;
+}
+
+/* Jurusan */
+.jurusan-decor{
+  opacity:1 !important;
+}
+.jurusan-decor .jd-diag{
+  stroke-width:3px !important;
+  opacity:.48 !important;
+}
+.jurusan-decor .jd-diag-soft{
+  stroke-width:1.9px !important;
+  opacity:.24 !important;
+}
+.jurusan-decor .jd-square{
+  stroke-width:2.8px !important;
+  opacity:.68 !important;
+}
+.jurusan-decor .jd-square-fill{
+  opacity:.22 !important;
+}
+.jurusan-decor .jd-hex{
+  stroke-width:2.8px !important;
+  opacity:.34 !important;
+}
+.jurusan-decor .jd-node{
+  opacity:.82 !important;
+}
+.jurusan-decor .jd-plus{
+  stroke-width:2.8px !important;
+  opacity:.42 !important;
+}
+.jurusan-decor .jd-corner{
+  stroke-width:4px !important;
+  opacity:.52 !important;
+}
+.jurusan-decor .jd-grid{
+  stroke-width:1.5px !important;
+  opacity:.15 !important;
+}
+
+@media(max-width:640px){
+  .sambutan-decor,
+  .jurusan-decor{
+    opacity:1 !important;
+  }
+}
+
+
+/* ROADMAP — timeline modern + typography section */
+.roadmap-preview-section{padding:78px 0 88px}
+.roadmap-preview-section .section-title,
+.roadmap-preview-section h2{
+  font-size:clamp(2rem,4.2vw,4.2rem)!important;
+  line-height:1.08!important;
+  font-weight:800!important;
+  letter-spacing:-.035em!important;
+  margin:0 0 1rem!important;
+}
+.roadmap-preview-section .section-desc{display:none!important}
+.roadmap-preview-section .roadmap-preview-header{margin-bottom:1.5rem}
+.roadmap-preview-section .j2k8-stage{
+  position:relative;
+  min-height:760px;
+  margin-top:1.2rem;
+}
+.roadmap-preview-section .j2k8-card{
+  width:278px;
+  padding:1rem 1.05rem 1.08rem;
+  border-radius:17px;
+}
+.roadmap-preview-section .j2k8-name{font-size:.92rem;line-height:1.25}
+.roadmap-preview-section .j2k8-desc{font-size:.7rem;line-height:1.5}
+.roadmap-preview-section .j2k8-node{width:42px;height:42px}
+.roadmap-preview-section .j2k8-goal-card{width:305px}
+.roadmap-preview-section .j2k8-stage::before{
+  content:"";
+  position:absolute;
+  left:7%;right:7%;top:50%;height:2px;
+  background:linear-gradient(90deg,transparent,rgba(255,159,0,.45),rgba(13,58,102,.35),rgba(255,159,0,.45),transparent);
+  pointer-events:none;opacity:.7;
+}
+@media(max-width:900px){
+  .roadmap-preview-section{padding:64px 0 74px}
+  .roadmap-preview-section .j2k8-stage{min-height:700px}
+  .roadmap-preview-section .j2k8-card{width:250px}
+}
+@media(max-width:640px){
+  .roadmap-preview-section{padding:56px 0 64px}
+  .roadmap-preview-section .section-title,
+  .roadmap-preview-section h2{font-size:clamp(1.9rem,8vw,2.7rem)!important}
+  .roadmap-preview-section .j2k8-stage{min-height:0}
+  .roadmap-preview-section .j2k8-stage::before{display:none}
+  .roadmap-preview-section .j2k8-card,
+  .roadmap-preview-section .j2k8-goal-card{width:100%}
+}
+
+
+/* Label kecil Roadmap */
+.roadmap-preview-section .roadmap-eyebrow,
+.roadmap-preview-section .eyebrow,
+.roadmap-preview-section .section-kicker,
+.roadmap-preview-section .overline{
+  color:#f59e0b !important;
+}
+
+
+/* Paksa label kecil Roadmap menjadi kuning-oranye */
+.roadmap-preview-section :is(.roadmap-eyebrow,.eyebrow,.section-kicker,.overline){
+  color:#ffab00 !important;
+  -webkit-text-fill-color:#ffab00 !important;
+}
+.roadmap-preview-section [class*="eyebrow"],
+.roadmap-preview-section [class*="kicker"],
+.roadmap-preview-section [class*="overline"]{
+  color:#ffab00 !important;
+  -webkit-text-fill-color:#ffab00 !important;
+}
+
+
+.j2k8-label{color:#ffab00 !important;-webkit-text-fill-color:#ffab00 !important;}
 </style>
 
 <!-- ================= JENDELA KEPALA SEKOLAH (corporate glass window) ================= -->
 <section class="window-section" id="sambutan">
   <div class="window-bg"></div>
+  <div class="principal-section-ornament principal-section-ornament-left" aria-hidden="true"><span></span><i></i><b></b></div>
+  <div class="principal-section-ornament principal-section-ornament-right" aria-hidden="true"><span></span><i></i><b></b></div>
   <div class="container">
     <div class="section-header center" data-reveal style="margin-bottom:1.2rem">
-      <div class="section-label">Sambutan</div>
+      <div class="section-label">Pesan Pimpinan</div>
       <h2 class="section-title">Sambutan <span class="accent">Sekolah</span></h2>
     </div>
 
     <div class="window-stage" data-reveal>
       <div class="window-frame" id="kepsekWindow">
+        <!-- Ornamen minimal saat jendela terbuka -->
+        <div class="principal-open-ornament principal-open-ornament-left" aria-hidden="true"><span></span><i></i></div>
+        <div class="principal-open-ornament principal-open-ornament-right" aria-hidden="true"><span></span><i></i></div>
         <!-- INTERIOR: isi sambutan (terlihat setelah jendela terbuka) -->
         <div class="window-scene">
           <div class="ws-inner">
@@ -1213,137 +1456,111 @@
 </section>
 <!-- ================= JURUSAN SECTION ================= -->
 <section class="jurusan-section section-py" id="jurusan">
-  <!-- Ornamen dekoratif original: hanya sebagai background, tidak mengganggu carousel -->
+  <!-- Dekor: lingkaran oranye tipis (kiri atas), titik (kanan atas), garis lengkung (kanan bawah) -->
   <div class="jurusan-decor" aria-hidden="true">
     <svg viewBox="0 0 1440 760" preserveAspectRatio="none">
-      <!-- KIRI: hanya area luar, tidak masuk ke judul atau teks kartu -->
-      <path class="jd-line soft" d="M-35 155 C70 90 115 175 205 125"/>
-      <path class="jd-line" d="M-25 235 C65 180 110 265 195 215"/>
-      <circle class="jd-node" cx="195" cy="215" r="8"/>
-      <path class="jd-orange" d="M5 355 L62 322 L92 360 L34 395 Z"/>
-      <path class="jd-navy" d="M-5 475 L48 442 L82 483 L28 516 Z"/>
-      <path class="jd-line soft" d="M0 635 C70 585 105 675 178 625"/>
-      <circle class="jd-dot" cx="178" cy="625" r="4"/>
-      <path class="jd-orange" d="M55 685 L94 661 L120 691 L81 716 Z"/>
+      <!-- Pojok kiri: pola diagonal + kotak bertingkat -->
+      <path class="jd-diag" d="M-40 130 L180 -20 M-20 190 L240 -20 M20 250 L300 -20"/>
+      <rect class="jd-square" x="76" y="86" width="62" height="62" transform="rotate(45 107 117)"/>
+      <rect class="jd-square-fill" x="88" y="98" width="38" height="38" transform="rotate(45 107 117)"/>
+      <path class="jd-corner" d="M46 214 H82 M46 214 V250"/>
+      <circle class="jd-node" cx="46" cy="214" r="4"/>
 
-      <!-- KANAN: mirror asymetris, tetap di luar area konten -->
-      <path class="jd-line" d="M1230 112 C1310 55 1360 145 1480 72"/>
-      <path class="jd-line soft" d="M1260 190 C1330 135 1380 215 1485 155"/>
-      <circle class="jd-node" cx="1230" cy="112" r="9"/>
-      <path class="jd-orange" d="M1360 255 L1420 218 L1455 260 L1395 298 Z"/>
-      <path class="jd-navy" d="M1320 355 L1370 325 L1402 363 L1352 395 Z"/>
-      <path class="jd-line soft" d="M1260 465 C1330 410 1380 505 1480 445"/>
-      <circle class="jd-node" cx="1260" cy="465" r="7"/>
-      <path class="jd-orange" d="M1390 610 L1440 580 L1475 622 L1425 653 Z"/>
-      <path class="jd-navy" d="M1320 690 L1368 660 L1400 698 L1352 730 Z"/>
+      <!-- Kanan atas: rangkaian node kotak -->
+      <path class="jd-diag-soft" d="M1180 64 H1270 V118 H1362"/>
+      <path class="jd-diag-soft" d="M1218 30 V92 H1310 V150 H1410"/>
+      <rect class="jd-square" x="1260" y="108" width="18" height="18"/>
+      <rect class="jd-square" x="1352" y="140" width="18" height="18"/>
+      <circle class="jd-node" cx="1180" cy="64" r="4"/>
+      <circle class="jd-node" cx="1410" cy="150" r="4"/>
+
+      <!-- Tengah kiri: hexagon ringan -->
+      <polygon class="jd-hex" points="88,390 116,374 144,390 144,422 116,438 88,422"/>
+      <path class="jd-plus" d="M164 388 V414 M151 401 H177"/>
+      <path class="jd-diag-soft" d="M42 466 H170 L220 416"/>
+
+      <!-- Kanan bawah: komposisi geometris baru -->
+      <polygon class="jd-hex" points="1280,590 1320,567 1360,590 1360,636 1320,659 1280,636"/>
+      <rect class="jd-square-fill" x="1368" y="604" width="22" height="22"/>
+      <rect class="jd-square" x="1398" y="574" width="30" height="30"/>
+      <path class="jd-diag" d="M1190 716 L1270 636 L1340 706 M1230 760 L1310 680 L1380 750"/>
+      <path class="jd-corner" d="M1134 664 H1172 M1134 664 V702"/>
+      <circle class="jd-node" cx="1134" cy="664" r="4"/>
+
+      <!-- Grid diagonal sangat tipis sebagai tekstur, bukan ornamen utama -->
+      <path class="jd-grid" d="M0 560 L250 310 M0 600 L290 310 M1090 760 L1440 410 M1150 760 L1440 470"/>
     </svg>
   </div>
   <div class="container">
     <div class="section-header center" data-reveal>
       <div class="section-label">Program Keahlian</div>
-      <h2 class="section-title">5 <span class="accent">Jurusan</span></h2>
-      <p class="section-desc">Temukan bidang yang sesuai dengan minat dan bakatmu. Setiap jurusan dibimbing oleh guru profesional dan terhubung langsung dengan dunia industri.</p>
+      <h2 class="section-title">Jurusan <span class="accent">Unggulan</span></h2>
     </div>
 
     <div class="jurusan-carousel" data-reveal>
-      <div class="carousel-stage" id="carouselStage" role="region" aria-label="Carousel jurusan unggulan">
+            <div class="carousel-stage" id="carouselStage" role="region" aria-label="Carousel jurusan unggulan">
         <!-- 01 APHP -->
-        <article class="carousel-card hidden" data-index="0" data-pos="hidden" tabindex="0" role="button" aria-label="Jurusan APHP">
+        <article class="carousel-card" data-index="0" tabindex="0" role="button" aria-label="Jurusan APHP">
           <div class="card-inner">
             <div class="cc-photo p-aphp">
               <img src="{{ asset('images/aphp.png') }}" alt="Siswa APHP SMK Negeri 2 Mojokerto" loading="lazy">
             </div>
             <div class="cc-body">
               <div class="cc-abbr">APHP</div>
-              <div class="cc-line"></div>
               <div class="cc-full">Agribisnis Pengolahan Hasil Pertanian</div>
-              <div class="cc-desc">Mengolah hasil pertanian menjadi produk bernilai jual tinggi dengan standar industri pangan.</div>
-              <div class="cc-stats">
-                <span class="cc-stat">160 Siswa</span>
-                <span class="cc-stat gold">88% Terserap</span>
-              </div>
               <a href="career-roadmap.html" class="cc-cta">Lihat Jurusan <i class="fas fa-arrow-right"></i></a>
-              <div class="cc-hint">Klik untuk melihat</div>
             </div>
           </div>
         </article>
         <!-- 02 DKV -->
-        <article class="carousel-card hidden" data-index="1" data-pos="hidden" tabindex="0" role="button" aria-label="Jurusan DKV">
+        <article class="carousel-card" data-index="1" tabindex="0" role="button" aria-label="Jurusan DKV">
           <div class="card-inner">
             <div class="cc-photo p-dkv">
               <img src="{{ asset('images/dkv.png') }}" alt="Siswa DKV SMK Negeri 2 Mojokerto" loading="lazy">
             </div>
             <div class="cc-body">
               <div class="cc-abbr">DKV</div>
-              <div class="cc-line"></div>
               <div class="cc-full">Desain Komunikasi Visual</div>
-              <div class="cc-desc">Menciptakan karya desain, ilustrasi, dan media kreatif untuk kebutuhan industri kreatif.</div>
-              <div class="cc-stats">
-                <span class="cc-stat">150 Siswa</span>
-                <span class="cc-stat gold">90% Terserap</span>
-              </div>
               <a href="career-roadmap.html" class="cc-cta">Lihat Jurusan <i class="fas fa-arrow-right"></i></a>
-              <div class="cc-hint">Klik untuk melihat</div>
             </div>
           </div>
         </article>
         <!-- 03 KULINER -->
-        <article class="carousel-card hidden" data-index="2" data-pos="hidden" tabindex="0" role="button" aria-label="Jurusan Kuliner">
+        <article class="carousel-card" data-index="2" tabindex="0" role="button" aria-label="Jurusan Kuliner">
           <div class="card-inner">
             <div class="cc-photo p-kuliner">
               <img src="{{ asset('images/kuliner.png') }}" alt="Siswa Kuliner SMK Negeri 2 Mojokerto" loading="lazy">
             </div>
             <div class="cc-body">
               <div class="cc-abbr">KULINER</div>
-              <div class="cc-line"></div>
-              <div class="cc-full">Tata Boga &amp; Kuliner</div>
-              <div class="cc-desc">Menguasai seni memasak, pastry, dan manajemen usaha kuliner kelas profesional.</div>
-              <div class="cc-stats">
-                <span class="cc-stat">180 Siswa</span>
-                <span class="cc-stat gold">90% Terserap</span>
-              </div>
+              <div class="cc-full">Kuliner</div>
               <a href="career-roadmap.html" class="cc-cta">Lihat Jurusan <i class="fas fa-arrow-right"></i></a>
-              <div class="cc-hint">Klik untuk melihat</div>
             </div>
           </div>
         </article>
         <!-- 04 LPS -->
-        <article class="carousel-card hidden" data-index="3" data-pos="hidden" tabindex="0" role="button" aria-label="Jurusan LPS">
+        <article class="carousel-card" data-index="3" tabindex="0" role="button" aria-label="Jurusan LPS">
           <div class="card-inner">
             <div class="cc-photo p-lps">
               <img src="{{ asset('images/lps.png') }}" alt="Siswa LPS SMK Negeri 2 Mojokerto" loading="lazy">
             </div>
             <div class="cc-body">
               <div class="cc-abbr">LPS</div>
-              <div class="cc-line"></div>
               <div class="cc-full">Layanan Perbankan Syariah</div>
-              <div class="cc-desc">Mempersiapkan tenaga profesional perbankan syariah dan lembaga keuangan mikro.</div>
-              <div class="cc-stats">
-                <span class="cc-stat">140 Siswa</span>
-                <span class="cc-stat gold">92% Terserap</span>
-              </div>
               <a href="career-roadmap.html" class="cc-cta">Lihat Jurusan <i class="fas fa-arrow-right"></i></a>
-              <div class="cc-hint">Klik untuk melihat</div>
             </div>
           </div>
         </article>
         <!-- 05 RPL -->
-        <article class="carousel-card active" data-index="4" data-pos="active" tabindex="0" role="button" aria-label="Jurusan RPL">
+        <article class="carousel-card" data-index="4" tabindex="0" role="button" aria-label="Jurusan RPL">
           <div class="card-inner">
             <div class="cc-photo p-rpl">
               <img src="{{ asset('images/rpl.png') }}" alt="Siswa RPL SMK Negeri 2 Mojokerto" loading="lazy">
             </div>
             <div class="cc-body">
               <div class="cc-abbr">RPL</div>
-              <div class="cc-line"></div>
               <div class="cc-full">Rekayasa Perangkat Lunak</div>
-              <div class="cc-desc">Membangun aplikasi web, mobile, dan solusi digital dengan teknologi terkini.</div>
-              <div class="cc-stats">
-                <span class="cc-stat">240 Siswa</span>
-                <span class="cc-stat gold">95% Terserap</span>
-              </div>
               <a href="career-roadmap.html" class="cc-cta">Lihat Jurusan <i class="fas fa-arrow-right"></i></a>
-              <div class="cc-hint">Klik untuk melihat</div>
             </div>
           </div>
         </article>
@@ -1353,7 +1570,13 @@
       </div>
 
       <div class="carousel-nav">
-        <div class="carousel-indicator"><span id="carouselCur">05</span> / <em>05</em></div>
+        <div class="carousel-dots" id="carouselDots" aria-label="Pilih jurusan">
+          <button class="carousel-dot" data-index="0" aria-label="Jurusan 1"></button>
+          <button class="carousel-dot" data-index="1" aria-label="Jurusan 2"></button>
+          <button class="carousel-dot active" data-index="2" aria-label="Jurusan 3"></button>
+          <button class="carousel-dot" data-index="3" aria-label="Jurusan 4"></button>
+          <button class="carousel-dot" data-index="4" aria-label="Jurusan 5"></button>
+        </div>
       </div>
     </div>
   </div>
@@ -1388,10 +1611,9 @@
 
   <div class="container roadmap-preview-inner">
     <div class="roadmap-preview-header">
-      <span class="j2k8-label">Roadmap Pengembangan Sekolah</span>
-      <h2 class="section-title">Roadmap <span class="accent">Pengembangan</span> Sekolah</h2>
-      <p class="section-desc">Perjalanan transformasi SMK Negeri 2 Mojokerto menuju sekolah vokasi rujukan nasional.</p>
-      <div class="j2k8-legend">
+      <span class="j2k8-label">Perjalanan Sekolah</span>
+      <h2 class="section-title">ROADMAP <span class="accent">PENGEMBANGAN</span> SEKOLAH</h2>
+<div class="j2k8-legend">
         <span><span class="lg-ic lg-done"><i class="fas fa-check"></i></span> Selesai</span>
         <span><span class="lg-ic lg-running"><i class="fas fa-circle"></i></span> Berjalan</span>
         <span><span class="lg-ic lg-goal"><i class="fas fa-star"></i></span> Target</span>
@@ -1816,97 +2038,113 @@
     })();
 </script>
 <script>
-  // ---------- JURUSAN: FEATURED PROGRAM CAROUSEL (prev - active - next) ----------
+    // ---------- JURUSAN: CAROUSEL 3 KARTU (center active, loop infinite) ----------
   (function(){
     var stage = document.getElementById('carouselStage');
     if(!stage) return;
     var cards = Array.prototype.slice.call(stage.querySelectorAll('.carousel-card'));
     var prevBtn = document.getElementById('carouselPrev');
     var nextBtn = document.getElementById('carouselNext');
-    var curEl = document.getElementById('carouselCur');
+    var dotsWrap = document.getElementById('carouselDots');
+    var dots = dotsWrap ? Array.prototype.slice.call(dotsWrap.querySelectorAll('.carousel-dot')) : [];
     var total = cards.length;
-    var active = 4; // mulai dari RPL (index 4)
+    // Urutan tampilan kiri→kanan: RPL, KULINER, LPS, DKV, APHP (index data)
+    var ORDER = [4,2,3,1,0];
+    var activeIdx = ORDER.indexOf(2); // awal: KULINER di tengah (RPL kiri, LPS kanan)
     var locked = false;
+    var DUR = 620;
 
-    var DUR = 650; // durasi transisi (ms) — harus sinkron dengan CSS .6s
-
-    function computePos(i){
-      if(i === active) return 'active';
-      if(i === (active + 1) % total) return 'next';
-      if(i === (active - 1 + total) % total) return 'prev';
-      return 'hidden';
+    function posName(j){
+      var d = (ORDER.indexOf(j) - activeIdx + total) % total;
+      if(d === 0) return 'active';
+      if(d === 1) return 'next';
+      if(d === total - 1) return 'prev';
+      if(d === 2) return 'far-r';
+      return 'far-l';
     }
-
-    // Fase 1: kartu yang akan "pergi" dipindah ke hidden TERLEBIH DAHULU (tanpa transisi),
-    // supaya kartu baru tidak berpindah melintasi stage (penyebab slide patah-patah).
-    function setActive(idx){
-      active = (idx + total) % total;
-      cards.forEach(function(c, i){
-        var pos = computePos(i);
-        if(c.getAttribute('data-pos') === 'hidden' && pos !== 'hidden'){
-          c.classList.add('no-anim');
-          c.className = 'carousel-card hidden';
-          void c.offsetWidth; // reflow: terapkan kelas hidden tanpa transisi
-          c.classList.remove('no-anim');
-        } else if(c.getAttribute('data-pos') !== 'hidden' && pos === 'hidden'){
-          c.classList.add('no-anim');
-          c.className = 'carousel-card hidden';
-          void c.offsetWidth;
-          c.classList.remove('no-anim');
-        }
-        c.className = 'carousel-card ' + pos;
-        c.setAttribute('data-pos', pos);
+    function render(){
+      cards.forEach(function(c){
+        var j = parseInt(c.getAttribute('data-index'), 10);
+        var p = posName(j);
+        c.className = 'carousel-card' + (p === 'active' ? ' active' : '');
+        c.setAttribute('data-pos', p);
       });
-      if(curEl) curEl.textContent = ('0' + (active + 1)).slice(-2);
+      dots.forEach(function(d, i){ d.classList.toggle('active', ORDER[activeIdx] === i); });
+    }
+    function setActive(idx){
+      activeIdx = (idx + total) % total;
+      render();
     }
     function goNext(){
       if(locked) return;
       locked = true;
-      setActive(active + 1);
+      setActive(activeIdx + 1);
       setTimeout(function(){ locked = false; }, DUR);
     }
     function goPrev(){
       if(locked) return;
       locked = true;
-      setActive(active - 1);
+      setActive(activeIdx - 1);
       setTimeout(function(){ locked = false; }, DUR);
     }
 
+    var suppressClick = false;
     cards.forEach(function(c){
       c.addEventListener('click', function(e){
-        if(e.target.closest('a')) return; // biarkan link "Lihat Jurusan" bernavigasi
+        if(suppressClick){ suppressClick = false; return; }
+        if(e.target.closest('a')) return; // link "Lihat Jurusan" tetap bernavigasi
         var p = c.getAttribute('data-pos');
-        if(p === 'next') goNext();
-        else if(p === 'prev') goPrev();
+        if(p === 'prev') setActive(activeIdx - 1);
+        else if(p === 'next') setActive(activeIdx + 1);
       });
       c.addEventListener('keydown', function(e){
         if(e.key === 'Enter' || e.key === ' '){
           e.preventDefault();
           var p = c.getAttribute('data-pos');
-          if(p === 'next') goNext(); else if(p === 'prev') goPrev();
+          if(p === 'prev') setActive(activeIdx - 1);
+          else if(p === 'next') setActive(activeIdx + 1);
         }
       });
     });
     if(prevBtn) prevBtn.addEventListener('click', goPrev);
     if(nextBtn) nextBtn.addEventListener('click', goNext);
+    dots.forEach(function(d, i){
+      d.addEventListener('click', function(){
+        var j = ORDER.indexOf(i);
+        if(j > -1) setActive(j);
+      });
+    });
 
     document.addEventListener('keydown', function(e){
       var s = document.getElementById('sambutan');
-      if(s && s.classList.contains('open')) return; // jangan ganggu saat jendela terbuka
+      if(s && s.classList.contains('open')) return;
       if(e.key === 'ArrowLeft') goPrev();
       if(e.key === 'ArrowRight') goNext();
     });
 
-    var startX = 0;
-    stage.addEventListener('touchstart', function(e){ startX = e.touches[0].clientX; }, {passive:true});
-    stage.addEventListener('touchend', function(e){
-      var dx = e.changedTouches[0].clientX - startX;
+    // Swipe / drag — pointer events mencakup mouse & sentuhan
+    var startX = 0, startY = 0, swiping = false, moved = false;
+    stage.addEventListener('pointerdown', function(e){
+      swiping = true; moved = false;
+      startX = e.clientX; startY = e.clientY;
+    });
+    stage.addEventListener('pointermove', function(e){
+      if(!swiping) return;
+      var dx = e.clientX - startX, dy = e.clientY - startY;
+      if(Math.abs(dx) > 12 && Math.abs(dx) > Math.abs(dy)) moved = true;
+    });
+    stage.addEventListener('pointerup', function(e){
+      if(!swiping) return;
+      swiping = false;
+      if(!moved) return;
+      var dx = e.clientX - startX;
+      suppressClick = true;
       if(Math.abs(dx) > 40){ if(dx < 0) goNext(); else goPrev(); }
-    }, {passive:true});
+    });
+    stage.addEventListener('pointercancel', function(){ swiping = false; moved = false; });
 
-    window.setActive(active);
+    render();
   })();
-
 </script>
 
 @endpush
