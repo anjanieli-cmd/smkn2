@@ -60,6 +60,68 @@
   </div>
 </div>
 
+<!-- ================= BACK TO TOP ================= -->
+<button id="backToTop" aria-label="Kembali ke atas"><i class="fas fa-arrow-up"></i></button>
+
+<style>
+/* ============================================================
+   FLOATING TOOLS — FINAL: ONE THEME + ONE SIBOT
+   ============================================================ */
+.sibot-fab,.theme-widget{position:fixed!important;right:0!important;z-index:950!important;font-family:var(--font-body,'Plus Jakarta Sans',sans-serif)}
+
+/* SIBOT: kecil, sedikit masuk dari pojok, bentuk bubble chat */
+.sibot-fab{right:24px!important;bottom:72px!important;width:auto!important;height:auto!important}
+.sibot-toggle{position:relative!important;width:46px!important;height:38px!important;padding:0!important;border:0!important;border-radius:14px 14px 14px 5px!important;display:flex!important;align-items:center!important;justify-content:center!important;background:linear-gradient(135deg,#1d6fb8,#28a9e1)!important;color:#fff!important;box-shadow:0 8px 20px rgba(13,58,102,.28)!important;cursor:pointer!important;transition:transform .22s ease,box-shadow .22s ease!important}
+.sibot-toggle::after{content:"";position:absolute!important;left:-6px!important;bottom:3px!important;width:11px!important;height:11px!important;background:#1d6fb8!important;clip-path:polygon(100% 0,100% 100%,0 100%)!important}
+.sibot-toggle:hover{transform:translateY(-2px)!important;box-shadow:0 11px 25px rgba(13,58,102,.35)!important}
+.sibot-toggle i{font-size:16px!important;line-height:1!important}
+.sibot-badge{display:none!important}
+
+.sibot-window{position:absolute!important;right:0!important;bottom:50px!important;width:min(340px,calc(100vw - 32px))!important;max-height:min(540px,calc(100vh - 130px))!important;overflow:hidden!important;border-radius:18px!important;background:#fff!important;border:1px solid rgba(29,111,184,.18)!important;box-shadow:0 20px 55px rgba(13,58,102,.24)!important;opacity:0!important;visibility:hidden!important;transform:translateY(10px) scale(.97)!important;pointer-events:none!important;transition:.2s ease!important}
+.sibot-window.open{opacity:1!important;visibility:visible!important;transform:none!important;pointer-events:auto!important}
+.sibot-header{min-height:56px!important;padding:10px 12px!important;display:flex!important;align-items:center!important;gap:9px!important;background:linear-gradient(135deg,#0d3a66,#1d6fb8)!important;color:#fff!important}
+.sibot-avatar{width:31px!important;height:31px!important;flex:0 0 31px!important;border-radius:9px!important;display:flex!important;align-items:center!important;justify-content:center!important;background:rgba(255,255,255,.16)!important}
+.sibot-avatar i{font-size:13px!important}.sibot-name{font-size:13px!important;font-weight:700!important}.sibot-status{font-size:10px!important;opacity:.75}.sibot-close{margin-left:auto!important;width:28px!important;height:28px!important;border:0!important;background:transparent!important;color:#fff!important;cursor:pointer!important}
+.sibot-messages{padding:12px!important;max-height:260px!important;overflow-y:auto!important}.msg{display:flex!important;gap:7px!important;margin-bottom:10px!important}.msg-avatar{width:24px!important;height:24px!important;flex:0 0 24px!important;border-radius:8px!important;display:flex!important;align-items:center!important;justify-content:center!important;background:#eaf5fd!important;color:#1d6fb8!important;font-size:10px!important}.msg-bubble{max-width:250px!important;padding:8px 10px!important;border-radius:10px 10px 10px 3px!important;background:#f2f7fb!important;color:#33475c!important;font-size:11px!important;line-height:1.5!important}.msg-time{font-size:9px!important;color:#8a9aaa!important}.sibot-quick{display:flex!important;flex-wrap:wrap!important;gap:5px!important;padding:8px 12px!important;border-top:1px solid #edf2f6!important}.quick-btn{border:1px solid #dce8f2!important;background:#fff!important;color:#1d6fb8!important;border-radius:7px!important;padding:5px 7px!important;font-size:9px!important}.sibot-input-row{display:flex!important;gap:6px!important;padding:9px 12px 11px!important;border-top:1px solid #edf2f6!important}.sibot-input{min-width:0!important;flex:1!important;height:34px!important;border:1px solid #dce8f2!important;border-radius:9px!important;padding:0 9px!important;font-size:10px!important}.sibot-send{width:34px!important;height:34px!important;border:0!important;border-radius:9px!important;background:#1d6fb8!important;color:#fff!important}
+
+/* THEME: satu saja, menempel sisi kanan, berada DI ATAS SIBOT */
+.theme-widget{right:0!important;bottom:128px!important;width:42px!important;height:42px!important}
+.theme-toggle{width:42px!important;height:42px!important;padding:0!important;border:1px solid rgba(255,255,255,.16)!important;border-right:0!important;border-radius:10px 0 0 10px!important;display:flex!important;align-items:center!important;justify-content:center!important;background:#737d87!important;color:#fff!important;cursor:pointer!important;transition:background .2s ease,transform .2s ease!important}
+.theme-toggle:hover,.theme-widget:has(.theme-panel.open) .theme-toggle{background:#1d6fb8!important}
+.theme-toggle i{font-size:15px!important}
+.theme-panel{position:absolute!important;right:48px!important;bottom:0!important;width:235px!important;padding:12px!important;border-radius:13px!important;background:rgba(255,255,255,.98)!important;border:1px solid rgba(29,111,184,.18)!important;box-shadow:0 15px 40px rgba(13,58,102,.2)!important;opacity:0!important;visibility:hidden!important;transform:translateX(8px)!important;pointer-events:none!important;transition:.2s ease!important}
+.theme-panel.open{opacity:1!important;visibility:visible!important;transform:none!important;pointer-events:auto!important}
+.theme-panel-title{font-size:12px!important;font-weight:700!important;color:#17324d!important;margin-bottom:10px!important}.theme-panel-title i{color:#1d6fb8!important}.theme-section{margin-top:9px!important}.theme-label{display:block!important;font-size:9px!important;font-weight:700!important;color:#6b7b8a!important;margin-bottom:6px!important}.theme-btn-row{display:grid!important;grid-template-columns:repeat(3,1fr)!important;gap:4px!important}.theme-btn{border:1px solid #dce8f2!important;background:#fff!important;color:#526273!important;border-radius:7px!important;padding:6px 3px!important;font-size:9px!important}.theme-btn.active,.theme-btn:hover{background:#eaf5fd!important;color:#1d6fb8!important;border-color:#8fc8ea!important}.theme-colors{display:flex!important;gap:7px!important}.theme-color{width:20px!important;height:20px!important;padding:0!important;border:2px solid transparent!important;border-radius:50%!important}.theme-color.blue{background:#1d6fb8!important}.theme-color.purple{background:#7657c8!important}.theme-color.green{background:#2d9b78!important}.theme-color.rose{background:#d85b7a!important}.theme-color.gold{background:#d49a22!important}.theme-color.active{outline:2px solid #1d6fb8!important;outline-offset:2px!important}.theme-reset{width:100%!important;margin-top:11px!important;padding:7px!important;border:0!important;border-radius:7px!important;background:#f1f5f8!important;color:#526273!important;font-size:9px!important}
+
+@media(max-width:600px){
+  .sibot-fab{right:14px!important;bottom:72px!important}
+  .theme-widget{bottom:122px!important}
+  .sibot-window{width:min(320px,calc(100vw - 28px))!important;max-height:calc(100vh - 120px)!important}
+  .theme-panel{width:215px!important;right:46px!important}
+}
+</style>
+<!-- ================= CHATBOT SIBOT — FINAL ================= -->
+<div class="sibot-fab" aria-label="Buka SIBOT">
+  <div class="sibot-window" id="sibotWindow">
+    <div class="sibot-header"><div class="sibot-avatar"><i class="fas fa-robot"></i></div><div><div class="sibot-name">SIBOT</div><div class="sibot-status">Asisten SMKN 2</div></div><button type="button" class="sibot-close" onclick="toggleSibot()" aria-label="Tutup SIBOT"><i class="fas fa-times"></i></button></div>
+    <div class="sibot-messages" id="sibotMessages"><div class="msg msg-bot"><div class="msg-avatar"><i class="fas fa-robot"></i></div><div><div class="msg-bubble">Halo! Saya SIBOT. Ada yang bisa saya bantu tentang SMK Negeri 2 Mojokerto?</div><div class="msg-time">Sekarang</div></div></div></div>
+    <div class="sibot-quick"><button type="button" class="quick-btn" onclick="sendQuick('Jurusan apa saja?')"><i class="fas fa-graduation-cap"></i> Jurusan</button><button type="button" class="quick-btn" onclick="sendQuick('Info PPDB')"><i class="fas fa-file-signature"></i> PPDB</button><button type="button" class="quick-btn" onclick="sendQuick('Ekskul apa saja?')"><i class="fas fa-people-group"></i> Ekskul</button><button type="button" class="quick-btn" onclick="sendQuick('Jadwal sekolah')"><i class="fas fa-calendar-days"></i> Jadwal</button><button type="button" class="quick-btn" onclick="sendQuick('Info PKL')"><i class="fas fa-building"></i> PKL</button><button type="button" class="quick-btn" onclick="sendQuick('Kontak sekolah')"><i class="fas fa-phone"></i> Kontak</button></div>
+    <div class="sibot-input-row"><input type="text" class="sibot-input" id="sibotInput" placeholder="Ketik pertanyaan..." onkeydown="if(event.key==='Enter')sendMsg()"><button type="button" class="sibot-send" onclick="sendMsg()" aria-label="Kirim"><i class="fas fa-paper-plane"></i></button></div>
+  </div>
+  <button type="button" class="sibot-toggle" onclick="toggleSibot()" aria-label="Buka SIBOT"><i class="fas fa-robot" id="sibotIcon"></i></button>
+</div>
+
+<!-- ================= THEME WIDGET — FINAL ================= -->
+<div class="theme-widget">
+  <div class="theme-panel" id="themePanel" role="dialog" aria-label="Pengaturan tema">
+    <div class="theme-panel-title"><i class="fas fa-palette"></i> Tampilan Website</div>
+    <div class="theme-section"><span class="theme-label">Mode tampilan</span><div class="theme-btn-row"><button type="button" class="theme-btn" id="themeDefault" onclick="setThemeMode('default')"><i class="fas fa-desktop"></i> Default</button><button type="button" class="theme-btn" id="themeLight" onclick="setThemeMode('light')"><i class="fas fa-sun"></i> Light</button><button type="button" class="theme-btn" id="themeDark" onclick="setThemeMode('dark')"><i class="fas fa-moon"></i> Dark</button></div></div>
+    <div class="theme-section"><span class="theme-label">Warna tema</span><div class="theme-colors"><button type="button" class="theme-color blue" data-color="blue" onclick="setThemeColor('blue')" title="Biru"></button><button type="button" class="theme-color purple" data-color="purple" onclick="setThemeColor('purple')" title="Ungu"></button><button type="button" class="theme-color green" data-color="green" onclick="setThemeColor('green')" title="Hijau"></button><button type="button" class="theme-color rose" data-color="rose" onclick="setThemeColor('rose')" title="Rose"></button><button type="button" class="theme-color gold" data-color="gold" onclick="setThemeColor('gold')" title="Gold"></button></div></div>
+    <button type="button" class="theme-reset" onclick="resetTheme()"><i class="fas fa-rotate-left"></i> Kembalikan ke Default</button>
+  </div>
+  <button type="button" class="theme-toggle" id="themeToggle" onclick="toggleThemePanel()" aria-label="Pengaturan tema" title="Pengaturan tema"><i class="fas fa-palette" id="themeIcon"></i></button>
+</div>
+
 <!-- ================= JAVASCRIPT ================= -->
 <script>
   /* ---------- Preloader ---------- */
@@ -196,7 +258,14 @@
   var navbar = document.getElementById('navbar');
   window.addEventListener('scroll', function() {
     if(window.scrollY > 80) { navbar.classList.add('scrolled'); } else { navbar.classList.remove('scrolled'); }
+    var btt = document.getElementById('backToTop');
+    if(btt){ if(window.scrollY > 600) btt.classList.add('show'); else btt.classList.remove('show'); }
   }, { passive: true });
+
+  /* ---- Back to top ---- */
+  document.getElementById('backToTop').addEventListener('click', function(){
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
 
   /* ---- Cursor glow ---- */
   (function(){
@@ -419,6 +488,131 @@
   }
   updateCountdown(); setInterval(updateCountdown, 1000);
 
+  /* ---- SIBOT ---- */
+  var sibotResponses = {
+    'jurusan': 'SMK Negeri 2 Mojokerto memiliki 5 program keahlian:\n1. Rekayasa Perangkat Lunak (RPL)\n2. Desain Komunikasi Visual (DKV)\n3. Tata Boga / Kuliner\n4. Agribisnis Pengolahan Hasil Pertanian (APHP)\n5. Layanan Perbankan Syariah (LPS)',
+    'ppdb': 'PPDB 2025/2026 dibuka mulai 1 Juni 2025. Syarat: Ijazah/SKL SMP, rapor, KK, dan foto. Daftar online di portal PPDB kami. Kuota terbatas!',
+    'ekskul': 'Kami memiliki 12 ekstrakurikuler: Basket, Futsal, Bola Voli, Pencak Silat, Paskibra, Pramuka, PMR, Jurnalistik, Banjari, PENA (Seni Mini Teater), Tari, dan Pasus (Pasukan Khusus). Kami juga punya organisasi OSIS.',
+    'jadwal': 'Jam belajar: Senin–Jumat 07.00–15.30 WIB. Sabtu untuk kegiatan ekstrakurikuler. Kantor sekolah buka 07.00–16.00 WIB.',
+    'pkl': 'PKL (Praktik Kerja Lapangan) dilaksanakan di Kelas XI selama 3–6 bulan. Kami memiliki 80+ mitra industri terpercaya. Lihat detail di halaman Portal PKL.',
+    'kontak': 'Hubungi kami:\nAlamat: Jl. Raya Pulorejo, Kel. Pulorejo, Kec. Prajurit Kulon, Kota Mojokerto, Jawa Timur 61325\nTelepon: 0312 2292 9922\nEmail: info@smkn2mojokerto.sch.id\nJam operasional: Senin–Jumat 07.00–16.00 WIB',
+    'roadmap': 'Roadmap Pengembangan SMKN 2 Mojokerto mencakup target 2020–2028+, dari renovasi lab hingga menjadi SMK rujukan nasional. Lihat detail di halaman Roadmap Sekolah!',
+    'default': 'Terima kasih atas pertanyaannya. Untuk informasi lebih lanjut, silakan hubungi kami di 0312 2292 9922 atau kunjungi kantor kami. Saya hanya dapat menjawab pertanyaan seputar SMK Negeri 2 Mojokerto.'
+  };
+
+  function toggleSibot() {
+    var w = document.getElementById('sibotWindow');
+    var icon = document.getElementById('sibotIcon');
+    w.classList.toggle('open');
+    icon.className = w.classList.contains('open') ? 'fas fa-times' : 'fas fa-robot';
+    document.querySelector('.sibot-badge').style.display = w.classList.contains('open') ? 'none' : 'flex';
+  }
+
+  function addMsg(text, isUser) {
+    var msgs = document.getElementById('sibotMessages');
+    var div = document.createElement('div');
+    div.className = 'msg ' + (isUser ? 'msg-user' : 'msg-bot');
+    var now = new Date().toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit'});
+    div.innerHTML = '<div class="msg-avatar"><i class="fas fa-' + (isUser?'user':'robot') + '"></i></div><div><div class="msg-bubble">' + text.replace(/\n/g,'<br>') + '</div><div class="msg-time">' + now + '</div></div>';
+    msgs.appendChild(div);
+    msgs.scrollTop = msgs.scrollHeight;
+  }
+
+  function showTyping() {
+    var msgs = document.getElementById('sibotMessages');
+    var div = document.createElement('div');
+    div.className = 'msg msg-bot'; div.id = 'typingIndicator';
+    div.innerHTML = '<div class="msg-avatar"><i class="fas fa-robot"></i></div><div class="msg-bubble"><div class="typing-indicator"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div></div>';
+    msgs.appendChild(div); msgs.scrollTop = msgs.scrollHeight;
+  }
+
+  function removeTyping() { var t = document.getElementById('typingIndicator'); if(t) t.remove(); }
+
+  function getResponse(text) {
+    var t = text.toLowerCase();
+    if(t.indexOf('jurusan') !== -1 || t.indexOf('program') !== -1) return sibotResponses.jurusan;
+    if(t.indexOf('ppdb') !== -1 || t.indexOf('daftar') !== -1 || t.indexOf('pendaftaran') !== -1) return sibotResponses.ppdb;
+    if(t.indexOf('ekskul') !== -1 || t.indexOf('ekstrakurikuler') !== -1) return sibotResponses.ekskul;
+    if(t.indexOf('jadwal') !== -1 || t.indexOf('jam') !== -1) return sibotResponses.jadwal;
+    if(t.indexOf('pkl') !== -1 || t.indexOf('magang') !== -1 || t.indexOf('praktek') !== -1) return sibotResponses.pkl;
+    if(t.indexOf('kontak') !== -1 || t.indexOf('alamat') !== -1 || t.indexOf('telepon') !== -1 || t.indexOf('hubungi') !== -1) return sibotResponses.kontak;
+    if(t.indexOf('roadmap') !== -1 || t.indexOf('pengembangan') !== -1) return sibotResponses.roadmap;
+    return sibotResponses.default;
+  }
+
+  function sendMsg() {
+    var input = document.getElementById('sibotInput');
+    var text = input.value.trim();
+    if(!text) return;
+    addMsg(text, true); input.value = '';
+    showTyping();
+    setTimeout(function(){ removeTyping(); addMsg(getResponse(text), false); }, 1200);
+  }
+
+  function sendQuick(text) { addMsg(text, true); showTyping(); setTimeout(function(){ removeTyping(); addMsg(getResponse(text), false); }, 1000); }
+
+  /* ---- THEME SETTINGS ---- */
+  function toggleThemePanel() {
+    var panel = document.getElementById('themePanel');
+    if(panel) panel.classList.toggle('open');
+  }
+
+  function applyThemeState(mode, color, silent) {
+    document.body.classList.remove('theme-dark','theme-purple','theme-green','theme-rose','theme-gold');
+
+    if(mode === 'dark') {
+      document.body.classList.add('theme-dark');
+    }
+
+    if(color && color !== 'blue') {
+      document.body.classList.add('theme-' + color);
+    }
+
+    document.querySelectorAll('.theme-btn').forEach(function(btn){ btn.classList.remove('active'); });
+    var modeBtn = document.getElementById(
+      mode === 'dark' ? 'themeDark' : (mode === 'light' ? 'themeLight' : 'themeDefault')
+    );
+    if(modeBtn) modeBtn.classList.add('active');
+
+    document.querySelectorAll('.theme-color').forEach(function(btn){
+      btn.classList.toggle('active', btn.dataset.color === (color || 'blue'));
+    });
+
+    if(!silent) {
+      localStorage.setItem('smkn2Theme', JSON.stringify({
+        mode: mode || 'default',
+        color: color || 'blue'
+      }));
+    }
+  }
+
+  function setThemeMode(mode) {
+    var saved = JSON.parse(localStorage.getItem('smkn2Theme') || '{"color":"blue"}');
+    applyThemeState(mode, saved.color || 'blue', false);
+  }
+
+  function setThemeColor(color) {
+    var saved = JSON.parse(localStorage.getItem('smkn2Theme') || '{"mode":"default"}');
+    applyThemeState(saved.mode || 'default', color, false);
+  }
+
+  function resetTheme() {
+    localStorage.removeItem('smkn2Theme');
+    applyThemeState('default', 'blue', true);
+  }
+
+  (function loadThemeSettings(){
+    var saved = JSON.parse(localStorage.getItem('smkn2Theme') || '{"mode":"default","color":"blue"}');
+    applyThemeState(saved.mode || 'default', saved.color || 'blue', true);
+  })();
+
+  document.addEventListener('click', function(e) {
+    var widget = document.querySelector('.theme-widget');
+    var panel = document.getElementById('themePanel');
+    if(widget && panel && !widget.contains(e.target)) {
+      panel.classList.remove('open');
+    }
+  });
 
   /* Tutup mobile nav saat klik di luar */
   document.addEventListener('click', function(e) {
