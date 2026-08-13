@@ -826,7 +826,6 @@
       <p class="hd-desc">Mewujudkan pendidikan vokasi yang unggul, berkarakter, dan siap menghadapi masa depan.</p>
       <div class="hd-actions">
         <a href="#profil" class="hd-btn hd-btn-primary">Jelajahi Sekolah <i class="fa-solid fa-arrow-right"></i></a>
-        <a href="#profil" class="hd-btn hd-btn-secondary"><i class="fa-regular fa-circle-play"></i> Virtual Tour</a>
       </div>
     </div>
   </div>
@@ -1389,6 +1388,176 @@
 
 
 .j2k8-label{color:#ffab00 !important;-webkit-text-fill-color:#ffab00 !important;}
+
+/* ===== PRESTASI SISWA / YEARBOOK EDITORIAL ===== */
+.prestasi-siswa-section{position:relative;overflow:hidden;padding:92px 6%;background:#f7f9fc;color:#12375d}
+.prestasi-inner,.tour-inner{max-width:1180px;margin:auto;position:relative;z-index:2}
+.prestasi-heading,.tour-heading{text-align:center;margin-bottom:38px}
+.prestasi-label,.tour-label{color:#ffab00;font-size:.68rem;font-weight:800;letter-spacing:.28em;text-transform:uppercase;margin-bottom:10px}
+.prestasi-heading h2,.tour-heading h2{margin:0;font-size:clamp(2rem,4.2vw,4.2rem);line-height:1.08;font-weight:800;letter-spacing:-.035em}
+.prestasi-heading p{max-width:620px;margin:15px auto 0;color:#718096;font-size:.78rem;line-height:1.7}
+.prestasi-rule,.tour-rule{width:52px;height:3px;background:#ffab00;margin:16px auto 0;border-radius:10px}
+
+/* Ornamen unik: koordinat, frame, garis editorial */
+.prestasi-decor{position:absolute;inset:0;pointer-events:none}
+.pdec{position:absolute;display:block}
+.pdec-1{width:125px;height:125px;border:2px solid #ffab00;left:-55px;top:120px;transform:rotate(45deg);opacity:.34}
+.pdec-2{width:75px;height:75px;border:2px solid #12375d;right:7%;top:75px;transform:rotate(45deg);opacity:.15}
+.pdec-3{width:8px;height:8px;border-radius:50%;background:#ffab00;right:15%;bottom:22%;box-shadow:24px -16px 0 #12375d,50px 6px 0 #ffab00;opacity:.6}
+.pdec-4{width:45px;height:45px;border-left:3px solid #ffab00;border-bottom:3px solid #ffab00;right:-4px;bottom:90px;opacity:.48}
+.pdec-line{position:absolute;height:1px;background:#12375d;opacity:.1;transform:rotate(-28deg)}
+.pdec-line-1{width:310px;left:-40px;bottom:90px}.pdec-line-2{width:250px;right:-45px;top:180px}
+
+.achievement-editorial{position:relative;max-width:1030px;min-height:610px;margin:auto}
+.achievement-main{position:absolute;left:5%;top:12px;width:59%;height:425px;background:#fff;padding:8px;border-radius:20px;box-shadow:0 20px 48px rgba(18,55,93,.14);transform:rotate(-1.5deg);z-index:2}
+.achievement-photo{position:relative;overflow:hidden;background:linear-gradient(135deg,#12375d,#2c6a94)}
+.photo-placeholder{height:100%;display:grid;place-items:center;text-align:center;background:linear-gradient(135deg,#0d3557,#1e587e);color:#fff}
+.photo-placeholder:before{content:"";position:absolute;inset:9%;border:1px dashed rgba(255,255,255,.3)}
+.photo-placeholder span{position:relative;font-size:.64rem;font-weight:800;letter-spacing:.2em}
+.photo-placeholder small{position:absolute;bottom:18px;left:20px;right:20px;color:rgba(255,255,255,.55);font-size:.57rem}
+.achievement-caption{position:absolute;left:23px;right:23px;bottom:20px;background:rgba(9,37,62,.91);padding:15px 17px;border-radius:12px;color:#fff}
+.achievement-badge{color:#12375d;background:#ffab00;border-radius:4px;padding:4px 7px;font-size:.52rem;font-weight:900;letter-spacing:.12em}
+.achievement-year{font-size:.58rem;margin-left:9px;color:rgba(255,255,255,.55);letter-spacing:.12em}
+.achievement-caption h3{margin:7px 0 3px;font-size:1.18rem}.achievement-caption p{margin:0;font-size:.67rem;color:rgba(255,255,255,.65)}
+.achievement-side{position:absolute;right:4%;top:0;width:30%;z-index:3}
+.achievement-small{background:#fff;padding:7px;border-radius:16px;box-shadow:0 14px 30px rgba(18,55,93,.13);margin-bottom:20px}
+.achievement-small:nth-child(2){transform:rotate(-3deg);margin-left:-28px}
+.achievement-small:first-child{transform:rotate(3deg)}
+.achievement-small .achievement-photo{height:165px}
+.small-caption{padding:9px 7px 6px;display:flex;flex-direction:column;gap:3px}.small-caption b{font-size:.72rem}.small-caption span{font-size:.55rem;color:#ffab00;font-weight:800;letter-spacing:.1em}
+.achievement-stats{position:absolute;left:17%;bottom:20px;display:flex;gap:10px;z-index:5;transform:rotate(2deg)}
+.achievement-stats div{width:115px;height:100px;background:#ffab00;color:#12375d;border-radius:12px;padding:13px;display:flex;flex-direction:column;justify-content:center;box-shadow:0 12px 26px rgba(18,55,93,.13)}
+.achievement-stats strong{font-size:2rem;line-height:1}.achievement-stats strong span{font-size:1rem}.achievement-stats small{font-size:.52rem;font-weight:900;letter-spacing:.13em;margin-top:6px}
+
+    /* ===== PRESTASI SLIDER — clean seperti Jurusan, tapi khusus foto prestasi ===== */
+.prestasi-siswa-section{position:relative;overflow:hidden;padding:92px 6%;background:#f7f9fc;color:#12375d}
+.prestasi-inner{max-width:1120px;margin:auto;position:relative;z-index:2}
+.prestasi-heading{text-align:center;margin-bottom:34px}
+.prestasi-label{color:#ffab00;font-size:.68rem;font-weight:800;letter-spacing:.28em;text-transform:uppercase;margin-bottom:10px}
+.prestasi-heading h2{margin:0;font-size:clamp(2rem,4.2vw,4.2rem);line-height:1.08;font-weight:800;letter-spacing:-.035em}
+.prestasi-rule{width:52px;height:3px;background:#ffab00;margin:16px auto 0;border-radius:10px}
+
+/* Ornamen berbeda dari Jurusan */
+.prestasi-decor{position:absolute;inset:0;pointer-events:none}
+.pdec{position:absolute}
+.pdec-1{width:120px;height:120px;border:2px solid #ffab00;left:-58px;top:120px;transform:rotate(45deg);opacity:.28}
+.pdec-2{width:65px;height:65px;border:2px solid #12375d;right:7%;top:90px;transform:rotate(45deg);opacity:.14}
+.pdec-3{width:8px;height:8px;background:#ffab00;border-radius:50%;right:13%;bottom:20%;box-shadow:24px 0 #12375d,48px 0 #ffab00;opacity:.5}
+.pdec-line{position:absolute;width:270px;height:1px;background:#12375d;opacity:.09;transform:rotate(-24deg);right:-45px;bottom:100px}
+
+/* Slider */
+.prestasi-slider-wrap{position:relative;max-width:920px;margin:auto;padding:0 58px 42px}
+.prestasi-slider{position:relative;min-height:445px;overflow:hidden;border-radius:24px}
+.prestasi-slide{position:absolute;inset:0;display:grid;grid-template-columns:1.35fr .8fr;background:#fff;border:1px solid rgba(18,55,93,.09);border-radius:24px;box-shadow:0 18px 42px rgba(18,55,93,.09);opacity:0;transform:translateX(35px);pointer-events:none;transition:opacity .35s ease,transform .35s ease}
+.prestasi-slide.is-active{opacity:1;transform:translateX(0);pointer-events:auto}
+.prestasi-photo{position:relative;margin:12px;border-radius:16px;overflow:hidden;display:grid;place-items:center;background:linear-gradient(135deg,#12375d,#2c6a94);color:#fff}
+.prestasi-photo:before{content:"";position:absolute;inset:10%;border:1px dashed rgba(255,255,255,.3)}
+.prestasi-photo span{font-size:.68rem;font-weight:800;letter-spacing:.2em;position:relative}
+.prestasi-photo small{position:absolute;right:17px;top:15px;font-size:.65rem;color:#ffab00;font-weight:800}
+.prestasi-slide-info{padding:45px 35px;display:flex;flex-direction:column;justify-content:center}
+.prestasi-badge{align-self:flex-start;background:#ffab00;color:#12375d;border-radius:4px;padding:5px 8px;font-size:.53rem;font-weight:900;letter-spacing:.12em}
+.prestasi-year{font-size:.62rem;color:#8a98a8;font-weight:700;letter-spacing:.12em;margin-top:12px}
+.prestasi-slide-info h3{font-size:1.8rem;line-height:1.1;margin:7px 0 8px}
+.prestasi-slide-info p{font-size:.76rem;line-height:1.6;color:#718096;margin:0}
+.prestasi-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:5;width:44px;height:44px;border-radius:50%;border:1px solid rgba(18,55,93,.13);background:#fff;color:#12375d;font-size:30px;line-height:1;cursor:pointer;box-shadow:0 8px 20px rgba(18,55,93,.1);transition:.2s}
+.prestasi-arrow:hover{background:#ffab00;border-color:#ffab00}
+.prestasi-prev{left:0}.prestasi-next{right:0}
+.prestasi-dots{position:absolute;bottom:5px;left:0;right:0;display:flex;justify-content:center;gap:7px}
+.prestasi-dots button{width:25px;height:4px;border:0;border-radius:10px;background:#cbd5df;cursor:pointer;padding:0}
+.prestasi-dots button.active{background:#ffab00;width:38px}
+
+/* Responsive */
+@media(max-width:700px){
+  .prestasi-slider-wrap{padding:0 42px 42px}
+  .prestasi-slider{min-height:520px}
+  .prestasi-slide{grid-template-columns:1fr;grid-template-rows:290px 1fr}
+  .prestasi-photo{margin:10px 10px 0}
+  .prestasi-slide-info{padding:24px 25px}
+  .prestasi-slide-info h3{font-size:1.45rem}
+  .prestasi-arrow{width:38px;height:38px;font-size:25px}
+}
+
+
+    /* ===== PRESTASI — TYPOGRAPHY + ORNAMEN ===== */
+    .prestasi-siswa-section{position:relative;isolation:isolate}
+    .prestasi-siswa-section>.prestasi-decor{z-index:0}
+    .prestasi-siswa-section>.prestasi-inner{z-index:2}
+    .prestasi-heading.section-header{margin-bottom:2.4rem}
+    .prestasi-heading .section-label{color:#ffb300;letter-spacing:.22em;font-weight:800}
+    .prestasi-heading .section-title{
+      font-family:var(--font-display);
+      font-size:clamp(2.35rem,5vw,4.2rem);
+      line-height:1.02;
+      font-weight:800;
+      font-style:normal;
+      text-transform:uppercase;
+      letter-spacing:.01em;
+      color:#102f51;
+      margin:.35rem 0 0;
+      text-shadow:0 2px 10px rgba(13,58,102,.06);
+    }
+    .prestasi-heading .section-title .accent{
+      color:#ffb300!important;background:none!important;-webkit-text-fill-color:#ffb300!important;
+    }
+
+    /* Ornamen lebih rame tetapi tetap clean */
+    .prestasi-decor{opacity:1}
+    .prestasi-decor::before,.prestasi-decor::after{content:"";position:absolute;pointer-events:none}
+    .prestasi-decor::before{
+      width:250px;height:250px;left:-105px;top:55px;
+      border:1px solid rgba(13,58,102,.16);border-radius:50%;
+      box-shadow:0 0 0 22px rgba(255,179,0,.045),0 0 0 48px rgba(13,58,102,.035);
+    }
+    .prestasi-decor::after{
+      width:180px;height:180px;right:-70px;bottom:65px;
+      border:1px solid rgba(255,179,0,.30);border-radius:50%;
+      box-shadow:0 0 0 18px rgba(255,179,0,.035),0 0 0 42px rgba(13,58,102,.03);
+    }
+    .prestasi-decor .pdec-1{
+      width:115px;height:115px;left:3%;top:34%;
+      border:1px solid rgba(255,179,0,.42);transform:rotate(45deg);opacity:.65;
+    }
+    .prestasi-decor .pdec-2{
+      width:72px;height:72px;right:8%;top:22%;
+      border:1px solid rgba(13,58,102,.25);transform:rotate(45deg);opacity:.7;
+    }
+    .prestasi-decor .pdec-3{
+      width:9px;height:9px;right:17%;bottom:23%;background:#ffb300;border-radius:50%;
+      box-shadow:25px -15px 0 #12375d,50px 3px 0 #ffb300,74px -18px 0 rgba(13,58,102,.42);
+      opacity:.72;
+    }
+    .prestasi-decor .pdec-line-1{
+      width:330px;left:-90px;bottom:85px;height:1px;
+      background:linear-gradient(90deg,transparent,#12375d,transparent);transform:rotate(-24deg);opacity:.16;
+    }
+    .prestasi-decor .pdec-line-2{
+      width:300px;right:-95px;top:145px;height:1px;
+      background:linear-gradient(90deg,transparent,#12375d,transparent);transform:rotate(-24deg);opacity:.13;
+    }
+    .prestasi-decor .pdec-4{
+      display:block;position:absolute;right:3%;top:48%;width:38px;height:38px;
+      border-top:2px solid #ffb300;border-right:2px solid #ffb300;opacity:.5;
+    }
+    .prestasi-decor .pdec-4::before,.prestasi-decor .pdec-4::after{
+      content:"";position:absolute;width:5px;height:5px;border-radius:50%;background:#12375d;
+    }
+    .prestasi-decor .pdec-4::before{right:-3px;top:-3px}
+    .prestasi-decor .pdec-4::after{left:-3px;bottom:-3px;background:#ffb300}
+    .prestasi-decor .pdec-5{
+      position:absolute;left:12%;top:15%;width:6px;height:6px;border-radius:50%;
+      background:#12375d;box-shadow:18px 10px 0 #ffb300,36px -4px 0 rgba(13,58,102,.45);opacity:.6;
+    }
+    .prestasi-decor .pdec-6{
+      position:absolute;right:19%;top:9%;width:52px;height:1px;background:#ffb300;
+      transform:rotate(28deg);opacity:.48;box-shadow:12px 8px 0 rgba(13,58,102,.45);
+    }
+    @media(max-width:640px){
+      .prestasi-heading .section-title{font-size:clamp(2rem,10vw,3rem)}
+      .prestasi-decor::before{left:-155px}
+      .prestasi-decor::after{right:-125px}
+      .prestasi-decor .pdec-5,.prestasi-decor .pdec-6{opacity:.35}
+    }
+
 </style>
 
 <!-- ================= JENDELA KEPALA SEKOLAH (corporate glass window) ================= -->
@@ -1728,6 +1897,77 @@
     </div>
   </div>
 </section>
+
+<section class="prestasi-siswa-section" id="prestasi">
+  <div class="prestasi-decor" aria-hidden="true">
+    <span class="pdec pdec-1"></span><span class="pdec pdec-2"></span>
+    <span class="pdec pdec-3"></span><span class="pdec pdec-4"></span><span class="pdec pdec-5"></span><span class="pdec pdec-6"></span><span class="pdec-line pdec-line-1"></span><span class="pdec-line pdec-line-2"></span>
+  </div>
+
+  <div class="prestasi-inner">
+    <div class="prestasi-heading section-header center">
+      <div class="section-label">Produk Ungggulan Setiap Jurusan</div>
+      <h2 class="section-title">PRODUK <span class="accent">UNGGULAN</span></h2>
+    </div>
+
+    <div class="prestasi-slider-wrap">
+      <button class="prestasi-arrow prestasi-prev" type="button" aria-label="Prestasi sebelumnya">‹</button>
+      <div class="prestasi-slider" id="prestasiSlider">
+        <article class="prestasi-slide is-active">
+          <div class="prestasi-photo"><span>FOTO PRESTASI</span><small>01</small></div>
+          <div class="prestasi-slide-info">
+            <span class="prestasi-badge">NASIONAL</span>
+            <span class="prestasi-year">2026</span>
+            <h3>Juara Nasional</h3>
+            <p>Nama siswa atau tim • Nama kompetisi</p>
+          </div>
+        </article>
+
+        <article class="prestasi-slide">
+          <div class="prestasi-photo"><span>FOTO PRESTASI</span><small>02</small></div>
+          <div class="prestasi-slide-info">
+            <span class="prestasi-badge">REGIONAL</span>
+            <span class="prestasi-year">2026</span>
+            <h3>Karya Kreatif Terbaik</h3>
+            <p>Nama siswa atau tim • Bidang kreatif</p>
+          </div>
+        </article>
+
+        <article class="prestasi-slide">
+          <div class="prestasi-photo"><span>FOTO PRESTASI</span><small>03</small></div>
+          <div class="prestasi-slide-info">
+            <span class="prestasi-badge">KEAHLIAN</span>
+            <span class="prestasi-year">2026</span>
+            <h3>Kompetisi Keahlian</h3>
+            <p>Nama siswa atau tim • Bidang teknologi</p>
+          </div>
+        </article>
+
+        <article class="prestasi-slide">
+          <div class="prestasi-photo"><span>FOTO PRESTASI</span><small>04</small></div>
+          <div class="prestasi-slide-info">
+            <span class="prestasi-badge">SEKOLAH</span>
+            <span class="prestasi-year">2026</span>
+            <h3>Prestasi Unggulan</h3>
+            <p>Nama siswa atau tim • Kegiatan sekolah</p>
+          </div>
+        </article>
+      </div>
+      <button class="prestasi-arrow prestasi-next" type="button" aria-label="Prestasi berikutnya">›</button>
+
+      <div class="prestasi-dots" id="prestasiDots">
+        <button class="active" type="button" aria-label="Prestasi 1"></button>
+        <button type="button" aria-label="Prestasi 2"></button>
+        <button type="button" aria-label="Prestasi 3"></button>
+        <button type="button" aria-label="Prestasi 4"></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
 
 <!-- ================= KONTAK & FOOTER ================= -->
 <section class="kontak-section section-py" id="kontak" aria-label="Kontak dan lokasi sekolah">
@@ -2148,3 +2388,19 @@
 </script>
 
 @endpush
+
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  const slides=[...document.querySelectorAll('.prestasi-slide')];
+  const dots=[...document.querySelectorAll('#prestasiDots button')];
+  let current=0;
+  function show(i){
+    current=(i+slides.length)%slides.length;
+    slides.forEach((s,n)=>s.classList.toggle('is-active',n===current));
+    dots.forEach((d,n)=>d.classList.toggle('active',n===current));
+  }
+  document.querySelector('.prestasi-prev')?.addEventListener('click',()=>show(current-1));
+  document.querySelector('.prestasi-next')?.addEventListener('click',()=>show(current+1));
+  dots.forEach((d,n)=>d.addEventListener('click',()=>show(n)));
+});
+</script>
