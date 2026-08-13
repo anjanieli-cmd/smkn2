@@ -28,6 +28,10 @@ Route::get('/', function () {
 //   @section('content') ... konten ... @endsection
 Route::view('/profil', 'profil')->name('profil');
 
+// ===== SEJARAH SEKOLAH =====
+// Buat file resources/views/sejarah-sekolah.blade.php
+Route::view('/sejarah-sekolah', 'sejarah-sekolah')->name('sejarah-sekolah');
+
 // ===== PROGRAM KEAHLIAN =====
 // Buat file resources/views/program-keahlian.blade.php
 Route::view('/program-keahlian', 'program-keahlian')->name('program-keahlian');
