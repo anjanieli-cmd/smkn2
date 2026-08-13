@@ -51,3 +51,5 @@ Route::view('/ppdb', 'ppdb')->name('ppdb');
 // ===== SEJARAH SEKOLAH =====
 // Buat file resources/views/sejarah-sekolah.blade.php
 Route::view('/profile/visi-misi', 'profile.visi-misi')->name('visi');
+
+Route::view('/keahlian/aphp', 'keahlian.aphp')->name('aphp');

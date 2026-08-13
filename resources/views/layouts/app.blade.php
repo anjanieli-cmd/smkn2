@@ -364,7 +364,7 @@
         <li class="nav-item">
           <a href="#" class="nav-link dropdown-trigger">Program Keahlian <i class="fas fa-chevron-down"></i></a>
           <div class="dropdown-menu">
-            <a href="#"><i class="fas fa-seedling"></i> Agriteknologi Pengolahan Hasil Pertanian</a>
+            <a href="{{ route('aphp') }}"><i class="fas fa-history"></i> Agriteknologi Pengolahan Hasil Pertanian</a>
             <a href="#"><i class="fas fa-palette"></i> Desain Komunikasi Visual</a>
             <a href="#"><i class="fas fa-utensils"></i> Kuliner</a>
             <a href="#"><i class="fas fa-calculator"></i> Akuntansi dan Keuangan Lembaga</a>
