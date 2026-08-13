@@ -875,7 +875,7 @@
   <div class="container">
     <div class="section-header center" data-reveal>
       <div class="section-label">Buku Sejarah SMKN 2</div>
-      <h2 class="section-title">PROFIL <span class="accent">SEKOLAH</span></h2>
+      <h2 class="section-title">Profil <span class="accent">Sekolah</span></h2>
     </div>
 
     <div class="flipbook" data-reveal style="margin-top:2.6rem">
@@ -1907,7 +1907,7 @@
   <div class="prestasi-inner">
     <div class="prestasi-heading section-header center">
       <div class="section-label">Produk Ungggulan Setiap Jurusan</div>
-      <h2 class="section-title">PRODUK <span class="accent">UNGGULAN</span></h2>
+      <h2 class="section-title">Produk <span class="accent">Unggulan</span></h2>
     </div>
 
     <div class="prestasi-slider-wrap">

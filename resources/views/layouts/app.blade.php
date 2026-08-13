@@ -353,8 +353,8 @@
         <li class="nav-item">
           <a href="#" class="nav-link dropdown-trigger">Profil <i class="fas fa-chevron-down"></i></a>
           <div class="dropdown-menu">
-            <a href="#"><i class="fas fa-history"></i> Sejarah Sekolah</a>
-            <a href="#"><i class="fas fa-eye"></i> Visi &amp; Misi</a>
+            <a href="{{ route('sejarah') }}"><i class="fas fa-history"></i> Sejarah Sekolah</a>
+           <a href="{{ route('visi') }}"><i class="fas fa-history"></i> Visi &amp; Misi</a>
             <a href="#"><i class="fas fa-sitemap"></i> Struktur Organisasi</a>
             <a href="#"><i class="fas fa-chalkboard-user"></i> Guru &amp; Staf</a>
             <a href="#"><i class="fas fa-road"></i> Roadmap Pengembangan</a>
@@ -406,8 +406,6 @@
   {{-- ================= KONTEN PER HALAMAN ================= --}}
   @yield('content')
 
-  {{-- ================= FOOTER ================= --}}
-  @include('partials.footer')
 
   {{-- ================= BACK TO TOP ================= --}}
   <button id="backToTop" aria-label="Kembali ke atas"><i class="fas fa-arrow-up"></i></button>

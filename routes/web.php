@@ -30,7 +30,7 @@ Route::view('/profil', 'profil')->name('profil');
 
 // ===== SEJARAH SEKOLAH =====
 // Buat file resources/views/sejarah-sekolah.blade.php
-Route::view('/sejarah-sekolah', 'sejarah-sekolah')->name('sejarah-sekolah');
+Route::view('/profile/sejarah-sekolah', 'profile.sejarah-sekolah')->name('sejarah');
 
 // ===== PROGRAM KEAHLIAN =====
 // Buat file resources/views/program-keahlian.blade.php
@@ -47,3 +47,7 @@ Route::view('/pkl-alumni', 'pkl-alumni')->name('pkl-alumni');
 // ===== PPDB (tombol CTA "Daftar PPDB") =====
 // Buat file resources/views/ppdb.blade.php
 Route::view('/ppdb', 'ppdb')->name('ppdb');
+
+// ===== SEJARAH SEKOLAH =====
+// Buat file resources/views/sejarah-sekolah.blade.php
+Route::view('/profile/visi-misi', 'profile.visi-misi')->name('visi');
