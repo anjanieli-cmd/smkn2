@@ -363,11 +363,11 @@
         <li class="nav-item">
           <a href="#" class="nav-link dropdown-trigger">Program Keahlian <i class="fas fa-chevron-down"></i></a>
           <div class="dropdown-menu">
-            <a href="#"><i class="fas fa-seedling"></i> Agriteknologi Pengolahan Hasil Pertanian</a>
+            <a href="#"><i class="fas fa-seedling"></i> Agribisnis Pengolahan Hasil Pertanian</a>
             <a href="#"><i class="fas fa-palette"></i> Desain Komunikasi Visual</a>
-            <a href="#"><i class="fas fa-utensils"></i> Kuliner</a>
-            <a href="#"><i class="fas fa-calculator"></i> Akuntansi dan Keuangan Lembaga</a>
-            <a href="#"><i class="fas fa-code"></i> Pengembangan Perangkat Lunak dan Gim</a>
+            <a href="#"><i class="fas fa-utensils"></i> Kuliner / Tata Boga</a>
+            <a href="#"><i class="fas fa-calculator"></i> Lembaga Perbankan Syariah</a>
+            <a href="#"><i class="fas fa-code"></i> Rekayasa Perangkat Lunak</a>
           </div>
         </li>
 
