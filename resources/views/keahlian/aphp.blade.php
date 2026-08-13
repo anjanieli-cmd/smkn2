@@ -448,10 +448,11 @@
 
     <div class="aphp-hero-inner">
       <div>
-        <div class="aphp-kicker">Program Keahlian</div>
+        <div class="aphp-kicker">Salah Satu jurusan di SKANEDA</div>
         <h1 class="aphp-title">
           <span class="aphp-white">PROGRAM</span><br>
-          <span class="aphp-gold">KEAHLIAN APHP</span>
+          <span class="aphp-white">KEAHLIAN</span><br>
+          <span class="aphp-gold">APHP</span>
         </h1>
         <a href="#virtual-tour-aphp" class="vt-hero-box" aria-label="Lihat Virtual Tour Lab APHP">
           <span class="vth-chevron" aria-hidden="true"></span>
@@ -461,7 +462,6 @@
           <span class="vt-hero-icon"><i class="fas fa-vr-cardboard"></i></span>
           <span class="vt-hero-body">
             <span class="vt-hero-title">Virtual Tour Lab APHP</span>
-            <span class="vt-hero-sub">Lihat Virtual Tour Lab APHP</span>
             <span class="vt-hero-btn">Lihat Virtual Tour <i class="fas fa-arrow-right"></i></span>
           </span>
         </a>
