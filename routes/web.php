@@ -53,3 +53,7 @@ Route::view('/ppdb', 'ppdb')->name('ppdb');
 Route::view('/profile/visi-misi', 'profile.visi-misi')->name('visi');
 
 Route::view('/keahlian/aphp', 'keahlian.aphp')->name('aphp');
+Route::view('/keahlian/dkv', 'keahlian.dkv')->name('dkv');
+Route::view('/keahlian/kuliner', 'keahlian.kuliner')->name('kuliner');
+Route::view('/keahlian/lps', 'keahlian.lps')->name('lps');
+Route::view('/keahlian/rpl', 'keahlian.rpl')->name('rpl');

@@ -364,11 +364,11 @@
         <li class="nav-item">
           <a href="#" class="nav-link dropdown-trigger">Program Keahlian <i class="fas fa-chevron-down"></i></a>
           <div class="dropdown-menu">
-            <a href="{{ route('aphp') }}"><i class="fas fa-history"></i> Agriteknologi Pengolahan Hasil Pertanian</a>
-            <a href="#"><i class="fas fa-palette"></i> Desain Komunikasi Visual</a>
-            <a href="#"><i class="fas fa-utensils"></i> Kuliner</a>
-            <a href="#"><i class="fas fa-calculator"></i> Akuntansi dan Keuangan Lembaga</a>
-            <a href="#"><i class="fas fa-code"></i> Pengembangan Perangkat Lunak dan Gim</a>
+            <a href="{{ route('aphp') }}"><i class="fas fa-wheat-awn"></i> Agribisnis Pengolahan Hasil Pertanian</a>
+            <a href="{{ route('dkv') }}"><i class="fas fa-palette"></i> Desain Komunikasi Visual</a>
+            <a href="{{ route('kuliner') }}"><i class="fas fa-utensils"></i> Kuliner</a>
+            <a href="{{ route('lps') }}"><i class="fas fa-calculator"></i> Layanan Perbankan Syariah</a>
+            <a href="{{ route('rpl') }}"><i class="fas fa-code"></i> Rekayasa Perangkat Lunak</a>
           </div>
         </li>
 
