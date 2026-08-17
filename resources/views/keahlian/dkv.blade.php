@@ -1,53 +1,54 @@
 @extends('layouts.app')
 
-@section('title', 'Program Keahlian APHP — SMK Negeri 2 Mojokerto')
-@section('description', 'Program Keahlian Agribisnis Pengolahan Hasil Pertanian (APHP) SMK Negeri 2 Mojokerto: profil, kompetensi, produk unggulan, dan fasilitas praktik.')
+@section('title', 'Program Keahlian DKV — SMK Negeri 2 Mojokerto')
+@section('description', 'Program Keahlian Desain Komunikasi Visual (DKV) SMK Negeri 2 Mojokerto: profil, kompetensi, karya unggulan, dan fasilitas praktik.')
 
 @push('styles')
 <style>
 /* =========================================================
-   PROGRAM KEAHLIAN APHP — PREMIUM EDITION
-   Visual language: konsisten dengan Sejarah & Visi-Misi
-   (navy #0d3a66 + gold), foto gedung + overlay, watermark
+   PROGRAM KEAHLIAN DKV — PREMIUM EDITION
+   Visual language: konsisten dengan APHP / Sejarah / Visi-Misi
+   (navy #0d3a66 + gold), foto studio + overlay, watermark
    typography, ornamen geometris gaya Beranda, glassmorphism,
    scroll-reveal. Palet: navy, blue, light blue, white, gold.
    ========================================================= */
-.aphp-page{background:#f7f9fc;color:#0d3a66;overflow:hidden}
-.aphp-page *{box-sizing:border-box}
-.aphp-shell{width:100%}
+.dkv-page{background:#f7f9fc;color:#0d3a66;overflow:hidden}
+.dkv-page *{box-sizing:border-box}
+.dkv-shell{width:100%}
 
 /* ---------- HERO: foto + overlay + watermark ---------- */
-.aphp-hero{position:relative;min-height:88vh;display:flex;align-items:flex-start;overflow:hidden;
-  background-image:url('{{ asset('images/aphp.png') }}');
+.dkv-hero{position:relative;min-height:88vh;display:flex;align-items:flex-start;overflow:hidden;
+  background-image:url('{{ asset('images/dkv.png') }}');
   background-size:cover;background-position:center;background-repeat:no-repeat;color:#fff}
-.aphp-hero::before{content:"";position:absolute;inset:0;z-index:1;
+.dkv-hero::before{content:"";position:absolute;inset:0;z-index:1;
   background:linear-gradient(100deg,rgba(7,22,42,.92) 0%,rgba(9,30,54,.70) 45%,rgba(9,30,54,.34) 78%,rgba(9,30,54,.14) 100%)}
 /* Watermark typography besar transparan (elemen grafis background) */
-.aphp-hero::after{content:"APHP";position:absolute;z-index:2;right:-2%;top:50%;transform:translateY(-50%);
+.dkv-hero::after{content:"DKV";position:absolute;z-index:2;right:-2%;top:50%;transform:translateY(-50%);
   font-family:var(--font-display);font-size:clamp(6rem,24vw,24rem);font-weight:900;line-height:.82;
   letter-spacing:.02em;color:rgba(255,255,255,.055);-webkit-text-stroke:1px rgba(255,255,255,.07);
   text-shadow:0 0 90px rgba(13,58,102,.16);pointer-events:none;white-space:nowrap;user-select:none}
-.aphp-hero-inner{position:relative;z-index:3;width:100%;max-width:none;margin:0 auto;
+.dkv-hero-inner{position:relative;z-index:3;width:100%;max-width:none;margin:0 auto;
   padding:clamp(3.5rem,9vh,5.5rem) clamp(1.5rem,5vw,5.5rem);
   display:grid;grid-template-columns:minmax(0,1.05fr) minmax(340px,.95fr);gap:4rem;align-items:center}
 
-.aphp-kicker{display:inline-flex;transform:translateY(0);align-items:center;gap:.65rem;font-size:.74rem;font-weight:800;
+.dkv-kicker{display:inline-flex;transform:translateY(0);align-items:center;gap:.65rem;font-size:.74rem;font-weight:800;
   letter-spacing:.18em;text-transform:uppercase;color:#ffd54a;margin-bottom:0.6rem}
-.aphp-kicker::before{content:"";width:34px;height:3px;border-radius:99px;background:linear-gradient(90deg,#ffd54a,#ffb300)}
+.dkv-kicker::before{content:"";width:34px;height:3px;border-radius:99px;background:linear-gradient(90deg,#ffd54a,#ffb300)}
 
-/* ---------- TITLE: APHP putih, nama lengkap kuning-oranye ---------- */
-.aphp-title{font-family:var(--font-display);font-size:clamp(2.9rem,6.6vw,6.2rem);line-height:.98;
+/* ---------- TITLE: DKV putih, nama lengkap kuning-oranye ---------- */
+.dkv-title{font-family:var(--font-display);font-size:clamp(2.9rem,6.6vw,6.2rem);line-height:.98;
   letter-spacing:.01em;margin:0;max-width:820px;text-transform:uppercase;
   text-shadow:0 2px 24px rgba(4,14,28,.35);animation:hdFadeUp .7s .1s var(--ease, ease) both}
-.aphp-title .aphp-white{color:#ffffff;display:inline-block}
-.aphp-title .aphp-gold{display:inline-block;
+.dkv-title .dkv-white{color:#ffffff;display:inline-block}
+.dkv-title .dkv-gold{display:inline-block;
   background:linear-gradient(135deg,#ffe66d 0%,#ffc107 45%,#ff8a00 100%);
   -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#ffc107;
   text-shadow:0 4px 24px rgba(255,174,0,.18);letter-spacing:.025em}
 
-.aphp-lead{font-size:1.05rem;line-height:1.9;color:rgba(235,245,253,.88);max-width:600px;
+.dkv-lead{font-size:1.05rem;line-height:1.9;color:rgba(235,245,253,.88);max-width:600px;
   margin:1.3rem 0 0;animation:hdFadeUp .7s .18s var(--ease, ease) both}
-.aphp-lead strong{color:#ffd54a;font-weight:700}
+.dkv-lead strong{color:#ffd54a;font-weight:700}
+
 /* ---------- CTA BOX VIRTUAL TOUR (pengganti badge) ---------- */
 .vt-hero-box{position:relative;max-width:540px;margin-top:2rem;padding:1.45rem 1.5rem;
   border-radius:22px;overflow:hidden;isolation:isolate;text-align:left;color:#fff;
@@ -97,7 +98,7 @@
 @keyframes hdFadeUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
 
 /* ---------- SECTION COMMON ---------- */
-.aphp-wide{width:min(1380px,92%);margin:auto}
+.dkv-wide{width:min(1380px,92%);margin:auto}
 .eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-size:.74rem;font-weight:800;
   letter-spacing:.18em;text-transform:uppercase;color:#0d3a66;margin-bottom:.85rem}
 .eyebrow::before{content:"";width:26px;height:3px;border-radius:99px;background:linear-gradient(90deg,#0d3a66,#2f6fa8)}
@@ -216,8 +217,6 @@
   border:2px solid rgba(255,213,74,.4);transform:rotate(45deg);z-index:0}
 .produk-photo i{position:relative;z-index:1;font-size:4rem;color:#ffd54a;
   filter:drop-shadow(0 14px 26px rgba(4,26,48,.4))}
-.produk-photo img{position:absolute;inset:0;z-index:0;width:100%;height:100%;
-  object-fit:cover;display:block}
 
 .produk-overlay{position:absolute;inset:0;z-index:2;
   background:linear-gradient(180deg,rgba(8,39,68,0) 40%,rgba(8,39,68,.88) 100%);
@@ -231,7 +230,6 @@
   background:linear-gradient(135deg,#fff7e0,#ffe9b8);border:1px solid rgba(255,179,0,.35);
   padding:.38rem .75rem;border-radius:999px;white-space:nowrap}
 
-/* --- Arrow buttons (persis gaya hero slider) --- */
 .produk-arrow{position:absolute;top:50%;translate:0 -50%;width:52px;height:52px;border-radius:50%;
   background:#0d3a66;border:none;display:flex;align-items:center;justify-content:center;
   color:#fff;font-size:1.1rem;cursor:pointer;z-index:6;box-shadow:0 12px 26px rgba(13,58,102,.4);
@@ -241,7 +239,6 @@
 .produk-arrow.next{right:-70px}
 .produk-arrow:disabled{opacity:.35;cursor:default;pointer-events:none}
 
-/* --- Dots --- */
 .produk-dots{display:flex;justify-content:center;gap:.5rem;margin-top:1.8rem}
 .produk-dots button{width:9px;height:9px;border-radius:50%;border:none;background:rgba(13,58,102,.2);
   cursor:pointer;padding:0;transition:background .25s ease,width .25s ease}
@@ -306,7 +303,7 @@
 .fasilitas-section .home-orn .ho-ring{left:43%;bottom:-90px;border-color:rgba(255,255,255,.12)}
 .fasilitas-section .home-orn .ho-gold{right:14%;top:28%}
 
-/* ---------- VIRTUAL TOUR SECTION (baru, setelah Fasilitas) ---------- */
+/* ---------- VIRTUAL TOUR SECTION ---------- */
 .vtour-section{position:relative;padding:120px 0 130px;isolation:isolate;overflow:hidden;
   background:linear-gradient(180deg,#ffffff 0%,#eef5fb 100%)}
 .vtour-head{width:min(860px,92%);margin:0 auto 62px;text-align:center;position:relative;z-index:2}
@@ -320,7 +317,6 @@
   color:#fff;box-shadow:0 45px 110px rgba(8,31,58,.38);z-index:2;
   transition:transform .45s ease,box-shadow .45s ease}
 .vtour-card:hover{transform:translateY(-8px);box-shadow:0 55px 130px rgba(8,31,58,.48)}
-/* ornamen di dalam card */
 .vtour-card .vtc-chevron{position:absolute;right:-64px;top:-64px;width:190px;height:190px;
   border-top:2px solid rgba(255,213,74,.25);border-right:2px solid rgba(255,213,74,.25);transform:rotate(45deg)}
 .vtour-card .vtc-chevron::after{content:"";position:absolute;inset:26px;
@@ -340,7 +336,6 @@
 .vtour-card .vtc-square{position:absolute;left:8%;bottom:14%;width:52px;height:52px;
   border:2px solid rgba(255,179,0,.3);transform:rotate(45deg)}
 .vtour-card .vtc-square::before{content:"";position:absolute;inset:8px;border:1px solid rgba(255,255,255,.14)}
-/* isi card: 2 kolom */
 .vtour-card-inner{position:relative;z-index:2;display:grid;grid-template-columns:1.02fr .98fr;gap:2.6rem;
   align-items:center;padding:clamp(2.2rem,5vw,3.6rem)}
 .vtour-card-copy .vtc-kicker{display:inline-flex;align-items:center;gap:.55rem;font-size:.72rem;font-weight:800;
@@ -359,24 +354,20 @@
 .vtour-cta-btn:hover{transform:translateY(-4px);box-shadow:0 26px 54px rgba(255,138,0,.52)}
 .vtour-cta-btn i{transition:transform .3s ease}
 .vtour-cta-btn:hover i{transform:translateX(6px)}
-/* visual preview virtual tour (HTML/CSS murni) */
 .vtour-visual{position:relative;height:360px;border-radius:24px;overflow:hidden;isolation:isolate;
   background:radial-gradient(120% 130% at 30% 20%,#123f73 0%,#0a2a4e 55%,#071c36 100%);
   border:1px solid rgba(255,255,255,.16);
   box-shadow:inset 0 0 80px rgba(3,14,28,.6),0 24px 50px rgba(3,14,28,.4)}
-/* denah lantai (floor plan) */
 .vtour-map{position:absolute;inset:26px 26px 30px;border:1.5px dashed rgba(255,213,74,.4);border-radius:18px;
   z-index:1;background:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),
   linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);
   background-size:34px 34px}
-.vtour-map::before{content:"LAB APHP";position:absolute;top:12px;left:16px;font-size:.56rem;font-weight:900;
+.vtour-map::before{content:"STUDIO DKV";position:absolute;top:12px;left:16px;font-size:.56rem;font-weight:900;
   letter-spacing:.22em;color:rgba(255,213,74,.6)}
-/* garis penghubung antar titik */
 .vtour-line{position:absolute;height:2px;background:linear-gradient(90deg,rgba(255,213,74,.7),rgba(47,111,168,.4));
   transform-origin:left center;z-index:2}
 .vtour-line::after{content:"";position:absolute;right:0;top:-3px;width:8px;height:8px;border-radius:50%;
   background:#ffd54a;box-shadow:0 0 0 4px rgba(255,213,74,.22)}
-/* titik lokasi (pins) */
 .vtour-pin{position:absolute;z-index:3;transform:translate(-50%,-50%);text-align:center;width:92px}
 .vtour-pin .pin-ic{width:46px;height:46px;margin:0 auto 6px;border-radius:14px;display:flex;align-items:center;
   justify-content:center;font-size:1.05rem;color:#0d3a66;
@@ -389,12 +380,10 @@
 .vtour-pin span{display:block;font-size:.58rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;
   color:#fff;background:rgba(4,18,36,.55);padding:.28rem .5rem;border-radius:999px;
   border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(4px)}
-/* badge 360° */
 .vtour-360{position:absolute;top:14px;right:14px;z-index:4;display:flex;align-items:center;gap:.4rem;
   padding:.42rem .75rem;border-radius:999px;font-size:.66rem;font-weight:900;letter-spacing:.12em;color:#ffd54a;
   background:rgba(4,18,36,.55);border:1px solid rgba(255,213,74,.4);backdrop-filter:blur(4px)}
 .vtour-360 i{font-size:.8rem}
-/* label fasilitas di dalam denah */
 .vtour-fac{position:absolute;z-index:3;font-size:.58rem;font-weight:800;letter-spacing:.04em;
   text-transform:uppercase;color:rgba(255,255,255,.85);background:rgba(47,111,168,.22);
   border:1px solid rgba(255,255,255,.14);padding:.3rem .55rem;border-radius:8px;backdrop-filter:blur(3px)}
@@ -407,34 +396,34 @@
 .vtour-section .home-orn .ho-corner{right:3%;bottom:9%;transform:rotate(180deg)}
 
 /* ---------- CTA ---------- */
-.aphp-cta{position:relative;padding:90px 0 100px;overflow:hidden;text-align:center;isolation:isolate;
+.dkv-cta{position:relative;padding:90px 0 100px;overflow:hidden;text-align:center;isolation:isolate;
   background:linear-gradient(135deg,#071a33 0%,#0d3a66 60%,#17497f 100%)}
-.aphp-cta::after{content:"#SMKN2BISA";position:absolute;left:50%;bottom:-34px;transform:translateX(-50%);
+.dkv-cta::after{content:"#SMKN2BISA";position:absolute;left:50%;bottom:-34px;transform:translateX(-50%);
   font-family:var(--font-display);font-size:clamp(6rem,18vw,16rem);font-weight:900;line-height:1;
   color:rgba(255,255,255,.04);pointer-events:none;white-space:nowrap;user-select:none}
-.aphp-cta-inner{position:relative;z-index:2;width:min(800px,92%);margin:auto}
-.aphp-cta h2{font-family:var(--font-display);font-size:clamp(1.9rem,4vw,3.4rem);line-height:1.05;margin:0 0 1rem;color:#fff}
-.aphp-cta h2 span{background:linear-gradient(135deg,#ffd54a,#ffb300 50%,#ff7a00);
+.dkv-cta-inner{position:relative;z-index:2;width:min(800px,92%);margin:auto}
+.dkv-cta h2{font-family:var(--font-display);font-size:clamp(1.9rem,4vw,3.4rem);line-height:1.05;margin:0 0 1rem;color:#fff}
+.dkv-cta h2 span{background:linear-gradient(135deg,#ffd54a,#ffb300 50%,#ff7a00);
   -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
-.aphp-cta p{color:rgba(235,245,253,.8);line-height:1.85;max-width:620px;margin:0 auto 2rem}
-.aphp-cta-btn{display:inline-flex;align-items:center;gap:.6rem;padding:.95rem 2rem;border-radius:999px;
+.dkv-cta p{color:rgba(235,245,253,.8);line-height:1.85;max-width:620px;margin:0 auto 2rem}
+.dkv-cta-btn{display:inline-flex;align-items:center;gap:.6rem;padding:.95rem 2rem;border-radius:999px;
   background:linear-gradient(135deg,#ffd54a,#ffb300,#ff8a00);color:#0d3a66;font-weight:800;font-size:.95rem;
   text-decoration:none;box-shadow:0 18px 40px rgba(255,138,0,.35);
   transition:transform .3s ease,box-shadow .3s ease}
-.aphp-cta-btn:hover{transform:translateY(-4px);box-shadow:0 22px 46px rgba(255,138,0,.5)}
-.aphp-cta-btn i{transition:transform .3s ease}
-.aphp-cta-btn:hover i{transform:translateX(5px)}
-.aphp-cta .home-orn .ho-chevron{left:-120px;bottom:-80px;border-color:rgba(255,255,255,.10)}
-.aphp-cta .home-orn .ho-chevron::after{border-color:rgba(255,213,74,.08)}
-.aphp-cta .home-orn .ho-dots{left:8%;top:30%;opacity:.22}
-.aphp-cta .home-orn .ho-ring{right:-70px;top:20%;border-color:rgba(255,255,255,.10)}
-.aphp-cta .home-orn .ho-gold{left:20%;bottom:26%}
+.dkv-cta-btn:hover{transform:translateY(-4px);box-shadow:0 22px 46px rgba(255,138,0,.5)}
+.dkv-cta-btn i{transition:transform .3s ease}
+.dkv-cta-btn:hover i{transform:translateX(5px)}
+.dkv-cta .home-orn .ho-chevron{left:-120px;bottom:-80px;border-color:rgba(255,255,255,.10)}
+.dkv-cta .home-orn .ho-chevron::after{border-color:rgba(255,213,74,.08)}
+.dkv-cta .home-orn .ho-dots{left:8%;top:30%;opacity:.22}
+.dkv-cta .home-orn .ho-ring{right:-70px;top:20%;border-color:rgba(255,255,255,.10)}
+.dkv-cta .home-orn .ho-gold{left:20%;bottom:26%}
 
 /* z-index konten di atas ornamen */
 .profil-section>*:not(.home-orn),.kompetensi-section>*:not(.home-orn),
 .produk-section>*:not(.home-orn),.fasilitas-section>*:not(.home-orn),
 .vtour-section>*:not(.home-orn),
-.aphp-cta>*:not(.home-orn){position:relative;z-index:2}
+.dkv-cta>*:not(.home-orn){position:relative;z-index:2}
 
 /* ---------- SCROLL REVEAL ---------- */
 [data-reveal]{opacity:0;transform:translateY(36px);transition:opacity .7s var(--ease, cubic-bezier(.22,.61,.36,1)),transform .7s var(--ease, cubic-bezier(.22,.61,.36,1))}
@@ -445,21 +434,21 @@
 
 /* ---------- RESPONSIVE ---------- */
 @media(max-width:950px){
-  .aphp-hero-inner{grid-template-columns:1fr;gap:2.5rem}
+  .dkv-hero-inner{grid-template-columns:1fr;gap:2.5rem}
   .hero-photo{height:330px;transform:none}
   .profil-grid{grid-template-columns:1fr;gap:2.5rem}
   .kompetensi-head,.produk-head{flex-direction:column;align-items:flex-start;gap:1rem}
   .kompetensi-note,.produk-note{text-align:left;max-width:100%}
-  .kompetensi-grid,.produk-grid{grid-template-columns:repeat(2,1fr)}
+  .kompetensi-grid{grid-template-columns:repeat(2,1fr)}
   .fasilitas-grid{grid-template-columns:repeat(2,1fr)}
   .vtour-card-inner{grid-template-columns:1fr;gap:2rem}
   .vtour-visual{height:320px}
 }
 @media(max-width:700px){
-  .aphp-hero{min-height:auto}
-  .aphp-hero::after{font-size:clamp(4.5rem,26vw,9rem);opacity:.8}
+  .dkv-hero{min-height:auto}
+  .dkv-hero::after{font-size:clamp(4.5rem,26vw,9rem);opacity:.8}
   .hero-photo{height:240px}
-  .kompetensi-grid,.produk-grid{grid-template-columns:1fr}
+  .kompetensi-grid{grid-template-columns:1fr}
   .fasilitas-grid{grid-template-columns:1fr}
   .stat-strip{grid-template-columns:1fr}
   .vtour-visual{height:270px}
@@ -480,9 +469,9 @@
 @endpush
 
 @section('content')
-<div class="aphp-page">
+<div class="dkv-page">
   <!-- HERO -->
-  <section class="aphp-hero">
+  <section class="dkv-hero">
     <div class="home-orn" aria-hidden="true">
       <span class="ho-chevron"></span>
       <span class="ho-line"></span>
@@ -493,29 +482,29 @@
       <span class="ho-corner"></span>
     </div>
 
-    <div class="aphp-hero-inner">
+    <div class="dkv-hero-inner">
       <div>
-        <div class="aphp-kicker">Salah Satu jurusan di SKANEDA</div>
-        <h1 class="aphp-title">
-          <span class="aphp-white">PROGRAM</span><br>
-          <span class="aphp-white">KEAHLIAN</span><br>
-          <span class="aphp-gold">APHP</span>
+        <div class="dkv-kicker">Salah Satu jurusan di SKANEDA</div>
+        <h1 class="dkv-title">
+          <span class="dkv-white">PROGRAM</span><br>
+          <span class="dkv-white">KEAHLIAN</span><br>
+          <span class="dkv-gold">DKV</span>
         </h1>
-        <a href="#virtual-tour-aphp" class="vt-hero-box" aria-label="Lihat Virtual Tour Lab APHP">
+        <a href="#virtual-tour-dkv" class="vt-hero-box" aria-label="Lihat Virtual Tour Studio DKV">
           <span class="vth-chevron" aria-hidden="true"></span>
           <span class="vth-dots" aria-hidden="true"></span>
           <span class="vth-ring" aria-hidden="true"></span>
           <span class="vth-gold" aria-hidden="true"></span>
           <span class="vt-hero-icon"><i class="fas fa-vr-cardboard"></i></span>
           <span class="vt-hero-body">
-            <span class="vt-hero-title">Virtual Tour Lab APHP</span>
+            <span class="vt-hero-title">Virtual Tour Studio DKV</span>
             <span class="vt-hero-btn">Lihat Virtual Tour <i class="fas fa-arrow-right"></i></span>
           </span>
         </a>
       </div>
       <div class="hero-photo" data-reveal="right">
-        <img src="{{ asset('images/aphp.png') }}" alt="Praktik siswa program keahlian APHP" loading="eager">
-        <div class="hero-photo-caption"><strong>APHP SKANEDA</strong><span>Dari ladang menjadi produk bernilai tambah.</span></div>
+        <img src="{{ asset('images/dkv.png') }}" alt="Praktik siswa program keahlian DKV" loading="eager">
+        <div class="hero-photo-caption"><strong>DKV SKANEDA</strong><span>Mengubah ide menjadi karya visual yang bicara.</span></div>
       </div>
     </div>
   </section>
@@ -530,18 +519,18 @@
       <span class="ho-gold"></span>
       <span class="ho-square"></span>
     </div>
-    <div class="aphp-wide profil-grid">
+    <div class="dkv-wide profil-grid">
       <div data-reveal>
         <div class="eyebrow">Tentang Jurusan</div>
-        <h2 class="big-heading">Profil <span>APHP</span></h2>
-        <p class="profil-copy">Program Keahlian <strong>Agribisnis Pengolahan Hasil Pertanian (APHP)</strong> membekali peserta didik dengan keterampilan mengolah hasil pertanian menjadi produk berkualitas dan bernilai jual. Pembelajaran mencakup pengolahan bahan nabati, hewani, herbal, dan perkebunan, pengujian mutu, pengemasan, serta pemasaran produk.</p>
-        <p class="profil-copy">Melalui kegiatan praktik dan unit produksi, peserta didik mengembangkan berbagai produk seperti <strong>teh markisa, roti manis ubi jalar kuning, samoja, es krim, dan aneka stik</strong>, sekaligus dibekali jiwa kewirausahaan untuk siap bekerja maupun mengembangkan usaha secara mandiri.</p>
+        <h2 class="big-heading">Profil <span>DKV</span></h2>
+        <p class="profil-copy">Kompetensi Keahlian <strong>Desain Komunikasi Visual (DKV)</strong> membekali peserta didik dengan keterampilan menyampaikan pesan melalui elemen visual secara informatif, komunikatif, dan kreatif. Pembelajaran mencakup seni rupa, gambar, sketsa, desain publikasi, komputer grafis, fotografi, dan videografi.</p>
+        <p class="profil-copy">Peserta didik juga dibekali kemampuan mengembangkan ide, mengelola usaha, serta memasarkan produk desain. Lulusan DKV dipersiapkan untuk bekerja di industri kreatif, menjadi freelancer, mengembangkan usaha mandiri, maupun melanjutkan pendidikan ke jenjang yang lebih tinggi.</p>
       </div>
       <div class="stat-strip" data-reveal="right">
         <div class="stat-box"><div class="stat-num">4</div><div class="stat-label">Tahun Belajar</div></div>
-        <div class="stat-box"><div class="stat-num gold">9+</div><div class="stat-label">Produk Unggulan</div></div>
+        <div class="stat-box"><div class="stat-num gold">10+</div><div class="stat-label">Jenis Karya Visual</div></div>
         <div class="stat-box"><div class="stat-num">100%</div><div class="stat-label">Berbasis Praktik</div></div>
-        <div class="stat-box"><div class="stat-num gold">DUDI</div><div class="stat-label">Kemitraan Industri</div></div>
+        <div class="stat-box"><div class="stat-num gold">DUDI</div><div class="stat-label">Kemitraan Industri Kreatif</div></div>
       </div>
     </div>
   </section>
@@ -562,38 +551,38 @@
         <div class="eyebrow">Apa yang dipelajari</div>
         <h2 class="big-heading">Kompetensi <span>Keahlian</span></h2>
       </div>
-      <div class="kompetensi-note">Kurikulum berbasis praktik — siswa menguasai seluruh rantai pengolahan, dari bahan baku hingga produk siap jual.</div>
+      <div class="kompetensi-note">Kurikulum berbasis proyek kreatif — siswa menguasai seluruh proses produksi visual, dari konsep hingga karya final siap pakai.</div>
     </div>
     <div class="kompetensi-grid">
       <article class="kompetensi-card" data-num="01" data-reveal>
-        <div class="kompetensi-icon"><i class="fas fa-wheat-awn"></i></div>
-        <h3>Pengolahan Hasil Pertanian</h3>
-        <p>Mengolah berbagai bahan hasil pertanian menjadi produk olahan yang berkualitas dan bernilai jual.</p>
+        <div class="kompetensi-icon"><i class="fas fa-pen-nib"></i></div>
+        <h3>Dasar Seni & Kreativitas</h3>
+        <p>Mempelajari dasar-dasar kreativitas, seni rupa, serta penerapannya dalam komunikasi visual.</p>
       </article>
       <article class="kompetensi-card" data-num="02" data-reveal style="--d:1">
-        <div class="kompetensi-icon"><i class="fas fa-fire-burner"></i></div>
-        <h3>Pengolahan Nabati & Hewani</h3>
-        <p>Mempelajari pengolahan bahan nabati, hewani, herbal, dan hasil perkebunan menjadi berbagai produk.</p>
+        <div class="kompetensi-icon"><i class="fas fa-camera-retro"></i></div>
+        <h3>Desain Publikasi</h3>
+        <p>Mempelajari perancangan desain publikasi dan tata letak berbagai media visual.</p>
       </article>
       <article class="kompetensi-card" data-num="03" data-reveal style="--d:2">
-        <div class="kompetensi-icon"><i class="fas fa-flask-vial"></i></div>
-        <h3>Pengujian Mutu Produk</h3>
-        <p>Mempelajari analisis bahan dan pengujian mutu untuk memastikan kualitas produk hasil pertanian.</p>
+        <div class="kompetensi-icon"><i class="fas fa-film"></i></div>
+        <h3>Gambar & Sketsa</h3>
+        <p>Mengembangkan kemampuan menggambar dan membuat sketsa sebagai dasar visualisasi ide.</p>
       </article>
       <article class="kompetensi-card" data-num="04" data-reveal>
-        <div class="kompetensi-icon"><i class="fas fa-box-open"></i></div>
-        <h3>Peralatan Pengolahan</h3>
-        <p>Mampu mengoperasikan berbagai peralatan yang digunakan dalam proses pengolahan hasil pertanian.</p>
+        <div class="kompetensi-icon"><i class="fas fa-palette"></i></div>
+        <h3>Komputer Grafis</h3>
+        <p>Mengolah dan menghasilkan karya desain menggunakan teknologi komputer grafis.</p>
       </article>
       <article class="kompetensi-card" data-num="05" data-reveal style="--d:1">
-        <div class="kompetensi-icon"><i class="fas fa-chart-line"></i></div>
-        <h3>Kemasan &amp; Pemasaran</h3>
-        <p>Mempelajari perancangan kemasan, penetapan harga, hingga teknik pemasaran dan penjualan produk.</p>
+        <div class="kompetensi-icon"><i class="fas fa-desktop"></i></div>
+        <h3>Fotografi & Videografi</h3>
+        <p>Mengembangkan keterampilan fotografi dan videografi untuk kebutuhan komunikasi visual.</p>
       </article>
       <article class="kompetensi-card" data-num="06" data-reveal style="--d:2">
         <div class="kompetensi-icon"><i class="fas fa-lightbulb"></i></div>
-        <h3>Kewirausahaan</h3>
-        <p>Mengembangkan kemampuan merencanakan usaha, menghitung kelayakan usaha, dan mengembangkan produk baru.</p>
+        <h3>Kreatif & Kewirausahaan</h3>
+        <p>Mengembangkan produk kreatif serta kemampuan mengelola dan memasarkan usaha desain.</p>
       </article>
     </div>
   </section>
@@ -613,7 +602,7 @@
         <div class="eyebrow">Karya siswa</div>
         <h2 class="big-heading">Produk <span>Unggulan</span></h2>
       </div>
-      <div class="produk-note">Hasil olahan karya siswa APHP — diproduksi di laboratorium sekolah dengan standar higiene dan mutu.</div>
+      <div class="produk-note">Hasil karya visual siswa DKV — diproduksi di studio sekolah dengan standar kreatif dan profesional.</div>
     </div>
 
     <div class="produk-slider" data-reveal>
@@ -626,21 +615,21 @@
 
           <article class="produk-card">
             <div class="produk-photo">
-              <img src="{{ asset('images/produk/multimie.jpeg') }}" alt="MultiMie">
+              <img src="{{ asset('images/produk/tambalbanexpres.jpeg') }}" alt="TambalBanExpres">
               <div class="produk-overlay">
                 <div class="produk-overlay-inner">
                   <div>
-                    <h3>MultiMie</h3>
-                    <p>Mi instan praktis dengan bumbu siap seduh.</p>
+                    <h3>Tambal Ban Express</h3>
+                    <p>Desain UI/UX inovatif untuk aplikasi digital.</p>
                   </div>
-                  <span class="produk-badge">Makanan</span>
+                  <span class="produk-badge">Desain</span>
                 </div>
               </div>
             </div>
           </article>
 
           <!--
-            Tambah produk baru: copy 1 blok <article class="produk-card">...</article> di sini.
+            Tambah karya baru: copy 1 blok <article class="produk-card">...</article> di sini.
             Slider & dots akan otomatis menyesuaikan.
           -->
 
@@ -670,30 +659,30 @@
     </div>
     <div class="fasilitas-grid">
       <div class="fasilitas-card" data-reveal>
-        <div class="fasilitas-icon"><i class="fas fa-industry"></i></div>
-        <h3>Lab. Pengolahan Pangan</h3>
-        <p>Ruang praktik lengkap dengan peralatan pengolahan dan sterilisasi berstandar industri.</p>
+        <div class="fasilitas-icon"><i class="fas fa-desktop"></i></div>
+        <h3>Lab. Komputer Desain</h3>
+        <p>Ruang praktik dengan perangkat desain lengkap: Adobe Creative Suite dan software pendukung lainnya.</p>
       </div>
       <div class="fasilitas-card" data-reveal style="--d:1">
-        <div class="fasilitas-icon"><i class="fas fa-biohazard"></i></div>
-        <h3>Lab. Uji Mutu</h3>
-        <p>Sarana pengujian mutu produk: kadar air, keasaman, dan uji organoleptik sederhana.</p>
+        <div class="fasilitas-icon"><i class="fas fa-camera"></i></div>
+        <h3>Studio Foto & Video</h3>
+        <p>Studio dengan pencahayaan dan peralatan produksi foto/video berstandar profesional.</p>
       </div>
       <div class="fasilitas-card" data-reveal style="--d:2">
-        <div class="fasilitas-icon"><i class="fas fa-cow"></i></div>
-        <h3>Lahan &amp; Greenhouse</h3>
-        <p>Area praktik budidaya dan sumber bahan baku segar untuk proses pengolahan siswa.</p>
+        <div class="fasilitas-icon"><i class="fas fa-print"></i></div>
+        <h3>Ruang Cetak & Finishing</h3>
+        <p>Fasilitas cetak dan finishing untuk mewujudkan karya desain dalam bentuk fisik.</p>
       </div>
       <div class="fasilitas-card" data-reveal style="--d:3">
         <div class="fasilitas-icon"><i class="fas fa-store"></i></div>
-        <h3>Kantin / Showroom Produk</h3>
-        <p>Tempat pemasaran produk siswa sekaligus simulasi bisnis pangan secara nyata.</p>
+        <h3>Galeri / Showroom Karya</h3>
+        <p>Ruang pameran karya siswa sekaligus simulasi bisnis jasa desain secara nyata.</p>
       </div>
     </div>
   </section>
 
-  <!-- VIRTUAL TOUR LAB APHP -->
-  <section class="vtour-section" id="virtual-tour-aphp">
+  <!-- VIRTUAL TOUR STUDIO DKV -->
+  <section class="vtour-section" id="virtual-tour-dkv">
     <div class="home-orn" aria-hidden="true">
       <span class="ho-chevron"></span>
       <span class="ho-line"></span>
@@ -705,8 +694,8 @@
     </div>
     <div class="vtour-head" data-reveal>
       <div class="eyebrow">Virtual Tour</div>
-      <h2 class="big-heading">Jelajahi <span>Lab APHP</span></h2>
-      <p>Kenali lebih dekat ruang praktik, fasilitas, dan lingkungan pembelajaran Agribisnis Pengolahan Hasil Pertanian melalui virtual tour.</p>
+      <h2 class="big-heading">Jelajahi <span>Studio DKV</span></h2>
+      <p>Kenali lebih dekat ruang praktik, fasilitas, dan lingkungan pembelajaran Desain Komunikasi Visual melalui virtual tour.</p>
     </div>
     <div class="vtour-card" data-reveal>
       <span class="vtc-chevron" aria-hidden="true"></span>
@@ -718,32 +707,29 @@
       <div class="vtour-card-inner">
         <div class="vtour-card-copy">
           <span class="vtc-kicker"><i class="fas fa-vr-cardboard"></i> Interaktif &amp; Menyeluruh</span>
-          <h3>Virtual Tour <span>Lab APHP</span></h3>
+          <h3>Virtual Tour <span>Studio DKV</span></h3>
 
-          <a href="#virtual-tour-aphp" class="vtour-cta-btn">Mulai Virtual Tour <i class="fas fa-arrow-right"></i></a>
+          <a href="#virtual-tour-dkv" class="vtour-cta-btn">Mulai Virtual Tour <i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="vtour-visual" aria-hidden="true">
           <div class="vtour-map"></div>
-          <!-- garis penghubung antar titik -->
           <span class="vtour-line" style="left:18%;top:52%;width:30%"></span>
           <span class="vtour-line" style="left:50%;top:52%;width:30%"></span>
-          <!-- titik lokasi -->
           <span class="vtour-pin" style="left:26%;top:34%">
-            <span class="pin-ic"><i class="fas fa-industry"></i></span>
-            <span>Lab Pengolahan</span>
+            <span class="pin-ic"><i class="fas fa-desktop"></i></span>
+            <span>Lab Komputer</span>
           </span>
           <span class="vtour-pin" style="left:62%;top:30%">
-            <span class="pin-ic"><i class="fas fa-flask-vial"></i></span>
-            <span>Lab Uji Mutu</span>
+            <span class="pin-ic"><i class="fas fa-camera"></i></span>
+            <span>Studio Foto</span>
           </span>
           <span class="vtour-pin" style="left:50%;top:68%">
-            <span class="pin-ic"><i class="fas fa-box-open"></i></span>
-            <span>Ruang Produksi</span>
+            <span class="pin-ic"><i class="fas fa-print"></i></span>
+            <span>Ruang Cetak</span>
           </span>
-          <!-- label fasilitas -->
-          <span class="vtour-fac" style="left:12%;top:70%">Bahan Baku</span>
-          <span class="vtour-fac" style="right:10%;top:66%">Pengemasan</span>
-          <span class="vtour-fac" style="left:40%;top:12%">Sterilisasi</span>
+          <span class="vtour-fac" style="left:12%;top:70%">Rak Karya</span>
+          <span class="vtour-fac" style="right:10%;top:66%">Finishing</span>
+          <span class="vtour-fac" style="left:40%;top:12%">Pencahayaan</span>
           <span class="vtour-360"><i class="fas fa-sync-alt"></i> 360°</span>
         </div>
       </div>
@@ -751,17 +737,17 @@
   </section>
 
   <!-- CTA -->
-  <section class="aphp-cta">
+  <section class="dkv-cta">
     <div class="home-orn" aria-hidden="true">
       <span class="ho-chevron"></span>
       <span class="ho-dots"></span>
       <span class="ho-ring"></span>
       <span class="ho-gold"></span>
     </div>
-    <div class="aphp-cta-inner" data-reveal>
-      <h2>Wujudkan masa depanmu di <span>APHP SKANEDA</span></h2>
-      <p>Bergabunglah dengan Program Keahlian Agribisnis Pengolahan Hasil Pertanian dan jadilah generasi wirausaha pangan yang unggul, kreatif, dan siap bersaing di era industri 4.0.</p>
-      <a href="{{ route('home') }}#ppdb" class="aphp-cta-btn"><i class="fas fa-arrow-right"></i> Info PPDB 2026/2027</a>
+    <div class="dkv-cta-inner" data-reveal>
+      <h2>Wujudkan kreativitasmu di <span>DKV SKANEDA</span></h2>
+      <p>Bergabunglah dengan Program Keahlian Desain Komunikasi Visual dan jadilah generasi kreator visual yang inovatif, ekspresif, dan siap bersaing di industri kreatif digital.</p>
+      <a href="{{ route('home') }}#ppdb" class="dkv-cta-btn"><i class="fas fa-arrow-right"></i> Info PPDB 2026/2027</a>
     </div>
   </section>
 </div>
@@ -805,7 +791,7 @@
 </script>
 
 <script>
-  /* ---- Produk Unggulan Spotlight Slider ---- */
+  /* ---- Karya Unggulan Spotlight Slider ---- */
 (function(){
   const track   = document.getElementById('produkTrack');
   const prevBtn = document.getElementById('produkPrev');

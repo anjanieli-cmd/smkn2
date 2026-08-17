@@ -48,6 +48,7 @@ Route::view('/profile/roadmap-pengembangan', 'profile.roadmap-pengembangan')
     ->name('profil.roadmap-pengembangan');
 
 
+<<<<<<< HEAD
 // ==========================================================================
 // PROGRAM KEAHLIAN
 // ==========================================================================
@@ -102,3 +103,10 @@ Route::view('/galeri/kegiatan', 'galeri.kegiatan')
 
 Route::view('/galeri/prestasi-sekolah', 'galeri.prestasi-sekolah')
     ->name('prestasi-sekolah');
+=======
+Route::view('/keahlian/aphp', 'keahlian.aphp')->name('aphp');
+Route::view('/keahlian/dkv', 'keahlian.dkv')->name('dkv');
+Route::view('/keahlian/kuliner', 'keahlian.kuliner')->name('kuliner');
+Route::view('/keahlian/lps', 'keahlian.lps')->name('lps');
+Route::view('/keahlian/rpl', 'keahlian.rpl')->name('rpl');
+>>>>>>> 4742306d339563ad09e26f7f9da8b4429cb62aaf
