@@ -36,25 +36,6 @@
     .section-title .accent{background:linear-gradient(135deg,#ffd54a 0%,#ffb300 45%,#ff7a00 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
     .section-title .gold{background:linear-gradient(135deg,#ffd54a 0%,#ffb300 45%,#ff7a00 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
 
-    /* ---------- PROFIL: decorative language berbeda dari Jurusan ---------- */
-    .profil-section{position:relative;overflow:hidden;background:var(--bg)}
-    .profil-section>.container{position:relative;z-index:2}
-    .profil-section .section-title{font-size:clamp(2.35rem,5vw,4.2rem);line-height:1.02;letter-spacing:.01em;margin-bottom:1rem;font-style:normal}
-    .profil-section .section-title .accent{background:linear-gradient(135deg,#ffd54a 0%,#ffb300 45%,#ff7a00 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
-    .profil-decor{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
-    .profil-decor svg{position:absolute;width:100%;height:100%;inset:0}
-    /* Profil memakai lingkaran konsentris + grid titik + aksen sudut, bukan pola garis Jurusan */
-    .pd-ring{fill:none;stroke:#0d3a66;stroke-width:2;opacity:.16}
-    .pd-ring-gold{fill:none;stroke:#ffb300;stroke-width:2.4;opacity:.42}
-    .pd-dot{fill:#0d3a66;opacity:.30}
-    .pd-dot-gold{fill:#ffb300;opacity:.62}
-    .pd-bar{fill:url(#profileGold);opacity:.72}
-    .pd-bar-navy{fill:#0d3a66;opacity:.78}
-    .pd-corner{fill:none;stroke:#0d3a66;stroke-width:3;opacity:.18}
-    @media(max-width:640px){
-      .profil-section .section-title{font-size:clamp(2rem,10vw,3rem)}
-      .profil-decor{opacity:.68}
-    }
     .section-desc{color:var(--text-muted);max-width:640px;font-size:.96rem}
     .section-header.center{text-align:center}
     .section-header.center .section-desc{margin:0 auto}
@@ -63,85 +44,34 @@
       .section-title,.ft-title{font-size:clamp(1.65rem,7vw,2.2rem);line-height:1.12}
     }
 
-    /* ---------- SCROLL REVEAL ---------- */
-    [data-reveal]{opacity:0;transform:translateY(36px);transition:opacity .85s var(--ease),transform .85s var(--ease);will-change:opacity,transform}
+    /* ---------- SCROLL REVEAL ----------
+       Varian halus per jenis elemen (easing premium, hanya opacity+transform):
+       default (section umum)   : translateY(35px)
+       [data-reveal="title"]    : judul   translateY(25px)
+       [data-reveal="text"]     : paragraf translateY(18px)
+       [data-reveal="card"]     : kartu   translateY(30px) scale(.97)
+       [data-reveal="img"]      : gambar  scale(.96)
+       [data-reveal="left"|"right"] : geser samping
+       Semua dijalankan SATU KALI oleh IntersectionObserver yang sama. */
+    [data-reveal]{opacity:0;transform:translateY(35px);transition:opacity .85s cubic-bezier(.22,1,.36,1),transform .85s cubic-bezier(.22,1,.36,1);will-change:opacity,transform}
+    [data-reveal="title"]{transform:translateY(25px)}
+    [data-reveal="text"]{transform:translateY(18px)}
+    [data-reveal="card"]{transform:translateY(30px) scale(.97)}
+    [data-reveal="img"]{transform:scale(.96)}
     [data-reveal="left"]{transform:translateX(-46px)}
     [data-reveal="right"]{transform:translateX(46px)}
-    [data-reveal].revealed{opacity:1;transform:none}
-    [data-reveal]{transition-delay:calc(var(--d,0)*90ms)}
+    [data-reveal].revealed,[data-reveal].is-visible{opacity:1;transform:none}
+    [data-reveal]{transition-delay:var(--reveal-delay,calc(var(--d,0)*100ms))}
 
-        /* ---------- PROFIL: FLIPBOOK BUKU SEJARAH ---------- */
-    .flipbook{position:relative}
-    .flipbook-stage{position:relative;display:flex;align-items:stretch;gap:1.1rem}
-    .flip-nav{flex-shrink:0;width:54px;height:54px;border-radius:50%;border:0;cursor:pointer;color:#fff;font-size:1.05rem;background:linear-gradient(135deg,var(--teal),var(--teal-dark));box-shadow:0 12px 26px rgba(13,58,102,.35);transition:all .3s var(--ease);z-index:6;align-self:center}
-    .flip-nav:hover{transform:translateY(-3px) scale(1.06);box-shadow:0 16px 34px rgba(13,58,102,.45)}
-    .flip-nav:disabled{opacity:.35;cursor:not-allowed;transform:none;box-shadow:none}
-    .book3d{position:relative;flex:1;min-width:0;aspect-ratio:2.05/1;min-height:430px;perspective:2400px;border-radius:20px;overflow:hidden;box-shadow:0 40px 90px rgba(13,58,102,.28)}
-    .book-sheet{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr;border-radius:20px;visibility:hidden;opacity:0;transform-style:preserve-3d;backface-visibility:hidden;-webkit-backface-visibility:hidden}
-    .book-sheet.active{visibility:visible;opacity:1;z-index:2}
-    .book-sheet.reveal-under{visibility:visible;opacity:1;z-index:1}
-    .book-sheet.turning-fwd{position:absolute;z-index:4;visibility:visible;opacity:1;transform-origin:left center;animation:flipFwd .9s var(--ease) forwards}
-    .book-sheet.turning-bwd{position:absolute;z-index:4;visibility:visible;opacity:1;transform-origin:right center;animation:flipBwd .9s var(--ease) forwards}
-    @keyframes flipFwd{0%{transform:rotateY(0)}100%{transform:rotateY(-180deg)}}
-    @keyframes flipBwd{0%{transform:rotateY(0)}100%{transform:rotateY(180deg)}}
-    .book-spine{position:absolute;left:50%;top:0;bottom:0;width:26px;transform:translateX(-50%);z-index:3;pointer-events:none;background:linear-gradient(90deg,rgba(0,0,0,.18),rgba(255,255,255,.12) 30%,rgba(0,0,0,.06) 50%,rgba(255,255,255,.12) 70%,rgba(0,0,0,.18));box-shadow:0 0 16px rgba(0,0,0,.14)}
-    .book-spine::after{content:"";position:absolute;left:50%;top:6px;bottom:6px;width:1px;background:rgba(0,0,0,.28)}
-    .book-leaf{position:relative;display:flex;flex-direction:column;overflow:hidden;padding:1.8rem 2.1rem;height:100%;min-height:0}
-    .book-leaf:first-child{border-radius:20px 4px 4px 20px}
-    .book-leaf:last-child{border-radius:4px 20px 20px 4px}
-    .book-leaf.cover,.book-leaf.back{background:linear-gradient(150deg,#0d3a66 0%,#15569c 55%,#1d6fb8 100%);color:#fff}
-    .book-leaf.cover{box-shadow:inset -3px 0 6px rgba(0,0,0,.18)}
-    .book-leaf.back{box-shadow:inset 3px 0 6px rgba(0,0,0,.18);align-items:center;justify-content:center;text-align:center;gap:.9rem}
-    .book-leaf.paper{background:linear-gradient(115deg,#fdf9ec,#f8efdc 55%,#f5ead2);color:#44403a;box-shadow:inset 3px 0 6px rgba(0,0,0,.08)}
-    .book-leaf.paper::before{content:"";position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(180deg,transparent 0 26px,rgba(120,100,60,.09) 26px 27px)}
-    .book-leaf.paper:last-child::after{content:"";position:absolute;right:0;bottom:0;width:64px;height:64px;background:linear-gradient(225deg,transparent 50%,rgba(120,100,60,.14) 50%,rgba(120,100,60,.24));border-radius:0 0 12px 0}
-    .book-cover-top{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:.8rem}
-    .profil-akreditasi{display:inline-flex;align-items:center;gap:.5rem;font-size:.72rem;font-weight:700;color:#0d3a66;background:linear-gradient(135deg,var(--gold),#ffd54f);padding:.4rem .85rem;border-radius:99px;box-shadow:0 8px 20px rgba(249,168,37,.4)}
-    .book-cover-kicker{font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.75);white-space:nowrap}
-    .book-cover-photo{position:relative;z-index:2;flex:1;min-height:0;display:flex;margin:1rem 0;border-radius:14px;overflow:hidden;border:3px solid rgba(255,255,255,.85);box-shadow:0 18px 36px rgba(0,0,0,.35)}
-    .book-cover-photo img{width:100%;height:100%;object-fit:cover;display:block}
-    .book-cover-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 52%,rgba(13,58,102,.5))}
-    .book-cover-title{position:relative;z-index:2}
-    .book-cover-eyebrow{font-size:.74rem;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);font-weight:800}
-    .book-cover-school{font-family:var(--font-display);font-size:clamp(1.3rem,2.1vw,1.8rem);line-height:1.15;text-transform:uppercase;margin:.35rem 0 .4rem}
-    .book-cover-school .num-2{color:#ffb300}
-    .book-cover-sub{font-size:.8rem;color:rgba(255,255,255,.78)}
-    .book-page-head{position:relative;z-index:2;display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;margin-bottom:1rem}
-    .book-page-kicker{font-size:.66rem;letter-spacing:.26em;text-transform:uppercase;color:var(--teal);font-weight:800;margin-bottom:.3rem}
-    .book-page-title{font-family:var(--font-display);font-size:clamp(1rem,1.7vw,1.35rem);color:#234a75;line-height:1.2}
-    .book-page-title .num-2{color:#f57c00}
-    .book-page-no{font-family:var(--font-display);font-size:2rem;color:rgba(120,100,60,.35);line-height:1}
-    .book-page-text{position:relative;z-index:2;font-size:.84rem;line-height:1.82;color:#4d463c;margin-bottom:.65rem;text-align:justify}
-    .book-page-text:first-of-type::first-letter{font-family:var(--font-display);font-size:2.3em;float:left;line-height:.9;padding:0 .18em 0 0;color:var(--teal);font-weight:800}
-    .book-timeline{position:relative;z-index:2;margin:.7rem 0 .9rem;border-top:1px dashed rgba(120,100,60,.35);padding-top:.75rem;display:flex;flex-direction:column;gap:.45rem}
-    .book-milestone{display:flex;gap:.8rem;align-items:baseline}
-    .book-year{flex-shrink:0;font-family:var(--font-display);font-weight:800;font-size:.82rem;color:var(--teal);min-width:50px}
-    .book-mile-text{font-size:.75rem;color:#4d463c;line-height:1.5}
-    .book-stats{position:relative;z-index:2;display:grid;grid-template-columns:repeat(3,1fr);gap:.55rem;margin-top:auto}
-    .book-stat{background:rgba(255,255,255,.78);border:1px solid rgba(120,100,60,.18);border-radius:12px;padding:.6rem .35rem;text-align:center;box-shadow:0 6px 14px rgba(120,100,60,.12)}
-    .book-stat strong{display:block;font-family:var(--font-display);font-size:1.2rem;color:var(--teal)}
-    .book-stat span{font-size:.64rem;color:#6b6255}
-    .book-quote{position:relative;z-index:2;margin-top:auto;background:rgba(255,255,255,.72);border-left:4px solid var(--gold);border-radius:0 12px 12px 0;padding:.7rem .9rem;font-style:italic;font-size:.8rem;color:#5b5244;box-shadow:0 8px 18px rgba(120,100,60,.14)}
-    .book-quote strong{color:var(--teal);font-style:normal}
-    .vm-text{position:relative;z-index:2;font-size:.94rem;color:#3d3a34;font-style:italic;border-left:4px solid var(--teal);padding:.6rem 0 .6rem 1rem;background:linear-gradient(90deg,rgba(29,111,184,.08),transparent);border-radius:0 12px 12px 0;margin-bottom:1rem}
-    .misi-list{position:relative;z-index:2;display:flex;flex-direction:column;gap:.6rem}
-    .misi-item{display:flex;gap:.85rem;align-items:flex-start;background:rgba(255,255,255,.82);border:1px solid rgba(120,100,60,.18);border-radius:12px;padding:.7rem .85rem;transition:all .3s var(--ease)}
-    .misi-item:hover{transform:translateX(6px);border-color:var(--teal);box-shadow:0 10px 22px rgba(120,100,60,.16)}
-    .misi-num{flex-shrink:0;width:27px;height:27px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.78rem;color:#0d3a66;background:linear-gradient(135deg,var(--mint),var(--teal-light))}
-    .misi-text{position:relative;z-index:2;font-size:.8rem;color:#4d463c;line-height:1.55}
-    .book-back-logo img{width:96px;filter:drop-shadow(0 10px 22px rgba(0,0,0,.3))}
-    .book-back-title{font-family:var(--font-display);font-size:1.15rem;text-transform:uppercase;line-height:1.3}
-    .book-back-title .num-2{color:#ffb300}
-    .book-back-sub{font-size:.78rem;color:rgba(255,255,255,.78);max-width:300px}
-    .book-back-badge{display:inline-flex;align-items:center;gap:.5rem;font-size:.68rem;font-weight:700;color:#0d3a66;background:linear-gradient(135deg,var(--gold),#ffd54f);padding:.35rem .8rem;border-radius:99px;box-shadow:0 8px 18px rgba(249,168,37,.35)}
-    .flip-controls{display:flex;align-items:center;justify-content:center;gap:1.3rem;margin-top:1.7rem;flex-wrap:wrap}
-    .flip-restart{display:inline-flex;align-items:center;gap:.5rem;border:0;cursor:pointer;font-weight:700;font-size:.82rem;color:#fff;background:linear-gradient(135deg,var(--gold),var(--gold-dark));padding:.6rem 1.2rem;border-radius:99px;box-shadow:0 10px 24px rgba(249,168,37,.4);transition:all .3s var(--ease)}
-    .flip-restart:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(249,168,37,.5)}
-    .flip-dots{display:flex;gap:.5rem}
-    .flip-dot{width:11px;height:11px;border-radius:50%;background:var(--border);border:0;cursor:pointer;padding:0;transition:all .3s var(--ease)}
-    .flip-dot.active{background:linear-gradient(135deg,var(--gold),var(--gold-dark));transform:scale(1.25);box-shadow:0 4px 10px rgba(249,168,37,.45)}
-    .flip-counter{font-size:.82rem;font-weight:700;color:var(--text-muted)}
-    .flip-hint{text-align:center;font-size:.72rem;color:var(--text-muted);margin-top:.7rem;letter-spacing:.04em}
+    /* Pengaman horizontal scroll (clip tidak membuat scroll container,
+       sehingga sticky navbar di layout tetap berfungsi) */
+    body{overflow-x:clip}
+
+    /* Ornamen halus: rotasi sangat lambat / floating / pulse */
+    @keyframes ornSpinSlow{to{transform:rotate(360deg)}}
+    @keyframes ornFloatSoft{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+    @keyframes ornPulseSoft{0%,100%{opacity:.55}50%{opacity:.85}}
+
 
     /* ---------- JENDELA KEPALA SEKOLAH (corporate glass window) ---------- */
     .window-section{position:relative;background:#f7f9fc;color:#0d2d50;padding:96px 0;overflow:hidden;transition:background .9s var(--ease)}
@@ -420,109 +350,6 @@
       .carousel-nav{margin-top:1.8rem}
     }
 
-    /* ---------- ROADMAP ---------- */
-    /* ============ JOURNEY TO 2028 MAP ============ */
-    .roadmap-preview-section{position:relative;background:linear-gradient(180deg,rgba(11,61,104,.88) 0%,rgba(14,78,125,.85) 55%,rgba(8,56,95,.92) 100%),url('{{ asset('images/hero-sekolah.jpg') }}') center/cover no-repeat;color:#fff;padding:110px 0 120px;overflow:hidden}
-    .j2k8-map{position:absolute;inset:0;pointer-events:none;opacity:.38}
-    .j2k8-contours{position:absolute;inset:0;background:
-      radial-gradient(ellipse 46% 42% at 12% 22%,transparent 58%,rgba(255,255,255,.10) 60%,transparent 62%),
-      radial-gradient(ellipse 52% 48% at 12% 22%,transparent 60%,rgba(255,255,255,.08) 62%,transparent 64%),
-      radial-gradient(ellipse 60% 56% at 12% 22%,transparent 62%,rgba(255,255,255,.06) 64%,transparent 66%),
-      radial-gradient(ellipse 40% 38% at 84% 78%,transparent 58%,rgba(255,255,255,.09) 60%,transparent 62%),
-      radial-gradient(ellipse 48% 44% at 84% 78%,transparent 60%,rgba(255,255,255,.07) 62%,transparent 64%),
-      radial-gradient(ellipse 58% 54% at 84% 78%,transparent 62%,rgba(255,255,255,.05) 64%,transparent 66%),
-      radial-gradient(ellipse 36% 34% at 55% 95%,transparent 56%,rgba(255,255,255,.07) 58%,transparent 60%);
-      opacity:.32}
-    .j2k8-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(160,210,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(160,210,255,.045) 1px,transparent 1px);background-size:44px 44px;mask-image:radial-gradient(ellipse 78% 72% at 50% 44%,#000 55%,transparent 100%);-webkit-mask-image:radial-gradient(ellipse 78% 72% at 50% 44%,#000 55%,transparent 100%)}
-    .j2k8-coords{position:absolute;inset:0}
-    .j2k8-coords i{position:absolute;font-style:normal;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.6rem;letter-spacing:.18em;color:rgba(170,215,255,.16)}
-    .j2k8-coords .cd-dot{position:absolute;width:5px;height:5px;border-radius:50%;background:rgba(170,215,255,.20)}
-    .j2k8-coords .cd-dash{position:absolute;width:26px;height:1px;background:rgba(170,215,255,.15)}
-    .j2k8-compass{position:absolute;top:26px;right:28px;width:52px;height:52px;opacity:.92;color:#bfe6ff}
-    .j2k8-compass svg{width:100%;height:100%;display:block}
-    .j2k8-compass .n{fill:#7fd4ff}
-    .roadmap-preview-inner{position:relative;z-index:2}
-    .roadmap-preview-header{max-width:820px;margin:0 auto .4rem;text-align:center}
-    .j2k8-label{display:inline-block;font-size:.66rem;font-weight:800;letter-spacing:.3em;text-transform:uppercase;color:#ffab00;margin-bottom:.95rem}
-    .roadmap-preview-section .section-title{color:#fff;font-size:clamp(1.7rem,3.4vw,2.5rem);margin-bottom:.85rem}
-    .roadmap-preview-section .accent{background:linear-gradient(100deg,#ffd54a,#f2b632);-webkit-background-clip:text;background-clip:text;color:transparent}
-    .roadmap-preview-section .section-desc{color:rgba(255,255,255,.75);font-size:.95rem;line-height:1.75;max-width:640px;margin:0 auto}
-    .j2k8-legend{display:flex;align-items:center;justify-content:center;gap:1.6rem;flex-wrap:wrap;margin-top:.85rem;font-size:.72rem;color:rgba(255,255,255,.72)}
-    .j2k8-legend span{display:inline-flex;align-items:center;gap:.45rem}
-    .j2k8-legend .lg-ic{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);font-size:.62rem;color:#fff}
-    .j2k8-legend .lg-done{color:#7ee2a8}
-    .j2k8-legend .lg-running{color:#7cc9ff}
-    .j2k8-legend .lg-goal{color:#ffd54f}
-    .j2k8-stage{position:relative;min-height:1150px;margin-top:.1rem}
-    .j2k8-route{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}
-    .j2k8-route .route-base{stroke:rgba(255,255,255,.13);stroke-width:4;fill:none;stroke-linecap:round}
-    .j2k8-route .route-dash{stroke:#29b6f6;stroke-width:3.5;fill:none;stroke-linecap:round;stroke-dasharray:10 14;opacity:.5;animation:routeDashMove 22s linear infinite}
-    .j2k8-route .route-glow{stroke:#29b6f6;stroke-width:5;fill:none;stroke-linecap:round;filter:drop-shadow(0 0 6px rgba(41,182,246,.6));opacity:0;stroke-dasharray:2800;stroke-dashoffset:2800;transition:stroke-dashoffset 1.6s cubic-bezier(.4,0,.2,1)}
-    .j2k8-stage.drawn .j2k8-route .route-glow{opacity:1;stroke-dashoffset:0}
-    @keyframes routeDashMove{to{stroke-dashoffset:-48}}
-    .j2k8-checkpoint{position:absolute;z-index:3;display:flex;flex-direction:column;align-items:center;transform:translate(-50%,-50%);opacity:0;transition:opacity .5s ease,transform .5s ease}
-    .j2k8-stage.drawn .j2k8-checkpoint{opacity:1}
-    .j2k8-node{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(10,38,64,.88);border:2px solid rgba(41,182,246,.55);color:#7fd4ff;font-size:1rem;box-shadow:0 0 0 5px rgba(41,182,246,.14),0 6px 18px rgba(0,0,0,.4);transition:transform .3s var(--ease),border-color .3s,box-shadow .3s}
-    .j2k8-checkpoint:hover .j2k8-node,.j2k8-checkpoint:focus-visible .j2k8-node{transform:scale(1.22);border-color:#29b6f6;box-shadow:0 0 0 8px rgba(41,182,246,.2),0 0 26px rgba(41,182,246,.65)}
-    .j2k8-node .fas{filter:drop-shadow(0 0 6px rgba(41,182,246,.6))}
-    .j2k8-cp-year{margin-top:.55rem;font-weight:800;font-size:.8rem;letter-spacing:.08em;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.6)}
-    .j2k8-cp-tag{margin-top:.15rem;font-size:.58rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.55)}
-    .j2k8-start .j2k8-node{border-color:rgba(126,226,168,.6);color:#7ee2a8;box-shadow:0 0 0 5px rgba(46,204,113,.16),0 6px 18px rgba(0,0,0,.4)}
-    .j2k8-goal .j2k8-node{width:56px;height:56px;background:linear-gradient(135deg,rgba(255,213,79,.22),rgba(242,182,50,.14));border:2px solid #f2b632;color:#ffd54f;font-size:1.35rem;box-shadow:0 0 0 8px rgba(242,182,50,.18),0 0 34px rgba(242,182,50,.55);animation:goalPulse 3s ease-in-out infinite}
-    .j2k8-goal .j2k8-cp-year{color:#ffd54f;font-size:.95rem}
-    .j2k8-goal .j2k8-cp-tag{color:#ffd54f}
-    .j2k8-card{position:absolute;z-index:4;width:312px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:18px;padding:1.15rem 1.2rem 1.25rem;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 16px 40px rgba(0,0,0,.28);transition:transform .35s var(--ease),border-color .35s,background .35s,box-shadow .35s;opacity:0}
-    .j2k8-stage.drawn .j2k8-card{animation:cardIn .6s cubic-bezier(.22,1,.36,1) forwards}
-    .j2k8-card:hover{transform:translateY(-6px);border-color:rgba(41,182,246,.55);background:rgba(255,255,255,.13);box-shadow:0 24px 52px rgba(0,0,0,.4)}
-    .j2k8-connector{position:absolute;z-index:2;height:1px;background:linear-gradient(90deg,rgba(41,182,246,.55),rgba(41,182,246,.12));transform-origin:left center;pointer-events:none}
-    .j2k8-connector::after{content:"";position:absolute;right:-5px;top:-3px;width:7px;height:7px;border-radius:50%;background:#29b6f6;opacity:.8}
-    .j2k8-connector.v{width:1px;height:44px;background:linear-gradient(180deg,rgba(41,182,246,.55),rgba(41,182,246,.12))}
-    .j2k8-connector.v::after{right:auto;left:-3px;top:auto;bottom:-3px}
-    .j2k8-arrow{position:absolute;z-index:2;width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-bottom:13px solid rgba(41,182,246,.75);filter:drop-shadow(0 0 6px rgba(41,182,246,.5));pointer-events:none}
-    .j2k8-card-top{display:flex;align-items:center;justify-content:space-between;gap:.5rem;margin-bottom:.5rem}
-    .j2k8-num{font-size:.7rem;font-weight:800;letter-spacing:.16em;color:rgba(255,255,255,.5)}
-    .j2k8-status{display:inline-flex;align-items:center;gap:.4rem;font-size:.58rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .62rem;border-radius:99px;background:rgba(255,255,255,.12);white-space:nowrap}
-    .j2k8-status-dot{width:7px;height:7px;border-radius:50%}
-    .s-done{color:#7ee2a8;background:rgba(46,204,113,.16)}
-    .s-done .j2k8-status-dot{background:#2ecc71;box-shadow:0 0 8px rgba(46,204,113,.8)}
-    .s-running{color:#7cc9ff;background:rgba(37,184,242,.16)}
-    .s-running .j2k8-status-dot{background:#25b8f2;box-shadow:0 0 8px rgba(37,184,242,.8);animation:journeyBlink 1.6s ease-in-out infinite}
-    .s-goal{color:#ffd54f;background:rgba(242,182,50,.18)}
-    .s-goal .j2k8-status-dot{background:#f2b632;box-shadow:0 0 8px rgba(242,182,50,.85)}
-    .j2k8-year{font-size:.78rem;font-weight:800;letter-spacing:.06em;color:#fff;margin-bottom:.3rem}
-    .j2k8-name{font-family:var(--font-display);font-size:.95rem;line-height:1.35;color:#fff;margin-bottom:.4rem}
-    .j2k8-desc{font-size:.74rem;line-height:1.6;color:rgba(255,255,255,.72)}
-    .j2k8-goal-card{width:352px;border-color:rgba(242,182,50,.5);background:rgba(242,182,50,.1);box-shadow:0 0 0 1px rgba(242,182,50,.22),0 20px 48px rgba(0,0,0,.34)}
-    .j2k8-goal-card .j2k8-year{color:#ffd54f;font-size:.86rem}
-    .j2k8-goal-card .j2k8-name{color:#ffd54f;font-size:1.05rem}
-    .j2k8-goal-card:hover{border-color:rgba(242,182,50,.75);background:rgba(242,182,50,.16)}
-    .j2k8-start-flag{position:absolute;z-index:4;display:flex;align-items:center;gap:.5rem;font-size:.6rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#7ee2a8;background:rgba(46,204,113,.12);border:1px solid rgba(126,226,168,.35);padding:.34rem .8rem;border-radius:99px;white-space:nowrap}
-    .j2k8-cta{display:inline-flex;align-items:center;gap:.55rem;padding:.7rem 1.3rem;border-radius:99px;font-weight:700;font-size:.82rem;color:#dff2ff;background:rgba(41,182,246,.16);border:1px solid rgba(41,182,246,.4);backdrop-filter:blur(8px);transition:all .3s var(--ease)}
-    .j2k8-cta:hover{background:rgba(41,182,246,.28);transform:translateY(-2px);box-shadow:0 12px 30px rgba(41,182,246,.3)}
-    @keyframes journeyBlink{0%,100%{opacity:1}50%{opacity:.35}}
-    @keyframes goalPulse{0%,100%{box-shadow:0 0 0 8px rgba(242,182,50,.18),0 0 34px rgba(242,182,50,.55)}50%{box-shadow:0 0 0 13px rgba(242,182,50,.1),0 0 48px rgba(242,182,50,.75)}}
-    @keyframes cardIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-
-    @media(max-width:1100px){
-      .j2k8-stage{display:flex;flex-direction:column;gap:2.4rem;min-height:0;padding-left:8px}
-      .j2k8-stage::before{content:"";position:absolute;left:31px;top:6px;bottom:6px;width:3px;border-radius:99px;background:linear-gradient(180deg,#29b6f6,rgba(41,182,246,.25));opacity:.55}
-      .j2k8-route{display:none}
-      .j2k8-connector{display:none}
-      .j2k8-arrow{display:none}
-      .j2k8-milestone{position:relative;display:grid;grid-template-columns:64px 1fr;gap:1.1rem;align-items:start;min-height:0}
-      .j2k8-checkpoint{position:static;transform:none;opacity:1;flex-direction:row;align-items:center;gap:0}
-      .j2k8-stage.drawn .j2k8-checkpoint{opacity:1}
-      .j2k8-checkpoint .j2k8-cp-year{margin-top:0;margin-left:.6rem;font-size:.82rem}
-      .j2k8-checkpoint .j2k8-cp-tag{display:none}
-      .j2k8-node{width:44px;height:44px}
-      .j2k8-goal .j2k8-node{width:52px;height:52px}
-      .j2k8-card{position:static;opacity:1;animation:none;width:100%;transform:none}
-      .j2k8-stage.drawn .j2k8-card{animation:none;opacity:1}
-      .j2k8-goal-card{width:100%}
-      .j2k8-start-flag{position:static;justify-content:flex-start;margin:0 0 .2rem 74px}
-      .j2k8-compass{display:none}
-      .roadmap-preview-header{margin-bottom:.4rem}
-    }
 
 
     /* ---------- KONTAK : FIND US ---------- */
@@ -578,8 +405,6 @@
 
     /* ---------- RESPONSIVE ---------- */
     @media(max-width:1024px){
-      .book3d{aspect-ratio:1.95/1;min-height:400px}
-      .flipbook-stage{gap:.7rem}
       .footer-nav{gap:1.8rem 2.2rem}
       .footer-nav-group{width:100%;text-align:center}
       .footer-nav-links{justify-content:center}
@@ -597,12 +422,11 @@
       .footer-copy{justify-content:center}
       .footer-legal{justify-content:center}
       .hero-stat-label{font-size:.68rem}
-      .window-section,.roadmap-preview-section{padding:72px 0}
+      .window-section{padding:72px 0}
     }
 
 
     @media(max-width:640px){
-      .book3d{aspect-ratio:auto;min-height:420px}
       .book-leaf{padding:1.05rem 1.1rem}
       .book-cover-photo img{height:112px}
       .book-cover-top{gap:.5rem}
@@ -626,75 +450,66 @@
       .misi-item{padding:.55rem .7rem;gap:.6rem}
       .misi-num{width:24px;height:24px;font-size:.72rem;border-radius:7px}
       .misi-text{font-size:.72rem;line-height:1.55}
-      .flip-nav{display:none}
-      .flipbook-stage{gap:0}
-      .flip-controls{gap:.8rem;margin-top:1.2rem}
-      .flip-counter{font-size:.74rem}
-      .book-back-logo img{width:74px}
-      .book-back-title{font-size:1rem}
-      .book-back-sub{font-size:.72rem}
     }
 
     /* ---------- REDUCED MOTION ---------- */
     @media(prefers-reduced-motion:reduce){
       *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
       [data-reveal]{opacity:1;transform:none}
+      [data-reveal="left"],[data-reveal="right"]{transform:none}
+      .hd-hero{animation:none !important}
       html{scroll-behavior:auto}
     }
+    @media(prefers-reduced-motion:reduce){
+      .vt-section .vt-decor-ring,
+      .principal-section-ornament-left,.principal-section-ornament-right,.jd-node,
+      .hd-hero-inner::after{animation:none !important}
+    }
+    @media(prefers-reduced-motion:reduce){
+      .cc-photo img,
+      .misi-item,.window-knock .wk-btn,
+      .ft-card,.ft-map-btn,.ft-cta-btn,.carousel-card{transform:none !important;opacity:1 !important}
+    }
   /* v35-spacing-final */
-/* ---------- ROADMAP — COMPACT & RAPI ---------- */
-.roadmap-preview-section{
-  padding:82px 0 88px;
-}
-.roadmap-preview-header{
-  max-width:760px;
-  margin:0 auto .2rem;
-}
-.roadmap-preview-section .section-title{
-  font-size:clamp(1.9rem,3.6vw,3rem);
-  line-height:1.08;
-  margin-bottom:.65rem;
-}
-.roadmap-preview-section .section-desc{
-  font-size:.88rem;
-  line-height:1.6;
-}
-.j2k8-legend{margin-top:.65rem}
-.j2k8-stage{
-  min-height:940px;
-  margin-top:0;
-}
-.j2k8-card{
-  width:286px;
-  padding:1rem 1.05rem 1.08rem;
-  border-radius:16px;
-}
-.j2k8-goal-card{width:320px}
-.j2k8-name{font-size:.9rem}
-.j2k8-desc{font-size:.7rem;line-height:1.5}
-.j2k8-node{width:40px;height:40px}
-.j2k8-goal .j2k8-node{width:50px;height:50px}
-.j2k8-cp-year{font-size:.75rem}
 
-@media(max-width:900px){
-  .roadmap-preview-section{padding:68px 0 74px}
-  .j2k8-stage{min-height:900px}
-  .j2k8-card{width:260px}
-  .j2k8-goal-card{width:290px}
+/* ============================================================
+   HOVER ANIMATION HALUS (card, button, link, ornament)
+   Ditambahkan agar senada dengan halaman Sejarah/Visi Misi.
+   ============================================================ */
+/* Card utama hover: naik halus + shadow bertambah + border subtle */
+.carousel-card[data-pos="active"] .card-inner{transition:transform .3s ease,filter .3s ease}
+.carousel-card[data-pos="active"] .card-inner:hover{transform:translateY(-6px)}
+.carousel-card[data-pos="active"] .card-inner:hover .cc-body{box-shadow:0 28px 54px rgba(23,32,79,.22)}
+.carousel-card[data-pos="active"] .cc-photo img{transition:transform .35s ease}
+.carousel-card[data-pos="active"] .card-inner:hover .cc-photo img{transform:translateY(-4px) scale(1.02)}
+.ft-card{transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease;border:1px solid transparent}
+.ft-card:hover{transform:translateY(-6px);box-shadow:0 32px 66px rgba(18,59,96,.32);border-color:rgba(245,158,11,.35)}
+/* Ikon dalam card ikut scale halus saat hover */
+.carousel-card[data-pos="active"] .card-inner:hover .cc-abbr{transform:scale(1.04)}
+.cc-abbr{transition:transform .3s ease}
+/* Tombol utama: arrow bergeser 4-6px ke kanan saat hover */
+.hd-btn i,.vt-btn i,.ft-cta-btn i,.ft-map-btn i{transition:transform .3s ease}
+.hd-btn:hover i,.vt-btn:hover i,.ft-cta-btn:hover i{transform:translateX(5px)}
+/* Link nav: underline muncul smooth (hanya link konten, bukan navbar) */
+.ft-row-value a{transition:color .2s ease}
+.ft-row-value a::after{content:"";display:block;height:2px;width:0;background:linear-gradient(90deg,#ffd54a,#ffb300);transition:width .25s ease;border-radius:99px;margin-top:2px}
+.ft-row-value a:hover::after{width:100%}
+/* Ornamen subtle animation: ring berputar lambat, diamond mengambang, dots berdenyut halus */
+.vt-section .vt-decor-ring{animation:ornSpin 26s linear infinite}
+.principal-section-ornament-left{animation:ornFloat 11s ease-in-out infinite}
+.principal-section-ornament-right{animation:ornFloat 13s ease-in-out infinite}
+.jd-node{animation:ornPulse 4.5s ease-in-out infinite}
+@keyframes ornSpin{to{transform:rotate(360deg)}}
+@keyframes ornFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes ornPulse{0%,100%{opacity:.35}50%{opacity:.85}}
+@media(prefers-reduced-motion:reduce){
+  .vt-section .vt-decor-ring,
+  .principal-section-ornament-left,.principal-section-ornament-right,.jd-node,
+  .hd-hero-inner::after{animation:none !important}
 }
-@media(max-width:640px){
-  .roadmap-preview-section{padding:58px 0 64px}
-  .roadmap-preview-section .section-title{
-    font-size:clamp(1.75rem,8vw,2.35rem);
-  }
-  .j2k8-stage{
-    min-height:0;
-    margin-top:.8rem;
-  }
-  .j2k8-card,.j2k8-goal-card{width:100%}
-  .j2k8-node{width:40px;height:40px}
-}
-
+/* Virtual Tour foto: hover scale halus 1 -> 1.03 (overflow hidden sudah ada di .vt-frame) */
+.vt-frame img{transition:transform .6s ease}
+.vt-frame:hover img{transform:scale(1.03)}
 </style>
 
 <!-- ============================================================
@@ -721,11 +536,25 @@
   /* -------- HERO UTAMA (cinematic fullscreen, foto = background) -------- */
   .hd-hero{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden;
     background-image:url('{{ asset('images/hero-sekolah.jpg') }}');
-    background-size:cover;background-position:center;background-repeat:no-repeat}
+    background-size:cover;background-position:center;background-repeat:no-repeat;
+    animation:hdHeroBg 1.6s cubic-bezier(.22,.61,.36,1) both}
+  /* Subtle scale saat halaman dibuka: scale(1.03) -> scale(1) */
+  @keyframes hdHeroBg{from{transform:scale(1.03)}to{transform:scale(1)}}
   .hd-hero::before{content:"";position:absolute;inset:0;z-index:1;
-    background:linear-gradient(100deg,rgba(7,22,42,.85) 0%,rgba(9,30,54,.6) 42%,rgba(9,30,54,.22) 75%,rgba(9,30,54,.08) 100%)}
+    background:linear-gradient(100deg,rgba(7,22,42,.88) 0%,rgba(9,30,54,.66) 45%,rgba(9,30,54,.30) 78%,rgba(9,30,54,.10) 100%)}
+  /* Watermark typography besar transparan — konsisten dengan hero Sejarah */
+  .hd-hero::after{content:"SKANEDA";position:absolute;z-index:2;right:-2%;top:50%;transform:translateY(-50%);
+    font-family:var(--font-display);font-size:clamp(6rem,20vw,20rem);font-weight:900;line-height:.82;
+    letter-spacing:.02em;color:rgba(255,255,255,.05);-webkit-text-stroke:1px rgba(255,255,255,.07);
+    text-shadow:0 0 90px rgba(13,58,102,.16);pointer-events:none;white-space:nowrap;user-select:none}
 
-  .hd-hero-inner{position:relative;z-index:2;max-width:none;margin:0;width:100%;padding:clamp(6rem,11vh,7.5rem) clamp(1.2rem,5.2vw,5.5rem)}
+  .hd-hero-inner{position:relative;z-index:3;max-width:none;margin:0;width:100%;padding:clamp(6rem,11vh,7.5rem) clamp(1.2rem,5.2vw,5.5rem)}
+  /* Garis vertikal gold di kiri judul telah DIHAPUS total (tanpa pengganti).
+     Ornamen lain (diamond gold kanan atas) tetap, dengan float halus. */
+  .hd-hero-inner::after{content:"";position:absolute;right:12%;top:10%;width:64px;height:64px;
+    border:2px solid rgba(255,213,74,.4);transform:rotate(45deg);pointer-events:none;
+    animation:heroDiamond 7s ease-in-out infinite}
+  @keyframes heroDiamond{0%,100%{transform:rotate(45deg) translateY(0);opacity:.45}50%{transform:rotate(45deg) translateY(-9px);opacity:.85}}
 
   .hd-hero-copy{max-width:640px}
   .hd-eyebrow{display:inline-flex;align-items:center;gap:.85rem;font-size:clamp(.82rem,1.05vw,1rem);font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#fff7e3;padding:.62rem 1.15rem;border:1px solid rgba(255,255,255,.32);border-radius:999px;background:rgba(13,58,102,.30);backdrop-filter:blur(5px);margin-bottom:1.7rem;animation:hdFadeUp .65s .05s var(--ease) both}
@@ -789,6 +618,131 @@
   .hd-btn-primary:hover i{transform:translateX(5px)}
   @keyframes hdFadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
 
+  /* ============================================================
+     TOMBOL VIRTUAL TOUR 360° (hero, sejajar dengan Jelajahi Sekolah)
+     ============================================================ */
+  .hd-btn-vt{background:rgba(8,35,62,.22);color:#fff;border:1px solid rgba(255,255,255,.55);
+    box-shadow:0 8px 24px rgba(4,14,28,.12);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+  .hd-btn-vt:hover{transform:translateY(-2px);background:rgba(8,35,62,.38);border-color:rgba(255,255,255,.8)}
+  .hd-btn-vt i{font-size:.95rem;color:#ffb300;transition:transform .35s var(--ease)}
+  .hd-btn-vt:hover i{transform:translateX(5px)}
+  .hd-btn-vt .vt-pulse{width:9px;height:9px;border-radius:50%;background:#ffb300;flex:0 0 9px;
+    box-shadow:0 0 0 0 rgba(255,179,0,.55);animation:vtPulse 2.2s infinite}
+  @keyframes vtPulse{0%{box-shadow:0 0 0 0 rgba(255,179,0,.5)}70%{box-shadow:0 0 0 9px rgba(255,179,0,0)}100%{box-shadow:0 0 0 0 rgba(255,179,0,0)}}
+
+  /* ============================================================
+     SECTION VIRTUAL TOUR 360° — JELAJAHI SMKN 2 MOJOKERTO
+     ============================================================ */
+  .vt-section{position:relative;background:#f6f9fc;overflow:hidden;padding:clamp(4.5rem,9vw,7.5rem) 0}
+  .vt-section .vt-watermark{position:absolute;z-index:0;right:-3%;top:50%;transform:translateY(-50%);
+    font-family:var(--font-display);font-size:clamp(5rem,17vw,16rem);font-weight:900;line-height:.8;
+    color:rgba(13,58,102,.045);white-space:nowrap;pointer-events:none;user-select:none}
+  /* Ornamen geometris tipis (navy + gold) */
+  .vt-section .vt-decor-ring{position:absolute;z-index:0;left:-70px;top:-70px;width:230px;height:230px;
+    border:2px solid rgba(13,58,102,.10);border-radius:50%}
+  .vt-section .vt-decor-ring::after{content:"";position:absolute;left:34px;top:34px;right:34px;bottom:34px;
+    border:2px solid rgba(249,168,37,.35);border-radius:50%}
+  .vt-section .vt-decor-dots{position:absolute;z-index:0;right:6%;bottom:8%;display:grid;
+    grid-template-columns:repeat(3,6px);gap:10px}
+  .vt-section .vt-decor-dots i{width:6px;height:6px;border-radius:50%;background:rgba(13,58,102,.22)}
+
+  .vt-inner{position:relative;z-index:1;width:min(1400px,92%);margin:0 auto;
+    display:grid;grid-template-columns:minmax(0,1.05fr) minmax(340px,.95fr);gap:clamp(2.5rem,5vw,5rem);align-items:center}
+
+  /* ---- KIRI: preview foto / pintu masuk Virtual Tour ---- */
+  .vt-media{position:relative}
+  .vt-frame{position:relative;border-radius:26px;overflow:hidden;box-shadow:0 28px 70px rgba(13,58,102,.28);
+    border:1px solid rgba(255,255,255,.6);background:#0d3a66}
+  .vt-frame img{width:100%;height:clamp(320px,44vw,540px);object-fit:cover;display:block;transform:scale(1)}
+  .vt-frame::before{content:"";position:absolute;inset:0;z-index:2;
+    background:linear-gradient(200deg,rgba(7,22,42,.05) 30%,rgba(7,22,42,.55) 100%)}
+  .vt-frame::after{content:"";position:absolute;inset:0;z-index:2;border-radius:26px;
+    box-shadow:inset 0 0 0 1px rgba(255,255,255,.16)}
+  /* Label 360° TOUR */
+  .vt-badge{position:absolute;z-index:4;top:1.25rem;left:1.25rem;display:inline-flex;align-items:center;gap:.5rem;
+    padding:.5rem .95rem;border-radius:999px;background:rgba(7,22,42,.55);border:1px solid rgba(255,255,255,.35);
+    backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#fff;font-size:.72rem;font-weight:800;
+    letter-spacing:.14em;text-transform:uppercase}
+  .vt-badge i{color:#ffb300;font-size:.9rem}
+  /* Tombol play/explore tengah */
+  .vt-play{position:absolute;z-index:4;top:50%;left:50%;transform:translate(-50%,-50%);
+    width:76px;height:76px;border-radius:50%;border:0;cursor:pointer;display:flex;align-items:center;justify-content:center;
+    background:rgba(255,255,255,.14);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+    border:1.5px solid rgba(255,255,255,.65);color:#fff;font-size:1.4rem;
+    box-shadow:0 16px 44px rgba(4,14,28,.35);transition:all .4s var(--ease)}
+  .vt-play:hover{background:#f9a825;color:#0d3a66;transform:translate(-50%,-50%) scale(1.07);border-color:#f9a825}
+  .vt-play::after{content:"";position:absolute;inset:-9px;border-radius:50%;border:1.5px solid rgba(255,255,255,.3);
+    animation:vtRing 2.6s infinite}
+  @keyframes vtRing{0%{transform:scale(.82);opacity:1}100%{transform:scale(1.25);opacity:0}}
+  /* Caption bawah foto */
+  .vt-caption{position:absolute;z-index:4;left:1.5rem;right:1.5rem;bottom:1.4rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+  .vt-caption strong{display:block;font-family:var(--font-display);font-size:1.25rem;font-weight:800;color:#fff;text-shadow:0 2px 14px rgba(4,14,28,.5)}
+  .vt-caption span{font-size:.74rem;color:rgba(255,255,255,.78);font-weight:600;letter-spacing:.04em}
+  .vt-caption .vt-cam{display:inline-flex;align-items:center;gap:.45rem;padding:.45rem .8rem;border-radius:99px;
+    background:rgba(7,22,42,.5);border:1px solid rgba(255,255,255,.28);color:#ffd54a;font-size:.68rem;font-weight:800;letter-spacing:.12em}
+  /* Kartu info melayang (sedikit menutupi foto, gaya editorial) */
+  .vt-chip{position:absolute;z-index:4;right:-18px;bottom:56px;background:#0d3a66;color:#fff;border-radius:16px;
+    padding:.85rem 1.1rem;box-shadow:0 18px 44px rgba(13,58,102,.38);border:1px solid rgba(255,255,255,.12);
+    display:flex;align-items:center;gap:.8rem;animation:hdFadeUp .8s .35s var(--ease) both}
+  .vt-chip i{font-size:1.3rem;color:#ffb300}
+  .vt-chip strong{display:block;font-size:.95rem;line-height:1.2}
+  .vt-chip span{font-size:.68rem;color:rgba(255,255,255,.72);font-weight:600;letter-spacing:.06em}
+
+  /* ---- KANAN: teks ---- */
+  .vt-kicker{display:inline-flex;align-items:center;gap:.65rem;font-size:.74rem;font-weight:800;
+    letter-spacing:.22em;text-transform:uppercase;color:#2f6fa8;margin-bottom:1rem}
+  .vt-kicker::before{content:"";width:34px;height:3px;border-radius:99px;background:linear-gradient(90deg,#0d3a66,#2f6fa8)}
+  .vt-title{font-family:var(--font-display);font-size:clamp(2.2rem,4.6vw,3.9rem);font-weight:800;font-style:normal;
+    line-height:1.06;letter-spacing:.01em;color:#0d3a66;text-transform:uppercase;margin:0 0 1.1rem;
+    text-shadow:0 2px 10px rgba(13,58,102,.06)}
+  .vt-title .vt-gold{background:linear-gradient(135deg,#ffd54a 0%,#ffb300 45%,#ff7a00 100%);
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+  .vt-sub{display:block;font-size:.78rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#f9a825;margin-top:.4rem}
+  .vt-desc{font-size:1.02rem;line-height:1.85;color:#44576e;max-width:520px;margin:0 0 2rem}
+  .vt-feats{display:flex;flex-wrap:wrap;gap:.7rem;margin-bottom:2.2rem}
+  .vt-feat{display:inline-flex;align-items:center;gap:.5rem;padding:.55rem .9rem;border:1px solid rgba(13,58,102,.16);
+    background:#fff;border-radius:999px;font-size:.76rem;font-weight:700;color:#1d4b7a;box-shadow:0 4px 14px rgba(13,58,102,.06)}
+  .vt-feat i{color:#f9a825;font-size:.82rem}
+  .vt-btn{display:inline-flex;align-items:center;gap:.7rem;padding:1rem 2.15rem;border-radius:12px;border:0;cursor:pointer;
+    font-family:var(--font-body);font-size:.9rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;
+    color:#fff;background:linear-gradient(135deg,#f9a825,#f08c00);box-shadow:0 14px 34px rgba(249,168,37,.38);
+    transition:transform .35s var(--ease),box-shadow .35s var(--ease)}
+  .vt-btn i{font-size:.85rem;transition:transform .35s var(--ease)}
+  .vt-btn:hover{transform:translateY(-3px);box-shadow:0 20px 46px rgba(249,168,37,.48)}
+  .vt-btn:hover i{transform:translateX(5px)}
+
+  /* ---- Responsive: tablet ---- */
+  @media(max-width:1024px){
+    .vt-inner{grid-template-columns:minmax(0,1fr) minmax(320px,.9fr);gap:2.4rem}
+    .vt-frame img{height:clamp(300px,46vw,480px)}
+    .vt-chip{right:10px;bottom:44px;padding:.7rem .9rem}
+    .vt-chip i{font-size:1.1rem}
+    .vt-title{font-size:clamp(1.9rem,4vw,2.9rem)}
+  }
+  @media(max-width:820px){
+    .vt-inner{grid-template-columns:1fr;gap:2.6rem}
+    .vt-media{order:1}
+    .vt-copy{order:2;text-align:left}
+    .vt-frame img{height:clamp(280px,62vw,420px)}
+    .vt-chip{right:14px;bottom:40px}
+    .vt-decor-dots{right:4%;bottom:4%}
+  }
+  @media(max-width:600px){
+    .vt-section{padding:3.6rem 0}
+    .vt-inner{width:min(100% - 2.2rem,92%)}
+    .vt-frame img{height:250px}
+    .vt-play{width:62px;height:62px;font-size:1.15rem}
+    .vt-badge{top:1rem;left:1rem;padding:.42rem .8rem;font-size:.64rem}
+    .vt-caption{left:1.1rem;right:1.1rem;bottom:1.1rem}
+    .vt-caption strong{font-size:1.05rem}
+    .vt-chip{position:static;margin-top:1rem;width:100%;border-radius:14px}
+    .vt-title{font-size:clamp(1.7rem,8vw,2.3rem)}
+    .vt-desc{font-size:.95rem;line-height:1.75}
+    .vt-feats{gap:.55rem}
+    .vt-feat{font-size:.7rem;padding:.48rem .75rem}
+    .vt-btn{width:100%;justify-content:center}
+  }
+
   /* -------- RESPONSIVE -------- */
   @media(max-width:900px){
     .hd-hero{min-height:100svh;background-position:70% center}
@@ -825,203 +779,57 @@
       <h1 class="hd-title">SMKN <span class="hd-num">2</span><br><span class="hd-line-sub">MOJOKERTO</span></h1>
       <p class="hd-desc">Mewujudkan pendidikan vokasi yang unggul, berkarakter, dan siap menghadapi masa depan.</p>
       <div class="hd-actions">
-        <a href="#profil" class="hd-btn hd-btn-primary">Jelajahi Sekolah <i class="fa-solid fa-arrow-right"></i></a>
+        <a href="#lulusan-terbaik" class="hd-btn hd-btn-primary">Jelajahi Sekolah <i class="fa-solid fa-arrow-right"></i></a>
+        <a href="#virtual-tour" class="hd-btn hd-btn-vt"><span class="vt-pulse" aria-hidden="true"></span> Virtual Tour 360° <i class="fa-solid fa-street-view"></i></a>
       </div>
     </div>
   </div>
 </section>
 
-<section class="profil-section section-py" id="profil">
-  <!-- Ornamen profil: ringan, berbeda dari ornamen Jurusan, dan tetap di area background -->
-  <!-- Ornamen profil: sengaja berbeda dari Jurusan, ringan dan tidak menutupi konten -->
-  <div class="profil-decor" aria-hidden="true">
-    <svg viewBox="0 0 1440 620" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="profileGold" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stop-color="#ffd54a"/>
-          <stop offset="45%" stop-color="#ffb300"/>
-          <stop offset="100%" stop-color="#ff7a00"/>
-        </linearGradient>
-      </defs>
+<!-- ===== SECTION VIRTUAL TOUR 360° — JELAJAHI SMKN 2 MOJOKERTO ===== -->
+<section class="vt-section" id="virtual-tour" aria-label="Virtual Tour 360 SMK Negeri 2 Mojokerto">
+  <span class="vt-watermark" aria-hidden="true">360°</span>
+  <div class="vt-decor-ring" aria-hidden="true"></div>
+  <div class="vt-decor-dots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
 
-      <!-- Kiri atas: lingkaran konsentris, bukan gelombang -->
-      <circle class="pd-ring" cx="-8" cy="110" r="78"/>
-      <circle class="pd-ring-gold" cx="-8" cy="110" r="52"/>
-      <circle class="pd-ring" cx="-8" cy="110" r="26"/>
-      <circle class="pd-dot-gold" cx="48" cy="62" r="5"/>
-
-      <!-- Kiri bawah: grid titik + aksen batang -->
-      <g class="pd-dot">
-        <circle cx="58" cy="450" r="3"/><circle cx="78" cy="450" r="3"/><circle cx="98" cy="450" r="3"/>
-        <circle cx="58" cy="470" r="3"/><circle cx="78" cy="470" r="3"/><circle cx="98" cy="470" r="3"/>
-        <circle cx="58" cy="490" r="3"/><circle cx="78" cy="490" r="3"/><circle cx="98" cy="490" r="3"/>
-      </g>
-      <rect class="pd-bar" x="115" y="520" width="70" height="9" rx="4.5" transform="rotate(-28 115 520)"/>
-      <rect class="pd-bar-navy" x="78" y="548" width="44" height="7" rx="3.5" transform="rotate(-28 78 548)"/>
-
-      <!-- Kanan atas: frame sudut minimal -->
-      <path class="pd-corner" d="M1280 70 H1370 V160"/>
-      <path class="pd-corner" d="M1320 40 H1400 V120"/>
-      <circle class="pd-dot-gold" cx="1370" cy="160" r="6"/>
-
-      <!-- Kanan bawah: lingkaran target + dua aksen kecil -->
-      <circle class="pd-ring-gold" cx="1390" cy="505" r="66"/>
-      <circle class="pd-ring" cx="1390" cy="505" r="42"/>
-      <circle class="pd-dot" cx="1390" cy="505" r="7"/>
-      <rect class="pd-bar" x="1260" y="555" width="52" height="10" rx="5" transform="rotate(32 1260 555)"/>
-      <rect class="pd-bar-navy" x="1310" y="575" width="30" height="7" rx="3.5" transform="rotate(32 1310 575)"/>
-    </svg>
-  </div>
-  <div class="container">
-    <div class="section-header center" data-reveal>
-      <div class="section-label">Buku Sejarah SMKN 2</div>
-      <h2 class="section-title">Profil <span class="accent">Sekolah</span></h2>
+  <div class="vt-inner">
+    <!-- KIRI: preview foto sekolah sebagai pintu masuk Virtual Tour -->
+    <div class="vt-media" data-reveal="left">
+      <div class="vt-frame">
+        <img src="{{ asset('images/hero-sekolah.jpg') }}" alt="Lingkungan SMK Negeri 2 Mojokerto — Virtual Tour 360 derajat" loading="lazy">
+        <span class="vt-badge"><i class="fa-solid fa-street-view"></i> 360° Tour</span>
+        <button class="vt-play" type="button" aria-label="Mulai Virtual Tour 360 derajat" onclick="document.getElementById('vtTourLink')?.click()">
+          <i class="fa-solid fa-play"></i>
+        </button>
+        <div class="vt-caption">
+          <div>
+            <strong>Jelajahi Sekolah</strong>
+            <span>Kampus SMK Negeri 2 Mojokerto</span>
+          </div>
+          <span class="vt-cam"><i class="fa-solid fa-camera"></i> 360°</span>
+        </div>
+      </div>
+      <div class="vt-chip">
+        <i class="fa-solid fa-compass"></i>
+        <div><strong>Virtual Tour 360°</strong><span>Interactive Campus Experience</span></div>
+      </div>
     </div>
 
-    <div class="flipbook" data-reveal style="margin-top:2.6rem">
-      <div class="flipbook-stage" id="flipbook">
-        <button class="flip-nav flip-prev" aria-label="Halaman sebelumnya"><i class="fas fa-chevron-left"></i></button>
-
-        <div class="book3d">
-          <div class="book-spine"></div>
-
-          <!-- Sheet 1: Cover + Tentang Kami -->
-          <div class="book-sheet active" data-sheet="0">
-            <div class="book-leaf cover">
-              <div class="book-cover-top">
-                <div class="profil-akreditasi"><i class="fas fa-certificate"></i> Akreditasi A &mdash; BAN-SM 2023</div>
-                <div class="book-cover-kicker">Buku Sejarah</div>
-              </div>
-              <div class="book-cover-photo">
-                <img src="{{ asset('images/smkn-guru.jpg') }}" alt="Para Guru dan Staf SMK Negeri 2 Mojokerto">
-              </div>
-              <div class="book-cover-title">
-                <div class="book-cover-eyebrow">Est. 1968</div>
-                <div class="book-cover-school">SMK Negeri <em class="num-2">2</em><br>Kota Mojokerto</div>
-                <div class="book-cover-sub">Kisah perjalanan sekolah vokasi unggulan Kota Mojokerto sejak tahun 1968.</div>
-              </div>
-            </div>
-            <div class="book-leaf paper">
-              <div class="book-page-head">
-                <div>
-                  <div class="book-page-kicker">Tentang Kami</div>
-                  <div class="book-page-title">Profil <span class="num-2">Sekolah</span></div>
-                </div>
-                <div class="book-page-no">01</div>
-              </div>
-              <p class="book-page-text">Mengenal lebih dekat visi, misi, dan komitmen SMK Negeri <em class="num-2">2</em> Mojokerto dalam mencetak lulusan vokasi berkualitas.</p>
-              <p class="book-page-text">Selamat datang di Buku Sejarah SMK Negeri 2 Mojokerto. Susuri perjalanan sekolah vokasi unggulan Kota Mojokerto ini halaman demi halaman &mdash; dari fondasi pendidikan kejuruan, program keahlian, hingga prestasi di tingkat provinsi dan nasional.</p>
-              <div class="book-quote"><strong>&ldquo;Membentuk generasi vokasi yang beriman, berkarakter, dan berdaya saing global.&rdquo;</strong></div>
-            </div>
-          </div>
-
-          <!-- Sheet 2: Sejarah -->
-          <div class="book-sheet" data-sheet="1">
-            <div class="book-leaf paper">
-              <div class="book-page-head">
-                <div>
-                  <div class="book-page-kicker">BAB I &mdash; Sejarah</div>
-                  <div class="book-page-title">Merintis Generasi Vokasi Sejak 1968</div>
-                </div>
-                <div class="book-page-no">02</div>
-              </div>
-              <p class="book-page-text">Berdiri sejak 1968, SMK Negeri <em class="num-2">2</em> Mojokerto telah menjadi pilihan utama keluarga Mojokerto dalam menyiapkan generasi vokasi yang kompeten, berkarakter, dan siap bersaing di era global.</p>
-              <p class="book-page-text">Dari masa ke masa, sekolah ini terus bertumbuh: membuka program keahlian baru, membangun kemitraan dengan dunia usaha dan industri, hingga meraih akreditasi A dan sederet prestasi tingkat provinsi maupun nasional.</p>
-              <div class="book-timeline">
-                <div class="book-milestone"><span class="book-year">1968</span><span class="book-mile-text">Berdiri dan membuka pendidikan kejuruan pertama</span></div>
-                <div class="book-milestone"><span class="book-year">2023</span><span class="book-mile-text">Meraih Akreditasi A dari BAN-SM</span></div>
-                <div class="book-milestone"><span class="book-year">2024</span><span class="book-mile-text">Juara 1 LKS Provinsi Jawa Timur</span></div>
-              </div>
-            </div>
-            <div class="book-leaf paper">
-              <div class="book-page-head">
-                <div>
-                  <div class="book-page-kicker">BAB I &mdash; Sejarah (Lanjutan)</div>
-                  <div class="book-page-title">Tumbuh, Berprestasi, dan Mendunia</div>
-                </div>
-                <div class="book-page-no">03</div>
-              </div>
-              <p class="book-page-text">SMK Negeri 2 Mojokerto kini menjadi sekolah kejuruan yang dinamis dengan berbagai program keahlian yang relevan dengan kebutuhan industri &mdash; mulai dari teknologi rekayasa hingga ekonomi kreatif.</p>
-              <p class="book-page-text">Dukungan 80+ pendidik dan tenaga kependidikan yang kompeten serta lingkungan belajar yang modern menjadikan sekolah ini rumah bagi lebih dari 1200 siswa aktif.</p>
-              <div class="book-stats">
-                <div class="book-stat"><strong>57+</strong><span>Tahun Berdiri</span></div>
-                <div class="book-stat"><strong>80+</strong><span>Guru &amp; Staff</span></div>
-                <div class="book-stat"><strong>1200+</strong><span>Siswa Aktif</span></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Sheet 3: Visi & Misi -->
-          <div class="book-sheet" data-sheet="2">
-            <div class="book-leaf paper">
-              <div class="book-page-head">
-                <div>
-                  <div class="book-page-kicker">BAB II &mdash; Visi</div>
-                  <div class="book-page-title">Visi Sekolah</div>
-                </div>
-                <div class="book-page-no">04</div>
-              </div>
-              <p class="book-page-text" style="margin-bottom:1rem">Visi SMK Negeri <em class="num-2">2</em> Mojokerto:</p>
-              <div class="vm-text">&ldquo;Menjadi sekolah menengah kejuruan yang menghasilkan lulusan beriman, bertaqwa, berkarakter, kompeten, berwawasan lingkungan, dan mampu bersaing di tingkat nasional maupun internasional.&rdquo;</div>
-              <div class="book-quote">Visi ini menjadi kompas bagi seluruh program dan kegiatan sekolah dalam mencetak lulusan yang siap kerja, siap kuliah, dan berkarakter.</div>
-            </div>
-            <div class="book-leaf paper">
-              <div class="book-page-head">
-                <div>
-                  <div class="book-page-kicker">BAB II &mdash; Misi</div>
-                  <div class="book-page-title">Misi Sekolah</div>
-                </div>
-                <div class="book-page-no">05</div>
-              </div>
-              <div class="misi-list">
-                <div class="misi-item"><div class="misi-num">1</div><div class="misi-text">Menyelenggarakan pendidikan dan pelatihan berbasis kompetensi yang relevan dengan kebutuhan industri</div></div>
-                <div class="misi-item"><div class="misi-num">2</div><div class="misi-text">Mengembangkan karakter siswa yang berakhlak mulia, disiplin, dan bertanggung jawab</div></div>
-                <div class="misi-item"><div class="misi-num">3</div><div class="misi-text">Membangun kemitraan strategis dengan dunia usaha dan industri untuk peningkatan kualitas lulusan</div></div>
-                <div class="misi-item"><div class="misi-num">4</div><div class="misi-text">Menciptakan lingkungan belajar yang inovatif, kreatif, dan berwawasan teknologi</div></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Sheet 4: Penutup + Back Cover -->
-          <div class="book-sheet" data-sheet="3">
-            <div class="book-leaf paper">
-              <div class="book-page-head">
-                <div>
-                  <div class="book-page-kicker">Penutup</div>
-                  <div class="book-page-title">Komitmen Kami</div>
-                </div>
-                <div class="book-page-no">06</div>
-              </div>
-              <p class="book-page-text">Buku ini adalah awal dari perjalanan panjang. SMK Negeri <em class="num-2">2</em> Mojokerto terus berkomitmen mencetak lulusan yang beriman, bertaqwa, berkarakter, kompeten, berwawasan lingkungan, dan siap bersaing di tingkat nasional maupun internasional.</p>
-              <p class="book-page-text">Terima kasih telah membaca buku sejarah kami. Mari bersama mencetak generasi vokasi unggulan Kota Mojokerto.</p>
-              <div class="book-quote"><strong>Disiplin, Berprestasi &mdash; SMK Negeri 2 Mojokerto.</strong></div>
-            </div>
-            <div class="book-leaf back">
-              <div class="book-back-logo"><img src="{{ asset('images/logo_smkn2.png') }}" alt="Logo SMK Negeri 2 Mojokerto"></div>
-              <div class="book-back-title">SMK Negeri <em class="num-2">2</em><br>Kota Mojokerto</div>
-              <div class="book-back-sub">Terima kasih telah membaca Buku Sejarah kami.</div>
-              <div class="book-back-badge"><i class="fas fa-award"></i> Akreditasi A &mdash; Est. 1968</div>
-            </div>
-          </div>
-        </div>
-
-        <button class="flip-nav flip-next" aria-label="Halaman berikutnya"><i class="fas fa-chevron-right"></i></button>
+    <!-- KANAN: heading, deskripsi, tombol -->
+    <div class="vt-copy">
+      <div class="vt-kicker" data-reveal style="--d:0">Virtual Experience</div>
+      <h2 class="vt-title" data-reveal style="--d:1">Jelajahi <span class="vt-gold">SMKN 2 Mojokerto</span><span class="vt-sub">Lihat Virtual Tour 360°</span></h2>
+      <p class="vt-desc" data-reveal style="--d:2">Jelajahi lingkungan SMK Negeri 2 Mojokerto secara interaktif melalui Virtual Tour 360°. Rasakan suasana kampus dari sudut pandangmu — laboratorium, ruang kelas, bengkel, dan fasilitas unggulan lainnya.</p>
+      <div class="vt-feats" data-reveal style="--d:3">
+        <span class="vt-feat"><i class="fa-solid fa-check"></i> Interaktif</span>
+        <span class="vt-feat"><i class="fa-solid fa-check"></i> Panorama 360°</span>
+        <span class="vt-feat"><i class="fa-solid fa-check"></i> Akses Mudah</span>
       </div>
-
-      <div class="flip-controls">
-        <button class="flip-restart" onclick="flipRestart()"><i class="fas fa-book-open"></i> Baca dari Awal</button>
-        <div class="flip-dots">
-          <button class="flip-dot active" data-dot="0" aria-label="Halaman 1-2"></button>
-          <button class="flip-dot" data-dot="1" aria-label="Halaman 3-4"></button>
-          <button class="flip-dot" data-dot="2" aria-label="Halaman 5-6"></button>
-          <button class="flip-dot" data-dot="3" aria-label="Halaman 7-8"></button>
-        </div>
-        <div class="flip-counter">Halaman <span id="flip-cur">1&ndash;2</span> dari <span id="flip-total">8</span></div>
-      </div>
-      <div class="flip-hint"><i class="fas fa-hand-pointer"></i> Klik sisi kiri/kanan buku atau gunakan tombol panah untuk membalik halaman</div>
+      <a href="#" id="vtTourLink" class="vt-btn" data-reveal style="--d:4">Mulai Tour <i class="fa-solid fa-arrow-right"></i></a>
     </div>
   </div>
 </section>
+
 
 <style>
 /* ===== KEPALA SEKOLAH — POLISHED PRINCIPAL SECTION ===== */
@@ -1316,247 +1124,28 @@
 }
 
 
-/* ROADMAP — timeline modern + typography section */
-.roadmap-preview-section{padding:78px 0 88px}
-.roadmap-preview-section .section-title,
-.roadmap-preview-section h2{
-  font-size:clamp(2rem,4.2vw,4.2rem)!important;
-  line-height:1.08!important;
-  font-weight:800!important;
-  letter-spacing:-.035em!important;
-  margin:0 0 1rem!important;
-}
-.roadmap-preview-section .section-desc{display:none!important}
-.roadmap-preview-section .roadmap-preview-header{margin-bottom:1.5rem}
-.roadmap-preview-section .j2k8-stage{
-  position:relative;
-  min-height:760px;
-  margin-top:1.2rem;
-}
-.roadmap-preview-section .j2k8-card{
-  width:278px;
-  padding:1rem 1.05rem 1.08rem;
-  border-radius:17px;
-}
-.roadmap-preview-section .j2k8-name{font-size:.92rem;line-height:1.25}
-.roadmap-preview-section .j2k8-desc{font-size:.7rem;line-height:1.5}
-.roadmap-preview-section .j2k8-node{width:42px;height:42px}
-.roadmap-preview-section .j2k8-goal-card{width:305px}
-.roadmap-preview-section .j2k8-stage::before{
-  content:"";
-  position:absolute;
-  left:7%;right:7%;top:50%;height:2px;
-  background:linear-gradient(90deg,transparent,rgba(255,159,0,.45),rgba(13,58,102,.35),rgba(255,159,0,.45),transparent);
-  pointer-events:none;opacity:.7;
-}
-@media(max-width:900px){
-  .roadmap-preview-section{padding:64px 0 74px}
-  .roadmap-preview-section .j2k8-stage{min-height:700px}
-  .roadmap-preview-section .j2k8-card{width:250px}
-}
-@media(max-width:640px){
-  .roadmap-preview-section{padding:56px 0 64px}
-  .roadmap-preview-section .section-title,
-  .roadmap-preview-section h2{font-size:clamp(1.9rem,8vw,2.7rem)!important}
-  .roadmap-preview-section .j2k8-stage{min-height:0}
-  .roadmap-preview-section .j2k8-stage::before{display:none}
-  .roadmap-preview-section .j2k8-card,
-  .roadmap-preview-section .j2k8-goal-card{width:100%}
-}
+    /* ============ HOVER & ORNAMEN PREMIUM (hanya animasi, tanpa ubah layout) ============ */
 
+    /* --- Foto: zoom halus di dalam wrapper overflow:hidden --- */
+    .ws-photo-frame .ws-photo{transition:transform .7s cubic-bezier(.22,1,.36,1)}
+    .window-frame:hover .ws-photo-frame .ws-photo{transform:scale(1.04)}
 
-/* Label kecil Roadmap */
-.roadmap-preview-section .roadmap-eyebrow,
-.roadmap-preview-section .eyebrow,
-.roadmap-preview-section .section-kicker,
-.roadmap-preview-section .overline{
-  color:#f59e0b !important;
-}
+    /* --- Jendela Kepsek: tombol knock lift --- */
+    .window-knock .wk-btn{transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s ease,background-color .35s ease,color .35s ease}
 
+    /* --- Misi: lift naik (bukan geser) agar konsisten premium --- */
+    .misi-item{transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s ease,border-color .35s ease,background-color .35s ease}
+    .misi-item:hover{transform:translateY(-5px)}
 
-/* Paksa label kecil Roadmap menjadi kuning-oranye */
-.roadmap-preview-section :is(.roadmap-eyebrow,.eyebrow,.section-kicker,.overline){
-  color:#ffab00 !important;
-  -webkit-text-fill-color:#ffab00 !important;
-}
-.roadmap-preview-section [class*="eyebrow"],
-.roadmap-preview-section [class*="kicker"],
-.roadmap-preview-section [class*="overline"]{
-  color:#ffab00 !important;
-  -webkit-text-fill-color:#ffab00 !important;
-}
+    /* --- Kontak: kartu info lift halus (transform dipakai reveal -> pakai margin-top) --- */
+    .ft-card{transition:margin-top .35s cubic-bezier(.22,1,.36,1),box-shadow .35s ease}
+    .ft-card:hover{margin-top:-6px;box-shadow:0 32px 66px rgba(18,59,96,.34)}
 
-
-.j2k8-label{color:#ffab00 !important;-webkit-text-fill-color:#ffab00 !important;}
-
-/* ===== PRESTASI SISWA / YEARBOOK EDITORIAL ===== */
-.prestasi-siswa-section{position:relative;overflow:hidden;padding:92px 6%;background:#f7f9fc;color:#12375d}
-.prestasi-inner,.tour-inner{max-width:1180px;margin:auto;position:relative;z-index:2}
-.prestasi-heading,.tour-heading{text-align:center;margin-bottom:38px}
-.prestasi-label,.tour-label{color:#ffab00;font-size:.68rem;font-weight:800;letter-spacing:.28em;text-transform:uppercase;margin-bottom:10px}
-.prestasi-heading h2,.tour-heading h2{margin:0;font-size:clamp(2rem,4.2vw,4.2rem);line-height:1.08;font-weight:800;letter-spacing:-.035em}
-.prestasi-heading p{max-width:620px;margin:15px auto 0;color:#718096;font-size:.78rem;line-height:1.7}
-.prestasi-rule,.tour-rule{width:52px;height:3px;background:#ffab00;margin:16px auto 0;border-radius:10px}
-
-/* Ornamen unik: koordinat, frame, garis editorial */
-.prestasi-decor{position:absolute;inset:0;pointer-events:none}
-.pdec{position:absolute;display:block}
-.pdec-1{width:125px;height:125px;border:2px solid #ffab00;left:-55px;top:120px;transform:rotate(45deg);opacity:.34}
-.pdec-2{width:75px;height:75px;border:2px solid #12375d;right:7%;top:75px;transform:rotate(45deg);opacity:.15}
-.pdec-3{width:8px;height:8px;border-radius:50%;background:#ffab00;right:15%;bottom:22%;box-shadow:24px -16px 0 #12375d,50px 6px 0 #ffab00;opacity:.6}
-.pdec-4{width:45px;height:45px;border-left:3px solid #ffab00;border-bottom:3px solid #ffab00;right:-4px;bottom:90px;opacity:.48}
-.pdec-line{position:absolute;height:1px;background:#12375d;opacity:.1;transform:rotate(-28deg)}
-.pdec-line-1{width:310px;left:-40px;bottom:90px}.pdec-line-2{width:250px;right:-45px;top:180px}
-
-.achievement-editorial{position:relative;max-width:1030px;min-height:610px;margin:auto}
-.achievement-main{position:absolute;left:5%;top:12px;width:59%;height:425px;background:#fff;padding:8px;border-radius:20px;box-shadow:0 20px 48px rgba(18,55,93,.14);transform:rotate(-1.5deg);z-index:2}
-.achievement-photo{position:relative;overflow:hidden;background:linear-gradient(135deg,#12375d,#2c6a94)}
-.photo-placeholder{height:100%;display:grid;place-items:center;text-align:center;background:linear-gradient(135deg,#0d3557,#1e587e);color:#fff}
-.photo-placeholder:before{content:"";position:absolute;inset:9%;border:1px dashed rgba(255,255,255,.3)}
-.photo-placeholder span{position:relative;font-size:.64rem;font-weight:800;letter-spacing:.2em}
-.photo-placeholder small{position:absolute;bottom:18px;left:20px;right:20px;color:rgba(255,255,255,.55);font-size:.57rem}
-.achievement-caption{position:absolute;left:23px;right:23px;bottom:20px;background:rgba(9,37,62,.91);padding:15px 17px;border-radius:12px;color:#fff}
-.achievement-badge{color:#12375d;background:#ffab00;border-radius:4px;padding:4px 7px;font-size:.52rem;font-weight:900;letter-spacing:.12em}
-.achievement-year{font-size:.58rem;margin-left:9px;color:rgba(255,255,255,.55);letter-spacing:.12em}
-.achievement-caption h3{margin:7px 0 3px;font-size:1.18rem}.achievement-caption p{margin:0;font-size:.67rem;color:rgba(255,255,255,.65)}
-.achievement-side{position:absolute;right:4%;top:0;width:30%;z-index:3}
-.achievement-small{background:#fff;padding:7px;border-radius:16px;box-shadow:0 14px 30px rgba(18,55,93,.13);margin-bottom:20px}
-.achievement-small:nth-child(2){transform:rotate(-3deg);margin-left:-28px}
-.achievement-small:first-child{transform:rotate(3deg)}
-.achievement-small .achievement-photo{height:165px}
-.small-caption{padding:9px 7px 6px;display:flex;flex-direction:column;gap:3px}.small-caption b{font-size:.72rem}.small-caption span{font-size:.55rem;color:#ffab00;font-weight:800;letter-spacing:.1em}
-.achievement-stats{position:absolute;left:17%;bottom:20px;display:flex;gap:10px;z-index:5;transform:rotate(2deg)}
-.achievement-stats div{width:115px;height:100px;background:#ffab00;color:#12375d;border-radius:12px;padding:13px;display:flex;flex-direction:column;justify-content:center;box-shadow:0 12px 26px rgba(18,55,93,.13)}
-.achievement-stats strong{font-size:2rem;line-height:1}.achievement-stats strong span{font-size:1rem}.achievement-stats small{font-size:.52rem;font-weight:900;letter-spacing:.13em;margin-top:6px}
-
-    /* ===== PRESTASI SLIDER — clean seperti Jurusan, tapi khusus foto prestasi ===== */
-.prestasi-siswa-section{position:relative;overflow:hidden;padding:92px 6%;background:#f7f9fc;color:#12375d}
-.prestasi-inner{max-width:1120px;margin:auto;position:relative;z-index:2}
-.prestasi-heading{text-align:center;margin-bottom:34px}
-.prestasi-label{color:#ffab00;font-size:.68rem;font-weight:800;letter-spacing:.28em;text-transform:uppercase;margin-bottom:10px}
-.prestasi-heading h2{margin:0;font-size:clamp(2rem,4.2vw,4.2rem);line-height:1.08;font-weight:800;letter-spacing:-.035em}
-.prestasi-rule{width:52px;height:3px;background:#ffab00;margin:16px auto 0;border-radius:10px}
-
-/* Ornamen berbeda dari Jurusan */
-.prestasi-decor{position:absolute;inset:0;pointer-events:none}
-.pdec{position:absolute}
-.pdec-1{width:120px;height:120px;border:2px solid #ffab00;left:-58px;top:120px;transform:rotate(45deg);opacity:.28}
-.pdec-2{width:65px;height:65px;border:2px solid #12375d;right:7%;top:90px;transform:rotate(45deg);opacity:.14}
-.pdec-3{width:8px;height:8px;background:#ffab00;border-radius:50%;right:13%;bottom:20%;box-shadow:24px 0 #12375d,48px 0 #ffab00;opacity:.5}
-.pdec-line{position:absolute;width:270px;height:1px;background:#12375d;opacity:.09;transform:rotate(-24deg);right:-45px;bottom:100px}
-
-/* Slider */
-.prestasi-slider-wrap{position:relative;max-width:920px;margin:auto;padding:0 58px 42px}
-.prestasi-slider{position:relative;min-height:445px;overflow:hidden;border-radius:24px}
-.prestasi-slide{position:absolute;inset:0;display:grid;grid-template-columns:1.35fr .8fr;background:#fff;border:1px solid rgba(18,55,93,.09);border-radius:24px;box-shadow:0 18px 42px rgba(18,55,93,.09);opacity:0;transform:translateX(35px);pointer-events:none;transition:opacity .35s ease,transform .35s ease}
-.prestasi-slide.is-active{opacity:1;transform:translateX(0);pointer-events:auto}
-.prestasi-photo{position:relative;margin:12px;border-radius:16px;overflow:hidden;display:grid;place-items:center;background:linear-gradient(135deg,#12375d,#2c6a94);color:#fff}
-.prestasi-photo:before{content:"";position:absolute;inset:10%;border:1px dashed rgba(255,255,255,.3)}
-.prestasi-photo span{font-size:.68rem;font-weight:800;letter-spacing:.2em;position:relative}
-.prestasi-photo small{position:absolute;right:17px;top:15px;font-size:.65rem;color:#ffab00;font-weight:800}
-.prestasi-slide-info{padding:45px 35px;display:flex;flex-direction:column;justify-content:center}
-.prestasi-badge{align-self:flex-start;background:#ffab00;color:#12375d;border-radius:4px;padding:5px 8px;font-size:.53rem;font-weight:900;letter-spacing:.12em}
-.prestasi-year{font-size:.62rem;color:#8a98a8;font-weight:700;letter-spacing:.12em;margin-top:12px}
-.prestasi-slide-info h3{font-size:1.8rem;line-height:1.1;margin:7px 0 8px}
-.prestasi-slide-info p{font-size:.76rem;line-height:1.6;color:#718096;margin:0}
-.prestasi-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:5;width:44px;height:44px;border-radius:50%;border:1px solid rgba(18,55,93,.13);background:#fff;color:#12375d;font-size:30px;line-height:1;cursor:pointer;box-shadow:0 8px 20px rgba(18,55,93,.1);transition:.2s}
-.prestasi-arrow:hover{background:#ffab00;border-color:#ffab00}
-.prestasi-prev{left:0}.prestasi-next{right:0}
-.prestasi-dots{position:absolute;bottom:5px;left:0;right:0;display:flex;justify-content:center;gap:7px}
-.prestasi-dots button{width:25px;height:4px;border:0;border-radius:10px;background:#cbd5df;cursor:pointer;padding:0}
-.prestasi-dots button.active{background:#ffab00;width:38px}
-
-/* Responsive */
-@media(max-width:700px){
-  .prestasi-slider-wrap{padding:0 42px 42px}
-  .prestasi-slider{min-height:520px}
-  .prestasi-slide{grid-template-columns:1fr;grid-template-rows:290px 1fr}
-  .prestasi-photo{margin:10px 10px 0}
-  .prestasi-slide-info{padding:24px 25px}
-  .prestasi-slide-info h3{font-size:1.45rem}
-  .prestasi-arrow{width:38px;height:38px;font-size:25px}
-}
-
-
-    /* ===== PRESTASI — TYPOGRAPHY + ORNAMEN ===== */
-    .prestasi-siswa-section{position:relative;isolation:isolate}
-    .prestasi-siswa-section>.prestasi-decor{z-index:0}
-    .prestasi-siswa-section>.prestasi-inner{z-index:2}
-    .prestasi-heading.section-header{margin-bottom:2.4rem}
-    .prestasi-heading .section-label{color:#ffb300;letter-spacing:.22em;font-weight:800}
-    .prestasi-heading .section-title{
-      font-family:var(--font-display);
-      font-size:clamp(2.35rem,5vw,4.2rem);
-      line-height:1.02;
-      font-weight:800;
-      font-style:normal;
-      text-transform:uppercase;
-      letter-spacing:.01em;
-      color:#102f51;
-      margin:.35rem 0 0;
-      text-shadow:0 2px 10px rgba(13,58,102,.06);
-    }
-    .prestasi-heading .section-title .accent{
-      color:#ffb300!important;background:none!important;-webkit-text-fill-color:#ffb300!important;
-    }
-
-    /* Ornamen lebih rame tetapi tetap clean */
-    .prestasi-decor{opacity:1}
-    .prestasi-decor::before,.prestasi-decor::after{content:"";position:absolute;pointer-events:none}
-    .prestasi-decor::before{
-      width:250px;height:250px;left:-105px;top:55px;
-      border:1px solid rgba(13,58,102,.16);border-radius:50%;
-      box-shadow:0 0 0 22px rgba(255,179,0,.045),0 0 0 48px rgba(13,58,102,.035);
-    }
-    .prestasi-decor::after{
-      width:180px;height:180px;right:-70px;bottom:65px;
-      border:1px solid rgba(255,179,0,.30);border-radius:50%;
-      box-shadow:0 0 0 18px rgba(255,179,0,.035),0 0 0 42px rgba(13,58,102,.03);
-    }
-    .prestasi-decor .pdec-1{
-      width:115px;height:115px;left:3%;top:34%;
-      border:1px solid rgba(255,179,0,.42);transform:rotate(45deg);opacity:.65;
-    }
-    .prestasi-decor .pdec-2{
-      width:72px;height:72px;right:8%;top:22%;
-      border:1px solid rgba(13,58,102,.25);transform:rotate(45deg);opacity:.7;
-    }
-    .prestasi-decor .pdec-3{
-      width:9px;height:9px;right:17%;bottom:23%;background:#ffb300;border-radius:50%;
-      box-shadow:25px -15px 0 #12375d,50px 3px 0 #ffb300,74px -18px 0 rgba(13,58,102,.42);
-      opacity:.72;
-    }
-    .prestasi-decor .pdec-line-1{
-      width:330px;left:-90px;bottom:85px;height:1px;
-      background:linear-gradient(90deg,transparent,#12375d,transparent);transform:rotate(-24deg);opacity:.16;
-    }
-    .prestasi-decor .pdec-line-2{
-      width:300px;right:-95px;top:145px;height:1px;
-      background:linear-gradient(90deg,transparent,#12375d,transparent);transform:rotate(-24deg);opacity:.13;
-    }
-    .prestasi-decor .pdec-4{
-      display:block;position:absolute;right:3%;top:48%;width:38px;height:38px;
-      border-top:2px solid #ffb300;border-right:2px solid #ffb300;opacity:.5;
-    }
-    .prestasi-decor .pdec-4::before,.prestasi-decor .pdec-4::after{
-      content:"";position:absolute;width:5px;height:5px;border-radius:50%;background:#12375d;
-    }
-    .prestasi-decor .pdec-4::before{right:-3px;top:-3px}
-    .prestasi-decor .pdec-4::after{left:-3px;bottom:-3px;background:#ffb300}
-    .prestasi-decor .pdec-5{
-      position:absolute;left:12%;top:15%;width:6px;height:6px;border-radius:50%;
-      background:#12375d;box-shadow:18px 10px 0 #ffb300,36px -4px 0 rgba(13,58,102,.45);opacity:.6;
-    }
-    .prestasi-decor .pdec-6{
-      position:absolute;right:19%;top:9%;width:52px;height:1px;background:#ffb300;
-      transform:rotate(28deg);opacity:.48;box-shadow:12px 8px 0 rgba(13,58,102,.45);
-    }
-    @media(max-width:640px){
-      .prestasi-heading .section-title{font-size:clamp(2rem,10vw,3rem)}
-      .prestasi-decor::before{left:-155px}
-      .prestasi-decor::after{right:-125px}
-      .prestasi-decor .pdec-5,.prestasi-decor .pdec-6{opacity:.35}
-    }
+    /* --- Ornamen: rotasi/float/pulse sangat halus --- */
+    .jurusan-decor .jd-square{animation:ornSpinSlow 90s linear infinite;transform-origin:center}
+    .jurusan-decor .jd-square-fill{animation:ornPulseSoft 6s ease-in-out infinite}
+    .jurusan-decor .jd-ring{animation:ornSpinSlow 70s linear infinite;transform-origin:center}
+    .window-section::before,.window-section::after{animation:ornPulseSoft 9s ease-in-out infinite}
 
 </style>
 
@@ -1566,12 +1155,12 @@
   <div class="principal-section-ornament principal-section-ornament-left" aria-hidden="true"><span></span><i></i><b></b></div>
   <div class="principal-section-ornament principal-section-ornament-right" aria-hidden="true"><span></span><i></i><b></b></div>
   <div class="container">
-    <div class="section-header center" data-reveal style="margin-bottom:1.2rem">
+    <div class="section-header center" data-reveal="title" style="margin-bottom:1.2rem">
       <div class="section-label">Pesan Pimpinan</div>
       <h2 class="section-title">Sambutan <span class="accent">Sekolah</span></h2>
     </div>
 
-    <div class="window-stage" data-reveal>
+    <div class="window-stage" data-reveal style="--d:2">
       <div class="window-frame" id="kepsekWindow">
         <!-- Ornamen minimal saat jendela terbuka -->
         <div class="principal-open-ornament principal-open-ornament-left" aria-hidden="true"><span></span><i></i></div>
@@ -1581,7 +1170,7 @@
           <div class="ws-inner">
             <div class="ws-left">
               <div class="ws-photo-frame">
-                <img class="ws-photo" src="{{ asset('images/kepsek-nobg.png') }}" alt="Kepala Sekolah" loading="lazy" />
+                <img class="ws-photo" src="{{ asset('images/pak-is.jpeg') }}" alt="Kepala Sekolah" loading="lazy" />
               </div>
               <div class="ws-photo-cap">Iswahyudi, S.ST. M.Pd</div>
               <div class="ws-photo-role">Kepala SMK Negeri <span class="num-2">2</span> Mojokerto</div>
@@ -1611,7 +1200,7 @@
         <div class="window-knock">
           <div class="wk-label">From The Principal&rsquo;s Office</div>
           <div class="wk-title">Sambutan<br />Kepala Sekolah</div>
-          <div class="wk-silhouette"><img src="{{ asset('images/kepsek-nobg.png') }}" alt="" loading="lazy" /></div>
+          <div class="wk-silhouette"><img src="{{ asset('images/pak-is.jpeg') }}" alt="" loading="lazy" /></div>
           <button class="wk-btn" id="kepsekKnockBtn">[ Open Message ] <i class="fas fa-arrow-right"></i></button>
         </div>
 
@@ -1666,7 +1255,7 @@
       <h2 class="section-title">Jurusan <span class="accent">Unggulan</span></h2>
     </div>
 
-    <div class="jurusan-carousel" data-reveal>
+    <div class="jurusan-carousel" data-reveal style="--d:2">
             <div class="carousel-stage" id="carouselStage" role="region" aria-label="Carousel jurusan unggulan">
         <!-- 01 APHP -->
         <article class="carousel-card" data-index="0" tabindex="0" role="button" aria-label="Jurusan APHP">
@@ -1751,242 +1340,1267 @@
   </div>
 </section>
 
-<!-- ================= JOURNEY TIMELINE / ROADMAP ================= -->
-<section class="roadmap-preview-section" id="roadmap-preview">
-  <!-- Map background: contours + blueprint grid + coords + compass -->
-  <div class="j2k8-map" aria-hidden="true">
-    <div class="j2k8-grid"></div>
-    <div class="j2k8-contours"></div>
-    <div class="j2k8-coords">
-      <i style="top:11%;left:4%">122.42&deg; E</i>
-      <i style="top:16%;right:6%">07.47&deg; S</i>
-      <i style="bottom:8%;left:13%">GRID 4B</i>
-      <span class="cd-dot" style="top:20%;left:23%"></span>
-      <span class="cd-dot" style="top:66%;left:84%"></span>
-      <span class="cd-dot" style="top:40%;left:47%"></span>
-      <span class="cd-dash" style="top:30%;left:58%"></span>
-      <span class="cd-dash" style="top:76%;left:32%"></span>
-    </div>
-    <div class="j2k8-compass">
-      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" stroke-width="2.5" opacity=".7"/>
-        <circle cx="50" cy="50" r="38" fill="none" stroke="currentColor" stroke-width="1" opacity=".4"/>
-        <path d="M50 14 L56 44 L50 38 L44 44 Z" fill="currentColor" opacity=".85"/>
-        <path d="M50 86 L44 56 L50 62 L56 56 Z" fill="currentColor" opacity=".4"/>
-        <text x="50" y="11" text-anchor="middle" font-size="13" font-weight="700" fill="#7fd4ff" font-family="ui-monospace,monospace">N</text>
-      </svg>
-    </div>
-  </div>
 
-  <div class="container roadmap-preview-inner">
-    <div class="roadmap-preview-header">
-      <span class="j2k8-label">Perjalanan Sekolah</span>
-      <h2 class="section-title">ROADMAP <span class="accent">PENGEMBANGAN</span> SEKOLAH</h2>
-<div class="j2k8-legend">
-        <span><span class="lg-ic lg-done"><i class="fas fa-check"></i></span> Selesai</span>
-        <span><span class="lg-ic lg-running"><i class="fas fa-circle"></i></span> Berjalan</span>
-        <span><span class="lg-ic lg-goal"><i class="fas fa-star"></i></span> Target</span>
+
+
+
+
+
+<style>
+/* ============================================================
+   SKANEDA OUTCOMES — 4 SECTION REDESIGN
+   Hanya mengganti tampilan Lulusan Terbaik / Kerja Sama Industri /
+   Lulusan PTN / Prestasi. Header, footer, hero, virtual tour,
+   sambutan, jurusan, dan konten/data yang sudah ada tidak disentuh.
+   ============================================================ */
+.out-page{position:relative;overflow:hidden}
+.out-sec{position:relative;overflow:hidden;padding:clamp(4.8rem,8vw,7rem) 0}
+.out-wrap{width:min(1180px,92%);margin:0 auto;position:relative;z-index:2}
+.out-kicker{display:inline-flex;align-items:center;gap:.65rem;color:#f6a900;font-size:.72rem;font-weight:900;letter-spacing:.22em;text-transform:uppercase;margin-bottom:.8rem}
+.out-kicker::before{content:"";width:34px;height:3px;border-radius:99px;background:linear-gradient(90deg,#ffd54a,#ff9d00)}
+.out-title{font-family:var(--font-display);font-size:clamp(2.5rem,5vw,4.4rem);line-height:.98;font-weight:900;color:#0d3a66;letter-spacing:.01em;margin:0 0 1rem;text-transform:uppercase}
+.out-title .gold{background:linear-gradient(135deg,#ffd54a 0%,#ffb300 48%,#ff7a00 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+.out-desc{max-width:650px;color:#617389;font-size:.98rem;line-height:1.8;margin:0}
+.out-orn{position:absolute;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.out-orn::before{content:"";position:absolute;width:240px;height:240px;border:1px solid rgba(13,58,102,.11);border-radius:50%;left:-115px;top:8%}
+.out-orn::after{content:"";position:absolute;width:150px;height:150px;border:1px solid rgba(255,179,0,.24);border-radius:50%;right:-70px;bottom:10%}
+.out-dots{position:absolute;width:72px;height:72px;right:8%;top:12%;background-image:radial-gradient(circle,rgba(13,58,102,.16) 2px,transparent 2.5px);background-size:14px 14px;opacity:.7}
+.out-diamond{position:absolute;width:48px;height:48px;border:1.5px solid rgba(255,179,0,.45);transform:rotate(45deg);left:7%;bottom:12%}
+
+/* ---------- LULUSAN TERBAIK — ID CARD SWIPER ---------- */
+.out-alumni{background:#fff}
+.out-alumni-head{display:grid;grid-template-columns:minmax(280px,.82fr) minmax(420px,1.18fr);gap:clamp(2rem,5vw,5rem);align-items:center}
+.out-jurusan-filter{margin:0 0 1rem;padding:.85rem 1rem 1rem;border:1px solid rgba(13,58,102,.10);border-radius:20px;background:rgba(255,255,255,.9);box-shadow:0 12px 30px rgba(13,58,102,.07);position:relative;z-index:3}
+.out-jurusan-label{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;margin:0 0 .65rem;padding:0 .15rem}
+.out-jurusan-label span{font-size:.68rem;font-weight:950;letter-spacing:.2em;color:#0d3a66}
+.out-jurusan-label small{font-size:.62rem;color:#8b99a8;font-weight:700}
+.out-jurusan-list{display:flex;gap:.55rem;flex-wrap:wrap}
+.out-jurusan-pill{appearance:none;border:1px solid rgba(13,58,102,.13);background:#f7f9fb;color:#31506b;border-radius:999px;padding:.7rem 1.15rem;min-width:78px;font:inherit;font-size:.72rem;font-weight:900;letter-spacing:.08em;cursor:pointer;transition:transform .22s ease,background .22s ease,color .22s ease,border-color .22s ease,box-shadow .22s ease}
+.out-jurusan-pill:hover{transform:translateY(-2px);background:#fff;border-color:rgba(255,179,0,.55);box-shadow:0 8px 18px rgba(13,58,102,.08)}
+.out-jurusan-pill.active{background:linear-gradient(135deg,#0d3a66,#174f82);color:#fff;border-color:#0d3a66;box-shadow:0 8px 20px rgba(13,58,102,.18)}
+.out-id-stage{position:relative;min-width:0}
+.out-id-viewport{position:relative;overflow:hidden;border-radius:28px;padding:8px;margin:0 auto;max-width:690px;background:linear-gradient(135deg,rgba(13,58,102,.08),rgba(255,179,0,.09));box-shadow:0 22px 60px rgba(13,58,102,.12)}
+.out-id-track{display:flex;transition:transform .6s cubic-bezier(.22,1,.36,1);touch-action:pan-y;cursor:grab}
+.out-id-track.dragging{transition:none;cursor:grabbing}
+.out-id-slide{flex:0 0 100%;padding:0}
+.out-id-card{position:relative;min-height:330px;border-radius:23px;overflow:hidden;background:#fff;border:1px solid rgba(13,58,102,.12);box-shadow:0 18px 46px rgba(13,58,102,.14);display:grid;grid-template-columns:39% 61%}
+.out-id-card::before{content:"";position:absolute;left:0;right:0;top:0;height:9px;background:linear-gradient(90deg,#0b3157,#0d5b8f 55%,#ffb300)}
+.out-id-photo{position:relative;margin:1.35rem 0 1.35rem 1.35rem;border-radius:17px;overflow:hidden;background:linear-gradient(160deg,#dbe8f3,#eef4f9);min-height:270px;border:1px solid rgba(13,58,102,.1)}
+.out-id-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.out-id-photo .placeholder{height:100%;min-height:270px;display:grid;place-items:center;color:#0d3a66;font-size:.7rem;font-weight:900;letter-spacing:.14em;text-transform:uppercase;text-align:center;padding:1rem}
+.out-id-photo::after{content:"";position:absolute;inset:10px;border:1px solid rgba(255,255,255,.65);border-radius:12px;pointer-events:none}
+.out-id-info{padding:1.55rem 1.55rem 1.35rem 1.45rem;display:flex;flex-direction:column;justify-content:center;position:relative}
+.out-id-brand{display:flex;align-items:center;gap:.55rem;color:#0d3a66;font-size:.74rem;font-weight:900;letter-spacing:.12em;text-transform:uppercase;margin-bottom:1.2rem}
+.out-id-brand img{width:30px;height:30px;object-fit:contain;border-radius:50%;background:#fff}
+.out-id-code{position:absolute;right:1.25rem;top:1.25rem;font-size:.6rem;font-weight:900;letter-spacing:.16em;color:#9aa9b9}
+.out-id-name{font-family:var(--font-display);font-size:clamp(1.3rem,2.1vw,1.85rem);line-height:1.06;color:#0d3a66;font-weight:900;margin:0 0 .45rem}
+.out-id-role{color:#ff9f00;font-size:.7rem;font-weight:900;letter-spacing:.12em;text-transform:uppercase;margin-bottom:1.05rem}
+.out-id-line{height:1px;background:linear-gradient(90deg,#ffb300,rgba(13,58,102,.08));margin-bottom:1rem}
+.out-id-meta{display:grid;grid-template-columns:1fr 1fr;gap:.65rem}
+.out-id-meta div{background:#f6f9fc;border:1px solid rgba(13,58,102,.08);border-radius:11px;padding:.62rem .7rem}
+.out-id-meta small{display:block;color:#8a99aa;font-size:.55rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.2rem}
+.out-id-meta b{display:block;color:#183e63;font-size:.72rem;line-height:1.35}
+.out-id-footer{display:flex;align-items:center;justify-content:space-between;gap:.7rem;margin-top:auto;padding-top:1rem}
+.out-id-chip{display:inline-flex;align-items:center;gap:.4rem;border-radius:99px;padding:.42rem .7rem;background:#fff4cf;color:#9b6900;font-size:.62rem;font-weight:900}
+.out-id-barcode{width:92px;height:25px;opacity:.5;background:repeating-linear-gradient(90deg,#0d3a66 0 2px,transparent 2px 4px,#0d3a66 4px 5px,transparent 5px 8px)}
+.out-slider-controls{display:flex;align-items:center;justify-content:center;gap:1rem;margin-top:1rem}
+.out-arrow{width:44px;height:44px;border-radius:50%;border:1px solid rgba(13,58,102,.14);background:#fff;color:#0d3a66;display:grid;place-items:center;cursor:pointer;box-shadow:0 8px 22px rgba(13,58,102,.1);transition:.25s ease}
+.out-arrow:hover{background:#0d3a66;color:#fff;transform:translateY(-2px)}
+.out-dots{position:static;width:auto;height:auto;display:flex;gap:.45rem;background:none;opacity:1}
+.out-dot{width:8px;height:8px;border:0;border-radius:99px;background:#d4deea;padding:0;cursor:pointer;transition:.25s ease}
+.out-dot.active{width:25px;background:linear-gradient(90deg,#ffb300,#ff7a00)}
+
+/* ---------- INDUSTRI — AUTO LOGO MARQUEE ---------- */
+.out-industry{background:#fff}
+
+/* Ornamen INDUSTRI dibuat SAMA dengan ornamen section JURUSAN */
+.industry-jurusan-decor{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.industry-jurusan-decor svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.industry-jurusan-decor .jd-diag{stroke-width:3px;opacity:.48}
+.industry-jurusan-decor .jd-diag-soft{stroke-width:1.9px;opacity:.24}
+.industry-jurusan-decor .jd-square{stroke-width:2.8px;opacity:.68}
+.industry-jurusan-decor .jd-square-fill{opacity:.22}
+.industry-jurusan-decor .jd-hex{stroke-width:2.8px;opacity:.34}
+.industry-jurusan-decor .jd-node{opacity:.82}
+.industry-jurusan-decor .jd-plus{stroke-width:2.8px;opacity:.42}
+.industry-jurusan-decor .jd-corner{stroke-width:4px;opacity:.52}
+.industry-jurusan-decor .jd-grid{stroke-width:1.5px;opacity:.15}
+
+.out-center{text-align:center;max-width:760px;margin:0 auto}
+.out-center .out-desc{margin:0 auto}
+.out-logo-window{position:relative;overflow:hidden;margin-top:2.8rem;padding:1rem 0}
+.out-logo-window::before,.out-logo-window::after{content:"";position:absolute;z-index:3;top:0;bottom:0;width:120px;pointer-events:none}
+.out-logo-window::before{left:0;background:linear-gradient(90deg,#fff,transparent)}
+.out-logo-window::after{right:0;background:linear-gradient(270deg,#fff,transparent)}
+.out-logo-track{display:flex;width:max-content;animation:outLogoMove 28s linear infinite}
+.out-logo-window:hover .out-logo-track{animation-play-state:paused}
+.out-logo-group{display:flex;gap:1.1rem;padding-right:1.1rem}
+
+/* Logo partner: TANPA BOX/BG — hanya logo + shadow halus + informasi di bawah */
+.out-logo-card{width:150px;height:128px;border-radius:0;background:transparent;border:0;box-shadow:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.75rem;flex:0 0 auto;transition:transform .3s ease,filter .3s ease}
+.out-logo-card:hover{transform:translateY(-6px);filter:drop-shadow(0 14px 20px rgba(23,32,79,.18))}
+.out-logo-mark{width:78px;height:62px;border-radius:0;display:grid;place-items:center;background:transparent;border:0;box-shadow:0 12px 24px rgba(23,32,79,.12);color:#0d3a66;font-weight:900;font-size:.58rem;letter-spacing:.06em;text-align:center;padding:4px;filter:drop-shadow(0 8px 10px rgba(23,32,79,.12))}
+.out-logo-card small{color:#0d3a66;font-size:.62rem;font-weight:900;letter-spacing:.12em;text-transform:uppercase;text-align:center;line-height:1.3}
+@keyframes outLogoMove{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.out-ind-pills{display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin-top:1.2rem}
+.out-ind-pills span{display:inline-flex;align-items:center;gap:.45rem;padding:.62rem 1rem;background:#fff;border:1px solid rgba(13,58,102,.1);border-radius:99px;color:#17446c;font-size:.72rem;font-weight:800;box-shadow:0 6px 16px rgba(13,58,102,.05)}
+.out-ind-pills i{color:#ffb300}
+@media(max-width:640px){.industry-jurusan-decor{opacity:1}.out-logo-card{width:132px;height:118px}.out-logo-mark{width:70px;height:56px}}
+
+/* ---------- LULUSAN PTN — EDITORIAL UNIVERSITY DESTINATIONS ---------- */
+.out-ptn{position:relative;background:#fff;overflow:hidden}
+.out-ptn::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(13,58,102,.025) 1px,transparent 1px),linear-gradient(45deg,rgba(255,179,0,.018) 1px,transparent 1px);background-size:52px 52px;mask-image:linear-gradient(to bottom,transparent,#000 15%,#000 85%,transparent);pointer-events:none}
+.out-ptn .out-orn{z-index:0}
+.out-ptn-layout{position:relative;z-index:1;display:grid;grid-template-columns:280px minmax(0,1fr);gap:clamp(3rem,7vw,7rem);align-items:center}
+.out-ptn .out-copy{position:relative;z-index:2}
+.out-ptn .out-copy::after{content:"PTN";position:absolute;left:-.4rem;bottom:-4.5rem;font-family:var(--font-display);font-size:9rem;font-weight:900;line-height:1;color:rgba(13,58,102,.035);letter-spacing:.04em;pointer-events:none}
+.out-ptn .out-route{display:none}
+.out-ptn-window{position:relative;min-width:0;padding:1rem 0 .5rem}
+.out-ptn-window::before{content:"";position:absolute;right:4%;top:-2rem;width:150px;height:150px;border:1px solid rgba(255,179,0,.24);transform:rotate(45deg);pointer-events:none}
+.out-ptn-window::after{content:"NEXT DESTINATION";position:absolute;right:1%;bottom:-.3rem;color:rgba(13,58,102,.075);font-size:.55rem;font-weight:900;letter-spacing:.25em;pointer-events:none}
+.out-ptn-track{position:relative;z-index:2;display:flex;transition:transform .6s cubic-bezier(.22,1,.36,1);touch-action:pan-y}
+.out-ptn-slide{flex:0 0 100%;padding:1rem .2rem 2rem}
+.out-ptn-destination-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;align-items:stretch}
+.out-ptn-destination{position:relative;min-height:380px;padding:1.15rem 2rem 1rem;display:flex;flex-direction:column;align-items:center;text-align:center;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;overflow:visible;transition:transform .35s ease}
+.out-ptn-destination:not(:last-child)::after{content:"";position:absolute;right:0;top:12%;height:76%;width:1px;background:linear-gradient(to bottom,transparent,rgba(13,58,102,.16) 20%,rgba(255,179,0,.5) 50%,rgba(13,58,102,.16) 80%,transparent)}
+.out-ptn-destination::before{content:"";position:absolute;top:0;left:50%;width:46px;height:3px;transform:translateX(-50%);background:#ffb300;border-radius:10px}
+.out-ptn-destination:hover{transform:translateY(-7px)}
+.out-ptn-number{font-size:.5rem;font-weight:900;letter-spacing:.2em;color:#9aa7b5;margin:.05rem 0 1rem}
+.out-ptn-logo-wrap{display:flex;flex-direction:column;align-items:center;position:relative;margin-bottom:1.15rem}
+.out-ptn-logo{width:142px;height:142px;display:grid;place-items:center;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;position:relative;overflow:visible;color:#0d3a66;text-align:center;font-size:.62rem;font-weight:900;letter-spacing:.08em}
+.out-ptn-logo::before{content:"";position:absolute;width:126px;height:126px;border-radius:50%;border:1px solid rgba(13,58,102,.12);box-shadow:0 15px 30px rgba(13,58,102,.1),0 0 0 8px rgba(255,179,0,.035);z-index:-1}
+.out-ptn-logo::after{content:"";position:absolute;width:105px;height:105px;border-radius:50%;border:1px dashed rgba(255,179,0,.45);z-index:-1}
+.out-ptn-logo i{font-size:2.35rem;color:#ffb300;display:block;margin-bottom:.35rem}
+.out-ptn-logo span{display:block;position:relative;z-index:1;color:#0d3a66;font-size:.6rem}
+.out-ptn-logo-caption{font-size:.47rem;font-weight:900;letter-spacing:.15em;text-transform:uppercase;color:#9aa7b5;margin-top:.15rem}
+.out-ptn-info{width:100%;position:relative;z-index:1}
+.out-ptn-university{font-family:var(--font-display);font-size:clamp(1.05rem,1.5vw,1.35rem);font-weight:900;line-height:1.12;color:#0d3a66;margin:0 0 .7rem}
+.out-ptn-status{display:none}
+.out-ptn-students{width:100%;border-top:1px solid rgba(13,58,102,.1);padding-top:.8rem}
+.out-ptn-students-label{font-size:.48rem;font-weight:900;letter-spacing:.16em;text-transform:uppercase;color:#ffb300;margin-bottom:.55rem}
+.out-ptn-student-list{display:flex;flex-direction:column;gap:.28rem;align-items:center}
+.out-ptn-student{display:block;width:100%;padding:.12rem .2rem;background:transparent!important;color:#315775;font-size:.67rem;font-weight:800;line-height:1.4;border:0!important}
+.out-ptn-student i{color:#ffb300;margin-right:.25rem;font-size:.42rem}
+.out-ptn-program{display:none}
+.out-ptn .out-slider-controls{display:flex;justify-content:center;align-items:center;gap:1rem;margin-top:.2rem}
+.out-ptn .out-arrow{width:44px;height:44px;border-radius:50%;border:1px solid rgba(13,58,102,.12);background:#fff;color:#0d3a66;box-shadow:0 10px 24px rgba(13,58,102,.09);cursor:pointer;transition:.25s ease}
+.out-ptn .out-arrow:hover{background:#ffb300;color:#0d3a66;transform:translateY(-2px)}
+.out-ptn .out-dots{display:flex;align-items:center;gap:.45rem}
+.out-ptn .out-dot{width:7px;height:7px;padding:0;border:0;border-radius:50%;background:#c8d0d8;cursor:pointer;transition:.25s ease}
+.out-ptn .out-dot.active{width:24px;border-radius:10px;background:#ffb300}
+@media(max-width:960px){.out-ptn-layout{grid-template-columns:1fr;gap:2rem}.out-ptn-layout .out-copy{max-width:760px}.out-ptn-window{max-width:1000px}}
+@media(max-width:700px){.out-ptn-destination-grid{grid-template-columns:repeat(2,1fr)}.out-ptn-destination{min-height:330px;padding-inline:1rem}.out-ptn-destination:nth-child(2)::after{display:none}.out-ptn-logo{width:120px;height:120px}.out-ptn-logo::before{width:108px;height:108px}.out-ptn-logo::after{width:90px;height:90px}}
+@media(max-width:480px){.out-ptn-destination-grid{grid-template-columns:1fr}.out-ptn-destination{min-height:300px;padding-inline:1.25rem}.out-ptn-destination::after{display:none!important}.out-ptn-logo{width:126px;height:126px}.out-ptn .out-copy::after{font-size:6rem;bottom:-2rem}}
+/* ---------- PRESTASI — INSTAGRAM FEED SHOWCASE (SCOPED) ---------- */
+.prestasi-section{
+  position:relative;
+  background:linear-gradient(145deg,#092b4d 0%,#0d3a66 58%,#123f68 100%);
+  color:#fff;
+  padding:clamp(4.8rem,8vw,7rem) 0;
+  overflow:hidden;
+}
+.prestasi-section .prestasi-ornament{
+  position:absolute;inset:0;pointer-events:none;z-index:0;overflow:hidden;
+}
+.prestasi-section .prestasi-ornament::before{
+  content:"";position:absolute;width:300px;height:300px;border:1px solid rgba(255,213,74,.18);
+  border-radius:50%;left:-150px;top:5%;box-shadow:0 0 0 24px rgba(255,213,74,.025),0 0 0 48px rgba(255,213,74,.018);
+}
+.prestasi-section .prestasi-ornament::after{
+  content:"";position:absolute;width:190px;height:190px;border:1px solid rgba(255,255,255,.10);
+  border-radius:50%;right:-95px;bottom:8%;
+}
+.prestasi-section .prestasi-dots{
+  position:absolute;width:84px;height:84px;right:7%;top:10%;
+  background-image:radial-gradient(circle,rgba(255,213,74,.42) 2px,transparent 2.7px);
+  background-size:14px 14px;opacity:.7;
+}
+.prestasi-section .prestasi-diamond{
+  position:absolute;width:52px;height:52px;left:8%;bottom:11%;
+  border:1.5px solid rgba(255,213,74,.42);transform:rotate(45deg);
+}
+.prestasi-section .prestasi-line{
+  position:absolute;width:150px;height:1px;right:15%;bottom:17%;
+  background:linear-gradient(90deg,transparent,rgba(255,213,74,.45),transparent);
+  transform:rotate(-18deg);
+}
+.prestasi-section .prestasi-wrap{
+  width:min(1220px,92%);margin:0 auto;position:relative;z-index:2;
+}
+.prestasi-section .prestasi-head{
+  text-align:center;max-width:760px;margin:0 auto;
+}
+.prestasi-section .prestasi-kicker{
+  display:inline-flex;align-items:center;justify-content:center;gap:.65rem;
+  color:#ffd54a;font-size:.72rem;font-weight:900;letter-spacing:.22em;text-transform:uppercase;
+  margin-bottom:.85rem;
+}
+.prestasi-section .prestasi-kicker::before,
+.prestasi-section .prestasi-kicker::after{
+  content:"";width:34px;height:2px;border-radius:99px;background:linear-gradient(90deg,#ffd54a,#ff9d00);
+}
+.prestasi-section .prestasi-title{
+  font-family:var(--font-display);font-size:clamp(2.5rem,5vw,4.4rem);line-height:.98;
+  font-weight:900;color:#fff;letter-spacing:.01em;margin:0 0 1rem;text-transform:uppercase;
+}
+.prestasi-section .prestasi-title .gold{
+  background:linear-gradient(135deg,#ffd54a 0%,#ffb300 48%,#ff7a00 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;
+}
+.prestasi-section .prestasi-desc{
+  max-width:720px;margin:0 auto;color:rgba(255,255,255,.74);font-size:.98rem;line-height:1.8;
+}
+.prestasi-section .prestasi-feed-shell{
+  position:relative;margin-top:2.8rem;padding:0 3.7rem;
+}
+.prestasi-section .prestasi-feed-viewport{
+  overflow:hidden;border-radius:28px;
+}
+.prestasi-section .prestasi-feed-rail{
+  display:flex;gap:1.15rem;overflow-x:auto;scroll-behavior:smooth;
+  scrollbar-width:none;cursor:grab;touch-action:pan-x;user-select:none;
+  padding:.45rem .15rem 1rem;
+  -webkit-overflow-scrolling:touch;
+}
+.prestasi-section .prestasi-feed-rail::-webkit-scrollbar{display:none}
+.prestasi-section .prestasi-feed-rail.is-dragging{cursor:grabbing;scroll-behavior:auto}
+.prestasi-section .prestasi-feed{
+  flex:0 0 calc((100% - 2.3rem)/3);min-width:0;background:#fff;color:#0d2d50;
+  border:1px solid rgba(255,255,255,.65);border-radius:22px;overflow:hidden;
+  box-shadow:0 24px 54px rgba(0,0,0,.22);transition:transform .3s ease,box-shadow .3s ease;
+}
+.prestasi-section .prestasi-feed:hover{
+  transform:translateY(-6px);box-shadow:0 30px 64px rgba(0,0,0,.28);
+}
+.prestasi-section .prestasi-feed-head{
+  display:flex;align-items:center;gap:.7rem;padding:.85rem .95rem;
+  background:#fff;border-bottom:1px solid rgba(13,58,102,.08);
+}
+.prestasi-section .prestasi-feed-avatar{
+  width:34px;height:34px;border-radius:50%;display:grid;place-items:center;flex:0 0 34px;
+  background:linear-gradient(135deg,#123b60,#1e5b92);color:#ffd54a;font-size:.72rem;
+  box-shadow:0 5px 14px rgba(13,58,102,.18);
+}
+.prestasi-section .prestasi-feed-account{min-width:0;line-height:1.2}
+.prestasi-section .prestasi-feed-account strong{
+  display:block;font-size:.78rem;font-weight:900;color:#0d2d50;
+}
+.prestasi-section .prestasi-feed-account span{
+  display:block;margin-top:.15rem;font-size:.62rem;color:#7a8999;
+}
+.prestasi-section .prestasi-feed-more{
+  margin-left:auto;color:#7a8999;font-size:.85rem;letter-spacing:.08em;
+}
+.prestasi-section .prestasi-feed-media{
+  position:relative;aspect-ratio:4/3;overflow:hidden;background:linear-gradient(145deg,#0d3a66,#174e7c);
+}
+.prestasi-section .prestasi-feed-media::after{
+  content:"";position:absolute;inset:0;border:1px solid rgba(255,255,255,.12);pointer-events:none;
+}
+.prestasi-section .prestasi-feed-photo-placeholder{
+  position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:.65rem;text-align:center;padding:1.5rem;color:rgba(255,255,255,.86);
+  background:
+    radial-gradient(circle at 30% 25%,rgba(255,213,74,.24),transparent 32%),
+    radial-gradient(circle at 75% 75%,rgba(255,255,255,.10),transparent 34%),
+    linear-gradient(145deg,#0d3a66,#123f68);
+}
+.prestasi-section .prestasi-feed-photo-placeholder i{
+  width:74px;height:74px;border-radius:22px;display:grid;place-items:center;
+  background:linear-gradient(135deg,#ffd54a,#ff9f00);color:#0d2d50;font-size:1.65rem;
+  box-shadow:0 16px 34px rgba(255,179,0,.28);
+}
+.prestasi-section .prestasi-feed-photo-placeholder strong{
+  font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;color:#fff;
+}
+.prestasi-section .prestasi-feed-photo-placeholder small{
+  max-width:26ch;color:rgba(255,255,255,.62);font-size:.68rem;line-height:1.5;
+}
+.prestasi-section .prestasi-feed-body{padding:.9rem .95rem 1.05rem}
+.prestasi-section .prestasi-feed-actions{
+  display:flex;align-items:center;gap:.9rem;margin-bottom:.65rem;color:#0d3a66;
+}
+.prestasi-section .prestasi-feed-actions i{font-size:.92rem}
+.prestasi-section .prestasi-feed-actions .save{margin-left:auto}
+.prestasi-section .prestasi-feed-tag{
+  display:inline-flex;padding:.32rem .58rem;border-radius:99px;background:#fff3c8;color:#9a6200;
+  font-size:.56rem;font-weight:900;letter-spacing:.09em;text-transform:uppercase;margin-bottom:.55rem;
+}
+.prestasi-section .prestasi-feed-body h3{
+  font-family:var(--font-display);font-size:1.08rem;line-height:1.2;color:#0d2d50;margin:0 0 .45rem;font-weight:900;
+}
+.prestasi-section .prestasi-feed-body h3 span{color:#d98900}
+.prestasi-section .prestasi-feed-body p{
+  margin:0;color:#66788c;font-size:.72rem;line-height:1.65;
+}
+.prestasi-section .prestasi-feed-meta{
+  display:flex;flex-wrap:wrap;gap:.45rem;margin-top:.8rem;
+}
+.prestasi-section .prestasi-feed-meta span{
+  display:inline-flex;align-items:center;gap:.3rem;color:#6c7c8d;font-size:.6rem;font-weight:800;
+}
+.prestasi-section .prestasi-feed-meta i{color:#e39a00}
+.prestasi-section .prestasi-feed-placeholder .prestasi-feed-media{
+  background:linear-gradient(145deg,#f4f7fb,#e8eef5);
+}
+.prestasi-section .prestasi-feed-placeholder .prestasi-feed-photo-placeholder{
+  background:
+    linear-gradient(135deg,rgba(13,58,102,.04),rgba(255,179,0,.08)),
+    #f5f8fc;
+  color:#0d3a66;
+}
+.prestasi-section .prestasi-feed-placeholder .prestasi-feed-photo-placeholder i{
+  background:#fff;border:1px solid rgba(255,179,0,.38);color:#ff9f00;box-shadow:0 12px 28px rgba(13,58,102,.10);
+}
+.prestasi-section .prestasi-feed-placeholder .prestasi-feed-photo-placeholder strong{color:#0d3a66}
+.prestasi-section .prestasi-feed-placeholder .prestasi-feed-photo-placeholder small{color:#75869a}
+.prestasi-section .prestasi-feed-placeholder .prestasi-feed-body h3{color:#0d3a66}
+.prestasi-section .prestasi-feed-placeholder .prestasi-feed-tag{background:#edf3f8;color:#48627b}
+.prestasi-section .prestasi-arrow{
+  position:absolute;top:50%;z-index:5;width:48px;height:48px;border:1px solid rgba(255,255,255,.35);
+  border-radius:50%;display:grid;place-items:center;cursor:pointer;color:#0d3a66;
+  background:#fff;box-shadow:0 14px 30px rgba(0,0,0,.2);transition:transform .25s ease,background .25s ease,color .25s ease;
+}
+.prestasi-section .prestasi-arrow:hover{
+  transform:translateY(-50%) scale(1.06);background:#ffd54a;color:#0d3a66;
+}
+.prestasi-section .prestasi-arrow:disabled{opacity:.38;cursor:default}
+.prestasi-section .prestasi-arrow:disabled:hover{transform:translateY(-50%);background:#fff}
+.prestasi-section .prestasi-arrow-left{left:.35rem;transform:translateY(-50%)}
+.prestasi-section .prestasi-arrow-right{right:.35rem;transform:translateY(-50%)}
+.prestasi-section .prestasi-note{
+  text-align:center;margin:1.2rem auto 0;color:rgba(255,255,255,.48);font-size:.65rem;letter-spacing:.08em;
+}
+@media(max-width:980px){
+  .prestasi-section .prestasi-feed{flex-basis:calc((100% - 1.15rem)/2)}
+}
+@media(max-width:700px){
+  .prestasi-section{padding:4.2rem 0}
+  .prestasi-section .prestasi-wrap{width:min(100%,94%)}
+  .prestasi-section .prestasi-feed-shell{padding:0 2.5rem;margin-top:2.35rem}
+  .prestasi-section .prestasi-feed-rail{gap:.85rem;padding-bottom:.75rem}
+  .prestasi-section .prestasi-feed{flex-basis:86%}
+  .prestasi-section .prestasi-arrow{width:42px;height:42px}
+  .prestasi-section .prestasi-arrow-left{left:.1rem}
+  .prestasi-section .prestasi-arrow-right{right:.1rem}
+  .prestasi-section .prestasi-dots{right:3%;top:7%}
+  .prestasi-section .prestasi-diamond{left:2%;bottom:7%}
+}
+@media(max-width:480px){
+  .prestasi-section .prestasi-title{font-size:2.35rem}
+  .prestasi-section .prestasi-kicker{font-size:.62rem;letter-spacing:.16em}
+  .prestasi-section .prestasi-kicker::before,.prestasi-section .prestasi-kicker::after{width:22px}
+  .prestasi-section .prestasi-desc{font-size:.86rem}
+  .prestasi-section .prestasi-feed-shell{padding:0 2.25rem}
+  .prestasi-section .prestasi-feed{flex-basis:88%}
+}
+@media(max-width:960px){
+  .out-alumni-head,.out-ptn-layout{grid-template-columns:1fr}
+  .out-achieve{grid-template-columns:1fr}
+  .out-alumni-head .out-copy,.out-ptn-layout .out-copy{max-width:760px}
+}
+@media(max-width:700px){
+  .out-sec{padding:4rem 0}
+  .out-id-card{grid-template-columns:1fr;min-height:0}
+  .out-id-photo{margin:1rem 1rem 0;height:240px;min-height:240px}
+  .out-id-photo .placeholder{min-height:240px}
+  .out-id-info{padding:1.1rem}
+  .out-id-code{top:1rem;right:1rem}
+  .out-id-meta{grid-template-columns:1fr 1fr}
+  .out-logo-window::before,.out-logo-window::after{width:55px}
+  .out-logo-card{width:128px;height:100px}
+  .out-ptn-card{grid-template-columns:72px 1fr;gap:.8rem;padding:1rem;min-height:280px}
+  .out-ptn-avatar{width:72px;height:92px}
+  .out-ptn-name{font-size:1.2rem}
+  .out-achieve-main{min-height:360px;padding:1.45rem}
+  .out-stat{min-height:150px;padding:1rem}
+}
+@media(max-width:480px){
+  .out-title{font-size:2.35rem}
+  .out-id-meta{grid-template-columns:1fr}
+  .out-stat-grid{grid-template-columns:1fr 1fr}
+  .out-stat b{font-size:.9rem}
+  .out-stat span{font-size:.62rem}
+}
+@media(prefers-reduced-motion:reduce){
+  .out-logo-track{animation:none}
+  .out-id-track,.out-ptn-track{transition:none}
+}
+
+/* ===== V3 VISUAL REFINEMENT: alumni archive / industry logos / PTN destination ===== */
+.out-alumni{background:linear-gradient(180deg,#ffffff 0%,#f7fbff 100%)}
+.out-alumni-head{grid-template-columns:minmax(260px,.7fr) minmax(520px,1.3fr);gap:clamp(2.2rem,5vw,5.5rem)}
+.out-id-stage{padding-top:.4rem}
+.out-id-viewport{max-width:820px;border-radius:30px;padding:10px;background:linear-gradient(135deg,rgba(13,58,102,.11),rgba(255,179,0,.16));box-shadow:0 28px 70px rgba(13,58,102,.15)}
+.out-id-card{min-height:390px;grid-template-columns:42% 58%;border-radius:24px;box-shadow:0 20px 48px rgba(13,58,102,.14)}
+.out-id-card::before{height:11px}
+.out-id-photo{margin:1.55rem 0 1.55rem 1.55rem;min-height:325px;border-radius:20px;background:linear-gradient(160deg,#d8e8f5,#f8fbfd);box-shadow:inset 0 0 0 1px rgba(255,255,255,.7),0 12px 26px rgba(13,58,102,.12)}
+.out-id-photo .placeholder{min-height:325px;font-size:.78rem}
+.out-id-info{padding:1.75rem 1.8rem 1.5rem 1.6rem}
+.out-id-brand{font-size:.78rem;margin-bottom:1.45rem}
+.out-id-brand img{width:38px;height:38px}
+.out-id-code{font-size:.62rem;top:1.45rem;right:1.45rem}
+.out-id-name{font-size:clamp(1.45rem,2.4vw,2.05rem)}
+.out-id-role{font-size:.72rem}
+.out-id-meta div{padding:.72rem .78rem;border-radius:12px}
+.out-id-meta b{font-size:.74rem}
+.out-id-footer{padding-top:1.15rem}
+.out-id-footer::before{content:'ARSIP LULUSAN TERBAIK';display:block;position:absolute;left:1.6rem;bottom:.65rem;color:#a3afbc;font-size:.48rem;font-weight:900;letter-spacing:.16em}
+.out-alumni .out-slider-controls{margin-top:1.25rem}
+.out-alumni .out-slider-controls::before{content:'Geser untuk melihat arsip lulusan berikutnya';font-size:.62rem;font-weight:800;color:#8797a8;letter-spacing:.04em;margin-right:.2rem}
+
+/* department archive chips: visual index, data tetap berasal dari halaman */
+.out-alumni .out-route{gap:.5rem}
+.out-alumni .out-route-node{padding:.52rem .78rem;font-size:.65rem;border:1px solid rgba(13,58,102,.1);box-shadow:0 7px 16px rgba(13,58,102,.06)}
+
+/* INDUSTRY: make partner marks visibly larger */
+.out-logo-window{margin-top:3.2rem;padding:1.35rem 0}
+.out-logo-group{gap:1.35rem;padding-right:1.35rem}
+.out-logo-card{width:190px;height:148px;border-radius:24px;gap:.7rem;background:transparent;border:0;box-shadow:none}
+.out-logo-mark{width:86px;height:86px;border-radius:22px;border-width:3px;font-size:.66rem;line-height:1.2;box-shadow:0 8px 18px rgba(13,58,102,.12)}
+.out-logo-card small{font-size:.61rem}
+
+/* PTN: destination-pass style instead of a basic profile card */
+.out-ptn{background:linear-gradient(180deg,#fff 0%,#f6faff 100%)}
+.out-ptn-layout{grid-template-columns:minmax(280px,.65fr) minmax(500px,1.35fr);gap:clamp(2.2rem,5vw,5.5rem)}
+.out-ptn-window{padding:10px;border-radius:30px;background:linear-gradient(135deg,rgba(13,58,102,.09),rgba(255,179,0,.12));box-shadow:0 26px 64px rgba(13,58,102,.13)}
+.out-ptn-slide{padding:0}
+.out-ptn-card{min-height:370px;grid-template-columns:150px 1fr;gap:1.5rem;padding:1.55rem;border-radius:25px;box-shadow:0 18px 44px rgba(13,58,102,.11);background:linear-gradient(145deg,#fff 0%,#fafdff 100%)}
+.out-ptn-card::before{content:'NEXT DESTINATION';right:-18px;top:12px;font-size:5.2rem;letter-spacing:.03em;transform:rotate(90deg);transform-origin:right top;color:rgba(13,58,102,.035)}
+.out-ptn-avatar{width:150px;height:190px;border-radius:22px;border:1px solid rgba(13,58,102,.1);box-shadow:0 14px 30px rgba(13,58,102,.10);font-size:.66rem;position:relative;background:radial-gradient(circle at 50% 35%,#fff 0 20%,transparent 21%),linear-gradient(160deg,#d9e9f5,#f8fbfd)}
+.out-ptn-avatar::after{content:'PTN';position:absolute;bottom:12px;left:50%;transform:translateX(-50%);padding:.35rem .65rem;border-radius:99px;background:#0d3a66;color:#fff;font-size:.55rem;letter-spacing:.16em;font-weight:900}
+.out-ptn-content{padding:.2rem .4rem .2rem 0}
+.out-ptn-badge{font-size:.62rem;padding:.42rem .78rem;margin-bottom:.9rem}
+.out-ptn-name{font-size:clamp(1.55rem,2.6vw,2.15rem);margin-bottom:.45rem}
+.out-ptn-uni{font-size:.86rem;max-width:34ch}
+.out-ptn-field{font-size:.8rem;max-width:48ch;line-height:1.75}
+.out-ptn-meta{margin-top:1.15rem;padding-top:.9rem;border-top:1px dashed rgba(13,58,102,.14)}
+.out-ptn .out-slider-controls{margin-top:1.25rem}
+.out-ptn .out-slider-controls::before{content:'Geser untuk melihat lulusan PTN lainnya';font-size:.62rem;font-weight:800;color:#8797a8;letter-spacing:.04em;margin-right:.2rem}
+
+@media(max-width:960px){
+  .out-alumni-head,.out-ptn-layout{grid-template-columns:1fr}
+  .out-alumni-head .out-copy,.out-ptn-layout .out-copy{max-width:760px}
+}
+@media(max-width:700px){
+  .out-jurusan-label{display:block}
+  .out-jurusan-label small{display:block;margin-top:.2rem}
+  .out-jurusan-list{display:grid;grid-template-columns:repeat(3,1fr)}
+  .out-jurusan-pill{min-width:0;padding:.65rem .5rem}
+  .out-id-card{grid-template-columns:1fr;min-height:0}
+  .out-id-photo{margin:1rem 1rem 0;height:250px;min-height:250px}
+  .out-id-photo .placeholder{min-height:250px}
+  .out-id-info{padding:1.2rem}
+  .out-id-footer::before{left:1.2rem}
+  .out-logo-card{width:154px;height:126px}
+  .out-logo-mark{width:70px;height:70px}
+  .out-ptn-card{grid-template-columns:100px 1fr;min-height:310px;gap:1rem;padding:1rem}
+  .out-ptn-avatar{width:100px;height:140px}
+}
+@media(max-width:480px){
+  .out-ptn-card{grid-template-columns:1fr}
+  .out-ptn-avatar{width:100%;height:150px}
+  .out-alumni .out-slider-controls::before,.out-ptn .out-slider-controls::before{display:none}
+}
+
+/* ============================================================
+   LULUSAN TERBAIK — PREMIUM ALUMNI HALL OF FAME OVERRIDE
+   Visual/layout only. Existing alumni data and other sections stay intact.
+   ============================================================ */
+.out-alumni{
+  background:
+    radial-gradient(circle at 82% 20%,rgba(255,179,0,.10),transparent 24%),
+    radial-gradient(circle at 8% 78%,rgba(13,58,102,.055),transparent 28%),
+    linear-gradient(135deg,#fff 0%,#f9fbfd 58%,#f3f7fb 100%);
+}
+.out-alumni .out-wrap{width:min(1240px,92%)}
+.out-alumni-head{grid-template-columns:minmax(310px,.78fr) minmax(560px,1.22fr);gap:clamp(2.5rem,5vw,6rem);align-items:center}
+.out-alumni .out-copy{position:relative;padding:2.1rem 0 2.1rem 2rem}
+.out-alumni .out-copy::before{content:"ALUMNI\A HALL OF FAME";white-space:pre;position:absolute;left:-.4rem;top:-1.3rem;font-family:var(--font-display);font-size:clamp(3.5rem,7vw,6.5rem);font-weight:900;line-height:.82;letter-spacing:-.055em;color:rgba(13,58,102,.035);pointer-events:none}
+.out-alumni .out-copy::after{content:"";position:absolute;left:0;top:2.25rem;bottom:2.25rem;width:3px;border-radius:99px;background:linear-gradient(180deg,#ffb300,rgba(13,58,102,.08),#0d3a66)}
+.out-alumni .out-kicker{position:relative;z-index:1;margin-bottom:1rem}
+.out-alumni .out-title{position:relative;z-index:1;font-size:clamp(3rem,5.2vw,5rem);letter-spacing:-.025em;margin-bottom:1.25rem}
+.out-alumni .out-desc{position:relative;z-index:1;max-width:520px;font-size:.94rem;line-height:1.9}
+.out-alumni .out-route{position:relative;z-index:1;margin-top:1.5rem;gap:.55rem}
+.out-alumni .out-route-node{padding:.62rem .9rem;background:rgba(13,58,102,.055);color:#345572;border:1px solid rgba(13,58,102,.09);box-shadow:none;transition:.25s ease}
+.out-alumni .out-route-node:hover{transform:translateY(-2px);border-color:rgba(255,179,0,.5);background:#fff;box-shadow:0 8px 20px rgba(13,58,102,.08)}
+.out-alumni .out-route-node.gold{background:#fff3c9;color:#875d00;border-color:rgba(255,179,0,.22)}
+.out-alumni .out-route[aria-label="Indeks jurusan lulusan"]{margin-top:.8rem;padding-top:1rem;border-top:1px dashed rgba(13,58,102,.13);max-width:520px}
+.out-alumni .out-route[aria-label="Indeks jurusan lulusan"]::before{content:"KOLEKSI JURUSAN";width:100%;font-size:.56rem;font-weight:900;letter-spacing:.18em;color:#92a0ae;margin-bottom:.15rem}
+.out-alumni .out-route[aria-label="Indeks jurusan lulusan"] .out-route-node{background:#fff;color:#0d3a66;padding:.5rem .72rem;font-size:.6rem;letter-spacing:.08em;border-radius:10px}
+.out-alumni .out-id-stage{padding:1rem 0 0;filter:drop-shadow(0 30px 40px rgba(13,58,102,.08))}
+.out-alumni .out-id-stage::before{content:"FEATURED ALUMNI";position:absolute;right:2.2rem;top:-.15rem;z-index:4;padding:.48rem .78rem;border-radius:99px;background:#0d3a66;color:#fff;font-size:.55rem;font-weight:900;letter-spacing:.16em;box-shadow:0 8px 20px rgba(13,58,102,.18)}
+.out-alumni .out-id-stage::after{content:"01 / 02";position:absolute;left:1.1rem;bottom:4.35rem;z-index:4;color:#ff9f00;font-size:.62rem;font-weight:900;letter-spacing:.16em}
+.out-alumni .out-id-viewport{max-width:780px;padding:12px;border-radius:34px;background:linear-gradient(135deg,rgba(13,58,102,.12),rgba(255,179,0,.18));box-shadow:0 28px 75px rgba(13,58,102,.16)}
+.out-alumni .out-id-card{min-height:390px;border-radius:25px;grid-template-columns:43% 57%;border:1px solid rgba(13,58,102,.1);box-shadow:0 18px 45px rgba(13,58,102,.11);background:linear-gradient(145deg,#fff 0%,#fff 72%,#f7fafc 100%)}
+.out-alumni .out-id-card::before{height:7px}
+.out-alumni .out-id-photo{margin:1.25rem 0 1.25rem 1.25rem;min-height:335px;border-radius:19px;background:#dce8f1;box-shadow:inset 0 0 0 1px rgba(255,255,255,.7),0 12px 28px rgba(13,58,102,.12)}
+.out-alumni .out-id-photo img{object-position:center top}
+.out-alumni .out-id-photo::before{content:"BEST GRADUATE";position:absolute;left:14px;bottom:14px;z-index:2;padding:.48rem .62rem;border-radius:7px;background:rgba(13,58,102,.9);color:#fff;font-size:.5rem;font-weight:900;letter-spacing:.15em}
+.out-alumni .out-id-info{padding:1.7rem 1.8rem 1.45rem 1.55rem}
+.out-alumni .out-id-brand{margin-bottom:1.4rem;color:#0d3a66;font-size:.68rem}
+.out-alumni .out-id-brand img{width:34px;height:34px;box-shadow:0 4px 12px rgba(13,58,102,.12)}
+.out-alumni .out-id-code{right:1.4rem;top:1.4rem;color:#9aa9b9}
+.out-alumni .out-id-name{font-size:clamp(1.55rem,2.5vw,2.25rem);max-width:12ch;letter-spacing:-.015em}
+.out-alumni .out-id-role{font-size:.64rem;margin-bottom:1.2rem}
+.out-alumni .out-id-line{margin-bottom:1.1rem;background:linear-gradient(90deg,#ffb300 0%,rgba(255,179,0,.3) 45%,rgba(13,58,102,.07) 100%)}
+.out-alumni .out-id-meta{gap:.55rem}
+.out-alumni .out-id-meta div{padding:.68rem .72rem;border-radius:12px;background:rgba(246,249,252,.92);transition:.25s ease}
+.out-alumni .out-id-meta div:hover{transform:translateY(-2px);background:#fff;box-shadow:0 7px 18px rgba(13,58,102,.07)}
+.out-alumni .out-id-footer{padding-top:1.15rem}
+.out-alumni .out-id-chip{padding:.48rem .75rem;box-shadow:inset 0 0 0 1px rgba(255,179,0,.12)}
+.out-alumni .out-slider-controls{justify-content:flex-end;padding-right:1rem;margin-top:1.25rem;gap:.7rem}
+.out-alumni .out-slider-controls::before{content:"GESER UNTUK MELIHAT LULUSAN LAINNYA";margin-right:auto;color:#8b9aab;font-size:.56rem;font-weight:900;letter-spacing:.13em}
+.out-alumni .out-arrow{width:46px;height:46px;border-color:rgba(13,58,102,.13);box-shadow:0 10px 24px rgba(13,58,102,.1)}
+.out-alumni .out-arrow:hover{background:#ffb300;color:#0d3a66;border-color:#ffb300}
+.out-alumni .out-dot{height:7px;width:7px}
+.out-alumni .out-dot.active{width:28px}
+@media(max-width:1050px){
+  .out-alumni-head{grid-template-columns:1fr;gap:2rem}
+  .out-alumni .out-copy{max-width:760px;margin:0 auto;width:100%}
+  .out-alumni .out-id-stage{max-width:820px;width:100%;margin:0 auto}
+}
+@media(max-width:700px){
+  .out-alumni .out-copy{padding-left:1rem}
+  .out-alumni .out-copy::after{left:0}
+  .out-alumni .out-title{font-size:clamp(2.6rem,12vw,4rem)}
+  .out-alumni .out-id-stage{padding-top:1.8rem}
+  .out-alumni .out-id-stage::before{right:1rem;top:.15rem}
+  .out-alumni .out-id-stage::after{display:none}
+  .out-alumni .out-id-card{grid-template-columns:1fr;min-height:0}
+  .out-alumni .out-id-photo{margin:1rem 1rem 0;height:300px;min-height:300px}
+  .out-alumni .out-id-info{padding:1.25rem}
+  .out-alumni .out-slider-controls{justify-content:center;padding-right:0}
+  .out-alumni .out-slider-controls::before{display:none}
+}
+@media(max-width:480px){
+  .out-alumni .out-route[aria-label="Indeks jurusan lulusan"] .out-route-node{padding:.46rem .58rem}
+  .out-alumni .out-id-photo{height:260px;min-height:260px}
+  .out-alumni .out-id-meta{grid-template-columns:1fr}
+}
+
+/* FINAL FIX — navigasi slider Lulusan Terbaik selalu terlihat */
+.out-alumni .out-slider-controls{
+  position:relative;
+  z-index:20;
+  display:flex !important;
+  align-items:center;
+  justify-content:center !important;
+  gap:1rem;
+  width:100%;
+  min-height:52px;
+  margin-top:1.35rem !important;
+  padding:0 !important;
+  visibility:visible !important;
+  opacity:1 !important;
+}
+.out-alumni .out-slider-controls::before{
+  content:'GESER UNTUK MELIHAT LULUSAN LAINNYA' !important;
+  display:block !important;
+  margin-right:.25rem !important;
+  color:#8b9aab;
+  font-size:.58rem;
+  font-weight:900;
+  letter-spacing:.12em;
+}
+.out-alumni .out-slider-controls .out-arrow{
+  flex:0 0 46px;
+  width:46px !important;
+  height:46px !important;
+  min-width:46px;
+  min-height:46px;
+  display:grid !important;
+  place-items:center !important;
+  visibility:visible !important;
+  opacity:1 !important;
+  position:relative;
+  z-index:21;
+}
+.out-alumni .out-slider-controls .out-dots{
+  display:flex !important;
+  align-items:center;
+  visibility:visible !important;
+  opacity:1 !important;
+}
+.out-alumni .out-slider-controls .out-dot{
+  display:block !important;
+  visibility:visible !important;
+  opacity:1 !important;
+}
+@media(max-width:700px){
+  .out-alumni .out-slider-controls::before{display:none !important}
+  .out-alumni .out-slider-controls{gap:.8rem}
+}
+
+/* ============================================================
+   PTN CARD — RICH DESTINATION PASS / NOT BASIC CARD
+   ============================================================ */
+.out-ptn-window{
+  background:
+    radial-gradient(circle at 92% 8%,rgba(255,213,74,.22),transparent 20%),
+    linear-gradient(135deg,#082b4b 0%,#0d3a66 62%,#164d78 100%);
+  border:1px solid rgba(255,255,255,.16);
+  box-shadow:0 30px 75px rgba(13,58,102,.24);
+  padding:12px;
+}
+.out-ptn-window::before{
+  width:260px;height:260px;right:-105px;top:-115px;
+  border:1px solid rgba(255,213,74,.35);
+  box-shadow:0 0 0 28px rgba(255,213,74,.045),0 0 0 58px rgba(255,213,74,.025);
+}
+.out-ptn-window::after{
+  left:28px;bottom:18px;
+  color:rgba(255,255,255,.38);
+}
+.out-ptn-card{
+  min-height:390px;
+  grid-template-columns:190px 1fr;
+  gap:1.8rem;
+  padding:1.5rem;
+  border-radius:22px;
+  background:
+    linear-gradient(135deg,#ffffff 0%,#ffffff 68%,#f1f7fb 100%);
+  border:1px solid rgba(255,255,255,.95);
+  box-shadow:0 22px 48px rgba(0,0,0,.16),inset 0 0 0 1px rgba(13,58,102,.035);
+}
+.out-ptn-card::before{
+  content:'PTN  /  NEXT DESTINATION';
+  right:-8px;top:18px;
+  font-family:var(--font-display);
+  font-size:3.7rem;
+  font-weight:900;
+  letter-spacing:.08em;
+  transform:rotate(90deg);
+  transform-origin:right top;
+  color:rgba(13,58,102,.045);
+  white-space:nowrap;
+}
+.out-ptn-card::after{
+  left:0;bottom:0;width:62%;height:6px;
+  background:linear-gradient(90deg,#0d3a66 0%,#ffd54a 72%,transparent 100%);
+}
+.out-ptn-avatar{
+  width:190px;height:250px;
+  border-radius:18px;
+  background:
+    linear-gradient(145deg,rgba(13,58,102,.98),rgba(19,77,120,.94));
+  border:7px solid #fff;
+  outline:1px solid rgba(13,58,102,.16);
+  box-shadow:0 18px 36px rgba(13,58,102,.20),0 0 0 8px rgba(255,213,74,.13);
+  color:#fff;
+  overflow:hidden;
+}
+.out-ptn-avatar::before{
+  content:'ALUMNI PROFILE';
+  left:12px;bottom:12px;
+  padding:.42rem .62rem;
+  border-radius:8px;
+  background:#ffd54a;
+  color:#0d3a66;
+  box-shadow:0 5px 12px rgba(0,0,0,.14);
+  font-size:.48rem;
+  letter-spacing:.14em;
+}
+.out-ptn-avatar::after{
+  content:'PTN';
+  top:12px;bottom:auto;left:auto;right:12px;
+  transform:none;
+  padding:.38rem .55rem;
+  border-radius:7px;
+  background:rgba(255,255,255,.14);
+  border:1px solid rgba(255,255,255,.28);
+  color:#fff;
+  font-size:.48rem;
+}
+.out-ptn-avatar img{filter:saturate(.98) contrast(1.02)}
+.out-ptn-content{
+  padding:1.05rem 2.4rem 1rem .25rem;
+}
+.out-ptn-badge{
+  background:#0d3a66;
+  color:#ffd54a;
+  border:1px solid rgba(13,58,102,.1);
+  box-shadow:0 8px 18px rgba(13,58,102,.13);
+  letter-spacing:.15em;
+}
+.out-ptn-name{
+  font-size:clamp(1.9rem,3.2vw,2.7rem);
+  letter-spacing:-.025em;
+  margin-bottom:.65rem;
+}
+.out-ptn-uni{
+  display:inline-block;
+  padding:.5rem .7rem;
+  border-left:4px solid #ffd54a;
+  background:linear-gradient(90deg,#fff7d7,rgba(255,247,215,.15));
+  color:#d98700;
+  font-size:.96rem;
+  margin-bottom:.9rem;
+}
+.out-ptn-field{
+  padding-top:.9rem;
+  border-top:1px solid rgba(13,58,102,.10);
+  color:#61758a;
+}
+.out-ptn-meta{
+  background:#f4f7fa;
+  border:1px solid rgba(13,58,102,.08);
+  box-shadow:0 7px 16px rgba(13,58,102,.06);
+}
+.out-ptn .out-slider-controls{
+  margin-top:1.35rem;
+  justify-content:flex-end;
+  padding-right:.3rem;
+}
+.out-ptn .out-slider-controls::before{
+  margin-right:auto;
+  color:rgba(255,255,255,.68);
+}
+.out-ptn .out-arrow{
+  width:46px;height:46px;
+  border:1px solid rgba(255,213,74,.55);
+  background:#fff;
+  box-shadow:0 9px 20px rgba(0,0,0,.16);
+}
+.out-ptn .out-arrow:hover{background:#ffd54a;transform:translateY(-3px) scale(1.04)}
+.out-ptn .out-dot{background:rgba(255,255,255,.42)}
+.out-ptn .out-dot.active{background:#ffd54a}
+@media(max-width:700px){
+  .out-ptn-card{grid-template-columns:120px 1fr;min-height:340px;gap:1.15rem;padding:1.1rem}
+  .out-ptn-avatar{width:120px;height:180px;border-width:5px}
+  .out-ptn-content{padding:.5rem 1.2rem .5rem .1rem}
+  .out-ptn-name{font-size:1.55rem}
+  .out-ptn-uni{font-size:.78rem}
+  .out-ptn-field{font-size:.7rem}
+}
+@media(max-width:480px){
+  .out-ptn-card{grid-template-columns:1fr;min-height:0}
+  .out-ptn-avatar{width:100%;height:210px}
+  .out-ptn-content{padding:.5rem .25rem 1rem}
+  .out-ptn-card::before{font-size:2.6rem}
+}
+
+/* ---------- PTN REDESIGN: SAME COMPOSITION AS ALUMNI, DIFFERENT DESTINATION CARD ---------- */
+.out-ptn{position:relative;background:linear-gradient(180deg,#ffffff 0%,#f8fbff 100%);overflow:hidden}
+.out-ptn::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(13,58,102,.025) 1px,transparent 1px),linear-gradient(45deg,rgba(255,179,0,.02) 1px,transparent 1px);background-size:54px 54px;mask-image:linear-gradient(to bottom,transparent,#000 15%,#000 85%,transparent);pointer-events:none}
+.out-ptn-layout{position:relative;z-index:1;display:grid;grid-template-columns:minmax(280px,.78fr) minmax(500px,1.22fr);gap:clamp(2rem,5vw,5rem);align-items:center}
+.out-ptn .out-copy{position:relative;z-index:2}
+.out-ptn .out-copy::after{content:"PTN";position:absolute;left:-.35rem;bottom:-4.7rem;font-family:var(--font-display);font-size:9rem;font-weight:900;line-height:1;color:rgba(13,58,102,.035);letter-spacing:.04em;pointer-events:none}
+.out-ptn-route{display:flex;align-items:center;flex-wrap:wrap;gap:.55rem;margin-top:1.35rem;position:relative;z-index:2}
+.out-ptn-route>span{display:inline-flex;align-items:center;gap:.4rem;padding:.55rem .8rem;border-radius:999px;border:1px solid rgba(13,58,102,.1);background:rgba(255,255,255,.75);box-shadow:0 8px 18px rgba(13,58,102,.05);color:#315775;font-size:.62rem;font-weight:900}
+.out-ptn-route>span.gold{color:#9a6800;border-color:rgba(255,179,0,.25);background:#fff9e8}
+.out-ptn-route>i{color:#ffb300;font-size:.8rem}
+.out-ptn-stage{position:relative;min-width:0}
+.out-ptn-window{position:relative;overflow:hidden;padding:8px;border-radius:30px;background:linear-gradient(135deg,rgba(13,58,102,.08),rgba(255,179,0,.11));box-shadow:0 24px 64px rgba(13,58,102,.13)}
+.out-ptn-window::before{content:"";position:absolute;right:3%;top:-38px;width:145px;height:145px;border:1px solid rgba(255,179,0,.28);transform:rotate(45deg);pointer-events:none}
+.out-ptn-window::after{content:"NEXT DESTINATION";position:absolute;right:22px;bottom:16px;font-size:.52rem;font-weight:950;letter-spacing:.24em;color:rgba(13,58,102,.11);pointer-events:none}
+.out-ptn-track{position:relative;z-index:2;display:flex;transition:transform .6s cubic-bezier(.22,1,.36,1);touch-action:pan-y;cursor:grab}
+.out-ptn-track.dragging{transition:none;cursor:grabbing}
+.out-ptn-slide{flex:0 0 100%;padding:0}
+.out-ptn-destination-card{position:relative;min-height:370px;overflow:hidden;border-radius:23px;background:linear-gradient(145deg,#ffffff 0%,#f8fbff 100%);border:1px solid rgba(13,58,102,.12);box-shadow:0 18px 46px rgba(13,58,102,.13);display:flex;flex-direction:column}
+.out-ptn-destination-card::before{content:"";position:absolute;left:0;right:0;top:0;height:8px;background:linear-gradient(90deg,#0b3157,#0d5b8f 55%,#ffb300)}
+.out-ptn-destination-card::after{content:"";position:absolute;right:-80px;top:-80px;width:230px;height:230px;border:1px solid rgba(13,58,102,.08);border-radius:50%;box-shadow:0 0 0 18px rgba(255,179,0,.025),0 0 0 36px rgba(13,58,102,.018);pointer-events:none}
+.out-ptn-card-top{display:flex;align-items:center;justify-content:space-between;padding:1.25rem 1.45rem .8rem;border-bottom:1px solid rgba(13,58,102,.07);position:relative;z-index:2}
+.out-ptn-card-kicker{font-size:.54rem;font-weight:950;letter-spacing:.2em;color:#ff9f00}
+.out-ptn-card-mark{font-size:.58rem;font-weight:950;letter-spacing:.18em;color:#0d3a66;padding:.35rem .55rem;border:1px solid rgba(13,58,102,.1);border-radius:8px;background:#fff}
+.out-ptn-card-main{display:grid;grid-template-columns:38% 62%;gap:1.25rem;align-items:center;padding:1.35rem 1.45rem 1.15rem;position:relative;z-index:2;flex:1}
+.out-ptn-logo-panel{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-height:235px;border-right:1px solid rgba(13,58,102,.08);padding-right:1.2rem}
+.out-ptn-logo{width:154px;height:154px;border-radius:50%;display:grid;place-items:center;position:relative;background:#fff;border:1px solid rgba(13,58,102,.1);box-shadow:0 18px 36px rgba(13,58,102,.12),0 0 0 9px rgba(255,179,0,.045)}
+.out-ptn-logo::before{content:"";position:absolute;inset:10px;border:1px dashed rgba(255,179,0,.5);border-radius:50%}
+.out-ptn-logo>i{font-size:2.7rem;color:#ffb300;margin-bottom:.25rem}
+.out-ptn-logo span{display:block;color:#0d3a66;font-size:.58rem;font-weight:950;letter-spacing:.1em}
+.out-ptn-logo-panel small{margin-top:.85rem;color:#8a99aa;font-size:.52rem;font-weight:900;letter-spacing:.14em;text-transform:uppercase}
+.out-ptn-card-info{padding:.2rem .3rem .2rem 0}
+.out-ptn-label{font-size:.52rem;font-weight:950;letter-spacing:.18em;text-transform:uppercase;color:#9aa7b5;margin-bottom:.5rem}
+.out-ptn-card-info h3{font-family:var(--font-display);font-size:clamp(1.45rem,2.8vw,2.25rem);line-height:1.02;color:#0d3a66;font-weight:900;margin:0 0 .65rem}
+.out-ptn-accent{height:2px;width:58px;background:linear-gradient(90deg,#ffb300,#ff7a00);margin-bottom:1rem}
+.out-ptn-student{display:flex;align-items:center;gap:.55rem;padding:.65rem .75rem;border-radius:12px;background:#fff8e4;border:1px solid rgba(255,179,0,.2);color:#234c6d;font-size:.74rem;font-weight:900;box-shadow:0 7px 18px rgba(13,58,102,.05)}
+.out-ptn-student i{color:#ffb300;font-size:.65rem}
+.out-ptn-card-info p{color:#718399;font-size:.68rem;line-height:1.65;margin:.85rem 0 0;max-width:38ch}
+.out-ptn-card-bottom{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.8rem 1.45rem;border-top:1px solid rgba(13,58,102,.07);position:relative;z-index:2;color:#8797a8;font-size:.5rem;font-weight:950;letter-spacing:.15em}
+.out-ptn-card-bottom span:first-child{color:#0d3a66}.out-ptn-card-bottom i{color:#ffb300;margin-right:.3rem}
+.out-ptn .out-slider-controls{display:flex;align-items:center;justify-content:center;gap:1rem;margin-top:1.15rem}
+.out-ptn .out-arrow{width:44px;height:44px;border-radius:50%;border:1px solid rgba(13,58,102,.14);background:#fff;color:#0d3a66;display:grid;place-items:center;cursor:pointer;box-shadow:0 8px 22px rgba(13,58,102,.1);transition:.25s ease}
+.out-ptn .out-arrow:hover{background:#0d3a66;color:#fff;transform:translateY(-2px)}
+.out-ptn .out-dots{position:static;width:auto;height:auto;display:flex;align-items:center;gap:.45rem;background:none;opacity:1}
+.out-ptn .out-dot{width:8px;height:8px;border:0;border-radius:99px;background:#d4deea;padding:0;cursor:pointer;transition:.25s ease}
+.out-ptn .out-dot.active{width:25px;background:linear-gradient(90deg,#ffb300,#ff7a00)}
+@media(max-width:960px){.out-ptn-layout{grid-template-columns:1fr;gap:2.2rem}.out-ptn-layout .out-copy{max-width:760px}.out-ptn-stage{max-width:900px;width:100%}}
+@media(max-width:700px){.out-ptn-card-main{grid-template-columns:1fr;gap:1rem}.out-ptn-logo-panel{min-height:0;border-right:0;border-bottom:1px solid rgba(13,58,102,.08);padding:0 0 1rem}.out-ptn-logo{width:130px;height:130px}.out-ptn-destination-card{min-height:0}.out-ptn-card-info{padding:0}.out-ptn-card-bottom{flex-direction:column;align-items:flex-start;gap:.35rem}.out-ptn .out-copy::after{font-size:6rem;bottom:-2rem}}
+@media(max-width:480px){.out-ptn-window{padding:6px;border-radius:22px}.out-ptn-destination-card{border-radius:18px}.out-ptn-card-top{padding:1rem 1rem .7rem}.out-ptn-card-main{padding:1rem}.out-ptn-card-bottom{padding:.7rem 1rem}.out-ptn-route{gap:.35rem}.out-ptn-route>span{font-size:.56rem;padding:.5rem .65rem}}
+</style>
+
+<!-- ================= LULUSAN TERBAIK ================= -->
+<section class="out-sec out-alumni" id="lulusan-terbaik" aria-label="Lulusan Terbaik SMK Negeri 2 Mojokerto">
+  <div class="out-orn" aria-hidden="true"><span class="out-dots"></span><span class="out-diamond"></span></div>
+  <div class="out-wrap out-alumni-head">
+    <div class="out-copy" data-reveal="left">
+      <div class="out-kicker">Featured Alumni</div>
+      <h2 class="out-title">Lulusan <span class="gold">Terbaik</span></h2>
+      <p class="out-desc">Lulusan terbaik SMK Negeri 2 Mojokerto melanjutkan ke dunia kerja, pendidikan tinggi, maupun bidang profesional &mdash; dibekali kompetensi vokasi yang relevan dengan kebutuhan industri.</p>
+      <div class="out-route">
+        <span class="out-route-node"><i class="fa-solid fa-briefcase"></i> Dunia Kerja</span>
+        <span class="out-route-node gold"><i class="fa-solid fa-graduation-cap"></i> Pendidikan Tinggi</span>
       </div>
     </div>
 
-    <div class="j2k8-stage" id="j2k8Stage">
-      <svg class="j2k8-route" viewBox="0 0 1200 1150" preserveAspectRatio="none" aria-hidden="true">
-        <path class="route-base" d="M120,934 C192,790.3 268,532.2 336,503 C404,473.8 468,739.3 528,759 C588,778.7 612,709.2 696,621 C780,532.8 912,230 1032,230"/>
-        <path class="route-dash" d="M120,934 C192,790.3 268,532.2 336,503 C404,473.8 468,739.3 528,759 C588,778.7 612,709.2 696,621 C780,532.8 912,230 1032,230"/>
-        <path class="route-glow" d="M120,934 C192,790.3 268,532.2 336,503 C404,473.8 468,739.3 528,759 C588,778.7 612,709.2 696,621 C780,532.8 912,230 1032,230"/>
-      </svg>
-      <span class="j2k8-arrow" style="left:19%;top:60%"></span>
-      <span class="j2k8-arrow" style="left:47%;top:65%"></span>
-      <span class="j2k8-arrow" style="left:72%;top:37%"></span>
-
-      <!-- 01 | 2020-2022 | Fondasi Sekolah (START - bottom-left) -->
-      <div class="j2k8-milestone j2k8-start">
-        <span class="j2k8-start-flag" style="left:3%;top:71.9%"><i class="fas fa-flag-checkered"></i> Awal Perjalanan</span>
-        <div class="j2k8-checkpoint" style="left:10%;top:81.25%" tabindex="0" role="button" aria-label="2020, awal perjalanan">
-          <div class="j2k8-node"><i class="fas fa-school"></i></div>
-          <span class="j2k8-cp-year">2020</span>
-        </div>
-        <span class="j2k8-connector v" style="left:10%;top:82.3%;height:55px"></span>
-        <div class="j2k8-card" style="left:1%;top:86.25%">
-          <div class="j2k8-card-top">
-            <span class="j2k8-num">01</span>
-            <span class="j2k8-status s-done"><span class="j2k8-status-dot"></span> Selesai</span>
-          </div>
-          <div class="j2k8-year">2020&ndash;2022</div>
-          <h3 class="j2k8-name">Fondasi Sekolah</h3>
-          <p class="j2k8-desc">Renovasi laboratorium, Akreditasi A, dan penguatan kemitraan industri.</p>
+    <div class="out-id-stage" data-reveal style="--d:1">
+      <div class="out-jurusan-filter" aria-label="Koleksi jurusan lulusan">
+        <div class="out-jurusan-label"><span>KOLEKSI JURUSAN</span><small>Telusuri lulusan terbaik berdasarkan jurusan</small></div>
+        <div class="out-jurusan-list">
+          <button class="out-jurusan-pill active" type="button">RPL</button>
+          <button class="out-jurusan-pill" type="button">KULINER</button>
+          <button class="out-jurusan-pill" type="button">LPS</button>
+          <button class="out-jurusan-pill" type="button">DKV</button>
+          <button class="out-jurusan-pill" type="button">APHP</button>
         </div>
       </div>
-
-      <!-- 02 | 2023-2024 | Digitalisasi Sekolah (top-left) -->
-      <div class="j2k8-milestone">
-        <div class="j2k8-checkpoint" style="left:28%;top:43.75%" tabindex="0" role="button" aria-label="2023, digitalisasi sekolah">
-          <div class="j2k8-node"><i class="fas fa-laptop-code"></i></div>
-          <span class="j2k8-cp-year">2023</span>
-        </div>
-        <span class="j2k8-connector v" style="left:28%;top:38.35%;height:40px"></span>
-        <div class="j2k8-card" style="left:12%;top:24%">
-          <div class="j2k8-card-top">
-            <span class="j2k8-num">02</span>
-            <span class="j2k8-status s-done"><span class="j2k8-status-dot"></span> Selesai</span>
+      <div class="out-id-viewport">
+        <div class="out-id-track" id="alumniTrack">
+          <div class="out-id-slide">
+            <article class="out-id-card">
+              <div class="out-id-photo"><img src="{{ asset('images/smkn-guru.jpg') }}" alt="Lulusan terbaik SMK Negeri 2 Mojokerto" loading="lazy"></div>
+              <div class="out-id-info">
+                <div class="out-id-brand"><img src="{{ asset('images/logo_smkn2.png') }}" alt="SKANEDA"> SKANEDA Alumni</div>
+                <span class="out-id-code">ALM-01 / 2026</span>
+                <h3 class="out-id-name">Nama Lulusan Terbaik</h3>
+                <div class="out-id-role">Alumni &mdash; Dunia Kerja</div>
+                <div class="out-id-line"></div>
+                <div class="out-id-meta">
+                  <div><small>Tahun</small><b>2026</b></div>
+                  <div><small>Status</small><b>Lulusan Terbaik</b></div>
+                  <div><small>Posisi</small><b>Posisi / Perusahaan &mdash; data menyusul</b></div>
+                  <div><small>Institusi</small><b>SMK Negeri 2 Mojokerto</b></div>
+                </div>
+                <div class="out-id-footer"><span class="out-id-chip"><i class="fa-solid fa-star"></i> Featured Alumni</span><span class="out-id-barcode"></span></div>
+              </div>
+            </article>
           </div>
-          <div class="j2k8-year">2023&ndash;2024</div>
-          <h3 class="j2k8-name">Digitalisasi Sekolah</h3>
-          <p class="j2k8-desc">Digitalisasi perpustakaan serta penguatan sertifikasi Cisco &amp; Oracle.</p>
+          <div class="out-id-slide">
+            <article class="out-id-card">
+              <div class="out-id-photo"><div class="placeholder">FOTO ALUMNI</div></div>
+              <div class="out-id-info">
+                <div class="out-id-brand"><img src="{{ asset('images/logo_smkn2.png') }}" alt="SKANEDA"> SKANEDA Alumni</div>
+                <span class="out-id-code">ALM-02 / 2026</span>
+                <h3 class="out-id-name">Nama Lulusan Terbaik</h3>
+                <div class="out-id-role">Alumni &mdash; Pendidikan Tinggi</div>
+                <div class="out-id-line"></div>
+                <div class="out-id-meta">
+                  <div><small>Tahun</small><b>2026</b></div>
+                  <div><small>Status</small><b>Lulusan Terbaik</b></div>
+                  <div><small>Tujuan</small><b>PTN / Program Studi &mdash; data menyusul</b></div>
+                  <div><small>Institusi</small><b>SMK Negeri 2 Mojokerto</b></div>
+                </div>
+                <div class="out-id-footer"><span class="out-id-chip"><i class="fa-solid fa-graduation-cap"></i> Featured Alumni</span><span class="out-id-barcode"></span></div>
+              </div>
+            </article>
+          </div>
         </div>
       </div>
-
-      <!-- 03 | 2025 | Transformasi Vokasi (middle-left) -->
-      <div class="j2k8-milestone">
-        <div class="j2k8-checkpoint" style="left:44%;top:66%" tabindex="0" role="button" aria-label="2025, transformasi vokasi">
-          <div class="j2k8-node"><i class="fas fa-gear"></i></div>
-          <span class="j2k8-cp-year">2025</span>
-        </div>
-        <span class="j2k8-connector v" style="left:44%;top:68.8%;height:60px"></span>
-        <div class="j2k8-card" style="left:28%;top:73%">
-          <div class="j2k8-card-top">
-            <span class="j2k8-num">03</span>
-            <span class="j2k8-status s-running"><span class="j2k8-status-dot"></span> Berjalan</span>
-          </div>
-          <div class="j2k8-year">2025</div>
-          <h3 class="j2k8-name">Transformasi Vokasi</h3>
-          <p class="j2k8-desc">Penguatan pembelajaran berbasis industri dan kompetensi siswa.</p>
-        </div>
+      <div class="out-slider-controls" aria-label="Navigasi lulusan terbaik">
+        <button class="out-arrow" id="alumniPrev" type="button" aria-label="Lulusan sebelumnya"><i class="fa-solid fa-arrow-left"></i></button>
+        <div class="out-dots" id="alumniDots"><button class="out-dot active" type="button" data-index="0" aria-label="Lulusan 1"></button><button class="out-dot" type="button" data-index="1" aria-label="Lulusan 2"></button></div>
+        <button class="out-arrow" id="alumniNext" type="button" aria-label="Lulusan berikutnya"><i class="fa-solid fa-arrow-right"></i></button>
       </div>
-
-      <!-- 04 | 2026 | Penguatan Ekosistem (middle-right) -->
-      <div class="j2k8-milestone">
-        <div class="j2k8-checkpoint" style="left:58%;top:54%" tabindex="0" role="button" aria-label="2026, penguatan ekosistem">
-          <div class="j2k8-node"><i class="fas fa-handshake"></i></div>
-          <span class="j2k8-cp-year">2026</span>
-        </div>
-        <span class="j2k8-connector v" style="left:58%;top:47.5%;height:36px"></span>
-        <div class="j2k8-card" style="left:40%;top:36%">
-          <div class="j2k8-card-top">
-            <span class="j2k8-num">04</span>
-            <span class="j2k8-status s-running"><span class="j2k8-status-dot"></span> Berjalan</span>
-          </div>
-          <div class="j2k8-year">2026</div>
-          <h3 class="j2k8-name">Penguatan Ekosistem</h3>
-          <p class="j2k8-desc">Pengembangan program keahlian, fasilitas, dan kemitraan industri.</p>
-        </div>
-      </div>
-
-      <!-- 05 | 2028 | Destination (right) -->
-      <div class="j2k8-milestone j2k8-goal">
-        <div class="j2k8-checkpoint" style="left:86%;top:20%" tabindex="0" role="button" aria-label="2028, target sekolah vokasi rujukan nasional">
-          <div class="j2k8-node"><i class="fas fa-star"></i></div>
-          <span class="j2k8-cp-year">2028</span>
-          <span class="j2k8-cp-tag">Target</span>
-        </div>
-        <span class="j2k8-connector v" style="left:86%;top:22.7%;height:95px"></span>
-        <div class="j2k8-card j2k8-goal-card" style="left:70%;top:29%">
-          <div class="j2k8-card-top">
-            <span class="j2k8-num">05</span>
-            <span class="j2k8-status s-goal"><span class="j2k8-status-dot"></span> Target</span>
-          </div>
-          <div class="j2k8-year">2028</div>
-          <h3 class="j2k8-name">Sekolah Vokasi Rujukan Nasional</h3>
-          <p class="j2k8-desc">Target utama perjalanan transformasi SMK Negeri 2 Mojokerto.</p>
-        </div>
-      </div>
-    </div>
-
-    <div style="display:flex;justify-content:center;margin-top:4.5rem">
-      <a href="school-roadmap.html" class="j2k8-cta">Jelajahi Perjalanan <i class="fas fa-arrow-right"></i></a>
     </div>
   </div>
 </section>
 
-<section class="prestasi-siswa-section" id="prestasi">
-  <div class="prestasi-decor" aria-hidden="true">
-    <span class="pdec pdec-1"></span><span class="pdec pdec-2"></span>
-    <span class="pdec pdec-3"></span><span class="pdec pdec-4"></span><span class="pdec pdec-5"></span><span class="pdec pdec-6"></span><span class="pdec-line pdec-line-1"></span><span class="pdec-line pdec-line-2"></span>
-  </div>
+<!-- ================= KERJA SAMA INDUSTRI ================= -->
+<section class="out-sec out-industry" id="kerja-sama-industri" aria-label="Kerja Sama Industri SMK Negeri 2 Mojokerto">
+  <div class="industry-jurusan-decor" aria-hidden="true">
+    <svg viewBox="0 0 1440 760" preserveAspectRatio="none">
+      <path class="jd-diag" d="M-40 130 L180 -20 M-20 190 L240 -20 M20 250 L300 -20"/>
+      <rect class="jd-square" x="76" y="86" width="62" height="62" transform="rotate(45 107 117)"/>
+      <rect class="jd-square-fill" x="88" y="98" width="38" height="38" transform="rotate(45 107 117)"/>
+      <path class="jd-corner" d="M46 214 H82 M46 214 V250"/>
+      <circle class="jd-node" cx="46" cy="214" r="4"/>
 
-  <div class="prestasi-inner">
-    <div class="prestasi-heading section-header center">
-      <div class="section-label">Produk Ungggulan Setiap Jurusan</div>
-      <h2 class="section-title">Produk <span class="accent">Unggulan</span></h2>
+      <path class="jd-diag-soft" d="M1180 64 H1270 V118 H1362"/>
+      <path class="jd-diag-soft" d="M1218 30 V92 H1310 V150 H1410"/>
+      <rect class="jd-square" x="1260" y="108" width="18" height="18"/>
+      <rect class="jd-square" x="1352" y="140" width="18" height="18"/>
+      <circle class="jd-node" cx="1180" cy="64" r="4"/>
+      <circle class="jd-node" cx="1410" cy="150" r="4"/>
+
+      <polygon class="jd-hex" points="88,390 116,374 144,390 144,422 116,438 88,422"/>
+      <path class="jd-plus" d="M164 388 V414 M151 401 H177"/>
+      <path class="jd-diag-soft" d="M42 466 H170 L220 416"/>
+
+      <polygon class="jd-hex" points="1280,590 1320,567 1360,590 1360,636 1320,659 1280,636"/>
+      <rect class="jd-square-fill" x="1368" y="604" width="22" height="22"/>
+      <rect class="jd-square" x="1398" y="574" width="30" height="30"/>
+      <path class="jd-diag" d="M1190 716 L1270 636 L1340 706 M1230 760 L1310 680 L1380 750"/>
+      <path class="jd-corner" d="M1134 664 H1172 M1134 664 V702"/>
+      <circle class="jd-node" cx="1134" cy="664" r="4"/>
+
+      <path class="jd-grid" d="M0 560 L250 310 M0 600 L290 310 M1090 760 L1440 410 M1150 760 L1440 470"/>
+    </svg>
+  </div>
+  <div class="out-wrap">
+    <div class="out-center" data-reveal="title">
+      <div class="out-kicker" style="justify-content:center">Industry Network</div>
+      <h2 class="out-title">Kerja Sama <span class="gold">Industri</span></h2>
     </div>
 
-    <div class="prestasi-slider-wrap">
-      <button class="prestasi-arrow prestasi-prev" type="button" aria-label="Prestasi sebelumnya">‹</button>
-      <div class="prestasi-slider" id="prestasiSlider">
-        <article class="prestasi-slide is-active">
-          <div class="prestasi-photo"><span>FOTO PRESTASI</span><small>01</small></div>
-          <div class="prestasi-slide-info">
-            <span class="prestasi-badge">NASIONAL</span>
-            <span class="prestasi-year">2026</span>
-            <h3>Juara Nasional</h3>
-            <p>Nama siswa atau tim • Nama kompetisi</p>
-          </div>
-        </article>
-
-        <article class="prestasi-slide">
-          <div class="prestasi-photo"><span>FOTO PRESTASI</span><small>02</small></div>
-          <div class="prestasi-slide-info">
-            <span class="prestasi-badge">REGIONAL</span>
-            <span class="prestasi-year">2026</span>
-            <h3>Karya Kreatif Terbaik</h3>
-            <p>Nama siswa atau tim • Bidang kreatif</p>
-          </div>
-        </article>
-
-        <article class="prestasi-slide">
-          <div class="prestasi-photo"><span>FOTO PRESTASI</span><small>03</small></div>
-          <div class="prestasi-slide-info">
-            <span class="prestasi-badge">KEAHLIAN</span>
-            <span class="prestasi-year">2026</span>
-            <h3>Kompetisi Keahlian</h3>
-            <p>Nama siswa atau tim • Bidang teknologi</p>
-          </div>
-        </article>
-
-        <article class="prestasi-slide">
-          <div class="prestasi-photo"><span>FOTO PRESTASI</span><small>04</small></div>
-          <div class="prestasi-slide-info">
-            <span class="prestasi-badge">SEKOLAH</span>
-            <span class="prestasi-year">2026</span>
-            <h3>Prestasi Unggulan</h3>
-            <p>Nama siswa atau tim • Kegiatan sekolah</p>
-          </div>
-        </article>
+    <div class="out-logo-window" data-reveal style="--d:1">
+      <div class="out-logo-track" id="industryTrack">
+        <div class="out-logo-group">
+          <div class="out-logo-card"><div class="out-logo-mark">LOGO<br>PARTNER</div><small>DUDI 1</small></div>
+          <div class="out-logo-card"><div class="out-logo-mark">LOGO<br>PARTNER</div><small>DUDI 2</small></div>
+          <div class="out-logo-card"><div class="out-logo-mark">LOGO<br>PARTNER</div><small>DUDI 3</small></div>
+          <div class="out-logo-card"><div class="out-logo-mark">LOGO<br>PARTNER</div><small>DUDI 4</small></div>
+          <div class="out-logo-card"><div class="out-logo-mark">LOGO<br>PARTNER</div><small>DUDI 1</small></div>
+          <div class="out-logo-card"><div class="out-logo-mark">LOGO<br>PARTNER</div><small>DUDI 2</small></div>
+        </div>
+        <div class="out-logo-group" aria-hidden="true">
+          <div class="out-logo-card"><div class="out-logo-mark">LOGO<br>PARTNER</div><small>DUDI 1</small></div>
+          <div class="out-logo-card"><div class="out-logo-mark">LOGO<br>PARTNER</div><small>DUDI 2</small></div>
+          <div class="out-logo-card"><div class="out-logo-mark">LOGO<br>PARTNER</div><small>DUDI 3</small></div>
+          <div class="out-logo-card"><div class="out-logo-mark">LOGO<br>PARTNER</div><small>DUDI 4</small></div>
+          <div class="out-logo-card"><div class="out-logo-mark">LOGO<br>PARTNER</div><small>DUDI 1</small></div>
+          <div class="out-logo-card"><div class="out-logo-mark">LOGO<br>PARTNER</div><small>DUDI 2</small></div>
+        </div>
       </div>
-      <button class="prestasi-arrow prestasi-next" type="button" aria-label="Prestasi berikutnya">›</button>
+    </div>
 
-      <div class="prestasi-dots" id="prestasiDots">
-        <button class="active" type="button" aria-label="Prestasi 1"></button>
-        <button type="button" aria-label="Prestasi 2"></button>
-        <button type="button" aria-label="Prestasi 3"></button>
-        <button type="button" aria-label="Prestasi 4"></button>
+    <div class="out-ind-pills" data-reveal style="--d:2">
+      <span><i class="fa-solid fa-check"></i> Praktik Kerja Lapangan</span>
+      <span><i class="fa-solid fa-check"></i> Rekrutmen Bersama</span>
+      <span><i class="fa-solid fa-check"></i> Kurikulum Link &amp; Match</span>
+      <span><i class="fa-solid fa-check"></i> Sertifikasi Kompetensi</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= LULUSAN PTN ================= -->
+<section class="out-sec out-ptn" id="lulusan-ptn" aria-label="Lulusan PTN SMK Negeri 2 Mojokerto">
+  <div class="out-orn" aria-hidden="true">
+    <span class="out-dots"></span><span class="out-diamond"></span>
+    <span class="out-hex"></span><span class="out-plus"></span>
+  </div>
+  <div class="out-wrap out-ptn-layout">
+    <div class="out-copy" data-reveal="left">
+      <div class="out-kicker">Next Destination</div>
+      <h2 class="out-title">Lulusan <span class="gold">PTN</span></h2>
+      <p class="out-desc">Lulusan SMK Negeri 2 Mojokerto melanjutkan studi ke Perguruan Tinggi Negeri melalui jalur prestasi, SNBP, dan ujian masuk &mdash; bukti kualitas vokasi yang siap bersaing.</p>
+      <div class="out-ptn-route">
+        <span><i class="fa-solid fa-school"></i> SMKN 2 Mojokerto</span>
+        <i class="fa-solid fa-arrow-right-long"></i>
+        <span class="gold"><i class="fa-solid fa-building-columns"></i> Perguruan Tinggi Negeri</span>
+      </div>
+    </div>
+
+    <div class="out-ptn-stage" data-reveal style="--d:1">
+      <div class="out-ptn-window">
+        <div class="out-ptn-track" id="ptnTrack">
+          <div class="out-ptn-slide">
+            <article class="out-ptn-destination-card">
+              <div class="out-ptn-card-top">
+                <span class="out-ptn-card-kicker">DESTINATION 01</span>
+                <span class="out-ptn-card-mark">PTN</span>
+              </div>
+              <div class="out-ptn-card-main">
+                <div class="out-ptn-logo-panel">
+                  <div class="out-ptn-logo"><i class="fa-solid fa-building-columns"></i><span>LOGO PTN</span></div>
+                  <small>Perguruan Tinggi Negeri</small>
+                </div>
+                <div class="out-ptn-card-info">
+                  <div class="out-ptn-label">Universitas tujuan</div>
+                  <h3>Universitas Tujuan</h3>
+                  <div class="out-ptn-accent"></div>
+                  <div class="out-ptn-label">Nama yang lolos</div>
+                  <div class="out-ptn-student"><i class="fa-solid fa-star"></i><span>Nama Lulusan</span></div>
+                  <p>Program studi &amp; jalur masuk &mdash; data menyusul.</p>
+                </div>
+              </div>
+              <div class="out-ptn-card-bottom">
+                <span><i class="fa-solid fa-graduation-cap"></i> Next Destination</span>
+                <span>SMKN 2 MOJOKERTO</span>
+              </div>
+            </article>
+          </div>
+
+          <div class="out-ptn-slide">
+            <article class="out-ptn-destination-card">
+              <div class="out-ptn-card-top">
+                <span class="out-ptn-card-kicker">DESTINATION 02</span>
+                <span class="out-ptn-card-mark">PTN</span>
+              </div>
+              <div class="out-ptn-card-main">
+                <div class="out-ptn-logo-panel">
+                  <div class="out-ptn-logo"><i class="fa-solid fa-building-columns"></i><span>LOGO PTN</span></div>
+                  <small>Perguruan Tinggi Negeri</small>
+                </div>
+                <div class="out-ptn-card-info">
+                  <div class="out-ptn-label">Universitas tujuan</div>
+                  <h3>Universitas Tujuan</h3>
+                  <div class="out-ptn-accent"></div>
+                  <div class="out-ptn-label">Nama yang lolos</div>
+                  <div class="out-ptn-student"><i class="fa-solid fa-star"></i><span>Nama Lulusan</span></div>
+                  <p>Program studi &amp; jalur masuk &mdash; data menyusul.</p>
+                </div>
+              </div>
+              <div class="out-ptn-card-bottom">
+                <span><i class="fa-solid fa-graduation-cap"></i> Next Destination</span>
+                <span>SMKN 2 MOJOKERTO</span>
+              </div>
+            </article>
+          </div>
+
+          <div class="out-ptn-slide">
+            <article class="out-ptn-destination-card">
+              <div class="out-ptn-card-top">
+                <span class="out-ptn-card-kicker">DESTINATION 03</span>
+                <span class="out-ptn-card-mark">PTN</span>
+              </div>
+              <div class="out-ptn-card-main">
+                <div class="out-ptn-logo-panel">
+                  <div class="out-ptn-logo"><i class="fa-solid fa-building-columns"></i><span>LOGO PTN</span></div>
+                  <small>Perguruan Tinggi Negeri</small>
+                </div>
+                <div class="out-ptn-card-info">
+                  <div class="out-ptn-label">Universitas tujuan</div>
+                  <h3>Universitas Tujuan</h3>
+                  <div class="out-ptn-accent"></div>
+                  <div class="out-ptn-label">Nama yang lolos</div>
+                  <div class="out-ptn-student"><i class="fa-solid fa-star"></i><span>Nama Lulusan</span></div>
+                  <p>Program studi &amp; jalur masuk &mdash; data menyusul.</p>
+                </div>
+              </div>
+              <div class="out-ptn-card-bottom">
+                <span><i class="fa-solid fa-graduation-cap"></i> Next Destination</span>
+                <span>SMKN 2 MOJOKERTO</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+      <div class="out-slider-controls" aria-label="Navigasi lulusan PTN">
+        <button class="out-arrow" id="ptnPrev" type="button" aria-label="PTN sebelumnya"><i class="fa-solid fa-arrow-left"></i></button>
+        <div class="out-dots" id="ptnDots">
+          <button class="out-dot active" type="button" data-index="0" aria-label="PTN 1"></button>
+          <button class="out-dot" type="button" data-index="1" aria-label="PTN 2"></button>
+          <button class="out-dot" type="button" data-index="2" aria-label="PTN 3"></button>
+        </div>
+        <button class="out-arrow" id="ptnNext" type="button" aria-label="PTN berikutnya"><i class="fa-solid fa-arrow-right"></i></button>
       </div>
     </div>
   </div>
 </section>
 
+<!-- ================= PRESTASI ================= -->
+<section class="prestasi-section" id="prestasi" aria-label="Prestasi SMK Negeri 2 Mojokerto">
+  <div class="prestasi-ornament" aria-hidden="true">
+    <span class="prestasi-dots"></span>
+    <span class="prestasi-diamond"></span>
+    <span class="prestasi-line"></span>
+  </div>
 
+  <div class="prestasi-wrap">
+    <header class="prestasi-head" data-reveal="title">
+      <div class="prestasi-kicker">SKANEDA Achievement</div>
+      <h2 class="prestasi-title">Prestasi <span class="gold">Sekolah</span></h2>
+      <p class="prestasi-desc">Semangat juang siswa dan sekolah terus mengukir prestasi di tingkat daerah, provinsi, hingga nasional.</p>
+    </header>
 
+    <div class="prestasi-feed-shell" data-reveal style="--d:1">
+      <button class="prestasi-arrow prestasi-arrow-left" id="prestasiPrev" type="button" aria-label="Prestasi sebelumnya">
+        <i class="fa-solid fa-arrow-left"></i>
+      </button>
 
+      <div class="prestasi-feed-viewport">
+        <div class="prestasi-feed-rail" id="prestasiFeedRail" aria-label="Feed prestasi siswa">
+
+          <!-- DATA PRESTASI YANG SUDAH ADA — dipertahankan apa adanya. -->
+          <article class="prestasi-feed">
+            <div class="prestasi-feed-head">
+              <div class="prestasi-feed-avatar"><i class="fa-solid fa-school"></i></div>
+              <div class="prestasi-feed-account">
+                <strong>SKANEDA</strong>
+                <span>SMK Negeri 2 Mojokerto</span>
+              </div>
+              <div class="prestasi-feed-more" aria-hidden="true">•••</div>
+            </div>
+
+            <div class="prestasi-feed-media">
+              <!-- Ganti area ini dengan foto prestasi/COC nanti. -->
+              <div class="prestasi-feed-photo-placeholder">
+                <i class="fa-solid fa-trophy"></i>
+                <strong>Foto Prestasi</strong>
+                <small>Area foto dokumentasi lomba dapat diganti tanpa mengubah struktur feed.</small>
+              </div>
+            </div>
+
+            <div class="prestasi-feed-body">
+              <div class="prestasi-feed-actions" aria-hidden="true">
+                <i class="fa-regular fa-heart"></i>
+                <i class="fa-regular fa-comment"></i>
+                <i class="fa-regular fa-paper-plane"></i>
+                <i class="fa-regular fa-bookmark save"></i>
+              </div>
+              <span class="prestasi-feed-tag">Juara 1 — Provinsi</span>
+              <h3>LKS Provinsi <span>Jawa Timur</span></h3>
+              <p>Prestasi siswa SMK Negeri 2 Mojokerto pada Lomba Kompetensi Siswa tingkat Provinsi Jawa Timur.</p>
+              <div class="prestasi-feed-meta">
+                <span><i class="fa-solid fa-calendar"></i> 2024</span>
+                <span><i class="fa-solid fa-medal"></i> Kompetensi Keahlian</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Slot visual berikutnya: tidak mengarang data prestasi baru. -->
+          <article class="prestasi-feed prestasi-feed-placeholder">
+            <div class="prestasi-feed-head">
+              <div class="prestasi-feed-avatar"><i class="fa-solid fa-trophy"></i></div>
+              <div class="prestasi-feed-account">
+                <strong>SKANEDA</strong>
+                <span>Prestasi berikutnya</span>
+              </div>
+              <div class="prestasi-feed-more" aria-hidden="true">•••</div>
+            </div>
+
+            <div class="prestasi-feed-media">
+              <div class="prestasi-feed-photo-placeholder">
+                <i class="fa-solid fa-image"></i>
+                <strong>Foto Prestasi</strong>
+                <small>Siapkan foto prestasi berikutnya di slot ini.</small>
+              </div>
+            </div>
+
+            <div class="prestasi-feed-body">
+              <div class="prestasi-feed-actions" aria-hidden="true">
+                <i class="fa-regular fa-heart"></i>
+                <i class="fa-regular fa-comment"></i>
+                <i class="fa-regular fa-paper-plane"></i>
+                <i class="fa-regular fa-bookmark save"></i>
+              </div>
+              <span class="prestasi-feed-tag">Slot Prestasi</span>
+              <h3>Prestasi Berikutnya</h3>
+              <p>Slot siap diisi dengan data dan dokumentasi prestasi yang sudah tersedia.</p>
+            </div>
+          </article>
+
+          <article class="prestasi-feed prestasi-feed-placeholder">
+            <div class="prestasi-feed-head">
+              <div class="prestasi-feed-avatar"><i class="fa-solid fa-medal"></i></div>
+              <div class="prestasi-feed-account">
+                <strong>SKANEDA</strong>
+                <span>Prestasi berikutnya</span>
+              </div>
+              <div class="prestasi-feed-more" aria-hidden="true">•••</div>
+            </div>
+
+            <div class="prestasi-feed-media">
+              <div class="prestasi-feed-photo-placeholder">
+                <i class="fa-solid fa-camera"></i>
+                <strong>Foto Prestasi</strong>
+                <small>Slot dokumentasi berikutnya tetap siap untuk diganti.</small>
+              </div>
+            </div>
+
+            <div class="prestasi-feed-body">
+              <div class="prestasi-feed-actions" aria-hidden="true">
+                <i class="fa-regular fa-heart"></i>
+                <i class="fa-regular fa-comment"></i>
+                <i class="fa-regular fa-paper-plane"></i>
+                <i class="fa-regular fa-bookmark save"></i>
+              </div>
+              <span class="prestasi-feed-tag">Slot Prestasi</span>
+              <h3>Dokumentasi Prestasi</h3>
+              <p>Gunakan slot ini untuk menambahkan prestasi lain tanpa mengubah layout feed.</p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+
+      <button class="prestasi-arrow prestasi-arrow-right" id="prestasiNext" type="button" aria-label="Prestasi berikutnya">
+        <i class="fa-solid fa-arrow-right"></i>
+      </button>
+    </div>
+
+    <div class="prestasi-note">Geser atau drag untuk melihat feed prestasi lainnya</div>
+  </div>
+
+  <script>
+  (function(){
+    var rail = document.getElementById('prestasiFeedRail');
+    var prev = document.getElementById('prestasiPrev');
+    var next = document.getElementById('prestasiNext');
+    if(!rail || !prev || !next) return;
+
+    function getStep(){
+      var card = rail.querySelector('.prestasi-feed');
+      if(!card) return rail.clientWidth;
+      var gap = parseFloat(getComputedStyle(rail).gap) || 0;
+      return card.getBoundingClientRect().width + gap;
+    }
+
+    function updateButtons(){
+      var max = rail.scrollWidth - rail.clientWidth - 2;
+      prev.disabled = rail.scrollLeft <= 2;
+      next.disabled = rail.scrollLeft >= max;
+    }
+
+    prev.addEventListener('click', function(){
+      rail.scrollBy({left:-getStep(), behavior:'smooth'});
+    });
+    next.addEventListener('click', function(){
+      rail.scrollBy({left:getStep(), behavior:'smooth'});
+    });
+    rail.addEventListener('scroll', updateButtons, {passive:true});
+    window.addEventListener('resize', updateButtons, {passive:true});
+
+    var dragging = false;
+    var startX = 0;
+    var startScroll = 0;
+
+    rail.addEventListener('pointerdown', function(e){
+      dragging = true;
+      startX = e.clientX;
+      startScroll = rail.scrollLeft;
+      rail.classList.add('is-dragging');
+      try{ rail.setPointerCapture(e.pointerId); }catch(_){}
+    });
+
+    rail.addEventListener('pointermove', function(e){
+      if(!dragging) return;
+      rail.scrollLeft = startScroll - (e.clientX - startX);
+    });
+
+    function stopDrag(){
+      dragging = false;
+      rail.classList.remove('is-dragging');
+    }
+
+    rail.addEventListener('pointerup', stopDrag);
+    rail.addEventListener('pointercancel', stopDrag);
+    rail.addEventListener('lostpointercapture', stopDrag);
+
+    updateButtons();
+  })();
+  </script>
+</section>
 
 <!-- ================= KONTAK & FOOTER ================= -->
 <section class="kontak-section section-py" id="kontak" aria-label="Kontak dan lokasi sekolah">
   <div class="container">
     <div class="ft-wrap">
-      <div class="ft-head" data-reveal>
+      <div class="ft-head" data-reveal="title">
         <div class="ft-eyebrow">Temukan Kami</div>
-        <h2 class="ft-title">Temukan <span class="ft-gold">Kami</span></h2>
-        <p class="ft-sub">Kami siap membantu Anda.</p>
-        <p class="ft-line">Informasi sekolah, PPDB, dan program keahlian.</p>
+        <h2 class="ft-title">Temukan <span class="gold">Kami</span></h2>
+        <p class="ft-sub" data-reveal="text" style="--d:1">Kami siap membantu Anda.</p>
+        <p class="ft-line" data-reveal="text" style="--d:2">Informasi sekolah, PPDB, dan program keahlian.</p>
       </div>
-      <div class="ft-map" data-reveal>
+      <div class="ft-map" data-reveal style="--d:1">
         <div class="ft-pin" aria-hidden="true">
           <div class="ft-pin-badge"><img src="{{ asset('images/logo_smkn2.png') }}" alt="" /></div>
           <div class="ft-pin-ring"></div>
           <div class="ft-pin-ring r2"></div>
         </div>
         <iframe title="Lokasi SMK Negeri 2 Mojokerto" src="https://www.google.com/maps?q=Jl.%20Raya%20Pulorejo%2C%20Kel.%20Pulorejo%2C%20Kec.%20Prajurit%20Kulon%2C%20Kota%20Mojokerto%2C%20Jawa%20Timur%2061325&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
-        <div class="ft-card" data-reveal>
+        <div class="ft-card" data-reveal style="--d:2">
           <div class="ft-card-head">
             <div class="ft-card-logo"><img src="{{ asset('images/logo_smkn2.png') }}" alt="Logo SMKN 2 Mojokerto" /></div>
             <div class="ft-card-title">SMKN 2 MOJOKERTO<small>Kontak &amp; Informasi</small></div>
@@ -2026,7 +2640,7 @@
           </a>
         </div>
       </div>
-      <div class="ft-cta" data-reveal>
+      <div class="ft-cta" data-reveal style="--d:3">
         <p>Punya pertanyaan? Kami siap membantu memberikan informasi seputar sekolah dan PPDB.</p>
         <button type="button" class="ft-cta-btn" onclick="toggleSibot()">Hubungi Kami <i class="fa-solid fa-arrow-right"></i></button>
       </div>
@@ -2070,8 +2684,9 @@
 
   /* ---- Scroll Reveal ---- */
   var revealEls = document.querySelectorAll('[data-reveal]');
+  function revealMark(el){ el.classList.add('revealed'); el.classList.add('is-visible'); }
   var revealObs = new IntersectionObserver(function(entries) {
-    entries.forEach(function(e) { if(e.isIntersecting) { e.target.classList.add('revealed'); revealObs.unobserve(e.target); } });
+    entries.forEach(function(e) { if(e.isIntersecting) { revealMark(e.target); revealObs.unobserve(e.target); } });
   }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
   revealEls.forEach(function(el){ revealObs.observe(el); });
 
@@ -2086,13 +2701,13 @@
       pending = pending.filter(function(el){
         if(el.classList.contains('revealed')) return false;
         var r = el.getBoundingClientRect();
-        if(r.top < vh + 220 && r.bottom > -40){ el.classList.add('revealed'); return false; }
+        if(r.top < vh + 220 && r.bottom > -40){ revealMark(el); return false; }
         return true;
       });
       /* Force reveal semua yang tersisa setelah ~3.6 detik agar konten
          tidak pernah selamanya tersembunyi (mis. hero lebih tinggi dari viewport) */
       if(checks >= 8){
-        pending.forEach(function(el){ el.classList.add('revealed'); });
+        pending.forEach(function(el){ revealMark(el); });
         clearInterval(iv);
       } else if(pending.length === 0){
         clearInterval(iv);
@@ -2100,26 +2715,6 @@
     }, 450);
   })();
 
-  /* ---- Journey to 2028 Map reveal + route draw ---- */
-  var j2k8Stage = document.getElementById('j2k8Stage');
-  if (j2k8Stage) {
-    var j2k8Obs = new IntersectionObserver(function(entries) {
-      entries.forEach(function(e) {
-        if (e.isIntersecting) {
-          j2k8Stage.classList.add('drawn');
-          var glow = j2k8Stage.querySelector('.route-glow');
-          if (glow) {
-            var len = glow.getTotalLength ? glow.getTotalLength() : 1200;
-            glow.style.strokeDasharray = len;
-            glow.style.strokeDashoffset = len;
-            requestAnimationFrame(function(){ requestAnimationFrame(function(){ glow.style.strokeDashoffset = '0'; }); });
-          }
-          j2k8Obs.unobserve(j2k8Stage);
-        }
-      });
-    }, { threshold: 0.18 });
-    j2k8Obs.observe(j2k8Stage);
-  }
 
     /* Parallax halus: konten hero bergeser perlahan saat scroll (efek depth di atas foto) */
     var heroMainEl = document.querySelector('.hero-main');
@@ -2179,58 +2774,6 @@
   })();
 
   /* ---- Flipbook Buku Sejarah ---- */
-  (function(){
-    var stage = document.getElementById('flipbook');
-    if(!stage) return;
-    var sheets = Array.prototype.slice.call(stage.querySelectorAll('.book-sheet'));
-    var book = stage.querySelector('.book3d');
-    var prevBtn = stage.querySelector('.flip-prev');
-    var nextBtn = stage.querySelector('.flip-next');
-    var dots = Array.prototype.slice.call(stage.querySelectorAll('.flip-dot'));
-    var cur = 0, turning = false, total = sheets.length;
-    var curEl = document.getElementById('flip-cur');
-    var totEl = document.getElementById('flip-total');
-    if(totEl) totEl.textContent = total * 2;
-    function render(){
-      sheets.forEach(function(s,i){
-        s.classList.toggle('active', i === cur);
-        s.classList.remove('reveal-under','turning-fwd','turning-bwd');
-      });
-      if(prevBtn) prevBtn.disabled = (cur === 0);
-      if(nextBtn) nextBtn.disabled = (cur === total - 1);
-      dots.forEach(function(d,i){ d.classList.toggle('active', i === cur); });
-      if(curEl) curEl.innerHTML = (cur*2+1) + '&ndash;' + (cur*2+2);
-    }
-    function go(n){
-      if(turning || n < 0 || n >= total || n === cur) return;
-      turning = true;
-      var from = sheets[cur];
-      var dir = n > cur ? 'fwd' : 'bwd';
-      if(sheets[n]) sheets[n].classList.add('reveal-under');
-      from.classList.add('turning-' + dir);
-      window.setTimeout(function(){
-        from.classList.remove('turning-' + dir);
-        cur = n;
-        render();
-        turning = false;
-      }, 900);
-    }
-    window.flipRestart = function(){ go(0); };
-    if(prevBtn) prevBtn.addEventListener('click', function(e){ e.stopPropagation(); go(cur - 1); });
-    if(nextBtn) nextBtn.addEventListener('click', function(e){ e.stopPropagation(); go(cur + 1); });
-    dots.forEach(function(d,i){ d.addEventListener('click', function(e){ e.stopPropagation(); go(i); }); });
-    document.addEventListener('keydown', function(e){
-      if(e.key === 'ArrowRight') go(cur + 1);
-      if(e.key === 'ArrowLeft') go(cur - 1);
-    });
-    if(book) book.addEventListener('click', function(e){
-      if(e.target.closest('a,button,.flip-nav')) return;
-      var r = book.getBoundingClientRect();
-      var x = e.clientX - r.left;
-      if(x < r.width * 0.45){ go(cur - 1); } else { go(cur + 1); }
-    });
-    render();
-  })();
 
 
 </script>
@@ -2388,19 +2931,3 @@
 </script>
 
 @endpush
-
-<script>
-document.addEventListener('DOMContentLoaded',function(){
-  const slides=[...document.querySelectorAll('.prestasi-slide')];
-  const dots=[...document.querySelectorAll('#prestasiDots button')];
-  let current=0;
-  function show(i){
-    current=(i+slides.length)%slides.length;
-    slides.forEach((s,n)=>s.classList.toggle('is-active',n===current));
-    dots.forEach((d,n)=>d.classList.toggle('active',n===current));
-  }
-  document.querySelector('.prestasi-prev')?.addEventListener('click',()=>show(current-1));
-  document.querySelector('.prestasi-next')?.addEventListener('click',()=>show(current+1));
-  dots.forEach((d,n)=>d.addEventListener('click',()=>show(n)));
-});
-</script>

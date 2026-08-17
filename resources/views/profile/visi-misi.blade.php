@@ -290,6 +290,134 @@
 .visi-cta .home-orn .ho-ring{right:-70px;top:20%;border-color:rgba(255,255,255,.10)}
 .visi-cta .home-orn .ho-gold{left:20%;bottom:26%}
 
+/* ---------- CTA REDESIGN: CARD SEPERTI STRUKTUR ORGANISASI ---------- */
+.visi-cta{
+  position:relative;
+  margin:0;
+  padding:82px 0 96px;
+  overflow:hidden;
+  text-align:center;
+  isolation:isolate;
+  background:#f4f8fc;
+  color:#fff;
+}
+.visi-cta::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(135deg,rgba(13,58,102,.025),transparent 55%),
+    radial-gradient(circle at 8% 45%,rgba(13,58,102,.06),transparent 24%),
+    radial-gradient(circle at 92% 35%,rgba(255,181,0,.07),transparent 22%);
+  pointer-events:none;
+}
+.visi-cta::after{
+  content:"#SMKN2BISA";
+  position:absolute;
+  left:50%;
+  bottom:42px;
+  transform:translateX(-50%);
+  font-family:var(--font-display);
+  font-size:clamp(4rem,12vw,10rem);
+  font-weight:900;
+  line-height:1;
+  letter-spacing:.04em;
+  color:rgba(13,58,102,.045);
+  -webkit-text-stroke:1px rgba(13,58,102,.055);
+  pointer-events:none;
+  white-space:nowrap;
+  user-select:none;
+}
+.visi-cta-inner{
+  position:relative;
+  z-index:3;
+  width:min(1116px,84%);
+  min-height:350px;
+  margin:0 auto;
+  padding:68px 7% 64px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  border-radius:28px;
+  overflow:hidden;
+  background:linear-gradient(135deg,#0b3558 0%,#0d3a66 48%,#123f6d 100%);
+  box-shadow:0 24px 55px rgba(13,58,102,.18);
+  border:1px solid rgba(255,255,255,.08);
+}
+.visi-cta-inner::before{
+  content:"";
+  position:absolute;
+  width:230px;
+  height:230px;
+  right:-105px;
+  top:48px;
+  border-radius:50%;
+  border:1px solid rgba(255,255,255,.08);
+  box-shadow:0 0 0 28px rgba(255,255,255,.018),0 0 0 58px rgba(255,255,255,.012);
+}
+.visi-cta-inner::after{
+  content:"";
+  position:absolute;
+  width:170px;
+  height:170px;
+  left:-65px;
+  bottom:-70px;
+  border-radius:50%;
+  border:1px solid rgba(255,213,74,.12);
+  box-shadow:0 0 0 24px rgba(255,213,74,.018);
+}
+.visi-cta h2{
+  position:relative;
+  z-index:2;
+  font-family:var(--font-display);
+  font-size:clamp(2.25rem,4.6vw,4rem);
+  font-weight:900;
+  line-height:1.08;
+  letter-spacing:-.025em;
+  margin:0 0 1rem;
+  color:#fff;
+}
+.visi-cta h2 span{
+  display:block;
+  background:linear-gradient(135deg,#ffd54a,#ffb300 50%,#ff8a00);
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  color:transparent;
+}
+.visi-cta p{
+  position:relative;
+  z-index:2;
+  color:rgba(235,245,253,.82);
+  line-height:1.8;
+  max-width:690px;
+  margin:0 auto 2rem;
+  font-size:1rem;
+}
+.visi-cta-btn{
+  position:relative;
+  z-index:2;
+  display:inline-flex;
+  align-items:center;
+  gap:.65rem;
+  padding:1rem 2.1rem;
+  border-radius:999px;
+  background:linear-gradient(135deg,#ffd54a,#ff8a00);
+  color:#0d3a66;
+  font-size:.94rem;
+  font-weight:900;
+  text-decoration:none;
+  box-shadow:0 14px 32px rgba(255,138,0,.34);
+  transition:transform .3s ease,box-shadow .3s ease;
+}
+.visi-cta-btn:hover{
+  transform:translateY(-4px) scale(1.02);
+  box-shadow:0 20px 42px rgba(255,138,0,.46);
+}
+.visi-cta-btn i{transition:transform .3s ease}
+.visi-cta-btn:hover i{transform:translateX(5px)}
+
 /* Konten di atas ornamen */
 .visi-section>*:not(.home-orn),
 .misi-section>*:not(.home-orn),
@@ -306,6 +434,12 @@
   .nilai-grid{grid-template-columns:1fr 1fr}
 }
 @media(max-width:700px){
+  .visi-cta{padding:60px 0 72px}
+  .visi-cta-inner{width:88%;min-height:330px;padding:54px 8% 50px;border-radius:24px}
+  .visi-cta h2{font-size:clamp(2rem,9vw,3rem)}
+  .visi-cta p{font-size:.92rem;line-height:1.75}
+  .visi-cta-btn{width:auto;max-width:100%;justify-content:center}
+
   .visi-hero{min-height:0;align-items:flex-start}
   .visi-hero-inner{padding:clamp(3rem,8vh,4.5rem) 5% 3.6rem;width:90%}
   .visi-hero::after{font-size:clamp(3.6rem,22vw,6rem);opacity:.6;right:-4%}
@@ -349,7 +483,6 @@
           <span class="visi-white">VISI &amp;</span><br>
           <span class="visi-gold">MISI SKANEDA</span>
         </h1>
-        <p class="visi-lead">Visi, misi, tujuan, dan nilai-nilai yang menjadi fondasi SMK Negeri 2 Mojokerto dalam mencetak generasi vokasi unggulan — beriman, berkarakter, kompeten, dan siap bersaing di tingkat global.</p>
         <div class="visi-hero-meta">
           <span class="visi-pill"><i class="fas fa-bullseye"></i> Visi &amp; Misi</span>
           <span class="visi-pill"><i class="fas fa-flag"></i> Tujuan Sekolah</span>

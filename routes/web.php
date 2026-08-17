@@ -7,49 +7,98 @@ use Illuminate\Support\Facades\Route;
 | Web Routes — SMK Negeri 2 Mojokerto
 |--------------------------------------------------------------------------
 |
-| File view yang dipakai:
-|   - resources/views/welcome.blade.php     (beranda — file utuh hasil
-|     penggabungan header + index + footer, TANPA @include partials)
-|   - resources/views/layouts/app.blade.php (layout utama, pakai @extends)
+| Route disesuaikan dengan route() yang dipakai di
+| resources/views/layouts/app.blade.php.
 |
 */
 
-// ===== BERANDA =====
-// welcome.blade.php adalah file utuh (header + index + footer sudah
-// dilebur menjadi satu), sehingga tidak perlu @include partials lagi.
+// ==========================================================================
+// BERANDA
+// ==========================================================================
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
-// ===== PROFIL =====
-// Buat file resources/views/profil.blade.php dengan struktur:
-//   @extends('layouts.app')
-//   @section('title', 'Profil Sekolah — SMK Negeri 2 Mojokerto')
-//   @section('content') ... konten ... @endsection
+
+// ==========================================================================
+// PROFIL
+// ==========================================================================
+
+// Profil utama
 Route::view('/profil', 'profil')->name('profil');
 
-// ===== SEJARAH SEKOLAH =====
-// Buat file resources/views/sejarah-sekolah.blade.php
-Route::view('/profile/sejarah-sekolah', 'profile.sejarah-sekolah')->name('sejarah');
+// Sejarah Sekolah
+Route::view('/profile/sejarah-sekolah', 'profile.sejarah-sekolah')
+    ->name('profil.sejarah-sekolah');
 
-// ===== PROGRAM KEAHLIAN =====
-// Buat file resources/views/program-keahlian.blade.php
-Route::view('/program-keahlian', 'program-keahlian')->name('program-keahlian');
+// Visi & Misi
+Route::view('/profile/visi-misi', 'profile.visi-misi')
+    ->name('profil.visi-misi');
 
-// ===== KARYA SISWA =====
-// Buat file resources/views/karya-siswa.blade.php
-Route::view('/karya-siswa', 'karya-siswa')->name('karya-siswa');
+// Struktur Organisasi
+Route::view('/profile/struktur-organisasi', 'profile.struktur-organisasi')
+    ->name('profil.struktur-organisasi');
 
-// ===== PKL & ALUMNI =====
-// Buat file resources/views/pkl-alumni.blade.php
-Route::view('/pkl-alumni', 'pkl-alumni')->name('pkl-alumni');
+// Guru & Staf
+Route::view('/profile/guru-staf', 'profile.guru-staf')
+    ->name('profil.guru-staf');
 
-// ===== PPDB (tombol CTA "Daftar PPDB") =====
-// Buat file resources/views/ppdb.blade.php
-Route::view('/ppdb', 'ppdb')->name('ppdb');
+// Roadmap Pengembangan
+Route::view('/profile/roadmap-pengembangan', 'profile.roadmap-pengembangan')
+    ->name('profil.roadmap-pengembangan');
 
-// ===== SEJARAH SEKOLAH =====
-// Buat file resources/views/sejarah-sekolah.blade.php
-Route::view('/profile/visi-misi', 'profile.visi-misi')->name('visi');
 
-Route::view('/keahlian/aphp', 'keahlian.aphp')->name('aphp');
+// ==========================================================================
+// PROGRAM KEAHLIAN
+// ==========================================================================
+
+// Halaman utama Program Keahlian
+Route::view('/program-keahlian', 'program-keahlian')
+    ->name('program-keahlian');
+
+// APHP
+Route::view('/keahlian/aphp', 'keahlian.aphp')
+    ->name('aphp');
+
+
+// ==========================================================================
+// SISWA
+// ==========================================================================
+
+// Karya Siswa
+Route::view('/karya-siswa', 'karya-siswa')
+    ->name('karya-siswa');
+
+
+// ==========================================================================
+// PPDB
+// ==========================================================================
+Route::view('/ppdb', 'ppdb.index')
+    ->name('ppdb');
+
+// ==========================================================================
+// PKL & ALUMNI
+// ==========================================================================
+Route::view('/pkl-alumni', 'pkl-alumni')
+    ->name('pkl-alumni');
+
+Route::redirect('/kontak', '/#kontak')
+    ->name('kontak');
+
+Route::view('/siswa/karya-siswa', 'siswa.karya-siswa')
+    ->name('karya-siswa');
+
+Route::view('/siswa/prestasi-siswa', 'siswa.prestasi-siswa')
+    ->name('prestasi-siswa');
+
+Route::view('/siswa/ekstrakurikuler', 'siswa.ekstrakurikuler')
+    ->name('ekstrakurikuler');
+
+Route::view('/berita/index', 'berita.index')
+    ->name('index');
+
+Route::view('/galeri/kegiatan', 'galeri.kegiatan')
+    ->name('kegiatan');
+
+Route::view('/galeri/prestasi-sekolah', 'galeri.prestasi-sekolah')
+    ->name('prestasi-sekolah');
