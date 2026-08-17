@@ -15,51 +15,142 @@
 .visi-page *{box-sizing:border-box}
 .visi-shell{width:100%}
 
-/* ---------- HERO: foto gedung + overlay + watermark ---------- */
-.visi-hero{position:relative;min-height:88vh;display:flex;align-items:flex-start;overflow:hidden;
-  background-image:url('{{ asset('images/hero-sekolah.jpg') }}');
-  background-size:cover;background-position:center;background-repeat:no-repeat;color:#fff}
-.visi-hero::before{content:"";position:absolute;inset:0;z-index:1;
-  background:linear-gradient(100deg,rgba(7,22,42,.90) 0%,rgba(9,30,54,.68) 45%,rgba(9,30,54,.32) 78%,rgba(9,30,54,.12) 100%)}
-/* Watermark typography besar transparan (elemen grafis background) */
-.visi-hero::after{content:"VISI MISI";position:absolute;z-index:2;right:-2%;top:50%;transform:translateY(-50%);
-  font-family:var(--font-display);font-size:clamp(5rem,19vw,19rem);font-weight:900;line-height:.82;
-  letter-spacing:.02em;color:rgba(255,255,255,.055);-webkit-text-stroke:1px rgba(255,255,255,.07);
-  text-shadow:0 0 90px rgba(13,58,102,.16);pointer-events:none;white-space:nowrap;user-select:none}
-.visi-hero-inner{position:relative;z-index:3;width:100%;max-width:none;margin:0 auto;
-  padding:clamp(3.5rem,9vh,5.5rem) clamp(1.5rem,5vw,5.5rem);
-  display:grid;grid-template-columns:minmax(0,1.05fr) minmax(340px,.95fr);gap:4rem;align-items:center}
-
-.visi-kicker{display:inline-flex;transform:translateY(0);align-items:center;gap:.65rem;font-size:.74rem;font-weight:800;
-  letter-spacing:.18em;text-transform:uppercase;color:#ffd54a;margin-bottom:0.6rem}
-.visi-kicker::before{content:"";width:34px;height:3px;border-radius:99px;background:linear-gradient(90deg,#ffd54a,#ffb300)}
-
-/* ---------- TITLE: VISI & putih, MISI kuning-oranye ---------- */
-.visi-title{font-family:var(--font-display);font-size:clamp(2.9rem,6.6vw,6.2rem);line-height:.98;
-  letter-spacing:.01em;margin:0;max-width:820px;text-transform:uppercase;
-  text-shadow:0 2px 24px rgba(4,14,28,.35);animation:hdFadeUp .7s .1s var(--ease, ease) both}
-.visi-title .visi-white{color:#ffffff;display:inline-block}
-.visi-title .visi-gold{display:inline-block;
-  background:linear-gradient(135deg,#ffe66d 0%,#ffc107 45%,#ff8a00 100%);
-  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#ffc107;
-  text-shadow:0 4px 24px rgba(255,174,0,.18);letter-spacing:.025em}
-
-.visi-lead{font-size:1.02rem;line-height:1.85;color:rgba(235,245,253,.86);max-width:640px;
-  margin:1.3rem 0 0;animation:hdFadeUp .7s .26s var(--ease, ease) both}
-.visi-hero-meta{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.6rem;animation:hdFadeUp .7s .4s var(--ease, ease) both}
-.visi-pill{display:inline-flex;align-items:center;gap:.5rem;padding:.55rem .85rem;
-  border:1px solid rgba(255,255,255,.2);background:rgba(13,58,102,.30);border-radius:999px;
-  font-size:.72rem;font-weight:800;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
-.visi-pill i{color:#ffd54a}
-.hero-photo{position:relative;height:430px;border-radius:24px;overflow:hidden;
-  border:1px solid rgba(255,255,255,.22);box-shadow:0 35px 90px rgba(0,0,0,.38);
-  transform:translateY(-34px) rotate(1.5deg);animation:hdFadeUp .8s .35s var(--ease, ease) both}
-.hero-photo::before{content:"";position:absolute;inset:0;z-index:2;
-  background:linear-gradient(180deg,transparent 38%,rgba(4,20,38,.86) 100%)}
-.hero-photo img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.03)}
-.hero-photo-caption{position:absolute;z-index:3;left:1.5rem;right:1.5rem;bottom:1.3rem}
-.hero-photo-caption strong{display:block;font-family:var(--font-display);font-size:1.3rem;font-weight:600;color:#fff}
-.hero-photo-caption span{font-size:.72rem;color:rgba(255,255,255,.74)}
+/* ---------- HERO: SAMA GAYA DENGAN HERO SEJARAH SKANEDA ---------- */
+.visi-hero{
+  position:relative;
+  min-height:clamp(650px,82vh,820px);
+  background:#fff;
+  display:flex;
+  align-items:center;
+  overflow:hidden;
+  isolation:isolate;
+}
+.visi-hero::before{
+  content:"";
+  position:absolute;
+  left:0;right:0;top:0;height:7px;
+  background:linear-gradient(90deg,#0d3a66 0 62%,#ff7a00 62%);
+  z-index:8;
+}
+/* Watermark besar di belakang judul */
+.visi-hero::after{
+  content:"VISI MISI";
+  position:absolute;
+  z-index:0;
+  left:1%;
+  bottom:-1.5%;
+  font-family:var(--font-display);
+  font-size:clamp(8rem,20vw,19rem);
+  font-weight:950;
+  line-height:.75;
+  letter-spacing:-.07em;
+  color:rgba(13,58,102,.032);
+  -webkit-text-stroke:1px rgba(255,122,0,.08);
+  white-space:nowrap;
+  pointer-events:none;
+  user-select:none;
+}
+/* Ornamen memakai aset yang sama dengan hero Sejarah */
+.visi-hero .hero-ornament{
+  position:absolute;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
+  overflow:hidden;
+}
+.visi-hero .hero-ornament img{
+  position:absolute;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  opacity:.84;
+  mix-blend-mode:multiply;
+}
+.visi-hero-inner{
+  position:relative;
+  z-index:4;
+  width:min(1180px,calc(100% - 40px));
+  margin:auto;
+  display:block;
+  padding:95px 0 75px;
+}
+.visi-hero-copy{max-width:790px}
+.visi-kicker{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:9px 14px;
+  border:1px solid #ffd5b0;
+  background:#fffaf5;
+  border-radius:999px;
+  color:#ff7a00;
+  font-size:.68rem;
+  font-weight:900;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+}
+.visi-kicker::before{
+  content:"";
+  width:9px;height:9px;
+  background:#ff7a00;
+  border-radius:50%;
+  box-shadow:0 0 0 6px rgba(255,122,0,.1);
+}
+.visi-title{
+  margin:20px 0 0;
+  font-family:var(--font-display);
+  font-size:clamp(4.4rem,9.5vw,8.8rem);
+  line-height:.79;
+  letter-spacing:-.065em;
+  font-weight:950;
+  text-transform:uppercase;
+  position:relative;
+  text-shadow:none;
+  animation:hdFadeUp .7s .1s var(--ease,ease) both;
+}
+.visi-title .visi-white{
+  display:block;
+  color:#0d3a66;
+}
+.visi-title .visi-gold{
+  display:block;
+  color:#ff7a00;
+  background:none;
+  -webkit-text-fill-color:#ff7a00;
+  letter-spacing:-.055em;
+}
+.visi-lead{
+  max-width:650px;
+  margin:27px 0 0;
+  color:#607388;
+  font-size:1rem;
+  line-height:1.8;
+  animation:hdFadeUp .7s .26s var(--ease,ease) both;
+}
+.visi-hero-meta{
+  display:flex;
+  align-items:center;
+  gap:13px;
+  flex-wrap:wrap;
+  margin-top:27px;
+  animation:hdFadeUp .7s .4s var(--ease,ease) both;
+}
+.visi-pill{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  padding:13px 17px;
+  background:#0d3a66;
+  color:#fff;
+  border:0;
+  border-radius:15px;
+  font-size:.72rem;
+  font-weight:900;
+  box-shadow:0 14px 32px rgba(13,58,102,.16);
+  backdrop-filter:none;
+}
+.visi-pill i{color:#ffd15a}
 @keyframes hdFadeUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
 
 /* ---------- SECTION COMMON ---------- */
@@ -427,8 +518,7 @@
 
 /* ---------- RESPONSIVE ---------- */
 @media(max-width:950px){
-  .visi-hero-inner{grid-template-columns:1fr;gap:2rem}
-  .hero-photo{height:360px;transform:translateY(-18px) rotate(1deg)}
+  .visi-hero-inner{width:min(100% - 40px,1180px)}
   .misi-grid{grid-template-columns:1fr 1fr}
   .tujuan-grid{grid-template-columns:1fr 1fr}
   .nilai-grid{grid-template-columns:1fr 1fr}
@@ -440,11 +530,11 @@
   .visi-cta p{font-size:.92rem;line-height:1.75}
   .visi-cta-btn{width:auto;max-width:100%;justify-content:center}
 
-  .visi-hero{min-height:0;align-items:flex-start}
-  .visi-hero-inner{padding:clamp(3rem,8vh,4.5rem) 5% 3.6rem;width:90%}
-  .visi-hero::after{font-size:clamp(3.6rem,22vw,6rem);opacity:.6;right:-4%}
-  .visi-title{font-size:clamp(2.4rem,11vw,3.6rem);margin-top:0}
-  .hero-photo{height:300px}
+  .visi-hero{min-height:620px}
+  .visi-hero-inner{width:min(100% - 28px,1180px);padding:85px 0 55px}
+  .visi-hero::after{font-size:8rem;opacity:.7}
+  .visi-title{font-size:clamp(3.5rem,16vw,6rem)}
+  .visi-lead{font-size:.88rem}
   .misi-grid,.nilai-grid{grid-template-columns:1fr}
   .tujuan-grid{grid-template-columns:1fr 1fr;gap:.8rem}
   .visi-section,.misi-section,.tujuan-section,.nilai-section{padding:85px 0 90px}
@@ -466,32 +556,25 @@
 <div class="visi-page">
   <!-- HERO -->
   <section class="visi-hero">
-    <div class="home-orn" aria-hidden="true">
-      <span class="ho-chevron"></span>
-      <span class="ho-line"></span>
-      <span class="ho-dots"></span>
-      <span class="ho-ring"></span>
-      <span class="ho-gold"></span>
-      <span class="ho-square"></span>
-      <span class="ho-corner"></span>
+    <div class="hero-ornament" aria-hidden="true">
+      <img src="{{ asset('images/wide_minimalist_abstract_technology_background_des.png') }}" alt="">
     </div>
 
     <div class="visi-hero-inner">
-      <div>
-        <div class="visi-kicker">Arah & langkah kami</div>
+      <div class="visi-hero-copy" data-reveal>
+        <div class="visi-kicker">Arah &amp; langkah kami</div>
         <h1 class="visi-title">
-          <span class="visi-white">VISI &amp;</span><br>
+          <span class="visi-white">VISI &amp;</span>
           <span class="visi-gold">MISI SKANEDA</span>
         </h1>
+        <p class="visi-lead">
+          Landasan, arah, dan nilai yang menjadi pijakan SMK Negeri 2 Mojokerto dalam membentuk lulusan yang beriman, berkarakter, kompeten, dan berdaya saing global.
+        </p>
         <div class="visi-hero-meta">
           <span class="visi-pill"><i class="fas fa-bullseye"></i> Visi &amp; Misi</span>
           <span class="visi-pill"><i class="fas fa-flag"></i> Tujuan Sekolah</span>
           <span class="visi-pill"><i class="fas fa-gem"></i> Nilai-nilai</span>
         </div>
-      </div>
-      <div class="hero-photo" data-reveal="right">
-        <img src="{{ asset('images/smkn-guru.jpg') }}" alt="Guru dan staf SMK Negeri 2 Mojokerto" loading="eager">
-        <div class="hero-photo-caption"><strong>Sekolah vokasi unggulan</strong><span>Berkarya nyata untuk generasi masa depan.</span></div>
       </div>
     </div>
   </section>

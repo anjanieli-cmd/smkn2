@@ -1304,32 +1304,6 @@
   height:100%;
   display:block;
 }
-.history-ref-ornaments .history-ref-ornament-image{
-  position:absolute;
-  width:clamp(520px,55vw,900px);
-  height:auto;
-  right:-35px;
-  top:50%;
-  transform:translateY(-50%);
-  display:block;
-  object-fit:contain;
-  z-index:1;
-}
-@media (max-width:900px){
-  .history-ref-ornaments .history-ref-ornament-image{
-    width:clamp(380px,58vw,620px);
-    right:-70px;
-    top:48%;
-  }
-}
-@media (max-width:560px){
-  .history-ref-ornaments .history-ref-ornament-image{
-    width:380px;
-    right:-145px;
-    top:52%;
-    opacity:.78;
-  }
-}
 .history-ref-ornaments path{
   fill:none;
   stroke:#0d3a66;
@@ -1484,6 +1458,123 @@
   }
 }
 
+/* =========================================================
+   FINAL HERO FIX — ORNAMEN JELAS DI SISI KANAN JUDUL
+   Bentuk: network, diamond, hexagon, orbit, node, modular blocks.
+   Tidak memakai gambar/background eksternal.
+   ========================================================= */
+.history-hero{
+  background:#fff!important;
+  overflow:hidden!important;
+}
+.history-hero>.history-ref-ornaments{
+  display:block!important;
+  position:absolute!important;
+  inset:0!important;
+  z-index:1!important;
+  pointer-events:none!important;
+}
+.history-hero>.history-ref-ornaments svg{
+  width:100%!important;
+  height:100%!important;
+}
+.history-hero-inner{
+  position:relative!important;
+  z-index:4!important;
+  padding-right:44%!important;
+}
+.history-title{
+  position:relative!important;
+  z-index:5!important;
+  max-width:900px!important;
+}
+.history-kicker,.history-vt-cta{
+  position:relative!important;
+  z-index:5!important;
+}
+/* Ornamen kanan dibuat lebih tegas seperti bahasa visual Jurusan/Industri. */
+.history-ref-ornaments .ref-right path,
+.history-ref-ornaments .ref-bottom path{
+  opacity:.34!important;
+}
+.history-ref-ornaments .ref-diamond-orange{
+  stroke-width:2.4!important;
+  opacity:.72!important;
+}
+.history-ref-ornaments .ref-fill-orange,
+.history-ref-ornaments .ref-fill-navy{
+  opacity:.96!important;
+}
+.history-ref-ornaments .ref-hex{
+  stroke-width:2.4!important;
+  opacity:.48!important;
+}
+.history-ref-ornaments .ref-orbit{
+  stroke-width:1.8!important;
+  opacity:.30!important;
+}
+.history-ref-ornaments .ref-orbit-orange{
+  stroke-width:1.8!important;
+  opacity:.42!important;
+}
+.history-ref-ornaments .ref-heavy-orange,
+.history-ref-ornaments .ref-heavy-navy{
+  stroke-width:6!important;
+  opacity:.72!important;
+}
+.history-ref-ornaments .ref-node-orange,
+.history-ref-ornaments .ref-node-navy{
+  stroke-width:2.2!important;
+}
+@media(max-width:1050px){
+  .history-hero-inner{padding-right:1.25rem!important}
+  .history-ref-ornaments{opacity:.72!important}
+}
+@media(max-width:700px){
+  .history-hero-inner{padding-right:1.25rem!important}
+  .history-ref-ornaments{opacity:.45!important}
+  .history-title{font-size:clamp(3rem,14vw,5rem)!important}
+}
+
+
+/* =========================================================
+   FINAL ORNAMENT IMAGE — GENERATED PNG
+   Menggantikan SVG hero dengan gambar ornamen transparan.
+   Ornamen berada DI BELAKANG teks, bukan sebagai background foto.
+   ========================================================= */
+.history-hero > .history-ref-ornaments{
+  position:absolute!important;
+  inset:0!important;
+  z-index:1!important;
+  overflow:hidden!important;
+  pointer-events:none!important;
+  opacity:1!important;
+}
+.history-ref-ornament-image{
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  display:block!important;
+  object-fit:cover!important;
+  object-position:center center!important;
+  max-width:none!important;
+  opacity:1!important;
+}
+.history-hero-inner{
+  position:relative!important;
+  z-index:4!important;
+}
+.history-title,.history-kicker,.history-vt-cta{
+  position:relative!important;
+  z-index:5!important;
+}
+@media(max-width:900px){
+  .history-ref-ornament-image{object-position:center center!important;opacity:.88!important}
+}
+@media(max-width:560px){
+  .history-ref-ornament-image{object-position:center center!important;opacity:.62!important}
+}
 </style>
 
 @endpush
@@ -1494,7 +1585,7 @@
   <section class="history-hero">
     <div class="history-ref-ornaments" aria-hidden="true">
       <img
-        src="{{ asset('images/ornamen_hero_sejarah_geometris.svg') }}"
+        src="{{ asset('images/wide_minimalist_abstract_technology_background_des.png') }}"
         alt=""
         class="history-ref-ornament-image"
         aria-hidden="true"
