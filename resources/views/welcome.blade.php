@@ -1437,15 +1437,14 @@
 .out-logo-group{display:flex;gap:1.1rem;padding-right:1.1rem}
 
 /* Logo partner: TANPA BOX/BG — hanya logo + shadow halus + informasi di bawah */
-.out-logo-card{width:150px;height:128px;border-radius:0;background:transparent;border:0;box-shadow:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.75rem;flex:0 0 auto;transition:transform .3s ease,filter .3s ease}
+.out-logo-card{width:190px;height:120px;border-radius:0;background:transparent!important;border:0!important;box-shadow:none!important;display:flex;align-items:center;justify-content:center;flex:0 0 auto;transition:transform .3s ease,filter .3s ease;padding:0;margin:0}
 .out-logo-card:hover{transform:translateY(-6px);filter:drop-shadow(0 14px 20px rgba(23,32,79,.18))}
-.out-logo-mark{width:110px;height:72px;border-radius:0;display:flex;align-items:center;justify-content:center;background:transparent;border:0;box-shadow:none;color:#0d3a66;padding:0;filter:none} .out-logo-mark img{width:100%;height:100%;object-fit:contain;object-position:center;display:block;background:transparent;border:0;border-radius:0;box-shadow:none;padding:0}
-.out-logo-card small{color:#0d3a66;font-size:.62rem;font-weight:900;letter-spacing:.12em;text-transform:uppercase;text-align:center;line-height:1.3}
+.out-logo-only{width:150px;height:100px;display:block;object-fit:contain;object-position:center;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;padding:0;margin:0}
 @keyframes outLogoMove{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 .out-ind-pills{display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin-top:1.2rem}
 .out-ind-pills span{display:inline-flex;align-items:center;gap:.45rem;padding:.62rem 1rem;background:#fff;border:1px solid rgba(13,58,102,.1);border-radius:99px;color:#17446c;font-size:.72rem;font-weight:800;box-shadow:0 6px 16px rgba(13,58,102,.05)}
 .out-ind-pills i{color:#ffb300}
-@media(max-width:640px){.industry-jurusan-decor{opacity:1}.out-logo-card{width:132px;height:118px}.out-logo-mark{width:70px;height:56px}}
+@media(max-width:640px){.industry-jurusan-decor{opacity:1}.out-logo-card{width:132px;height:100px}.out-logo-only{width:110px;height:80px}}
 
 /* ---------- LULUSAN PTN — EDITORIAL UNIVERSITY DESTINATIONS ---------- */
 .out-ptn{position:relative;background:#fff;overflow:hidden}
@@ -1708,7 +1707,7 @@
   .out-id-code{top:1rem;right:1rem}
   .out-id-meta{grid-template-columns:1fr 1fr}
   .out-logo-window::before,.out-logo-window::after{width:55px}
-  .out-logo-card{width:128px;height:100px}
+  .out-logo-card{width:128px;height:92px}.out-logo-only{width:105px;height:72px}
   .out-ptn-card{grid-template-columns:72px 1fr;gap:.8rem;padding:1rem;min-height:280px}
   .out-ptn-avatar{width:72px;height:92px}
   .out-ptn-name{font-size:1.2rem}
@@ -1756,9 +1755,8 @@
 /* INDUSTRY: make partner marks visibly larger */
 .out-logo-window{margin-top:3.2rem;padding:1.35rem 0}
 .out-logo-group{gap:1.35rem;padding-right:1.35rem}
-.out-logo-card{width:190px;height:148px;border-radius:24px;gap:.7rem;background:transparent;border:0;box-shadow:none}
-.out-logo-mark{width:86px;height:86px;border-radius:22px;border-width:3px;font-size:.66rem;line-height:1.2;box-shadow:0 8px 18px rgba(13,58,102,.12)}
-.out-logo-card small{font-size:.61rem}
+.out-logo-card{width:190px;height:120px;border-radius:0;background:transparent!important;border:0!important;box-shadow:none!important}
+.out-logo-only{width:150px;height:100px}
 
 /* PTN: destination-pass style instead of a basic profile card */
 .out-ptn{background:linear-gradient(180deg,#fff 0%,#f6faff 100%)}
@@ -2246,34 +2244,34 @@
     <div class="out-logo-window" data-reveal style="--d:1">
       <div class="out-logo-track" id="industryTrack">
         <div class="out-logo-group">
-          <div class="out-logo-card"><div class="out-logo-mark"><img src="{{ asset('images/industri/hummatech.png') }}" alt="Logo Hummatech" loading="lazy"></div><small>Hummatech</small></div>
-          <div class="out-logo-card"><div class="out-logo-mark"><img src="{{ asset('images/industri/primafood.png') }}" alt="Logo PrimaFood" loading="lazy"></div><small>PrimaFood</small></div>
-          <div class="out-logo-card"><div class="out-logo-mark"><img src="{{ asset('images/industri/anekapay.png') }}" alt="Logo AnekaPay" loading="lazy"></div><small>AnekaPay</small></div>
-          <div class="out-logo-card"><div class="out-logo-mark"><img src="{{ asset('images/industri/minarsih.png') }}" alt="Logo Minarsih" loading="lazy"></div><small>Minarsih</small></div>
-          <div class="out-logo-card"><div class="out-logo-mark"><img src="{{ asset('images/industri/digiprosb.png') }}" alt="Logo DigiproSB" loading="lazy"></div><small>DigiproSB</small></div>
-          <div class="out-logo-card"><div class="out-logo-mark"><img src="{{ asset('images/industri/smartfren.png') }}" alt="Logo Smartfren" loading="lazy"></div><small>Smartfren</small></div>
-          <div class="out-logo-card"><div class="out-logo-mark"><img src="{{ asset('images/industri/hsp.png') }}" alt="Logo HSP" loading="lazy"></div><small>HSP</small></div>
-          <div class="out-logo-card"><div class="out-logo-mark"><img src="{{ asset('images/industri/sido-jodo.png') }}" alt="Logo Sido Jodo" loading="lazy"></div><small>Sido Jodo</small></div>
-          <div class="out-logo-card"><div class="out-logo-mark"><img src="{{ asset('images/industri/maspion-it.png') }}" alt="Logo Maspion IT" loading="lazy"></div><small>Maspion IT</small></div>
-          <div class="out-logo-card"><div class="out-logo-mark"><img src="{{ asset('images/industri/media-tama.png') }}" alt="Logo MediaTama" loading="lazy"></div><small>MediaTama</small></div>
-          <div class="out-logo-card"><div class="out-logo-mark"><img src="{{ asset('images/industri/otak-kanan.png') }}" alt="Logo Otak Kanan" loading="lazy"></div><small>Otak Kanan</small></div>
-          <div class="out-logo-card"><div class="out-logo-mark"><img src="{{ asset('images/industri/apika-finance.png') }}" alt="Logo Apika Finance" loading="lazy"></div><small>Apika Finance</small></div>
-          <div class="out-logo-card"><div class="out-logo-mark"><img src="{{ asset('images/industri/rs-islam-sakinah-mojokerto.png') }}" alt="Logo Rumah Sakit Islam Sakinah Mojokerto" loading="lazy"></div><small>Rumah Sakit Islam Sakinah Mojokerto</small></div>
+          <div class="out-logo-card"><img class="out-logo-only" src="{{ asset('images/industri/hummatech.png') }}" alt="Logo Hummatech" loading="lazy"></div>
+          <div class="out-logo-card"><img class="out-logo-only" src="{{ asset('images/industri/primafood.png') }}" alt="Logo PrimaFood" loading="lazy"></div>
+          <div class="out-logo-card"><img class="out-logo-only" src="{{ asset('images/industri/anekapay.png') }}" alt="Logo AnekaPay" loading="lazy"></div>
+          <div class="out-logo-card"><img class="out-logo-only" src="{{ asset('images/industri/minarsih.png') }}" alt="Logo Minarsih" loading="lazy"></div>
+          <div class="out-logo-card"><img class="out-logo-only" src="{{ asset('images/industri/digiprosb.png') }}" alt="Logo DigiproSB" loading="lazy"></div>
+          <div class="out-logo-card"><img class="out-logo-only" src="{{ asset('images/industri/smartfren.png') }}" alt="Logo Smartfren" loading="lazy"></div>
+          <div class="out-logo-card"><img class="out-logo-only" src="{{ asset('images/industri/hsp.png') }}" alt="Logo HSP" loading="lazy"></div>
+          <div class="out-logo-card"><img class="out-logo-only" src="{{ asset('images/industri/sido-jodo.png') }}" alt="Logo Sido Jodo" loading="lazy"></div>
+          <div class="out-logo-card"><img class="out-logo-only" src="{{ asset('images/industri/maspion-it.png') }}" alt="Logo Maspion IT" loading="lazy"></div>
+          <div class="out-logo-card"><img class="out-logo-only" src="{{ asset('images/industri/media-tama.png') }}" alt="Logo MediaTama" loading="lazy"></div>
+          <div class="out-logo-card"><img class="out-logo-only" src="{{ asset('images/industri/otak-kanan.png') }}" alt="Logo Otak Kanan" loading="lazy"></div>
+          <div class="out-logo-card"><img class="out-logo-only" src="{{ asset('images/industri/apika-finance.png') }}" alt="Logo Apika Finance" loading="lazy"></div>
+          <div class="out-logo-card"><img class="out-logo-only" src="{{ asset('images/industri/rs-islam-sakinah-mojokerto.png') }}" alt="Logo Rumah Sakit Islam Sakinah Mojokerto" loading="lazy"></div>
         </div>
         <div class="out-logo-group" aria-hidden="true">
-          <div class="out-logo-card"><div class="out-logo-mark"><img src="{{ asset('images/industri/hummatech.png') }}" alt="Logo Hummatech" loading="lazy"></div><small>Hummatech</small></div>
-          <div class="out-logo-card"><div class="out-logo-mark"><img src="{{ asset('images/industri/primafood.png') }}" alt="Logo PrimaFood" loading="lazy"></div><small>PrimaFood</small></div>
-          <div class="out-logo-card"><div class="out-logo-mark"><img src="{{ asset('images/industri/anekapay.png') }}" alt="Logo AnekaPay" loading="lazy"></div><small>AnekaPay</small></div>
-          <div class="out-logo-card"><div class="out-logo-mark"><img src="{{ asset('images/industri/minarsih.png') }}" alt="Logo Minarsih" loading="lazy"></div><small>Minarsih</small></div>
-          <div class="out-logo-card"><div class="out-logo-mark"><img src="{{ asset('images/industri/digiprosb.png') }}" alt="Logo DigiproSB" loading="lazy"></div><small>DigiproSB</small></div>
-          <div class="out-logo-card"><div class="out-logo-mark"><img src="{{ asset('images/industri/smartfren.png') }}" alt="Logo Smartfren" loading="lazy"></div><small>Smartfren</small></div>
-          <div class="out-logo-card"><div class="out-logo-mark"><img src="{{ asset('images/industri/hsp.png') }}" alt="Logo HSP" loading="lazy"></div><small>HSP</small></div>
-          <div class="out-logo-card"><div class="out-logo-mark"><img src="{{ asset('images/industri/sido-jodo.png') }}" alt="Logo Sido Jodo" loading="lazy"></div><small>Sido Jodo</small></div>
-          <div class="out-logo-card"><div class="out-logo-mark"><img src="{{ asset('images/industri/maspion-it.png') }}" alt="Logo Maspion IT" loading="lazy"></div><small>Maspion IT</small></div>
-          <div class="out-logo-card"><div class="out-logo-mark"><img src="{{ asset('images/industri/media-tama.png') }}" alt="Logo MediaTama" loading="lazy"></div><small>MediaTama</small></div>
-          <div class="out-logo-card"><div class="out-logo-mark"><img src="{{ asset('images/industri/otak-kanan.png') }}" alt="Logo Otak Kanan" loading="lazy"></div><small>Otak Kanan</small></div>
-          <div class="out-logo-card"><div class="out-logo-mark"><img src="{{ asset('images/industri/apika-finance.png') }}" alt="Logo Apika Finance" loading="lazy"></div><small>Apika Finance</small></div>
-          <div class="out-logo-card"><div class="out-logo-mark"><img src="{{ asset('images/industri/rs-islam-sakinah-mojokerto.png') }}" alt="Logo Rumah Sakit Islam Sakinah Mojokerto" loading="lazy"></div><small>Rumah Sakit Islam Sakinah Mojokerto</small></div>
+          <div class="out-logo-card"><img class="out-logo-only" src="{{ asset('images/industri/hummatech.png') }}" alt="Logo Hummatech" loading="lazy"></div>
+          <div class="out-logo-card"><img class="out-logo-only" src="{{ asset('images/industri/primafood.png') }}" alt="Logo PrimaFood" loading="lazy"></div>
+          <div class="out-logo-card"><img class="out-logo-only" src="{{ asset('images/industri/anekapay.png') }}" alt="Logo AnekaPay" loading="lazy"></div>
+          <div class="out-logo-card"><img class="out-logo-only" src="{{ asset('images/industri/minarsih.png') }}" alt="Logo Minarsih" loading="lazy"></div>
+          <div class="out-logo-card"><img class="out-logo-only" src="{{ asset('images/industri/digiprosb.png') }}" alt="Logo DigiproSB" loading="lazy"></div>
+          <div class="out-logo-card"><img class="out-logo-only" src="{{ asset('images/industri/smartfren.png') }}" alt="Logo Smartfren" loading="lazy"></div>
+          <div class="out-logo-card"><img class="out-logo-only" src="{{ asset('images/industri/hsp.png') }}" alt="Logo HSP" loading="lazy"></div>
+          <div class="out-logo-card"><img class="out-logo-only" src="{{ asset('images/industri/sido-jodo.png') }}" alt="Logo Sido Jodo" loading="lazy"></div>
+          <div class="out-logo-card"><img class="out-logo-only" src="{{ asset('images/industri/maspion-it.png') }}" alt="Logo Maspion IT" loading="lazy"></div>
+          <div class="out-logo-card"><img class="out-logo-only" src="{{ asset('images/industri/media-tama.png') }}" alt="Logo MediaTama" loading="lazy"></div>
+          <div class="out-logo-card"><img class="out-logo-only" src="{{ asset('images/industri/otak-kanan.png') }}" alt="Logo Otak Kanan" loading="lazy"></div>
+          <div class="out-logo-card"><img class="out-logo-only" src="{{ asset('images/industri/apika-finance.png') }}" alt="Logo Apika Finance" loading="lazy"></div>
+          <div class="out-logo-card"><img class="out-logo-only" src="{{ asset('images/industri/rs-islam-sakinah-mojokerto.png') }}" alt="Logo Rumah Sakit Islam Sakinah Mojokerto" loading="lazy"></div>
         </div>
       </div>
     </div>
