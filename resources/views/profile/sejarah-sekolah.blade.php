@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title', 'Sejarah Sekolah — SMK Negeri 2 Mojokerto')
-@section('description', 'Jejak perjalanan SMK Negeri 2 Mojokerto sejak 1968 hingga menjadi sekolah vokasi unggulan.')
+@section('description', ' SMK Negeri 2 Mojokerto sejak 1968 hingga menjadi sekolah vokasi unggulan.')
 
 @push('styles')
 <style>
@@ -143,7 +143,7 @@
   background:linear-gradient(90deg,transparent,#b7cce0,transparent)}
 .timeline-head{width:min(1380px,92%);margin:0 auto 70px;display:flex;justify-content:space-between;
   align-items:end;gap:2rem}
-.timeline-head .big-heading{max-width:760px}
+.timeline-head .big-heading{max-width:900px}
 .timeline-note{max-width:320px;color:#718396;font-size:.8rem;line-height:1.7;text-align:right}
 .timeline{position:relative;width:min(1200px,92%);margin:auto}
 .timeline::before{content:"";position:absolute;top:0;bottom:0;left:50%;width:3px;transform:translateX(-50%);
@@ -928,7 +928,7 @@
   .vt-desc{margin-top:.2rem}
   @media(max-width:950px){
     .history-hero-inner{grid-template-columns:1fr;gap:2rem}
-    .history-hero-inner>div:first-child{max-width:760px}
+    .history-hero-inner>div:first-child{max-width:900px}
   }
   @media(max-width:700px){
     .history-vt-cta{width:min(100%,340px)}
@@ -1304,32 +1304,6 @@
   height:100%;
   display:block;
 }
-.history-ref-ornaments .history-ref-ornament-image{
-  position:absolute;
-  width:clamp(520px,55vw,900px);
-  height:auto;
-  right:-35px;
-  top:50%;
-  transform:translateY(-50%);
-  display:block;
-  object-fit:contain;
-  z-index:1;
-}
-@media (max-width:900px){
-  .history-ref-ornaments .history-ref-ornament-image{
-    width:clamp(380px,58vw,620px);
-    right:-70px;
-    top:48%;
-  }
-}
-@media (max-width:560px){
-  .history-ref-ornaments .history-ref-ornament-image{
-    width:380px;
-    right:-145px;
-    top:52%;
-    opacity:.78;
-  }
-}
 .history-ref-ornaments path{
   fill:none;
   stroke:#0d3a66;
@@ -1449,9 +1423,11 @@
   color:#0d3a66!important;
 }
 .history-title .skaneda-gold{
-  color:#ff7a00!important;
-  background:none!important;
-  -webkit-text-fill-color:#ff7a00!important;
+  background:linear-gradient(135deg,#ffd54a 0%,#ffb300 48%,#ff7a00 100%)!important;
+  -webkit-background-clip:text!important;
+  background-clip:text!important;
+  -webkit-text-fill-color:transparent!important;
+  color:transparent!important;
 }
 .history-kicker{
   margin-bottom:1.2rem!important;
@@ -1484,6 +1460,632 @@
   }
 }
 
+/* =========================================================
+   FINAL HERO FIX — ORNAMEN JELAS DI SISI KANAN JUDUL
+   Bentuk: network, diamond, hexagon, orbit, node, modular blocks.
+   Tidak memakai gambar/background eksternal.
+   ========================================================= */
+.history-hero{
+  background:#fff!important;
+  overflow:hidden!important;
+}
+.history-hero>.history-ref-ornaments{
+  display:block!important;
+  position:absolute!important;
+  inset:0!important;
+  z-index:1!important;
+  pointer-events:none!important;
+}
+.history-hero>.history-ref-ornaments svg{
+  width:100%!important;
+  height:100%!important;
+}
+.history-hero-inner{
+  position:relative!important;
+  z-index:4!important;
+  padding-right:44%!important;
+}
+.history-title{
+  position:relative!important;
+  z-index:5!important;
+  max-width:900px!important;
+}
+.history-kicker,.history-vt-cta{
+  position:relative!important;
+  z-index:5!important;
+}
+/* Ornamen kanan dibuat lebih tegas seperti bahasa visual Jurusan/Industri. */
+.history-ref-ornaments .ref-right path,
+.history-ref-ornaments .ref-bottom path{
+  opacity:.34!important;
+}
+.history-ref-ornaments .ref-diamond-orange{
+  stroke-width:2.4!important;
+  opacity:.72!important;
+}
+.history-ref-ornaments .ref-fill-orange,
+.history-ref-ornaments .ref-fill-navy{
+  opacity:.96!important;
+}
+.history-ref-ornaments .ref-hex{
+  stroke-width:2.4!important;
+  opacity:.48!important;
+}
+.history-ref-ornaments .ref-orbit{
+  stroke-width:1.8!important;
+  opacity:.30!important;
+}
+.history-ref-ornaments .ref-orbit-orange{
+  stroke-width:1.8!important;
+  opacity:.42!important;
+}
+.history-ref-ornaments .ref-heavy-orange,
+.history-ref-ornaments .ref-heavy-navy{
+  stroke-width:6!important;
+  opacity:.72!important;
+}
+.history-ref-ornaments .ref-node-orange,
+.history-ref-ornaments .ref-node-navy{
+  stroke-width:2.2!important;
+}
+@media(max-width:1050px){
+  .history-hero-inner{padding-right:1.25rem!important}
+  .history-ref-ornaments{opacity:.72!important}
+}
+@media(max-width:700px){
+  .history-hero-inner{padding-right:1.25rem!important}
+  .history-ref-ornaments{opacity:.45!important}
+  .history-title{font-size:clamp(3rem,14vw,5rem)!important}
+}
+
+
+/* =========================================================
+   FINAL ORNAMENT IMAGE — GENERATED PNG
+   Menggantikan SVG hero dengan gambar ornamen transparan.
+   Ornamen berada DI BELAKANG teks, bukan sebagai background foto.
+   ========================================================= */
+.history-hero > .history-ref-ornaments{
+  position:absolute!important;
+  inset:0!important;
+  z-index:1!important;
+  overflow:hidden!important;
+  pointer-events:none!important;
+  opacity:1!important;
+}
+.history-ref-ornament-image{
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  display:block!important;
+  object-fit:cover!important;
+  object-position:center center!important;
+  max-width:none!important;
+  opacity:1!important;
+}
+.history-hero-inner{
+  position:relative!important;
+  z-index:4!important;
+}
+.history-title,.history-kicker,.history-vt-cta{
+  position:relative!important;
+  z-index:5!important;
+}
+@media(max-width:900px){
+  .history-ref-ornament-image{object-position:center center!important;opacity:.88!important}
+}
+@media(max-width:560px){
+  .history-ref-ornament-image{object-position:center center!important;opacity:.62!important}
+}
+
+/* ================= COMPACT HISTORY BOOK — CLOSED COVER / TRUE OPEN SPREAD ================= */
+.history-book-section{padding:96px 0 112px;overflow:hidden}
+.history-book-heading{margin-bottom:2rem}
+.history-book-stage{display:flex;flex-direction:column;align-items:center;position:relative}
+/* ===== ORNAMEN BACKGROUND SEJARAH — VISIBLE EDITORIAL DECOR ===== */
+.history-book-stage{
+  position:relative;
+  isolation:isolate;
+  padding:34px 0 28px;
+}
+.history-book-stage::before{
+  content:"";
+  position:absolute;
+  z-index:0;
+  width:250px;height:250px;
+  left:-70px;top:70px;
+  border:1px solid rgba(13,58,102,.16);
+  border-radius:50%;
+  box-shadow:
+    0 0 0 20px rgba(13,58,102,.035),
+    0 0 0 42px rgba(13,58,102,.025),
+    0 0 0 64px rgba(255,179,0,.035);
+  pointer-events:none;
+}
+.history-book-stage::after{
+  content:"";
+  position:absolute;
+  z-index:0;
+  width:190px;height:190px;
+  right:-45px;bottom:35px;
+  border:1px solid rgba(255,179,0,.26);
+  border-radius:50%;
+  box-shadow:
+    0 0 0 18px rgba(255,179,0,.035),
+    0 0 0 38px rgba(13,58,102,.025);
+  pointer-events:none;
+}
+
+/* titik-titik kiri */
+.history-book-stage .history-book::before{
+  content:"";
+  position:absolute;
+  z-index:0;
+  width:125px;height:125px;
+  left:-175px;top:75px;
+  opacity:.9;
+  background-image:radial-gradient(circle,rgba(13,58,102,.28) 2px,transparent 2.4px);
+  background-size:14px 14px;
+  pointer-events:none;
+}
+/* titik-titik kanan */
+.history-book-stage .history-book::after{
+  content:"";
+  position:absolute;
+  z-index:0;
+  width:125px;height:125px;
+  right:-175px;bottom:75px;
+  opacity:.85;
+  background-image:radial-gradient(circle,rgba(255,179,0,.42) 2px,transparent 2.4px);
+  background-size:15px 15px;
+  pointer-events:none;
+}
+
+/* Diamond + garis dekoratif */
+.history-book-stage .book-actions::before{
+  content:"";
+  position:absolute;
+  z-index:0;
+  width:58px;height:58px;
+  left:-125px;top:-260px;
+  border:1px solid rgba(255,179,0,.38);
+  transform:rotate(45deg);
+  border-radius:3px;
+  pointer-events:none;
+}
+.history-book-stage .book-actions::after{
+  content:"";
+  position:absolute;
+  z-index:0;
+  width:110px;height:1px;
+  right:-155px;top:-225px;
+  background:linear-gradient(90deg,transparent,rgba(13,58,102,.22),rgba(255,179,0,.5));
+  transform:rotate(-38deg);
+  transform-origin:left center;
+  box-shadow:0 18px 0 rgba(13,58,102,.09);
+  pointer-events:none;
+}
+
+/* Pastikan buku selalu di atas ornamen */
+.history-book-stage > .history-book{
+  position:relative;
+  z-index:3;
+}
+.history-book-stage > .book-actions{
+  position:relative;
+  z-index:4;
+}
+
+@media(max-width:820px){
+  .history-book-stage::before{left:-125px;width:210px;height:210px}
+  .history-book-stage::after{right:-90px;width:160px;height:160px}
+  .history-book-stage .history-book::before{left:-105px}
+  .history-book-stage .history-book::after{right:-105px}
+}
+@media(max-width:600px){
+  .history-book-stage{padding-left:8px;padding-right:8px}
+  .history-book-stage::before{left:-135px;width:170px;height:170px}
+  .history-book-stage::after{right:-120px;width:140px;height:140px}
+  .history-book-stage .history-book::before{left:-82px;opacity:.55}
+  .history-book-stage .history-book::after{right:-82px;opacity:.5}
+}
+
+.history-book-stage{
+  isolation:isolate;
+}
+.history-book-stage::before{
+  content:"";
+  position:absolute;
+  z-index:-3;
+  width:270px;
+  height:270px;
+  left:clamp(-170px,-13vw,-75px);
+  top:18%;
+  border-radius:50%;
+  border:1px solid rgba(13,58,102,.10);
+  box-shadow:
+    0 0 0 22px rgba(13,58,102,.025),
+    0 0 0 44px rgba(13,58,102,.018),
+    0 0 0 66px rgba(255,179,0,.025);
+}
+.history-book-stage::after{
+  content:"";
+  position:absolute;
+  z-index:-2;
+  width:170px;
+  height:170px;
+  right:clamp(-105px,-9vw,-45px);
+  bottom:8%;
+  border-radius:50%;
+  border:1px solid rgba(255,179,0,.20);
+  box-shadow:
+    0 0 0 18px rgba(255,179,0,.025),
+    0 0 0 36px rgba(13,58,102,.018);
+}
+.history-book-stage .history-book{
+  position:relative;
+  z-index:2;
+}
+.history-book-stage .history-book::before{
+  content:"";
+  position:absolute;
+  z-index:-2;
+  width:145px;
+  height:145px;
+  left:-185px;
+  top:20px;
+  opacity:.72;
+  background-image:radial-gradient(circle,rgba(13,58,102,.23) 1.4px,transparent 1.7px);
+  background-size:14px 14px;
+  mask-image:linear-gradient(135deg,black,transparent 78%);
+  -webkit-mask-image:linear-gradient(135deg,black,transparent 78%);
+}
+.history-book-stage .history-book::after{
+  content:"";
+  position:absolute;
+  z-index:-2;
+  width:150px;
+  height:150px;
+  right:-190px;
+  bottom:20px;
+  opacity:.62;
+  background-image:radial-gradient(circle,rgba(255,179,0,.32) 1.4px,transparent 1.8px);
+  background-size:15px 15px;
+  mask-image:linear-gradient(315deg,black,transparent 78%);
+  -webkit-mask-image:linear-gradient(315deg,black,transparent 78%);
+}
+.history-book-stage .book-actions{
+  position:relative;
+  z-index:4;
+}
+.history-book-stage .history-book + .book-actions::before{
+  content:"";
+  position:absolute;
+  width:42px;
+  height:42px;
+  left:-105px;
+  top:-4px;
+  border:1px solid rgba(255,179,0,.34);
+  transform:rotate(45deg);
+  border-radius:3px;
+  pointer-events:none;
+}
+.history-book-stage .history-book + .book-actions::after{
+  content:"";
+  position:absolute;
+  width:8px;
+  height:8px;
+  right:-92px;
+  top:7px;
+  border-radius:50%;
+  background:#ffd04a;
+  box-shadow:
+    22px 13px 0 rgba(13,58,102,.18),
+    44px -7px 0 rgba(255,179,0,.22);
+  pointer-events:none;
+}
+@media(max-width:820px){
+  .history-book-stage::before{left:-120px;width:210px;height:210px}
+  .history-book-stage::after{right:-85px;width:130px;height:130px}
+  .history-book-stage .history-book::before{left:-115px}
+  .history-book-stage .history-book::after{right:-120px}
+}
+@media(max-width:600px){
+  .history-book-stage::before{left:-135px;top:25%;width:180px;height:180px}
+  .history-book-stage::after{right:-115px;bottom:12%;width:110px;height:110px}
+  .history-book-stage .history-book::before{left:-95px;opacity:.48}
+  .history-book-stage .history-book::after{right:-100px;opacity:.45}
+  .history-book-stage .history-book + .book-actions::before{display:none}
+}
+
+
+/* Closed state: the book occupies exactly the cover size. The inner spread is hidden. */
+.history-book{
+  position:relative;width:590px;height:678px;max-width:calc(100vw - 48px);
+  perspective:1800px;filter:drop-shadow(0 22px 30px rgba(13,58,102,.16));
+  transition:width .72s cubic-bezier(.22,.75,.16,1);
+}
+.book-cover{
+  position:absolute;left:0;top:0;width:590px;height:678px;
+  transform:none;transform-origin:left center;z-index:20;border:0;
+  border-radius:8px 15px 15px 8px;padding:0;overflow:hidden;cursor:pointer;
+  color:#fff;background:linear-gradient(145deg,#0b477b,#0d3a66 65%,#092e50);
+  box-shadow:inset 9px 0 18px rgba(0,0,0,.18),0 16px 30px rgba(13,58,102,.18);
+  transition:transform .9s cubic-bezier(.2,.8,.15,1),opacity .45s ease;
+}
+.book-cover::before{content:"";position:absolute;inset:12px;border:1px solid rgba(255,213,74,.48);border-radius:5px;z-index:2}
+.cover-frame{position:absolute;inset:22px;border:1px solid rgba(255,255,255,.11);border-radius:4px;z-index:2;pointer-events:none}
+.cover-topline{position:absolute;top:30px;left:0;right:0;text-align:center;font-size:8px;font-weight:900;letter-spacing:.22em;color:#ffd54a;z-index:3}
+.cover-photo{position:absolute;left:56px;right:56px;top:98px;height:294px;border-radius:7px;overflow:hidden;border:2px solid rgba(255,255,255,.35);z-index:1}
+.cover-photo img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.92)}
+.cover-est{position:absolute;left:57px;top:414px;font-size:8px;font-weight:900;letter-spacing:.2em;color:#ffd54a;z-index:3}
+.cover-title{position:absolute;left:56px;right:56px;top:447px;text-align:left;font-family:var(--font-display);font-size:35px;line-height:.93;font-weight:900;letter-spacing:-.02em;z-index:3}
+.cover-title b{color:#ffd04a}
+.cover-foot{position:absolute;left:56px;right:56px;bottom:26px;display:flex;justify-content:space-between;font-size:5.5px;font-weight:800;letter-spacing:.1em;color:rgba(255,255,255,.45);z-index:3}
+
+/* The inside pages live inside the book. They do not show until the cover is opened. */
+.book-spread{
+  position:absolute;left:0;top:0;width:1180px;height:678px;display:grid;
+  grid-template-columns:1fr 1fr;border-radius:10px;overflow:hidden;
+  background:#f4ecda;box-shadow:inset 0 0 0 1px rgba(76,58,35,.13);
+  opacity:0;visibility:hidden;pointer-events:none;
+  transform:scale(.985);transform-origin:center;
+  transition:opacity .3s ease .42s,transform .72s cubic-bezier(.22,.75,.16,1) .08s,visibility 0s linear .78s;
+}
+.book-spread::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:18px;transform:translateX(-50%);z-index:8;background:linear-gradient(90deg,rgba(0,0,0,.06),rgba(255,255,255,.5) 42%,rgba(0,0,0,.07));opacity:.55;pointer-events:none}
+.book-spread::after{content:"";position:absolute;inset:0;z-index:9;pointer-events:none;background:linear-gradient(90deg,rgba(255,255,255,.08),transparent 14%,transparent 86%,rgba(0,0,0,.025))}
+.book-page{position:absolute;top:0;bottom:0;width:50%;padding:50px 50px 42px;display:none;color:#536474;background:repeating-linear-gradient(0deg,transparent 0 28px,rgba(91,72,44,.045) 29px,transparent 30px),linear-gradient(105deg,#f1e7d3,#fbf8ed 55%,#eee4d1);overflow:hidden}
+.book-page.is-active{display:block}
+.page-left{left:0;text-align:left;border-right:1px solid rgba(80,60,35,.09)}
+.page-right{right:0}
+.book-page::after{content:"";position:absolute;right:28px;bottom:24px;width:58px;height:58px;border:1px solid rgba(13,58,102,.07);border-radius:50%;box-shadow:0 0 0 10px rgba(255,179,0,.035),0 0 0 20px rgba(13,58,102,.025)}
+.page-corner{position:absolute;top:22px;right:28px;font-size:8px;font-weight:900;color:#a49783;letter-spacing:.08em}
+.page-kicker{font-size:7px;font-weight:900;letter-spacing:.2em;color:#0d3a66;margin-bottom:7px}
+.page-year{font-family:var(--font-display);font-size:30px;line-height:1;color:#0d3a66;font-weight:900;letter-spacing:-.04em}
+.page-rule{width:42px;height:2px;background:#ffb300;margin:10px 0 17px}
+.page-icon{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:#0d3a66;color:#ffd04a;font-size:12px;margin-bottom:13px;box-shadow:0 7px 14px rgba(13,58,102,.13)}
+.book-page h3{margin:0 0 12px;font-family:var(--font-display);font-size:25px;line-height:.98;letter-spacing:-.025em;color:#0d3a66;font-weight:900}
+.book-page h4{position:relative;margin:6px 0 12px;max-width:280px;font-family:var(--font-display);font-size:28px;line-height:.98;letter-spacing:-.03em;color:#0d3a66;font-weight:900}
+.book-page p{position:relative;z-index:1;margin:0;max-width:280px;font-size:10px;line-height:1.75;color:#687888}
+.book-page .lead{font-size:12px;line-height:1.55;color:#3f5568;font-weight:700;margin-bottom:11px}
+.page-number-big{position:absolute;right:29px;top:47px;font-family:var(--font-display);font-size:68px;line-height:.8;font-weight:900;color:rgba(13,58,102,.08);letter-spacing:-.05em}
+.quote-mark{font-family:Georgia,serif;font-size:54px;line-height:.6;color:#ffb300;margin:22px 0 4px}
+.page-note{position:absolute;left:42px;right:40px;bottom:61px;padding:9px 10px 9px 12px;border-left:2px solid #ffb300;background:rgba(255,255,255,.55);font-size:8px;line-height:1.55;color:#4d6377;font-weight:700;z-index:2}
+.page-tag{display:inline-block;margin-top:14px;padding:5px 8px;border-radius:99px;background:rgba(255,179,0,.13);color:#a77700;font-size:6px;font-weight:900;letter-spacing:.12em;text-transform:uppercase}
+.page-footer{position:absolute;left:42px;right:42px;bottom:19px;padding-top:7px;border-top:1px solid rgba(80,60,35,.1);display:flex;justify-content:space-between;font-size:5.5px;font-weight:900;letter-spacing:.1em;color:#a49a8b;z-index:3}
+.page-footer span:last-child{color:#0d3a66}
+
+/* Open state: the spread grows out from behind the cover, then the cover turns like a real front cover. */
+.history-book.is-open{width:1180px}
+.history-book.is-open .book-spread{
+  opacity:1;visibility:visible;pointer-events:auto;transform:scale(1);
+  transition:opacity .32s ease .1s,transform .72s cubic-bezier(.22,.75,.16,1),visibility 0s linear 0s;
+}
+.history-book.is-open .book-cover{
+  transform:rotateY(-165deg);opacity:0;pointer-events:none;
+  box-shadow:inset 9px 0 18px rgba(0,0,0,.08),0 8px 16px rgba(13,58,102,.08);
+}
+
+.book-actions{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:17px}
+.book-nav{width:34px;height:34px;border-radius:50%;border:0;background:#0d3a66;color:#fff;cursor:pointer;display:grid;place-items:center;font-size:10px;box-shadow:0 8px 16px rgba(13,58,102,.13);transition:.2s ease}
+.book-nav:hover{transform:translateY(-2px);background:#125084}
+.book-nav:disabled{opacity:.28;cursor:default;transform:none}
+.book-open{height:34px;padding:0 15px;border:0;border-radius:99px;background:#ffb300;color:#fff;font-size:8px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;display:flex;gap:7px;align-items:center;cursor:pointer;box-shadow:0 8px 16px rgba(255,179,0,.18)}
+.book-count{font-size:9px;color:#8994a0;font-weight:800;min-width:48px;text-align:center}.book-count b{font-size:14px;color:#0d3a66}
+
+@media(max-width:820px){
+  .history-book{width:calc(50vw - 12px);height:590px}
+  .history-book.is-open{width:calc(100vw - 36px)}
+  .book-cover{width:100%;height:590px}
+  .book-spread{width:calc(100vw - 36px);height:590px}
+  .cover-photo{left:25px;right:25px;height:170px}
+  .cover-title{left:25px;right:25px;top:267px;font-size:20px}
+  .cover-est{left:25px;top:240px}
+  .cover-foot{left:25px;right:25px}
+  .book-page{padding:42px 38px 34px}.book-page h3{font-size:22px}.book-page h4{font-size:24px}
+  .page-note{left:30px;right:28px}.page-footer{left:30px;right:30px}
+}
+@media(max-width:600px){
+  .history-book-section{padding-top:70px}
+  .history-book{width:calc(100vw - 52px);height:390px}
+  .history-book.is-open{width:calc(100vw - 24px)}
+  .book-cover{width:100%;height:390px}
+  .book-spread{width:calc(100vw - 24px);height:390px}
+  .cover-photo{top:57px;height:145px}
+  .cover-title{top:226px;font-size:17px}.cover-est{top:210px}
+  .cover-foot{display:none}
+  .book-page{padding:34px 25px 28px}.page-year{font-size:25px}
+  .book-page h3{font-size:18px}.book-page h4{font-size:20px}
+  .book-page p{font-size:8px;line-height:1.6}.book-page .lead{font-size:9px}
+  .page-number-big{font-size:52px;right:20px}.page-note{left:22px;right:20px;bottom:50px;font-size:7px}
+  .page-footer{left:22px;right:20px}.page-corner{right:18px}
+  .page-icon{width:30px;height:30px;font-size:10px}
+}
+
+
+/* FINAL BOOK LAYOUT — TITLE BESIDE BOOK + COVER-SIZED OPEN PAGE */
+.history-book-stage{
+  width:min(1180px,94%);
+  margin:0 auto;
+  display:grid!important;
+  grid-template-columns:280px 800px;
+  grid-template-rows:auto auto;
+  column-gap:68px;
+  align-items:center;
+  justify-content:center;
+  justify-items:start;
+  padding:54px 0 34px!important;
+}
+.history-book-side-title{
+  grid-column:1;
+  grid-row:1;
+  align-self:center;
+  position:relative;
+  z-index:5;
+  width:280px;
+  max-width:280px;
+  padding:8px 0;
+  text-align:left;
+  transform:translateX(-34px);
+}
+.side-title-kicker{display:inline-block;font-size:9px;font-weight:900;letter-spacing:.2em;color:#ff9f00;text-transform:uppercase;margin-bottom:14px}
+.history-book-side-title h2{
+  margin:0;
+  font-family:var(--font-display);
+  font-size:clamp(3.25rem,4.15vw,4.15rem);
+  line-height:.86;
+  letter-spacing:-.04em;
+  color:#0d3a66;
+}
+.history-book-side-title h2 b{display:block;color:#0d3a66!important;background:none!important;-webkit-text-fill-color:#0d3a66!important}
+.history-book-side-title p{margin:18px 0 0;max-width:250px;color:#718396;font-size:.78rem;line-height:1.75}
+.side-title-line{display:block;width:54px;height:3px;margin-top:20px;border-radius:99px;background:linear-gradient(90deg,#0d3a66,#ffb300)}
+
+/* CLOSED = exactly one cover. OPEN = cover-sized cover + cover-sized inside page. */
+.history-book{
+  grid-column:2;
+  grid-row:1;
+  position:relative;
+  width:400px!important;
+  height:540px!important;
+  justify-self:start;
+  transition:width .65s cubic-bezier(.22,.75,.16,1),height .45s ease;
+}
+.history-book.is-open{
+  width:800px!important;
+  height:540px!important;
+  justify-self:start;
+}
+.book-cover{width:400px!important;height:540px!important}
+.cover-photo{left:38px!important;right:38px!important;top:82px!important;height:230px!important}
+.cover-topline{top:25px!important}
+.cover-est{left:39px!important;top:329px!important}
+.cover-title{left:38px!important;right:38px!important;top:360px!important;font-size:27px!important}
+.cover-foot{left:38px!important;right:38px!important;bottom:21px!important}
+
+/* Open spread is 800px total: left half = cover-sized page, right half = cover-sized page. */
+.book-spread{
+  width:800px!important;
+  height:540px!important;
+  grid-template-columns:400px 400px!important;
+  border-radius:10px!important;
+}
+.book-spread::before{display:none!important}
+.book-page{
+  width:400px!important;
+  padding:46px 46px 38px!important;
+}
+/* Only the right content page is shown beside the cover. The left duplicate page is hidden. */
+.book-page.page-left{display:none!important}
+.book-page.page-right.is-active{
+  display:block!important;
+  left:400px!important;
+  right:auto!important;
+  width:400px!important;
+}
+.book-page h4{max-width:305px!important;font-size:28px!important}
+.book-page p{max-width:305px!important;font-size:10px!important;line-height:1.75!important}
+.book-page .lead{max-width:305px!important;font-size:11px!important}
+.page-note{left:46px!important;right:46px!important;max-width:none!important}
+.page-footer{left:46px!important;right:46px!important}
+.book-actions{grid-column:2;grid-row:2;justify-self:start;margin-top:18px!important;margin-left:180px!important}
+
+@media(min-width:1200px){
+  .history-book-stage{grid-template-columns:280px 800px;column-gap:68px}
+  .history-book-side-title{width:280px;max-width:280px;transform:translateX(-34px)}
+  .history-book-side-title h2{font-size:4.15rem}
+}
+
+@media(max-width:1180px){
+  .history-book-stage{
+    grid-template-columns:270px minmax(0,1fr);
+    column-gap:28px;
+    width:96%;
+  }
+  .history-book-side-title{width:270px;max-width:270px;transform:translateX(-22px)}
+  .history-book-side-title h2{font-size:clamp(3rem,5vw,3.8rem)}
+  .history-book{width:380px!important;height:520px!important}
+  .history-book.is-open{width:760px!important;height:520px!important}
+  .book-cover{width:380px!important;height:520px!important}
+  .book-spread{width:760px!important;height:520px!important;grid-template-columns:380px 380px!important}
+  .book-page{width:380px!important;padding:42px 40px 34px!important}
+  .book-page.page-right.is-active{left:380px!important;width:380px!important}
+  .cover-photo{left:36px!important;right:36px!important;top:78px!important;height:220px!important}
+  .cover-est{left:37px!important;top:315px!important}
+  .cover-title{left:36px!important;right:36px!important;top:344px!important;font-size:25px!important}
+  .cover-foot{left:36px!important;right:36px!important}
+  .book-page h4{font-size:26px!important;max-width:295px!important}
+  .book-page p,.book-page .lead{max-width:295px!important}
+  .book-actions{margin-left:160px!important}
+}
+
+@media(max-width:820px){
+  .history-book-stage{
+    width:94%!important;
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:center!important;
+    gap:20px!important;
+    padding:50px 0 28px!important;
+  }
+  .history-book-side-title{
+    order:0;
+    width:100%;
+    max-width:520px;
+    text-align:center;
+    padding:0;
+  }
+  .history-book-side-title h2{font-size:clamp(2.2rem,9vw,3.4rem)}
+  .history-book-side-title p{max-width:480px;margin:14px auto 0;font-size:.76rem}
+  .side-title-line{margin:16px auto 0}
+  .history-book{order:1;width:330px!important;height:440px!important}
+  .history-book.is-open{width:660px!important;height:440px!important;max-width:94vw}
+  .book-cover{width:330px!important;height:440px!important}
+  .book-spread{width:660px!important;height:440px!important;grid-template-columns:330px 330px!important}
+  .book-page{width:330px!important;padding:34px 30px 28px!important}
+  .book-page.page-right.is-active{left:330px!important;width:330px!important}
+  .cover-photo{left:30px!important;right:30px!important;top:64px!important;height:150px!important}
+  .cover-topline{top:19px!important;font-size:6px!important}
+  .cover-est{left:31px!important;top:226px!important;font-size:6px!important}
+  .cover-title{left:30px!important;right:30px!important;top:250px!important;font-size:20px!important}
+  .cover-foot{left:30px!important;right:30px!important;bottom:16px!important;font-size:4.5px!important}
+  .book-page h4{font-size:22px!important;max-width:270px!important}
+  .book-page p{font-size:8px!important;line-height:1.65!important;max-width:270px!important}
+  .book-page .lead{font-size:9px!important;max-width:270px!important}
+  .page-note{left:30px!important;right:30px!important;font-size:8px!important}
+  .page-footer{left:30px!important;right:30px!important}
+  .book-actions{order:2;grid-column:auto;grid-row:auto;margin:2px 0 0!important}
+}
+
+@media(max-width:700px){
+  .history-book{width:300px!important;height:400px!important}
+  .history-book.is-open{width:600px!important;height:400px!important;max-width:92vw}
+  .book-cover{width:300px!important;height:400px!important}
+  .book-spread{width:600px!important;height:400px!important;grid-template-columns:300px 300px!important}
+  .book-page{width:300px!important;padding:29px 26px 25px!important}
+  .book-page.page-right.is-active{left:300px!important;width:300px!important}
+  .cover-photo{left:27px!important;right:27px!important;top:57px!important;height:135px!important}
+  .cover-est{left:28px!important;top:202px!important}
+  .cover-title{left:27px!important;right:27px!important;top:224px!important;font-size:18px!important}
+  .book-page h4{font-size:19px!important;max-width:245px!important}
+  .book-page p{font-size:7px!important;max-width:245px!important}
+  .book-page .lead{font-size:8px!important;max-width:245px!important}
+  .page-note{left:26px!important;right:26px!important;font-size:7px!important}
+  .page-footer{left:26px!important;right:26px!important}
+}
+
+@media(max-width:430px){
+  .history-book{width:280px!important;height:375px!important}
+  .history-book.is-open{width:560px!important;height:375px!important;max-width:92vw}
+  .book-cover{width:280px!important;height:375px!important}
+  .book-spread{width:560px!important;height:375px!important;grid-template-columns:280px 280px!important}
+  .book-page{width:280px!important;padding:27px 23px 23px!important}
+  .book-page.page-right.is-active{left:280px!important;width:280px!important}
+  .cover-photo{left:25px!important;right:25px!important;top:53px!important;height:126px!important}
+  .cover-est{left:26px!important;top:190px!important}
+  .cover-title{left:25px!important;right:25px!important;top:210px!important;font-size:17px!important}
+}
+
 </style>
 
 @endpush
@@ -1494,7 +2096,7 @@
   <section class="history-hero">
     <div class="history-ref-ornaments" aria-hidden="true">
       <img
-        src="{{ asset('images/ornamen_hero_sejarah_geometris.svg') }}"
+        src="{{ asset('images/wide_minimalist_abstract_technology_background_des.png') }}"
         alt=""
         class="history-ref-ornament-image"
         aria-hidden="true"
@@ -1502,7 +2104,7 @@
     </div>
 <div class="history-hero-inner">
       <div>
-        <div class="history-kicker">Jejak Perjalanan</div>
+        <div class="history-kicker"></div>
         <h1 class="history-title">
           <span class="sejarah-white">SEJARAH</span>
           <span class="skaneda-gold">SKANEDA</span>
@@ -1531,7 +2133,7 @@
     <div class="history-wide intro-grid">
       <div data-reveal>
         <div class="eyebrow">Dari masa ke masa</div>
-        <h2 class="big-heading">1968 → <span>hari ini.</span></h2>
+        <h2 class="big-heading">1968 → <span>HARI INI.</span></h2>
         <p class="intro-copy">Berdiri sejak 1968, SMK Negeri 2 Mojokerto terus berkembang untuk menyiapkan generasi vokasi yang kompeten, berkarakter, dan siap menghadapi dunia kerja maupun pendidikan lanjutan. Perjalanan itu hadir dalam perubahan fasilitas, program keahlian, kemitraan industri, digitalisasi, hingga prestasi siswa.</p>
       </div>
       <div class="stat-strip" data-reveal="right">
@@ -1543,29 +2145,137 @@
     </div>
   </section>
 
-  <!-- TIMELINE -->
-  <section class="timeline-section">
+  <!-- BAB-BAB YANG MEMBENTUK KAMI — BUKU INTERAKTIF -->
+  <section class="timeline-section history-book-section">
     <div class="home-orn" aria-hidden="true">
-      <span class="ho-chevron"></span>
-      <span class="ho-line"></span>
-      <span class="ho-dots"></span>
-      <span class="ho-ring"></span>
-      <span class="ho-gold"></span>
-      <span class="ho-square"></span>
-      <span class="ho-corner"></span>
+      <span class="ho-chevron"></span><span class="ho-line"></span><span class="ho-dots"></span>
+      <span class="ho-ring"></span><span class="ho-gold"></span><span class="ho-square"></span><span class="ho-corner"></span>
     </div>
+<div class="history-book-stage" data-reveal>
+      <div class="history-book-side-title">
+        <span class="side-title-kicker">ARSIP PERJALANAN</span>
+        <h2>PERJALANAN<br><b>SEJARAH</b><b>SKANEDA</b></h2>
+        <p>Telusuri perjalanan SMK Negeri 2 Mojokerto dari awal berdiri hingga terus berkembang menjadi sekolah vokasi masa kini.</p>
+        <span class="side-title-line"></span>
+      </div>
+      <div class="history-book is-open" id="historyBook">
+        <button class="book-cover" id="bookCover" type="button" aria-label="Buka buku sejarah">
+          <span class="cover-frame"></span>
+          <span class="cover-topline">SEJARAH &nbsp;•&nbsp; SKANEDA</span>
+          <span class="cover-photo"><img src="{{ asset('images/hero-sekolah.jpg') }}" alt="Gedung SMK Negeri 2 Mojokerto"></span>
+          <span class="cover-est">EST. 1968</span>
+          <span class="cover-title">BAB-BAB YANG<br><b>MEMBENTUK KAMI</b></span>
+          <span class="cover-foot">SMK NEGERI 2 MOJOKERTO <i>1968 — HARI INI</i></span>
+        </button>
 
-    <div class="timeline-head" data-reveal>
-      <div><div class="eyebrow">The timeline</div><h2 class="big-heading">Bab-bab yang <span>membentuk kami.</span></h2></div>
-      <div class="timeline-note">Geser ke bawah untuk mengikuti jejak dari fondasi sekolah, transformasi modern, sampai target menjadi sekolah vokasi rujukan.</div>
-    </div>
-    <div class="timeline">
-      <article class="timeline-item left" data-reveal><div class="timeline-marker"><i class="fas fa-flag"></i></div><div class="timeline-card"><div class="timeline-year">1968</div><div class="timeline-title">Awal Berdiri</div><p class="timeline-text">SMK Negeri 2 Mojokerto resmi berdiri dan membuka pendidikan kejuruan pertama bagi masyarakat Kota Mojokerto.</p><span class="timeline-tag">Fondasi</span></div></article>
-      <article class="timeline-item right" data-reveal style="--d:1"><div class="timeline-marker"><i class="fas fa-school"></i></div><div class="timeline-card"><div class="timeline-year">2020—2022</div><div class="timeline-title">Fondasi Sekolah Modern</div><p class="timeline-text">Renovasi laboratorium dan fasilitas belajar berjalan beriringan dengan penguatan kemitraan dunia usaha dan industri (DUDI).</p><span class="timeline-tag">Pengembangan</span></div></article>
-      <article class="timeline-item left" data-reveal style="--d:2"><div class="timeline-marker"><i class="fas fa-laptop-code"></i></div><div class="timeline-card"><div class="timeline-year">2023</div><div class="timeline-title">Digitalisasi & Akreditasi A</div><p class="timeline-text">Sekolah memasuki fase digital dengan penguatan perpustakaan dan program sertifikasi, sekaligus meraih Akreditasi A.</p><span class="timeline-tag">Transformasi</span></div></article>
-      <article class="timeline-item right" data-reveal style="--d:3"><div class="timeline-marker"><i class="fas fa-trophy"></i></div><div class="timeline-card"><div class="timeline-year">2024</div><div class="timeline-title">Prestasi LKS Provinsi</div><p class="timeline-text">Siswa Rekayasa Perangkat Lunak meraih Juara 1 LKS tingkat Provinsi Jawa Timur kategori Web Technologies.</p><span class="timeline-tag">Prestasi</span></div></article>
-      <article class="timeline-item left" data-reveal style="--d:4"><div class="timeline-marker"><i class="fas fa-gears"></i></div><div class="timeline-card"><div class="timeline-year">2025</div><div class="timeline-title">Transformasi Vokasi</div><p class="timeline-text">Pembelajaran berbasis industri diperkuat, layanan digital sekolah berkembang, dan program keahlian terus diselaraskan dengan kebutuhan pasar kerja.</p><span class="timeline-tag">Vokasi 4.0</span></div></article>
-      <article class="timeline-item right" data-reveal style="--d:5"><div class="timeline-marker"><i class="fas fa-star"></i></div><div class="timeline-card"><div class="timeline-year">2028 · Target</div><div class="timeline-title">Sekolah Vokasi Rujukan Nasional</div><p class="timeline-text">Menjadi sekolah menengah kejuruan rujukan dengan lulusan yang beriman, berkarakter, kompeten, dan mampu bersaing secara internasional.</p><span class="timeline-tag">Next chapter</span></div></article>
+        <div class="book-spread" aria-live="polite">
+          <article class="book-page page-left" data-page="0">
+            <div class="page-corner">01</div>
+            <div class="page-kicker">BAB PERTAMA</div>
+            <div class="page-year">1968</div>
+            <div class="page-rule"></div>
+            <div class="page-icon"><i class="fas fa-flag"></i></div>
+            <h3>Awal<br> Berdiri</h3>
+            <p>SMK Negeri 2 Mojokerto resmi berdiri dan membuka pendidikan kejuruan pertama bagi masyarakat Kota Mojokerto.</p>
+            <span class="page-tag">Fondasi</span>
+            <div class="page-footer"><span>SKANEDA · SEJARAH</span><span>01</span></div>
+          </article>
+
+          <article class="book-page page-right" data-page="0">
+            <div class="page-corner">1968</div>
+            <div class="page-kicker"></div>
+            <div class="page-number-big">01</div>
+            <h4>Awal Berdiri</h4>
+            <p class="lead">Sebuah perjalanan panjang selalu dimulai dari satu langkah.</p>
+            <p>SMK Negeri 2 Mojokerto resmi berdiri dan membuka pendidikan kejuruan pertama bagi masyarakat Kota Mojokerto.</p>
+            <div class="quote-mark">“</div>
+            <div class="page-note">Dari fondasi sederhana, tumbuh sebuah sekolah yang terus bergerak bersama zaman.</div>
+            <div class="page-footer"><span>SMK NEGERI 2 MOJOKERTO</span><span>1968</span></div>
+          </article>
+
+          <article class="book-page page-left" data-page="1">
+            <div class="page-corner">02</div><div class="page-kicker">BAB KEDUA</div><div class="page-year">2020—2022</div>
+            <div class="page-rule"></div><div class="page-icon"><i class="fas fa-school"></i></div>
+            <h3>Fondasi Sekolah<br>Modern</h3>
+            <p>Renovasi laboratorium dan fasilitas belajar berjalan beriringan dengan penguatan kemitraan dunia usaha dan industri (DUDI).</p>
+            <span class="page-tag">Pengembangan</span><div class="page-footer"><span>SKANEDA · SEJARAH</span><span>02</span></div>
+          </article>
+          <article class="book-page page-right" data-page="1">
+            <div class="page-corner">2020—2022</div><div class="page-kicker"></div><div class="page-number-big">02</div>
+            <h4>Fondasi Sekolah Modern</h4><p class="lead">Ruang belajar berubah, semangat untuk bertumbuh tetap sama.</p>
+            <p>Renovasi laboratorium dan fasilitas belajar berjalan beriringan dengan penguatan kemitraan dunia usaha dan industri (DUDI).</p>
+            <div class="page-note">Sekolah mulai memperkuat ekosistem belajar yang lebih relevan dengan kebutuhan industri.</div>
+            <div class="page-footer"><span>SMK NEGERI 2 MOJOKERTO</span><span>2020—2022</span></div>
+          </article>
+
+          <article class="book-page page-left" data-page="2">
+            <div class="page-corner">03</div><div class="page-kicker">BAB KETIGA</div><div class="page-year">2023</div>
+            <div class="page-rule"></div><div class="page-icon"><i class="fas fa-laptop-code"></i></div>
+            <h3>Digitalisasi &<br>Akreditasi A</h3>
+            <p>Sekolah memasuki fase digital dengan penguatan perpustakaan dan program sertifikasi, sekaligus meraih Akreditasi A.</p>
+            <span class="page-tag">Transformasi</span><div class="page-footer"><span>SKANEDA · SEJARAH</span><span>03</span></div>
+          </article>
+          <article class="book-page page-right" data-page="2">
+            <div class="page-corner">2023</div><div class="page-kicker"></div><div class="page-number-big">03</div>
+            <h4>Digitalisasi & Akreditasi A</h4><p class="lead">Teknologi menjadi bagian dari cara baru untuk belajar dan berkembang.</p>
+            <p>Sekolah memasuki fase digital dengan penguatan perpustakaan dan program sertifikasi, sekaligus meraih Akreditasi A.</p>
+            <div class="page-note">Transformasi bukan sekadar perangkat, tetapi cara sekolah menyiapkan generasi berikutnya.</div>
+            <div class="page-footer"><span>SMK NEGERI 2 MOJOKERTO</span><span>2023</span></div>
+          </article>
+
+          <article class="book-page page-left" data-page="3">
+            <div class="page-corner">04</div><div class="page-kicker">BAB KEEMPAT</div><div class="page-year">2024</div>
+            <div class="page-rule"></div><div class="page-icon"><i class="fas fa-trophy"></i></div>
+            <h3>Prestasi LKS<br>Provinsi</h3>
+            <p>Siswa Rekayasa Perangkat Lunak meraih Juara 1 LKS tingkat Provinsi Jawa Timur kategori Web Technologies.</p>
+            <span class="page-tag">Prestasi</span><div class="page-footer"><span>SKANEDA · SEJARAH</span><span>04</span></div>
+          </article>
+          <article class="book-page page-right" data-page="3">
+            <div class="page-corner">2024</div><div class="page-kicker"></div><div class="page-number-big">04</div>
+            <h4>Prestasi LKS Provinsi</h4><p class="lead">Prestasi menjadi bukti bahwa proses yang konsisten menghasilkan karya.</p>
+            <p>Siswa Rekayasa Perangkat Lunak meraih Juara 1 LKS tingkat Provinsi Jawa Timur kategori Web Technologies.</p>
+            <div class="page-note">Kompetensi siswa terus tumbuh melalui pengalaman nyata, kompetisi, dan keberanian untuk tampil.</div>
+            <div class="page-footer"><span>SMK NEGERI 2 MOJOKERTO</span><span>2024</span></div>
+          </article>
+
+          <article class="book-page page-left" data-page="4">
+            <div class="page-corner">05</div><div class="page-kicker">BAB KELIMA</div><div class="page-year">2025</div>
+            <div class="page-rule"></div><div class="page-icon"><i class="fas fa-gears"></i></div>
+            <h3>Transformasi<br>Vokasi</h3>
+            <p>Pembelajaran berbasis industri diperkuat, layanan digital sekolah berkembang, dan program keahlian terus diselaraskan dengan kebutuhan pasar kerja.</p>
+            <span class="page-tag">Vokasi 4.0</span><div class="page-footer"><span>SKANEDA · SEJARAH</span><span>05</span></div>
+          </article>
+          <article class="book-page page-right" data-page="4">
+            <div class="page-corner">2025</div><div class="page-kicker"></div><div class="page-number-big">05</div>
+            <h4>Transformasi Vokasi</h4><p class="lead">Dunia kerja berubah cepat. Sekolah pun terus menyesuaikan langkah.</p>
+            <p>Pembelajaran berbasis industri diperkuat, layanan digital sekolah berkembang, dan program keahlian terus diselaraskan dengan kebutuhan pasar kerja.</p>
+            <div class="page-note">Vokasi yang kuat lahir dari hubungan erat antara sekolah, siswa, dan dunia industri.</div>
+            <div class="page-footer"><span>SMK NEGERI 2 MOJOKERTO</span><span>2025</span></div>
+          </article>
+
+          <article class="book-page page-left" data-page="5">
+            <div class="page-corner">06</div><div class="page-kicker">BAB TERAKHIR</div><div class="page-year">2028 · TARGET</div>
+            <div class="page-rule"></div><div class="page-icon"><i class="fas fa-star"></i></div>
+            <h3>Sekolah Vokasi<br>Rujukan Nasional</h3>
+            <p>Menjadi sekolah menengah kejuruan rujukan dengan lulusan yang beriman, berkarakter, kompeten, dan mampu bersaing secara internasional.</p>
+            <span class="page-tag">Next chapter</span><div class="page-footer"><span>SKANEDA · SEJARAH</span><span>06</span></div>
+          </article>
+          <article class="book-page page-right" data-page="5">
+            <div class="page-corner">2028 · TARGET</div><div class="page-kicker">HALAMAN BERIKUTNYA</div><div class="page-number-big">06</div>
+            <h4>Sekolah Vokasi Rujukan Nasional</h4><p class="lead">Bab terakhir bukan akhir cerita. Ia adalah arah yang sedang kami tuju.</p>
+            <p>Menjadi sekolah menengah kejuruan rujukan dengan lulusan yang beriman, berkarakter, kompeten, dan mampu bersaing secara internasional.</p>
+            <div class="page-note">Karena setiap generasi yang datang akan menulis satu halaman baru untuk SKANEDA.</div>
+            <div class="page-footer"><span>SMK NEGERI 2 MOJOKERTO</span><span>2028</span></div>
+          </article>
+        </div>
+      </div>
+
+      <div class="book-actions">
+        <button type="button" class="book-nav book-prev" id="bookPrev"><i class="fas fa-chevron-left"></i></button>
+        <button type="button" class="book-open" id="bookOpen"><i class="fas fa-book-open"></i><span>Buka buku</span></button>
+        <div class="book-count"><b id="bookCount">01</b><span>/ 06</span></div>
+        <button type="button" class="book-nav book-next" id="bookNext"><i class="fas fa-chevron-right"></i></button>
+      </div>
     </div>
   </section>
 
@@ -1582,7 +2292,7 @@
     </div>
 
     <div class="story-image" data-reveal="left"><img src="{{ asset('images/smkn-guru.jpg') }}" alt="Keluarga besar SMKN 2 Mojokerto" loading="lazy"></div>
-    <div class="story-content" data-reveal="right"><div class="story-content-inner"><div class="eyebrow">Yang tidak berubah</div><h2>Manusianya.<br><span>Semangatnya.</span></h2><p>Teknologi dan fasilitas boleh berubah. Program keahlian terus berkembang. Namun inti perjalanan sekolah tetap sama: membentuk siswa yang siap berkarya, berkarakter, dan punya keberanian untuk melangkah lebih jauh.</p><div class="story-list"><div class="story-chip"><i class="fas fa-check"></i> Berkarakter</div><div class="story-chip"><i class="fas fa-check"></i> Kompeten</div><div class="story-chip"><i class="fas fa-check"></i> Adaptif</div><div class="story-chip"><i class="fas fa-check"></i> Berdaya saing</div></div></div></div>
+    <div class="story-content" data-reveal="right"><div class="story-content-inner"><div class="eyebrow">Yang tidak berubah</div><h2>MANUSIANYA.<br><span>SEMANGATNYA.</span></h2><p>Teknologi dan fasilitas boleh berubah. Program keahlian terus berkembang. Namun inti perjalanan sekolah tetap sama: membentuk siswa yang siap berkarya, berkarakter, dan punya keberanian untuk melangkah lebih jauh.</p><div class="story-list"><div class="story-chip"><i class="fas fa-check"></i> Berkarakter</div><div class="story-chip"><i class="fas fa-check"></i> Kompeten</div><div class="story-chip"><i class="fas fa-check"></i> Adaptif</div><div class="story-chip"><i class="fas fa-check"></i> Berdaya saing</div></div></div></div>
   </section>
 
   <!-- MOSAIC -->
@@ -1597,7 +2307,7 @@
       <span class="ho-corner"></span>
     </div>
 
-    <div class="mosaic-head" data-reveal><div class="eyebrow">Wajah vokasi hari ini</div><h2 class="big-heading">Dari sejarah, lahir <span>karya baru.</span></h2></div>
+    <div class="mosaic-head" data-reveal><div class="eyebrow">Wajah vokasi hari ini</div><h2 class="big-heading">DARI SEJARAH, LAHIR <span>KARYA BARU.</span></h2></div>
     <div class="mosaic">
       <div class="mosaic-card big" data-reveal><img src="{{ asset('images/aphp.png') }}" alt="Siswa program APHP" loading="lazy"><div class="mosaic-label"><small>Program keahlian</small><strong>APHP · Agribisnis Pengolahan Hasil Pertanian</strong></div></div>
       <div class="mosaic-card" data-reveal style="--d:1"><img src="{{ asset('images/dkv.png') }}" alt="Siswa program DKV" loading="lazy"><div class="mosaic-label"><small>Kreatif</small><strong>Desain Komunikasi Visual</strong></div></div>
@@ -1621,7 +2331,7 @@
 
     <div class="principal-head" data-reveal>
       <div class="eyebrow">Kepemimpinan</div>
-      <h2 class="big-heading">Kepala Sekolah<br><span>dari Masa ke Masa</span></h2>
+      <h2 class="big-heading">KEPALA SEKOLAH<br><span>DARI MASA KE MASA </span></h2>
       <p class="principal-desc">Jejak kepemimpinan SKANEDA dalam satu rangkaian cerita — setiap periode membawa warna, perubahan, dan semangat yang berbeda.</p>
     </div>
 
@@ -1890,5 +2600,1100 @@
       }
     }, 450);
   })();
+
+  /* ---- Compact history book ---- */
+  (function(){
+    var book=document.getElementById('historyBook'); if(!book) return;
+    var cover=document.getElementById('bookCover'), open=document.getElementById('bookOpen');
+    var prev=document.getElementById('bookPrev'), next=document.getElementById('bookNext'), count=document.getElementById('bookCount');
+    var pages=Array.prototype.slice.call(book.querySelectorAll('.book-page[data-page]'));
+    var total=6, idx=0, opened=true;
+    /* Buku selalu terbuka. Tidak ada mode tutup/buka lagi. */
+    book.classList.add('is-open');
+    if(open) open.style.display='none';
+    function render(){
+      pages.forEach(function(p){p.classList.toggle('is-active', Number(p.getAttribute('data-page'))===idx);});
+      count.textContent=String(idx+1).padStart(2,'0');
+      prev.disabled=idx===0; next.disabled=idx===total-1;
+    }
+    function go(n){idx=Math.max(0,Math.min(total-1,idx+n));render();}
+    prev.addEventListener('click',function(){go(-1);});
+    next.addEventListener('click',function(){go(1);});
+    document.addEventListener('keydown',function(e){if(e.key==='ArrowLeft')go(-1);if(e.key==='ArrowRight')go(1);});
+    var sx=0;
+    book.addEventListener('touchstart',function(e){sx=e.changedTouches[0].clientX;},{passive:true});
+    book.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>45)go(dx<0?1:-1);},{passive:true});
+    render();
+  })();
 </script>
 @endpush
+<style>
+/* ===== FINAL BOOK FIX — MOCKUP LOOK: COVER + ONE PAGE, SAME SIZE ===== */
+.history-book-stage{
+  width:min(1180px,94%)!important;
+  display:grid!important;
+  grid-template-columns:minmax(300px,360px) minmax(0,720px)!important;
+  grid-template-rows:auto auto!important;
+  column-gap:44px!important;
+  align-items:center!important;
+  justify-content:center!important;
+  padding:48px 0 30px!important;
+}
+.history-book-side-title{
+  grid-column:1!important;grid-row:1!important;
+  max-width:360px!important;
+  align-self:center!important;
+  text-align:left!important;
+  padding:0!important;
+}
+.side-title-kicker{font-size:10px!important;letter-spacing:.2em!important;margin-bottom:16px!important}
+.history-book-side-title h2{
+  font-size:clamp(3rem,4.5vw,4.25rem)!important;
+  line-height:.86!important;
+  letter-spacing:-.045em!important;
+}
+.history-book-side-title p{
+  max-width:310px!important;margin-top:20px!important;
+  font-size:.82rem!important;line-height:1.75!important;
+}
+.side-title-line{width:62px!important;height:4px!important;margin-top:20px!important}
+
+/* CLOSED = one cover. OPEN = two panels, each exactly cover-sized. */
+.history-book{
+  grid-column:2!important;grid-row:1!important;
+  width:360px!important;height:540px!important;
+  max-width:none!important;
+  justify-self:center!important;
+  transition:width .65s cubic-bezier(.22,.75,.16,1)!important;
+}
+.book-cover{
+  width:360px!important;height:540px!important;
+  opacity:1!important;
+  transform:none!important;
+}
+.book-spread{
+  left:360px!important;top:0!important;
+  width:360px!important;height:540px!important;
+  grid-template-columns:1fr!important;
+  border-radius:0 10px 10px 0!important;
+}
+.book-page{
+  width:100%!important;left:0!important;right:auto!important;
+  padding:44px 48px 36px!important;
+  border-right:0!important;
+}
+.book-page.page-left{display:none!important}
+.book-page.page-right.is-active{display:block!important}
+.book-page h4{max-width:260px!important;font-size:28px!important;line-height:.98!important}
+.book-page p{max-width:270px!important;font-size:9.5px!important;line-height:1.75!important}
+.book-page .lead{max-width:275px!important;font-size:11px!important}
+.page-number-big{font-size:62px!important}
+.page-note{left:48px!important;right:48px!important;max-width:264px!important;font-size:8px!important}
+.page-footer{left:48px!important;right:48px!important}
+
+/* Open state: KEEP THE COVER VISIBLE. The single content page sits beside it. */
+.history-book.is-open{width:720px!important;height:540px!important}
+.history-book.is-open .book-cover{
+  transform:none!important;
+  opacity:1!important;
+  pointer-events:none!important;
+  z-index:20!important;
+}
+.history-book.is-open .book-spread{
+  opacity:1!important;visibility:visible!important;pointer-events:auto!important;
+  transform:none!important;
+  transition:opacity .35s ease,transform .5s ease!important;
+}
+
+.book-actions{
+  grid-column:2!important;grid-row:2!important;
+  justify-self:center!important;margin-top:16px!important;
+}
+
+@media(max-width:1080px){
+  .history-book-stage{grid-template-columns:280px 640px!important;column-gap:28px!important;width:96%!important}
+  .history-book,.book-cover{width:320px!important;height:500px!important}
+  .history-book.is-open{width:640px!important;height:500px!important}
+  .book-spread{left:320px!important;width:320px!important;height:500px!important}
+  .history-book-side-title h2{font-size:3.25rem!important}
+  .cover-photo{left:38px!important;right:38px!important;top:72px!important;height:205px!important}
+  .cover-est{left:39px!important;top:293px!important}
+  .cover-title{left:38px!important;right:38px!important;top:320px!important;font-size:25px!important}
+  .cover-foot{left:38px!important;right:38px!important}
+  .book-page{padding:40px 42px 34px!important}
+  .page-note{left:42px!important;right:42px!important}
+  .page-footer{left:42px!important;right:42px!important}
+}
+
+@media(max-width:700px){
+  .history-book-stage{
+    width:92%!important;display:flex!important;flex-direction:column!important;
+    align-items:center!important;gap:20px!important;padding:48px 0 28px!important;
+  }
+  .history-book-side-title{order:0;width:100%!important;max-width:500px!important;text-align:center!important}
+  .history-book-side-title h2{font-size:clamp(2.5rem,10vw,3.6rem)!important}
+  .history-book-side-title p{max-width:480px!important;margin:14px auto 0!important}
+  .side-title-line{margin:17px auto 0!important}
+  .history-book{order:1;width:330px!important;height:420px!important}
+  .history-book.is-open{width:330px!important;height:420px!important}
+  .book-cover{width:330px!important;height:420px!important}
+  /* On narrow screens the opened content replaces the cover, so it never overflows. */
+  .history-book.is-open .book-cover{opacity:0!important}
+  .book-spread{left:0!important;width:330px!important;height:420px!important;border-radius:10px!important}
+  .book-page{padding:34px 34px 30px!important}
+  .book-page h4{font-size:24px!important}
+  .book-page p{font-size:9px!important;line-height:1.65!important}
+  .book-page .lead{font-size:10px!important}
+  .page-note{left:34px!important;right:34px!important;max-width:none!important;font-size:8px!important}
+  .page-footer{left:34px!important;right:34px!important}
+  .book-actions{order:2!important;grid-column:auto!important;grid-row:auto!important;margin-top:0!important}
+}
+
+@media(max-width:430px){
+  .history-book{width:300px!important;height:390px!important}
+  .history-book.is-open{width:300px!important;height:390px!important}
+  .book-cover{width:300px!important;height:390px!important}
+  .book-spread{left:0!important;width:300px!important;height:390px!important}
+  .history-book-side-title h2{font-size:clamp(2.3rem,11vw,3.2rem)!important}
+  .cover-photo{left:27px!important;right:27px!important;top:56px!important;height:132px!important}
+  .cover-est{left:28px!important;top:200px!important}
+  .cover-title{left:27px!important;right:27px!important;top:222px!important;font-size:18px!important}
+  .book-page{padding:28px 27px 25px!important}
+  .page-note{left:27px!important;right:27px!important}
+  .page-footer{left:27px!important;right:27px!important}
+}
+</style>
+
+<style>
+/* ===== EXACT MOCKUP OVERRIDE — TITLE LEFT / BOOK NEVER OVERLAPS ===== */
+.history-book-stage{
+  width:min(1070px,96vw)!important;
+  margin:0 auto!important;
+  display:grid!important;
+  grid-template-columns:310px 720px!important;
+  grid-template-rows:auto auto!important;
+  column-gap:40px!important;
+  align-items:center!important;
+  justify-content:center!important;
+  justify-items:start!important;
+  padding:42px 0 28px!important;
+  overflow:visible!important;
+}
+.history-book-side-title{
+  grid-column:1!important;
+  grid-row:1!important;
+  width:310px!important;
+  max-width:310px!important;
+  min-width:310px!important;
+  padding:0!important;
+  margin:0!important;
+  text-align:left!important;
+  align-self:center!important;
+  z-index:10!important;
+  overflow:visible!important;
+}
+.history-book-side-title h2{
+  width:310px!important;
+  max-width:310px!important;
+  margin:0!important;
+  font-size:3.35rem!important;
+  line-height:.86!important;
+  letter-spacing:-.045em!important;
+  white-space:normal!important;
+}
+.history-book-side-title h2 b{
+  display:block!important;
+  white-space:nowrap!important;
+}
+.history-book-side-title p{
+  width:255px!important;
+  max-width:255px!important;
+  margin:18px 0 0!important;
+}
+
+/* CLOSED: cover only. OPEN: cover + ONE page, both exactly cover-sized. */
+.history-book{
+  grid-column:2!important;
+  grid-row:1!important;
+  width:360px!important;
+  height:540px!important;
+  min-width:360px!important;
+  max-width:none!important;
+  justify-self:start!important;
+  margin:0!important;
+  position:relative!important;
+  z-index:6!important;
+}
+.history-book.is-open{
+  width:720px!important;
+  height:540px!important;
+}
+.book-cover{
+  width:360px!important;
+  height:540px!important;
+  z-index:20!important;
+}
+
+/* Opened content = exactly ONE 360x540 page beside the cover. */
+.book-spread{
+  left:0!important;
+  top:0!important;
+  width:720px!important;
+  height:540px!important;
+  display:block!important;
+  border-radius:10px!important;
+  overflow:hidden!important;
+  grid-template-columns:none!important;
+}
+.book-page.page-left{display:none!important}
+.book-page.page-right.is-active{
+  display:block!important;
+  position:absolute!important;
+  left:360px!important;
+  top:0!important;
+  width:360px!important;
+  height:540px!important;
+  right:auto!important;
+  padding:44px 40px 34px!important;
+  box-sizing:border-box!important;
+}
+.book-page h4{font-size:26px!important;max-width:280px!important}
+.book-page p{font-size:9px!important;max-width:280px!important;line-height:1.7!important}
+.book-page .lead{font-size:10px!important;max-width:280px!important}
+.page-note{left:40px!important;right:40px!important;max-width:280px!important}
+.page-footer{left:40px!important;right:40px!important}
+
+/* Controls centered below the actual 720px open book. */
+.book-actions{
+  grid-column:2!important;
+  grid-row:2!important;
+  justify-self:start!important;
+  margin:16px 0 0 150px!important;
+}
+
+@media(max-width:1120px){
+  .history-book-stage{
+    width:96vw!important;
+    grid-template-columns:280px 680px!important;
+    column-gap:28px!important;
+  }
+  .history-book-side-title{width:280px!important;min-width:280px!important;max-width:280px!important}
+  .history-book-side-title h2{width:280px!important;max-width:280px!important;font-size:3rem!important}
+  .history-book{width:340px!important;height:510px!important}
+  .history-book.is-open{width:680px!important;height:510px!important}
+  .book-cover{width:340px!important;height:510px!important}
+  .book-spread{width:680px!important;height:510px!important}
+  .book-page.page-right.is-active{left:340px!important;width:340px!important;height:510px!important}
+}
+
+@media(max-width:900px){
+  .history-book-stage{
+    width:94vw!important;
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:flex-start!important;
+    gap:24px!important;
+  }
+  .history-book-side-title{
+    width:100%!important;min-width:0!important;max-width:330px!important;
+    margin-left:0!important;
+  }
+  .history-book-side-title h2{width:100%!important;max-width:330px!important;font-size:3.1rem!important}
+  .history-book{align-self:center!important;width:340px!important;height:510px!important}
+  .history-book.is-open{width:680px!important;height:510px!important;align-self:flex-start!important}
+  .book-cover{width:340px!important;height:510px!important}
+  .book-spread{width:680px!important;height:510px!important}
+  .book-page.page-right.is-active{left:340px!important;width:340px!important;height:510px!important}
+  .book-actions{align-self:center!important;margin:0!important}
+}
+
+@media(max-width:700px){
+  .history-book-side-title h2{font-size:clamp(2.6rem,11vw,3.4rem)!important}
+  .history-book,.history-book.is-open{width:310px!important;height:430px!important;align-self:center!important}
+  .book-cover{width:310px!important;height:430px!important}
+  .book-spread{width:310px!important;height:430px!important}
+  .history-book.is-open .book-cover{opacity:0!important}
+  .book-page.page-right.is-active{left:0!important;width:310px!important;height:430px!important;padding:34px 30px 28px!important}
+  .book-page h4{font-size:23px!important}
+  .book-page p{font-size:8.5px!important}
+}
+</style>
+
+<style>
+/* FINAL POSITION FIX — title far left, larger, book starts after title */
+@media (min-width:1121px){
+  .history-book-stage{
+    width:min(1300px,96vw)!important;
+    margin-left:auto!important;
+    margin-right:auto!important;
+    grid-template-columns:470px 720px!important;
+    column-gap:30px!important;
+    justify-content:start!important;
+    justify-items:start!important;
+    padding:42px 0 28px!important;
+  }
+  .history-book-side-title{
+    width:470px!important;
+    min-width:470px!important;
+    max-width:470px!important;
+    margin-left:0!important;
+    padding:0!important;
+  }
+  .history-book-side-title h2{
+    width:470px!important;
+    max-width:470px!important;
+    font-size:4.5rem!important;
+    line-height:.82!important;
+    letter-spacing:-.055em!important;
+    margin:0!important;
+  }
+  .history-book-side-title p{
+    width:330px!important;
+    max-width:330px!important;
+    margin-left:0!important;
+    font-size:1rem!important;
+    line-height:1.7!important;
+  }
+  .history-book{
+    width:360px!important;
+    height:540px!important;
+    min-width:360px!important;
+    justify-self:start!important;
+    margin:0!important;
+  }
+  .history-book.is-open{
+    width:720px!important;
+    height:540px!important;
+  }
+  .book-cover{
+    width:360px!important;
+    height:540px!important;
+  }
+  .book-spread{
+    width:720px!important;
+    height:540px!important;
+  }
+  .book-page.page-right.is-active{
+    left:360px!important;
+    width:360px!important;
+    height:540px!important;
+  }
+}
+</style>
+<style>
+/* =========================================================
+   V4 — CLOSED CENTER / OPEN SLIDE LEFT
+   Closed: cover sits centered in its book area, away from title.
+   Open: entire book shifts left automatically so cover sits beside
+   the title, while the single inside page appears on the right.
+   ========================================================= */
+@media (min-width:1121px){
+  .history-book-stage{
+    width:min(1300px,96vw)!important;
+    grid-template-columns:470px 720px!important;
+    column-gap:30px!important;
+    justify-content:start!important;
+    justify-items:start!important;
+    padding:42px 0 28px!important;
+  }
+
+  .history-book-side-title{
+    grid-column:1!important;
+    grid-row:1!important;
+    width:470px!important;
+    min-width:470px!important;
+    max-width:470px!important;
+    margin:0!important;
+    padding:0!important;
+    transform:none!important;
+    text-align:left!important;
+  }
+
+  .history-book-side-title h2{
+    width:470px!important;
+    max-width:470px!important;
+    font-size:4.5rem!important;
+    line-height:.82!important;
+    letter-spacing:-.055em!important;
+    margin:0!important;
+  }
+
+  .history-book-side-title p{
+    width:330px!important;
+    max-width:330px!important;
+    margin:18px 0 0!important;
+    font-size:1rem!important;
+    line-height:1.7!important;
+  }
+
+  /* The book occupies the full 720px slot, but the CLOSED cover is
+     centered inside that slot. */
+  .history-book{
+    grid-column:2!important;
+    grid-row:1!important;
+    width:360px!important;
+    height:540px!important;
+    min-width:360px!important;
+    max-width:none!important;
+    justify-self:center!important;
+    margin:0!important;
+    transform:translateX(0)!important;
+    transition:
+      width .72s cubic-bezier(.22,.75,.16,1),
+      transform .72s cubic-bezier(.22,.75,.16,1)!important;
+  }
+
+  /* OPEN: slide the whole book 180px left.
+     This makes the cover land immediately beside the title. */
+  .history-book.is-open{
+    width:720px!important;
+    height:540px!important;
+    justify-self:start!important;
+    transform:translateX(-180px)!important;
+  }
+
+  .book-cover{
+    width:360px!important;
+    height:540px!important;
+    transform:none!important;
+    opacity:1!important;
+    transition:none!important;
+    pointer-events:auto!important;
+  }
+
+  .book-spread{
+    left:0!important;
+    top:0!important;
+    width:720px!important;
+    height:540px!important;
+    display:block!important;
+    grid-template-columns:none!important;
+    border-radius:10px!important;
+  }
+
+  .book-page.page-left{display:none!important}
+  .book-page.page-right.is-active{
+    display:block!important;
+    position:absolute!important;
+    left:360px!important;
+    top:0!important;
+    width:360px!important;
+    height:540px!important;
+    right:auto!important;
+    padding:44px 40px 34px!important;
+    box-sizing:border-box!important;
+  }
+
+  .book-actions{
+    grid-column:2!important;
+    grid-row:2!important;
+    justify-self:center!important;
+    margin:16px 0 0!important;
+    transform:translateX(-180px)!important;
+  }
+}
+</style>
+
+<style>
+/* =========================================================
+   FINAL V5 — CLOSED COVER CENTERED, OPEN BOOK SLIDES LEFT
+   Closed: cover sits in the visual center, away from the title.
+   Open: the whole book moves left so the cover clears the title,
+   while the inside page remains exactly the same size as the cover.
+   ========================================================= */
+@media (min-width: 821px){
+  .history-book-stage{
+    position:relative!important;
+    display:grid!important;
+    width:100%!important;
+    max-width:none!important;
+    grid-template-columns:1fr 400px 1fr!important;
+    grid-template-rows:auto auto!important;
+    column-gap:0!important;
+    justify-content:stretch!important;
+    align-items:center!important;
+    padding:54px 0 34px!important;
+    overflow:visible!important;
+  }
+
+  /* Title gets its own left zone and is never allowed to occupy the book zone. */
+  .history-book-side-title{
+    grid-column:1!important;
+    grid-row:1!important;
+    justify-self:start!important;
+    align-self:center!important;
+    width:min(390px,31vw)!important;
+    max-width:min(390px,31vw)!important;
+    margin-left:clamp(28px,5vw,72px)!important;
+    padding:8px 0!important;
+    transform:none!important;
+    z-index:20!important;
+  }
+  .history-book-side-title h2{
+    font-size:clamp(3.8rem,5vw,5.15rem)!important;
+    line-height:.82!important;
+    letter-spacing:-.055em!important;
+  }
+  .history-book-side-title p{
+    max-width:300px!important;
+    font-size:.82rem!important;
+  }
+
+  /* CLOSED: exactly one 400x540 cover, centered in the viewport/stage. */
+  .history-book{
+    grid-column:2!important;
+    grid-row:1!important;
+    justify-self:center!important;
+    align-self:center!important;
+    width:400px!important;
+    height:540px!important;
+    transform:translateX(0)!important;
+    transition:transform .72s cubic-bezier(.22,.75,.16,1)!important;
+    z-index:10!important;
+  }
+
+  /* OPEN: slide the whole book left. The spread itself stays 800x540. */
+  .history-book.is-open{
+    width:800px!important;
+    height:540px!important;
+    justify-self:center!important;
+    transform:translateX(-125px)!important;
+  }
+
+  .book-cover{
+    width:400px!important;
+    height:540px!important;
+  }
+  .book-spread{
+    width:800px!important;
+    height:540px!important;
+    grid-template-columns:400px 400px!important;
+  }
+  .book-page{width:400px!important}
+  .book-page.page-left{display:none!important}
+  .book-page.page-right.is-active{
+    display:block!important;
+    left:400px!important;
+    width:400px!important;
+  }
+
+  /* Controls stay centered below the visual book. */
+  .history-book-stage > .book-actions{
+    grid-column:2!important;
+    grid-row:2!important;
+    justify-self:center!important;
+    margin:18px 0 0!important;
+    transform:translateX(0)!important;
+  }
+
+  /* When open, controls follow the shifted book. */
+  .history-book.is-open ~ .book-actions{
+    transform:translateX(-125px)!important;
+    transition:transform .72s cubic-bezier(.22,.75,.16,1)!important;
+  }
+}
+
+@media (min-width:821px) and (max-width:1100px){
+  .history-book-side-title{
+    margin-left:28px!important;
+    width:330px!important;
+    max-width:330px!important;
+  }
+  .history-book-side-title h2{font-size:4rem!important}
+  .history-book{transform:translateX(20px)!important}
+  .history-book.is-open{transform:translateX(-90px)!important}
+  .history-book.is-open ~ .book-actions{transform:translateX(-90px)!important}
+}
+
+@media (max-width:820px){
+  .history-book-stage{
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:center!important;
+  }
+  .history-book-side-title{
+    width:100%!important;
+    max-width:520px!important;
+    margin:0 auto!important;
+    transform:none!important;
+    text-align:center!important;
+  }
+  .history-book-side-title h2{font-size:clamp(2.2rem,9vw,3.4rem)!important}
+  .history-book{transform:none!important}
+  .history-book.is-open{transform:none!important}
+  .history-book.is-open ~ .book-actions{transform:none!important}
+}
+
+</style>
+<style>
+/* V6 — OPEN BOOK AUTO-FIT: can move LEFT or RIGHT so it never overlaps the title */
+@media (min-width:821px){
+  .history-book{
+    --book-shift:0px;
+    transform:translateX(var(--book-shift))!important;
+    transition:transform .72s cubic-bezier(.22,.75,.16,1)!important;
+  }
+  .history-book.is-open{
+    transform:translateX(var(--book-shift))!important;
+  }
+  .history-book-stage > .book-actions{
+    --actions-shift:0px;
+    transform:translateX(var(--actions-shift))!important;
+    transition:transform .72s cubic-bezier(.22,.75,.16,1)!important;
+  }
+  .history-book.is-open ~ .book-actions{
+    transform:translateX(var(--actions-shift))!important;
+  }
+}
+</style>
+<script>
+/* V12 — BOOK LEBIH KE KANAN: hitung batas visual judul, bukan hanya lebar container. */
+(function(){
+  var book=document.getElementById('historyBook');
+  if(!book) return;
+  var stage=book.closest('.history-book-stage');
+  var title=stage ? stage.querySelector('.history-book-side-title') : null;
+  var actions=stage ? stage.querySelector('.book-actions') : null;
+  if(!stage || !title) return;
+
+  function fitBookRight(){
+    if(window.innerWidth < 821 || !book.classList.contains('is-open')){
+      book.style.setProperty('--book-shift','0px');
+      if(actions) actions.style.setProperty('--actions-shift','0px');
+      return;
+    }
+
+    requestAnimationFrame(function(){
+      var bookRect=book.getBoundingClientRect();
+      var heading=title.querySelector('h2');
+      var titleRect=title.getBoundingClientRect();
+      var visualRight=titleRect.right;
+
+      /* h2 sering overflow dari kolom judul karena font besar.
+         Pakai batas kanan visual h2 agar buku benar-benar tidak menabrak teks. */
+      if(heading){
+        var headingRect=heading.getBoundingClientRect();
+        visualRight=Math.max(visualRight,headingRect.right);
+      }
+
+      var gap=42;
+      var viewportGap=24;
+      var minLeft=visualRight + gap;
+      var maxLeft=window.innerWidth - bookRect.width - viewportGap;
+      var currentLeft=bookRect.left;
+
+      /* Prioritas utama: beri ruang jelas antara judul dan cover. */
+      var targetLeft=Math.max(minLeft, viewportGap);
+      if(targetLeft > maxLeft){
+        /* Jika layar sempit, tetap jaga buku terlihat sebanyak mungkin. */
+        targetLeft=maxLeft;
+      }
+
+      var shift=targetLeft-currentLeft;
+      book.style.setProperty('--book-shift',shift.toFixed(1)+'px');
+      if(actions) actions.style.setProperty('--actions-shift',shift.toFixed(1)+'px');
+    });
+  }
+
+  var observer=new MutationObserver(function(){ setTimeout(fitBookRight,30); });
+  observer.observe(book,{attributes:true,attributeFilter:['class']});
+  window.addEventListener('resize',fitBookRight,{passive:true});
+  window.addEventListener('orientationchange',function(){setTimeout(fitBookRight,120);},{passive:true});
+  setTimeout(fitBookRight,80);
+})();
+</script>
+<style>
+/* V12 — desktop: beri ruang visual tambahan antara judul dan buku. */
+@media (min-width:821px){
+  .history-book{
+    margin-left:24px!important;
+  }
+}
+</style>
+<script>
+/* V6 — dynamically choose the safest horizontal position.
+   The open book is allowed to move LEFT or RIGHT depending on the
+   actual title width and available viewport space. */
+(function(){
+  var book=document.getElementById('historyBook');
+  if(!book) return;
+  var stage=book.closest('.history-book-stage');
+  var title=stage ? stage.querySelector('.history-book-side-title') : null;
+  var actions=stage ? stage.querySelector('.book-actions') : null;
+  if(!stage || !title) return;
+
+  function fitOpenBook(){
+    if(window.innerWidth < 821 || !book.classList.contains('is-open')){
+      book.style.setProperty('--book-shift','0px');
+      if(actions) actions.style.setProperty('--actions-shift','0px');
+      return;
+    }
+
+    /* Wait until the open width (cover + page) has been applied. */
+    requestAnimationFrame(function(){
+      var bookRect=book.getBoundingClientRect();
+      var titleRect=title.getBoundingClientRect();
+      var gap=28;
+      var viewportGap=24;
+      var bookWidth=bookRect.width;
+      var currentLeft=bookRect.left;
+
+      /* Minimum left edge: clear the title completely. */
+      var minLeft=titleRect.right + gap;
+      /* Maximum left edge: keep the whole open book inside the viewport. */
+      var maxLeft=window.innerWidth - bookWidth - viewportGap;
+
+      /* If the title is too wide for the available space, prioritize
+         keeping the book visible while still using the largest safe gap. */
+      var targetLeft=Math.min(Math.max(minLeft, viewportGap), maxLeft);
+      if(maxLeft < viewportGap){
+        targetLeft=viewportGap;
+      }
+
+      var shift=targetLeft-currentLeft;
+      book.style.setProperty('--book-shift',shift.toFixed(1)+'px');
+      if(actions) actions.style.setProperty('--actions-shift',shift.toFixed(1)+'px');
+    });
+  }
+
+  /* Recalculate after open/close, arrows, slide and viewport changes. */
+  var observer=new MutationObserver(function(mutations){
+    mutations.forEach(function(m){
+      if(m.attributeName==='class') fitOpenBook();
+    });
+  });
+  observer.observe(book,{attributes:true,attributeFilter:['class']});
+  window.addEventListener('resize',fitOpenBook,{passive:true});
+  window.addEventListener('orientationchange',function(){setTimeout(fitOpenBook,120);},{passive:true});
+  fitOpenBook();
+})();
+</script>
+
+<style>
+/* V7 — TITLE LEBIH MOJOK KE KIRI
+   Hanya menggeser blok judul; posisi buku dan auto-fit buku tidak diubah. */
+@media (min-width:1121px){
+  .history-book-side-title{
+    transform:translateX(-58px)!important;
+  }
+  .history-book-side-title h2,
+  .history-book-side-title p,
+  .history-book-side-title .side-title-kicker,
+  .history-book-side-title .side-title-line{
+    position:relative;
+  }
+}
+
+@media (min-width:821px) and (max-width:1120px){
+  .history-book-side-title{
+    transform:translateX(-28px)!important;
+  }
+}
+</style>
+<style>
+/* V9 — beri sedikit jarak vertikal antar baris judul agar tidak terlalu dempet */
+.history-book-side-title h2{
+  line-height:0.98!important;
+}
+
+/* ===== V10 POLISH — STORY / YANG TIDAK BERUBAH ===== */
+.story-band{
+  min-height:500px;
+  grid-template-columns:minmax(0,1.02fr) minmax(0,.98fr);
+  background:#082744;
+  isolation:isolate;
+}
+.story-image{
+  min-height:500px;
+  position:relative;
+}
+.story-image img{
+  object-position:center center;
+  filter:saturate(.98) contrast(1.02);
+}
+.story-image::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:1;
+  background:linear-gradient(90deg,rgba(8,39,68,0) 50%,rgba(8,39,68,.18) 72%,rgba(8,39,68,.72) 100%),linear-gradient(0deg,rgba(8,39,68,.16),transparent 35%);
+  pointer-events:none;
+}
+.story-image::after{
+  background:linear-gradient(90deg,transparent 48%,#082744 100%);
+}
+.story-content{
+  padding:58px clamp(2.5rem,5.5vw,6rem) 58px clamp(2.5rem,5vw,5.5rem);
+  background:linear-gradient(135deg,#082744 0%,#0b3154 58%,#0d3a66 100%);
+}
+.story-content::after{
+  content:"";
+  position:absolute;
+  left:0;
+  top:12%;
+  width:4px;
+  height:76%;
+  background:linear-gradient(#ffd54a,#ff9800,transparent);
+  border-radius:99px;
+  opacity:.9;
+}
+.story-content-inner{max-width:590px}
+.story-content .eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:.65rem;
+  margin-bottom:1.05rem;
+  letter-spacing:.16em;
+}
+.story-content h2{
+  font-size:clamp(2.5rem,4.15vw,4.35rem);
+  line-height:.93;
+  letter-spacing:-.045em;
+  margin-bottom:1.25rem;
+  text-wrap:balance;
+}
+.story-content h2 span{
+  display:inline-block;
+  padding-right:.12em;
+}
+.story-content p{
+  max-width:610px;
+  margin-bottom:1.45rem;
+  color:rgba(255,255,255,.78);
+  line-height:1.75;
+  font-size:.96rem;
+}
+.story-list{
+  gap:.8rem;
+}
+.story-chip{
+  min-height:52px;
+  display:flex;
+  align-items:center;
+  padding:.85rem 1rem;
+  border-radius:13px;
+  background:rgba(255,255,255,.055);
+  border:1px solid rgba(255,255,255,.14);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 8px 24px rgba(0,0,0,.08);
+  transition:transform .25s ease,background .25s ease,border-color .25s ease;
+}
+.story-chip:hover{
+  transform:translateY(-3px);
+  background:rgba(255,255,255,.095);
+  border-color:rgba(255,213,74,.42);
+}
+.story-chip i{
+  width:20px;
+  height:20px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  margin-right:.55rem;
+  border-radius:50%;
+  background:rgba(255,213,74,.12);
+}
+.story-content::before{
+  right:-15px;
+  bottom:-70px;
+  opacity:.5;
+}
+@media(max-width:900px){
+  .story-band{grid-template-columns:1fr;min-height:0}
+  .story-image{min-height:380px}
+  .story-content{padding:52px 7% 62px}
+  .story-content::after{left:7%;top:0;width:74%;height:3px}
+}
+@media(max-width:560px){
+  .story-image{min-height:300px}
+  .story-content{padding:42px 7% 52px}
+  .story-content h2{font-size:clamp(2.25rem,11vw,3.4rem)}
+  .story-content p{font-size:.9rem;line-height:1.7}
+  .story-list{grid-template-columns:1fr}
+}
+</style>
+
+
+
+<style>
+/* V11 — ALWAYS OPEN BOOK / SLIDE ONLY
+   The book starts open and remains open. Only page navigation is allowed. */
+.book-open{display:none!important}
+.history-book{width:800px!important;height:540px!important}
+.history-book.is-open{width:800px!important;height:540px!important}
+.history-book .book-cover{width:400px!important;height:540px!important;opacity:1!important;display:block!important}
+.history-book .book-spread{width:800px!important;height:540px!important;display:block!important;overflow:hidden!important}
+.history-book .book-page.page-left{display:none!important}
+.history-book .book-page.page-right.is-active{display:block!important;position:absolute!important;left:400px!important;top:0!important;width:400px!important;height:540px!important}
+@media (min-width:821px){
+  .history-book{transform:translateX(var(--book-shift,0px))!important}
+  .history-book.is-open{transform:translateX(var(--book-shift,0px))!important}
+  .history-book.is-open ~ .book-actions{transform:translateX(var(--actions-shift,0px))!important}
+}
+@media (max-width:820px){
+  .history-book,.history-book.is-open{width:680px!important;height:510px!important;transform:none!important}
+  .history-book .book-cover{width:340px!important;height:510px!important}
+  .history-book .book-spread{width:680px!important;height:510px!important}
+  .history-book .book-page.page-right.is-active{left:340px!important;width:340px!important;height:510px!important}
+  .history-book.is-open ~ .book-actions{transform:none!important}
+}
+@media (max-width:700px){
+  .history-book,.history-book.is-open{width:600px!important;height:430px!important}
+  .history-book .book-cover{width:300px!important;height:430px!important}
+  .history-book .book-spread{width:600px!important;height:430px!important}
+  .history-book .book-page.page-right.is-active{left:300px!important;width:300px!important;height:430px!important}
+}
+</style>
+<style id="principal-feed-height-fix">
+/* V13 — perkecil tinggi foto feed Kepala Sekolah */
+.principal-photo{
+  aspect-ratio:4/3 !important;
+  height:320px !important;
+  min-height:0 !important;
+  max-height:320px !important;
+}
+.principal-photo img{
+  width:100% !important;
+  height:100% !important;
+  object-fit:contain !important;
+  object-position:center bottom !important;
+}
+@media (max-width:700px){
+  .principal-photo{
+    aspect-ratio:4/3 !important;
+    height:260px !important;
+    min-height:0 !important;
+    max-height:260px !important;
+  }
+}
+</style>
+
+
+<style id="final-book-position-v14">
+/* V14 — keep the permanently-open book safely to the right of the title. */
+@media (min-width:1121px){
+  .history-book{margin-left:140px!important;}
+}
+@media (min-width:821px) and (max-width:1120px){
+  .history-book{margin-left:90px!important;}
+}
+</style>
+<script>
+/* V14 — final position correction. Calculate from the visible title edge. */
+(function(){
+  function fit(){
+    var book=document.getElementById('historyBook');
+    if(!book || window.innerWidth<821) return;
+    var stage=book.closest('.history-book-stage');
+    var title=stage && stage.querySelector('.history-book-side-title');
+    var actions=stage && stage.querySelector('.book-actions');
+    if(!title) return;
+    requestAnimationFrame(function(){
+      var br=book.getBoundingClientRect();
+      var tr=title.getBoundingClientRect();
+      var h2=title.querySelector('h2');
+      if(h2){ var hr=h2.getBoundingClientRect(); tr={right:Math.max(tr.right,hr.right)}; }
+      var gap=145;
+      var desired=tr.right+gap;
+      var max=window.innerWidth-br.width-24;
+      var target=Math.min(Math.max(desired,24),max);
+      if(max<24) target=24;
+      var shift=target-br.left;
+      book.style.setProperty('--book-shift',shift.toFixed(1)+'px');
+      if(actions) actions.style.setProperty('--actions-shift',shift.toFixed(1)+'px');
+    });
+  }
+  window.addEventListener('load',fit);
+  window.addEventListener('resize',fit);
+  setTimeout(fit,100);
+  setTimeout(fit,500);
+})();
+</script>
+
+<style id="v16-title-book-fine-tune">
+/* V17 — geser judul 20px ke kanan; buku otomatis ikut menyesuaikan */
+@media (min-width:1121px){
+  .history-book-side-title{
+    transform:translateX(-18px)!important;
+  }
+}
+@media (min-width:821px) and (max-width:1120px){
+  .history-book-side-title{
+    transform:translateX(12px)!important;
+  }
+}
+</style>
+<script>
+/* V17 — setelah judul digeser, hitung ulang posisi buku agar ikut 20px ke kanan. */
+(function(){
+  function refit(){
+    var book=document.getElementById('historyBook');
+    if(!book || window.innerWidth<821) return;
+    var stage=book.closest('.history-book-stage');
+    var title=stage && stage.querySelector('.history-book-side-title');
+    var actions=stage && stage.querySelector('.book-actions');
+    if(!title) return;
+    var br=book.getBoundingClientRect();
+    var tr=title.getBoundingClientRect();
+    var h2=title.querySelector('h2');
+    if(h2){
+      var hr=h2.getBoundingClientRect();
+      tr.right=Math.max(tr.right,hr.right);
+    }
+    var gap=145;
+    var desired=tr.right+gap;
+    var max=window.innerWidth-br.width-24;
+    var target=Math.min(Math.max(desired,24),max);
+    if(max<24) target=24;
+    var shift=target-br.left;
+    book.style.setProperty('--book-shift',shift.toFixed(1)+'px');
+    if(actions) actions.style.setProperty('--actions-shift',shift.toFixed(1)+'px');
+  }
+  window.addEventListener('load',function(){setTimeout(refit,80);});
+  window.addEventListener('resize',function(){requestAnimationFrame(refit);});
+  setTimeout(refit,180);
+  setTimeout(refit,700);
+})();
+</script>
+
+<style id="v19-skaneda-color">
+/* V19 — warna SKANEDA pada judul disamakan dengan warna judul/aksen utama di bawahnya, tidak terlalu orange */
+.history-book-side-title h2 b:last-child{
+  color:#0d3a66 !important;
+}
+</style>
+
+<style id="FINAL-V22-BOOK-RIGHT-SKANEDA-GOLD">
+/* FINAL V22: buku benar-benar digeser ke kanan + SKANEDA pada judul arsip menjadi gold */
+@media (min-width:821px){
+  .history-book.is-open{
+    transform:translateX(200px)!important;
+  }
+  .history-book.is-open ~ .book-actions{
+    transform:translateX(200px)!important;
+  }
+}
+.history-book-side-title h2 b:last-child{
+  color:#f5c542!important;
+  background:none!important;
+  -webkit-text-fill-color:#f5c542!important;
+}
+</style>
+
+<style id="FINAL-V23-OVERRIDE">
+/* V23 FINAL: explicit target for the second line SKANEDA + force book right */
+@media (min-width:821px){
+  #historyBook.history-book,
+  #historyBook.history-book.is-open{
+    transform:translateX(200px)!important;
+  }
+  #historyBook.history-book.is-open ~ .book-actions{
+    transform:translateX(200px)!important;
+  }
+}
+.history-book-side-title h2 b:nth-of-type(2){
+  color:#f5c542!important;
+  background:transparent!important;
+  -webkit-text-fill-color:#f5c542!important;
+  text-shadow:none!important;
+}
+</style>
