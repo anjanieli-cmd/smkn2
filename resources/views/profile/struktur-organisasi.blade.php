@@ -2014,7 +2014,7 @@
   opacity:.45;
 }
 .history-hero::after{
-  content:"SEJARAH"!important;
+  content:"STRUKTUR"!important;
   left:2%!important;
   top:58%!important;
   font-size:clamp(9rem,23vw,23rem)!important;

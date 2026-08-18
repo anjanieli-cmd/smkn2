@@ -561,7 +561,7 @@
 }
 
 .sg-history-hero::after{
-  content:"STAFF & GURU"!important;
+  content:"ROADMAP"!important;
   position:absolute!important;
   z-index:1!important;
   left:3%!important;
