@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title', 'Sejarah Sekolah — SMK Negeri 2 Mojokerto')
-@section('description', ' SMK Negeri 2 Mojokerto sejak 1968 hingga menjadi sekolah vokasi unggulan.')
+@section('description', 'Sejarah SMK Negeri 2 Mojokerto sejak berdiri pada 24 Juni 2013 hingga berkembang menjadi sekolah vokasi di Kota Mojokerto.')
 
 @push('styles')
 <style>
@@ -182,7 +182,7 @@
 .story-band:hover .story-image img{transform:scale(1.04)}
 .story-image::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 45%,#082744 100%)}
 .story-content{position:relative;display:flex;align-items:center;padding:70px clamp(2rem,7vw,7rem) 70px 4rem;overflow:hidden}
-.story-content::before{content:"1968";position:absolute;right:-20px;bottom:-45px;
+.story-content::before{content:"2013";position:absolute;right:-20px;bottom:-45px;
   font-family:var(--font-display);font-size:12rem;line-height:1;font-weight:900;
   color:rgba(255,255,255,.04);-webkit-text-stroke:1px rgba(255,255,255,.05)}
 .story-content-inner{position:relative;z-index:2;max-width:560px}
@@ -776,11 +776,12 @@
 }
 .principal-profile{display:flex;align-items:center;gap:.65rem;min-width:0}
 .principal-avatar{
-  width:38px;height:38px;flex:0 0 38px;border-radius:50%;
+  width:38px;height:38px;flex:0 0 38px;border-radius:0;
   display:grid;place-items:center;color:#ffd54a;
-  background:linear-gradient(135deg,#0d3a66,#174f80);
-  box-shadow:0 6px 15px rgba(13,58,102,.2)
+  background:none;
+  box-shadow:none
 }
+.principal-avatar img{width:36px;height:36px;object-fit:contain;display:block}
 .principal-profile strong{display:block;color:#0d3a66;font-size:.78rem;font-weight:900;line-height:1.15}
 .principal-profile span{display:block;color:#8293a4;font-size:.64rem;margin-top:.15rem}
 .principal-more{color:#7d8fa1;font-size:1rem}
@@ -2133,14 +2134,14 @@
     <div class="history-wide intro-grid">
       <div data-reveal>
         <div class="eyebrow">Dari masa ke masa</div>
-        <h2 class="big-heading">1968 → <span>HARI INI.</span></h2>
-        <p class="intro-copy">Berdiri sejak 1968, SMK Negeri 2 Mojokerto terus berkembang untuk menyiapkan generasi vokasi yang kompeten, berkarakter, dan siap menghadapi dunia kerja maupun pendidikan lanjutan. Perjalanan itu hadir dalam perubahan fasilitas, program keahlian, kemitraan industri, digitalisasi, hingga prestasi siswa.</p>
+        <h2 class="big-heading">2013 → <span>HARI INI.</span></h2>
+        <p class="intro-copy">SMK Negeri 2 Mojokerto mulai berdiri pada 24 Juni 2013 sebagai bagian dari upaya menghadirkan pendidikan kejuruan bagi masyarakat Kota Mojokerto. Dari awal yang sederhana, sekolah ini terus berkembang melalui perpindahan tempat layanan pendidikan, pembangunan gedung baru, penambahan kompetensi keahlian, hingga kini memiliki lima bidang keahlian yang menjadi bagian dari perjalanan vokasi SMKN 2 Mojokerto.</p>
       </div>
       <div class="stat-strip" data-reveal="right">
-        <div class="stat-box"><div class="stat-num gold">1968</div><div class="stat-label">Tahun berdiri</div></div>
-        <div class="stat-box"><div class="stat-num">A</div><div class="stat-label">Akreditasi</div></div>
-        <div class="stat-box"><div class="stat-num gold">1200+</div><div class="stat-label">Siswa aktif</div></div>
-        <div class="stat-box"><div class="stat-num">80+</div><div class="stat-label">Pendidik & tenaga kependidikan</div></div>
+        <div class="stat-box"><div class="stat-num gold">2013</div><div class="stat-label">Tahun berdiri</div></div>
+        <div class="stat-box"><div class="stat-num">24</div><div class="stat-label">Juni · Tanggal berdiri</div></div>
+        <div class="stat-box"><div class="stat-num gold">2</div><div class="stat-label">Kompetensi keahlian awal</div></div>
+        <div class="stat-box"><div class="stat-num">5</div><div class="stat-label">Bidang keahlian saat ini</div></div>
       </div>
     </div>
   </section>
@@ -2151,11 +2152,11 @@
       <span class="ho-chevron"></span><span class="ho-line"></span><span class="ho-dots"></span>
       <span class="ho-ring"></span><span class="ho-gold"></span><span class="ho-square"></span><span class="ho-corner"></span>
     </div>
-<div class="history-book-stage" data-reveal>
+    <div class="history-book-stage" data-reveal>
       <div class="history-book-side-title">
         <span class="side-title-kicker">ARSIP PERJALANAN</span>
         <h2>PERJALANAN<br><b>SEJARAH</b><b>SKANEDA</b></h2>
-        <p>Telusuri perjalanan SMK Negeri 2 Mojokerto dari awal berdiri hingga terus berkembang menjadi sekolah vokasi masa kini.</p>
+        <p>Telusuri perjalanan SMK Negeri 2 Mojokerto sejak berdiri pada 2013, berpindah ke gedung baru, hingga berkembang dengan lima bidang keahlian.</p>
         <span class="side-title-line"></span>
       </div>
       <div class="history-book is-open" id="historyBook">
@@ -2163,109 +2164,109 @@
           <span class="cover-frame"></span>
           <span class="cover-topline">SEJARAH &nbsp;•&nbsp; SKANEDA</span>
           <span class="cover-photo"><img src="{{ asset('images/hero-sekolah.jpg') }}" alt="Gedung SMK Negeri 2 Mojokerto"></span>
-          <span class="cover-est">EST. 1968</span>
+          <span class="cover-est">EST. 2013</span>
           <span class="cover-title">BAB-BAB YANG<br><b>MEMBENTUK KAMI</b></span>
-          <span class="cover-foot">SMK NEGERI 2 MOJOKERTO <i>1968 — HARI INI</i></span>
+          <span class="cover-foot">SMK NEGERI 2 MOJOKERTO <i>2013 — HARI INI</i></span>
         </button>
 
         <div class="book-spread" aria-live="polite">
           <article class="book-page page-left" data-page="0">
             <div class="page-corner">01</div>
             <div class="page-kicker">BAB PERTAMA</div>
-            <div class="page-year">1968</div>
+            <div class="page-year">24 JUNI 2013</div>
             <div class="page-rule"></div>
             <div class="page-icon"><i class="fas fa-flag"></i></div>
-            <h3>Awal<br> Berdiri</h3>
-            <p>SMK Negeri 2 Mojokerto resmi berdiri dan membuka pendidikan kejuruan pertama bagi masyarakat Kota Mojokerto.</p>
+            <h3>Awal<br>Berdiri</h3>
+            <p>SMK Negeri 2 Mojokerto mulai berdiri pada 24 Juni 2013 berdasarkan SK Pendirian Sekolah Nomor 188.45/630/417.111/2013.</p>
             <span class="page-tag">Fondasi</span>
             <div class="page-footer"><span>SKANEDA · SEJARAH</span><span>01</span></div>
           </article>
 
           <article class="book-page page-right" data-page="0">
-            <div class="page-corner">1968</div>
+            <div class="page-corner">24 JUNI 2013</div>
             <div class="page-kicker"></div>
             <div class="page-number-big">01</div>
             <h4>Awal Berdiri</h4>
-            <p class="lead">Sebuah perjalanan panjang selalu dimulai dari satu langkah.</p>
-            <p>SMK Negeri 2 Mojokerto resmi berdiri dan membuka pendidikan kejuruan pertama bagi masyarakat Kota Mojokerto.</p>
+            <p class="lead">Sebuah perjalanan baru dimulai dari satu langkah.</p>
+            <p>SMK Negeri 2 Mojokerto mulai berdiri pada 24 Juni 2013 dengan SK Pendirian Sekolah dan SK Ijin Operasional Sekolah Nomor 188.45/630/417.111/2013.</p>
             <div class="quote-mark">“</div>
-            <div class="page-note">Dari fondasi sederhana, tumbuh sebuah sekolah yang terus bergerak bersama zaman.</div>
-            <div class="page-footer"><span>SMK NEGERI 2 MOJOKERTO</span><span>1968</span></div>
+            <div class="page-note">Dari awal berdiri, SMKN 2 Mojokerto mulai membangun fondasi sebagai sekolah menengah kejuruan di Kota Mojokerto.</div>
+            <div class="page-footer"><span>SMK NEGERI 2 MOJOKERTO</span><span>2013</span></div>
           </article>
 
           <article class="book-page page-left" data-page="1">
-            <div class="page-corner">02</div><div class="page-kicker">BAB KEDUA</div><div class="page-year">2020—2022</div>
+            <div class="page-corner">02</div><div class="page-kicker">BAB KEDUA</div><div class="page-year">2013</div>
             <div class="page-rule"></div><div class="page-icon"><i class="fas fa-school"></i></div>
-            <h3>Fondasi Sekolah<br>Modern</h3>
-            <p>Renovasi laboratorium dan fasilitas belajar berjalan beriringan dengan penguatan kemitraan dunia usaha dan industri (DUDI).</p>
-            <span class="page-tag">Pengembangan</span><div class="page-footer"><span>SKANEDA · SEJARAH</span><span>02</span></div>
+            <h3>Langkah<br>Pertama</h3>
+            <p>Pada awal berdiri, layanan pendidikan masih bertempat di gedung SMKN 1 Mojokerto, Jl. Kedungsari, Magersari, Kota Mojokerto.</p>
+            <span class="page-tag">Awal Perjalanan</span><div class="page-footer"><span>SKANEDA · SEJARAH</span><span>02</span></div>
           </article>
           <article class="book-page page-right" data-page="1">
-            <div class="page-corner">2020—2022</div><div class="page-kicker"></div><div class="page-number-big">02</div>
-            <h4>Fondasi Sekolah Modern</h4><p class="lead">Ruang belajar berubah, semangat untuk bertumbuh tetap sama.</p>
-            <p>Renovasi laboratorium dan fasilitas belajar berjalan beriringan dengan penguatan kemitraan dunia usaha dan industri (DUDI).</p>
-            <div class="page-note">Sekolah mulai memperkuat ekosistem belajar yang lebih relevan dengan kebutuhan industri.</div>
-            <div class="page-footer"><span>SMK NEGERI 2 MOJOKERTO</span><span>2020—2022</span></div>
+            <div class="page-corner">2013</div><div class="page-kicker"></div><div class="page-number-big">02</div>
+            <h4>Langkah Pertama</h4><p class="lead">Sebelum memiliki gedung sendiri, perjalanan pendidikan dimulai dari tempat yang sederhana.</p>
+            <p>Pelaksanaan layanan pendidikan SMKN 2 Mojokerto pada awal berdiri bertempat di gedung SMKN 1 Mojokerto, Jl. Kedungsari, Magersari, Kota Mojokerto.</p>
+            <div class="page-note">Pada masa awal tersebut, sekolah dikepalai oleh Bapak Drs. Harol Kristiyandoko, MT yang kala itu juga menjabat sebagai Kepala SMKN 1 Mojokerto.</div>
+            <div class="page-footer"><span>SMK NEGERI 2 MOJOKERTO</span><span>2013</span></div>
           </article>
 
           <article class="book-page page-left" data-page="2">
-            <div class="page-corner">03</div><div class="page-kicker">BAB KETIGA</div><div class="page-year">2023</div>
-            <div class="page-rule"></div><div class="page-icon"><i class="fas fa-laptop-code"></i></div>
-            <h3>Digitalisasi &<br>Akreditasi A</h3>
-            <p>Sekolah memasuki fase digital dengan penguatan perpustakaan dan program sertifikasi, sekaligus meraih Akreditasi A.</p>
-            <span class="page-tag">Transformasi</span><div class="page-footer"><span>SKANEDA · SEJARAH</span><span>03</span></div>
+            <div class="page-corner">03</div><div class="page-kicker">BAB KETIGA</div><div class="page-year">16 JANUARI 2014</div>
+            <div class="page-rule"></div><div class="page-icon"><i class="fas fa-building"></i></div>
+            <h3>Menempati<br>Gedung Baru</h3>
+            <p>SMKN 2 Kota Mojokerto mulai menempati gedung baru di Jl. Pulorejo, Kecamatan Prajuritkulon, Kota Mojokerto.</p>
+            <span class="page-tag">Perkembangan</span><div class="page-footer"><span>SKANEDA · SEJARAH</span><span>03</span></div>
           </article>
           <article class="book-page page-right" data-page="2">
-            <div class="page-corner">2023</div><div class="page-kicker"></div><div class="page-number-big">03</div>
-            <h4>Digitalisasi & Akreditasi A</h4><p class="lead">Teknologi menjadi bagian dari cara baru untuk belajar dan berkembang.</p>
-            <p>Sekolah memasuki fase digital dengan penguatan perpustakaan dan program sertifikasi, sekaligus meraih Akreditasi A.</p>
-            <div class="page-note">Transformasi bukan sekadar perangkat, tetapi cara sekolah menyiapkan generasi berikutnya.</div>
-            <div class="page-footer"><span>SMK NEGERI 2 MOJOKERTO</span><span>2023</span></div>
+            <div class="page-corner">16 JANUARI 2014</div><div class="page-kicker"></div><div class="page-number-big">03</div>
+            <h4>Gedung Baru</h4><p class="lead">Langkah berikutnya membawa SKANEDA ke rumahnya sendiri.</p>
+            <p>Pada 16 Januari 2014, SMKN 2 Kota Mojokerto menempati gedung baru di Jl. Pulorejo, Kecamatan Prajuritkulon, Kota Mojokerto.</p>
+            <div class="page-note">Gedung baru tersebut diresmikan oleh Walikota Mojokerto, Drs. H. Mas’ud Yunus, menjadi salah satu tonggak penting dalam perkembangan sekolah.</div>
+            <div class="page-footer"><span>SMK NEGERI 2 MOJOKERTO</span><span>2014</span></div>
           </article>
 
           <article class="book-page page-left" data-page="3">
-            <div class="page-corner">04</div><div class="page-kicker">BAB KEEMPAT</div><div class="page-year">2024</div>
-            <div class="page-rule"></div><div class="page-icon"><i class="fas fa-trophy"></i></div>
-            <h3>Prestasi LKS<br>Provinsi</h3>
-            <p>Siswa Rekayasa Perangkat Lunak meraih Juara 1 LKS tingkat Provinsi Jawa Timur kategori Web Technologies.</p>
-            <span class="page-tag">Prestasi</span><div class="page-footer"><span>SKANEDA · SEJARAH</span><span>04</span></div>
+            <div class="page-corner">04</div><div class="page-kicker">BAB KEEMPAT</div><div class="page-year">AWAL BERDIRI</div>
+            <div class="page-rule"></div><div class="page-icon"><i class="fas fa-utensils"></i></div>
+            <h3>Dua Kompetensi<br>Keahlian</h3>
+            <p>Pada awal berdirinya, SMKN 2 Mojokerto membuka dua kompetensi keahlian: Tata Boga (TB) dan Rekayasa Perangkat Lunak (RPL).</p>
+            <span class="page-tag">Kompetensi</span><div class="page-footer"><span>SKANEDA · SEJARAH</span><span>04</span></div>
           </article>
           <article class="book-page page-right" data-page="3">
-            <div class="page-corner">2024</div><div class="page-kicker"></div><div class="page-number-big">04</div>
-            <h4>Prestasi LKS Provinsi</h4><p class="lead">Prestasi menjadi bukti bahwa proses yang konsisten menghasilkan karya.</p>
-            <p>Siswa Rekayasa Perangkat Lunak meraih Juara 1 LKS tingkat Provinsi Jawa Timur kategori Web Technologies.</p>
-            <div class="page-note">Kompetensi siswa terus tumbuh melalui pengalaman nyata, kompetisi, dan keberanian untuk tampil.</div>
-            <div class="page-footer"><span>SMK NEGERI 2 MOJOKERTO</span><span>2024</span></div>
+            <div class="page-corner">AWAL BERDIRI</div><div class="page-kicker"></div><div class="page-number-big">04</div>
+            <h4>Dua Kompetensi Keahlian</h4><p class="lead">Dari dua kompetensi, perjalanan pendidikan kejuruan mulai dibangun.</p>
+            <p>Pada awal berdirinya, SMKN 2 Mojokerto membuka dua kompetensi keahlian, yaitu Tata Boga (TB) dan Rekayasa Perangkat Lunak (RPL).</p>
+            <div class="page-note">Keduanya menjadi bagian awal dari pilihan pendidikan kejuruan yang disediakan untuk masyarakat Kota Mojokerto.</div>
+            <div class="page-footer"><span>SMK NEGERI 2 MOJOKERTO</span><span>AWAL</span></div>
           </article>
 
           <article class="book-page page-left" data-page="4">
-            <div class="page-corner">05</div><div class="page-kicker">BAB KELIMA</div><div class="page-year">2025</div>
-            <div class="page-rule"></div><div class="page-icon"><i class="fas fa-gears"></i></div>
-            <h3>Transformasi<br>Vokasi</h3>
-            <p>Pembelajaran berbasis industri diperkuat, layanan digital sekolah berkembang, dan program keahlian terus diselaraskan dengan kebutuhan pasar kerja.</p>
-            <span class="page-tag">Vokasi 4.0</span><div class="page-footer"><span>SKANEDA · SEJARAH</span><span>05</span></div>
+            <div class="page-corner">05</div><div class="page-kicker">BAB KELIMA</div><div class="page-year">TAHUN BERIKUTNYA</div>
+            <div class="page-rule"></div><div class="page-icon"><i class="fas fa-layer-group"></i></div>
+            <h3>Kompetensi<br>Semakin Beragam</h3>
+            <p>Tahun berikutnya, sekolah membuka tiga kompetensi keahlian baru: DKV, APHP, dan Perbankan Syari’ah.</p>
+            <span class="page-tag">Ekspansi</span><div class="page-footer"><span>SKANEDA · SEJARAH</span><span>05</span></div>
           </article>
           <article class="book-page page-right" data-page="4">
-            <div class="page-corner">2025</div><div class="page-kicker"></div><div class="page-number-big">05</div>
-            <h4>Transformasi Vokasi</h4><p class="lead">Dunia kerja berubah cepat. Sekolah pun terus menyesuaikan langkah.</p>
-            <p>Pembelajaran berbasis industri diperkuat, layanan digital sekolah berkembang, dan program keahlian terus diselaraskan dengan kebutuhan pasar kerja.</p>
-            <div class="page-note">Vokasi yang kuat lahir dari hubungan erat antara sekolah, siswa, dan dunia industri.</div>
-            <div class="page-footer"><span>SMK NEGERI 2 MOJOKERTO</span><span>2025</span></div>
+            <div class="page-corner">TAHUN BERIKUTNYA</div><div class="page-kicker"></div><div class="page-number-big">05</div>
+            <h4>Kompetensi Semakin Beragam</h4><p class="lead">Pertumbuhan sekolah diikuti dengan semakin luasnya pilihan bidang keahlian.</p>
+            <p>Tahun berikutnya, SMKN 2 Mojokerto membuka tiga kompetensi keahlian lainnya, yaitu Desain Komunikasi Visual (DKV), Agribisnis Pengolahan Hasil Pertanian (APHP), dan Perbankan Syari’ah (PS).</p>
+            <div class="page-note">Penambahan kompetensi memperluas ruang belajar dan pilihan pengembangan keterampilan bagi peserta didik.</div>
+            <div class="page-footer"><span>SMK NEGERI 2 MOJOKERTO</span><span>05</span></div>
           </article>
 
           <article class="book-page page-left" data-page="5">
-            <div class="page-corner">06</div><div class="page-kicker">BAB TERAKHIR</div><div class="page-year">2028 · TARGET</div>
-            <div class="page-rule"></div><div class="page-icon"><i class="fas fa-star"></i></div>
-            <h3>Sekolah Vokasi<br>Rujukan Nasional</h3>
-            <p>Menjadi sekolah menengah kejuruan rujukan dengan lulusan yang beriman, berkarakter, kompeten, dan mampu bersaing secara internasional.</p>
-            <span class="page-tag">Next chapter</span><div class="page-footer"><span>SKANEDA · SEJARAH</span><span>06</span></div>
+            <div class="page-corner">06</div><div class="page-kicker">BAB TERKINI</div><div class="page-year">HARI INI</div>
+            <div class="page-rule"></div><div class="page-icon"><i class="fas fa-graduation-cap"></i></div>
+            <h3>Lima Bidang<br>Keahlian</h3>
+            <p>Hingga saat ini, SMKN 2 Kota Mojokerto memiliki lima bidang keahlian yang terus menjadi bagian dari perkembangan sekolah.</p>
+            <span class="page-tag">Hari Ini</span><div class="page-footer"><span>SKANEDA · SEJARAH</span><span>06</span></div>
           </article>
           <article class="book-page page-right" data-page="5">
-            <div class="page-corner">2028 · TARGET</div><div class="page-kicker">HALAMAN BERIKUTNYA</div><div class="page-number-big">06</div>
-            <h4>Sekolah Vokasi Rujukan Nasional</h4><p class="lead">Bab terakhir bukan akhir cerita. Ia adalah arah yang sedang kami tuju.</p>
-            <p>Menjadi sekolah menengah kejuruan rujukan dengan lulusan yang beriman, berkarakter, kompeten, dan mampu bersaing secara internasional.</p>
-            <div class="page-note">Karena setiap generasi yang datang akan menulis satu halaman baru untuk SKANEDA.</div>
-            <div class="page-footer"><span>SMK NEGERI 2 MOJOKERTO</span><span>2028</span></div>
+            <div class="page-corner">HARI INI</div><div class="page-kicker">PERJALANAN BERLANJUT</div><div class="page-number-big">06</div>
+            <h4>Lima Bidang Keahlian</h4><p class="lead">Dari dua kompetensi awal, SKANEDA kini hadir dengan lima bidang keahlian.</p>
+            <p>Hingga saat ini, SMKN 2 Kota Mojokerto memiliki lima bidang keahlian, yaitu pariwisata; seni dan industri kreatif; agribisnis dan agroteknologi; teknologi informasi dan komunikasi; serta bisnis manajemen.</p>
+            <div class="page-note">Perjalanan sejak 2013 terus berlanjut dengan semangat mengembangkan pendidikan vokasi sesuai kebutuhan peserta didik dan masyarakat.</div>
+            <div class="page-footer"><span>SMK NEGERI 2 MOJOKERTO</span><span>HARI INI</span></div>
           </article>
         </div>
       </div>
@@ -2309,11 +2310,11 @@
 
     <div class="mosaic-head" data-reveal><div class="eyebrow">Wajah vokasi hari ini</div><h2 class="big-heading">DARI SEJARAH, LAHIR <span>KARYA BARU.</span></h2></div>
     <div class="mosaic">
-      <div class="mosaic-card big" data-reveal><img src="{{ asset('images/aphp.png') }}" alt="Siswa program APHP" loading="lazy"><div class="mosaic-label"><small>Program keahlian</small><strong>APHP · Agribisnis Pengolahan Hasil Pertanian</strong></div></div>
-      <div class="mosaic-card" data-reveal style="--d:1"><img src="{{ asset('images/dkv.png') }}" alt="Siswa program DKV" loading="lazy"><div class="mosaic-label"><small>Kreatif</small><strong>Desain Komunikasi Visual</strong></div></div>
-      <div class="mosaic-card" data-reveal style="--d:2"><img src="{{ asset('images/kuliner.png') }}" alt="Siswa program Kuliner" loading="lazy"><div class="mosaic-label"><small>Industri kreatif</small><strong>Kuliner</strong></div></div>
-      <div class="mosaic-card" data-reveal style="--d:3"><img src="{{ asset('images/rpl.png') }}" alt="Siswa program RPL" loading="lazy"><div class="mosaic-label"><small>Teknologi</small><strong>Rekayasa Perangkat Lunak</strong></div></div>
-      <div class="mosaic-card" data-reveal style="--d:4"><img src="{{ asset('images/lps.png') }}" alt="Siswa program LPS" loading="lazy"><div class="mosaic-label"><small>Ekonomi</small><strong>Layanan Perbankan Syariah</strong></div></div>
+      <div class="mosaic-card big" data-reveal><img src="{{ asset('images/aphp1.jpeg') }}" alt="Siswa program APHP" loading="lazy"><div class="mosaic-label"><small>Program keahlian</small><strong>APHP · Agribisnis Pengolahan Hasil Pertanian</strong></div></div>
+      <div class="mosaic-card" data-reveal style="--d:1"><img src="{{ asset('images/dkv1.jpeg') }}" alt="Siswa program DKV" loading="lazy"><div class="mosaic-label"><small>Kreatif</small><strong>Desain Komunikasi Visual</strong></div></div>
+      <div class="mosaic-card" data-reveal style="--d:2"><img src="{{ asset('images/kuliner1.jpeg') }}" alt="Siswa program Kuliner" loading="lazy"><div class="mosaic-label"><small>Industri kreatif</small><strong>Kuliner</strong></div></div>
+      <div class="mosaic-card" data-reveal style="--d:3"><img src="{{ asset('images/rpl1.jpeg') }}" alt="Siswa program RPL" loading="lazy"><div class="mosaic-label"><small>Teknologi</small><strong>Rekayasa Perangkat Lunak</strong></div></div>
+      <div class="mosaic-card" data-reveal style="--d:4"><img src="{{ asset('images/lps1.jpeg') }}" alt="Siswa program LPS" loading="lazy"><div class="mosaic-label"><small>Ekonomi</small><strong>Layanan Perbankan Syariah</strong></div></div>
     </div>
   </section>
 
@@ -2346,79 +2347,79 @@
           <article class="principal-post" data-principal data-reveal>
             <div class="principal-post-head">
               <div class="principal-profile">
-                <span class="principal-avatar"><i class="fas fa-school"></i></span>
-                <div><strong>SMKN 2 Mojokerto</strong><span>Kepemimpinan · 1968—1985</span></div>
+                <span class="principal-avatar"><img src="{{ asset('images/logo_smkn2.png') }}" alt="Logo SMKN 2 Mojokerto" loading="lazy"></span>
+                <div><strong>SMKN 2 Mojokerto</strong><span>Kepemimpinan · 2018-2019</span></div>
               </div>
               <span class="principal-more"><i class="fas fa-ellipsis-h"></i></span>
             </div>
             <div class="principal-photo">
-              <img src="{{ asset('images/kepsek-nobg.png') }}" alt="Kepala Sekolah 1" loading="lazy">
+              <img src="{{ asset('images/kepsek1.jpeg') }}" alt="Kepala Sekolah 1" loading="lazy">
             </div>
             <div class="principal-post-actions">
               <i class="far fa-heart"></i><i class="far fa-comment"></i><i class="far fa-paper-plane"></i>
               <i class="far fa-bookmark spacer"></i>
             </div>
             <div class="principal-post-body">
-              <div class="principal-like">Kepala Sekolah 1</div>
+              <div class="principal-like">Drs. Heru Susianto, M.Pd</div>
               <p class="principal-caption"><strong>Periode kepemimpinan.</strong> Salah satu bagian awal dari perjalanan panjang SMK Negeri 2 Mojokerto.</p>
-              <span class="principal-period">1968 &ndash; 1985</span>
+              <span class="principal-period">2018 &ndash; 2019</span>
             </div>
           </article>
 
           <article class="principal-post" data-principal data-reveal style="--d:1">
             <div class="principal-post-head">
               <div class="principal-profile">
-                <span class="principal-avatar"><i class="fas fa-school"></i></span>
-                <div><strong>SMKN 2 Mojokerto</strong><span>Kepemimpinan · 1985—2000</span></div>
+                <span class="principal-avatar"><img src="{{ asset('images/logo_smkn2.png') }}" alt="Logo SMKN 2 Mojokerto" loading="lazy"></span>
+                <div><strong>SMKN 2 Mojokerto</strong><span>Kepemimpinan · 2019-2020</span></div>
               </div>
               <span class="principal-more"><i class="fas fa-ellipsis-h"></i></span>
             </div>
             <div class="principal-photo">
-              <img src="{{ asset('images/kepsek-nobg.png') }}" alt="Kepala Sekolah 2" loading="lazy">
+              <img src="{{ asset('images/kepsek2.jpeg') }}" alt="Kepala Sekolah 2" loading="lazy">
             </div>
             <div class="principal-post-actions">
               <i class="far fa-heart"></i><i class="far fa-comment"></i><i class="far fa-paper-plane"></i>
               <i class="far fa-bookmark spacer"></i>
             </div>
             <div class="principal-post-body">
-              <div class="principal-like">Kepala Sekolah 2</div>
+              <div class="principal-like">Siti Fatimah, S.Pd., M.M.</div>
               <p class="principal-caption"><strong>Periode kepemimpinan.</strong> Melanjutkan fondasi dan pertumbuhan sekolah dari masa ke masa.</p>
-              <span class="principal-period">1985 &ndash; 2000</span>
+              <span class="principal-period">2019 &ndash; 2020</span>
             </div>
           </article>
 
           <article class="principal-post" data-principal data-reveal style="--d:2">
             <div class="principal-post-head">
               <div class="principal-profile">
-                <span class="principal-avatar"><i class="fas fa-school"></i></span>
-                <div><strong>SMKN 2 Mojokerto</strong><span>Kepemimpinan · 2000—2015</span></div>
+                <span class="principal-avatar"><img src="{{ asset('images/logo_smkn2.png') }}" alt="Logo SMKN 2 Mojokerto" loading="lazy"></span>
+                <div><strong>SMKN 2 Mojokerto</strong><span>Kepemimpinan · 2020—2026</span></div>
               </div>
               <span class="principal-more"><i class="fas fa-ellipsis-h"></i></span>
             </div>
             <div class="principal-photo">
-              <img src="{{ asset('images/kepsek-nobg.png') }}" alt="Kepala Sekolah 3" loading="lazy">
+              <img src="{{ asset('images/kepsek3.png') }}" alt="Kepala Sekolah 3" loading="lazy">
             </div>
             <div class="principal-post-actions">
               <i class="far fa-heart"></i><i class="far fa-comment"></i><i class="far fa-paper-plane"></i>
               <i class="far fa-bookmark spacer"></i>
             </div>
             <div class="principal-post-body">
-              <div class="principal-like">Kepala Sekolah 3</div>
+              <div class="principal-like">Drs. Akhmad Mukhlason, M.M.Pd.</div>
               <p class="principal-caption"><strong>Periode kepemimpinan.</strong> Fase penting menuju sekolah vokasi yang semakin modern dan adaptif.</p>
-              <span class="principal-period">2000 &ndash; 2015</span>
+              <span class="principal-period">2020 &ndash; 2026</span>
             </div>
           </article>
 
           <article class="principal-post" data-principal data-current data-reveal style="--d:3">
             <div class="principal-post-head">
               <div class="principal-profile">
-                <span class="principal-avatar"><i class="fas fa-school"></i></span>
-                <div><strong>SMKN 2 Mojokerto</strong><span>Kepemimpinan · 2015—Sekarang</span></div>
+                <span class="principal-avatar"><img src="{{ asset('images/logo_smkn2.png') }}" alt="Logo SMKN 2 Mojokerto" loading="lazy"></span>
+                <div><strong>SMKN 2 Mojokerto</strong><span>Kepemimpinan · 2026—Sekarang</span></div>
               </div>
               <span class="principal-more"><i class="fas fa-ellipsis-h"></i></span>
             </div>
             <div class="principal-photo">
-              <img src="{{ asset('images/kepsek-nobg.png') }}" alt="Iswahyudi, S.ST. M.Pd" loading="lazy">
+              <img src="{{ asset('images/kepsek4.jpeg') }}" alt="Iswahyudi, S.ST. M.Pd" loading="lazy">
               <span class="principal-current">Saat Ini</span>
             </div>
             <div class="principal-post-actions">
@@ -2428,7 +2429,7 @@
             <div class="principal-post-body">
               <div class="principal-like">Iswahyudi, S.ST. M.Pd</div>
               <p class="principal-caption"><strong>Kepala sekolah saat ini.</strong> Membawa SKANEDA terus bergerak menuju pendidikan vokasi yang unggul.</p>
-              <span class="principal-period">2015 &ndash; Sekarang</span>
+              <span class="principal-period">2026 &ndash; Sekarang</span>
             </div>
           </article>
 
