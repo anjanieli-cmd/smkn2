@@ -1,11 +1,49 @@
+
+<style id="staff-guru-card-back-text-final">
+/* Ukuran teks belakang kartu diperbesar agar terbaca jelas saat kartu dibalik */
+.idcard-h .idback-head .id-school{
+  font-size:clamp(.82rem,1.15vw,.98rem) !important;
+  letter-spacing:.045em !important;
+}
+.idcard-h .idback-head .id-school-sub{
+  font-size:clamp(.56rem,.78vw,.68rem) !important;
+  letter-spacing:.12em !important;
+}
+.idcard-h .idback-label{
+  font-size:clamp(.62rem,.82vw,.72rem) !important;
+}
+.idcard-h .idback-bio{
+  font-size:clamp(.72rem,1vw,.84rem) !important;
+  line-height:1.5 !important;
+}
+.idcard-h .idback-quote p{
+  font-size:clamp(.68rem,.92vw,.78rem) !important;
+  line-height:1.5 !important;
+}
+.idcard-h .idback-foot span{
+  font-size:clamp(.54rem,.72vw,.64rem) !important;
+}
+</style>
+
+<style id="staff-guru-gold-final">
+.history-title .skaneda-gold{
+  background:linear-gradient(135deg,#ffd54a 0%,#ffb300 45%,#ff7a00 100%) !important;
+  -webkit-background-clip:text !important;
+  background-clip:text !important;
+  -webkit-text-fill-color:transparent !important;
+  color:#ffc107 !important;
+  text-shadow:none !important;
+}
+</style>
 @extends('layouts.app')
 
-@section('title', 'Guru & Staf — SMK Negeri 2 Mojokerto')
+@section('title', 'Staff & Guru — SMK Negeri 2 Mojokerto')
 @section('description', 'Mengenal para pendidik dan tenaga kependidikan SMK Negeri 2 Mojokerto — guru dan staf yang membimbing peserta didik setiap hari.')
 
 @push('styles')
 <style>
 /* =========================================================
+   STAFF & GURU — HERO 100% mengikuti Struktur Organisasi
    GURU & STAF — PREMIUM EDITION
    Visual language: SENADA PERSIS dengan Sejarah Sekolah,
    Struktur Organisasi & Visi Misi — foto gedung + overlay,
@@ -19,67 +57,287 @@
 .sg-page *{box-sizing:border-box}
 .sg-shell{width:100%}
 
-/* ---------- HERO: 100% mengikuti visual Hero halaman Sejarah ---------- */
-.sg-hero{position:relative;min-height:88vh;display:flex;align-items:flex-start;overflow:hidden;
-  background-image:url('{{ asset('images/hero-sekolah.jpg') }}');
-  background-size:cover;background-position:center;background-repeat:no-repeat;color:#fff}
-.sg-hero::before{content:"";position:absolute;inset:0;z-index:1;
-  background:linear-gradient(100deg,rgba(7,22,42,.88) 0%,rgba(9,30,54,.66) 45%,rgba(9,30,54,.30) 78%,rgba(9,30,54,.10) 100%)}
-.sg-hero::after{content:"GURU STAF";position:absolute;z-index:2;right:-2%;top:50%;transform:translateY(-50%);
-  font-family:var(--font-display);font-size:clamp(6rem,22vw,22rem);font-weight:900;line-height:.82;
-  letter-spacing:.02em;color:rgba(255,255,255,.055);-webkit-text-stroke:1px rgba(255,255,255,.07);
-  text-shadow:0 0 90px rgba(13,58,102,.16);pointer-events:none;white-space:nowrap;user-select:none}
-.sg-hero-inner{position:relative;z-index:3;width:100%;max-width:none;margin:0 auto;
-  padding:clamp(3.5rem,9vh,5.5rem) clamp(1.5rem,5vw,5.5rem) clamp(4.5rem,8vh,5.5rem);
-  display:grid;grid-template-columns:minmax(0,1.05fr) minmax(340px,.95fr);gap:4rem;align-items:center}
-.sg-kicker{display:inline-flex;align-items:center;gap:.65rem;font-size:.74rem;font-weight:800;
-  letter-spacing:.18em;text-transform:uppercase;color:#ffd54a;margin-bottom:.6rem}
-.sg-kicker::before{content:"";width:34px;height:3px;border-radius:99px;background:linear-gradient(90deg,#ffd54a,#ffb300)}
-.sg-title{font-family:var(--font-display);font-size:clamp(2.9rem,7vw,6.4rem);line-height:.98;
-  letter-spacing:.01em;margin:0;max-width:900px;text-transform:uppercase;
-  text-shadow:0 2px 24px rgba(4,14,28,.35);animation:hdFadeUp .7s .1s var(--ease,ease) both}
-.sg-title .sg-white{color:#fff;display:inline-block}
-.sg-title .sg-gold{display:inline-block;background:linear-gradient(135deg,#ffe66d 0%,#ffc107 45%,#ff8a00 100%);
-  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#ffc107;
-  text-shadow:0 4px 24px rgba(255,174,0,.18);letter-spacing:.025em}
-.sg-lead{font-size:1.02rem;line-height:1.85;color:rgba(235,245,253,.86);max-width:640px;
-  margin:1.3rem 0 0;animation:hdFadeUp .7s .26s var(--ease,ease) both}
-.sg-hero-meta{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.6rem;animation:hdFadeUp .7s .4s var(--ease,ease) both}
-.sg-pill{display:inline-flex;align-items:center;gap:.5rem;padding:.55rem .85rem;border:1px solid rgba(255,255,255,.2);
-  background:rgba(13,58,102,.30);border-radius:999px;font-size:.72rem;font-weight:800;
-  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
-.sg-pill i{color:#ffd54a}
+/* ---------- HERO: clean editorial showcase, tanpa foto background ---------- */
+.history-hero{position:relative;min-height:78vh;display:flex;align-items:center;overflow:hidden;
+  background:#fff;color:#0d3a66}
+.history-hero::before{display:none}
+/* Watermark besar seperti referensi: sangat tipis, berada di belakang judul */
+.history-hero::after{content:"STAFF & GURU";position:absolute;z-index:0;left:-2%;top:50%;transform:translateY(-50%);
+  font-family:var(--font-display);font-size:clamp(10rem,30vw,30rem);font-weight:900;line-height:.78;
+  letter-spacing:.015em;color:rgba(13,58,102,.035);
+  -webkit-text-stroke:1px rgba(255,122,0,.12);
+  pointer-events:none;white-space:nowrap;user-select:none}
+
+/* ---------- ORNAMEN HERO KHUSUS: GEOMETRIC NETWORK ---------- */
+.history-hero-geometry{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+.history-hero-geometry svg{position:absolute;width:100%;height:100%;inset:0;display:block}
+.history-hero-geometry .geo-line{fill:none;stroke:#ff7a00;stroke-width:1.8;vector-effect:non-scaling-stroke;opacity:.42}
+.history-hero-geometry .geo-line-navy{fill:none;stroke:#0d3a66;stroke-width:1.5;vector-effect:non-scaling-stroke;opacity:.24}
+.history-hero-geometry .geo-node{fill:#fff;stroke:#ff7a00;stroke-width:2;vector-effect:non-scaling-stroke}
+.history-hero-geometry .geo-node-navy{fill:#fff;stroke:#0d3a66;stroke-width:2;vector-effect:non-scaling-stroke}
+.history-hero-geometry .geo-ring{fill:none;stroke:#0d3a66;stroke-width:1.2;opacity:.16}
+.history-hero-geometry .geo-ring-orange{fill:none;stroke:#ff7a00;stroke-width:1.5;opacity:.28}
+.history-hero-geometry .geo-diamond{fill:none;stroke:#ff7a00;stroke-width:1.4;opacity:.30}
+.history-hero-geometry .geo-dot{fill:#ff7a00;opacity:.52}
+.history-hero-geometry .geo-square{fill:#ff7a00;opacity:.9}
+.history-hero-geometry .geo-square-navy{fill:#0d3a66;opacity:.9}
+.history-hero-geometry .geo-soft{fill:#ff7a00;opacity:.055}
+
+/* Kiri atas: pola titik + orbit yang jelas */
+.history-hero-geometry .geo-cluster-left{position:absolute;left:-70px;top:-58px;width:330px;height:250px}
+/* Kanan atas: orbit + diamond sebagai focal decorative element */
+.history-hero-geometry .geo-cluster-right{position:absolute;right:-55px;top:18px;width:360px;height:270px}
+/* Kiri bawah: jalur jaringan dengan node */
+.history-hero-geometry .geo-network-left{position:absolute;left:-35px;bottom:12px;width:500px;height:220px}
+/* Kanan bawah: motif modular, bukan garis acak */
+.history-hero-geometry .geo-modules{position:absolute;right:-25px;bottom:-8px;width:430px;height:210px;transform:rotate(-2deg)}
+
+/* watermark tetap menjadi layer paling belakang */
+.history-hero::after{z-index:0}
+
+.history-hero-inner{position:relative;z-index:3;width:100%;max-width:1500px;margin:0 auto;
+  padding:clamp(4rem,10vh,7rem) clamp(1.25rem,4vw,4.5rem) clamp(4rem,9vh,6rem);
+  display:block}
+
+.history-kicker{display:inline-flex;align-items:center;gap:.65rem;font-size:.72rem;font-weight:900;
+  letter-spacing:.18em;text-transform:uppercase;color:#ff6f00;margin-bottom:1.05rem;
+  padding:.55rem .85rem;border:1px solid rgba(255,111,0,.18);border-radius:999px;
+  background:#fffaf5}
+.history-kicker::before{content:"";width:9px;height:9px;border-radius:50%;
+  background:#ff6f00;box-shadow:0 0 0 6px rgba(255,111,0,.10)}
+
+/* ---------- TITLE: navy + orange, besar seperti referensi ---------- */
+.history-title{font-family:var(--font-display);font-size:clamp(4rem,10vw,9.2rem);line-height:.84;
+  letter-spacing:-.035em;margin:0;max-width:1250px;text-transform:uppercase;
+  text-shadow:none;animation:hdFadeUp .7s .1s var(--ease, ease) both}
+.history-title .sejarah-white{color:#0d3a66;display:block}
+.history-title .skaneda-gold{display:block;
+  background:linear-gradient(135deg,#ffd54a 0%,#ffb300 45%,#ff7a00 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#ff6f00;
+  text-shadow:none;letter-spacing:-.025em}
+
+.history-lead{font-size:1rem;line-height:1.75;color:#52657a;max-width:720px;
+  margin:1.7rem 0 0;animation:hdFadeUp .7s .26s var(--ease, ease) both}
+.history-hero-meta{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.6rem;animation:hdFadeUp .7s .4s var(--ease, ease) both}
+.history-pill{display:inline-flex;align-items:center;gap:.5rem;padding:.55rem .85rem;
+  border:1px solid rgba(13,58,102,.12);background:#fff;border-radius:999px;color:#0d3a66;
+  font-size:.72rem;font-weight:800;box-shadow:0 8px 24px rgba(13,58,102,.06)}
+.history-pill i{color:#ff7a00}
+.hero-photo{display:none}
+.hero-photo::before,.hero-photo img,.hero-photo-caption{display:none}
 @keyframes hdFadeUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
 
-/* ---------- HERO PHOTO: 100% mengikuti Sejarah ---------- */
-.hero-photo{position:relative;height:430px;border-radius:24px;overflow:hidden;
-  border:1px solid rgba(255,255,255,.22);box-shadow:0 35px 90px rgba(0,0,0,.38);
-  transform:rotate(1.5deg);animation:hdFadeUp .8s .35s var(--ease, ease) both}
-.hero-photo::before{content:"";position:absolute;inset:0;z-index:2;
-  background:linear-gradient(180deg,transparent 38%,rgba(4,20,38,.86) 100%)}
-.hero-photo img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.03)}
-.hero-photo-caption{position:absolute;z-index:3;left:1.5rem;right:1.5rem;bottom:1.3rem}
-.hero-photo-caption strong{display:block;font-family:var(--font-display);font-size:1.3rem;font-weight:600;color:#fff}
-.hero-photo-caption span{font-size:.72rem;color:rgba(255,255,255,.74)}
-/* Diamond gold dekoratif di area kanan hero (gaya Sejarah, bukan garis vertikal) */
-.sg-hero-inner::after{content:"";position:absolute;right:44%;top:8%;width:72px;height:72px;
-  border:2px solid rgba(255,213,74,.55);transform:rotate(45deg);pointer-events:none}
+  /* ---------- BRAND CARD: SKANEDA ---------- */
+  .sg-brand-card{
+    width:min(100%,520px);
+    min-height:108px;
+    display:grid !important;
+    grid-template-columns:92px minmax(0,1fr) 38px;
+    align-items:center;
+    gap:1.1rem;
+    margin-top:1.7rem;
+    padding:1rem 1.15rem !important;
+    border-radius:24px !important;
+    text-decoration:none;
+    color:#0d3a66;
+    background:rgba(255,255,255,.94) !important;
+    border:1px solid rgba(13,58,102,.10) !important;
+    box-shadow:0 18px 45px rgba(13,58,102,.12),0 4px 16px rgba(255,170,0,.08) !important;
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+  }
+  .sg-brand-card:hover{
+    transform:translateY(-4px);
+    background:#fff !important;
+    border-color:rgba(255,180,0,.25) !important;
+    box-shadow:0 24px 55px rgba(13,58,102,.16),0 8px 22px rgba(255,170,0,.10) !important;
+  }
+  .sg-brand-logo{
+    width:78px;height:78px;
+    display:grid;place-items:center;
+    border-radius:20px;
+    background:linear-gradient(145deg,#fff,#f4f8fc);
+    border:1px solid rgba(13,58,102,.08);
+    box-shadow:0 8px 20px rgba(13,58,102,.10);
+    overflow:hidden;
+  }
+  .sg-brand-logo img{
+    width:64px;height:64px;object-fit:contain;display:block;
+  }
+  .sg-brand-copy{
+    display:flex;flex-direction:column;gap:.22rem;
+    min-width:0;
+  }
+  .sg-brand-copy strong{
+    font-family:var(--font-display);
+    font-size:1.18rem;
+    line-height:1.15;
+    font-weight:900;
+    color:#0d3a66;
+    white-space:nowrap;
+  }
+  .sg-brand-copy small{
+    font-size:.92rem;
+    line-height:1.35;
+    font-weight:700;
+    color:#5d7893;
+  }
+  .sg-brand-card .history-vt-arrow{
+    color:#ffb300;
+    font-size:1.25rem;
+    justify-self:end;
+  }
 
-/* ---------- CTA "LIHAT VIRTUAL TOUR 360" di hero (gaya Sejarah) ---------- */
-.history-vt-cta{display:inline-flex;align-items:center;gap:.8rem;margin-top:1.45rem;
-  padding:.9rem 1.1rem;border-radius:18px;text-decoration:none;color:#fff;
-  background:rgba(13,58,102,.42);border:1px solid rgba(255,255,255,.22);
-  box-shadow:0 12px 30px rgba(0,0,0,.16);backdrop-filter:blur(9px);
-  transition:transform .3s ease,background .3s ease,border-color .3s ease,box-shadow .3s ease}
-.history-vt-cta:hover{transform:translateY(-4px);background:rgba(13,58,102,.68);
-  border-color:rgba(255,213,74,.5);box-shadow:0 18px 38px rgba(0,0,0,.24)}
-.history-vt-icon{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;
-  background:linear-gradient(135deg,#ffd54a,#ff8a00);color:#0d3a66;font-size:.9rem}
-.history-vt-cta strong{display:block;font-size:1rem;line-height:1.15;font-weight:900;letter-spacing:.01em}
-.history-vt-cta small{display:block;margin-top:.25rem;color:rgba(255,255,255,.78);font-size:.72rem;font-weight:600}
-.history-vt-arrow{margin-left:.3rem;color:#ffd54a;font-size:1rem}
-.sg-hero .history-vt-cta{position:relative;z-index:4}
+  .history-vt-cta{
+    display:inline-flex;align-items:center;gap:.8rem;margin-top:1.7rem;
+    padding:.8rem 1rem;border-radius:16px;text-decoration:none;color:#0d3a66;
+    background:#fff;border:1px solid rgba(13,58,102,.12);
+    box-shadow:0 12px 30px rgba(13,58,102,.08);
+    transition:transform .3s ease,background .3s ease,border-color .3s ease,box-shadow .3s ease
+  }
+  .history-vt-cta:hover{
+    transform:translateY(-4px);background:#fffaf5;
+    border-color:rgba(255,122,0,.28);box-shadow:0 18px 38px rgba(13,58,102,.12)
+  }
+  .history-vt-icon{
+    width:46px;height:46px;border-radius:14px;display:grid;place-items:center;
+    background:linear-gradient(135deg,#ffd54a,#ff7a00);color:#0d3a66;font-size:.9rem
+  }
+  .history-vt-cta strong{display:block;font-size:1rem;line-height:1.15;font-weight:900;letter-spacing:.01em}
+  .history-vt-cta small{display:block;margin-top:.25rem;color:#718096;font-size:.72rem;font-weight:600}
+  .history-vt-arrow{margin-left:.3rem;color:#ffd54a;font-size:1rem}
 
+/* ---------- STAFF & GURU HERO RESPONSIVE (same as Struktur Organisasi) ---------- */
+@media(max-width:700px){
+  .sg-brand-card{
+    width:100%;
+    grid-template-columns:68px minmax(0,1fr) 28px;
+    min-height:86px;
+    padding:.75rem .85rem !important;
+    gap:.75rem;
+    border-radius:18px !important;
+  }
+  .sg-brand-logo{width:58px;height:58px;border-radius:15px}
+  .sg-brand-logo img{width:48px;height:48px}
+  .sg-brand-copy strong{font-size:.92rem;white-space:normal}
+  .sg-brand-copy small{font-size:.72rem}
+  .sg-brand-card .history-vt-arrow{font-size:1rem}
+
+  .history-hero{min-height:70vh}
+  .history-hero-inner{padding-top:3.5rem;padding-bottom:4rem}
+  .history-title{font-size:clamp(3.5rem,16vw,6rem);line-height:.88}
+  .history-hero::after{font-size:clamp(7rem,32vw,12rem);left:-8%}
+}
+
+.history-ref-ornaments{
+  position:absolute;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
+  overflow:hidden;
+}
+.history-ref-ornaments svg{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  display:block;
+}
+.history-ref-ornaments path{
+  fill:none;
+  stroke:#0d3a66;
+  stroke-width:1.8;
+  vector-effect:non-scaling-stroke;
+  opacity:.20;
+}
+.history-ref-ornaments .ref-soft path{
+  stroke:#ff7a00;
+  opacity:.28;
+}
+.history-ref-ornaments .ref-soft-bottom path{
+  stroke:#0d3a66;
+  opacity:.18;
+}
+.history-ref-ornaments .ref-left path{
+  stroke:#0d3a66;
+  opacity:.18;
+}
+.history-ref-ornaments .ref-right path,
+.history-ref-ornaments .ref-bottom path{
+  stroke:#0d3a66;
+  opacity:.23;
+}
+.history-ref-ornaments .ref-diamond-orange{
+  fill:none;
+  stroke:#ff7a00;
+  stroke-width:2;
+  opacity:.52;
+}
+.history-ref-ornaments .ref-hex{
+  fill:none;
+  stroke:#0d3a66;
+  stroke-width:2;
+  opacity:.30;
+}
+.history-ref-ornaments .ref-fill-orange{
+  fill:#ff7a00;
+  opacity:.95;
+}
+.history-ref-ornaments .ref-fill-navy{
+  fill:#0d3a66;
+  opacity:.95;
+}
+.history-ref-ornaments .ref-node-orange{
+  fill:#fff;
+  stroke:#ff7a00;
+  stroke-width:2;
+}
+.history-ref-ornaments .ref-node-navy{
+  fill:#fff;
+  stroke:#0d3a66;
+  stroke-width:2;
+}
+.history-ref-ornaments .ref-orbit{
+  fill:none;
+  stroke:#0d3a66;
+  stroke-width:1.6;
+  opacity:.22;
+}
+.history-ref-ornaments .ref-orbit-orange{
+  fill:none;
+  stroke:#ff7a00;
+  stroke-width:1.6;
+  opacity:.30;
+}
+.history-ref-ornaments .ref-orbit-core{
+  fill:none;
+  stroke:#0d3a66;
+  stroke-width:2.2;
+  opacity:.50;
+}
+.history-ref-ornaments .ref-heavy-orange{
+  fill:none;
+  stroke:#ff7a00;
+  stroke-width:7;
+  opacity:.90;
+}
+.history-ref-ornaments .ref-heavy-navy{
+  fill:none;
+  stroke:#0d3a66;
+  stroke-width:7;
+  opacity:.90;
+}
+.history-ref-ornaments .ref-dots circle{
+  fill:#0d3a66;
+  opacity:.20;
+}
+.history-ref-ornaments .ref-soft rect,
+.history-ref-ornaments .ref-soft-bottom rect{
+  fill:none;
+  stroke:#ff7a00;
+  stroke-width:2;
+  opacity:.45;
+}
 /* ---------- SECTION COMMON (keluarga Beranda) ---------- */
 .sg-wide{width:min(1380px,92%);margin:auto}
 .sg-section{position:relative;padding:96px 0 110px;background:#fff}
@@ -180,9 +438,31 @@
   background:linear-gradient(90deg,#ffd54a,#ffb300,#ff7a00)}
 .idh-head::before{content:"";position:absolute;right:-18px;top:-26px;width:64px;height:64px;
   border:2px solid rgba(255,213,74,.18);transform:rotate(45deg)}
-.idh-logo{flex:0 0 auto;width:32px;height:32px;border-radius:9px;display:grid;place-items:center;
-  background:linear-gradient(135deg,#ffd54a,#ffb300);color:#0d3a66;font-size:.95rem;
-  box-shadow:0 6px 14px rgba(255,179,0,.38)}
+.idh-logo{
+  flex:0 0 auto;
+  width:32px;
+  height:32px;
+  min-width:32px;
+  min-height:32px;
+  border-radius:9px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  background:linear-gradient(135deg,#ffd54a,#ffb300);
+  box-shadow:0 6px 14px rgba(255,179,0,.38);
+}
+.idh-logo img{
+  display:block;
+  width:25px;
+  height:25px;
+  max-width:25px;
+  max-height:25px;
+  object-fit:contain;
+  object-position:center;
+  opacity:1;
+  visibility:visible;
+}
 .idh-brand{min-width:0}
 .idh-school{font-family:var(--font-display);font-size:.7rem;font-weight:900;letter-spacing:.08em;
   text-transform:uppercase;line-height:1.18;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -248,24 +528,24 @@
   border:2px solid rgba(255,213,74,.18);transform:rotate(45deg);pointer-events:none}
 .idback-head{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;padding:.62rem .9rem .5rem;
   border-bottom:1px solid rgba(255,255,255,.12)}
-.idback-head .id-school{font-size:.66rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;line-height:1.2;font-family:var(--font-display)}
-.idback-head .id-school-sub{font-size:.46rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.62);margin-top:.1rem;font-weight:700}
+.idback-head .id-school{font-size:.88rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;line-height:1.2;font-family:var(--font-display)}
+.idback-head .id-school-sub{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.72);margin-top:.14rem;font-weight:700}
 .idback-body{flex:1;overflow:auto;padding:.62rem .85rem .7rem;display:flex;flex-direction:column}
 .idback-label{display:inline-flex;align-items:center;gap:.35rem;font-size:.52rem;font-weight:800;
   letter-spacing:.2em;text-transform:uppercase;color:#ffd54a;margin-bottom:.4rem}
 .idback-label::before{content:"";width:16px;height:2px;border-radius:99px;
   background:linear-gradient(90deg,#ffd54a,#ffb300)}
-.idback-bio{font-size:.62rem;line-height:1.65;color:rgba(235,245,253,.85);margin:0 0 .6rem;
+.idback-bio{font-size:.78rem;line-height:1.55;color:rgba(235,245,253,.9);margin:0 0 .6rem;
   display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .idback-quote{position:relative;margin-top:auto;padding:.55rem .7rem;border-radius:10px;
   background:rgba(255,255,255,.07);border:1px solid rgba(255,213,74,.22)}
 .idback-quote::before{content:"\201C";position:absolute;top:-.3rem;left:.5rem;font-family:Georgia,serif;
   font-size:1.5rem;color:#ffd54a;line-height:1}
-.idback-quote p{font-size:.58rem;line-height:1.55;color:#f3e9d6;font-style:italic;margin:0}
+.idback-quote p{font-size:.72rem;line-height:1.5;color:#f3e9d6;font-style:italic;margin:0}
 .idback-quote p::after{content:"\201D";color:#ffd54a;font-style:normal}
 .idback-foot{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;padding:.45rem .85rem .6rem;
   border-top:1px solid rgba(255,255,255,.1)}
-.idback-foot span{font-size:.48rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;
+.idback-foot span{font-size:.58rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
   color:rgba(255,255,255,.62)}
 .idback-foot i{color:#ffd54a;font-size:.56rem}
 
@@ -349,6 +629,40 @@
 .sg-cta-btn:hover{transform:translateY(-4px);box-shadow:0 22px 46px rgba(255,138,0,.5)}
 .sg-cta-btn i{transition:transform .3s ease}
 .sg-cta-btn:hover i{transform:translateX(5px)}
+
+/* ---------- CTA PENUTUP: DIPERKECIL + JARAK FOOTER ---------- */
+.sg-cta{
+  width:min(1100px,92%) !important;
+  margin:4.6rem auto 7rem !important;
+  padding:62px 34px 70px !important;
+  box-sizing:border-box !important;
+}
+.sg-cta-inner{width:min(680px,90%) !important}
+.sg-cta h3{
+  font-size:clamp(1.65rem,3.2vw,2.65rem) !important;
+  line-height:1.1 !important;
+  margin-bottom:.9rem !important;
+}
+.sg-cta p{
+  max-width:560px !important;
+  font-size:.9rem !important;
+  line-height:1.7 !important;
+  margin-bottom:1.55rem !important;
+}
+.sg-cta-btn{
+  padding:.82rem 1.7rem !important;
+  font-size:.86rem !important;
+}
+.sg-cta::after{font-size:clamp(3rem,9vw,7rem) !important;bottom:-28px !important}
+@media(max-width:700px){
+  .sg-cta{
+    margin-top:3rem !important;
+    margin-bottom:5.5rem !important;
+    padding:54px 0 62px !important;
+  }
+  .sg-cta h3{font-size:clamp(1.5rem,7.5vw,2.15rem) !important}
+  .sg-cta p{font-size:.82rem !important;line-height:1.65 !important}
+}
 
 /* ---------- ORNAMEN (home-orn) ---------- */
 .home-orn{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
@@ -447,7 +761,7 @@
   .history-vt-cta{width:min(100%,340px)}
   .sg-grid{grid-template-columns:1fr;max-width:340px;margin:0 auto}
   .sg-section,.sg-intro,.sg-catalog{padding:85px 0 90px}
-  .sg-cta{padding:70px 0 80px;margin-bottom:4.5rem;width:92%;margin-left:auto;margin-right:auto}
+  .sg-cta{width:92%;margin:3rem auto 5.5rem !important;padding:54px 22px 62px !important;box-sizing:border-box !important}
   .sg-toolbar{padding:.9rem}
   .sg-wrap{width:92%}
   .home-orn .ho-chevron{width:220px;height:220px}
@@ -459,7 +773,54 @@
   .sg-hero .home-orn .ho-chevron{left:-120px;bottom:-40px}
   [data-reveal]{opacity:1;transform:none}
 }
+
+/* ---------- HERO STAFF & GURU: FINAL COLOR / LAYER FIX ---------- */
+.sg-title .sg-gold{
+  background:linear-gradient(135deg,#ffd54a 0%,#ffb300 45%,#ff7a00 100%) !important;
+  -webkit-background-clip:text !important;
+  background-clip:text !important;
+  -webkit-text-fill-color:transparent !important;
+  color:#ffc107 !important;
+  text-shadow:0 4px 24px rgba(255,174,0,.18) !important;
+}
+.history-ref-ornament-image{
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  display:block!important;
+  object-fit:cover!important;
+  object-position:center center!important;
+  max-width:none!important;
+  opacity:1!important;
+}
+.history-hero-inner{
+  position:relative!important;
+  z-index:4!important;
+}
+.history-title,.history-kicker,.history-vt-cta{
+  position:relative!important;
+  z-index:5!important;
+}
+@media(max-width:900px){
+  .history-ref-ornament-image{object-position:center center!important;opacity:.88!important}
+}
+@media(max-width:560px){
+  .history-ref-ornament-image{object-position:center center!important;opacity:.62!important}
+}
+
 </style>
+
+
+<style id="staff-guru-virtual-tour-hero-final">
+  .history-vt-cta{width:max-content;max-width:100%}
+  .history-vt-cta .history-vt-icon{flex:0 0 46px}
+  @media(max-width:700px){
+    .history-vt-cta{width:min(100%,340px)}
+    .history-vt-cta .history-vt-arrow{margin-left:auto}
+  }
+</style>
+
 @endpush
 
 @section('content')
@@ -491,30 +852,27 @@
 <div class="sg-page">
 
   <!-- HERO — visual 100% mengikuti Hero halaman Sejarah -->
-  <section class="sg-hero">
-    <div class="home-orn" aria-hidden="true">
-      <span class="ho-chevron"></span><span class="ho-line"></span><span class="ho-dots"></span>
-      <span class="ho-ring"></span><span class="ho-gold"></span><span class="ho-square"></span><span class="ho-corner"></span>
+  <section class="history-hero">
+    <div class="history-ref-ornaments" aria-hidden="true">
+      <img
+        src="{{ asset('images/wide_minimalist_abstract_technology_background_des.png') }}"
+        alt=""
+        class="history-ref-ornament-image"
+        aria-hidden="true"
+      >
     </div>
-    <div class="sg-hero-inner">
+    <div class="history-hero-inner">
       <div>
-        <div class="sg-kicker">Guru &amp; Staf</div>
-        <h1 class="sg-title"><span class="sg-white">GURU &amp;</span> <span class="sg-gold">STAF</span></h1>
-        <p class="sg-lead">Di balik setiap keberhasilan siswa, ada sosok yang sabar membimbing. Kenali para pendidik dan tenaga kependidikan SMK Negeri 2 Mojokerto yang mengabdi dengan sepenuh hati.</p>
-        <a class="history-vt-cta" href="#virtual-tour">
+        <div class="history-kicker"></div>
+        <h3 class="history-title">
+          <span class="sejarah-white">STAFF &amp;</span>
+          <span class="skaneda-gold">GURU</span>
+        </h3>
+        <a class="history-vt-cta" href="#virtual-tour" aria-label="Lihat Virtual Tour 360 derajat SMK Negeri 2 Mojokerto">
           <span class="history-vt-icon"><i class="fas fa-street-view"></i></span>
-          <span><strong>Lihat Virtual Tour 360&deg;</strong><small>Jelajahi SMK Negeri 2 Mojokerto</small></span>
-          <i class="fas fa-arrow-right history-vt-arrow"></i>
+          <span><strong>Lihat Virtual Tour 360°</strong><small>Jelajahi SMK Negeri 2 Mojokerto</small></span>
+          <i class="fas fa-arrow-right history-vt-arrow" aria-hidden="true"></i>
         </a>
-        <div class="sg-hero-meta">
-          <span class="sg-pill"><i class="fas fa-chalkboard-user"></i> {{ $jumlahGuru ?? 60 }}+ Guru</span>
-          <span class="sg-pill"><i class="fas fa-users-gear"></i> {{ $jumlahStaf ?? 25 }}+ Staf</span>
-          <span class="sg-pill"><i class="fas fa-heart"></i> Satu keluarga besar</span>
-        </div>
-      </div>
-      <div class="hero-photo" data-reveal="right">
-        <img src="{{ asset('images/smkn-guru.jpg') }}" alt="Guru dan staf SMK Negeri 2 Mojokerto" loading="eager">
-        <div class="hero-photo-caption"><strong>Orang-orang di balik perjalanan</strong><span>Guru, tenaga kependidikan, dan keluarga besar SMKN 2 Mojokerto.</span></div>
       </div>
     </div>
   </section>
@@ -525,7 +883,7 @@
       <div class="intro-grid">
         <div data-reveal>
           <div class="eyebrow">Siapa Mereka</div>
-          <h2 class="big-heading">Pilar pendidikan <span>yang tak lelah.</span></h2>
+          <h2 class="big-heading">PILAR PENDIDIKAN <span>YANG TAK</span></h2>
           <p class="intro-copy">Guru dan staf adalah ujung tombak layanan pendidikan di SMK Negeri 2 Mojokerto. Mereka tidak hanya mengajar di kelas — tetapi juga membimbing, melayani, dan menginspirasi peserta didik setiap hari. Ketuk kartu di bawah untuk mengenal lebih dekat profil dan semangat mereka.</p>
         </div>
         <div class="stat-strip" data-reveal="right">
@@ -565,7 +923,7 @@
     <div class="sg-wrap">
       <div class="sg-sec-head" data-reveal>
         <div class="eyebrow">Kartu Identitas</div>
-        <h2 class="big-heading">Ketuk kartu, <span>kenali pribadinya.</span></h2>
+        <h2 class="big-heading">KETUK KARTU, <span>KENALI PRIBADINYA</span></h2>
         <p class="sg-sec-desc">Setiap kartu dapat dibalik — bagian depan menampilkan identitas, sedangkan bagian belakang berisi profil singkat dan motto dari masing-masing guru dan staf.</p>
       </div>
 
@@ -601,7 +959,9 @@
               {{-- DEPAN --}}
               <div class="idface idfront">
                 <div class="idh-head">
-                  <span class="idh-logo" aria-hidden="true"><i class="fas fa-graduation-cap"></i></span>
+                  <span class="idh-logo" aria-hidden="true">
+  <img src="{{ asset('images/logo_smkn2.png') }}" alt="Logo SMKN 2 Mojokerto">
+</span>
                   <div class="idh-brand">
                     <div class="idh-school">SMK Negeri 2 Mojokerto</div>
                     <div class="idh-sub">Sekolah Vokasi Unggulan</div>
@@ -671,7 +1031,9 @@
               {{-- DEPAN --}}
               <div class="idface idfront">
                 <div class="idh-head">
-                  <span class="idh-logo" aria-hidden="true"><i class="fas fa-building-columns"></i></span>
+                  <span class="idh-logo" aria-hidden="true">
+                    <img src="{{ asset('images/logo_smkn2.png') }}" alt="Logo SMKN 2 Mojokerto">
+                  </span>
                   <div class="idh-brand">
                     <div class="idh-school">SMK Negeri 2 Mojokerto</div>
                     <div class="idh-sub">Sekolah Vokasi Unggulan</div>

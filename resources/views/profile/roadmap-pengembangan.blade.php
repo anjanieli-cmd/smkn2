@@ -473,39 +473,169 @@
   .rm-goal-metrics{grid-template-columns:1fr}
 }
 </style>
+
+<style id="staff-guru-hero-only-final">
+/* ==========================================================
+   HERO STAFF & GURU — HANYA HERO YANG DIROMBAK
+   Mengikuti proporsi/layout visual HERO SEJARAH.
+   Bagian intro, statistik, kartu guru/staff, footer, dll
+   sengaja TIDAK diubah.
+   ========================================================== */
+
+.sg-history-hero{
+  position:relative!important;
+  min-height:calc(100vh - 120px)!important;
+  height:520px!important;
+  display:flex!important;
+  align-items:center!important;
+  overflow:hidden!important;
+  background:#fff!important;
+  color:#0d3a66!important;
+  border-radius:0!important;
+  isolation:isolate!important;
+}
+
+.sg-history-hero .history-ref-ornaments{
+  position:absolute!important;
+  inset:0!important;
+  z-index:0!important;
+  overflow:hidden!important;
+}
+
+.sg-history-hero .history-ref-ornament-image{
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  max-width:none!important;
+  object-fit:cover!important;
+  object-position:center center!important;
+  opacity:1!important;
+  display:block!important;
+}
+
+.sg-history-hero .history-hero-inner{
+  position:relative!important;
+  z-index:3!important;
+  width:100%!important;
+  max-width:1500px!important;
+  height:100%!important;
+  margin:0 auto!important;
+  padding:0 4.5vw!important;
+  display:flex!important;
+  align-items:center!important;
+}
+
+.sg-history-hero .sg-history-copy{
+  width:100%!important;
+  padding-top:20px!important;
+}
+
+.sg-history-hero .history-title{
+  position:relative!important;
+  z-index:4!important;
+  margin:0!important;
+  padding:0!important;
+  font-family:var(--font-display)!important;
+  font-size:clamp(5.8rem,10.8vw,10.5rem)!important;
+  line-height:.84!important;
+  letter-spacing:-.045em!important;
+  font-weight:900!important;
+  text-transform:uppercase!important;
+  text-shadow:none!important;
+}
+
+.sg-history-hero .history-title .sejarah-white{
+  display:block!important;
+  color:#0d3a66!important;
+  -webkit-text-fill-color:#0d3a66!important;
+}
+
+.sg-history-hero .history-title .skaneda-gold{
+  display:block!important;
+  color:#ff8a00!important;
+  background:linear-gradient(135deg,#ffd54a 0%,#ffb300 45%,#ff7a00 100%)!important;
+  -webkit-background-clip:text!important;
+  background-clip:text!important;
+  -webkit-text-fill-color:transparent!important;
+}
+
+.sg-history-hero::after{
+  content:"STAFF & GURU"!important;
+  position:absolute!important;
+  z-index:1!important;
+  left:3%!important;
+  bottom:-2%!important;
+  font-family:var(--font-display)!important;
+  font-size:clamp(8rem,23vw,23rem)!important;
+  font-weight:900!important;
+  line-height:.72!important;
+  letter-spacing:.015em!important;
+  color:rgba(13,58,102,.035)!important;
+  -webkit-text-stroke:1px rgba(255,122,0,.10)!important;
+  white-space:nowrap!important;
+  pointer-events:none!important;
+  user-select:none!important;
+}
+
+/* Jangan tampilkan kicker/CTA lama bila ada style lama yang masih aktif. */
+.sg-history-hero .history-kicker,
+.sg-history-hero .history-vt-cta{
+  display:none!important;
+}
+
+@media (max-width:900px){
+  .sg-history-hero{
+    height:470px!important;
+    min-height:470px!important;
+  }
+  .sg-history-hero .history-title{
+    font-size:clamp(4.7rem,12vw,7.5rem)!important;
+  }
+  .sg-history-hero .history-ref-ornament-image{
+    object-position:center center!important;
+    opacity:.9!important;
+  }
+}
+
+@media (max-width:560px){
+  .sg-history-hero{
+    height:430px!important;
+    min-height:430px!important;
+  }
+  .sg-history-hero .history-hero-inner{
+    padding:0 1.25rem!important;
+  }
+  .sg-history-hero .history-title{
+    font-size:clamp(3.5rem,16vw,5.4rem)!important;
+  }
+  .sg-history-hero .history-ref-ornament-image{
+    opacity:.72!important;
+  }
+}
+</style>
 @endpush
 
 @section('content')
 <div class="rm-page">
 
-  <!-- HERO -->
-  <section class="rm-hero">
-    <div class="home-orn" aria-hidden="true">
-      <span class="ho-chevron"></span>
-      <span class="ho-line"></span>
-      <span class="ho-dots"></span>
-      <span class="ho-ring"></span>
-      <span class="ho-gold"></span>
-      <span class="ho-square"></span>
-      <span class="ho-corner"></span>
+  <!-- HERO — 100% mengikuti HERO Staff & Guru -->
+<section class="history-hero sg-history-hero roadmap-hero-exact">
+    <div class="history-ref-ornaments" aria-hidden="true">
+      <img
+        src="{{ asset('images/wide_minimalist_abstract_technology_background_des.png') }}"
+        alt=""
+        class="history-ref-ornament-image"
+        aria-hidden="true"
+      >
     </div>
 
-    <div class="rm-hero-inner">
-      <div>
-        <div class="rm-kicker">Peta Jalan Pengembangan Sekolah</div>
-        <h1 class="rm-title">
-          <span class="rm-white">ROADMAP</span> <span class="rm-gold">SKANEDA</span>
+    <div class="history-hero-inner">
+      <div class="sg-history-copy">
+        <h1 class="history-title">
+          <span class="sejarah-white">ROADMAP</span>
+          <span class="skaneda-gold">SKANEDA</span>
         </h1>
-        <div class="rm-hero-meta" aria-label="Ringkasan roadmap">
-          <span class="rm-pill"><i class="fas fa-route"></i> Roadmap 2025&ndash;2030</span>
-          <span class="rm-pill"><i class="fas fa-layer-group"></i> 6 Fase Pengembangan</span>
-          <span class="rm-pill"><i class="fas fa-flag-checkered"></i> Target 2030</span>
-        </div>
-      </div>
-
-      <div class="hero-photo" data-reveal="right">
-        <img src="{{ asset('images/smkn-guru.jpg') }}" alt="Keluarga besar SMK Negeri 2 Mojokerto" loading="eager">
-        <div class="hero-photo-caption"><strong>Roadmap Skaneda</strong><span>Bersama melangkah menuju vokasi unggul.</span></div>
       </div>
     </div>
   </section>
@@ -526,7 +656,7 @@
       <div class="intro-grid">
         <div data-reveal>
           <div class="eyebrow">Arah pengembangan</div>
-          <h2 class="big-heading">Melangkah pasti, <span>berkarya nyata.</span></h2>
+          <h2 class="big-heading">MELANGKAH PASTI, <span>BERKARYA NYATA</span></h2>
           <p class="intro-copy">Roadmap ini menjadi penunjuk arah bersama bagi seluruh warga sekolah: guru, tenaga kependidikan, peserta didik, orang tua, hingga mitra dunia usaha dan industri. Setiap fase dirancang dengan target konkret, indikator keberhasilan, dan semangat gotong royong — agar setiap langkah kecil hari ini bermuara pada lompatan besar di masa depan.</p>
         </div>
         <div class="stat-strip" data-reveal="right">
@@ -566,7 +696,7 @@
     <div class="rm-wide">
       <div data-reveal>
         <div class="eyebrow">Pilar strategis</div>
-        <h2 class="big-heading">Lima pilar yang <span>menopang perjalanan.</span></h2>
+        <h2 class="big-heading">LIMA PILAR YANG <span>MENOMPANG PERJALANAN</span></h2>
         <p class="rm-sec-desc">Seluruh program dalam roadmap bertumpu pada lima pilar strategis yang saling memperkuat — dari mutu pembelajaran hingga budaya sekolah.</p>
       </div>
 
@@ -622,7 +752,7 @@
     </div>
 
     <div class="timeline-head" data-reveal>
-      <div><div class="eyebrow">The roadmap</div><h2 class="big-heading">Enam fase menuju <span>2030.</span></h2></div>
+      <div><div class="eyebrow">The roadmap</div><h2 class="big-heading">ENAM FASE MENUJU <span>2030.</span></h2></div>
       <div class="timeline-note">Geser ke bawah untuk menelusuri setiap fase pengembangan &mdash; dari fondasi yang kuat hingga target menjadi sekolah vokasi rujukan nasional.</div>
     </div>
 
