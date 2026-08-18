@@ -3065,7 +3065,7 @@
               </div>
               <div class="so-photo-wrap">
                 <span class="so-photo-ring" aria-hidden="true"></span>
-                <div class="so-photo"><img src="{{ asset('images/struktur/pimpinan.jpeg') }}" alt="Foto Kepala Sekolah" loading="lazy"></div>
+                <div class="so-photo"><img src="{{ asset('images/struktur/pimpinan.png') }}" alt="Foto Kepala Sekolah" loading="lazy"></div>
                 <span class="so-photo-tag is-gold"><i class="fas fa-star"></i></span>
               </div>
               <div class="so-feed-actions" aria-label="Interaksi postingan">
@@ -3129,7 +3129,7 @@
                 <i class="far fa-bookmark so-bookmark" aria-hidden="true"></i>
               </div>
               <h3 class="so-card-name">Wakil Kepala Sekolah</h3>
-              <div class="so-card-person">Ainur Rofik, M. Pd., Si</div>
+              <div class="so-card-person">Nama Waka Kesiswaan</div>
               <div class="so-card-role"><i class="fas fa-briefcase"></i> Bidang Kesiswaan</div>
               <p class="so-card-unit">Pembinaan &amp; layanan peserta didik</p>
             </article>
