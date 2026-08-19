@@ -2135,7 +2135,7 @@
     <div class="out-copy" data-reveal="left">
       <div class="out-kicker">Featured Alumni</div>
       <h2 class="out-title">Lulusan <span class="gold">Terbaik</span></h2>
-      <p class="out-desc">Lulusan terbaik SMK Negeri 2 Mojokerto melanjutkan ke dunia kerja, pendidikan tinggi, maupun bidang profesional &mdash; dibekali kompetensi vokasi yang relevan dengan kebutuhan industri.</p>
+      <p class="out-desc">Lulusan terbaik SMK Negeri 2 Mojokerto dari berbagai program keahlian. Pilih jurusan untuk melihat lulusan terbaiknya, atau gunakan panah dan geser kartu untuk menjelajah.</p>
       <div class="out-route">
         <span class="out-route-node"><i class="fa-solid fa-briefcase"></i> Dunia Kerja</span>
         <span class="out-route-node gold"><i class="fa-solid fa-graduation-cap"></i> Pendidikan Tinggi</span>
@@ -2144,65 +2144,173 @@
 
     <div class="out-id-stage" data-reveal style="--d:1">
       <div class="out-jurusan-filter" aria-label="Koleksi jurusan lulusan">
-        <div class="out-jurusan-label"><span>KOLEKSI JURUSAN</span><small>Telusuri lulusan terbaik berdasarkan jurusan</small></div>
+        <div class="out-jurusan-label"><span>KOLEKSI JURUSAN</span><small>Pilih jurusan untuk melihat lulusan terbaik</small></div>
         <div class="out-jurusan-list">
-          <button class="out-jurusan-pill active" type="button">RPL</button>
-          <button class="out-jurusan-pill" type="button">KULINER</button>
-          <button class="out-jurusan-pill" type="button">LPS</button>
-          <button class="out-jurusan-pill" type="button">DKV</button>
-          <button class="out-jurusan-pill" type="button">APHP</button>
+          <button class="out-jurusan-pill active" type="button" data-alumni-index="0" aria-label="Lulusan terbaik RPL">RPL</button>
+          <button class="out-jurusan-pill" type="button" data-alumni-index="1" aria-label="Lulusan terbaik Kuliner">KULINER</button>
+          <button class="out-jurusan-pill" type="button" data-alumni-index="2" aria-label="Lulusan terbaik LPS">LPS</button>
+          <button class="out-jurusan-pill" type="button" data-alumni-index="3" aria-label="Lulusan terbaik DKV">DKV</button>
+          <button class="out-jurusan-pill" type="button" data-alumni-index="4" aria-label="Lulusan terbaik APHP">APHP</button>
         </div>
       </div>
+
       <div class="out-id-viewport">
         <div class="out-id-track" id="alumniTrack">
-          <div class="out-id-slide">
+          <div class="out-id-slide" data-alumni-slide="0" data-jurusan="RPL">
             <article class="out-id-card">
-              <div class="out-id-photo"><img src="{{ asset('images/smkn-guru.jpg') }}" alt="Lulusan terbaik SMK Negeri 2 Mojokerto" loading="lazy"></div>
+              <div class="out-id-photo"><img src="{{ asset('images/rovino.png') }}" alt="Lulusan terbaik RPL SMK Negeri 2 Mojokerto" loading="lazy"></div>
               <div class="out-id-info">
                 <div class="out-id-brand"><img src="{{ asset('images/logo_smkn2.png') }}" alt="SKANEDA"> SKANEDA Alumni</div>
-                <span class="out-id-code">ALM-01 / 2026</span>
-                <h3 class="out-id-name">Nama Lulusan Terbaik</h3>
-                <div class="out-id-role">Alumni &mdash; Dunia Kerja</div>
+                <span class="out-id-code">RPL / 2024</span>
+                <h3 class="out-id-name">Rovino Ramadhani</h3>
+                <div class="out-id-role">Lulusan Terbaik — RPL</div>
                 <div class="out-id-line"></div>
                 <div class="out-id-meta">
-                  <div><small>Tahun</small><b>2026</b></div>
+                  <div><small>Tahun</small><b>2024</b></div>
                   <div><small>Status</small><b>Lulusan Terbaik</b></div>
-                  <div><small>Posisi</small><b>Posisi / Perusahaan &mdash; data menyusul</b></div>
+                  <div><small>Jurusan</small><b>Rekayasa Perangkat Lunak</b></div>
                   <div><small>Institusi</small><b>SMK Negeri 2 Mojokerto</b></div>
                 </div>
                 <div class="out-id-footer"><span class="out-id-chip"><i class="fa-solid fa-star"></i> Featured Alumni</span><span class="out-id-barcode"></span></div>
               </div>
             </article>
           </div>
-          <div class="out-id-slide">
+          <div class="out-id-slide" data-alumni-slide="1" data-jurusan="KULINER">
             <article class="out-id-card">
-              <div class="out-id-photo"><div class="placeholder">FOTO ALUMNI</div></div>
+              <div class="out-id-photo"><img src="{{ asset('images/husein.png') }}" alt="Lulusan terbaik Kuliner SMK Negeri 2 Mojokerto" loading="lazy"></div>
               <div class="out-id-info">
                 <div class="out-id-brand"><img src="{{ asset('images/logo_smkn2.png') }}" alt="SKANEDA"> SKANEDA Alumni</div>
-                <span class="out-id-code">ALM-02 / 2026</span>
-                <h3 class="out-id-name">Nama Lulusan Terbaik</h3>
-                <div class="out-id-role">Alumni &mdash; Pendidikan Tinggi</div>
+                <span class="out-id-code">KUL / 2024</span>
+                <h3 class="out-id-name">Ahmed Husein Jalili</h3>
+                <div class="out-id-role">Lulusan Terbaik — KULINER</div>
                 <div class="out-id-line"></div>
                 <div class="out-id-meta">
-                  <div><small>Tahun</small><b>2026</b></div>
+                  <div><small>Tahun</small><b>2024</b></div>
                   <div><small>Status</small><b>Lulusan Terbaik</b></div>
-                  <div><small>Tujuan</small><b>PTN / Program Studi &mdash; data menyusul</b></div>
+                  <div><small>Jurusan</small><b>Kuliner</b></div>
                   <div><small>Institusi</small><b>SMK Negeri 2 Mojokerto</b></div>
                 </div>
-                <div class="out-id-footer"><span class="out-id-chip"><i class="fa-solid fa-graduation-cap"></i> Featured Alumni</span><span class="out-id-barcode"></span></div>
+                <div class="out-id-footer"><span class="out-id-chip"><i class="fa-solid fa-star"></i> Featured Alumni</span><span class="out-id-barcode"></span></div>
+              </div>
+            </article>
+          </div>
+          <div class="out-id-slide" data-alumni-slide="2" data-jurusan="LPS">
+            <article class="out-id-card">
+              <div class="out-id-photo"><img src="{{ asset('images/zidan.png') }}" alt="Lulusan terbaik LPS SMK Negeri 2 Mojokerto" loading="lazy"></div>
+              <div class="out-id-info">
+                <div class="out-id-brand"><img src="{{ asset('images/logo_smkn2.png') }}" alt="SKANEDA"> SKANEDA Alumni</div>
+                <span class="out-id-code">LPS / 2024</span>
+                <h3 class="out-id-name">Zidana Khoiron Alif</h3>
+                <div class="out-id-role">Lulusan Terbaik — LPS</div>
+                <div class="out-id-line"></div>
+                <div class="out-id-meta">
+                  <div><small>Tahun</small><b>2024</b></div>
+                  <div><small>Status</small><b>Lulusan Terbaik</b></div>
+                  <div><small>Jurusan</small><b>Layanan Perbankan Syariah</b></div>
+                  <div><small>Institusi</small><b>SMK Negeri 2 Mojokerto</b></div>
+                </div>
+                <div class="out-id-footer"><span class="out-id-chip"><i class="fa-solid fa-star"></i> Featured Alumni</span><span class="out-id-barcode"></span></div>
+              </div>
+            </article>
+          </div>
+          <div class="out-id-slide" data-alumni-slide="3" data-jurusan="DKV">
+            <article class="out-id-card">
+              <div class="out-id-photo"><img src="{{ asset('images/lola.jpeg') }}" alt="Lulusan terbaik DKV SMK Negeri 2 Mojokerto" loading="lazy"></div>
+              <div class="out-id-info">
+                <div class="out-id-brand"><img src="{{ asset('images/logo_smkn2.png') }}" alt="SKANEDA"> SKANEDA Alumni</div>
+                <span class="out-id-code">DKV / 2024</span>
+                <h3 class="out-id-name">Lola Devina Amidjaja</h3>
+                <div class="out-id-role">Lulusan Terbaik — DKV</div>
+                <div class="out-id-line"></div>
+                <div class="out-id-meta">
+                  <div><small>Tahun</small><b>2024</b></div>
+                  <div><small>Status</small><b>Lulusan Terbaik</b></div>
+                  <div><small>Jurusan</small><b>Desain Komunikasi Visual</b></div>
+                  <div><small>Institusi</small><b>SMK Negeri 2 Mojokerto</b></div>
+                </div>
+                <div class="out-id-footer"><span class="out-id-chip"><i class="fa-solid fa-star"></i> Featured Alumni</span><span class="out-id-barcode"></span></div>
+              </div>
+            </article>
+          </div>
+          <div class="out-id-slide" data-alumni-slide="4" data-jurusan="APHP">
+            <article class="out-id-card">
+              <div class="out-id-photo"><img src="{{ asset('images/faisal.png') }}" alt="Lulusan terbaik APHP SMK Negeri 2 Mojokerto" loading="lazy"></div>
+              <div class="out-id-info">
+                <div class="out-id-brand"><img src="{{ asset('images/logo_smkn2.png') }}" alt="SKANEDA"> SKANEDA Alumni</div>
+                <span class="out-id-code">APHP / 2024</span>
+                <h3 class="out-id-name">Faisal Fikri Rushdi Shihab</h3>
+                <div class="out-id-role">Lulusan Terbaik — APHP</div>
+                <div class="out-id-line"></div>
+                <div class="out-id-meta">
+                  <div><small>Tahun</small><b>2024</b></div>
+                  <div><small>Status</small><b>Lulusan Terbaik</b></div>
+                  <div><small>Jurusan</small><b>Agribisnis Pengolahan Hasil Pertanian</b></div>
+                  <div><small>Institusi</small><b>SMK Negeri 2 Mojokerto</b></div>
+                </div>
+                <div class="out-id-footer"><span class="out-id-chip"><i class="fa-solid fa-star"></i> Featured Alumni</span><span class="out-id-barcode"></span></div>
               </div>
             </article>
           </div>
         </div>
       </div>
+
       <div class="out-slider-controls" aria-label="Navigasi lulusan terbaik">
         <button class="out-arrow" id="alumniPrev" type="button" aria-label="Lulusan sebelumnya"><i class="fa-solid fa-arrow-left"></i></button>
-        <div class="out-dots" id="alumniDots"><button class="out-dot active" type="button" data-index="0" aria-label="Lulusan 1"></button><button class="out-dot" type="button" data-index="1" aria-label="Lulusan 2"></button></div>
+        <div class="out-dots" id="alumniDots" aria-label="Pilihan slide lulusan">
+          <button class="out-dot active" type="button" data-index="0" aria-label="RPL"></button>
+          <button class="out-dot" type="button" data-index="1" aria-label="Kuliner"></button>
+          <button class="out-dot" type="button" data-index="2" aria-label="LPS"></button>
+          <button class="out-dot" type="button" data-index="3" aria-label="DKV"></button>
+          <button class="out-dot" type="button" data-index="4" aria-label="APHP"></button>
+        </div>
         <button class="out-arrow" id="alumniNext" type="button" aria-label="Lulusan berikutnya"><i class="fa-solid fa-arrow-right"></i></button>
       </div>
     </div>
   </div>
 </section>
+
+<style>
+/* ===== LULUSAN TERBAIK: 5 JURUSAN / 5 SLIDE ===== */
+.out-alumni .out-jurusan-pill{cursor:pointer}
+.out-alumni .out-jurusan-pill.active{background:#0d3a66 !important;color:#fff !important;border-color:#0d3a66 !important;box-shadow:0 10px 22px rgba(13,58,102,.16)}
+.out-alumni .out-id-viewport{overflow:hidden}
+.out-alumni .out-id-track{display:flex !important;width:100% !important;transition:transform .58s cubic-bezier(.22,.61,.36,1);will-change:transform}
+.out-alumni .out-id-slide{flex:0 0 100% !important;width:100% !important;min-width:100% !important}
+.out-alumni .out-id-meta{grid-template-columns:repeat(2,minmax(0,1fr))}
+.out-alumni .out-dot{cursor:pointer}
+@media(max-width:700px){.out-alumni .out-id-meta{grid-template-columns:1fr}}
+</style>
+
+<script>
+(function(){
+  var stage=document.querySelector('.out-alumni');
+  var track=document.getElementById('alumniTrack');
+  if(!stage||!track) return;
+  var slides=Array.prototype.slice.call(track.querySelectorAll('.out-id-slide'));
+  var pills=Array.prototype.slice.call(stage.querySelectorAll('.out-jurusan-pill'));
+  var dots=Array.prototype.slice.call(stage.querySelectorAll('#alumniDots .out-dot'));
+  var prev=document.getElementById('alumniPrev'), next=document.getElementById('alumniNext');
+  var total=slides.length,current=0,locked=false,duration=580;
+  function syncUI(index){
+    current=(index+total)%total;
+    track.style.transform='translateX(-'+(current*100)+'%)';
+    pills.forEach(function(btn,i){var active=i===current;btn.classList.toggle('active',active);btn.setAttribute('aria-pressed',active?'true':'false');});
+    dots.forEach(function(dot,i){dot.classList.toggle('active',i===current);});
+    slides.forEach(function(slide,i){slide.setAttribute('aria-hidden',i===current?'false':'true');});
+  }
+  function setActive(index){if(locked||total<2)return;locked=true;syncUI(index);setTimeout(function(){locked=false;},duration);}
+  pills.forEach(function(btn){btn.addEventListener('click',function(){var i=parseInt(btn.dataset.alumniIndex,10);if(!isNaN(i))setActive(i);});});
+  dots.forEach(function(dot){dot.addEventListener('click',function(){var i=parseInt(dot.dataset.index,10);if(!isNaN(i))setActive(i);});});
+  prev&&prev.addEventListener('click',function(){setActive(current-1);});
+  next&&next.addEventListener('click',function(){setActive(current+1);});
+  var startX=0,startY=0,swiping=false;
+  stage.addEventListener('pointerdown',function(e){swiping=true;startX=e.clientX;startY=e.clientY;});
+  stage.addEventListener('pointerup',function(e){if(!swiping)return;swiping=false;var dx=e.clientX-startX,dy=e.clientY-startY;if(Math.abs(dx)>45&&Math.abs(dx)>Math.abs(dy)){if(dx<0)setActive(current+1);else setActive(current-1);}});
+  stage.addEventListener('pointercancel',function(){swiping=false;});
+  document.addEventListener('keydown',function(e){if(e.key==='ArrowLeft')setActive(current-1);if(e.key==='ArrowRight')setActive(current+1);});
+  syncUI(0);
+})();
+</script>
 
 <!-- ================= KERJA SAMA INDUSTRI ================= -->
 <section class="out-sec out-industry" id="kerja-sama-industri" aria-label="Kerja Sama Industri SMK Negeri 2 Mojokerto">

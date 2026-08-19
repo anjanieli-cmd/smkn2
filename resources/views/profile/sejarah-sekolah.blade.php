@@ -2348,12 +2348,34 @@
             <div class="principal-post-head">
               <div class="principal-profile">
                 <span class="principal-avatar"><img src="{{ asset('images/logo_smkn2.png') }}" alt="Logo SMKN 2 Mojokerto" loading="lazy"></span>
-                <div><strong>SMKN 2 Mojokerto</strong><span>Kepemimpinan · 2018-2019</span></div>
+                <div><strong>SMKN 2 Mojokerto</strong><span>Kepemimpinan · 2014-2018</span></div>
               </div>
               <span class="principal-more"><i class="fas fa-ellipsis-h"></i></span>
             </div>
             <div class="principal-photo">
               <img src="{{ asset('images/kepsek1.jpeg') }}" alt="Kepala Sekolah 1" loading="lazy">
+            </div>
+            <div class="principal-post-actions">
+              <i class="far fa-heart"></i><i class="far fa-comment"></i><i class="far fa-paper-plane"></i>
+              <i class="far fa-bookmark spacer"></i>
+            </div>
+            <div class="principal-post-body">
+              <div class="principal-like">Drs. Harol Kristiandoko, M.T.</div>
+              <p class="principal-caption"><strong>Periode kepemimpinan.</strong> Salah satu bagian awal dari perjalanan panjang SMK Negeri 2 Mojokerto.</p>
+              <span class="principal-period">2014 &ndash; 2018</span>
+            </div>
+          </article>
+
+          <article class="principal-post" data-principal data-reveal>
+            <div class="principal-post-head">
+              <div class="principal-profile">
+                <span class="principal-avatar"><img src="{{ asset('images/logo_smkn2.png') }}" alt="Logo SMKN 2 Mojokerto" loading="lazy"></span>
+                <div><strong>SMKN 2 Mojokerto</strong><span>Kepemimpinan · 2014-2018</span></div>
+              </div>
+              <span class="principal-more"><i class="fas fa-ellipsis-h"></i></span>
+            </div>
+            <div class="principal-photo">
+              <img src="{{ asset('images/kepsek2.jpeg') }}" alt="Kepala Sekolah 1" loading="lazy">
             </div>
             <div class="principal-post-actions">
               <i class="far fa-heart"></i><i class="far fa-comment"></i><i class="far fa-paper-plane"></i>
@@ -2375,7 +2397,7 @@
               <span class="principal-more"><i class="fas fa-ellipsis-h"></i></span>
             </div>
             <div class="principal-photo">
-              <img src="{{ asset('images/kepsek2.jpeg') }}" alt="Kepala Sekolah 2" loading="lazy">
+              <img src="{{ asset('images/kepsek3.jpeg') }}" alt="Kepala Sekolah 2" loading="lazy">
             </div>
             <div class="principal-post-actions">
               <i class="far fa-heart"></i><i class="far fa-comment"></i><i class="far fa-paper-plane"></i>
@@ -2397,7 +2419,7 @@
               <span class="principal-more"><i class="fas fa-ellipsis-h"></i></span>
             </div>
             <div class="principal-photo">
-              <img src="{{ asset('images/kepsek3.png') }}" alt="Kepala Sekolah 3" loading="lazy">
+              <img src="{{ asset('images/kepsek4.png') }}" alt="Kepala Sekolah 3" loading="lazy">
             </div>
             <div class="principal-post-actions">
               <i class="far fa-heart"></i><i class="far fa-comment"></i><i class="far fa-paper-plane"></i>
@@ -2419,7 +2441,7 @@
               <span class="principal-more"><i class="fas fa-ellipsis-h"></i></span>
             </div>
             <div class="principal-photo">
-              <img src="{{ asset('images/kepsek4.jpeg') }}" alt="Iswahyudi, S.ST. M.Pd" loading="lazy">
+              <img src="{{ asset('images/kepsek5.jpeg') }}" alt="Iswahyudi, S.ST. M.Pd" loading="lazy">
               <span class="principal-current">Saat Ini</span>
             </div>
             <div class="principal-post-actions">
