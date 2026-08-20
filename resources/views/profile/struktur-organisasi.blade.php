@@ -3039,6 +3039,8 @@
           <button class="so-fchip" data-filter="kesiswaan">Kesiswaan</button>
           <button class="so-fchip" data-filter="sapras">Sarana &amp; Prasarana</button>
           <button class="so-fchip" data-filter="humas">Humas &amp; Industri</button>
+          <button class="so-fchip" data-filter="keuangan">Keuangan</button>
+          <button class="so-fchip" data-filter="keahlian">Kompetensi Keahlian</button>
                   </div>
       </div>
 
@@ -3075,7 +3077,7 @@
                 <i class="far fa-bookmark so-bookmark" aria-hidden="true"></i>
               </div>
               <h3 class="so-card-name">Kepala Sekolah</h3>
-              <div class="so-card-person">Iswahyudi, S.ST. M.Pd</div>
+              <div class="so-card-person">Iswahyudi S.ST. M.Pd.</div>
               <div class="so-card-role"><i class="fas fa-star"></i> Pimpinan</div>
               <p class="so-card-unit">Pemimpin tertinggi organisasi sekolah</p>
             </article>
@@ -3089,7 +3091,7 @@
             <span class="so-level-rule"></span>
           </div>
           <div class="so-grid">
-            <article class="so-card" tabindex="0" data-name="Wakil Kepala Sekolah Bidang Kurikulum" data-role="Wakil Kepala Sekolah" data-unit="Bidang Kurikulum" data-filter="kurikulum" data-detail="waka-kurikulum">
+            <article class="so-card" tabindex="0" data-name="MELATI PUSPITA SARI, S.Pd." data-role="Waka Kurikulum" data-unit="Kurikulum" data-filter="kurikulum" data-detail="waka-kurikulum">
               <div class="so-feed-head">
                 <img src="{{ asset('images/logo_smkn2.png') }}" alt="Logo SKANEDA">
                 <div class="so-feed-account"><strong>SKANEDA</strong><span>SMK Negeri 2 Mojokerto</span></div>
@@ -3097,7 +3099,7 @@
               </div>
               <div class="so-photo-wrap">
                 <span class="so-photo-ring" aria-hidden="true"></span>
-                <div class="so-photo"><img src="{{ asset('images/struktur/waka-kurikulum.jpg') }}" alt="Foto Wakil Kepala Sekolah Bidang Kurikulum" loading="lazy"></div>
+                <div class="so-photo"><img src="{{ asset('images/struktur/melati.png') }}" alt="Foto MELATI PUSPITA SARI, S.Pd." loading="lazy"></div>
                 <span class="so-photo-tag"><i class="fas fa-book-open"></i></span>
               </div>
               <div class="so-feed-actions" aria-label="Interaksi postingan">
@@ -3106,12 +3108,12 @@
                 <i class="far fa-paper-plane" aria-hidden="true"></i>
                 <i class="far fa-bookmark so-bookmark" aria-hidden="true"></i>
               </div>
-              <h3 class="so-card-name">Wakil Kepala Sekolah</h3>
-              <div class="so-card-person">Nama Waka Kurikulum</div>
-              <div class="so-card-role"><i class="fas fa-briefcase"></i> Bidang Kurikulum</div>
-              <p class="so-card-unit">Merencanakan &amp; mengendalikan pembelajaran</p>
+              <h3 class="so-card-name">Waka Kurikulum</h3>
+              <div class="so-card-person">MELATI PUSPITA SARI, S.Pd.</div>
+              <div class="so-card-role"><i class="fas fa-briefcase"></i> Waka Kurikulum</div>
+              <p class="so-card-unit">Perencanaan dan pengelolaan bidang kurikulum.</p>
             </article>
-            <article class="so-card" tabindex="0" data-name="Wakil Kepala Sekolah Bidang Kesiswaan" data-role="Wakil Kepala Sekolah" data-unit="Bidang Kesiswaan" data-filter="kesiswaan" data-detail="waka-kesiswaan">
+            <article class="so-card" tabindex="0" data-name="AINUR ROFIK, M. Pd, Si." data-role="Waka Kesiswaan" data-unit="Kesiswaan" data-filter="kesiswaan" data-detail="waka-kesiswaan">
               <div class="so-feed-head">
                 <img src="{{ asset('images/logo_smkn2.png') }}" alt="Logo SKANEDA">
                 <div class="so-feed-account"><strong>SKANEDA</strong><span>SMK Negeri 2 Mojokerto</span></div>
@@ -3119,7 +3121,7 @@
               </div>
               <div class="so-photo-wrap">
                 <span class="so-photo-ring" aria-hidden="true"></span>
-                <div class="so-photo"><img src="{{ asset('images/struktur/waka-kesiswaan.png') }}" alt="Foto Wakil Kepala Sekolah Bidang Kesiswaan" loading="lazy"></div>
+                <div class="so-photo"><img src="{{ asset('images/struktur/ainur.png') }}" alt="Foto AINUR ROFIK, M. Pd, Si." loading="lazy"></div>
                 <span class="so-photo-tag"><i class="fas fa-users"></i></span>
               </div>
               <div class="so-feed-actions" aria-label="Interaksi postingan">
@@ -3128,12 +3130,12 @@
                 <i class="far fa-paper-plane" aria-hidden="true"></i>
                 <i class="far fa-bookmark so-bookmark" aria-hidden="true"></i>
               </div>
-              <h3 class="so-card-name">Wakil Kepala Sekolah</h3>
-              <div class="so-card-person">Nama Waka Kesiswaan</div>
-              <div class="so-card-role"><i class="fas fa-briefcase"></i> Bidang Kesiswaan</div>
-              <p class="so-card-unit">Pembinaan &amp; layanan peserta didik</p>
+              <h3 class="so-card-name">Waka Kesiswaan</h3>
+              <div class="so-card-person">AINUR ROFIK, M. Pd, Si.</div>
+              <div class="so-card-role"><i class="fas fa-briefcase"></i> Waka Kesiswaan</div>
+              <p class="so-card-unit">Pembinaan dan layanan peserta didik.</p>
             </article>
-            <article class="so-card" tabindex="0" data-name="Wakil Kepala Sekolah Bidang Sarana &amp; Prasarana" data-role="Wakil Kepala Sekolah" data-unit="Bidang Sarana &amp; Prasarana" data-filter="sapras" data-detail="waka-sapras">
+            <article class="so-card" tabindex="0" data-name="M. WIRA HENDY HIMAWAN, M.Pd" data-role="Waka Sarana & Prasarana" data-unit="Sarana & Prasarana" data-filter="sapras" data-detail="waka-sapras">
               <div class="so-feed-head">
                 <img src="{{ asset('images/logo_smkn2.png') }}" alt="Logo SKANEDA">
                 <div class="so-feed-account"><strong>SKANEDA</strong><span>SMK Negeri 2 Mojokerto</span></div>
@@ -3141,7 +3143,7 @@
               </div>
               <div class="so-photo-wrap">
                 <span class="so-photo-ring" aria-hidden="true"></span>
-                <div class="so-photo"><img src="{{ asset('images/struktur/waka-sapras.png') }}" alt="Foto Wakil Kepala Sekolah Bidang Sarana &amp; Prasarana" loading="lazy"></div>
+                <div class="so-photo"><img src="{{ asset('images/struktur/wira.png') }}" alt="Foto M. WIRA HENDY HIMAWAN, M.Pd" loading="lazy"></div>
                 <span class="so-photo-tag"><i class="fas fa-building"></i></span>
               </div>
               <div class="so-feed-actions" aria-label="Interaksi postingan">
@@ -3150,12 +3152,12 @@
                 <i class="far fa-paper-plane" aria-hidden="true"></i>
                 <i class="far fa-bookmark so-bookmark" aria-hidden="true"></i>
               </div>
-              <h3 class="so-card-name">Wakil Kepala Sekolah</h3>
-              <div class="so-card-person">Nama Waka Sapras</div>
-              <div class="so-card-role"><i class="fas fa-briefcase"></i> Bidang Sarana &amp; Prasarana</div>
-              <p class="so-card-unit">Pengelolaan fasilitas &amp; perlengkapan sekolah</p>
+              <h3 class="so-card-name">Waka Sarana & Prasarana</h3>
+              <div class="so-card-person">M. WIRA HENDY HIMAWAN, M.Pd</div>
+              <div class="so-card-role"><i class="fas fa-briefcase"></i> Waka Sarana & Prasarana</div>
+              <p class="so-card-unit">Pengelolaan sarana, prasarana, dan fasilitas sekolah.</p>
             </article>
-            <article class="so-card" tabindex="0" data-name="Wakil Kepala Sekolah Bidang Humas &amp; Industri" data-role="Wakil Kepala Sekolah" data-unit="Bidang Humas &amp; Industri" data-filter="humas" data-detail="waka-humas">
+            <article class="so-card" tabindex="0" data-name="ARIKAWWEKU CKRISNA, S.Pd." data-role="Waka Humastri" data-unit="Humastri" data-filter="humas" data-detail="waka-humas">
               <div class="so-feed-head">
                 <img src="{{ asset('images/logo_smkn2.png') }}" alt="Logo SKANEDA">
                 <div class="so-feed-account"><strong>SKANEDA</strong><span>SMK Negeri 2 Mojokerto</span></div>
@@ -3163,7 +3165,7 @@
               </div>
               <div class="so-photo-wrap">
                 <span class="so-photo-ring" aria-hidden="true"></span>
-                <div class="so-photo"><img src="{{ asset('images/struktur/waka-humas.png') }}" alt="Foto Wakil Kepala Sekolah Bidang Humas &amp; Industri" loading="lazy"></div>
+                <div class="so-photo"><img src="{{ asset('images/struktur/arikawweku.png') }}" alt="Foto ARIKAWWEKU CKRISNA, S.Pd." loading="lazy"></div>
                 <span class="so-photo-tag"><i class="fas fa-handshake"></i></span>
               </div>
               <div class="so-feed-actions" aria-label="Interaksi postingan">
@@ -3172,22 +3174,22 @@
                 <i class="far fa-paper-plane" aria-hidden="true"></i>
                 <i class="far fa-bookmark so-bookmark" aria-hidden="true"></i>
               </div>
-              <h3 class="so-card-name">Wakil Kepala Sekolah</h3>
-              <div class="so-card-person">Nama Waka Humas</div>
-              <div class="so-card-role"><i class="fas fa-briefcase"></i> Bidang Humas &amp; Industri</div>
-              <p class="so-card-unit">Kemitraan dunia usaha/dunia industri</p>
+              <h3 class="so-card-name">Waka Humastri</h3>
+              <div class="so-card-person">ARIKAWWEKU CKRISNA, S.Pd.</div>
+              <div class="so-card-role"><i class="fas fa-briefcase"></i> Waka Humastri</div>
+              <p class="so-card-unit">Hubungan sekolah dengan masyarakat dan dunia industri.</p>
             </article>
           </div>
         </div>
 
-        {{-- ===== LEVEL 3: KOORDINATOR ===== --}}
+        {{-- ===== LEVEL 3: BENDAHARA, KETUA KOMPETENSI KEAHLIAN & KOORDINATOR ===== --}}
         <div class="so-level so-anchor" id="level-3" data-level="3">
           <div class="so-level-head">
-            <span class="so-level-badge"><i class="fas fa-layer-group"></i> Level 3 &mdash; Koordinator</span>
+            <span class="so-level-badge"><i class="fas fa-layer-group"></i> Level 3 &mdash; Unit Pelaksana &amp; Koordinator</span>
             <span class="so-level-rule"></span>
           </div>
           <div class="so-grid cols-5">
-            <article class="so-card" tabindex="0" data-name="Koordinator Bidang Kurikulum" data-role="Koordinator" data-unit="Bidang Kurikulum" data-filter="kurikulum" data-detail="kor-kurikulum">
+            <article class="so-card" tabindex="0" data-name="MEGA NOVINDA SARI, S.Pd." data-role="Bendahara BOS" data-unit="Keuangan" data-filter="keuangan" data-detail="bendahara-bos">
               <div class="so-feed-head">
                 <img src="{{ asset('images/logo_smkn2.png') }}" alt="Logo SKANEDA">
                 <div class="so-feed-account"><strong>SKANEDA</strong><span>SMK Negeri 2 Mojokerto</span></div>
@@ -3195,8 +3197,8 @@
               </div>
               <div class="so-photo-wrap">
                 <span class="so-photo-ring" aria-hidden="true"></span>
-                <div class="so-photo"><img src="{{ asset('images/struktur/kor-kurikulum.png') }}" alt="Foto Koordinator Bidang Kurikulum" loading="lazy"></div>
-                <span class="so-photo-tag"><i class="fas fa-calendar-check"></i></span>
+                <div class="so-photo"><img src="{{ asset('images/struktur/mega.png') }}" alt="Foto MEGA NOVINDA SARI, S.Pd." loading="lazy"></div>
+                <span class="so-photo-tag"><i class="fas fa-money-bill-wave"></i></span>
               </div>
               <div class="so-feed-actions" aria-label="Interaksi postingan">
                 <i class="far fa-heart" aria-hidden="true"></i>
@@ -3204,12 +3206,12 @@
                 <i class="far fa-paper-plane" aria-hidden="true"></i>
                 <i class="far fa-bookmark so-bookmark" aria-hidden="true"></i>
               </div>
-              <h3 class="so-card-name">Koordinator Bidang Kurikulum</h3>
-              <div class="so-card-person">Nama Koordinator</div>
-              <div class="so-card-role"><i class="fas fa-diagram-project"></i> Koordinator</div>
-              <p class="so-card-unit">Penyusunan jadwal &amp; administrasi pembelajaran</p>
+              <h3 class="so-card-name">Bendahara BOS</h3>
+              <div class="so-card-person">MEGA NOVINDA SARI, S.Pd.</div>
+              <div class="so-card-role"><i class="fas fa-briefcase"></i> Bendahara BOS</div>
+              <p class="so-card-unit">Pengelolaan administrasi dan keuangan BOS sekolah.</p>
             </article>
-            <article class="so-card" tabindex="0" data-name="Koordinator Bidang Kesiswaan" data-role="Koordinator" data-unit="Bidang Kesiswaan" data-filter="kesiswaan" data-detail="kor-kesiswaan">
+            <article class="so-card" tabindex="0" data-name="FAJAR DHILAMAYA, S.Pd." data-role="Bendahara BPOPP" data-unit="Keuangan" data-filter="keuangan" data-detail="bendahara-bpopp">
               <div class="so-feed-head">
                 <img src="{{ asset('images/logo_smkn2.png') }}" alt="Logo SKANEDA">
                 <div class="so-feed-account"><strong>SKANEDA</strong><span>SMK Negeri 2 Mojokerto</span></div>
@@ -3217,8 +3219,8 @@
               </div>
               <div class="so-photo-wrap">
                 <span class="so-photo-ring" aria-hidden="true"></span>
-                <div class="so-photo"><img src="{{ asset('images/struktur/kor-kesiswaan.png') }}" alt="Foto Koordinator Bidang Kesiswaan" loading="lazy"></div>
-                <span class="so-photo-tag"><i class="fas fa-shield-halved"></i></span>
+                <div class="so-photo"><img src="{{ asset('images/struktur/fajar.png') }}" alt="Foto FAJAR DHILAMAYA, S.Pd." loading="lazy"></div>
+                <span class="so-photo-tag"><i class="fas fa-wallet"></i></span>
               </div>
               <div class="so-feed-actions" aria-label="Interaksi postingan">
                 <i class="far fa-heart" aria-hidden="true"></i>
@@ -3226,12 +3228,12 @@
                 <i class="far fa-paper-plane" aria-hidden="true"></i>
                 <i class="far fa-bookmark so-bookmark" aria-hidden="true"></i>
               </div>
-              <h3 class="so-card-name">Koordinator Bidang Kesiswaan</h3>
-              <div class="so-card-person">Nama Koordinator</div>
-              <div class="so-card-role"><i class="fas fa-diagram-project"></i> Koordinator</div>
-              <p class="so-card-unit">Tata tertib, OSIS, &amp; pembinaan karakter</p>
+              <h3 class="so-card-name">Bendahara BPOPP</h3>
+              <div class="so-card-person">FAJAR DHILAMAYA, S.Pd.</div>
+              <div class="so-card-role"><i class="fas fa-briefcase"></i> Bendahara BPOPP</div>
+              <p class="so-card-unit">Pengelolaan administrasi dan keuangan BPOPP.</p>
             </article>
-            <article class="so-card" tabindex="0" data-name="Koordinator Bidang Sarana &amp; Prasarana" data-role="Koordinator" data-unit="Bidang Sarana &amp; Prasarana" data-filter="sapras" data-detail="kor-sapras">
+            <article class="so-card" tabindex="0" data-name="DANANG TEGUH SANTOSO, S.Kom" data-role="Ketua Kompetensi Keahlian RPL" data-unit="Kompetensi Keahlian RPL" data-filter="keahlian" data-detail="kk-rpl">
               <div class="so-feed-head">
                 <img src="{{ asset('images/logo_smkn2.png') }}" alt="Logo SKANEDA">
                 <div class="so-feed-account"><strong>SKANEDA</strong><span>SMK Negeri 2 Mojokerto</span></div>
@@ -3239,8 +3241,8 @@
               </div>
               <div class="so-photo-wrap">
                 <span class="so-photo-ring" aria-hidden="true"></span>
-                <div class="so-photo"><img src="{{ asset('images/struktur/kor-sapras.png') }}" alt="Foto Koordinator Bidang Sarana &amp; Prasarana" loading="lazy"></div>
-                <span class="so-photo-tag"><i class="fas fa-toolbox"></i></span>
+                <div class="so-photo"><img src="{{ asset('images/struktur/danang.png') }}" alt="Foto DANANG TEGUH SANTOSO, S.Kom" loading="lazy"></div>
+                <span class="so-photo-tag"><i class="fas fa-code"></i></span>
               </div>
               <div class="so-feed-actions" aria-label="Interaksi postingan">
                 <i class="far fa-heart" aria-hidden="true"></i>
@@ -3248,12 +3250,12 @@
                 <i class="far fa-paper-plane" aria-hidden="true"></i>
                 <i class="far fa-bookmark so-bookmark" aria-hidden="true"></i>
               </div>
-              <h3 class="so-card-name">Koordinator Bidang Sarana &amp; Prasarana</h3>
-              <div class="so-card-person">Nama Koordinator</div>
-              <div class="so-card-role"><i class="fas fa-diagram-project"></i> Koordinator</div>
-              <p class="so-card-unit">Inventarisasi, perawatan &amp; kelayakan ruang</p>
+              <h3 class="so-card-name">Ketua Kompetensi Keahlian RPL</h3>
+              <div class="so-card-person">DANANG TEGUH SANTOSO, S.Kom</div>
+              <div class="so-card-role"><i class="fas fa-briefcase"></i> Ketua Kompetensi Keahlian RPL</div>
+              <p class="so-card-unit">Koordinasi pembelajaran dan pengembangan kompetensi RPL.</p>
             </article>
-            <article class="so-card" tabindex="0" data-name="Koordinator Hubin &amp; BKK" data-role="Koordinator" data-unit="Bidang Humas &amp; Industri" data-filter="humas" data-detail="kor-hubin">
+            <article class="so-card" tabindex="0" data-name="DESY ANDINI DILIAWATI, S.T.P." data-role="Ketua Kompetensi Keahlian APHP" data-unit="Kompetensi Keahlian APHP" data-filter="keahlian" data-detail="kk-aphp">
               <div class="so-feed-head">
                 <img src="{{ asset('images/logo_smkn2.png') }}" alt="Logo SKANEDA">
                 <div class="so-feed-account"><strong>SKANEDA</strong><span>SMK Negeri 2 Mojokerto</span></div>
@@ -3261,8 +3263,8 @@
               </div>
               <div class="so-photo-wrap">
                 <span class="so-photo-ring" aria-hidden="true"></span>
-                <div class="so-photo"><img src="{{ asset('images/struktur/kor-hubin.png') }}" alt="Foto Koordinator Hubin &amp; BKK" loading="lazy"></div>
-                <span class="so-photo-tag"><i class="fas fa-building-circle-check"></i></span>
+                <div class="so-photo"><img src="{{ asset('images/struktur/desy.png') }}" alt="Foto DESY ANDINI DILIAWATI, S.T.P." loading="lazy"></div>
+                <span class="so-photo-tag"><i class="fas fa-seedling"></i></span>
               </div>
               <div class="so-feed-actions" aria-label="Interaksi postingan">
                 <i class="far fa-heart" aria-hidden="true"></i>
@@ -3270,12 +3272,12 @@
                 <i class="far fa-paper-plane" aria-hidden="true"></i>
                 <i class="far fa-bookmark so-bookmark" aria-hidden="true"></i>
               </div>
-              <h3 class="so-card-name">Koordinator Hubin &amp; BKK</h3>
-              <div class="so-card-person">Nama Koordinator</div>
-              <div class="so-card-role"><i class="fas fa-diagram-project"></i> Koordinator</div>
-              <p class="so-card-unit">PKL, penyaluran kerja &amp; tracer study</p>
+              <h3 class="so-card-name">Ketua Kompetensi Keahlian APHP</h3>
+              <div class="so-card-person">DESY ANDINI DILIAWATI, S.T.P.</div>
+              <div class="so-card-role"><i class="fas fa-briefcase"></i> Ketua Kompetensi Keahlian APHP</div>
+              <p class="so-card-unit">Koordinasi pembelajaran dan pengembangan kompetensi APHP.</p>
             </article>
-            <article class="so-card" tabindex="0" data-name="Koordinator Bimbingan Konseling" data-role="Koordinator" data-unit="Bidang Kesiswaan" data-filter="kesiswaan" data-detail="kor-bk">
+            <article class="so-card" tabindex="0" data-name="NURFALAH SEPTAYOGA S.Kom." data-role="Ketua Kompetensi Keahlian DKV" data-unit="Kompetensi Keahlian DKV" data-filter="keahlian" data-detail="kk-dkv">
               <div class="so-feed-head">
                 <img src="{{ asset('images/logo_smkn2.png') }}" alt="Logo SKANEDA">
                 <div class="so-feed-account"><strong>SKANEDA</strong><span>SMK Negeri 2 Mojokerto</span></div>
@@ -3283,8 +3285,8 @@
               </div>
               <div class="so-photo-wrap">
                 <span class="so-photo-ring" aria-hidden="true"></span>
-                <div class="so-photo"><img src="{{ asset('images/struktur/kor-bk.png') }}" alt="Foto Koordinator Bimbingan Konseling" loading="lazy"></div>
-                <span class="so-photo-tag"><i class="fas fa-comments"></i></span>
+                <div class="so-photo"><img src="{{ asset('images/struktur/nurfalah.png') }}" alt="Foto NURFALAH SEPTAYOGA S.Kom." loading="lazy"></div>
+                <span class="so-photo-tag"><i class="fas fa-palette"></i></span>
               </div>
               <div class="so-feed-actions" aria-label="Interaksi postingan">
                 <i class="far fa-heart" aria-hidden="true"></i>
@@ -3292,10 +3294,76 @@
                 <i class="far fa-paper-plane" aria-hidden="true"></i>
                 <i class="far fa-bookmark so-bookmark" aria-hidden="true"></i>
               </div>
-              <h3 class="so-card-name">Koordinator Bimbingan Konseling</h3>
-              <div class="so-card-person">Nama Koordinator</div>
-              <div class="so-card-role"><i class="fas fa-diagram-project"></i> Koordinator</div>
-              <p class="so-card-unit">Layanan konseling &amp; bimbingan karier siswa</p>
+              <h3 class="so-card-name">Ketua Kompetensi Keahlian DKV</h3>
+              <div class="so-card-person">NURFALAH SEPTAYOGA S.Kom.</div>
+              <div class="so-card-role"><i class="fas fa-briefcase"></i> Ketua Kompetensi Keahlian DKV</div>
+              <p class="so-card-unit">Koordinasi pembelajaran dan pengembangan kompetensi DKV.</p>
+            </article>
+            <article class="so-card" tabindex="0" data-name="METIY ARIANA, S.Pd, M.Pd." data-role="Ketua Kompetensi Keahlian LPS" data-unit="Kompetensi Keahlian LPS" data-filter="keahlian" data-detail="kk-lps">
+              <div class="so-feed-head">
+                <img src="{{ asset('images/logo_smkn2.png') }}" alt="Logo SKANEDA">
+                <div class="so-feed-account"><strong>SKANEDA</strong><span>SMK Negeri 2 Mojokerto</span></div>
+                <i class="fas fa-ellipsis-h so-feed-more" aria-hidden="true"></i>
+              </div>
+              <div class="so-photo-wrap">
+                <span class="so-photo-ring" aria-hidden="true"></span>
+                <div class="so-photo"><img src="{{ asset('images/struktur/metiy.png') }}" alt="Foto METIY ARIANA, S.Pd, M.Pd." loading="lazy"></div>
+                <span class="so-photo-tag"><i class="fas fa-landmark"></i></span>
+              </div>
+              <div class="so-feed-actions" aria-label="Interaksi postingan">
+                <i class="far fa-heart" aria-hidden="true"></i>
+                <i class="far fa-comment" aria-hidden="true"></i>
+                <i class="far fa-paper-plane" aria-hidden="true"></i>
+                <i class="far fa-bookmark so-bookmark" aria-hidden="true"></i>
+              </div>
+              <h3 class="so-card-name">Ketua Kompetensi Keahlian LPS</h3>
+              <div class="so-card-person">METIY ARIANA, S.Pd, M.Pd.</div>
+              <div class="so-card-role"><i class="fas fa-briefcase"></i> Ketua Kompetensi Keahlian LPS</div>
+              <p class="so-card-unit">Koordinasi pembelajaran dan pengembangan kompetensi LPS.</p>
+            </article>
+            <article class="so-card" tabindex="0" data-name="DHIYAH AMANATI KARTIKA SARI, S.Pd." data-role="Ketua Kompetensi Keahlian Kuliner" data-unit="Kompetensi Keahlian Kuliner" data-filter="keahlian" data-detail="kk-kuliner">
+              <div class="so-feed-head">
+                <img src="{{ asset('images/logo_smkn2.png') }}" alt="Logo SKANEDA">
+                <div class="so-feed-account"><strong>SKANEDA</strong><span>SMK Negeri 2 Mojokerto</span></div>
+                <i class="fas fa-ellipsis-h so-feed-more" aria-hidden="true"></i>
+              </div>
+              <div class="so-photo-wrap">
+                <span class="so-photo-ring" aria-hidden="true"></span>
+                <div class="so-photo"><img src="{{ asset('images/struktur/dhiyah.png') }}" alt="Foto DHIYAH AMANATI KARTIKA SARI, S.Pd." loading="lazy"></div>
+                <span class="so-photo-tag"><i class="fas fa-utensils"></i></span>
+              </div>
+              <div class="so-feed-actions" aria-label="Interaksi postingan">
+                <i class="far fa-heart" aria-hidden="true"></i>
+                <i class="far fa-comment" aria-hidden="true"></i>
+                <i class="far fa-paper-plane" aria-hidden="true"></i>
+                <i class="far fa-bookmark so-bookmark" aria-hidden="true"></i>
+              </div>
+              <h3 class="so-card-name">Ketua Kompetensi Keahlian Kuliner</h3>
+              <div class="so-card-person">DHIYAH AMANATI KARTIKA SARI, S.Pd.</div>
+              <div class="so-card-role"><i class="fas fa-briefcase"></i> Ketua Kompetensi Keahlian Kuliner</div>
+              <p class="so-card-unit">Koordinasi pembelajaran dan pengembangan kompetensi kuliner.</p>
+            </article>
+            <article class="so-card" tabindex="0" data-name="MULAT ADITYAWIRANTI, S.Pd." data-role="Koordinator BKK" data-unit="BKK / Humastri" data-filter="humas" data-detail="koordinator-bkk">
+              <div class="so-feed-head">
+                <img src="{{ asset('images/logo_smkn2.png') }}" alt="Logo SKANEDA">
+                <div class="so-feed-account"><strong>SKANEDA</strong><span>SMK Negeri 2 Mojokerto</span></div>
+                <i class="fas fa-ellipsis-h so-feed-more" aria-hidden="true"></i>
+              </div>
+              <div class="so-photo-wrap">
+                <span class="so-photo-ring" aria-hidden="true"></span>
+                <div class="so-photo"><img src="{{ asset('images/struktur/mulat.png') }}" alt="Foto MULAT ADITYAWIRANTI, S.Pd." loading="lazy"></div>
+                <span class="so-photo-tag"><i class="fas fa-briefcase"></i></span>
+              </div>
+              <div class="so-feed-actions" aria-label="Interaksi postingan">
+                <i class="far fa-heart" aria-hidden="true"></i>
+                <i class="far fa-comment" aria-hidden="true"></i>
+                <i class="far fa-paper-plane" aria-hidden="true"></i>
+                <i class="far fa-bookmark so-bookmark" aria-hidden="true"></i>
+              </div>
+              <h3 class="so-card-name">Koordinator BKK</h3>
+              <div class="so-card-person">MULAT ADITYAWIRANTI, S.Pd.</div>
+              <div class="so-card-role"><i class="fas fa-briefcase"></i> Koordinator BKK</div>
+              <p class="so-card-unit">Koordinasi layanan BKK dan penyaluran lulusan.</p>
             </article>
           </div>
         </div>
@@ -3304,7 +3372,6 @@
 
     </div>
   </section>
-
 
 
 
@@ -3419,360 +3486,176 @@
 
   /* ================= DATA JABATAN ================= */
   var DATA = {
-    kepsek: {
+    'kepsek': {
       name: 'Kepala Sekolah',
       role: 'Pimpinan Sekolah',
       unit: 'Pimpinan Sekolah',
       avatar: 'fas fa-user-tie',
-      gold: true,
+      gold: false,
       tags: ['Pimpinan Sekolah'],
       tasks: [
-        'Merumuskan visi, misi, kebijakan, dan program kerja sekolah.',
-        'Memimpin, mengelola, dan mengembangkan seluruh sumber daya sekolah (SDM, sarana, keuangan).',
-        'Menyusun rencana kerja dan anggaran sekolah (RKAS) bersama tim.',
-        'Melaksanakan supervisi akademik dan manajerial terhadap guru dan tenaga kependidikan.',
-        'Menjalin kemitraan dengan orang tua, komite sekolah, dan dunia usaha/dunia industri.',
-        'Menetapkan target mutu dan memastikan tercapainya akreditasi serta capaian pembelajaran.'
+        'Memimpin dan mengarahkan penyelenggaraan pendidikan sekolah.',
+        'Menetapkan kebijakan, program kerja, dan target mutu sekolah.',
       ],
-      note: 'Nama pejabat akan dilengkapi sesuai data resmi sekolah.'
+      note: 'Data disesuaikan dengan struktur organisasi resmi yang diberikan.'
     },
     'waka-kurikulum': {
-      name: 'Wakil Kepala Sekolah Bidang Kurikulum',
-      role: 'Wakil Kepala Sekolah',
-      unit: 'Bidang Kurikulum',
+      name: 'MELATI PUSPITA SARI, S.Pd.',
+      role: 'Waka Kurikulum',
+      unit: 'Kurikulum',
       avatar: 'fas fa-book-open',
       gold: false,
-      tags: ['Wakil Kepala Sekolah', 'Kurikulum'],
+      tags: ['Kurikulum'],
       tasks: [
-        'Menyusun dan mengembangkan kurikulum sekolah sesuai standar nasional.',
-        'Mengelola proses pembelajaran: jadwal, pembagian tugas guru, dan kalender pendidikan.',
-        'Mengkoordinasikan penilaian, asesmen, dan pelaporan hasil belajar siswa.',
-        'Mengelola implementasi kurikulum merdeka dan program peningkatan mutu pembelajaran.',
-        'Menyusun program supervisi pembelajaran bersama kepala sekolah.'
+        'Mengelola dan mengoordinasikan pelaksanaan kurikulum sekolah.',
+        'Mengatur program pembelajaran dan administrasi kurikulum.',
       ],
-      note: 'Nama pejabat akan dilengkapi sesuai data resmi sekolah.'
+      note: 'Data disesuaikan dengan struktur organisasi resmi yang diberikan.'
     },
     'waka-kesiswaan': {
-      name: 'Wakil Kepala Sekolah Bidang Kesiswaan',
-      role: 'Wakil Kepala Sekolah',
-      unit: 'Bidang Kesiswaan',
+      name: 'AINUR ROFIK, M. Pd, Si.',
+      role: 'Waka Kesiswaan',
+      unit: 'Kesiswaan',
       avatar: 'fas fa-users',
       gold: false,
-      tags: ['Wakil Kepala Sekolah', 'Kesiswaan'],
+      tags: ['Kesiswaan'],
       tasks: [
-        'Mengelola penerimaan peserta didik baru (PPDB) dan kegiatan MOS/LMPS.',
-        'Membina OSIS, ekstrakurikuler, dan pengembangan karakter siswa.',
-        'Menegakkan tata tertib dan kedisiplinan peserta didik.',
-        'Mengelola data kesiswaan dan layanan konseling/BP.',
-        'Menangani prestasi, penghargaan, dan kesejahteraan siswa.'
+        'Mengoordinasikan pembinaan peserta didik dan kegiatan kesiswaan.',
+        'Mendukung pelaksanaan program pengembangan karakter siswa.',
       ],
-      note: 'Nama pejabat akan dilengkapi sesuai data resmi sekolah.'
+      note: 'Data disesuaikan dengan struktur organisasi resmi yang diberikan.'
     },
     'waka-sapras': {
-      name: 'Wakil Kepala Sekolah Bidang Sarana & Prasarana',
-      role: 'Wakil Kepala Sekolah',
-      unit: 'Bidang Sarana & Prasarana',
+      name: 'M. WIRA HENDY HIMAWAN, M.Pd',
+      role: 'Waka Sarana & Prasarana',
+      unit: 'Sarana & Prasarana',
       avatar: 'fas fa-building',
       gold: false,
-      tags: ['Wakil Kepala Sekolah', 'Sarana & Prasarana'],
+      tags: ['Sarana & Prasarana'],
       tasks: [
-        'Mengelola perencanaan, pengadaan, dan inventarisasi sarana prasarana.',
-        'Memelihara gedung, ruang belajar, laboratorium, dan bengkel.',
-        'Menjamin ketersediaan fasilitas pendukung pembelajaran.',
-        'Mengelola tata ruang, kebersihan, dan keamanan lingkungan sekolah.',
-        'Menyusun laporan penggunaan dan kebutuhan sarana prasarana.'
+        'Mengoordinasikan pengelolaan sarana dan prasarana sekolah.',
+        'Memastikan fasilitas pendukung pembelajaran tersedia dan terawat.',
       ],
-      note: 'Nama pejabat akan dilengkapi sesuai data resmi sekolah.'
+      note: 'Data disesuaikan dengan struktur organisasi resmi yang diberikan.'
     },
     'waka-humas': {
-      name: 'Wakil Kepala Sekolah Bidang Humas & Industri',
-      role: 'Wakil Kepala Sekolah',
-      unit: 'Bidang Humas & Industri',
+      name: 'ARIKAWWEKU CKRISNA, S.Pd.',
+      role: 'Waka Humastri',
+      unit: 'Humastri',
       avatar: 'fas fa-handshake',
       gold: false,
-      tags: ['Wakil Kepala Sekolah', 'Humas & Industri'],
+      tags: ['Humastri'],
       tasks: [
-        'Membangun kemitraan dengan dunia usaha, dunia industri, dan dunia kerja (DUDIKA).',
-        'Mengelola hubungan masyarakat, publikasi, dan citra positif sekolah.',
-        'Mengkoordinasikan pelaksanaan PKL dan penyaluran lulusan.',
-        'Mengelola tracer study dan kerja sama MoU dengan mitra industri.',
-        'Menjalin komunikasi dengan orang tua, komite, dan pemangku kepentingan.'
+        'Mengoordinasikan hubungan sekolah dengan masyarakat dan dunia industri.',
+        'Mengembangkan kerja sama dan kemitraan sekolah.',
       ],
-      note: 'Nama pejabat akan dilengkapi sesuai data resmi sekolah.'
+      note: 'Data disesuaikan dengan struktur organisasi resmi yang diberikan.'
     },
-    'kor-kurikulum': {
-      name: 'Koordinator Bidang Kurikulum',
-      role: 'Koordinator',
-      unit: 'Bidang Kurikulum',
-      avatar: 'fas fa-calendar-check',
+    'bendahara-bos': {
+      name: 'MEGA NOVINDA SARI, S.Pd.',
+      role: 'Bendahara BOS',
+      unit: 'Keuangan',
+      avatar: 'fas fa-money-bill-wave',
       gold: false,
-      tags: ['Koordinator', 'Kurikulum'],
+      tags: ['Keuangan'],
       tasks: [
-        'Menyusun jadwal pelajaran dan pembagian tugas mengajar guru.',
-        'Mengelola administrasi pembelajaran (kalender, RPP, modul ajar).',
-        'Mengkoordinasikan kegiatan tengah semester dan akhir semester.',
-        'Mendampingi guru dalam pengembangan perangkat pembelajaran.',
-        'Menyiapkan data untuk pelaporan dan akreditasi bidang kurikulum.'
+        'Mengelola administrasi dan pertanggungjawaban dana BOS.',
+        'Menyiapkan pencatatan serta laporan keuangan sesuai ketentuan.',
       ],
-      note: 'Nama pejabat akan dilengkapi sesuai data resmi sekolah.'
+      note: 'Data disesuaikan dengan struktur organisasi resmi yang diberikan.'
     },
-    'kor-kesiswaan': {
-      name: 'Koordinator Bidang Kesiswaan',
-      role: 'Koordinator',
-      unit: 'Bidang Kesiswaan',
-      avatar: 'fas fa-shield-halved',
+    'bendahara-bpopp': {
+      name: 'FAJAR DHILAMAYA, S.Pd.',
+      role: 'Bendahara BPOPP',
+      unit: 'Keuangan',
+      avatar: 'fas fa-wallet',
       gold: false,
-      tags: ['Koordinator', 'Kesiswaan'],
+      tags: ['Keuangan'],
       tasks: [
-        'Mengoordinasikan pelaksanaan tata tertib dan kedisiplinan siswa.',
-        'Membina pengurus OSIS dan kegiatan ekstrakurikuler.',
-        'Mengelola kegiatan pembinaan karakter dan keagamaan.',
-        'Mendampingi kegiatan kesiswaan di tingkat kota, provinsi, dan nasional.',
-        'Mengelola data kehadiran dan catatan pembinaan siswa.'
+        'Mengelola administrasi dan pertanggungjawaban dana BPOPP.',
+        'Menyiapkan pencatatan serta laporan keuangan sesuai ketentuan.',
       ],
-      note: 'Nama pejabat akan dilengkapi sesuai data resmi sekolah.'
+      note: 'Data disesuaikan dengan struktur organisasi resmi yang diberikan.'
     },
-    'kor-sapras': {
-      name: 'Koordinator Bidang Sarana & Prasarana',
-      role: 'Koordinator',
-      unit: 'Bidang Sarana & Prasarana',
-      avatar: 'fas fa-toolbox',
-      gold: false,
-      tags: ['Koordinator', 'Sarana & Prasarana'],
-      tasks: [
-        'Melaksanakan inventarisasi dan pencatatan aset sekolah.',
-        'Mengoordinasikan perawatan dan perbaikan fasilitas.',
-        'Memastikan kelayakan ruang kelas, laboratorium, dan bengkel.',
-        'Mengelola kebutuhan alat dan bahan praktik pembelajaran.',
-        'Menyusun laporan kondisi dan kebutuhan sarana prasarana.'
-      ],
-      note: 'Nama pejabat akan dilengkapi sesuai data resmi sekolah.'
-    },
-    'kor-hubin': {
-      name: 'Koordinator Hubin & BKK',
-      role: 'Koordinator',
-      unit: 'Bidang Humas & Industri',
-      avatar: 'fas fa-building-circle-check',
-      gold: false,
-      tags: ['Koordinator', 'Humas & Industri'],
-      tasks: [
-        'Mengoordinasikan pelaksanaan Praktik Kerja Lapangan (PKL) siswa.',
-        'Mengelola bursa kerja khusus (BKK) dan penyaluran lulusan.',
-        'Menjalin komunikasi dengan mitra industri dan dunia kerja.',
-        'Melaksanakan tracer study dan pendataan lulusan.',
-        'Menyusun laporan kemitraan dan penempatan kerja.'
-      ],
-      note: 'Nama pejabat akan dilengkapi sesuai data resmi sekolah.'
-    },
-    'kor-bk': {
-      name: 'Koordinator Bimbingan Konseling',
-      role: 'Koordinator',
-      unit: 'Bidang Kesiswaan',
-      avatar: 'fas fa-comments',
-      gold: false,
-      tags: ['Koordinator', 'Bimbingan Konseling'],
-      tasks: [
-        'Mengoordinasikan layanan bimbingan dan konseling bagi siswa.',
-        'Mengelola bimbingan karier, pribadi, sosial, dan belajar.',
-        'Menangani permasalahan siswa dan rujukan konseling.',
-        'Menyusun program dan laporan layanan BK.',
-        'Berkolaborasi dengan wali kelas dan orang tua siswa.'
-      ],
-      note: 'Nama pejabat akan dilengkapi sesuai data resmi sekolah.'
-    },
-    'kk-kuliner': {
-      name: 'Kepala Kompetensi Keahlian Kuliner',
-      role: 'Kepala Kompetensi Keahlian',
-      unit: 'Kuliner (Tata Boga)',
-      avatar: 'fas fa-utensils',
-      gold: false,
-      tags: ['Kompetensi Keahlian', 'Kuliner'],
-      tasks: [
-        'Mengelola program pembelajaran keahlian kuliner/tata boga.',
-        'Mengelola laboratorium pengolahan dan penyajian makanan.',
-        'Membimbing siswa dalam praktik dan uji kompetensi keahlian.',
-        'Menjalin kemitraan industri untuk PKL bidang kuliner.',
-        'Mengembangkan inovasi produk dan kewirausahaan siswa.'
-      ],
-      note: 'Nama pejabat akan dilengkapi sesuai data resmi sekolah.'
-    },
-    'kk-pplg': {
-      name: 'Kepala Kompetensi Keahlian PPLG',
-      role: 'Kepala Kompetensi Keahlian',
-      unit: 'PPLG (RPL)',
+    'kk-rpl': {
+      name: 'DANANG TEGUH SANTOSO, S.Kom',
+      role: 'Ketua Kompetensi Keahlian RPL',
+      unit: 'Kompetensi Keahlian RPL',
       avatar: 'fas fa-code',
       gold: false,
-      tags: ['Kompetensi Keahlian', 'PPLG'],
+      tags: ['Kompetensi Keahlian RPL'],
       tasks: [
-        'Mengelola program pembelajaran pengembangan perangkat lunak & gim.',
-        'Mengelola laboratorium komputer dan lingkungan pengembangan.',
-        'Membimbing siswa dalam proyek perangkat lunak dan gim.',
-        'Menyiapkan siswa menghadapi sertifikasi dan lomba kompetensi.',
-        'Menjalin kemitraan industri teknologi informasi.'
+        'Mengoordinasikan pelaksanaan pembelajaran kompetensi keahlian RPL.',
+        'Mengembangkan kompetensi siswa sesuai kebutuhan bidang perangkat lunak.',
       ],
-      note: 'Nama pejabat akan dilengkapi sesuai data resmi sekolah.'
-    },
-    'kk-dkv': {
-      name: 'Kepala Kompetensi Keahlian DKV',
-      role: 'Kepala Kompetensi Keahlian',
-      unit: 'DKV',
-      avatar: 'fas fa-palette',
-      gold: false,
-      tags: ['Kompetensi Keahlian', 'DKV'],
-      tasks: [
-        'Mengelola program pembelajaran desain komunikasi visual.',
-        'Mengelola studio desain dan peralatan produksi media.',
-        'Membimbing siswa dalam proyek desain grafis dan multimedia.',
-        'Mengembangkan portofolio dan karya kreatif siswa.',
-        'Menjalin kemitraan industri kreatif dan periklanan.'
-      ],
-      note: 'Nama pejabat akan dilengkapi sesuai data resmi sekolah.'
+      note: 'Data disesuaikan dengan struktur organisasi resmi yang diberikan.'
     },
     'kk-aphp': {
-      name: 'Kepala Kompetensi Keahlian APHP',
-      role: 'Kepala Kompetensi Keahlian',
-      unit: 'APHP',
+      name: 'DESY ANDINI DILIAWATI, S.T.P.',
+      role: 'Ketua Kompetensi Keahlian APHP',
+      unit: 'Kompetensi Keahlian APHP',
       avatar: 'fas fa-seedling',
       gold: false,
-      tags: ['Kompetensi Keahlian', 'APHP'],
+      tags: ['Kompetensi Keahlian APHP'],
       tasks: [
-        'Mengelola program pembelajaran agriteknologi pengolahan hasil pertanian.',
-        'Mengelola laboratorium pengolahan pangan dan uji mutu.',
-        'Membimbing siswa dalam praktik pengolahan hasil pertanian.',
-        'Mengembangkan produk olahan dan kemasan bernilai jual.',
-        'Menjalin kemitraan dengan industri pangan dan pertanian.'
+        'Mengoordinasikan pelaksanaan pembelajaran kompetensi keahlian APHP.',
+        'Mengembangkan kompetensi siswa dalam pengolahan hasil pertanian.',
       ],
-      note: 'Nama pejabat akan dilengkapi sesuai data resmi sekolah.'
+      note: 'Data disesuaikan dengan struktur organisasi resmi yang diberikan.'
     },
-    'kk-akl': {
-      name: 'Kepala Kompetensi Keahlian AKL',
-      role: 'Kepala Kompetensi Keahlian',
-      unit: 'AKL',
-      avatar: 'fas fa-calculator',
+    'kk-dkv': {
+      name: 'NURFALAH SEPTAYOGA S.Kom.',
+      role: 'Ketua Kompetensi Keahlian DKV',
+      unit: 'Kompetensi Keahlian DKV',
+      avatar: 'fas fa-palette',
       gold: false,
-      tags: ['Kompetensi Keahlian', 'AKL'],
+      tags: ['Kompetensi Keahlian DKV'],
       tasks: [
-        'Mengelola program pembelajaran akuntansi dan keuangan lembaga.',
-        'Mengelola laboratorium akuntansi dan perbankan.',
-        'Membimbing siswa dalam praktik akuntansi dan pengelolaan keuangan.',
-        'Menyiapkan siswa menghadapi sertifikasi dan uji kompetensi.',
-        'Menjalin kemitraan dengan lembaga keuangan dan perbankan.'
+        'Mengoordinasikan pelaksanaan pembelajaran kompetensi keahlian DKV.',
+        'Mengembangkan kompetensi siswa dalam bidang desain komunikasi visual.',
       ],
-      note: 'Nama pejabat akan dilengkapi sesuai data resmi sekolah.'
+      note: 'Data disesuaikan dengan struktur organisasi resmi yang diberikan.'
     },
-    'guru-produktif': {
-      name: 'Guru Produktif',
-      role: 'Guru',
-      unit: 'Guru & Tenaga Kependidikan',
-      avatar: 'fas fa-chalkboard-user',
+    'kk-lps': {
+      name: 'METIY ARIANA, S.Pd, M.Pd.',
+      role: 'Ketua Kompetensi Keahlian LPS',
+      unit: 'Kompetensi Keahlian LPS',
+      avatar: 'fas fa-landmark',
       gold: false,
-      tags: ['Guru', 'Guru Produktif'],
+      tags: ['Kompetensi Keahlian LPS'],
       tasks: [
-        'Mengampu mata pelajaran produktif/kejuruan sesuai kompetensinya.',
-        'Menyusun perangkat pembelajaran dan asesmen.',
-        'Membimbing praktik dan proyek siswa di laboratorium/bengkel.',
-        'Melaksanakan penilaian dan pelaporan hasil belajar.',
-        'Mengikuti pengembangan profesi dan sertifikasi keahlian.'
+        'Mengoordinasikan pelaksanaan pembelajaran kompetensi keahlian LPS.',
+        'Mengembangkan kompetensi siswa dalam layanan perbankan syariah.',
       ],
-      note: 'Nama pejabat akan dilengkapi sesuai data resmi sekolah.'
+      note: 'Data disesuaikan dengan struktur organisasi resmi yang diberikan.'
     },
-    'guru-normatif': {
-      name: 'Guru Normatif & Adaptif',
-      role: 'Guru',
-      unit: 'Guru & Tenaga Kependidikan',
-      avatar: 'fas fa-book',
+    'kk-kuliner': {
+      name: 'DHIYAH AMANATI KARTIKA SARI, S.Pd.',
+      role: 'Ketua Kompetensi Keahlian Kuliner',
+      unit: 'Kompetensi Keahlian Kuliner',
+      avatar: 'fas fa-utensils',
       gold: false,
-      tags: ['Guru', 'Guru Normatif & Adaptif'],
+      tags: ['Kompetensi Keahlian Kuliner'],
       tasks: [
-        'Mengampu mata pelajaran normatif dan adaptif (umum).',
-        'Menyusun perangkat pembelajaran dan asesmen.',
-        'Membimbing pengembangan karakter dan literasi siswa.',
-        'Melaksanakan penilaian dan pelaporan hasil belajar.',
-        'Berkolaborasi dengan wali kelas dan orang tua.'
+        'Mengoordinasikan pelaksanaan pembelajaran kompetensi keahlian Kuliner.',
+        'Mengembangkan kompetensi siswa dalam bidang kuliner dan tata boga.',
       ],
-      note: 'Nama pejabat akan dilengkapi sesuai data resmi sekolah.'
+      note: 'Data disesuaikan dengan struktur organisasi resmi yang diberikan.'
     },
-    'wali-kelas': {
-      name: 'Wali Kelas',
-      role: 'Guru',
-      unit: 'Guru & Tenaga Kependidikan',
-      avatar: 'fas fa-house-chimney-user',
+    'koordinator-bkk': {
+      name: 'MULAT ADITYAWIRANTI, S.Pd.',
+      role: 'Koordinator BKK',
+      unit: 'BKK / Humastri',
+      avatar: 'fas fa-briefcase',
       gold: false,
-      tags: ['Guru', 'Wali Kelas'],
+      tags: ['BKK / Humastri'],
       tasks: [
-        'Mendampingi dan memantau perkembangan siswa dalam kelasnya.',
-        'Mengelola administrasi kelas: absensi, rapor, dan catatan siswa.',
-        'Menjadi penghubung antara sekolah, siswa, dan orang tua.',
-        'Membina kedisiplinan dan motivasi belajar siswa.',
-        'Mengoordinasikan penyerahan rapor dan kegiatan kelas.'
+        'Mengoordinasikan layanan Bursa Kerja Khusus (BKK).',
+        'Mendukung penyaluran lulusan dan hubungan dengan dunia kerja.',
       ],
-      note: 'Nama pejabat akan dilengkapi sesuai data resmi sekolah.'
-    },
-    'guru-bk': {
-      name: 'Guru Bimbingan Konseling',
-      role: 'Guru',
-      unit: 'Guru & Tenaga Kependidikan',
-      avatar: 'fas fa-comments',
-      gold: false,
-      tags: ['Guru', 'Bimbingan Konseling'],
-      tasks: [
-        'Memberikan layanan konseling pribadi, sosial, belajar, dan karier.',
-        'Melaksanakan bimbingan klasikal dan konseling individual.',
-        'Mengelola data perkembangan dan permasalahan siswa.',
-        'Mengoordinasikan bimbingan karier dan informasi studi lanjut.',
-        'Berkolaborasi dengan wali kelas, orang tua, dan pihak terkait.'
-      ],
-      note: 'Nama pejabat akan dilengkapi sesuai data resmi sekolah.'
-    },
-    'ka-tu': {
-      name: 'Kepala Tata Usaha',
-      role: 'Tenaga Kependidikan',
-      unit: 'Guru & Tenaga Kependidikan',
-      avatar: 'fas fa-folder-open',
-      gold: false,
-      tags: ['Tenaga Kependidikan', 'Tata Usaha'],
-      tasks: [
-        'Memimpin dan mengelola layanan administrasi sekolah.',
-        'Mengelola surat-menyurat, kearsipan, dan kepegawaian.',
-        'Mengelola data pokok pendidikan (Dapodik).',
-        'Mengoordinasikan layanan administrasi siswa dan guru.',
-        'Menyusun laporan administrasi kepada kepala sekolah.'
-      ],
-      note: 'Nama pejabat akan dilengkapi sesuai data resmi sekolah.'
-    },
-    'staf-tu': {
-      name: 'Bendahara & Staf Administrasi',
-      role: 'Tenaga Kependidikan',
-      unit: 'Guru & Tenaga Kependidikan',
-      avatar: 'fas fa-money-check-dollar',
-      gold: false,
-      tags: ['Tenaga Kependidikan', 'Bendahara'],
-      tasks: [
-        'Mengelola keuangan sekolah sesuai peraturan yang berlaku.',
-        'Membantu administrasi kepegawaian dan keuangan.',
-        'Melayani administrasi siswa (ijazah, surat keterangan, dll).',
-        'Mengelola inventaris dan kebutuhan operasional kantor.',
-        'Menyusun laporan keuangan dan administrasi secara berkala.'
-      ],
-      note: 'Nama pejabat akan dilengkapi sesuai data resmi sekolah.'
-    },
-    'penjaga': {
-      name: 'Penjaga Sekolah & Kebersihan',
-      role: 'Tenaga Kependidikan',
-      unit: 'Guru & Tenaga Kependidikan',
-      avatar: 'fas fa-broom',
-      gold: false,
-      tags: ['Tenaga Kependidikan', 'Keamanan & Kebersihan'],
-      tasks: [
-        'Menjaga keamanan dan ketertiban lingkungan sekolah.',
-        'Mengelola kebersihan ruang, halaman, dan fasilitas sekolah.',
-        'Melakukan perawatan kecil fasilitas sekolah.',
-        'Mendukung kelancaran kegiatan sekolah dan acara resmi.',
-        'Melaporkan kondisi dan kebutuhan lingkungan sekolah.'
-      ],
-      note: 'Nama pejabat akan dilengkapi sesuai data resmi sekolah.'
+      note: 'Data disesuaikan dengan struktur organisasi resmi yang diberikan.'
     }
-  };
+  }
 
   /* ================= ELEMEN ================= */
   var cards = Array.prototype.slice.call(document.querySelectorAll('.so-card'));

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title', 'Ekstrakurikuler — SMK Negeri 2 Mojokerto')
-@section('description', 'Ekstrakurikuler SMK Negeri 2 Mojokerto — Pramuka, Paskibra, Pencak Silat, Futsal, Basket, Voli, PMR, Rohis, Seni Tari, Musik, English Club, dan KIR. Temukan bakatmu di Skaneda.')
+@section('description', 'Ekstrakurikuler dan organisasi siswa SMK Negeri 2 Mojokerto — Banjari, Basket, Voli, BTQ, Futsal, Jurnalistik, Paskib, Pramuka, Tari, PENA, Silat, PMR, PIK-R, OSIS, Lacurva, dan Pasus.')
 
 @push('styles')
 <style>
@@ -345,23 +345,23 @@
         <p class="ek-intro-note">Ekstrakurikuler adalah laboratorium karakter Skaneda. Lewat kegiatan rutin, pembinaan intensif, dan ajang kompetisi, peserta didik belajar disiplin, kerja sama, kepemimpinan, serta keberanian untuk tampil — bekal yang tidak kalah penting dari keterampilan vokasi.</p>
         <div class="ek-mini-stats">
           <div class="ek-mini" data-reveal>
-            <b><em>12+</em></b>
+            <b><em>13</em></b>
             <span>Ekstrakurikuler</span>
           </div>
           <div class="ek-mini" data-reveal style="--d:1">
-            <b>10</b>
-            <span>Bidang Minat</span>
+            <b>3</b>
+            <span>Organisasi Siswa</span>
           </div>
           <div class="ek-mini" data-reveal style="--d:2">
-            <b><em>6×</em></b>
-            <span>Latihan / Pekan</span>
+            <b><em>16</em></b>
+            <span>Wadah Kegiatan</span>
           </div>
         </div>
       </div>
       <div data-reveal="right">
         <div class="ek-intro-visual">
           <span class="ek-intro-badge"><i class="fas fa-camera"></i> #SkanedaBerkarakter</span>
-          <img src="{{ asset('images/paskibra.jpg') }}" alt="Pasukan pengibar bendera SMK Negeri 2 Mojokerto" loading="eager">
+          <img src="{{ asset('images/ekstra/paskibra.jpeg') }}" alt="Pasukan pengibar bendera SMK Negeri 2 Mojokerto" loading="eager">
           <div class="ek-intro-cap"><strong>Skaneda Berkarakter</strong><span>Latihan Paskibra — kedisiplinan baris-berbaris.</span></div>
         </div>
       </div>
@@ -392,17 +392,17 @@
           <div class="ek-stat-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" fill="currentColor" stroke="none"/></svg>
           </div>
-          <b><em data-count="12">0</em>+</b>
+          <b><em data-count="13">0</em></b>
           <span>Ekstrakurikuler</span>
-          <p>Wadah aktif yang dibina guru &amp; pelatih profesional.</p>
+          <p>Beragam kegiatan untuk mengembangkan bakat, minat, karakter, dan prestasi siswa.</p>
         </div>
         <div class="ek-stat" data-reveal style="--d:1">
           <div class="ek-stat-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
           </div>
-          <b><em data-count="800">0</em>+</b>
-          <span>Anggota Aktif</span>
-          <p>Peserta didik terlibat setiap pekan lintas jurusan.</p>
+          <b><em data-count="16">0</em></b>
+          <span>Wadah Kegiatan</span>
+          <p>Ekstrakurikuler dan organisasi siswa yang menjadi ruang belajar di luar kelas.</p>
         </div>
         <div class="ek-stat" data-reveal style="--d:2">
           <div class="ek-stat-icon">
@@ -410,15 +410,15 @@
           </div>
           <b><em data-count="20">0</em>+</b>
           <span>Prestasi</span>
-          <p>Juara lomba &amp; festival tingkat kota hingga nasional.</p>
+          <p>Ruang tumbuh untuk meraih prestasi di berbagai bidang.</p>
         </div>
         <div class="ek-stat" data-reveal style="--d:3">
           <div class="ek-stat-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 6 6 .9-4.5 4.2 1.1 6.4L12 16.7 6.4 19.5l1.1-6.4L3 8.9 9 8z"/></svg>
           </div>
-          <b>10</b>
-          <span>Bidang Minat</span>
-          <p>Kepanduan, olahraga, seni, bahasa, kesehatan, riset.</p>
+          <b>8</b>
+          <span>Bidang Kegiatan</span>
+          <p>Olahraga, seni, keagamaan, kepemimpinan, kesehatan, media, dan lainnya.</p>
         </div>
       </div>
     </div>
@@ -427,52 +427,44 @@
   <!-- 3. EXPLORER: filter kategori + grid kartu (fitur utama, baru) -->
   <section class="ek-explore" id="ek-explore">
     <div class="home-orn" aria-hidden="true">
-      <span class="ho-chevron"></span>
-      <span class="ho-dots"></span>
-      <span class="ho-ring"></span>
-      <span class="ho-square"></span>
-      <span class="ho-gold"></span>
+      <span class="ho-chevron"></span><span class="ho-dots"></span><span class="ho-ring"></span><span class="ho-square"></span><span class="ho-gold"></span>
     </div>
     <div class="ek-section">
       <div class="ek-explore-head" data-reveal>
         <div>
           <span class="ek-eyebrow">Jelajahi Ekstrakurikuler</span>
           <h2 class="big-heading">Pilih <span>Wadahmu</span></h2>
-          <p class="ek-desc">Klik kategori untuk menyaring, klik kartu untuk membuka jadwal, pembina, dan kegiatannya.</p>
+          <p class="ek-desc">Temukan kegiatan yang sesuai dengan minatmu. Klik kategori untuk menyaring dan klik kartu untuk melihat detail kegiatan.</p>
         </div>
       </div>
 
       <div class="ek-filters" id="ekFilters" data-reveal>
-        <button class="ek-filter active" data-filter="semua" type="button">Semua <span class="ek-filter-count">12</span></button>
-        <button class="ek-filter" data-filter="Kepanduan" type="button">Kepanduan <span class="ek-filter-count">1</span></button>
-        <button class="ek-filter" data-filter="Kedisiplinan" type="button">Kedisiplinan <span class="ek-filter-count">1</span></button>
-        <button class="ek-filter" data-filter="Bela Diri" type="button">Bela Diri <span class="ek-filter-count">1</span></button>
+        <button class="ek-filter active" data-filter="semua" type="button">Semua <span class="ek-filter-count">13</span></button>
+        <button class="ek-filter" data-filter="Keagamaan" type="button">Keagamaan <span class="ek-filter-count">2</span></button>
         <button class="ek-filter" data-filter="Olahraga" type="button">Olahraga <span class="ek-filter-count">3</span></button>
-        <button class="ek-filter" data-filter="Kesehatan" type="button">Kesehatan <span class="ek-filter-count">1</span></button>
-        <button class="ek-filter" data-filter="Keagamaan" type="button">Keagamaan <span class="ek-filter-count">1</span></button>
-        <button class="ek-filter" data-filter="Seni & Budaya" type="button">Seni &amp; Budaya <span class="ek-filter-count">1</span></button>
-        <button class="ek-filter" data-filter="Seni Musik" type="button">Seni Musik <span class="ek-filter-count">1</span></button>
-        <button class="ek-filter" data-filter="Bahasa" type="button">Bahasa <span class="ek-filter-count">1</span></button>
-        <button class="ek-filter" data-filter="Riset" type="button">Riset <span class="ek-filter-count">1</span></button>
+        <button class="ek-filter" data-filter="Media & Literasi" type="button">Media & Literasi <span class="ek-filter-count">1</span></button>
+        <button class="ek-filter" data-filter="Kedisiplinan" type="button">Kedisiplinan <span class="ek-filter-count">1</span></button>
+        <button class="ek-filter" data-filter="Kepanduan" type="button">Kepanduan <span class="ek-filter-count">1</span></button>
+        <button class="ek-filter" data-filter="Seni & Budaya" type="button">Seni & Budaya <span class="ek-filter-count">2</span></button>
+        <button class="ek-filter" data-filter="Bela Diri" type="button">Bela Diri <span class="ek-filter-count">1</span></button>
+        <button class="ek-filter" data-filter="Kesehatan" type="button">Kesehatan <span class="ek-filter-count">2</span></button>
       </div>
-
-      <p class="ek-count-line" id="ekCountLine"><b id="ekCountNum">12</b> ekstrakurikuler ditemukan</p>
+      <p class="ek-count-line" id="ekCountLine"><b id="ekCountNum">13</b> ekstrakurikuler ditemukan</p>
 
       <div class="ek-grid" id="ekGrid">
-
-        <!-- 1. PRAMUKA -->
-        <div class="ek-item" data-category="Kepanduan" data-reveal>
+        <!-- 1. BANJARI -->
+        <div class="ek-item" data-category="Keagamaan" data-reveal>
           <article class="ek-card" data-toggle>
             <div class="ek-card-head">
               <span class="ek-card-avatar"><img src="{{ asset('images/logo_smkn2.png') }}" alt="Logo SMKN 2 Mojokerto"></span>
               <div class="ek-card-idwrap">
-                <span class="ek-card-uname">Pramuka</span>
+                <span class="ek-card-uname">Banjari</span>
                 <span class="ek-card-usub">SMKN 2 Mojokerto</span>
               </div>
               <span class="ek-card-menu" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg></span>
             </div>
             <div class="ek-card-media">
-              <img src="{{ asset('images/pramuka.jpg') }}" alt="Kegiatan Pramuka SMKN 2 Mojokerto" loading="eager">
+              <img src="{{ asset('images/ekstra/banjari.jpg') }}" alt="Kegiatan Banjari SMKN 2 Mojokerto" loading="eager">
             </div>
             <div class="ek-card-actions" aria-hidden="true">
               <span class="ek-act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.6l-1-1a5.5 5.5 0 10-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 000-7.8z"/></svg></span>
@@ -482,146 +474,25 @@
             </div>
             <div class="ek-card-panel">
               <div class="ek-card-peek">
-                <p class="ek-card-caption"><span class="ek-card-name">Pramuka</span>Membentuk jiwa kepanduan: disiplin, mandiri, cinta alam, dan siap berkarya untuk negeri.</p>
+                <p class="ek-card-caption"><span class="ek-card-name">Banjari</span>Mengembangkan seni musik Islami melalui lantunan shalawat, kekompakan, dan penampilan dalam kegiatan sekolah.</p>
                 <div class="ek-card-metaline">
-                  <span class="ek-card-tag">Kepanduan</span>
+                  <span class="ek-card-tag">Keagamaan</span>
                   <span class="ek-card-sched"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M16 2.5v4M8 2.5v4M3 9.5h18"/></svg> Jumat</span>
                 </div>
                 <span class="ek-card-more">Lihat detail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
               </div>
               <div class="ek-card-detail">
                 <ul class="ek-card-meta">
-                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Pembina:</b> Kak Budi Santoso, S.Pd</span></li>
-                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Latihan:</b> Jumat 14.00–16.30 WIB</span></li>
-                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Kegiatan:</b> Barung, ambalan, kemah, lomba kwartir</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Pembina:</b> Pembina kegiatan keagamaan</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Latihan:</b> Jumat</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Kegiatan:</b> Latihan vokal, rebana, shalawat, dan penampilan sekolah</span></li>
                 </ul>
               </div>
             </div>
           </article>
         </div>
-
-        <!-- 2. PASKIBRA -->
-        <div class="ek-item" data-category="Kedisiplinan" data-reveal style="--d:1">
-          <article class="ek-card" data-toggle>
-            <div class="ek-card-head">
-              <span class="ek-card-avatar"><img src="{{ asset('images/logo_smkn2.png') }}" alt="Logo SMKN 2 Mojokerto"></span>
-              <div class="ek-card-idwrap">
-                <span class="ek-card-uname">Paskibra</span>
-                <span class="ek-card-usub">SMKN 2 Mojokerto</span>
-              </div>
-              <span class="ek-card-menu" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg></span>
-            </div>
-            <div class="ek-card-media">
-              <img src="{{ asset('images/paskibra.jpg') }}" alt="Latihan Paskibra SMKN 2 Mojokerto" loading="eager">
-            </div>
-            <div class="ek-card-actions" aria-hidden="true">
-              <span class="ek-act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.6l-1-1a5.5 5.5 0 10-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 000-7.8z"/></svg></span>
-              <span class="ek-act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg></span>
-              <span class="ek-act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg></span>
-              <span class="ek-act ek-act-save"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg></span>
-            </div>
-            <div class="ek-card-panel">
-              <div class="ek-card-peek">
-                <p class="ek-card-caption"><span class="ek-card-name">Paskibra</span>Kedisiplinan baris-berbaris, formasi, dan pengibaran Sang Saka Merah Putih di setiap upacara.</p>
-                <div class="ek-card-metaline">
-                  <span class="ek-card-tag">Kedisiplinan</span>
-                  <span class="ek-card-sched"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M16 2.5v4M8 2.5v4M3 9.5h18"/></svg> Rabu &amp; Sabtu</span>
-                </div>
-                <span class="ek-card-more">Lihat detail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
-              </div>
-              <div class="ek-card-detail">
-                <ul class="ek-card-meta">
-                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Pembina:</b> Rudi Hartono, S.Or</span></li>
-                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Latihan:</b> Rabu &amp; Sabtu 15.00–17.00 WIB</span></li>
-                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Kegiatan:</b> PBB, formasi, pengibaran upacara</span></li>
-                </ul>
-              </div>
-            </div>
-          </article>
-        </div>
-
-        <!-- 3. PENCAK SILAT -->
-        <div class="ek-item" data-category="Bela Diri" data-reveal style="--d:2">
-          <article class="ek-card" data-toggle>
-            <div class="ek-card-head">
-              <span class="ek-card-avatar"><img src="{{ asset('images/logo_smkn2.png') }}" alt="Logo SMKN 2 Mojokerto"></span>
-              <div class="ek-card-idwrap">
-                <span class="ek-card-uname">Pencak Silat</span>
-                <span class="ek-card-usub">SMKN 2 Mojokerto</span>
-              </div>
-              <span class="ek-card-menu" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg></span>
-            </div>
-            <div class="ek-card-media">
-              <img src="{{ asset('images/pencak-silat.jpg') }}" alt="Latihan Pencak Silat SMKN 2 Mojokerto" loading="eager">
-            </div>
-            <div class="ek-card-actions" aria-hidden="true">
-              <span class="ek-act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.6l-1-1a5.5 5.5 0 10-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 000-7.8z"/></svg></span>
-              <span class="ek-act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg></span>
-              <span class="ek-act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg></span>
-              <span class="ek-act ek-act-save"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg></span>
-            </div>
-            <div class="ek-card-panel">
-              <div class="ek-card-peek">
-                <p class="ek-card-caption"><span class="ek-card-name">Pencak Silat</span>Bela diri asli Nusantara — membentuk jiwa kesatria, percaya diri, dan ketahanan fisik.</p>
-                <div class="ek-card-metaline">
-                  <span class="ek-card-tag">Bela Diri</span>
-                  <span class="ek-card-sched"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M16 2.5v4M8 2.5v4M3 9.5h18"/></svg> Selasa &amp; Kamis</span>
-                </div>
-                <span class="ek-card-more">Lihat detail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
-              </div>
-              <div class="ek-card-detail">
-                <ul class="ek-card-meta">
-                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Pembina:</b> M. Fajar Ramadhan</span></li>
-                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Latihan:</b> Selasa &amp; Kamis 15.30–17.30 WIB</span></li>
-                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Kegiatan:</b> Jurus, sparring, kejuaraan silat</span></li>
-                </ul>
-              </div>
-            </div>
-          </article>
-        </div>
-
-        <!-- 4. FUTSAL -->
-        <div class="ek-item" data-category="Olahraga" data-reveal style="--d:3">
-          <article class="ek-card" data-toggle>
-            <div class="ek-card-head">
-              <span class="ek-card-avatar"><img src="{{ asset('images/logo_smkn2.png') }}" alt="Logo SMKN 2 Mojokerto"></span>
-              <div class="ek-card-idwrap">
-                <span class="ek-card-uname">Futsal</span>
-                <span class="ek-card-usub">SMKN 2 Mojokerto</span>
-              </div>
-              <span class="ek-card-menu" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg></span>
-            </div>
-            <div class="ek-card-media">
-              <img src="{{ asset('images/futsal.jpg') }}" alt="Latihan Futsal SMKN 2 Mojokerto" loading="eager">
-            </div>
-            <div class="ek-card-actions" aria-hidden="true">
-              <span class="ek-act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.6l-1-1a5.5 5.5 0 10-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 000-7.8z"/></svg></span>
-              <span class="ek-act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg></span>
-              <span class="ek-act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg></span>
-              <span class="ek-act ek-act-save"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg></span>
-            </div>
-            <div class="ek-card-panel">
-              <div class="ek-card-peek">
-                <p class="ek-card-caption"><span class="ek-card-name">Futsal</span>Kecepatan, strategi, dan kerja sama tim — berlatih rutin dan berlaga di turnamen antar-SMK.</p>
-                <div class="ek-card-metaline">
-                  <span class="ek-card-tag">Olahraga</span>
-                  <span class="ek-card-sched"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M16 2.5v4M8 2.5v4M3 9.5h18"/></svg> Senin &amp; Rabu</span>
-                </div>
-                <span class="ek-card-more">Lihat detail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
-              </div>
-              <div class="ek-card-detail">
-                <ul class="ek-card-meta">
-                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Pembina:</b> Andik Prasetyo, S.Pd</span></li>
-                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Latihan:</b> Senin &amp; Rabu 15.00–17.00 WIB</span></li>
-                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Kegiatan:</b> Liga pelajar, turnamen antar-SMK</span></li>
-                </ul>
-              </div>
-            </div>
-          </article>
-        </div>
-
-        <!-- 5. BASKET -->
-        <div class="ek-item" data-category="Olahraga" data-reveal style="--d:4">
+        <!-- 2. BASKET -->
+        <div class="ek-item" data-category="Olahraga" data-reveal style="--d:1">
           <article class="ek-card" data-toggle>
             <div class="ek-card-head">
               <span class="ek-card-avatar"><img src="{{ asset('images/logo_smkn2.png') }}" alt="Logo SMKN 2 Mojokerto"></span>
@@ -632,7 +503,7 @@
               <span class="ek-card-menu" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg></span>
             </div>
             <div class="ek-card-media">
-              <img src="{{ asset('images/basket.jpg') }}" alt="Latihan Basket SMKN 2 Mojokerto" loading="eager">
+              <img src="{{ asset('images/ekstra/basket.jpg') }}" alt="Kegiatan Basket SMKN 2 Mojokerto" loading="eager">
             </div>
             <div class="ek-card-actions" aria-hidden="true">
               <span class="ek-act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.6l-1-1a5.5 5.5 0 10-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 000-7.8z"/></svg></span>
@@ -642,26 +513,25 @@
             </div>
             <div class="ek-card-panel">
               <div class="ek-card-peek">
-                <p class="ek-card-caption"><span class="ek-card-name">Basket</span>Tinggi lompatanmu, tinggi pula semangatmu — berkompetisi di Honda DBL &amp; antar-SMK.</p>
+                <p class="ek-card-caption"><span class="ek-card-name">Basket</span>Melatih teknik permainan, kebugaran, sportivitas, dan kerja sama tim melalui latihan serta pertandingan pelajar.</p>
                 <div class="ek-card-metaline">
                   <span class="ek-card-tag">Olahraga</span>
-                  <span class="ek-card-sched"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M16 2.5v4M8 2.5v4M3 9.5h18"/></svg> Selasa &amp; Jumat</span>
+                  <span class="ek-card-sched"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M16 2.5v4M8 2.5v4M3 9.5h18"/></svg> Selasa & Jumat</span>
                 </div>
                 <span class="ek-card-more">Lihat detail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
               </div>
               <div class="ek-card-detail">
                 <ul class="ek-card-meta">
-                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Pembina:</b> Yoga Pratama, S.Or</span></li>
-                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Latihan:</b> Selasa &amp; Jumat 15.30–17.30 WIB</span></li>
-                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Kegiatan:</b> DBL, turnamen antar-SMK</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Pembina:</b> Pembina olahraga sekolah</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Latihan:</b> Selasa & Jumat</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Kegiatan:</b> Latihan teknik, sparing, dan turnamen pelajar</span></li>
                 </ul>
               </div>
             </div>
           </article>
         </div>
-
-        <!-- 6. VOLI -->
-        <div class="ek-item" data-category="Olahraga" data-reveal style="--d:5">
+        <!-- 3. BOLA VOLI -->
+        <div class="ek-item" data-category="Olahraga" data-reveal style="--d:2">
           <article class="ek-card" data-toggle>
             <div class="ek-card-head">
               <span class="ek-card-avatar"><img src="{{ asset('images/logo_smkn2.png') }}" alt="Logo SMKN 2 Mojokerto"></span>
@@ -672,7 +542,7 @@
               <span class="ek-card-menu" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg></span>
             </div>
             <div class="ek-card-media">
-              <img src="{{ asset('images/voli.jpg') }}" alt="Ekstrakurikuler Bola Voli SMKN 2 Mojokerto" loading="eager">
+              <img src="{{ asset('images/ekstra/voly.jpg') }}" alt="Kegiatan Bola Voli SMKN 2 Mojokerto" loading="eager">
             </div>
             <div class="ek-card-actions" aria-hidden="true">
               <span class="ek-act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.6l-1-1a5.5 5.5 0 10-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 000-7.8z"/></svg></span>
@@ -682,26 +552,337 @@
             </div>
             <div class="ek-card-panel">
               <div class="ek-card-peek">
-                <p class="ek-card-caption"><span class="ek-card-name">Bola Voli</span>Smash keras, tim solid — latihan rutin dan unjuk gigi di POPDA serta turnamen pelajar.</p>
+                <p class="ek-card-caption"><span class="ek-card-name">Bola Voli</span>Membangun kekompakan tim melalui latihan teknik dasar, strategi permainan, dan kompetisi antarpelajar.</p>
                 <div class="ek-card-metaline">
                   <span class="ek-card-tag">Olahraga</span>
-                  <span class="ek-card-sched"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M16 2.5v4M8 2.5v4M3 9.5h18"/></svg> Kamis &amp; Sabtu</span>
+                  <span class="ek-card-sched"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M16 2.5v4M8 2.5v4M3 9.5h18"/></svg> Kamis & Sabtu</span>
                 </div>
                 <span class="ek-card-more">Lihat detail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
               </div>
               <div class="ek-card-detail">
                 <ul class="ek-card-meta">
-                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Pembina:</b> Dimas Arya, S.Pd</span></li>
-                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Latihan:</b> Kamis &amp; Sabtu 15.00–17.00 WIB</span></li>
-                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Kegiatan:</b> POPDA, turnamen antar-SMK</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Pembina:</b> Pembina olahraga sekolah</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Latihan:</b> Kamis & Sabtu</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Kegiatan:</b> Passing, servis, smash, sparing, dan turnamen</span></li>
                 </ul>
               </div>
             </div>
           </article>
         </div>
-
-        <!-- 7. PMR -->
-        <div class="ek-item" data-category="Kesehatan" data-reveal>
+        <!-- 4. BTQ -->
+        <div class="ek-item" data-category="Keagamaan" data-reveal style="--d:3">
+          <article class="ek-card" data-toggle>
+            <div class="ek-card-head">
+              <span class="ek-card-avatar"><img src="{{ asset('images/logo_smkn2.png') }}" alt="Logo SMKN 2 Mojokerto"></span>
+              <div class="ek-card-idwrap">
+                <span class="ek-card-uname">BTQ</span>
+                <span class="ek-card-usub">SMKN 2 Mojokerto</span>
+              </div>
+              <span class="ek-card-menu" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg></span>
+            </div>
+            <div class="ek-card-media">
+              <img src="{{ asset('images/ekstra/btq.jpg') }}" alt="Kegiatan BTQ SMKN 2 Mojokerto" loading="eager">
+            </div>
+            <div class="ek-card-actions" aria-hidden="true">
+              <span class="ek-act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.6l-1-1a5.5 5.5 0 10-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 000-7.8z"/></svg></span>
+              <span class="ek-act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg></span>
+              <span class="ek-act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg></span>
+              <span class="ek-act ek-act-save"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg></span>
+            </div>
+            <div class="ek-card-panel">
+              <div class="ek-card-peek">
+                <p class="ek-card-caption"><span class="ek-card-name">BTQ</span>Meningkatkan kemampuan membaca Al-Qur’an dengan baik serta membangun kebiasaan belajar agama secara rutin.</p>
+                <div class="ek-card-metaline">
+                  <span class="ek-card-tag">Keagamaan</span>
+                  <span class="ek-card-sched"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M16 2.5v4M8 2.5v4M3 9.5h18"/></svg> Jumat</span>
+                </div>
+                <span class="ek-card-more">Lihat detail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+              </div>
+              <div class="ek-card-detail">
+                <ul class="ek-card-meta">
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Pembina:</b> Pembina kegiatan keagamaan</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Latihan:</b> Jumat</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Kegiatan:</b> Tilawah, tahsin, hafalan, dan pembinaan keagamaan</span></li>
+                </ul>
+              </div>
+            </div>
+          </article>
+        </div>
+        <!-- 5. FUTSAL -->
+        <div class="ek-item" data-category="Olahraga" data-reveal style="--d:4">
+          <article class="ek-card" data-toggle>
+            <div class="ek-card-head">
+              <span class="ek-card-avatar"><img src="{{ asset('images/logo_smkn2.png') }}" alt="Logo SMKN 2 Mojokerto"></span>
+              <div class="ek-card-idwrap">
+                <span class="ek-card-uname">Futsal</span>
+                <span class="ek-card-usub">SMKN 2 Mojokerto</span>
+              </div>
+              <span class="ek-card-menu" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg></span>
+            </div>
+            <div class="ek-card-media">
+              <img src="{{ asset('images/ekstra/futsal.jpg') }}" alt="Kegiatan Futsal SMKN 2 Mojokerto" loading="eager">
+            </div>
+            <div class="ek-card-actions" aria-hidden="true">
+              <span class="ek-act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.6l-1-1a5.5 5.5 0 10-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 000-7.8z"/></svg></span>
+              <span class="ek-act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg></span>
+              <span class="ek-act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg></span>
+              <span class="ek-act ek-act-save"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg></span>
+            </div>
+            <div class="ek-card-panel">
+              <div class="ek-card-peek">
+                <p class="ek-card-caption"><span class="ek-card-name">Futsal</span>Mengasah kecepatan, strategi, disiplin, dan kerja sama tim melalui latihan futsal dan pertandingan pelajar.</p>
+                <div class="ek-card-metaline">
+                  <span class="ek-card-tag">Olahraga</span>
+                  <span class="ek-card-sched"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M16 2.5v4M8 2.5v4M3 9.5h18"/></svg> Senin & Rabu</span>
+                </div>
+                <span class="ek-card-more">Lihat detail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+              </div>
+              <div class="ek-card-detail">
+                <ul class="ek-card-meta">
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Pembina:</b> Pembina olahraga sekolah</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Latihan:</b> Senin & Rabu</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Kegiatan:</b> Latihan teknik, sparing, dan turnamen antarsekolah</span></li>
+                </ul>
+              </div>
+            </div>
+          </article>
+        </div>
+        <!-- 6. JURNALISTIK -->
+        <div class="ek-item" data-category="Media & Literasi" data-reveal style="--d:5">
+          <article class="ek-card" data-toggle>
+            <div class="ek-card-head">
+              <span class="ek-card-avatar"><img src="{{ asset('images/logo_smkn2.png') }}" alt="Logo SMKN 2 Mojokerto"></span>
+              <div class="ek-card-idwrap">
+                <span class="ek-card-uname">Jurnalistik</span>
+                <span class="ek-card-usub">SMKN 2 Mojokerto</span>
+              </div>
+              <span class="ek-card-menu" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg></span>
+            </div>
+            <div class="ek-card-media">
+              <img src="{{ asset('images/ekstra/jurnalistik.jpg') }}" alt="Kegiatan Jurnalistik SMKN 2 Mojokerto" loading="eager">
+            </div>
+            <div class="ek-card-actions" aria-hidden="true">
+              <span class="ek-act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.6l-1-1a5.5 5.5 0 10-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 000-7.8z"/></svg></span>
+              <span class="ek-act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg></span>
+              <span class="ek-act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg></span>
+              <span class="ek-act ek-act-save"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg></span>
+            </div>
+            <div class="ek-card-panel">
+              <div class="ek-card-peek">
+                <p class="ek-card-caption"><span class="ek-card-name">Jurnalistik</span>Menjadi ruang bagi siswa untuk menulis, meliput kegiatan sekolah, mengolah informasi, dan menghasilkan karya media.</p>
+                <div class="ek-card-metaline">
+                  <span class="ek-card-tag">Media & Literasi</span>
+                  <span class="ek-card-sched"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M16 2.5v4M8 2.5v4M3 9.5h18"/></svg> Rabu</span>
+                </div>
+                <span class="ek-card-more">Lihat detail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+              </div>
+              <div class="ek-card-detail">
+                <ul class="ek-card-meta">
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Pembina:</b> Pembina jurnalistik sekolah</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Latihan:</b> Rabu</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Kegiatan:</b> Menulis berita, wawancara, fotografi, dan publikasi sekolah</span></li>
+                </ul>
+              </div>
+            </div>
+          </article>
+        </div>
+        <!-- 7. PASKIB -->
+        <div class="ek-item" data-category="Kedisiplinan" data-reveal style="--d:0">
+          <article class="ek-card" data-toggle>
+            <div class="ek-card-head">
+              <span class="ek-card-avatar"><img src="{{ asset('images/logo_smkn2.png') }}" alt="Logo SMKN 2 Mojokerto"></span>
+              <div class="ek-card-idwrap">
+                <span class="ek-card-uname">Paskib</span>
+                <span class="ek-card-usub">SMKN 2 Mojokerto</span>
+              </div>
+              <span class="ek-card-menu" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg></span>
+            </div>
+            <div class="ek-card-media">
+              <img src="{{ asset('images/ekstra/paskibra.jpg') }}" alt="Kegiatan Paskib SMKN 2 Mojokerto" loading="eager">
+            </div>
+            <div class="ek-card-actions" aria-hidden="true">
+              <span class="ek-act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.6l-1-1a5.5 5.5 0 10-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 000-7.8z"/></svg></span>
+              <span class="ek-act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg></span>
+              <span class="ek-act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg></span>
+              <span class="ek-act ek-act-save"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg></span>
+            </div>
+            <div class="ek-card-panel">
+              <div class="ek-card-peek">
+                <p class="ek-card-caption"><span class="ek-card-name">Paskib</span>Membentuk kedisiplinan, keteguhan, tanggung jawab, dan kekompakan melalui latihan baris-berbaris.</p>
+                <div class="ek-card-metaline">
+                  <span class="ek-card-tag">Kedisiplinan</span>
+                  <span class="ek-card-sched"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M16 2.5v4M8 2.5v4M3 9.5h18"/></svg> Rabu & Sabtu</span>
+                </div>
+                <span class="ek-card-more">Lihat detail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+              </div>
+              <div class="ek-card-detail">
+                <ul class="ek-card-meta">
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Pembina:</b> Pembina Paskib sekolah</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Latihan:</b> Rabu & Sabtu</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Kegiatan:</b> PBB, formasi, upacara, dan kegiatan kebangsaan</span></li>
+                </ul>
+              </div>
+            </div>
+          </article>
+        </div>
+        <!-- 8. PRAMUKA -->
+        <div class="ek-item" data-category="Kepanduan" data-reveal style="--d:1">
+          <article class="ek-card" data-toggle>
+            <div class="ek-card-head">
+              <span class="ek-card-avatar"><img src="{{ asset('images/logo_smkn2.png') }}" alt="Logo SMKN 2 Mojokerto"></span>
+              <div class="ek-card-idwrap">
+                <span class="ek-card-uname">Pramuka</span>
+                <span class="ek-card-usub">SMKN 2 Mojokerto</span>
+              </div>
+              <span class="ek-card-menu" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg></span>
+            </div>
+            <div class="ek-card-media">
+              <img src="{{ asset('images/ekstra/pramuka.jpg') }}" alt="Kegiatan Pramuka SMKN 2 Mojokerto" loading="eager">
+            </div>
+            <div class="ek-card-actions" aria-hidden="true">
+              <span class="ek-act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.6l-1-1a5.5 5.5 0 10-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 000-7.8z"/></svg></span>
+              <span class="ek-act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg></span>
+              <span class="ek-act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg></span>
+              <span class="ek-act ek-act-save"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg></span>
+            </div>
+            <div class="ek-card-panel">
+              <div class="ek-card-peek">
+                <p class="ek-card-caption"><span class="ek-card-name">Pramuka</span>Membentuk kemandirian, kepemimpinan, kepedulian lingkungan, dan keterampilan melalui kegiatan kepanduan.</p>
+                <div class="ek-card-metaline">
+                  <span class="ek-card-tag">Kepanduan</span>
+                  <span class="ek-card-sched"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M16 2.5v4M8 2.5v4M3 9.5h18"/></svg> Jumat</span>
+                </div>
+                <span class="ek-card-more">Lihat detail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+              </div>
+              <div class="ek-card-detail">
+                <ul class="ek-card-meta">
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Pembina:</b> Pembina Pramuka sekolah</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Latihan:</b> Jumat</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Kegiatan:</b> Latihan kepramukaan, kemah, keterampilan, dan kegiatan sosial</span></li>
+                </ul>
+              </div>
+            </div>
+          </article>
+        </div>
+        <!-- 9. TARI -->
+        <div class="ek-item" data-category="Seni & Budaya" data-reveal style="--d:2">
+          <article class="ek-card" data-toggle>
+            <div class="ek-card-head">
+              <span class="ek-card-avatar"><img src="{{ asset('images/logo_smkn2.png') }}" alt="Logo SMKN 2 Mojokerto"></span>
+              <div class="ek-card-idwrap">
+                <span class="ek-card-uname">Tari</span>
+                <span class="ek-card-usub">SMKN 2 Mojokerto</span>
+              </div>
+              <span class="ek-card-menu" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg></span>
+            </div>
+            <div class="ek-card-media">
+              <img src="{{ asset('images/ekstra/tari.jpg') }}" alt="Kegiatan Tari SMKN 2 Mojokerto" loading="eager">
+            </div>
+            <div class="ek-card-actions" aria-hidden="true">
+              <span class="ek-act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.6l-1-1a5.5 5.5 0 10-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 000-7.8z"/></svg></span>
+              <span class="ek-act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg></span>
+              <span class="ek-act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg></span>
+              <span class="ek-act ek-act-save"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg></span>
+            </div>
+            <div class="ek-card-panel">
+              <div class="ek-card-peek">
+                <p class="ek-card-caption"><span class="ek-card-name">Tari</span>Melestarikan budaya melalui tari tradisional dan kreasi serta memberikan ruang untuk tampil dan berkarya.</p>
+                <div class="ek-card-metaline">
+                  <span class="ek-card-tag">Seni & Budaya</span>
+                  <span class="ek-card-sched"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M16 2.5v4M8 2.5v4M3 9.5h18"/></svg> Rabu & Sabtu</span>
+                </div>
+                <span class="ek-card-more">Lihat detail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+              </div>
+              <div class="ek-card-detail">
+                <ul class="ek-card-meta">
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Pembina:</b> Pembina seni sekolah</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Latihan:</b> Rabu & Sabtu</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Kegiatan:</b> Latihan tari tradisional, tari kreasi, dan pentas seni</span></li>
+                </ul>
+              </div>
+            </div>
+          </article>
+        </div>
+        <!-- 10. PENA -->
+        <div class="ek-item" data-category="Seni & Budaya" data-reveal style="--d:3">
+          <article class="ek-card" data-toggle>
+            <div class="ek-card-head">
+              <span class="ek-card-avatar"><img src="{{ asset('images/logo_smkn2.png') }}" alt="Logo SMKN 2 Mojokerto"></span>
+              <div class="ek-card-idwrap">
+                <span class="ek-card-uname">PENA</span>
+                <span class="ek-card-usub">SMKN 2 Mojokerto</span>
+              </div>
+              <span class="ek-card-menu" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg></span>
+            </div>
+            <div class="ek-card-media">
+              <img src="{{ asset('images/ekstra/pena.jpg') }}" alt="Kegiatan PENA SMKN 2 Mojokerto" loading="eager">
+            </div>
+            <div class="ek-card-actions" aria-hidden="true">
+              <span class="ek-act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.6l-1-1a5.5 5.5 0 10-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 000-7.8z"/></svg></span>
+              <span class="ek-act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg></span>
+              <span class="ek-act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg></span>
+              <span class="ek-act ek-act-save"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg></span>
+            </div>
+            <div class="ek-card-panel">
+              <div class="ek-card-peek">
+                <p class="ek-card-caption"><span class="ek-card-name">PENA</span>Wadah mini teater untuk melatih ekspresi, kepercayaan diri, penulisan naskah, dan kemampuan tampil di depan publik.</p>
+                <div class="ek-card-metaline">
+                  <span class="ek-card-tag">Seni & Budaya</span>
+                  <span class="ek-card-sched"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M16 2.5v4M8 2.5v4M3 9.5h18"/></svg> Kamis</span>
+                </div>
+                <span class="ek-card-more">Lihat detail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+              </div>
+              <div class="ek-card-detail">
+                <ul class="ek-card-meta">
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Pembina:</b> Pembina seni dan teater sekolah</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Latihan:</b> Kamis</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Kegiatan:</b> Latihan akting, olah vokal, naskah, dan pementasan</span></li>
+                </ul>
+              </div>
+            </div>
+          </article>
+        </div>
+        <!-- 11. SILAT -->
+        <div class="ek-item" data-category="Bela Diri" data-reveal style="--d:4">
+          <article class="ek-card" data-toggle>
+            <div class="ek-card-head">
+              <span class="ek-card-avatar"><img src="{{ asset('images/logo_smkn2.png') }}" alt="Logo SMKN 2 Mojokerto"></span>
+              <div class="ek-card-idwrap">
+                <span class="ek-card-uname">Silat</span>
+                <span class="ek-card-usub">SMKN 2 Mojokerto</span>
+              </div>
+              <span class="ek-card-menu" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg></span>
+            </div>
+            <div class="ek-card-media">
+              <img src="{{ asset('images/ekstra/silat.jpg') }}" alt="Kegiatan Silat SMKN 2 Mojokerto" loading="eager">
+            </div>
+            <div class="ek-card-actions" aria-hidden="true">
+              <span class="ek-act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.6l-1-1a5.5 5.5 0 10-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 000-7.8z"/></svg></span>
+              <span class="ek-act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg></span>
+              <span class="ek-act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg></span>
+              <span class="ek-act ek-act-save"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg></span>
+            </div>
+            <div class="ek-card-panel">
+              <div class="ek-card-peek">
+                <p class="ek-card-caption"><span class="ek-card-name">Silat</span>Melatih bela diri, ketahanan fisik, kedisiplinan, dan sikap percaya diri melalui latihan pencak silat.</p>
+                <div class="ek-card-metaline">
+                  <span class="ek-card-tag">Bela Diri</span>
+                  <span class="ek-card-sched"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M16 2.5v4M8 2.5v4M3 9.5h18"/></svg> Selasa & Kamis</span>
+                </div>
+                <span class="ek-card-more">Lihat detail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+              </div>
+              <div class="ek-card-detail">
+                <ul class="ek-card-meta">
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Pembina:</b> Pembina bela diri sekolah</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Latihan:</b> Selasa & Kamis</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Kegiatan:</b> Teknik dasar, jurus, sparing, dan kejuaraan</span></li>
+                </ul>
+              </div>
+            </div>
+          </article>
+        </div>
+        <!-- 12. PMR -->
+        <div class="ek-item" data-category="Kesehatan" data-reveal style="--d:5">
           <article class="ek-card" data-toggle>
             <div class="ek-card-head">
               <span class="ek-card-avatar"><img src="{{ asset('images/logo_smkn2.png') }}" alt="Logo SMKN 2 Mojokerto"></span>
@@ -712,7 +893,7 @@
               <span class="ek-card-menu" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg></span>
             </div>
             <div class="ek-card-media">
-              <img src="{{ asset('images/pmr.jpg') }}" alt="Latihan PMR Palang Merah Remaja SMKN 2 Mojokerto" loading="eager">
+              <img src="{{ asset('images/ekstra/pmr.jpg') }}" alt="Kegiatan PMR SMKN 2 Mojokerto" loading="eager">
             </div>
             <div class="ek-card-actions" aria-hidden="true">
               <span class="ek-act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.6l-1-1a5.5 5.5 0 10-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 000-7.8z"/></svg></span>
@@ -722,7 +903,7 @@
             </div>
             <div class="ek-card-panel">
               <div class="ek-card-peek">
-                <p class="ek-card-caption"><span class="ek-card-name">PMR</span>Siap menolong, siap siaga — belajar pertolongan pertama, donor darah, dan siaga bencana.</p>
+                <p class="ek-card-caption"><span class="ek-card-name">PMR</span>Membekali siswa dengan kepedulian kemanusiaan, pertolongan pertama, dan kesiapsiagaan dalam kegiatan sekolah.</p>
                 <div class="ek-card-metaline">
                   <span class="ek-card-tag">Kesehatan</span>
                   <span class="ek-card-sched"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M16 2.5v4M8 2.5v4M3 9.5h18"/></svg> Sabtu</span>
@@ -731,28 +912,27 @@
               </div>
               <div class="ek-card-detail">
                 <ul class="ek-card-meta">
-                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Pembina:</b> dr. Nia Rahmawati (UKS)</span></li>
-                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Latihan:</b> Sabtu 08.00–11.00 WIB</span></li>
-                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Kegiatan:</b> P3K, donor darah, siaga bencana</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Pembina:</b> Pembina PMR sekolah</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Latihan:</b> Sabtu</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Kegiatan:</b> P3K, kesehatan remaja, kegiatan sosial, dan siaga bencana</span></li>
                 </ul>
               </div>
             </div>
           </article>
         </div>
-
-        <!-- 8. ROHIS -->
-        <div class="ek-item" data-category="Keagamaan" data-reveal style="--d:1">
+        <!-- 13. PIK-R -->
+        <div class="ek-item" data-category="Kesehatan" data-reveal style="--d:0">
           <article class="ek-card" data-toggle>
             <div class="ek-card-head">
               <span class="ek-card-avatar"><img src="{{ asset('images/logo_smkn2.png') }}" alt="Logo SMKN 2 Mojokerto"></span>
               <div class="ek-card-idwrap">
-                <span class="ek-card-uname">Rohis</span>
+                <span class="ek-card-uname">PIK-R</span>
                 <span class="ek-card-usub">SMKN 2 Mojokerto</span>
               </div>
               <span class="ek-card-menu" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg></span>
             </div>
             <div class="ek-card-media">
-              <img src="{{ asset('images/rohis.jpg') }}" alt="Kegiatan Rohis Kerohanian Islam SMKN 2 Mojokerto" loading="eager">
+              <img src="{{ asset('images/ekstra/pik-r.jpg') }}" alt="Kegiatan PIK-R SMKN 2 Mojokerto" loading="eager">
             </div>
             <div class="ek-card-actions" aria-hidden="true">
               <span class="ek-act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.6l-1-1a5.5 5.5 0 10-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 000-7.8z"/></svg></span>
@@ -762,37 +942,44 @@
             </div>
             <div class="ek-card-panel">
               <div class="ek-card-peek">
-                <p class="ek-card-caption"><span class="ek-card-name">Rohis</span>Membangun akhlak mulia generasi beriman — kajian, tahfidz, peringatan hari besar, dan aksi sosial.</p>
+                <p class="ek-card-caption"><span class="ek-card-name">PIK-R</span>Menjadi ruang edukasi dan konseling sebaya untuk membangun remaja yang sehat, bertanggung jawab, dan berencana.</p>
                 <div class="ek-card-metaline">
-                  <span class="ek-card-tag">Keagamaan</span>
-                  <span class="ek-card-sched"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M16 2.5v4M8 2.5v4M3 9.5h18"/></svg> Jumat</span>
+                  <span class="ek-card-tag">Kesehatan</span>
+                  <span class="ek-card-sched"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M16 2.5v4M8 2.5v4M3 9.5h18"/></svg> Kamis</span>
                 </div>
                 <span class="ek-card-more">Lihat detail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
               </div>
               <div class="ek-card-detail">
                 <ul class="ek-card-meta">
-                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Pembina:</b> Ust. Ahmad Zainuddin, S.Pd.I</span></li>
-                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Latihan:</b> Jumat 13.30–15.00 WIB</span></li>
-                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Kegiatan:</b> Kajian, tahfidz, PHBI, aksi sosial</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Pembina:</b> Pembina PIK-R sekolah</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Latihan:</b> Kamis</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Kegiatan:</b> Edukasi remaja, konseling sebaya, kampanye kesehatan, dan kegiatan sosial</span></li>
                 </ul>
               </div>
             </div>
           </article>
         </div>
+      </div>
 
-        <!-- 9. SENI TARI -->
-        <div class="ek-item" data-category="Seni & Budaya" data-reveal style="--d:2">
+      <div style="margin-top:5.5rem" data-reveal>
+        <span class="ek-eyebrow">Organisasi Siswa</span>
+        <h2 class="big-heading">Bersama <span>Berkarya</span></h2>
+        <p class="ek-desc">Organisasi siswa menjadi ruang untuk belajar memimpin, bekerja sama, berinisiatif, dan berkontribusi dalam kehidupan sekolah.</p>
+      </div>
+      <div class="ek-grid" id="ekOrgGrid">
+        <!-- 1. OSIS -->
+        <div class="ek-item" data-category="Organisasi" data-reveal>
           <article class="ek-card" data-toggle>
             <div class="ek-card-head">
               <span class="ek-card-avatar"><img src="{{ asset('images/logo_smkn2.png') }}" alt="Logo SMKN 2 Mojokerto"></span>
               <div class="ek-card-idwrap">
-                <span class="ek-card-uname">Seni Tari</span>
+                <span class="ek-card-uname">OSIS</span>
                 <span class="ek-card-usub">SMKN 2 Mojokerto</span>
               </div>
               <span class="ek-card-menu" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg></span>
             </div>
             <div class="ek-card-media">
-              <img src="{{ asset('images/seni-tari.jpg') }}" alt="Penampilan Seni Tari SMKN 2 Mojokerto" loading="eager">
+              <img src="{{ asset('images/ekstra/osis.jpg') }}" alt="Kegiatan OSIS SMKN 2 Mojokerto" loading="eager">
             </div>
             <div class="ek-card-actions" aria-hidden="true">
               <span class="ek-act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.6l-1-1a5.5 5.5 0 10-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 000-7.8z"/></svg></span>
@@ -802,37 +989,36 @@
             </div>
             <div class="ek-card-panel">
               <div class="ek-card-peek">
-                <p class="ek-card-caption"><span class="ek-card-name">Seni Tari</span>Melestarikan budaya melalui gerak — menari tradisional dan kreasi, tampil di festival pelajar.</p>
+                <p class="ek-card-caption"><span class="ek-card-name">OSIS</span>Wadah utama kepemimpinan siswa untuk merancang dan menjalankan berbagai program kegiatan sekolah.</p>
                 <div class="ek-card-metaline">
-                  <span class="ek-card-tag">Seni &amp; Budaya</span>
-                  <span class="ek-card-sched"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M16 2.5v4M8 2.5v4M3 9.5h18"/></svg> Rabu &amp; Sabtu</span>
+                  <span class="ek-card-tag">Organisasi</span>
+                  <span class="ek-card-sched"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M16 2.5v4M8 2.5v4M3 9.5h18"/></svg> Sesuai program kerja</span>
                 </div>
                 <span class="ek-card-more">Lihat detail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
               </div>
               <div class="ek-card-detail">
                 <ul class="ek-card-meta">
-                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Pembina:</b> Lailatul Fajriyah, S.Sn</span></li>
-                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Latihan:</b> Rabu &amp; Sabtu 14.30–16.30 WIB</span></li>
-                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Kegiatan:</b> Tari tradisional, tari kreasi, festival</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Pembina:</b> Pembina OSIS sekolah</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Latihan:</b> Sesuai program kerja</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Kegiatan:</b> Program kerja siswa, kegiatan sekolah, kepemimpinan, dan bakti sosial</span></li>
                 </ul>
               </div>
             </div>
           </article>
         </div>
-
-        <!-- 10. MUSIK / BAND -->
-        <div class="ek-item" data-category="Seni Musik" data-reveal style="--d:3">
+        <!-- 2. LACURVA -->
+        <div class="ek-item" data-category="Organisasi" data-reveal style="--d:1">
           <article class="ek-card" data-toggle>
             <div class="ek-card-head">
               <span class="ek-card-avatar"><img src="{{ asset('images/logo_smkn2.png') }}" alt="Logo SMKN 2 Mojokerto"></span>
               <div class="ek-card-idwrap">
-                <span class="ek-card-uname">Musik / Band</span>
+                <span class="ek-card-uname">Lacurva</span>
                 <span class="ek-card-usub">SMKN 2 Mojokerto</span>
               </div>
               <span class="ek-card-menu" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg></span>
             </div>
             <div class="ek-card-media">
-              <img src="{{ asset('images/musik.jpg') }}" alt="Band siswa SMKN 2 Mojokerto tampil" loading="eager">
+              <img src="{{ asset('images/ekstra/lacurva.jpg') }}" alt="Kegiatan Lacurva SMKN 2 Mojokerto" loading="eager">
             </div>
             <div class="ek-card-actions" aria-hidden="true">
               <span class="ek-act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.6l-1-1a5.5 5.5 0 10-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 000-7.8z"/></svg></span>
@@ -842,37 +1028,36 @@
             </div>
             <div class="ek-card-panel">
               <div class="ek-card-peek">
-                <p class="ek-card-caption"><span class="ek-card-name">Musik / Band</span>Nada, harmoni, dan ekspresi — band sekolah tampil di pentas seni dan acara resmi sekolah.</p>
+                <p class="ek-card-caption"><span class="ek-card-name">Lacurva</span>Komunitas suporter Skaneda yang membangun semangat, kreativitas, dan dukungan positif untuk kegiatan serta prestasi siswa.</p>
                 <div class="ek-card-metaline">
-                  <span class="ek-card-tag">Seni Musik</span>
-                  <span class="ek-card-sched"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M16 2.5v4M8 2.5v4M3 9.5h18"/></svg> Senin &amp; Kamis</span>
+                  <span class="ek-card-tag">Organisasi</span>
+                  <span class="ek-card-sched"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M16 2.5v4M8 2.5v4M3 9.5h18"/></svg> Sesuai agenda pertandingan</span>
                 </div>
                 <span class="ek-card-more">Lihat detail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
               </div>
               <div class="ek-card-detail">
                 <ul class="ek-card-meta">
-                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Pembina:</b> Rendra Kurniawan, S.Sn</span></li>
-                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Latihan:</b> Senin &amp; Kamis 15.00–17.30 WIB</span></li>
-                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Kegiatan:</b> Pentas seni, acara sekolah, festival</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Pembina:</b> Pembina kegiatan siswa</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Latihan:</b> Sesuai agenda pertandingan</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Kegiatan:</b> Dukungan pertandingan, koreografi, kreativitas suporter, dan solidaritas</span></li>
                 </ul>
               </div>
             </div>
           </article>
         </div>
-
-        <!-- 11. ENGLISH CLUB -->
-        <div class="ek-item" data-category="Bahasa" data-reveal style="--d:4">
+        <!-- 3. PASUS -->
+        <div class="ek-item" data-category="Organisasi" data-reveal style="--d:2">
           <article class="ek-card" data-toggle>
             <div class="ek-card-head">
               <span class="ek-card-avatar"><img src="{{ asset('images/logo_smkn2.png') }}" alt="Logo SMKN 2 Mojokerto"></span>
               <div class="ek-card-idwrap">
-                <span class="ek-card-uname">English Club</span>
+                <span class="ek-card-uname">Pasus</span>
                 <span class="ek-card-usub">SMKN 2 Mojokerto</span>
               </div>
               <span class="ek-card-menu" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg></span>
             </div>
             <div class="ek-card-media">
-              <img src="{{ asset('images/english-club.jpg') }}" alt="English Club SMKN 2 Mojokerto" loading="eager">
+              <img src="{{ asset('images/ekstra/pasus.jpg') }}" alt="Kegiatan Pasus SMKN 2 Mojokerto" loading="eager">
             </div>
             <div class="ek-card-actions" aria-hidden="true">
               <span class="ek-act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.6l-1-1a5.5 5.5 0 10-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 000-7.8z"/></svg></span>
@@ -882,64 +1067,23 @@
             </div>
             <div class="ek-card-panel">
               <div class="ek-card-peek">
-                <p class="ek-card-caption"><span class="ek-card-name">English Club</span>Berani bicara dan go global — speaking, debate, dan persiapan TOEIC untuk dunia kerja.</p>
+                <p class="ek-card-caption"><span class="ek-card-name">Pasus</span>Organisasi siswa yang menumbuhkan kedisiplinan, tanggung jawab, kekompakan, dan kesiapan membantu kegiatan sekolah.</p>
                 <div class="ek-card-metaline">
-                  <span class="ek-card-tag">Bahasa</span>
-                  <span class="ek-card-sched"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M16 2.5v4M8 2.5v4M3 9.5h18"/></svg> Selasa</span>
+                  <span class="ek-card-tag">Organisasi</span>
+                  <span class="ek-card-sched"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M16 2.5v4M8 2.5v4M3 9.5h18"/></svg> Sesuai agenda sekolah</span>
                 </div>
                 <span class="ek-card-more">Lihat detail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
               </div>
               <div class="ek-card-detail">
                 <ul class="ek-card-meta">
-                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Pembina:</b> Nurul Aini, S.Pd., M.Pd</span></li>
-                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Latihan:</b> Selasa 14.30–16.00 WIB</span></li>
-                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Kegiatan:</b> Speaking, debate, TOEIC prep</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Pembina:</b> Pembina Pasus sekolah</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Latihan:</b> Sesuai agenda sekolah</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Kegiatan:</b> Pengamanan kegiatan, kedisiplinan, ketertiban, dan dukungan acara sekolah</span></li>
                 </ul>
               </div>
             </div>
           </article>
         </div>
-
-        <!-- 12. KIR -->
-        <div class="ek-item" data-category="Riset" data-reveal style="--d:5">
-          <article class="ek-card" data-toggle>
-            <div class="ek-card-head">
-              <span class="ek-card-avatar"><img src="{{ asset('images/logo_smkn2.png') }}" alt="Logo SMKN 2 Mojokerto"></span>
-              <div class="ek-card-idwrap">
-                <span class="ek-card-uname">KIR</span>
-                <span class="ek-card-usub">SMKN 2 Mojokerto</span>
-              </div>
-              <span class="ek-card-menu" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg></span>
-            </div>
-            <div class="ek-card-media">
-              <img src="{{ asset('images/kir.jpg') }}" alt="Kegiatan Karya Ilmiah Remaja SMKN 2 Mojokerto" loading="eager">
-            </div>
-            <div class="ek-card-actions" aria-hidden="true">
-              <span class="ek-act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.6l-1-1a5.5 5.5 0 10-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 000-7.8z"/></svg></span>
-              <span class="ek-act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg></span>
-              <span class="ek-act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg></span>
-              <span class="ek-act ek-act-save"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg></span>
-            </div>
-            <div class="ek-card-panel">
-              <div class="ek-card-peek">
-                <p class="ek-card-caption"><span class="ek-card-name">KIR</span>Riset muda untuk masa depan — meneliti, menulis karya ilmiah, dan berlomba di LKIR.</p>
-                <div class="ek-card-metaline">
-                  <span class="ek-card-tag">Riset</span>
-                  <span class="ek-card-sched"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M16 2.5v4M8 2.5v4M3 9.5h18"/></svg> Sabtu</span>
-                </div>
-                <span class="ek-card-more">Lihat detail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
-              </div>
-              <div class="ek-card-detail">
-                <ul class="ek-card-meta">
-                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Pembina:</b> Drs. Suharto, M.Pd</span></li>
-                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Latihan:</b> Sabtu 09.00–12.00 WIB</span></li>
-                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Kegiatan:</b> Riset, karya tulis, LKIR</span></li>
-                </ul>
-              </div>
-            </div>
-          </article>
-        </div>
-
       </div>
     </div>
   </section>
