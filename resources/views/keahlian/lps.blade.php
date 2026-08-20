@@ -629,7 +629,7 @@
 
           <article class="produk-card">
             <div class="produk-photo">
-              <img src="{{ asset('images/produk/koperasi.jpeg') }}" alt="BankMini">
+              <img src="{{ asset('images/produk/bank-mini.jpeg') }}" alt="BankMini">
               <div class="produk-overlay">
                 <div class="produk-overlay-inner">
                   <div>
