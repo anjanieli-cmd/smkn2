@@ -2147,11 +2147,10 @@
         <div class="out-jurusan-label"><span>KOLEKSI JURUSAN</span><small>Pilih jurusan untuk melihat lulusan terbaik</small></div>
         <div class="out-jurusan-list">
           <button class="out-jurusan-pill active" type="button" data-alumni-index="0" aria-label="Lulusan terbaik RPL">RPL</button>
-          <button class="out-jurusan-pill" type="button" data-alumni-index="1" aria-label="Lulusan terbaik Kuliner">KULINER</button>
-          <button class="out-jurusan-pill" type="button" data-alumni-index="2" aria-label="Lulusan terbaik LPS">LPS</button>
-          <button class="out-jurusan-pill" type="button" data-alumni-index="3" aria-label="Lulusan terbaik DKV">DKV</button>
-          <button class="out-jurusan-pill" type="button" data-alumni-index="4" aria-label="Lulusan terbaik APHP">APHP</button>
-        </div>
+          <button class="out-jurusan-pill" type="button" data-alumni-index="1" aria-label="Lulusan terbaik DKV">DKV</button>
+          <button class="out-jurusan-pill" type="button" data-alumni-index="2" aria-label="Lulusan terbaik Kuliner">KULINER</button>
+          <button class="out-jurusan-pill" type="button" data-alumni-index="3" aria-label="Lulusan terbaik LPS">LPS</button>
+          <button class="out-jurusan-pill" type="button" data-alumni-index="4" aria-label="Lulusan terbaik APHP">APHP</button>        </div>
       </div>
 
       <div class="out-id-viewport">
@@ -2175,45 +2174,7 @@
               </div>
             </article>
           </div>
-          <div class="out-id-slide" data-alumni-slide="1" data-jurusan="KULINER">
-            <article class="out-id-card">
-              <div class="out-id-photo"><img src="{{ asset('images/husein.png') }}" alt="Lulusan terbaik Kuliner SMK Negeri 2 Mojokerto" loading="lazy"></div>
-              <div class="out-id-info">
-                <div class="out-id-brand"><img src="{{ asset('images/logo_smkn2.png') }}" alt="SKANEDA"> SKANEDA Alumni</div>
-                <span class="out-id-code">KUL / 2024</span>
-                <h3 class="out-id-name">Ahmed Husein Jalili</h3>
-                <div class="out-id-role">Lulusan Terbaik — KULINER</div>
-                <div class="out-id-line"></div>
-                <div class="out-id-meta">
-                  <div><small>Tahun</small><b>2024</b></div>
-                  <div><small>Status</small><b>Lulusan Terbaik</b></div>
-                  <div><small>Jurusan</small><b>Kuliner</b></div>
-                  <div><small>Institusi</small><b>SMK Negeri 2 Mojokerto</b></div>
-                </div>
-                <div class="out-id-footer"><span class="out-id-chip"><i class="fa-solid fa-star"></i> Featured Alumni</span><span class="out-id-barcode"></span></div>
-              </div>
-            </article>
-          </div>
-          <div class="out-id-slide" data-alumni-slide="2" data-jurusan="LPS">
-            <article class="out-id-card">
-              <div class="out-id-photo"><img src="{{ asset('images/zidan.png') }}" alt="Lulusan terbaik LPS SMK Negeri 2 Mojokerto" loading="lazy"></div>
-              <div class="out-id-info">
-                <div class="out-id-brand"><img src="{{ asset('images/logo_smkn2.png') }}" alt="SKANEDA"> SKANEDA Alumni</div>
-                <span class="out-id-code">LPS / 2024</span>
-                <h3 class="out-id-name">Zidana Khoiron Alif</h3>
-                <div class="out-id-role">Lulusan Terbaik — LPS</div>
-                <div class="out-id-line"></div>
-                <div class="out-id-meta">
-                  <div><small>Tahun</small><b>2024</b></div>
-                  <div><small>Status</small><b>Lulusan Terbaik</b></div>
-                  <div><small>Jurusan</small><b>Layanan Perbankan Syariah</b></div>
-                  <div><small>Institusi</small><b>SMK Negeri 2 Mojokerto</b></div>
-                </div>
-                <div class="out-id-footer"><span class="out-id-chip"><i class="fa-solid fa-star"></i> Featured Alumni</span><span class="out-id-barcode"></span></div>
-              </div>
-            </article>
-          </div>
-          <div class="out-id-slide" data-alumni-slide="3" data-jurusan="DKV">
+          <div class="out-id-slide" data-alumni-slide="1" data-jurusan="DKV">
             <article class="out-id-card">
               <div class="out-id-photo"><img src="{{ asset('images/lola.jpeg') }}" alt="Lulusan terbaik DKV SMK Negeri 2 Mojokerto" loading="lazy"></div>
               <div class="out-id-info">
@@ -2232,6 +2193,44 @@
               </div>
             </article>
           </div>
+          <div class="out-id-slide" data-alumni-slide="2" data-jurusan="KULINER">
+            <article class="out-id-card">
+              <div class="out-id-photo"><img src="{{ asset('images/husein.png') }}" alt="Lulusan terbaik Kuliner SMK Negeri 2 Mojokerto" loading="lazy"></div>
+              <div class="out-id-info">
+                <div class="out-id-brand"><img src="{{ asset('images/logo_smkn2.png') }}" alt="SKANEDA"> SKANEDA Alumni</div>
+                <span class="out-id-code">KUL / 2024</span>
+                <h3 class="out-id-name">Ahmed Husein Jalili</h3>
+                <div class="out-id-role">Lulusan Terbaik — KULINER</div>
+                <div class="out-id-line"></div>
+                <div class="out-id-meta">
+                  <div><small>Tahun</small><b>2024</b></div>
+                  <div><small>Status</small><b>Lulusan Terbaik</b></div>
+                  <div><small>Jurusan</small><b>Kuliner</b></div>
+                  <div><small>Institusi</small><b>SMK Negeri 2 Mojokerto</b></div>
+                </div>
+                <div class="out-id-footer"><span class="out-id-chip"><i class="fa-solid fa-star"></i> Featured Alumni</span><span class="out-id-barcode"></span></div>
+              </div>
+            </article>
+          </div>
+          <div class="out-id-slide" data-alumni-slide="3" data-jurusan="LPS">
+            <article class="out-id-card">
+              <div class="out-id-photo"><img src="{{ asset('images/zidan.png') }}" alt="Lulusan terbaik LPS SMK Negeri 2 Mojokerto" loading="lazy"></div>
+              <div class="out-id-info">
+                <div class="out-id-brand"><img src="{{ asset('images/logo_smkn2.png') }}" alt="SKANEDA"> SKANEDA Alumni</div>
+                <span class="out-id-code">LPS / 2024</span>
+                <h3 class="out-id-name">Zidana Khoiron Alif</h3>
+                <div class="out-id-role">Lulusan Terbaik — LPS</div>
+                <div class="out-id-line"></div>
+                <div class="out-id-meta">
+                  <div><small>Tahun</small><b>2024</b></div>
+                  <div><small>Status</small><b>Lulusan Terbaik</b></div>
+                  <div><small>Jurusan</small><b>Layanan Perbankan Syariah</b></div>
+                  <div><small>Institusi</small><b>SMK Negeri 2 Mojokerto</b></div>
+                </div>
+                <div class="out-id-footer"><span class="out-id-chip"><i class="fa-solid fa-star"></i> Featured Alumni</span><span class="out-id-barcode"></span></div>
+              </div>
+            </article>
+          </div>
           <div class="out-id-slide" data-alumni-slide="4" data-jurusan="APHP">
             <article class="out-id-card">
               <div class="out-id-photo"><img src="{{ asset('images/faisal.png') }}" alt="Lulusan terbaik APHP SMK Negeri 2 Mojokerto" loading="lazy"></div>
@@ -2244,7 +2243,7 @@
                 <div class="out-id-meta">
                   <div><small>Tahun</small><b>2024</b></div>
                   <div><small>Status</small><b>Lulusan Terbaik</b></div>
-                  <div><small>Jurusan</small><b>Agribisnis Pengolahan Hasil Pertanian</b></div>
+                  <div><small>Jurusan</small><b>Agribisnis Pengolahan Hasil Pangan</b></div>
                   <div><small>Institusi</small><b>SMK Negeri 2 Mojokerto</b></div>
                 </div>
                 <div class="out-id-footer"><span class="out-id-chip"><i class="fa-solid fa-star"></i> Featured Alumni</span><span class="out-id-barcode"></span></div>
@@ -2258,9 +2257,9 @@
         <button class="out-arrow" id="alumniPrev" type="button" aria-label="Lulusan sebelumnya"><i class="fa-solid fa-arrow-left"></i></button>
         <div class="out-dots" id="alumniDots" aria-label="Pilihan slide lulusan">
           <button class="out-dot active" type="button" data-index="0" aria-label="RPL"></button>
-          <button class="out-dot" type="button" data-index="1" aria-label="Kuliner"></button>
-          <button class="out-dot" type="button" data-index="2" aria-label="LPS"></button>
-          <button class="out-dot" type="button" data-index="3" aria-label="DKV"></button>
+          <button class="out-dot" type="button" data-index="1" aria-label="DKV"></button>
+          <button class="out-dot" type="button" data-index="2" aria-label="Kuliner"></button>
+          <button class="out-dot" type="button" data-index="3" aria-label="LPS"></button>
           <button class="out-dot" type="button" data-index="4" aria-label="APHP"></button>
         </div>
         <button class="out-arrow" id="alumniNext" type="button" aria-label="Lulusan berikutnya"><i class="fa-solid fa-arrow-right"></i></button>
@@ -2394,16 +2393,55 @@
 </section>
 
 <!-- ================= LULUSAN PTN ================= -->
-<section class="out-sec out-ptn" id="lulusan-ptn" aria-label="Lulusan PTN SMK Negeri 2 Mojokerto">
+<style>
+/* FINAL PTN ONLY — logo asli, tanpa lingkaran dekoratif */
+.out-ptn .out-ptn-logo{
+  width:154px!important;height:154px!important;
+  border-radius:0!important;
+  display:flex!important;align-items:center!important;justify-content:center!important;
+  position:relative!important;background:transparent!important;
+  border:0!important;box-shadow:none!important;overflow:visible!important;
+}
+.out-ptn .out-ptn-logo::before,
+.out-ptn .out-ptn-logo::after{display:none!important;content:none!important}
+.out-ptn .out-ptn-logo img{
+  width:138px!important;height:138px!important;
+  object-fit:contain!important;display:block!important;
+  filter:none!important;
+}
+.out-ptn .out-ptn-logo-panel small{
+  margin-top:.7rem!important;
+}
+.out-ptn .out-ptn-card-info h3{
+  font-family:var(--font-display);
+  font-size:clamp(1.2rem,2.3vw,1.8rem);
+  line-height:1.08;
+  color:#0d3a66;
+  font-weight:900;
+  margin:0 0 .65rem;
+}
+.out-ptn .out-ptn-student{
+  display:flex;align-items:center;gap:.5rem;
+  font-weight:800;color:#0d3a66;
+}
+.out-ptn .out-ptn-student i{color:#ffb300}
+@media(max-width:700px){
+  .out-ptn .out-ptn-logo{width:120px!important;height:120px!important}
+  .out-ptn .out-ptn-logo img{width:108px!important;height:108px!important}
+}
+</style>
+
+<section class="out-sec out-ptn" id="lulusan-ptn" aria-label="Lulusan Perguruan Tinggi Negeri SMK Negeri 2 Mojokerto">
   <div class="out-orn" aria-hidden="true">
     <span class="out-dots"></span><span class="out-diamond"></span>
     <span class="out-hex"></span><span class="out-plus"></span>
   </div>
+
   <div class="out-wrap out-ptn-layout">
     <div class="out-copy" data-reveal="left">
       <div class="out-kicker">Next Destination</div>
       <h2 class="out-title">Lulusan <span class="gold">PTN</span></h2>
-      <p class="out-desc">Lulusan SMK Negeri 2 Mojokerto melanjutkan studi ke Perguruan Tinggi Negeri melalui jalur prestasi, SNBP, dan ujian masuk &mdash; bukti kualitas vokasi yang siap bersaing.</p>
+      <p class="out-desc">Lulusan SMK Negeri 2 Mojokerto melanjutkan studi ke Perguruan Tinggi Negeri sebagai salah satu bukti kesiapan akademik dan kompetensi mereka.</p>
       <div class="out-ptn-route">
         <span><i class="fa-solid fa-school"></i> SMKN 2 Mojokerto</span>
         <i class="fa-solid fa-arrow-right-long"></i>
@@ -2414,6 +2452,8 @@
     <div class="out-ptn-stage" data-reveal style="--d:1">
       <div class="out-ptn-window">
         <div class="out-ptn-track" id="ptnTrack">
+
+          <!-- 01 ITS -->
           <div class="out-ptn-slide">
             <article class="out-ptn-destination-card">
               <div class="out-ptn-card-top">
@@ -2422,16 +2462,18 @@
               </div>
               <div class="out-ptn-card-main">
                 <div class="out-ptn-logo-panel">
-                  <div class="out-ptn-logo"><i class="fa-solid fa-building-columns"></i><span>LOGO PTN</span></div>
-                  <small>Perguruan Tinggi Negeri</small>
+                  <div class="out-ptn-logo">
+                    <img src="{{ asset('images/ptn/its.png') }}" alt="Logo Institut Teknologi Sepuluh Nopember" loading="lazy">
+                  </div>
+                  <small>Institut Teknologi Sepuluh Nopember</small>
                 </div>
                 <div class="out-ptn-card-info">
                   <div class="out-ptn-label">Universitas tujuan</div>
-                  <h3>Universitas Tujuan</h3>
+                  <h3>Institut Teknologi Sepuluh Nopember</h3>
                   <div class="out-ptn-accent"></div>
                   <div class="out-ptn-label">Nama yang lolos</div>
                   <div class="out-ptn-student"><i class="fa-solid fa-star"></i><span>Nama Lulusan</span></div>
-                  <p>Program studi &amp; jalur masuk &mdash; data menyusul.</p>
+                  <p>Program studi &amp; jalur masuk — data dapat dilengkapi kemudian.</p>
                 </div>
               </div>
               <div class="out-ptn-card-bottom">
@@ -2441,6 +2483,7 @@
             </article>
           </div>
 
+          <!-- 02 UB -->
           <div class="out-ptn-slide">
             <article class="out-ptn-destination-card">
               <div class="out-ptn-card-top">
@@ -2449,16 +2492,18 @@
               </div>
               <div class="out-ptn-card-main">
                 <div class="out-ptn-logo-panel">
-                  <div class="out-ptn-logo"><i class="fa-solid fa-building-columns"></i><span>LOGO PTN</span></div>
-                  <small>Perguruan Tinggi Negeri</small>
+                  <div class="out-ptn-logo">
+                    <img src="{{ asset('images/ptn/brawijaya.png') }}" alt="Logo Universitas Brawijaya" loading="lazy">
+                  </div>
+                  <small>Universitas Brawijaya</small>
                 </div>
                 <div class="out-ptn-card-info">
                   <div class="out-ptn-label">Universitas tujuan</div>
-                  <h3>Universitas Tujuan</h3>
+                  <h3>Universitas Brawijaya</h3>
                   <div class="out-ptn-accent"></div>
                   <div class="out-ptn-label">Nama yang lolos</div>
                   <div class="out-ptn-student"><i class="fa-solid fa-star"></i><span>Nama Lulusan</span></div>
-                  <p>Program studi &amp; jalur masuk &mdash; data menyusul.</p>
+                  <p>Program studi &amp; jalur masuk — data dapat dilengkapi kemudian.</p>
                 </div>
               </div>
               <div class="out-ptn-card-bottom">
@@ -2468,6 +2513,7 @@
             </article>
           </div>
 
+          <!-- 03 POLINEMA -->
           <div class="out-ptn-slide">
             <article class="out-ptn-destination-card">
               <div class="out-ptn-card-top">
@@ -2476,16 +2522,18 @@
               </div>
               <div class="out-ptn-card-main">
                 <div class="out-ptn-logo-panel">
-                  <div class="out-ptn-logo"><i class="fa-solid fa-building-columns"></i><span>LOGO PTN</span></div>
-                  <small>Perguruan Tinggi Negeri</small>
+                  <div class="out-ptn-logo">
+                    <img src="{{ asset('images/ptn/polinema.png') }}" alt="Logo Politeknik Negeri Malang" loading="lazy">
+                  </div>
+                  <small>Politeknik Negeri Malang</small>
                 </div>
                 <div class="out-ptn-card-info">
-                  <div class="out-ptn-label">Universitas tujuan</div>
-                  <h3>Universitas Tujuan</h3>
+                  <div class="out-ptn-label">Perguruan tinggi tujuan</div>
+                  <h3>Politeknik Negeri Malang</h3>
                   <div class="out-ptn-accent"></div>
                   <div class="out-ptn-label">Nama yang lolos</div>
                   <div class="out-ptn-student"><i class="fa-solid fa-star"></i><span>Nama Lulusan</span></div>
-                  <p>Program studi &amp; jalur masuk &mdash; data menyusul.</p>
+                  <p>Program studi &amp; jalur masuk — data dapat dilengkapi kemudian.</p>
                 </div>
               </div>
               <div class="out-ptn-card-bottom">
@@ -2494,14 +2542,78 @@
               </div>
             </article>
           </div>
+
+          <!-- 04 UM -->
+          <div class="out-ptn-slide">
+            <article class="out-ptn-destination-card">
+              <div class="out-ptn-card-top">
+                <span class="out-ptn-card-kicker">DESTINATION 04</span>
+                <span class="out-ptn-card-mark">PTN</span>
+              </div>
+              <div class="out-ptn-card-main">
+                <div class="out-ptn-logo-panel">
+                  <div class="out-ptn-logo">
+                    <img src="{{ asset('images/ptn/um-malang.png') }}" alt="Logo Universitas Negeri Malang" loading="lazy">
+                  </div>
+                  <small>Universitas Negeri Malang</small>
+                </div>
+                <div class="out-ptn-card-info">
+                  <div class="out-ptn-label">Universitas tujuan</div>
+                  <h3>Universitas Negeri Malang</h3>
+                  <div class="out-ptn-accent"></div>
+                  <div class="out-ptn-label">Nama yang lolos</div>
+                  <div class="out-ptn-student"><i class="fa-solid fa-star"></i><span>Nama Lulusan</span></div>
+                  <p>Program studi &amp; jalur masuk — data dapat dilengkapi kemudian.</p>
+                </div>
+              </div>
+              <div class="out-ptn-card-bottom">
+                <span><i class="fa-solid fa-graduation-cap"></i> Next Destination</span>
+                <span>SMKN 2 MOJOKERTO</span>
+              </div>
+            </article>
+          </div>
+
+          <!-- 05 UNESA -->
+          <div class="out-ptn-slide">
+            <article class="out-ptn-destination-card">
+              <div class="out-ptn-card-top">
+                <span class="out-ptn-card-kicker">DESTINATION 05</span>
+                <span class="out-ptn-card-mark">PTN</span>
+              </div>
+              <div class="out-ptn-card-main">
+                <div class="out-ptn-logo-panel">
+                  <div class="out-ptn-logo">
+                    <img src="{{ asset('images/ptn/unesa.png') }}" alt="Logo Universitas Negeri Surabaya" loading="lazy">
+                  </div>
+                  <small>Universitas Negeri Surabaya</small>
+                </div>
+                <div class="out-ptn-card-info">
+                  <div class="out-ptn-label">Universitas tujuan</div>
+                  <h3>Universitas Negeri Surabaya</h3>
+                  <div class="out-ptn-accent"></div>
+                  <div class="out-ptn-label">Nama yang lolos</div>
+                  <div class="out-ptn-student"><i class="fa-solid fa-star"></i><span>Nama Lulusan</span></div>
+                  <p>Program studi &amp; jalur masuk — data dapat dilengkapi kemudian.</p>
+                </div>
+              </div>
+              <div class="out-ptn-card-bottom">
+                <span><i class="fa-solid fa-graduation-cap"></i> Next Destination</span>
+                <span>SMKN 2 MOJOKERTO</span>
+              </div>
+            </article>
+          </div>
+
         </div>
       </div>
+
       <div class="out-slider-controls" aria-label="Navigasi lulusan PTN">
         <button class="out-arrow" id="ptnPrev" type="button" aria-label="PTN sebelumnya"><i class="fa-solid fa-arrow-left"></i></button>
         <div class="out-dots" id="ptnDots">
           <button class="out-dot active" type="button" data-index="0" aria-label="PTN 1"></button>
           <button class="out-dot" type="button" data-index="1" aria-label="PTN 2"></button>
           <button class="out-dot" type="button" data-index="2" aria-label="PTN 3"></button>
+          <button class="out-dot" type="button" data-index="3" aria-label="PTN 4"></button>
+          <button class="out-dot" type="button" data-index="4" aria-label="PTN 5"></button>
         </div>
         <button class="out-arrow" id="ptnNext" type="button" aria-label="PTN berikutnya"><i class="fa-solid fa-arrow-right"></i></button>
       </div>
@@ -2509,8 +2621,61 @@
   </div>
 </section>
 
+<script>
+(function(){
+  var track=document.getElementById('ptnTrack');
+  var prev=document.getElementById('ptnPrev');
+  var next=document.getElementById('ptnNext');
+  var dotsWrap=document.getElementById('ptnDots');
+  if(!track||!prev||!next||!dotsWrap) return;
+
+  var slides=Array.prototype.slice.call(track.querySelectorAll('.out-ptn-slide'));
+  var dots=Array.prototype.slice.call(dotsWrap.querySelectorAll('.out-dot'));
+  var index=0;
+  var dragging=false,startX=0,startScroll=0;
+
+  function render(){
+    track.style.transform='translateX(-'+(index*100)+'%)';
+    dots.forEach(function(dot,i){dot.classList.toggle('active',i===index);});
+    prev.disabled=index===0;
+    next.disabled=index===slides.length-1;
+  }
+  function go(i){index=Math.max(0,Math.min(slides.length-1,i));render();}
+
+  prev.addEventListener('click',function(){go(index-1);});
+  next.addEventListener('click',function(){go(index+1);});
+  dots.forEach(function(dot,i){dot.addEventListener('click',function(){go(i);});});
+
+  track.addEventListener('pointerdown',function(e){
+    dragging=true;startX=e.clientX;startScroll=track.scrollLeft;
+    track.classList.add('dragging');
+    try{track.setPointerCapture(e.pointerId);}catch(_){ }
+  });
+  track.addEventListener('pointermove',function(e){
+    if(!dragging)return;
+    var dx=e.clientX-startX;
+    if(Math.abs(dx)>25) e.preventDefault();
+    track.style.transform='translateX(calc(-'+(index*100)+'% + '+dx+'px))';
+  });
+  function finishDrag(e){
+    if(!dragging)return;
+    var dx=e.clientX-startX;
+    dragging=false;track.classList.remove('dragging');
+    if(Math.abs(dx)>55){go(index+(dx<0?1:-1));}else{render();}
+  }
+  track.addEventListener('pointerup',finishDrag);
+  track.addEventListener('pointercancel',function(){dragging=false;track.classList.remove('dragging');render();});
+
+  document.addEventListener('keydown',function(e){
+    if(e.key==='ArrowLeft')go(index-1);
+    if(e.key==='ArrowRight')go(index+1);
+  });
+  render();
+})();
+</script>
+
 <!-- ================= PRESTASI ================= -->
-<section class="prestasi-section" id="prestasi" aria-label="Prestasi SMK Negeri 2 Mojokerto">
+<section class="prestasi-section" id="prestasi" aria-label="Prestasi Sekolah SMK Negeri 2 Mojokerto">
   <div class="prestasi-ornament" aria-hidden="true">
     <span class="prestasi-dots"></span>
     <span class="prestasi-diamond"></span>
@@ -2521,7 +2686,10 @@
     <header class="prestasi-head" data-reveal="title">
       <div class="prestasi-kicker">SKANEDA Achievement</div>
       <h2 class="prestasi-title">Prestasi <span class="gold">Sekolah</span></h2>
-      <p class="prestasi-desc">Semangat juang siswa dan sekolah terus mengukir prestasi di tingkat daerah, provinsi, hingga nasional.</p>
+      <p class="prestasi-desc">
+        Semangat disiplin dan berprestasi membawa SMK Negeri 2 Mojokerto meraih berbagai capaian
+        di tingkat provinsi hingga nasional.
+      </p>
     </header>
 
     <div class="prestasi-feed-shell" data-reveal style="--d:1">
@@ -2530,12 +2698,12 @@
       </button>
 
       <div class="prestasi-feed-viewport">
-        <div class="prestasi-feed-rail" id="prestasiFeedRail" aria-label="Feed prestasi siswa">
+        <div class="prestasi-feed-rail" id="prestasiFeedRail" aria-label="Prestasi sekolah">
 
-          <!-- DATA PRESTASI YANG SUDAH ADA — dipertahankan apa adanya. -->
+          {{-- ================= LKS ================= --}}
           <article class="prestasi-feed">
             <div class="prestasi-feed-head">
-              <div class="prestasi-feed-avatar"><i class="fa-solid fa-school"></i></div>
+              <div class="prestasi-feed-avatar"><i class="fa-solid fa-medal"></i></div>
               <div class="prestasi-feed-account">
                 <strong>SKANEDA</strong>
                 <span>SMK Negeri 2 Mojokerto</span>
@@ -2544,12 +2712,12 @@
             </div>
 
             <div class="prestasi-feed-media">
-              <!-- Ganti area ini dengan foto prestasi/COC nanti. -->
-              <div class="prestasi-feed-photo-placeholder">
-                <i class="fa-solid fa-trophy"></i>
-                <strong>Foto Prestasi</strong>
-                <small>Area foto dokumentasi lomba dapat diganti tanpa mengubah struktur feed.</small>
-              </div>
+              <img
+                src="{{ asset('images/prestasi-lks.jpeg') }}"
+                alt="Prestasi LKS SMK Negeri 2 Mojokerto"
+                loading="lazy"
+                style="width:100%;height:100%;object-fit:cover;display:block;"
+              >
             </div>
 
             <div class="prestasi-feed-body">
@@ -2559,33 +2727,36 @@
                 <i class="fa-regular fa-paper-plane"></i>
                 <i class="fa-regular fa-bookmark save"></i>
               </div>
-              <span class="prestasi-feed-tag">Juara 1 — Provinsi</span>
-              <h3>LKS Provinsi <span>Jawa Timur</span></h3>
-              <p>Prestasi siswa SMK Negeri 2 Mojokerto pada Lomba Kompetensi Siswa tingkat Provinsi Jawa Timur.</p>
+              <span class="prestasi-feed-tag">Medali Perak — Nasional</span>
+              <h3>SMKN 2 Mojokerto Raih <span>Medali Perak LKS</span></h3>
+              <p>
+                Prestasi gemilang diraih pada Lomba Kompetensi Siswa SMK bidang Patisserie and Confectionery tingkat nasional.
+              </p>
               <div class="prestasi-feed-meta">
-                <span><i class="fa-solid fa-calendar"></i> 2024</span>
-                <span><i class="fa-solid fa-medal"></i> Kompetensi Keahlian</span>
+                <span><i class="fa-solid fa-medal"></i> LKS Nasional</span>
+                <span><i class="fa-solid fa-flag"></i> Tingkat Nasional</span>
               </div>
             </div>
           </article>
 
-          <!-- Slot visual berikutnya: tidak mengarang data prestasi baru. -->
-          <article class="prestasi-feed prestasi-feed-placeholder">
+          {{-- ================= ADIWIYATA ================= --}}
+          <article class="prestasi-feed">
             <div class="prestasi-feed-head">
-              <div class="prestasi-feed-avatar"><i class="fa-solid fa-trophy"></i></div>
+              <div class="prestasi-feed-avatar"><i class="fa-solid fa-leaf"></i></div>
               <div class="prestasi-feed-account">
                 <strong>SKANEDA</strong>
-                <span>Prestasi berikutnya</span>
+                <span>SMK Negeri 2 Mojokerto</span>
               </div>
               <div class="prestasi-feed-more" aria-hidden="true">•••</div>
             </div>
 
             <div class="prestasi-feed-media">
-              <div class="prestasi-feed-photo-placeholder">
-                <i class="fa-solid fa-image"></i>
-                <strong>Foto Prestasi</strong>
-                <small>Siapkan foto prestasi berikutnya di slot ini.</small>
-              </div>
+              <img
+                src="{{ asset('images/prestasi-adiwiyata.jpeg') }}"
+                alt="Penghargaan Adiwiyata SMK Negeri 2 Mojokerto"
+                loading="lazy"
+                style="width:100%;height:100%;object-fit:cover;display:block;"
+              >
             </div>
 
             <div class="prestasi-feed-body">
@@ -2595,28 +2766,36 @@
                 <i class="fa-regular fa-paper-plane"></i>
                 <i class="fa-regular fa-bookmark save"></i>
               </div>
-              <span class="prestasi-feed-tag">Slot Prestasi</span>
-              <h3>Prestasi Berikutnya</h3>
-              <p>Slot siap diisi dengan data dan dokumentasi prestasi yang sudah tersedia.</p>
+              <span class="prestasi-feed-tag">Adiwiyata — Provinsi</span>
+              <h3>SMKN 2 Mojokerto Raih <span>Adiwiyata Provinsi</span></h3>
+              <p>
+                Sekolah berhasil meraih penghargaan Sekolah Adiwiyata Provinsi Jawa Timur setelah masuk Top 20 calon terbaik.
+              </p>
+              <div class="prestasi-feed-meta">
+                <span><i class="fa-solid fa-leaf"></i> Adiwiyata</span>
+                <span><i class="fa-solid fa-location-dot"></i> Jawa Timur</span>
+              </div>
             </div>
           </article>
 
-          <article class="prestasi-feed prestasi-feed-placeholder">
+          {{-- ================= KLIC ================= --}}
+          <article class="prestasi-feed">
             <div class="prestasi-feed-head">
-              <div class="prestasi-feed-avatar"><i class="fa-solid fa-medal"></i></div>
+              <div class="prestasi-feed-avatar"><i class="fa-solid fa-laptop-code"></i></div>
               <div class="prestasi-feed-account">
                 <strong>SKANEDA</strong>
-                <span>Prestasi berikutnya</span>
+                <span>SMK Negeri 2 Mojokerto</span>
               </div>
               <div class="prestasi-feed-more" aria-hidden="true">•••</div>
             </div>
 
             <div class="prestasi-feed-media">
-              <div class="prestasi-feed-photo-placeholder">
-                <i class="fa-solid fa-camera"></i>
-                <strong>Foto Prestasi</strong>
-                <small>Slot dokumentasi berikutnya tetap siap untuk diganti.</small>
-              </div>
+              <img
+                src="{{ asset('images/prestasi-klic.jpeg') }}"
+                alt="Prestasi Program Korea E-Learning Improvement Cooperation KLIC SMK Negeri 2 Mojokerto"
+                loading="lazy"
+                style="width:100%;height:100%;object-fit:cover;display:block;"
+              >
             </div>
 
             <div class="prestasi-feed-body">
@@ -2626,9 +2805,15 @@
                 <i class="fa-regular fa-paper-plane"></i>
                 <i class="fa-regular fa-bookmark save"></i>
               </div>
-              <span class="prestasi-feed-tag">Slot Prestasi</span>
-              <h3>Dokumentasi Prestasi</h3>
-              <p>Gunakan slot ini untuk menambahkan prestasi lain tanpa mengubah layout feed.</p>
+              <span class="prestasi-feed-tag">Prestasi — Program KLIC</span>
+              <h3>SMKN 2 Mojokerto Raih Prestasi di <span>Program KLIC</span></h3>
+              <p>
+                Luar biasa! SMK Negeri 2 Mojokerto kembali memahatkan prestasi terbaiknya di kancah pendidikan melalui program Korea E-Learning Improvement Cooperation (KLIC).
+              </p>
+              <div class="prestasi-feed-meta">
+                <span><i class="fa-solid fa-calendar"></i> 2025</span>
+                <span><i class="fa-solid fa-award"></i> Korea E-Learning Improvement Cooperation</span>
+              </div>
             </div>
           </article>
 
@@ -2640,7 +2825,7 @@
       </button>
     </div>
 
-    <div class="prestasi-note">Geser atau drag untuk melihat feed prestasi lainnya</div>
+    <div class="prestasi-note">Geser atau drag untuk melihat prestasi lainnya</div>
   </div>
 
   <script>
@@ -2666,9 +2851,11 @@
     prev.addEventListener('click', function(){
       rail.scrollBy({left:-getStep(), behavior:'smooth'});
     });
+
     next.addEventListener('click', function(){
       rail.scrollBy({left:getStep(), behavior:'smooth'});
     });
+
     rail.addEventListener('scroll', updateButtons, {passive:true});
     window.addEventListener('resize', updateButtons, {passive:true});
 

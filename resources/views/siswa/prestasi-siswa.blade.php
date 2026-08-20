@@ -17,52 +17,50 @@
 .ps-page{background:#f7f9fc;color:#0d3a66;overflow:hidden;position:relative}
 .ps-page *{box-sizing:border-box}
 
-/* ---------- HERO: foto gedung + overlay + watermark (IDENTIK referensi — TIDAK DIUBAH) ---------- */
-.ps-hero{position:relative;min-height:88vh;display:flex;align-items:flex-start;overflow:hidden;
-  background-image:url('{{ asset('images/hero-sekolah.jpg') }}');
-  background-size:cover;background-position:center;background-repeat:no-repeat;color:#fff}
-.ps-hero::before{content:"";position:absolute;inset:0;z-index:1;
-  background:linear-gradient(100deg,rgba(7,22,42,.90) 0%,rgba(9,30,54,.68) 45%,rgba(9,30,54,.32) 78%,rgba(9,30,54,.12) 100%)}
+/* ---------- HERO: 100% MIRIP HALAMAN KARYA SISWA / PPDB (light theme + watermark + abstract ornamen) ---------- */
+.ps-hero{position:relative;min-height:clamp(620px,78vh,790px);display:flex;align-items:center;overflow:hidden;
+  background:#fff;color:#0d3a66;isolation:isolate}
+.ps-hero::before{display:none}
 /* Watermark typography besar transparan */
-.ps-hero::after{content:"PRESTASI";position:absolute;z-index:2;right:-2%;top:50%;transform:translateY(-50%);
-  font-family:var(--font-display);font-size:clamp(4.4rem,16vw,16rem);font-weight:900;line-height:.82;
-  letter-spacing:.02em;color:rgba(255,255,255,.055);-webkit-text-stroke:1px rgba(255,255,255,.07);
-  text-shadow:0 0 90px rgba(13,58,102,.16);pointer-events:none;white-space:nowrap;user-select:none}
-.ps-hero-inner{position:relative;z-index:3;width:100%;max-width:none;margin:0 auto;
-  padding:clamp(3.5rem,9vh,5.5rem) clamp(1.5rem,5vw,5.5rem);
-  display:grid;grid-template-columns:minmax(0,1.05fr) minmax(340px,.95fr);gap:4rem;align-items:center}
+.ps-hero::after{content:"PRESTASI";position:absolute;z-index:0;left:2%;top:58%;transform:translateY(-50%);
+  font-family:var(--font-display);font-size:clamp(9rem,23vw,23rem);font-weight:900;line-height:.78;
+  letter-spacing:.015em;color:rgba(13,58,102,.035);-webkit-text-stroke:1px rgba(255,122,0,.09);
+  pointer-events:none;white-space:nowrap;user-select:none}
+.ps-ref-ornaments{position:absolute!important;inset:0;z-index:1;overflow:hidden;pointer-events:none;opacity:1}
+.ps-ref-ornament-image{position:absolute!important;inset:0;width:100%;height:100%;display:block;
+  object-fit:cover;object-position:center center;max-width:none;opacity:1}
+.ps-hero-inner{position:relative;z-index:4;width:100%;max-width:1500px;margin:0 auto;
+  padding:clamp(4rem,10vh,7rem) clamp(1.25rem,4.2vw,4.5rem) clamp(4rem,9vh,6rem);display:block}
 
-.ps-kicker{display:inline-flex;align-items:center;gap:.65rem;font-size:.74rem;font-weight:800;
-  letter-spacing:.18em;text-transform:uppercase;color:#ffd54a;margin-bottom:0.6rem}
-.ps-kicker::before{content:"";width:34px;height:3px;border-radius:99px;background:linear-gradient(90deg,#ffd54a,#ffb300)}
+.ps-kicker{position:relative;z-index:5;display:inline-flex;align-items:center;gap:.65rem;font-size:.72rem;
+  font-weight:900;letter-spacing:.18em;text-transform:uppercase;color:#ff6f00;margin-bottom:1.2rem;
+  padding:.55rem .85rem;border:1px solid rgba(255,111,0,.18);border-radius:999px;background:#fffaf5}
+.ps-kicker::before{content:"";width:9px;height:9px;border-radius:50%;background:#ff6f00;
+  box-shadow:0 0 0 6px rgba(255,111,0,.10)}
 
-/* ---------- TITLE: PRESTASI SISWA putih, SKANEDA kuning-oranye ---------- */
-.ps-title{font-family:var(--font-display);font-size:clamp(2.9rem,6.6vw,6.2rem);line-height:.98;
-  letter-spacing:.01em;margin:0;max-width:820px;text-transform:uppercase;
-  text-shadow:0 2px 24px rgba(4,14,28,.35);animation:hdFadeUp .7s .1s var(--ease, ease) both}
-.ps-title .ps-white{color:#ffffff;display:inline-block}
-.ps-title .ps-gold{display:inline-block;
-  background:linear-gradient(135deg,#ffe66d 0%,#ffc107 45%,#ff8a00 100%);
-  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#ffc107;
-  text-shadow:0 4px 24px rgba(255,174,0,.18);letter-spacing:.025em}
-.ps-lead{font-size:1.02rem;line-height:1.85;color:rgba(235,245,253,.86);max-width:640px;
-  margin:1.3rem 0 0;animation:hdFadeUp .7s .26s var(--ease, ease) both}
+/* ---------- TITLE: bertumpuk besar, 100% senada karya siswa / PPDB ---------- */
+.ps-title{position:relative;z-index:5;font-family:var(--font-display);font-size:clamp(5.2rem,11.5vw,11rem);
+  line-height:.82;letter-spacing:-.045em;margin:0;max-width:900px;text-transform:uppercase;
+  text-shadow:none;animation:hdFadeUp .7s .1s var(--ease, ease) both}
+.ps-title .ps-white{color:#0d3a66;display:block}
+.ps-title .ps-gold{display:block;
+  background:linear-gradient(135deg,#ffd54a 0%,#ffb300 48%,#ff7a00 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;
+  text-shadow:none;letter-spacing:-.025em}
+.ps-lead{font-size:1rem;line-height:1.75;color:#52657a;max-width:720px;
+  margin:1.7rem 0 0;animation:hdFadeUp .7s .26s var(--ease, ease) both}
 .ps-hero-meta{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.6rem;animation:hdFadeUp .7s .4s var(--ease, ease) both}
 .ps-pill{display:inline-flex;align-items:center;gap:.5rem;padding:.55rem .85rem;
-  border:1px solid rgba(255,255,255,.2);background:rgba(13,58,102,.30);border-radius:999px;
-  font-size:.72rem;font-weight:800;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
-.ps-pill i{color:#ffd54a}
+  border:1px solid rgba(13,58,102,.12);background:#fff;border-radius:999px;color:#0d3a66;
+  font-size:.72rem;font-weight:800;box-shadow:0 8px 24px rgba(13,58,102,.06)}
+.ps-pill i{color:#ff7a00}
 
-/* hero-photo (IDENTIK gaya referensi) */
-.hero-photo{position:relative;height:430px;border-radius:24px;overflow:hidden;
-  transform:translateY(-18px) rotate(2deg);box-shadow:0 34px 80px rgba(4,14,28,.45);
-  border:1px solid rgba(255,255,255,.18);animation:hdFadeUp .7s .34s var(--ease, ease) both}
-.hero-photo::before{content:"";position:absolute;inset:0;z-index:2;
-  background:linear-gradient(200deg,rgba(7,22,42,.08) 0%,rgba(9,30,54,.55) 100%)}
-.hero-photo img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.03)}
-.hero-photo-caption{position:absolute;z-index:3;left:1.5rem;right:1.5rem;bottom:1.3rem}
-.hero-photo-caption strong{display:block;font-family:var(--font-display);font-size:1.3rem;font-weight:600;color:#fff}
-.hero-photo-caption span{font-size:.72rem;color:rgba(255,255,255,.74)}
+.hero-photo{display:none}
+@media(min-width:1050px){.ps-hero-inner{padding-right:44%}}
+@media(max-width:1050px){.ps-hero-inner{padding-right:1.25rem}.ps-ref-ornaments{opacity:.72}}
+@media(max-width:900px){.ps-title{font-size:clamp(4.6rem,13vw,8rem)}.ps-ref-ornament-image{opacity:.88}}
+@media(max-width:700px){.ps-hero{align-items:flex-start}.ps-hero-inner{width:90%}.ps-title{font-size:clamp(3.4rem,16vw,5.6rem)}}
+@media(max-width:560px){.ps-ref-ornament-image{opacity:.62}}
 
 /* ---------- HOME-ORN (ornamen geometris, IDENTIK referensi) ---------- */
 .home-orn{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
@@ -131,7 +129,7 @@
 
 /* ---- JUDUL SECTION BESAR & BOLD (karakter "SEJARAH SKANEDA") ---- */
 .prestasi-section-title{font-family:var(--font-display);font-weight:900;
-  font-size:clamp(2.5rem,5vw,4.5rem);line-height:.95;letter-spacing:-.03em;margin:0;
+  font-size:clamp(2.8rem,5.8vw,4.5rem);line-height:.98;letter-spacing:-.02em;margin:0;
   color:#0d3a66;text-transform:uppercase}
 .prestasi-section-title .p-gold{background:linear-gradient(135deg,#ffd54a 0%,#ffb300 60%,#ff8a00 100%);
   -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#ffb300}
@@ -142,11 +140,11 @@
 .prestasi-subtitle{font-size:.95rem;line-height:1.85;color:#718396;max-width:560px;margin:1.2rem 0 0}
 
 /* ---------- 1. SECTION PEMBUKA "PRESTASI SKANEDA" (editorial 2 kolom) ---------- */
-.prestasi-opening{position:relative;padding:110px 0 90px;background:#fff;overflow:hidden}
-.prestasi-opening::before{content:"PRESTASI";position:absolute;left:50%;top:12%;transform:translateX(-50%);
+.prestasi-opening{position:relative;padding:110px 0 90px;overflow:hidden;background:url('{{ asset('images/prestasi-4.jpg') }}') center/cover no-repeat}
+.prestasi-opening::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,.96) 0%,rgba(255,255,255,.88) 48%,rgba(255,255,255,.55) 100%);z-index:0;pointer-events:none}.prestasi-opening::before{content:"PRESTASI";position:absolute;left:50%;top:12%;transform:translateX(-50%);
   font-family:var(--font-display);font-size:clamp(5rem,16vw,15rem);font-weight:900;line-height:1;white-space:nowrap;
-  color:rgba(13,58,102,.025);-webkit-text-stroke:1px rgba(13,58,102,.05);pointer-events:none}
-.prestasi-opening-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2.5rem,5vw,5rem);align-items:center}
+  color:rgba(13,58,102,.045);-webkit-text-stroke:1px rgba(13,58,102,.07);pointer-events:none;z-index:1}
+.prestasi-opening-grid{display:grid;position:relative;z-index:2;grid-template-columns:1.05fr .95fr;gap:clamp(2.5rem,5vw,5rem);align-items:center}
 .prestasi-opening .prestasi-desc{font-size:1rem;line-height:1.95;color:#5b6c80;margin:1.6rem 0 0;max-width:560px}
 .prestasi-opening .prestasi-desc strong{color:#0d3a66}
 .prestasi-opening-meta{display:flex;gap:1.8rem;flex-wrap:wrap;margin-top:2.4rem;padding-top:1.8rem;
@@ -156,39 +154,47 @@
 .prestasi-opening-meta .om-item b em{font-style:normal;color:#ffb300}
 .prestasi-opening-meta .om-item span{font-size:.66rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#718396}
 
-/* Achievement Showcase (panel dekoratif kanan) */
+/* Achievement Showcase (panel dekoratif kanan) — v2: lebih premium & berlapis */
 .prestasi-showcase{position:relative;border-radius:28px;padding:clamp(2.2rem,4vw,3.4rem);
-  background:linear-gradient(90deg,rgba(5,35,65,.88) 0%,rgba(5,35,65,.68) 45%,rgba(5,35,65,.42) 100%),
+  background:linear-gradient(115deg,rgba(5,24,44,.48) 0%,rgba(8,38,70,.28) 45%,rgba(13,58,102,.12) 100%),
     url('{{ asset('images/prestasi-4.jpg') }}') center/cover no-repeat;color:#fff;overflow:hidden;
-  box-shadow:0 34px 80px rgba(13,58,102,.28)}
-.prestasi-showcase::before{content:"";position:absolute;inset:0;z-index:0;
-  background:linear-gradient(180deg,rgba(5,35,65,.20) 0%,rgba(5,35,65,0) 40%,rgba(5,35,65,.30) 100%)}
+  box-shadow:0 30px 70px rgba(6,24,46,.3);border:1px solid rgba(255,255,255,.18);min-height:470px;display:flex;flex-direction:column;justify-content:center}
+.prestasi-showcase::before{content:"";position:absolute;left:0;right:0;top:0;height:4px;z-index:2;
+  background:linear-gradient(90deg,#ffd54a,#ffb300,#ff7a00)}
 .prestasi-showcase::after{content:"";position:absolute;right:-70px;top:-70px;width:230px;height:230px;
-  border:1px solid rgba(255,213,74,.25);border-radius:50%}
-.prestasi-showcase .psh-dots{position:absolute;left:8%;bottom:16%;width:110px;height:110px;opacity:.5;z-index:1;
+  border:1px solid rgba(255,213,74,.22);border-radius:50%}
+.prestasi-showcase .psh-dots{position:absolute;left:8%;bottom:16%;width:110px;height:110px;opacity:.35;z-index:1;
   background-image:radial-gradient(rgba(255,213,74,.5) 1.6px,transparent 1.7px);background-size:15px 15px}
-.prestasi-showcase .psh-gold{position:absolute;right:12%;bottom:12%;width:64px;height:9px;border-radius:99px;z-index:1;
-  background:linear-gradient(90deg,#ffd54a,#ffb300)}
 .prestasi-showcase .psh-ring{position:absolute;left:-50px;bottom:-50px;width:160px;height:160px;z-index:1;
-  border:1px solid rgba(255,255,255,.10);border-radius:50%}
+  border:1px dashed rgba(255,255,255,.10);border-radius:50%}
 .prestasi-showcase-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;position:relative;z-index:2}
-.prestasi-showcase-label{font-size:.68rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#ffd54a;position:relative;z-index:2}
+.prestasi-showcase-label{display:inline-flex;align-items:center;gap:.55rem;font-size:.68rem;font-weight:800;
+  letter-spacing:.2em;text-transform:uppercase;color:#ffd54a;position:relative;z-index:2}
+.prestasi-showcase-label::before{content:"";width:7px;height:7px;border-radius:50%;background:#ffd54a;
+  box-shadow:0 0 0 4px rgba(255,213,74,.18)}
 .prestasi-showcase-icon{flex:0 0 58px;width:58px;height:58px;border-radius:16px;display:flex;align-items:center;
   justify-content:center;font-size:1.5rem;color:#5a3d00;background:linear-gradient(135deg,#ffe66d,#ffb300);
-  box-shadow:0 14px 30px rgba(255,179,0,.35);position:relative;z-index:2}
-.prestasi-showcase-num{font-family:var(--font-display);font-weight:900;font-size:clamp(4.6rem,9vw,7.2rem);
-  line-height:1;letter-spacing:-.03em;margin-top:1.6rem;position:relative;z-index:2}
+  box-shadow:0 14px 30px rgba(255,179,0,.4);position:relative;z-index:2}
+.prestasi-showcase-stat{margin-top:1.8rem;position:relative;z-index:2}
+.prestasi-showcase-num{display:flex;align-items:baseline;gap:.15rem;font-family:var(--font-display);
+  font-weight:900;font-size:clamp(4rem,7.6vw,6.2rem);line-height:1;letter-spacing:-.03em}
 .prestasi-showcase-num em{font-style:normal;background:linear-gradient(135deg,#ffe66d 0%,#ffc107 50%,#ff8a00 100%);
   -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.prestasi-showcase-num small{font-size:.32em;font-weight:800;letter-spacing:.06em;color:rgba(255,255,255,.55)}
-.prestasi-showcase-tag{display:inline-flex;align-items:center;gap:.5rem;margin-top:1.2rem;padding:.5rem 1rem;
-  border:1px solid rgba(255,255,255,.22);border-radius:999px;font-size:.72rem;font-weight:800;color:rgba(235,245,253,.9);
-  background:rgba(255,255,255,.06);backdrop-filter:blur(6px);position:relative;z-index:2}
+.prestasi-showcase-num .psn-plus{color:#fff}
+.prestasi-showcase-num-label{margin-top:.5rem;font-family:var(--font-display);font-weight:800;
+  font-size:clamp(1rem,1.6vw,1.3rem);letter-spacing:.05em;text-transform:uppercase;color:rgba(235,245,253,.6)}
+.prestasi-showcase-tag{display:inline-flex;align-items:center;gap:.5rem;margin-top:1.3rem;padding:.55rem 1.1rem;
+  border:1px solid rgba(255,213,74,.3);border-radius:999px;font-size:.72rem;font-weight:800;color:rgba(255,255,255,.94);
+  background:rgba(255,213,74,.1);backdrop-filter:blur(6px);position:relative;z-index:2}
 .prestasi-showcase-tag i{color:#ffd54a}
-.prestasi-showcase-list{margin:1.8rem 0 0;padding:0;list-style:none;display:grid;gap:.7rem;position:relative;z-index:2}
-.prestasi-showcase-list li{display:flex;align-items:center;gap:.7rem;font-size:.82rem;color:rgba(235,245,253,.85)}
-.prestasi-showcase-list li i{flex:0 0 22px;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;
-  justify-content:center;font-size:.55rem;color:#ffd54a;background:rgba(255,213,74,.12);border:1px solid rgba(255,213,74,.3)}
+.prestasi-showcase-list{margin:1.9rem 0 0;padding:1.2rem 0 0;list-style:none;display:grid;gap:.75rem;position:relative;z-index:2;
+  border-top:1px solid rgba(255,255,255,.12)}
+.prestasi-showcase-list li{display:flex;align-items:center;gap:.75rem;font-size:.82rem;color:rgba(235,245,253,.9);
+  transition:transform .3s var(--ease, ease)}
+.prestasi-showcase-list li:hover{transform:translateX(4px)}
+.prestasi-showcase-list li i{flex:0 0 24px;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;
+  justify-content:center;font-size:.56rem;color:#5a3d00;background:linear-gradient(135deg,#ffe66d,#ffb300);
+  box-shadow:0 6px 16px rgba(255,179,0,.3)}
 
 /* ---------- 2. ACHIEVEMENT STATISTICS (data TETAP: 42+/35+/12/5) ---------- */
 .prestasi-stats{position:relative;padding:96px 0;background:
@@ -303,45 +309,77 @@
   border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.07);font-size:.7rem;font-weight:800;
   color:rgba(235,245,253,.92)}
 .prestasi-feat-meta .pfm i{color:#ffd54a}
-.prestasi-feat-right{position:relative;z-index:2;display:flex;justify-content:center}
-.prestasi-feat-medal{position:relative;width:190px;height:190px;border-radius:50%;display:flex;flex-direction:column;
+.prestasi-feat-right{position:relative;z-index:2;display:flex;justify-content:center;padding-bottom:1.6rem}
+.prestasi-feat-photo{position:relative;width:240px;height:240px;border-radius:26px;overflow:hidden;
+  box-shadow:0 30px 70px rgba(4,14,28,.5);border:1px solid rgba(255,255,255,.2)}
+.prestasi-feat-photo img{width:100%;height:100%;object-fit:cover;display:block;
+  transition:transform .5s var(--ease, ease)}
+.prestasi-feat:hover .prestasi-feat-photo img{transform:scale(1.07)}
+.prestasi-feat-photo::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(200deg,rgba(7,22,42,.05) 32%,rgba(7,22,42,.72) 100%)}
+.prestasi-feat-medal{position:absolute;z-index:3;left:50%;bottom:-1.6rem;transform:translateX(-50%);
+  width:118px;height:118px;border-radius:50%;display:flex;flex-direction:column;
   align-items:center;justify-content:center;text-align:center;
   background:radial-gradient(circle at 30% 25%,#ffe66d,#ffb300 70%);
-  box-shadow:0 24px 60px rgba(255,179,0,.4);border:6px solid rgba(255,255,255,.18)}
-.prestasi-feat-medal::before{content:"";position:absolute;inset:-16px;border:1px dashed rgba(255,213,74,.5);border-radius:50%}
-.prestasi-feat-medal i{font-size:1.7rem;color:#5a3d00;margin-bottom:.5rem}
-.prestasi-feat-medal b{font-family:var(--font-display);font-size:1.05rem;font-weight:900;line-height:1.15;color:#5a3d00}
-.prestasi-feat-medal span{font-size:.62rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#7a5200;margin-top:.3rem}
+  box-shadow:0 18px 40px rgba(255,179,0,.42);border:5px solid #123f6e}
+.prestasi-feat-medal::before{content:"";position:absolute;inset:-11px;border:1px dashed rgba(255,213,74,.5);border-radius:50%}
+.prestasi-feat-medal i{font-size:1.15rem;color:#5a3d00;margin-bottom:.25rem}
+.prestasi-feat-medal b{font-family:var(--font-display);font-size:.78rem;font-weight:900;line-height:1.1;color:#5a3d00}
+.prestasi-feat-medal span{font-size:.5rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#7a5200;margin-top:.15rem}
 
-/* Card prestasi lain */
-.prestasi-card{position:relative;background:#fff;border:1px solid #e3edf0;border-radius:20px;padding:1.5rem 1.5rem 1.35rem;
-  display:flex;flex-direction:column;gap:.55rem;overflow:hidden;
+/* Card prestasi lain — foto di atas + konten di bawah */
+.prestasi-card{position:relative;background:#fff;border:1px solid #e3edf0;border-radius:20px;padding:0;
+  display:flex;flex-direction:column;overflow:hidden;
   transition:transform .35s var(--ease, ease),box-shadow .35s var(--ease, ease),border-color .35s var(--ease, ease)}
-.prestasi-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;
-  background:linear-gradient(180deg,#ffd54a,#ffb300);transform:scaleY(0);transform-origin:top;
-  transition:transform .4s var(--ease, ease)}
+.prestasi-card::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;
+  background:linear-gradient(90deg,#ffd54a,#ffb300);transform:scaleX(0);transform-origin:left;
+  transition:transform .4s var(--ease, ease);z-index:3}
 .prestasi-card:hover{transform:translateY(-6px);box-shadow:0 22px 48px rgba(13,58,102,.12);border-color:rgba(255,179,0,.4)}
-.prestasi-card:hover::before{transform:scaleY(1)}
-.prestasi-card-top{display:flex;align-items:center;justify-content:space-between;gap:.8rem}
+.prestasi-card:hover::after{transform:scaleX(1)}
+.prestasi-card-media{position:relative;height:260px;overflow:hidden;flex:0 0 auto}
+.prestasi-card-media img{width:100%;height:100%;object-fit:cover;display:block;
+  transition:transform .5s var(--ease, ease)}
+.prestasi-card:hover .prestasi-card-media img{transform:scale(1.08)}
+.prestasi-card-media::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(7,22,42,0) 42%,rgba(7,22,42,.62) 100%)}
+.prestasi-card-body{position:relative;padding:1.15rem 1.4rem 1.35rem;display:flex;flex-direction:column;gap:.55rem}
+.prestasi-card-top{position:absolute;z-index:2;top:.75rem;left:.9rem;right:.9rem;
+  display:flex;align-items:center;justify-content:space-between;gap:.6rem}
 .prestasi-card-rank{display:inline-flex;align-items:center;gap:.4rem;padding:.34rem .8rem;border-radius:999px;
-  font-size:.66rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase}
+  font-size:.66rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase;
+  box-shadow:0 8px 18px rgba(4,14,28,.18)}
 .prestasi-card-rank.r-1{background:#fff6e0;color:#9a5b00}
 .prestasi-card-rank.r-2{background:#eef3f7;color:#44596e}
 .prestasi-card-rank.r-3{background:#fbeee4;color:#9a5b00}
 .prestasi-card-rank.r-h{background:#e8f1fa;color:#1b4f7e}
 .prestasi-card-tag{display:inline-flex;align-items:center;gap:.3rem;padding:.26rem .6rem;border-radius:999px;
-  font-size:.6rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase}
-.prestasi-card-tag.t-kota{background:#e8f1fa;color:#1b4f7e}
-.prestasi-card-tag.t-prov{background:#eef6ea;color:#2e6b28}
-.prestasi-card-tag.t-nas{background:#fff3dd;color:#9a5b00}
-.prestasi-card h4{font-family:var(--font-display);font-size:1.02rem;font-weight:800;line-height:1.4;margin:0;color:#0d3a66}
+  font-size:.6rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;
+  background:rgba(255,255,255,.92);backdrop-filter:blur(4px)}
+.prestasi-card-tag.t-kota{color:#1b4f7e}
+.prestasi-card-tag.t-prov{color:#2e6b28}
+.prestasi-card-tag.t-nas{color:#9a5b00}
+.prestasi-card h4{font-family:var(--font-display);font-size:1rem;font-weight:800;line-height:1.4;margin:0;color:#0d3a66}
 .prestasi-card p{font-size:.78rem;line-height:1.7;color:#718396;margin:0}
 .prestasi-card-foot{display:flex;align-items:center;gap:.6rem;margin-top:.3rem;padding-top:.8rem;border-top:1px dashed #e3edf0;
   font-size:.7rem;font-weight:800;color:#2f6fa8}
 .prestasi-card-foot i{color:#ffb300}
 .prestasi-card-year{margin-left:auto;background:#f3f7fb;border:1px solid #e3edf0;border-radius:999px;padding:.26rem .7rem;
   font-size:.66rem;font-weight:800;color:#0d3a66}
+.prestasi-card-link{display:inline-flex;align-items:center;gap:.4rem;margin-top:.15rem;
+  font-size:.72rem;font-weight:800;color:#2f6fa8;text-decoration:none;transition:gap .3s var(--ease, ease),color .3s var(--ease, ease)}
+.prestasi-card-link i{font-size:.64rem;transition:transform .3s var(--ease, ease)}
+.prestasi-card-link:hover{color:#0d3a66;gap:.6rem}
+.prestasi-card-link:hover i{transform:translateX(3px)}
 .prestasi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.prestasi-board-more{display:flex;justify-content:center;margin-top:2.8rem}
+.prestasi-board-more-btn{display:inline-flex;align-items:center;gap:.6rem;padding:.9rem 2rem;border-radius:999px;
+  background:#fff;border:1.5px solid rgba(13,58,102,.16);color:#0d3a66;font-weight:800;font-size:.86rem;
+  text-decoration:none;box-shadow:0 12px 30px rgba(13,58,102,.08);
+  transition:transform .3s var(--ease, ease),box-shadow .3s var(--ease, ease),background .3s var(--ease, ease),color .3s var(--ease, ease)}
+.prestasi-board-more-btn i{color:#ffb300;transition:transform .3s var(--ease, ease)}
+.prestasi-board-more-btn:hover{transform:translateY(-3px);background:#0d3a66;color:#fff;
+  box-shadow:0 20px 44px rgba(13,58,102,.24)}
+.prestasi-board-more-btn:hover i{transform:translateX(3px);color:#ffd54a}
 
 /* ---------- 5. PERJALANAN PRESTASI (timeline tahun nyata 2023–2025) ---------- */
 .prestasi-journey{position:relative;padding:110px 0;background:#fff;overflow:hidden}
@@ -409,21 +447,21 @@
 .ps-lb-nav.next{right:1.4rem;top:50%;transform:translateY(-50%)}
 
 /* ---------- CTA ---------- */
-.ps-cta{position:relative;padding:110px 0;text-align:center;color:#fff;overflow:hidden;
-  background:linear-gradient(120deg,#0d3a66 0%,#123f6e 45%,#2f6fa8 100%)}
+.ps-cta{position:relative;width:min(1120px,88%);margin:0 auto 88px;padding:62px 42px 68px;text-align:center;color:#fff;overflow:hidden;
+  background:linear-gradient(120deg,#0d3a66 0%,#123f6e 45%,#2f6fa8 100%);border-radius:30px;box-shadow:0 18px 45px rgba(13,58,102,.16)}
 .ps-cta::before{content:"PRESTASI";position:absolute;left:50%;top:50%;transform:translate(-50%,-52%);
   font-family:var(--font-display);font-size:clamp(4rem,14vw,13rem);font-weight:900;line-height:1;
   color:rgba(255,255,255,.045);-webkit-text-stroke:1px rgba(255,255,255,.06);pointer-events:none;white-space:nowrap}
-.prestasi-cta-title{position:relative;font-family:var(--font-display);font-size:clamp(2rem,4.4vw,3.4rem);font-weight:900;
+.prestasi-cta-title{position:relative;font-family:var(--font-display);font-size:clamp(1.8rem,3.8vw,3rem);font-weight:900;
   line-height:1.1;letter-spacing:-.02em;margin:0 auto;max-width:820px;color:#fff}
 .prestasi-cta-title em{font-style:normal;background:linear-gradient(135deg,#ffe66d 0%,#ffc107 45%,#ff8a00 100%);
   -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
 .ps-cta p{position:relative;max-width:640px;margin:1.3rem auto 0;color:rgba(235,245,253,.82);font-size:.94rem;line-height:1.85}
-.ps-cta-btn{position:relative;display:inline-flex;align-items:center;gap:.6rem;margin-top:2.2rem;padding:.95rem 2rem;
+.ps-cta-btn{position:relative;display:inline-flex;align-items:center;gap:.6rem;margin-top:1.7rem;padding:.85rem 1.8rem;
   border-radius:999px;background:linear-gradient(135deg,#ffd54a,#ffb300);color:#0d3a66;font-weight:900;font-size:.9rem;
   text-decoration:none;box-shadow:0 18px 40px rgba(255,179,0,.30);transition:transform .3s var(--ease, ease),box-shadow .3s var(--ease, ease)}
 .ps-cta-btn:hover{transform:translateY(-4px);box-shadow:0 24px 54px rgba(255,179,0,.42)}
-.ps-cta-note{position:relative;margin-top:1.4rem;font-size:.72rem;color:rgba(235,245,253,.6)}
+.ps-cta-note{position:relative;margin-top:1.05rem;font-size:.68rem;color:rgba(235,245,253,.6)}
 .ps-cta-note i{color:#ffd54a;margin-right:.35rem}
 
 /* ---------- REVEAL ---------- */
@@ -438,6 +476,7 @@
   .hero-photo{height:360px;transform:translateY(-18px) rotate(1deg)}
   .prestasi-stats-grid{grid-template-columns:repeat(2,1fr)}
   .prestasi-grid{grid-template-columns:repeat(2,1fr)}
+  .prestasi-card-media{height:230px}
   .prestasi-feat{grid-template-columns:1fr;text-align:left}
   .prestasi-feat-right{justify-content:flex-start}
   .prestasi-timeline{grid-template-columns:1fr;gap:2.2rem}
@@ -459,6 +498,7 @@
 @media(max-width:640px){
   .prestasi-stats-grid{grid-template-columns:1fr}
   .prestasi-grid{grid-template-columns:1fr}
+  .prestasi-card-media{height:200px}
   .prestasi-masonry{columns:1}
   .prestasi-filters{flex-wrap:nowrap;overflow-x:auto;padding-bottom:.5rem;-webkit-overflow-scrolling:touch}
   .prestasi-filters .prestasi-fbtn{flex:0 0 auto}
@@ -470,35 +510,23 @@
 @section('content')
 <div class="ps-page">
 
-  <!-- HERO (IDENTIK referensi — TIDAK DIUBAH) -->
+  <!-- HERO (100% mirip halaman Karya Siswa / PPDB: watermark + ornamen abstrak + judul besar bertumpuk) -->
   <section class="ps-hero">
-    <div class="home-orn" aria-hidden="true">
-      <span class="ho-chevron"></span>
-      <span class="ho-line"></span>
-      <span class="ho-dots"></span>
-      <span class="ho-ring"></span>
-      <span class="ho-gold"></span>
-      <span class="ho-square"></span>
-      <span class="ho-corner"></span>
+    <div class="ps-ref-ornaments" aria-hidden="true" style="background-image:url('{{ asset('images/wide_minimalist_abstract_technology_background_des.png') }}');background-size:cover;background-position:center center;">
+      <img
+        src="{{ asset('images/wide_minimalist_abstract_technology_background_des.png') }}"
+        alt=""
+        class="ps-ref-ornament-image"
+        aria-hidden="true"
+      >
     </div>
-
     <div class="ps-hero-inner">
       <div>
         <div class="ps-kicker">Papan Prestasi Peserta Didik</div>
         <h1 class="ps-title">
-          <span class="ps-white">Prestasi</span> <span class="ps-gold">Siswa</span>
+          <span class="ps-white">Prestasi</span>
+          <span class="ps-gold">Siswa</span>
         </h1>
-        <p class="ps-lead">Setiap piala adalah cerita, setiap medali adalah proses. SMK Negeri 2 Mojokerto terus menorehkan prestasi di tingkat kota, provinsi, hingga nasional — dari kelas, bengkel, dan dapur, menuju panggung juara.</p>
-        <div class="ps-hero-meta">
-          <span class="ps-pill"><i class="fas fa-trophy"></i> 120+ Penghargaan</span>
-          <span class="ps-pill"><i class="fas fa-map-marker-alt"></i> Kota → Nasional</span>
-          <span class="ps-pill"><i class="fas fa-users"></i> Semua Jurusan</span>
-        </div>
-      </div>
-
-      <div class="hero-photo" data-reveal="right">
-        <img src="{{ asset('images/prestasi-2.jpg') }}" alt="Piala dan penghargaan prestasi siswa SMK Negeri 2 Mojokerto" loading="eager">
-        <div class="hero-photo-caption"><strong>Skaneda Berprestasi</strong><span>Piala &amp; sertifikat juara dari berbagai ajang lomba.</span></div>
       </div>
     </div>
   </section>
@@ -519,13 +547,15 @@
       <div data-reveal="right">
         <div class="prestasi-showcase">
           <span class="psh-dots" aria-hidden="true"></span>
-          <span class="psh-gold" aria-hidden="true"></span>
           <span class="psh-ring" aria-hidden="true"></span>
           <div class="prestasi-showcase-top">
-            <span class="prestasi-showcase-label">Achievement Showcase</span>
+            <span class="prestasi-showcase-label">Etalase Prestasi</span>
             <span class="prestasi-showcase-icon"><i class="fas fa-trophy"></i></span>
           </div>
-          <div class="prestasi-showcase-num"><em data-count="42">0</em>+<small> JUARA 1</small></div>
+          <div class="prestasi-showcase-stat">
+            <div class="prestasi-showcase-num"><em data-count="42">0</em><span class="psn-plus">+</span></div>
+            <div class="prestasi-showcase-num-label">Juara 1</div>
+          </div>
           <span class="prestasi-showcase-tag"><i class="fas fa-medal"></i> Medali Emas Peserta Didik</span>
           <ul class="prestasi-showcase-list">
             <li><i class="fas fa-check"></i> Kota Mojokerto — 6 prestasi juara</li>
@@ -659,6 +689,9 @@
           </div>
         </div>
         <div class="prestasi-feat-right">
+          <div class="prestasi-feat-photo">
+            <img src="{{ asset('images/prestasi-5.jpg') }}" alt="Tim RPL memegang piala Juara 1 LKS Web Technologies" loading="eager">
+          </div>
           <div class="prestasi-feat-medal">
             <i class="fas fa-trophy"></i>
             <b>Juara 1</b>
@@ -667,148 +700,242 @@
         </div>
       </article>
 
-      <!-- CARD PRESTASI LAINNYA (data TIDAK diubah) -->
+      <!-- CARD PRESTASI LAINNYA (data TIDAK diubah, foto ditambahkan) -->
       <div class="prestasi-grid" id="prestasiGrid">
         <!-- Kota -->
         <article class="prestasi-card" data-level="kota" data-reveal>
-          <div class="prestasi-card-top">
-            <span class="prestasi-card-rank r-1"><i class="fas fa-trophy"></i> Juara 1</span>
-            <span class="prestasi-card-tag t-kota"><i class="fas fa-building"></i> Kota Mojokerto</span>
+          <div class="prestasi-card-media">
+            <img src="{{ asset('images/prestasi-1.jpg') }}" alt="Siswa kuliner menyajikan menu lomba cipta menu" loading="lazy">
+            <div class="prestasi-card-top">
+              <span class="prestasi-card-rank r-1"><i class="fas fa-trophy"></i> Juara 1</span>
+              <span class="prestasi-card-tag t-kota"><i class="fas fa-building"></i> Kota Mojokerto</span>
+            </div>
           </div>
-          <h4>Lomba Cipta Menu Kuliner</h4>
-          <p>Lomba cipta menu berbahan lokal dengan teknik fine dining — kompetensi Kuliner.</p>
-          <div class="prestasi-card-foot"><i class="fas fa-user-graduate"></i> Kuliner<span class="prestasi-card-year">2025</span></div>
+          <div class="prestasi-card-body">
+            <h4>Lomba Cipta Menu Kuliner</h4>
+            <p>Lomba cipta menu berbahan lokal dengan teknik fine dining — kompetensi Kuliner.</p>
+            <div class="prestasi-card-foot"><i class="fas fa-user-graduate"></i> Kuliner<span class="prestasi-card-year">2025</span></div>
+            <a href="{{ route('index') }}" class="prestasi-card-link">Lihat berita <i class="fas fa-arrow-right"></i></a>
+          </div>
         </article>
         <article class="prestasi-card" data-level="kota" data-reveal style="--d:1">
-          <div class="prestasi-card-top">
-            <span class="prestasi-card-rank r-1"><i class="fas fa-trophy"></i> Juara 1</span>
-            <span class="prestasi-card-tag t-kota"><i class="fas fa-building"></i> Kota Mojokerto</span>
+          <div class="prestasi-card-media">
+            <img src="{{ asset('images/prestasi-2.jpg') }}" alt="Karya poster juara Festival Desain Poster" loading="lazy">
+            <div class="prestasi-card-top">
+              <span class="prestasi-card-rank r-1"><i class="fas fa-trophy"></i> Juara 1</span>
+              <span class="prestasi-card-tag t-kota"><i class="fas fa-building"></i> Kota Mojokerto</span>
+            </div>
           </div>
-          <h4>Festival Desain Poster</h4>
-          <p>Festival desain poster digital tingkat kota — kompetensi Desain Komunikasi Visual.</p>
-          <div class="prestasi-card-foot"><i class="fas fa-user-graduate"></i> DKV<span class="prestasi-card-year">2024</span></div>
+          <div class="prestasi-card-body">
+            <h4>Festival Desain Poster</h4>
+            <p>Festival desain poster digital tingkat kota — kompetensi Desain Komunikasi Visual.</p>
+            <div class="prestasi-card-foot"><i class="fas fa-user-graduate"></i> DKV<span class="prestasi-card-year">2024</span></div>
+            <a href="{{ route('index') }}" class="prestasi-card-link">Lihat berita <i class="fas fa-arrow-right"></i></a>
+          </div>
         </article>
         <article class="prestasi-card" data-level="kota" data-reveal style="--d:2">
-          <div class="prestasi-card-top">
-            <span class="prestasi-card-rank r-2"><i class="fas fa-medal"></i> Juara 2</span>
-            <span class="prestasi-card-tag t-kota"><i class="fas fa-building"></i> Kota Mojokerto</span>
+          <div class="prestasi-card-media">
+            <img src="{{ asset('images/prestasi-3.jpg') }}" alt="Produk olahan hasil pertanian inovasi APHP" loading="lazy">
+            <div class="prestasi-card-top">
+              <span class="prestasi-card-rank r-2"><i class="fas fa-medal"></i> Juara 2</span>
+              <span class="prestasi-card-tag t-kota"><i class="fas fa-building"></i> Kota Mojokerto</span>
+            </div>
           </div>
-          <h4>Lomba Inovasi Produk Olahan</h4>
-          <p>Inovasi produk olahan hasil pertanian dengan kemasan modern — kompetensi APHP.</p>
-          <div class="prestasi-card-foot"><i class="fas fa-user-graduate"></i> APHP<span class="prestasi-card-year">2024</span></div>
+          <div class="prestasi-card-body">
+            <h4>Lomba Inovasi Produk Olahan</h4>
+            <p>Inovasi produk olahan hasil pertanian dengan kemasan modern — kompetensi APHP.</p>
+            <div class="prestasi-card-foot"><i class="fas fa-user-graduate"></i> APHP<span class="prestasi-card-year">2024</span></div>
+            <a href="{{ route('index') }}" class="prestasi-card-link">Lihat berita <i class="fas fa-arrow-right"></i></a>
+          </div>
         </article>
         <article class="prestasi-card" data-level="kota" data-reveal style="--d:3">
-          <div class="prestasi-card-top">
-            <span class="prestasi-card-rank r-3"><i class="fas fa-medal"></i> Juara 3</span>
-            <span class="prestasi-card-tag t-kota"><i class="fas fa-building"></i> Kota Mojokerto</span>
+          <div class="prestasi-card-media">
+            <img src="{{ asset('images/prestasi-4.jpg') }}" alt="Siswa juara O2SN cabang bulu tangkis" loading="lazy">
+            <div class="prestasi-card-top">
+              <span class="prestasi-card-rank r-3"><i class="fas fa-medal"></i> Juara 3</span>
+              <span class="prestasi-card-tag t-kota"><i class="fas fa-building"></i> Kota Mojokerto</span>
+            </div>
           </div>
-          <h4>O2SN Bulu Tangkis</h4>
-          <p>Olimpiade Olahraga Siswa Nasional tingkat kota — cabang bulu tangkis putra.</p>
-          <div class="prestasi-card-foot"><i class="fas fa-user-graduate"></i> Umum<span class="prestasi-card-year">2023</span></div>
+          <div class="prestasi-card-body">
+            <h4>O2SN Bulu Tangkis</h4>
+            <p>Olimpiade Olahraga Siswa Nasional tingkat kota — cabang bulu tangkis putra.</p>
+            <div class="prestasi-card-foot"><i class="fas fa-user-graduate"></i> Umum<span class="prestasi-card-year">2023</span></div>
+            <a href="{{ route('index') }}" class="prestasi-card-link">Lihat berita <i class="fas fa-arrow-right"></i></a>
+          </div>
         </article>
         <article class="prestasi-card" data-level="kota" data-reveal style="--d:4">
-          <div class="prestasi-card-top">
-            <span class="prestasi-card-rank r-h"><i class="fas fa-star"></i> Harapan 1</span>
-            <span class="prestasi-card-tag t-kota"><i class="fas fa-building"></i> Kota Mojokerto</span>
+          <div class="prestasi-card-media">
+            <img src="{{ asset('images/prestasi-6.jpg') }}" alt="Tim produksi film pendek FLS2N" loading="lazy">
+            <div class="prestasi-card-top">
+              <span class="prestasi-card-rank r-h"><i class="fas fa-star"></i> Harapan 1</span>
+              <span class="prestasi-card-tag t-kota"><i class="fas fa-building"></i> Kota Mojokerto</span>
+            </div>
           </div>
-          <h4>FLS2N Film Pendek</h4>
-          <p>Festival Lomba Seni Siswa Nasional tingkat kota — kategori film pendek.</p>
-          <div class="prestasi-card-foot"><i class="fas fa-user-graduate"></i> DKV<span class="prestasi-card-year">2023</span></div>
+          <div class="prestasi-card-body">
+            <h4>FLS2N Film Pendek</h4>
+            <p>Festival Lomba Seni Siswa Nasional tingkat kota — kategori film pendek.</p>
+            <div class="prestasi-card-foot"><i class="fas fa-user-graduate"></i> DKV<span class="prestasi-card-year">2023</span></div>
+            <a href="{{ route('index') }}" class="prestasi-card-link">Lihat berita <i class="fas fa-arrow-right"></i></a>
+          </div>
         </article>
 
         <!-- Provinsi -->
         <article class="prestasi-card" data-level="prov" data-reveal>
-          <div class="prestasi-card-top">
-            <span class="prestasi-card-rank r-1"><i class="fas fa-trophy"></i> Juara 1</span>
-            <span class="prestasi-card-tag t-prov"><i class="fas fa-map-marked-alt"></i> Jawa Timur</span>
+          <div class="prestasi-card-media">
+            <img src="{{ asset('images/prestasi-5.jpg') }}" alt="Tim RPL juara LKS Cloud Computing tingkat provinsi" loading="lazy">
+            <div class="prestasi-card-top">
+              <span class="prestasi-card-rank r-1"><i class="fas fa-trophy"></i> Juara 1</span>
+              <span class="prestasi-card-tag t-prov"><i class="fas fa-map-marked-alt"></i> Jawa Timur</span>
+            </div>
           </div>
-          <h4>LKS Cloud Computing</h4>
-          <p>Lomba Kompetensi Siswa bidang Cloud Computing tingkat Provinsi Jawa Timur — Tim RPL.</p>
-          <div class="prestasi-card-foot"><i class="fas fa-user-graduate"></i> Rekayasa Perangkat Lunak<span class="prestasi-card-year">2025</span></div>
+          <div class="prestasi-card-body">
+            <h4>LKS Cloud Computing</h4>
+            <p>Lomba Kompetensi Siswa bidang Cloud Computing tingkat Provinsi Jawa Timur — Tim RPL.</p>
+            <div class="prestasi-card-foot"><i class="fas fa-user-graduate"></i> Rekayasa Perangkat Lunak<span class="prestasi-card-year">2025</span></div>
+            <a href="{{ route('index') }}" class="prestasi-card-link">Lihat berita <i class="fas fa-arrow-right"></i></a>
+          </div>
         </article>
         <article class="prestasi-card" data-level="prov" data-reveal style="--d:1">
-          <div class="prestasi-card-top">
-            <span class="prestasi-card-rank r-1"><i class="fas fa-trophy"></i> Juara 1</span>
-            <span class="prestasi-card-tag t-prov"><i class="fas fa-map-marked-alt"></i> Jawa Timur</span>
+          <div class="prestasi-card-media">
+            <img src="{{ asset('images/prestasi-7.jpg') }}" alt="Hasil karya lomba Bakery dan Pastry" loading="lazy">
+            <div class="prestasi-card-top">
+              <span class="prestasi-card-rank r-1"><i class="fas fa-trophy"></i> Juara 1</span>
+              <span class="prestasi-card-tag t-prov"><i class="fas fa-map-marked-alt"></i> Jawa Timur</span>
+            </div>
           </div>
-          <h4>Lomba Bakery &amp; Pastry</h4>
-          <p>Lomba bakery dan pastry tingkat provinsi — kompetensi Kuliner.</p>
-          <div class="prestasi-card-foot"><i class="fas fa-user-graduate"></i> Kuliner<span class="prestasi-card-year">2024</span></div>
+          <div class="prestasi-card-body">
+            <h4>Lomba Bakery &amp; Pastry</h4>
+            <p>Lomba bakery dan pastry tingkat provinsi — kompetensi Kuliner.</p>
+            <div class="prestasi-card-foot"><i class="fas fa-user-graduate"></i> Kuliner<span class="prestasi-card-year">2024</span></div>
+            <a href="{{ route('index') }}" class="prestasi-card-link">Lihat berita <i class="fas fa-arrow-right"></i></a>
+          </div>
         </article>
         <article class="prestasi-card" data-level="prov" data-reveal style="--d:2">
-          <div class="prestasi-card-top">
-            <span class="prestasi-card-rank r-2"><i class="fas fa-medal"></i> Juara 2</span>
-            <span class="prestasi-card-tag t-prov"><i class="fas fa-map-marked-alt"></i> Jawa Timur</span>
+          <div class="prestasi-card-media">
+            <img src="{{ asset('images/prestasi-8.jpg') }}" alt="Siswa RPL juara LKS ITNSA tingkat provinsi" loading="lazy">
+            <div class="prestasi-card-top">
+              <span class="prestasi-card-rank r-2"><i class="fas fa-medal"></i> Juara 2</span>
+              <span class="prestasi-card-tag t-prov"><i class="fas fa-map-marked-alt"></i> Jawa Timur</span>
+            </div>
           </div>
-          <h4>LKS IT Network Systems Administration</h4>
-          <p>Lomba Kompetensi Siswa bidang ITNSA tingkat provinsi — administrasi jaringan.</p>
-          <div class="prestasi-card-foot"><i class="fas fa-user-graduate"></i> Rekayasa Perangkat Lunak<span class="prestasi-card-year">2024</span></div>
+          <div class="prestasi-card-body">
+            <h4>LKS IT Network Systems Administration</h4>
+            <p>Lomba Kompetensi Siswa bidang ITNSA tingkat provinsi — administrasi jaringan.</p>
+            <div class="prestasi-card-foot"><i class="fas fa-user-graduate"></i> Rekayasa Perangkat Lunak<span class="prestasi-card-year">2024</span></div>
+            <a href="{{ route('index') }}" class="prestasi-card-link">Lihat berita <i class="fas fa-arrow-right"></i></a>
+          </div>
         </article>
         <article class="prestasi-card" data-level="prov" data-reveal style="--d:3">
-          <div class="prestasi-card-top">
-            <span class="prestasi-card-rank r-3"><i class="fas fa-medal"></i> Juara 3</span>
-            <span class="prestasi-card-tag t-prov"><i class="fas fa-map-marked-alt"></i> Jawa Timur</span>
+          <div class="prestasi-card-media">
+            <img src="{{ asset('images/prestasi-9.jpg') }}" alt="Tim juara Lomba Bank Syariah dan Ekonomi Digital" loading="lazy">
+            <div class="prestasi-card-top">
+              <span class="prestasi-card-rank r-3"><i class="fas fa-medal"></i> Juara 3</span>
+              <span class="prestasi-card-tag t-prov"><i class="fas fa-map-marked-alt"></i> Jawa Timur</span>
+            </div>
           </div>
-          <h4>Lomba Bank Syariah &amp; Ekonomi Digital</h4>
-          <p>Lomba kompetisi perbankan syariah dan ekonomi digital tingkat provinsi — LPS.</p>
-          <div class="prestasi-card-foot"><i class="fas fa-user-graduate"></i> Perbankan Syariah<span class="prestasi-card-year">2024</span></div>
+          <div class="prestasi-card-body">
+            <h4>Lomba Bank Syariah &amp; Ekonomi Digital</h4>
+            <p>Lomba kompetisi perbankan syariah dan ekonomi digital tingkat provinsi — LPS.</p>
+            <div class="prestasi-card-foot"><i class="fas fa-user-graduate"></i> Perbankan Syariah<span class="prestasi-card-year">2024</span></div>
+            <a href="{{ route('index') }}" class="prestasi-card-link">Lihat berita <i class="fas fa-arrow-right"></i></a>
+          </div>
         </article>
         <article class="prestasi-card" data-level="prov" data-reveal style="--d:4">
-          <div class="prestasi-card-top">
-            <span class="prestasi-card-rank r-1"><i class="fas fa-trophy"></i> Juara 1</span>
-            <span class="prestasi-card-tag t-prov"><i class="fas fa-map-marked-alt"></i> Jawa Timur</span>
+          <div class="prestasi-card-media">
+            <img src="{{ asset('images/prestasi-1.jpg') }}" alt="Produk unggulan Lomba Inovasi Pangan Lokal" loading="lazy">
+            <div class="prestasi-card-top">
+              <span class="prestasi-card-rank r-1"><i class="fas fa-trophy"></i> Juara 1</span>
+              <span class="prestasi-card-tag t-prov"><i class="fas fa-map-marked-alt"></i> Jawa Timur</span>
+            </div>
           </div>
-          <h4>Lomba Inovasi Pangan Lokal</h4>
-          <p>Inovasi pengolahan hasil pertanian tingkat provinsi — produk unggulan APHP.</p>
-          <div class="prestasi-card-foot"><i class="fas fa-user-graduate"></i> APHP<span class="prestasi-card-year">2023</span></div>
+          <div class="prestasi-card-body">
+            <h4>Lomba Inovasi Pangan Lokal</h4>
+            <p>Inovasi pengolahan hasil pertanian tingkat provinsi — produk unggulan APHP.</p>
+            <div class="prestasi-card-foot"><i class="fas fa-user-graduate"></i> APHP<span class="prestasi-card-year">2023</span></div>
+            <a href="{{ route('index') }}" class="prestasi-card-link">Lihat berita <i class="fas fa-arrow-right"></i></a>
+          </div>
         </article>
         <article class="prestasi-card" data-level="prov" data-reveal style="--d:5">
-          <div class="prestasi-card-top">
-            <span class="prestasi-card-rank r-2"><i class="fas fa-medal"></i> Juara 2</span>
-            <span class="prestasi-card-tag t-prov"><i class="fas fa-map-marked-alt"></i> Jawa Timur</span>
+          <div class="prestasi-card-media">
+            <img src="{{ asset('images/prestasi-2.jpg') }}" alt="Karya juara FLS2N kategori Desain Komunikasi Visual" loading="lazy">
+            <div class="prestasi-card-top">
+              <span class="prestasi-card-rank r-2"><i class="fas fa-medal"></i> Juara 2</span>
+              <span class="prestasi-card-tag t-prov"><i class="fas fa-map-marked-alt"></i> Jawa Timur</span>
+            </div>
           </div>
-          <h4>FLS2N Kategori Desain Komunikasi Visual</h4>
-          <p>Festival Lomba Seni Siswa Nasional tingkat provinsi — kategori DKV.</p>
-          <div class="prestasi-card-foot"><i class="fas fa-user-graduate"></i> DKV<span class="prestasi-card-year">2023</span></div>
+          <div class="prestasi-card-body">
+            <h4>FLS2N Kategori Desain Komunikasi Visual</h4>
+            <p>Festival Lomba Seni Siswa Nasional tingkat provinsi — kategori DKV.</p>
+            <div class="prestasi-card-foot"><i class="fas fa-user-graduate"></i> DKV<span class="prestasi-card-year">2023</span></div>
+            <a href="{{ route('index') }}" class="prestasi-card-link">Lihat berita <i class="fas fa-arrow-right"></i></a>
+          </div>
         </article>
 
         <!-- Nasional -->
         <article class="prestasi-card" data-level="nas" data-reveal>
-          <div class="prestasi-card-top">
-            <span class="prestasi-card-rank r-2"><i class="fas fa-medal"></i> Juara 2</span>
-            <span class="prestasi-card-tag t-nas"><i class="fas fa-flag"></i> Nasional</span>
+          <div class="prestasi-card-media">
+            <img src="{{ asset('images/prestasi-3.jpg') }}" alt="Tim RPL juara LKS Nasional IT Software Solutions" loading="lazy">
+            <div class="prestasi-card-top">
+              <span class="prestasi-card-rank r-2"><i class="fas fa-medal"></i> Juara 2</span>
+              <span class="prestasi-card-tag t-nas"><i class="fas fa-flag"></i> Nasional</span>
+            </div>
           </div>
-          <h4>LKS Tingkat Nasional — IT Software Solutions</h4>
-          <p>Lomba Kompetensi Siswa tingkat nasional bidang IT Software Solutions for Business.</p>
-          <div class="prestasi-card-foot"><i class="fas fa-user-graduate"></i> Rekayasa Perangkat Lunak<span class="prestasi-card-year">2025</span></div>
+          <div class="prestasi-card-body">
+            <h4>LKS Tingkat Nasional — IT Software Solutions</h4>
+            <p>Lomba Kompetensi Siswa tingkat nasional bidang IT Software Solutions for Business.</p>
+            <div class="prestasi-card-foot"><i class="fas fa-user-graduate"></i> Rekayasa Perangkat Lunak<span class="prestasi-card-year">2025</span></div>
+            <a href="{{ route('index') }}" class="prestasi-card-link">Lihat berita <i class="fas fa-arrow-right"></i></a>
+          </div>
         </article>
         <article class="prestasi-card" data-level="nas" data-reveal style="--d:1">
-          <div class="prestasi-card-top">
-            <span class="prestasi-card-rank r-h"><i class="fas fa-star"></i> Harapan 1</span>
-            <span class="prestasi-card-tag t-nas"><i class="fas fa-flag"></i> Nasional</span>
+          <div class="prestasi-card-media">
+            <img src="{{ asset('images/prestasi-4.jpg') }}" alt="Hasil karya LKS Nasional Culinary Arts" loading="lazy">
+            <div class="prestasi-card-top">
+              <span class="prestasi-card-rank r-h"><i class="fas fa-star"></i> Harapan 1</span>
+              <span class="prestasi-card-tag t-nas"><i class="fas fa-flag"></i> Nasional</span>
+            </div>
           </div>
-          <h4>LKS Nasional — Culinary Arts</h4>
-          <p>Lomba Kompetensi Siswa tingkat nasional bidang Culinary Arts — kompetensi Kuliner.</p>
-          <div class="prestasi-card-foot"><i class="fas fa-user-graduate"></i> Kuliner<span class="prestasi-card-year">2024</span></div>
+          <div class="prestasi-card-body">
+            <h4>LKS Nasional — Culinary Arts</h4>
+            <p>Lomba Kompetensi Siswa tingkat nasional bidang Culinary Arts — kompetensi Kuliner.</p>
+            <div class="prestasi-card-foot"><i class="fas fa-user-graduate"></i> Kuliner<span class="prestasi-card-year">2024</span></div>
+            <a href="{{ route('index') }}" class="prestasi-card-link">Lihat berita <i class="fas fa-arrow-right"></i></a>
+          </div>
         </article>
         <article class="prestasi-card" data-level="nas" data-reveal style="--d:2">
-          <div class="prestasi-card-top">
-            <span class="prestasi-card-rank r-3"><i class="fas fa-medal"></i> Finalis</span>
-            <span class="prestasi-card-tag t-nas"><i class="fas fa-flag"></i> Nasional</span>
+          <div class="prestasi-card-media">
+            <img src="{{ asset('images/prestasi-5.jpg') }}" alt="Siswa finalis OSN Informatika tingkat nasional" loading="lazy">
+            <div class="prestasi-card-top">
+              <span class="prestasi-card-rank r-3"><i class="fas fa-medal"></i> Finalis</span>
+              <span class="prestasi-card-tag t-nas"><i class="fas fa-flag"></i> Nasional</span>
+            </div>
           </div>
-          <h4>OSN Informatika</h4>
-          <p>Olimpiade Sains Nasional bidang Informatika — lolos hingga babak final nasional.</p>
-          <div class="prestasi-card-foot"><i class="fas fa-user-graduate"></i> Rekayasa Perangkat Lunak<span class="prestasi-card-year">2024</span></div>
+          <div class="prestasi-card-body">
+            <h4>OSN Informatika</h4>
+            <p>Olimpiade Sains Nasional bidang Informatika — lolos hingga babak final nasional.</p>
+            <div class="prestasi-card-foot"><i class="fas fa-user-graduate"></i> Rekayasa Perangkat Lunak<span class="prestasi-card-year">2024</span></div>
+            <a href="{{ route('index') }}" class="prestasi-card-link">Lihat berita <i class="fas fa-arrow-right"></i></a>
+          </div>
         </article>
         <article class="prestasi-card" data-level="nas" data-reveal style="--d:3">
-          <div class="prestasi-card-top">
-            <span class="prestasi-card-rank r-h"><i class="fas fa-star"></i> Top 10</span>
-            <span class="prestasi-card-tag t-nas"><i class="fas fa-flag"></i> Nasional</span>
+          <div class="prestasi-card-media">
+            <img src="{{ asset('images/prestasi-6.jpg') }}" alt="Aplikasi karya siswa RPL Kompetisi Inovasi Digital" loading="lazy">
+            <div class="prestasi-card-top">
+              <span class="prestasi-card-rank r-h"><i class="fas fa-star"></i> Top 10</span>
+              <span class="prestasi-card-tag t-nas"><i class="fas fa-flag"></i> Nasional</span>
+            </div>
           </div>
-          <h4>Kompetisi Inovasi Digital Siswa</h4>
-          <p>Kompetisi inovasi digital tingkat nasional — aplikasi karya siswa RPL.</p>
-          <div class="prestasi-card-foot"><i class="fas fa-user-graduate"></i> Rekayasa Perangkat Lunak<span class="prestasi-card-year">2023</span></div>
+          <div class="prestasi-card-body">
+            <h4>Kompetisi Inovasi Digital Siswa</h4>
+            <p>Kompetisi inovasi digital tingkat nasional — aplikasi karya siswa RPL.</p>
+            <div class="prestasi-card-foot"><i class="fas fa-user-graduate"></i> Rekayasa Perangkat Lunak<span class="prestasi-card-year">2023</span></div>
+            <a href="{{ route('index') }}" class="prestasi-card-link">Lihat berita <i class="fas fa-arrow-right"></i></a>
+          </div>
         </article>
+      </div>
+
+      <div class="prestasi-board-more" data-reveal>
+        <a href="{{ route('prestasi-sekolah') }}" class="prestasi-board-more-btn">Lihat Selengkapnya <i class="fas fa-arrow-right"></i></a>
       </div>
     </div>
   </section>

@@ -17,52 +17,51 @@
 .br-page{background:#f7f9fc;color:#0d3a66;overflow:hidden;position:relative}
 .br-page *{box-sizing:border-box}
 
-/* ---------- HERO: foto gedung + overlay + watermark (IDENTIK referensi — TIDAK DIUBAH) ---------- */
-.br-hero{position:relative;min-height:88vh;display:flex;align-items:flex-start;overflow:hidden;
-  background-image:url('{{ asset('images/hero-sekolah.jpg') }}');
-  background-size:cover;background-position:center;background-repeat:no-repeat;color:#fff}
-.br-hero::before{content:"";position:absolute;inset:0;z-index:1;
-  background:linear-gradient(100deg,rgba(7,22,42,.90) 0%,rgba(9,30,54,.68) 45%,rgba(9,30,54,.32) 78%,rgba(9,30,54,.12) 100%)}
-/* Watermark typography besar transparan */
-.br-hero::after{content:"BERITA";position:absolute;z-index:2;right:-2%;top:50%;transform:translateY(-50%);
-  font-family:var(--font-display);font-size:clamp(3.1rem,9.4vw,9.4rem);font-weight:900;line-height:.82;
-  letter-spacing:.02em;color:rgba(255,255,255,.055);-webkit-text-stroke:1px rgba(255,255,255,.07);
-  text-shadow:0 0 90px rgba(13,58,102,.16);pointer-events:none;white-space:nowrap;user-select:none}
-.br-hero-inner{position:relative;z-index:3;width:100%;max-width:none;margin:0 auto;
-  padding:clamp(3.5rem,9vh,5.5rem) clamp(1.5rem,5vw,5.5rem);
-  display:grid;grid-template-columns:minmax(0,1.05fr) minmax(340px,.95fr);gap:4rem;align-items:center}
+/* ---------- HERO: senada 100% dengan hero Ekstrakurikuler (light theme, watermark) ---------- */
+.br-hero{position:relative;min-height:clamp(560px,72vh,740px);display:flex;align-items:center;overflow:hidden;
+  background:#fff;color:#0d3a66;isolation:isolate}
+.br-hero::after{content:"BERITA";position:absolute;z-index:0;left:2%;top:58%;transform:translateY(-50%);
+  font-family:var(--font-display);font-size:clamp(3.4rem,11.5vw,11.5rem);font-weight:900;line-height:.78;
+  letter-spacing:.01em;color:rgba(13,58,102,.035);-webkit-text-stroke:1px rgba(255,122,0,.09);
+  pointer-events:none;white-space:nowrap;user-select:none}
+.br-ref-ornaments{position:absolute!important;inset:0;z-index:1;overflow:hidden;pointer-events:none;opacity:1}
+.br-ref-ornament-image{position:absolute!important;inset:0;width:100%;height:100%;display:block;
+  object-fit:cover;object-position:center center;max-width:none;opacity:1}
+.br-hero-inner{position:relative;z-index:4;width:100%;max-width:1500px;margin:0 auto;
+  padding:clamp(3.6rem,9vh,6rem) clamp(1.25rem,4.2vw,4.5rem) clamp(3.2rem,7vh,5rem);display:block}
 
-.br-kicker{display:inline-flex;align-items:center;gap:.65rem;font-size:.74rem;font-weight:800;
-  letter-spacing:.18em;text-transform:uppercase;color:#ffd54a;margin-bottom:0.6rem}
-.br-kicker::before{content:"";width:34px;height:3px;border-radius:99px;background:linear-gradient(90deg,#ffd54a,#ffb300)}
+.br-kicker{position:relative;z-index:5;display:inline-flex;align-items:center;gap:.65rem;font-size:.72rem;
+  font-weight:900;letter-spacing:.18em;text-transform:uppercase;color:#ff6f00;margin-bottom:1.2rem;
+  padding:.55rem .85rem;border:1px solid rgba(255,111,0,.18);border-radius:999px;background:#fffaf5}
+.br-kicker::before{content:"";width:9px;height:9px;border-radius:50%;background:#ff6f00;
+  box-shadow:0 0 0 6px rgba(255,111,0,.10)}
 
-/* ---------- TITLE: BERITA putih, SKANEDA kuning-oranye ---------- */
-.br-title{font-family:var(--font-display);font-size:clamp(2.6rem,5.9vw,5.6rem);line-height:.98;
-  letter-spacing:.01em;margin:0;max-width:820px;text-transform:uppercase;
-  text-shadow:0 2px 24px rgba(4,14,28,.35);animation:hdFadeUp .7s .1s var(--ease, ease) both}
-.br-title .br-white{color:#ffffff;display:inline-block}
-.br-title .br-gold{display:inline-block;
-  background:linear-gradient(135deg,#ffe66d 0%,#ffc107 45%,#ff8a00 100%);
-  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#ffc107;
-  text-shadow:0 4px 24px rgba(255,174,0,.18);letter-spacing:.025em}
-.br-lead{font-size:1.02rem;line-height:1.85;color:rgba(235,245,253,.86);max-width:640px;
-  margin:1.3rem 0 0;animation:hdFadeUp .7s .26s var(--ease, ease) both}
-.br-hero-meta{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.6rem;animation:hdFadeUp .7s .4s var(--ease, ease) both}
+/* ---------- TITLE: BERITA navy, SKANEDA kuning-oranye ---------- */
+.br-title{position:relative;z-index:5;font-family:var(--font-display);font-size:clamp(3.6rem,9vw,8rem);
+  line-height:.86;letter-spacing:-.03em;margin:0;max-width:900px;text-transform:uppercase;
+  text-shadow:none;animation:hdFadeUp .7s .1s var(--ease, ease) both}
+.br-title .br-white{color:#0d3a66;display:block}
+.br-title .br-gold{display:block;
+  background:linear-gradient(135deg,#ffd54a 0%,#ffb300 48%,#ff7a00 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;
+  text-shadow:none;letter-spacing:-.02em}
+.br-lead{position:relative;z-index:5;font-size:1rem;line-height:1.8;color:#52657a;max-width:640px;
+  margin:1.6rem 0 0;animation:hdFadeUp .7s .26s var(--ease, ease) both}
+.br-hero-meta{position:relative;z-index:5;display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.6rem;
+  animation:hdFadeUp .7s .4s var(--ease, ease) both}
 .br-pill{display:inline-flex;align-items:center;gap:.5rem;padding:.55rem .85rem;
-  border:1px solid rgba(255,255,255,.2);background:rgba(13,58,102,.30);border-radius:999px;
-  font-size:.72rem;font-weight:800;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
-.br-pill i{color:#ffd54a}
+  border:1px solid rgba(13,58,102,.12);background:#fff;border-radius:999px;color:#0d3a66;
+  font-size:.72rem;font-weight:800;box-shadow:0 8px 24px rgba(13,58,102,.06)}
+.br-pill i{color:#ff7a00}
 
-/* hero-photo (IDENTIK gaya referensi) */
-.hero-photo{position:relative;height:430px;border-radius:24px;overflow:hidden;
-  transform:translateY(-18px) rotate(2deg);box-shadow:0 34px 80px rgba(4,14,28,.45);
-  border:1px solid rgba(255,255,255,.18);animation:hdFadeUp .7s .34s var(--ease, ease) both}
-.hero-photo::before{content:"";position:absolute;inset:0;z-index:2;
-  background:linear-gradient(200deg,rgba(7,22,42,.08) 0%,rgba(9,30,54,.55) 100%)}
-.hero-photo img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.03)}
-.hero-photo-caption{position:absolute;z-index:3;left:1.5rem;right:1.5rem;bottom:1.3rem}
-.hero-photo-caption strong{display:block;font-family:var(--font-display);font-size:1.3rem;font-weight:600;color:#fff}
-.hero-photo-caption span{font-size:.72rem;color:rgba(255,255,255,.74)}
+@media(min-width:1050px){.br-hero-inner{padding-right:40%}}
+@media(max-width:1050px){.br-hero-inner{padding-right:1.25rem}.br-ref-ornaments{opacity:.72}}
+@media(max-width:900px){.br-title{font-size:clamp(3.2rem,10.5vw,6rem)}.br-ref-ornament-image{opacity:.88}}
+@media(max-width:700px){.br-hero{align-items:flex-start;min-height:0}
+  .br-hero-inner{width:90%;padding:clamp(3rem,8vh,4.5rem) 5% 3.2rem}
+  .br-hero::after{font-size:clamp(3.2rem,20vw,5.4rem);opacity:.6;left:-2%}
+  .br-title{font-size:clamp(2.6rem,12vw,3.8rem)}}
+@media(max-width:560px){.br-ref-ornament-image{opacity:.62}}
 
 /* ---------- HOME-ORN (ornamen geometris, IDENTIK referensi) ---------- */
 .home-orn{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
@@ -84,14 +83,6 @@
   border-top:2px solid rgba(13,58,102,.22);border-left:2px solid rgba(13,58,102,.22)}
 .home-orn .ho-corner::after{content:"";position:absolute;left:18px;bottom:18px;width:46px;height:3px;
   background:rgba(255,179,0,.4)}
-.br-hero .home-orn .ho-chevron{left:-150px;bottom:-60px;border-color:rgba(255,255,255,.10)}
-.br-hero .home-orn .ho-chevron::after{border-color:rgba(255,213,74,.08)}
-.br-hero .home-orn .ho-line{right:-80px;top:22%;opacity:.22}
-.br-hero .home-orn .ho-dots{right:6%;bottom:14%;opacity:.3}
-.br-hero .home-orn .ho-ring{left:44%;bottom:-90px;border-color:rgba(255,255,255,.12)}
-.br-hero .home-orn .ho-gold{right:16%;top:20%}
-.br-hero .home-orn .ho-square{left:12%;top:22%}
-
 /* ---------- STRIP EDISI (editorial ticker) ---------- */
 .br-strip{background:#0d3a66;color:#fff;position:relative;overflow:hidden;border-bottom:3px solid #ffc107}
 .br-strip-inner{display:flex;align-items:center;gap:1.1rem;padding:.8rem clamp(1.5rem,5vw,5.5rem)}
@@ -254,40 +245,38 @@
 .br-most-body span{font-size:.68rem;color:rgba(235,245,253,.65);display:inline-flex;align-items:center;gap:.4rem}
 .br-most-body span i{color:#ffd54a;font-size:.62rem}
 
-/* ---------- CERITA SKANEDA ---------- */
-.br-story{position:relative;overflow:hidden;color:#fff;margin-top:clamp(2rem,4vw,3rem)}
-.br-story-bg{position:absolute;inset:0;background-image:url('{{ asset('images/berita-kampus.jpg') }}');
-  background-size:cover;background-position:center;background-attachment:scroll}
-.br-story-bg::after{content:"";position:absolute;inset:0;
-  background:linear-gradient(100deg,rgba(5,25,48,.96) 0%,rgba(7,30,56,.86) 48%,rgba(9,38,70,.72) 100%)}
+/* ---------- CERITA SKANEDA (tanpa background biru, senada light theme) ---------- */
+.br-story{position:relative;overflow:hidden;margin-top:clamp(2rem,4vw,3rem)}
 .br-story-inner{position:relative;z-index:2;max-width:1240px;margin:0 auto;
   padding:clamp(4.5rem,9vw,7rem) clamp(1.5rem,5vw,5.5rem)}
 .br-story .br-eyebrow::before{background:linear-gradient(90deg,#ffd54a,#ff8a00)}
-.br-story .br-sec-title{color:#fff}
 .br-story-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:clamp(2rem,4vw,2.8rem)}
-.br-story-card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);border-radius:18px;
-  padding:1.6rem;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
-  transition:transform .4s var(--ease,ease),background .4s var(--ease,ease),border-color .4s var(--ease,ease)}
-.br-story-card:hover{transform:translateY(-6px);background:rgba(255,255,255,.12);border-color:rgba(255,213,74,.55)}
+.br-story-card{background:#fff;border:1px solid rgba(13,58,102,.1);border-radius:18px;
+  padding:1.6rem;box-shadow:0 10px 26px rgba(13,58,102,.06);
+  transition:transform .4s var(--ease,ease),box-shadow .4s var(--ease,ease),border-color .4s var(--ease,ease)}
+.br-story-card:hover{transform:translateY(-6px);box-shadow:0 20px 42px rgba(13,58,102,.14);border-color:rgba(255,193,7,.5)}
 .br-story-card .br-cat{margin-bottom:.9rem}
-.br-story-card h4{font-family:var(--font-display);font-size:1.14rem;font-weight:800;line-height:1.3;margin:0 0 .6rem}
-.br-story-card p{font-size:.84rem;line-height:1.7;color:rgba(235,245,253,.82);margin:0 0 1.1rem}
-.br-story-link{display:inline-flex;align-items:center;gap:.45rem;font-size:.78rem;font-weight:800;color:#ffd54a;
-  text-decoration:none;border-bottom:2px solid rgba(255,213,74,.4);padding-bottom:.2rem;transition:gap .3s var(--ease,ease)}
-.br-story-link:hover{gap:.8rem;border-color:#ffd54a}
+.br-story-card h4{font-family:var(--font-display);font-size:1.14rem;font-weight:800;line-height:1.3;margin:0 0 .6rem;color:#0d3a66}
+.br-story-card p{font-size:.84rem;line-height:1.7;color:#4a6079;margin:0 0 1.1rem}
+.br-story-link{display:inline-flex;align-items:center;gap:.45rem;font-size:.78rem;font-weight:800;color:#b8860b;
+  text-decoration:none;border-bottom:2px solid rgba(255,193,7,.4);padding-bottom:.2rem;transition:gap .3s var(--ease,ease)}
+.br-story-link:hover{gap:.8rem;border-color:#ffc107}
 
-/* ---------- CTA ---------- */
-.br-cta{background:#0d3a66;color:#fff;text-align:center;position:relative;overflow:hidden;
-  padding:clamp(4.5rem,8vw,6.5rem) clamp(1.5rem,5vw,5.5rem)}
-.br-cta>*:not(.home-orn){position:relative;z-index:1}
-.br-cta .home-orn .ho-chevron{left:-150px;bottom:-60px;border-color:rgba(255,255,255,.10)}
-.br-cta .home-orn .ho-chevron::after{border-color:rgba(255,213,74,.08)}
-.br-cta .home-orn .ho-line{right:-80px;top:22%;opacity:.22}
-.br-cta .home-orn .ho-dots{right:6%;bottom:14%;opacity:.3}
-.br-cta .home-orn .ho-ring{left:44%;bottom:-90px;border-color:rgba(255,255,255,.12)}
-.br-cta .home-orn .ho-gold{right:16%;top:20%}
-.br-cta .home-orn .ho-square{left:12%;top:22%}
-.br-cta-title{font-family:var(--font-display);font-weight:900;font-size:clamp(2.4rem,5vw,4.4rem);line-height:.98;
+/* ---------- CTA (card, tidak mentok tepi, jarak ke footer) ---------- */
+.br-cta{padding:0 clamp(1.5rem,5vw,5.5rem) clamp(3.5rem,7vw,5rem);margin-top:clamp(1.5rem,3vw,2.5rem)}
+.br-cta-box{background:#0d3a66;color:#fff;text-align:center;position:relative;overflow:hidden;
+  max-width:1180px;margin:0 auto;border-radius:28px;
+  padding:clamp(2.8rem,5.5vw,4rem) clamp(1.5rem,5vw,3.5rem);
+  box-shadow:0 30px 70px rgba(13,58,102,.22)}
+.br-cta-box>*:not(.home-orn){position:relative;z-index:1}
+.br-cta-box .home-orn .ho-chevron{left:-150px;bottom:-60px;border-color:rgba(255,255,255,.10)}
+.br-cta-box .home-orn .ho-chevron::after{border-color:rgba(255,213,74,.08)}
+.br-cta-box .home-orn .ho-line{right:-80px;top:22%;opacity:.22}
+.br-cta-box .home-orn .ho-dots{right:6%;bottom:14%;opacity:.3}
+.br-cta-box .home-orn .ho-ring{left:44%;bottom:-90px;border-color:rgba(255,255,255,.12)}
+.br-cta-box .home-orn .ho-gold{right:16%;top:20%}
+.br-cta-box .home-orn .ho-square{left:12%;top:22%}
+.br-cta-title{font-family:var(--font-display);font-weight:900;font-size:clamp(2.1rem,4.2vw,3.4rem);line-height:1.02;
   letter-spacing:-.01em;margin:0}
 .br-cta-title em{font-style:normal;color:transparent;background:linear-gradient(135deg,#ffe66d,#ff8a00);
   -webkit-background-clip:text;background-clip:text}
@@ -316,8 +305,6 @@
   .br-story-grid{grid-template-columns:repeat(2,1fr)}
 }
 @media (max-width:860px){
-  .br-hero-inner{grid-template-columns:1fr;gap:2.5rem}
-  .hero-photo{height:340px;max-width:560px}
   .br-sec-head{flex-direction:column;align-items:flex-start;gap:1rem}
   .br-story-grid{grid-template-columns:1fr}
   .br-toolbar{flex-direction:column;align-items:stretch}
@@ -336,23 +323,22 @@
 
 @section('content')
 
-<!-- ================= HERO (IDENTIK referensi — TIDAK DIUBAH) ================= -->
+<!-- ================= HERO (senada 100% dengan hero Ekstrakurikuler) ================= -->
 <section class="br-hero">
-  <div class="home-orn" aria-hidden="true">
-    <span class="ho-chevron"></span>
-    <span class="ho-line"></span>
-    <span class="ho-dots"></span>
-    <span class="ho-ring"></span>
-    <span class="ho-gold"></span>
-    <span class="ho-square"></span>
-    <span class="ho-corner"></span>
+  <div class="br-ref-ornaments" aria-hidden="true" style="background-image:url('{{ asset('images/wide_minimalist_abstract_technology_background_des.png') }}');background-size:cover;background-position:center center;">
+    <img
+      src="{{ asset('images/wide_minimalist_abstract_technology_background_des.png') }}"
+      alt=""
+      class="br-ref-ornament-image"
+      aria-hidden="true"
+    >
   </div>
-
   <div class="br-hero-inner">
     <div>
       <div class="br-kicker">Kanal Berita &amp; Informasi Resmi Sekolah</div>
       <h1 class="br-title">
-        <span class="br-white">Berita</span> <span class="br-gold">Skaneda</span>
+        <span class="br-white">Berita</span>
+        <span class="br-gold">Skaneda</span>
       </h1>
       <p class="br-lead">Kabar terbaru dari SMK Negeri 2 Mojokerto — prestasi, kegiatan, akademik, hingga ekstrakurikuler. Disajikan jujur, cepat, dan dekat dengan para peserta didik.</p>
       <div class="br-hero-meta">
@@ -360,11 +346,6 @@
         <span class="br-pill"><i class="fas fa-pen-nib"></i> Redaksi Digital Skaneda</span>
         <span class="br-pill"><i class="fas fa-bolt"></i> Terbit Berkala</span>
       </div>
-    </div>
-
-    <div class="hero-photo" data-reveal="right">
-      <img src="{{ asset('images/berita-kampus.jpg') }}" alt="Lingkungan kampus SMK Negeri 2 Mojokerto" loading="eager">
-      <div class="hero-photo-caption"><strong>Ruang Redaksi Skaneda</strong><span>Mengabarkan setiap langkah prestasi.</span></div>
     </div>
   </div>
 </section>
@@ -655,7 +636,6 @@
 
 <!-- ================= 3. CERITA SKANEDA ================= -->
 <section class="br-story">
-  <div class="br-story-bg" aria-hidden="true"></div>
   <div class="br-story-inner">
     <span class="br-block" style="top:14%;right:10%" aria-hidden="true"></span>
     <span class="br-dots" style="bottom:12%;right:6%" aria-hidden="true"></span>
@@ -664,9 +644,9 @@
         <span class="br-eyebrow">Long Read · Feature</span>
         <h2 class="br-sec-title">Cerita <em>Skaneda</em></h2>
         <div class="br-rule"></div>
-        <p class="br-sec-sub" style="color:rgba(235,245,253,.78)">Liputan mendalam tentang orang-orang dan perjalanan di balik setiap pencapaian.</p>
+        <p class="br-sec-sub">Liputan mendalam tentang orang-orang dan perjalanan di balik setiap pencapaian.</p>
       </div>
-      <div class="br-num" style="color:rgba(255,255,255,.1)" aria-hidden="true">03</div>
+      <div class="br-num" aria-hidden="true">03</div>
     </div>
 
     <div class="br-story-grid">
@@ -694,18 +674,20 @@
 
 <!-- ================= CTA ================= -->
 <section class="br-cta">
-  <div class="home-orn" aria-hidden="true">
-    <span class="ho-chevron"></span>
-    <span class="ho-line"></span>
-    <span class="ho-dots"></span>
-    <span class="ho-ring"></span>
-    <span class="ho-gold"></span>
-    <span class="ho-square"></span>
+  <div class="br-cta-box">
+    <div class="home-orn" aria-hidden="true">
+      <span class="ho-chevron"></span>
+      <span class="ho-line"></span>
+      <span class="ho-dots"></span>
+      <span class="ho-ring"></span>
+      <span class="ho-gold"></span>
+      <span class="ho-square"></span>
+    </div>
+    <h2 class="br-cta-title">Punya kabar menarik<br>dari <em>Skaneda?</em></h2>
+    <p>Kirim liputan, dokumentasi kegiatan, atau karya jurnalistikmu untuk dimuat di kanal Berita Skaneda — redaksi terbuka untuk seluruh warga sekolah.</p>
+    <a href="{{ route('kontak') }}" class="br-cta-btn"><i class="fas fa-paper-plane"></i> Kirim ke Redaksi</a>
+    <div class="br-cta-note"><i class="fas fa-info-circle"></i> Informasi resmi: smkn2mojokerto.sch.id · #DisiplinBerprestasi</div>
   </div>
-  <h2 class="br-cta-title">Punya kabar menarik<br>dari <em>Skaneda?</em></h2>
-  <p>Kirim liputan, dokumentasi kegiatan, atau karya jurnalistikmu untuk dimuat di kanal Berita Skaneda — redaksi terbuka untuk seluruh warga sekolah.</p>
-  <a href="{{ route('kontak') }}" class="br-cta-btn"><i class="fas fa-paper-plane"></i> Kirim ke Redaksi</a>
-  <div class="br-cta-note"><i class="fas fa-info-circle"></i> Informasi resmi: smkn2mojokerto.sch.id · #DisiplinBerprestasi</div>
 </section>
 
 @endsection
