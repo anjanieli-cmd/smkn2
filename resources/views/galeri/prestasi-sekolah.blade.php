@@ -9,7 +9,9 @@
    PRESTASI SEKOLAH — INSTITUTIONAL TROPHY CABINET
    Prestise, formal, monumental. Berbeda dari Prestasi Siswa
    (student hall of fame) — ini arsip pencapaian resmi sekolah.
-   Hero, header (layouts.app) & footer TIDAK diubah.
+   Header (layouts.app) & footer TIDAK diubah.
+   HERO kini disamakan gayanya dengan HERO halaman Kegiatan
+   (light theme, ornament image, tanpa foto besar di kanan).
    Visual language: navy #0d3a66, biru #2f6fa8, gold
    #ffd54a/#ffb300, Sora display, editorial premium, ornamen
    formal (thin frame, circle, star, medal, dotted, garis gold).
@@ -17,81 +19,50 @@
 .psk-page{background:#f7f9fc;color:#0d3a66;overflow:hidden;position:relative}
 .psk-page *{box-sizing:border-box}
 
-/* ---------- HERO: foto gedung + overlay + watermark (IDENTIK referensi — TIDAK DIUBAH) ---------- */
-.psk-hero{position:relative;min-height:88vh;display:flex;align-items:flex-start;overflow:hidden;
-  background-image:url('{{ asset('images/hero-sekolah.jpg') }}');
-  background-size:cover;background-position:center;background-repeat:no-repeat;color:#fff}
-.psk-hero::before{content:"";position:absolute;inset:0;z-index:1;
-  background:linear-gradient(100deg,rgba(7,22,42,.90) 0%,rgba(9,30,54,.68) 45%,rgba(9,30,54,.32) 78%,rgba(9,30,54,.12) 100%)}
-/* Watermark typography besar transparan */
-.psk-hero::after{content:"PRESTASI SEKOLAH";position:absolute;z-index:2;right:-2%;top:50%;transform:translateY(-50%);
-  font-family:var(--font-display);font-size:clamp(4rem,14vw,13.5rem);font-weight:900;line-height:.82;
-  letter-spacing:.02em;color:rgba(255,255,255,.055);-webkit-text-stroke:1px rgba(255,255,255,.07);
-  text-shadow:0 0 90px rgba(13,58,102,.16);pointer-events:none;white-space:nowrap;user-select:none}
-.psk-hero-inner{position:relative;z-index:3;width:100%;max-width:none;margin:0 auto;
-  padding:clamp(3.5rem,9vh,5.5rem) clamp(1.5rem,5vw,5.5rem);
-  display:grid;grid-template-columns:minmax(0,1.05fr) minmax(340px,.95fr);gap:4rem;align-items:center}
+/* ---------- HERO: light theme, SAMA GAYA dengan hero Kegiatan ---------- */
+.psk-hero{position:relative;min-height:clamp(560px,72vh,740px);display:flex;align-items:center;overflow:hidden;
+  background:#fff;color:#0d3a66;isolation:isolate}
+.psk-hero::after{content:"PRESTASI";position:absolute;z-index:0;left:2%;top:58%;transform:translateY(-50%);
+  font-family:var(--font-display);font-size:clamp(3.4rem,11.5vw,11.5rem);font-weight:900;line-height:.78;
+  letter-spacing:.01em;color:rgba(13,58,102,.035);-webkit-text-stroke:1px rgba(255,179,0,.09);
+  pointer-events:none;white-space:nowrap;user-select:none}
+.psk-ref-ornaments{position:absolute!important;inset:0;z-index:1;overflow:hidden;pointer-events:none;opacity:1}
+.psk-ref-ornament-image{position:absolute!important;inset:0;width:100%;height:100%;display:block;
+  object-fit:cover;object-position:center center;max-width:none;opacity:1}
+.psk-hero-inner{position:relative;z-index:4;width:100%;max-width:1500px;margin:0 auto;
+  padding:clamp(3.6rem,9vh,6rem) clamp(1.25rem,4.2vw,4.5rem) clamp(3.2rem,7vh,5rem);display:block}
 
-.psk-kicker{display:inline-flex;align-items:center;gap:.65rem;font-size:.74rem;font-weight:800;
-  letter-spacing:.18em;text-transform:uppercase;color:#ffd54a;margin-bottom:0.6rem}
-.psk-kicker::before{content:"";width:34px;height:3px;border-radius:99px;background:linear-gradient(90deg,#ffd54a,#ffb300)}
+.psk-kicker{position:relative;z-index:5;display:inline-flex;align-items:center;gap:.65rem;font-size:.72rem;
+  font-weight:900;letter-spacing:.18em;text-transform:uppercase;color:#ffb300;margin-bottom:1.2rem;
+  padding:.55rem .85rem;border:1px solid rgba(255,179,0,.18);border-radius:999px;background:#fffaf0}
+.psk-kicker::before{content:"";width:9px;height:9px;border-radius:50%;background:#ffb300;
+  box-shadow:0 0 0 6px rgba(255,179,0,.10)}
 
-.psk-title{font-family:var(--font-display);font-size:clamp(2.9rem,6.6vw,6.2rem);line-height:.98;
-  letter-spacing:.01em;margin:0;max-width:820px;text-transform:uppercase;
-  text-shadow:0 2px 24px rgba(4,14,28,.35);animation:hdFadeUp .7s .1s var(--ease, ease) both}
-.psk-title .psk-white{color:#ffffff;display:inline-block}
-.psk-title .psk-gold{display:inline-block;
-  background:linear-gradient(135deg,#ffe66d 0%,#ffc107 45%,#ff8a00 100%);
-  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#ffc107;
-  text-shadow:0 4px 24px rgba(255,174,0,.18);letter-spacing:.025em}
-.psk-lead{font-size:1.02rem;line-height:1.85;color:rgba(235,245,253,.86);max-width:640px;
-  margin:1.3rem 0 0;animation:hdFadeUp .7s .26s var(--ease, ease) both}
-.psk-hero-meta{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.6rem;animation:hdFadeUp .7s .4s var(--ease, ease) both}
+.psk-title{position:relative;z-index:5;font-family:var(--font-display);font-size:clamp(3.6rem,9vw,8rem);
+  line-height:.86;letter-spacing:-.03em;margin:0;max-width:900px;text-transform:uppercase;
+  text-shadow:none;animation:hdFadeUp .7s .1s var(--ease, ease) both}
+.psk-title .psk-white{color:#0d3a66;display:block}
+.psk-title .psk-gold{display:block;
+  background:linear-gradient(135deg,#ffd54a 0%,#ffb300 48%,#ff8a00 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;
+  text-shadow:none;letter-spacing:-.02em}
+.psk-lead{position:relative;z-index:5;font-size:1rem;line-height:1.8;color:#52657a;max-width:640px;
+  margin:1.6rem 0 0;animation:hdFadeUp .7s .26s var(--ease, ease) both}
+.psk-hero-meta{position:relative;z-index:5;display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.6rem;
+  animation:hdFadeUp .7s .4s var(--ease, ease) both}
 .psk-pill{display:inline-flex;align-items:center;gap:.5rem;padding:.55rem .85rem;
-  border:1px solid rgba(255,255,255,.2);background:rgba(13,58,102,.30);border-radius:999px;
-  font-size:.72rem;font-weight:800;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
-.psk-pill i{color:#ffd54a}
+  border:1px solid rgba(13,58,102,.12);background:#fff;border-radius:999px;color:#0d3a66;
+  font-size:.72rem;font-weight:800;box-shadow:0 8px 24px rgba(13,58,102,.06)}
+.psk-pill i{color:#ffb300}
 
-/* hero-photo (IDENTIK gaya referensi) */
-.hero-photo{position:relative;height:430px;border-radius:24px;overflow:hidden;
-  transform:translateY(-18px) rotate(2deg);box-shadow:0 34px 80px rgba(4,14,28,.45);
-  border:1px solid rgba(255,255,255,.18);animation:hdFadeUp .7s .34s var(--ease, ease) both}
-.hero-photo::before{content:"";position:absolute;inset:0;z-index:2;
-  background:linear-gradient(200deg,rgba(7,22,42,.08) 0%,rgba(9,30,54,.55) 100%)}
-.hero-photo img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.03)}
-.hero-photo-caption{position:absolute;z-index:3;left:1.5rem;right:1.5rem;bottom:1.3rem}
-.hero-photo-caption strong{display:block;font-family:var(--font-display);font-size:1.3rem;font-weight:600;color:#fff}
-.hero-photo-caption span{font-size:.72rem;color:rgba(255,255,255,.74)}
-
-/* ---------- HOME-ORN (ornamen geometris, IDENTIK referensi) ---------- */
-.home-orn{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
-.home-orn .ho-chevron{position:absolute;width:360px;height:360px;
-  border:1px solid rgba(13,58,102,.16);transform:rotate(45deg);border-radius:18px}
-.home-orn .ho-chevron::after{content:"";position:absolute;inset:34px;
-  border:1px solid rgba(47,111,168,.16);border-radius:12px}
-.home-orn .ho-line{position:absolute;width:310px;height:2px;background:rgba(13,58,102,.12)}
-.home-orn .ho-line::after{content:"";position:absolute;left:70px;top:11px;width:190px;height:1px;background:rgba(47,111,168,.16)}
-.home-orn .ho-dots{position:absolute;width:125px;height:125px;opacity:.5;
-  background-image:radial-gradient(rgba(13,58,102,.4) 1.6px,transparent 1.7px);background-size:16px 16px}
-.home-orn .ho-ring{position:absolute;width:170px;height:170px;border:1px solid rgba(13,58,102,.13);border-radius:50%}
-.home-orn .ho-ring::before{content:"";position:absolute;inset:22px;border:1px dashed rgba(47,111,168,.18);border-radius:50%}
-.home-orn .ho-gold{position:absolute;width:52px;height:8px;border-radius:99px;
-  background:linear-gradient(90deg,#ffd54a,#ffb300)}
-.home-orn .ho-square{position:absolute;width:58px;height:58px;border:2px solid rgba(255,179,0,.32);transform:rotate(45deg)}
-.home-orn .ho-square::before{content:"";position:absolute;inset:10px;border:1px solid rgba(13,58,102,.18)}
-.home-orn .ho-corner{position:absolute;width:110px;height:110px;
-  border-top:2px solid rgba(255,179,0,.55);border-right:2px solid rgba(255,179,0,.55);border-radius:0 26px 0 0}
-.home-orn .ho-corner::after{content:"";position:absolute;left:18px;bottom:18px;width:46px;height:3px;
-  background:rgba(13,58,102,.16)}
-
-/* posisi ornamen per section */
-.psk-hero .home-orn .ho-chevron{left:-150px;bottom:-60px;border-color:rgba(255,255,255,.10)}
-.psk-hero .home-orn .ho-chevron::after{border-color:rgba(255,213,74,.08)}
-.psk-hero .home-orn .ho-line{right:-80px;top:22%;opacity:.22}
-.psk-hero .home-orn .ho-dots{right:6%;bottom:14%;opacity:.3}
-.psk-hero .home-orn .ho-ring{left:44%;bottom:-90px;border-color:rgba(255,255,255,.12)}
-.psk-hero .home-orn .ho-gold{right:16%;top:20%}
-.psk-hero .home-orn .ho-square{left:12%;top:22%}
+@media(min-width:1050px){.psk-hero-inner{padding-right:40%}}
+@media(max-width:1050px){.psk-hero-inner{padding-right:1.25rem}.psk-ref-ornaments{opacity:.72}}
+@media(max-width:900px){.psk-title{font-size:clamp(3.2rem,10.5vw,6rem)}.psk-ref-ornament-image{opacity:.88}}
+@media(max-width:700px){.psk-hero{align-items:flex-start;min-height:0}
+  .psk-hero-inner{width:90%;padding:clamp(3rem,8vh,4.5rem) 5% 3.2rem}
+  .psk-hero::after{font-size:clamp(3.2rem,20vw,5.4rem);opacity:.6;left:-2%}
+  .psk-title{font-size:clamp(2.6rem,12vw,3.8rem)}}
+@media(max-width:560px){.psk-ref-ornament-image{opacity:.62}}
 
 /* ---------- UTIL: reveal + layout dasar ---------- */
 [data-reveal]{opacity:0;transform:translateY(28px);transition:opacity .75s var(--ease,ease),transform .75s var(--ease,ease)}
@@ -102,7 +73,7 @@
 
 .psk-section{max-width:1240px;margin:0 auto;padding:clamp(4rem,8vw,6.5rem) clamp(1.5rem,5vw,3rem);position:relative}
 
-/* ---------- EYEBROW + SECTION TITLE (BESAR & BOLD — karakter SEJARAH SKANEDA) ---------- */
+/* ---------- EYEBROW + SECTION TITLE ---------- */
 .psk-eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-size:.74rem;font-weight:800;
   letter-spacing:.2em;text-transform:uppercase;color:#ffb300;margin-bottom:1rem}
 .psk-eyebrow::before{content:"";width:30px;height:2px;background:linear-gradient(90deg,#ffd54a,#ffb300)}
@@ -125,9 +96,9 @@
 .psk-om span{font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#7a8ba1;display:block;margin-top:.4rem}
 /* Trophy cabinet visual utama */
 .psk-cabinet{position:relative;border-radius:28px;overflow:hidden;box-shadow:0 30px 70px rgba(13,58,102,.22);
-  border:1px solid rgba(13,58,102,.08);min-height:520px;display:flex;align-items:flex-end;
+  border:1px solid rgba(13,58,102,.08);min-height:480px;display:flex;align-items:flex-end;
   background-image:url('{{ asset('images/ps-piala.jpg') }}');
-  background-size:cover;background-position:center 30%;background-repeat:no-repeat}
+  background-size:cover;background-position:center 30%;background-repeat:no-repeat;background-color:#0d3a66}
 .psk-cabinet::before{content:"";position:absolute;inset:0;z-index:1;
   background:linear-gradient(180deg,rgba(7,22,42,.05) 0%,rgba(7,22,42,.25) 45%,rgba(7,22,42,.88) 100%)}
 .psk-cabinet::after{content:"";position:absolute;inset:0;z-index:2;border:1px solid rgba(255,213,74,.35);
@@ -155,7 +126,7 @@
 .psk-featured{background:#f4f7fb;position:relative}
 .psk-featured .psk-section{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(2.5rem,5vw,4.5rem);align-items:center}
 .psk-feat-photo{position:relative;border-radius:24px;overflow:hidden;box-shadow:0 26px 60px rgba(13,58,102,.2);
-  aspect-ratio:4/3;border:1px solid rgba(13,58,102,.08)}
+  aspect-ratio:4/3;border:1px solid rgba(13,58,102,.08);background:#0d3a66}
 .psk-feat-photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .9s var(--ease,ease)}
 .psk-feat-photo:hover img{transform:scale(1.04)}
 .psk-feat-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(200deg,rgba(7,22,42,0) 40%,rgba(7,22,42,.45) 100%)}
@@ -180,14 +151,14 @@
   background:#fff;border:1px solid rgba(13,58,102,.14);padding:.5rem .85rem;border-radius:12px;box-shadow:0 4px 14px rgba(13,58,102,.06)}
 .psk-feat-meta i{color:#ffb300}
 
-/* ---------- 3. PENCAPAIAN UTAMA (angka besar) ---------- */
+/* ---------- 3. PENCAPAIAN UTAMA (angka besar — dibuat ringkas, 3 kartu) ---------- */
 .psk-stats{background:#0d3a66;color:#fff;position:relative;overflow:hidden}
 .psk-stats::before{content:"";position:absolute;inset:0;opacity:.5;
   background-image:radial-gradient(rgba(255,213,74,.16) 1.5px,transparent 1.6px);background-size:26px 26px}
 .psk-stats .psk-section{position:relative;z-index:2}
 .psk-stats .psk-section-title{color:#fff}
 .psk-stats .psk-subtitle{color:rgba(235,245,253,.75)}
-.psk-stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin-top:2.6rem}
+.psk-stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:2.6rem}
 .psk-stat{position:relative;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);
   border-radius:22px;padding:2rem 1.5rem 1.7rem;text-align:left;transition:transform .35s var(--ease,ease),box-shadow .35s var(--ease,ease),border-color .35s var(--ease,ease)}
 .psk-stat:hover{transform:translateY(-6px);box-shadow:0 22px 44px rgba(4,14,28,.35);border-color:rgba(255,213,74,.45)}
@@ -212,9 +183,10 @@
 .psk-chip:hover{background:rgba(255,213,74,.15);border-color:rgba(255,213,74,.4);color:#ffd54a}
 .psk-chip i{color:#ffd54a}
 
-/* ---------- 4. GALERI PENGHARGAAN (masonry + filter + year nav) ---------- */
+/* ---------- 4. GALERI PENGHARGAAN (slider + filter) ---------- */
 .psk-gallery{background:#fff;position:relative}
-.psk-gallery-tools{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap;margin-top:1.8rem}
+.psk-gallery-tools{display:flex;justify-content:space-between;align-items:flex-end;gap:1.2rem;flex-wrap:wrap;margin-top:1.8rem}
+.psk-gallery-tools-left{display:flex;flex-direction:column;gap:1rem}
 .psk-filters{display:flex;gap:.5rem;flex-wrap:wrap}
 .psk-fbtn{display:inline-flex;align-items:center;gap:.45rem;font-size:.78rem;font-weight:800;letter-spacing:.04em;
   color:#0d3a66;background:#fff;border:1px solid rgba(13,58,102,.18);padding:.55rem 1rem;border-radius:999px;
@@ -231,37 +203,70 @@
 .psk-ybtn:hover{border-color:#ffb300;transform:translateY(-2px)}
 .psk-ybtn.active{background:#0d3a66;color:#ffd54a;border-color:#0d3a66;box-shadow:0 8px 20px rgba(13,58,102,.25)}
 
-/* masonry */
-.psk-masonry{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:150px;grid-auto-flow:dense;gap:1rem;margin-top:2.2rem}
-.psk-photo{position:relative;border-radius:18px;overflow:hidden;display:block;cursor:pointer;text-decoration:none;
-  border:1px solid rgba(13,58,102,.08);grid-row:span 2}
-.psk-photo.lg{grid-row:span 3;grid-column:span 2}
-.psk-photo.wide{grid-column:span 2;grid-row:span 2}
-.psk-photo.tall{grid-row:span 4}
+/* slider arrows */
+.psk-slider-arrows{display:flex;gap:.6rem;flex-shrink:0}
+.psk-slider-arrow{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:1rem;color:#0d3a66;background:#fff;border:1px solid rgba(13,58,102,.16);cursor:pointer;
+  box-shadow:0 10px 24px rgba(13,58,102,.1);transition:all .3s var(--ease,ease)}
+.psk-slider-arrow:hover{background:#0d3a66;color:#ffd54a;border-color:#0d3a66;transform:translateY(-2px)}
+.psk-slider-arrow:disabled{opacity:.32;cursor:not-allowed;transform:none;background:#fff;color:#0d3a66;border-color:rgba(13,58,102,.16)}
+
+/* slider track */
+.psk-slider-wrap{position:relative;margin-top:2.2rem}
+.psk-slider-wrap::after{content:"";position:absolute;right:0;top:0;bottom:0;width:80px;pointer-events:none;
+  background:linear-gradient(90deg,rgba(255,255,255,0),#fff 88%)}
+.psk-masonry{display:flex;gap:1.2rem;overflow-x:auto;scroll-snap-type:x mandatory;padding:.3rem .3rem 1rem;
+  scrollbar-width:none;-ms-overflow-style:none}
+.psk-masonry::-webkit-scrollbar{display:none}
+.psk-photo{position:relative;flex:0 0 clamp(220px,25vw,290px);aspect-ratio:3/4;scroll-snap-align:start;
+  border-radius:20px;overflow:hidden;display:block;cursor:pointer;text-decoration:none;
+  border:1px solid rgba(13,58,102,.08);background:#0d3a66;box-shadow:0 16px 36px rgba(13,58,102,.1)}
 .psk-photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s var(--ease,ease)}
-.psk-photo:hover img{transform:scale(1.05)}
-.psk-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,22,42,0) 45%,rgba(7,22,42,.78) 100%);
-  opacity:.75;transition:opacity .4s var(--ease,ease)}
+.psk-photo:hover img{transform:scale(1.06)}
+.psk-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,22,42,0) 45%,rgba(7,22,42,.82) 100%);
+  opacity:.8;transition:opacity .4s var(--ease,ease)}
 .psk-photo:hover::after{opacity:1}
-.psk-photo-cap{position:absolute;z-index:3;left:1rem;right:1rem;bottom:.9rem}
-.psk-photo-cap strong{display:block;font-size:.86rem;font-weight:800;color:#fff;line-height:1.3}
-.psk-photo-cap span{display:inline-flex;align-items:center;gap:.35rem;font-size:.66rem;font-weight:700;letter-spacing:.08em;
-  text-transform:uppercase;color:#ffd54a;margin-top:.3rem}
-.psk-photo-zoom{position:absolute;z-index:3;top:.9rem;right:.9rem;width:38px;height:38px;border-radius:12px;
+.psk-photo-cap{position:absolute;z-index:3;left:1.1rem;right:1.1rem;bottom:1rem}
+.psk-photo-cap strong{display:block;font-size:.92rem;font-weight:800;color:#fff;line-height:1.3}
+.psk-photo-cap span{display:inline-flex;align-items:center;gap:.35rem;font-size:.68rem;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:#ffd54a;margin-top:.35rem}
+.psk-photo-zoom{position:absolute;z-index:3;top:1rem;right:1rem;width:40px;height:40px;border-radius:12px;
   display:flex;align-items:center;justify-content:center;font-size:.85rem;color:#fff;
   background:rgba(7,22,42,.5);border:1px solid rgba(255,255,255,.25);backdrop-filter:blur(6px);
   opacity:0;transform:translateY(-6px);transition:all .35s var(--ease,ease)}
 .psk-photo:hover .psk-photo-zoom{opacity:1;transform:none}
-.psk-gallery-foot{display:flex;justify-content:center;margin-top:2rem}
+.psk-gallery-foot{display:flex;justify-content:center;margin-top:1rem}
 .psk-note{display:inline-flex;align-items:center;gap:.6rem;font-size:.82rem;font-weight:700;color:#5a6f88;
   background:#f4f7fb;border:1px dashed rgba(13,58,102,.2);padding:.7rem 1.2rem;border-radius:999px}
 .psk-note i{color:#ffb300}
+@media(max-width:640px){.psk-slider-wrap::after{width:40px}}
 
-/* ---------- 5. QUOTE STATEMENT (foto + overlay) ---------- */
-.psk-quote{position:relative;overflow:hidden;background:#0d3a66}
-.psk-quote-bg{position:absolute;inset:0}
-.psk-quote-bg img{width:100%;height:100%;object-fit:cover;display:block;opacity:.32}
-.psk-quote-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(7,22,42,.92) 0%,rgba(9,30,54,.72) 60%,rgba(9,30,54,.45) 100%)}
+/* ---------- 5. QUOTE / MOTO (background diperkaya — tidak polos lagi) ---------- */
+.psk-quote{position:relative;overflow:hidden;background:linear-gradient(135deg,#0a2c4d 0%,#0d3a66 45%,#123f6e 100%)}
+/* lapisan pattern dasar — selalu tampil walau foto belum ada */
+.psk-quote::before{content:"";position:absolute;inset:0;z-index:0;opacity:.55;
+  background-image:radial-gradient(rgba(255,213,74,.16) 1.6px,transparent 1.7px);background-size:26px 26px}
+/* foto opsional, dicampur secara halus di atas pattern */
+.psk-quote-bg{position:absolute;inset:0;z-index:1}
+.psk-quote-bg img{width:100%;height:100%;object-fit:cover;display:block;opacity:.24;mix-blend-mode:luminosity}
+.psk-quote-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,rgba(7,22,42,.95) 0%,rgba(9,30,54,.8) 55%,rgba(9,30,54,.55) 100%)}
+/* ornamen formal — ring, garis gold, bintang, corner brackets */
+.psk-quote-orn{position:absolute;inset:0;z-index:1;pointer-events:none}
+.psk-quote-orn .qo-ring1{position:absolute;width:240px;height:240px;left:-80px;top:-90px;
+  border:1px solid rgba(255,213,74,.22);border-radius:50%}
+.psk-quote-orn .qo-ring1::before{content:"";position:absolute;inset:28px;border:1px dashed rgba(255,213,74,.16);border-radius:50%}
+.psk-quote-orn .qo-ring2{position:absolute;width:160px;height:160px;right:6%;bottom:-70px;
+  border:1px solid rgba(255,255,255,.14);border-radius:50%}
+.psk-quote-orn .qo-gold-l{position:absolute;left:8%;top:22%;width:64px;height:3px;border-radius:99px;
+  background:linear-gradient(90deg,#ffd54a,#ffb300);opacity:.65}
+.psk-quote-orn .qo-gold-r{position:absolute;right:9%;bottom:20%;width:64px;height:3px;border-radius:99px;
+  background:linear-gradient(90deg,#ffb300,#ffd54a);opacity:.65}
+.psk-quote-orn .qo-star{position:absolute;right:14%;top:16%;font-size:1.5rem;color:rgba(255,213,74,.4)}
+.psk-quote-orn .qo-star2{position:absolute;left:12%;bottom:16%;font-size:1.1rem;color:rgba(255,213,74,.3)}
+.psk-quote-orn .qo-corner{position:absolute;width:120px;height:120px;left:0;top:0;
+  border-top:1px solid rgba(255,213,74,.3);border-left:1px solid rgba(255,213,74,.3);border-radius:22px 0 0 0}
+.psk-quote-orn .qo-corner2{position:absolute;width:120px;height:120px;right:0;bottom:0;
+  border-bottom:1px solid rgba(255,213,74,.3);border-right:1px solid rgba(255,213,74,.3);border-radius:0 0 22px 0}
 .psk-quote .psk-section{position:relative;z-index:2;text-align:center;padding-top:clamp(5rem,10vw,8rem);padding-bottom:clamp(5rem,10vw,8rem)}
 .psk-quote-mark{font-family:var(--font-display);font-size:clamp(5rem,9vw,8rem);font-weight:900;line-height:.6;
   display:block;background:linear-gradient(135deg,#ffe66d,#ffb300);-webkit-background-clip:text;background-clip:text;
@@ -273,7 +278,7 @@
   letter-spacing:.16em;text-transform:uppercase;color:rgba(235,245,253,.75)}
 .psk-quote-src::before{content:"";width:38px;height:2px;background:linear-gradient(90deg,#ffd54a,#ffb300)}
 
-/* ---------- 6. DAFTAR PRESTASI (official archive, group by tahun) ---------- */
+/* ---------- 6. DAFTAR PRESTASI (arsip ringkas — mudah ditambah sendiri) ---------- */
 .psk-archive{background:#f4f7fb;position:relative}
 .psk-archive-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.9fr);gap:2rem;align-items:end;margin-bottom:2.6rem}
 .psk-archive-head .psk-subtitle{margin-top:1rem}
@@ -289,13 +294,27 @@
 .psk-year-count{font-size:.74rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#ffb300;
   background:#fff;border:1px solid rgba(255,179,0,.35);padding:.4rem .8rem;border-radius:999px}
 .psk-archive-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
-.psk-row{display:grid;grid-template-columns:auto 1fr auto;gap:1.1rem;align-items:center;background:#fff;
-  border:1px solid rgba(13,58,102,.09);border-radius:18px;padding:1.1rem 1.3rem;transition:all .3s var(--ease,ease)}
+.psk-row{display:flex;flex-direction:column;background:#fff;
+  border:1px solid rgba(13,58,102,.09);border-radius:18px;padding:.9rem 1.3rem .9rem .9rem;transition:all .3s var(--ease,ease)}
 .psk-row:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(13,58,102,.1);border-color:rgba(255,179,0,.45)}
-.psk-row-rank{width:52px;height:52px;border-radius:16px;display:flex;align-items:center;justify-content:center;
-  font-size:1.15rem;background:linear-gradient(135deg,rgba(255,213,74,.25),rgba(255,179,0,.1));
-  border:1px solid rgba(255,179,0,.4);color:#b97c00;flex-shrink:0}
-.psk-row-rank.gold{background:linear-gradient(135deg,#ffd54a,#ffb300);color:#0d3a66;border-color:#ffb300}
+.psk-row-top{display:grid;grid-template-columns:76px 1fr auto;gap:1.1rem;align-items:center}
+/* link "Lihat Berita" di bawah tiap kartu prestasi */
+.psk-row-link{display:inline-flex;align-items:center;gap:.45rem;margin-top:.85rem;padding-top:.8rem;
+  border-top:1px dashed rgba(13,58,102,.14);font-size:.78rem;font-weight:800;letter-spacing:.02em;
+  color:#0d3a66;text-decoration:none;transition:gap .25s var(--ease,ease),color .25s var(--ease,ease)}
+.psk-row-link i{color:#ffb300;font-size:.72rem;transition:transform .25s var(--ease,ease)}
+.psk-row-link:hover{gap:.7rem;color:#ffb300}
+.psk-row-link:hover i{transform:translateX(3px)}
+/* foto per prestasi + badge rank menempel di sudut foto */
+.psk-row-photo{position:relative;width:76px;height:76px;border-radius:14px;overflow:hidden;flex-shrink:0;background:#0d3a66}
+.psk-row-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.psk-row-rank{position:absolute;left:-6px;bottom:-6px;width:30px;height:30px;border-radius:50%;display:flex;
+  align-items:center;justify-content:center;font-size:.72rem;border:2px solid #fff;
+  background:linear-gradient(135deg,rgba(255,213,74,.9),rgba(255,179,0,.9));color:#0d3a66;
+  box-shadow:0 4px 10px rgba(13,58,102,.3)}
+.psk-row-rank.gold{background:linear-gradient(135deg,#ffd54a,#ffb300);color:#0d3a66}
+.psk-row-rank.silver{background:linear-gradient(135deg,#e3eaf1,#b7c2cf);color:#0d3a66}
+.psk-row-rank.bronze{background:linear-gradient(135deg,#e8b78a,#c8875a);color:#3a2410}
 .psk-row-info h4{font-size:.98rem;font-weight:800;color:#0d3a66;margin:0;line-height:1.35}
 .psk-row-info span{font-size:.76rem;color:#7a8ba1;display:block;margin-top:.25rem}
 .psk-row-info span i{color:#ffb300;margin-right:.3rem}
@@ -349,31 +368,31 @@
 
 /* ---------- RESPONSIVE ---------- */
 @media (max-width:1080px){
-  .psk-hero-inner{grid-template-columns:1fr;gap:2.5rem}
-  .psk-stats-grid{grid-template-columns:repeat(2,1fr)}
-  .psk-masonry{grid-template-columns:repeat(3,1fr)}
+  .psk-stats-grid{grid-template-columns:repeat(3,1fr)}
   .psk-archive-grid{grid-template-columns:1fr}
   .psk-cta-box{grid-template-columns:1fr;gap:1.5rem}
   .psk-cta-btn{justify-self:start}
 }
 @media (max-width:860px){
   .psk-opening .psk-section,.psk-featured .psk-section{grid-template-columns:1fr;gap:2.5rem}
-  .psk-cabinet{min-height:440px}
+  .psk-cabinet{min-height:420px}
   .psk-gallery-tools{flex-direction:column;align-items:flex-start}
+  .psk-slider-arrows{align-self:flex-end}
   .psk-yearnav{width:100%;overflow-x:auto;padding-bottom:.4rem}
   .psk-archive-head{grid-template-columns:1fr;gap:1rem}
   .psk-archive-badge{justify-self:start}
 }
 @media (max-width:640px){
-  .psk-hero{min-height:78vh}
   .psk-stats-grid{grid-template-columns:1fr 1fr;gap:.8rem}
   .psk-stat{padding:1.5rem 1.1rem 1.3rem}
-  .psk-masonry{grid-template-columns:1fr 1fr;grid-auto-rows:130px;gap:.7rem}
-  .psk-photo.lg{grid-column:span 2;grid-row:span 2}
+  .psk-photo{flex-basis:68vw}
   .psk-opening-meta{grid-template-columns:1fr 1fr}
   .psk-feat-meta{flex-direction:column;align-items:flex-start}
   .psk-filters{flex-wrap:nowrap;overflow-x:auto;width:100%;padding-bottom:.4rem}
   .psk-cta-box h3{font-size:clamp(1.5rem,7vw,2rem)}
+  .psk-row{grid-template-columns:60px 1fr;row-gap:.5rem}
+  .psk-row-photo{width:60px;height:60px}
+  .psk-row-tag{grid-column:1/-1;justify-self:start;margin-top:.2rem}
 }
 </style>
 @endpush
@@ -381,23 +400,22 @@
 @section('content')
 <div class="psk-page">
 
-  <!-- HERO (IDENTIK referensi — TIDAK DIUBAH) -->
+  <!-- ================= HERO (SAMA GAYA dengan hero Kegiatan) ================= -->
   <section class="psk-hero">
-    <div class="home-orn" aria-hidden="true">
-      <span class="ho-chevron"></span>
-      <span class="ho-line"></span>
-      <span class="ho-dots"></span>
-      <span class="ho-ring"></span>
-      <span class="ho-gold"></span>
-      <span class="ho-square"></span>
-      <span class="ho-corner"></span>
+    <div class="psk-ref-ornaments" aria-hidden="true" style="background-image:url('{{ asset('images/wide_minimalist_abstract_technology_background_des.png') }}');background-size:cover;background-position:center center;">
+      <img
+        src="{{ asset('images/wide_minimalist_abstract_technology_background_des.png') }}"
+        alt=""
+        class="psk-ref-ornament-image"
+        aria-hidden="true"
+      >
     </div>
-
     <div class="psk-hero-inner">
       <div>
         <div class="psk-kicker">Trophy Cabinet Sekolah</div>
         <h1 class="psk-title">
-          <span class="psk-white">Prestasi</span> <span class="psk-gold">Sekolah</span>
+          <span class="psk-white">Prestasi</span>
+          <span class="psk-gold">Sekolah</span>
         </h1>
         <p class="psk-lead">Dari kota hingga panggung nasional — setiap penghargaan adalah bukti komitmen SMK Negeri 2 Mojokerto dalam membangun pendidikan vokasi yang unggul, disiplin, dan berdaya saing.</p>
         <div class="psk-hero-meta">
@@ -406,25 +424,23 @@
           <span class="psk-pill"><i class="fas fa-building"></i> 5 Kompetensi Keahlian</span>
         </div>
       </div>
-
-      <div class="hero-photo" data-reveal="right">
-        <img src="{{ asset('images/ps-penghargaan.jpg') }}" alt="Penghargaan dan piala prestasi SMK Negeri 2 Mojokerto" loading="eager">
-        <div class="hero-photo-caption"><strong>Jejak Prestasi Skaneda</strong><span>Dokumentasi penghargaan resmi sekolah.</span></div>
-      </div>
     </div>
   </section>
 
-  <!-- 1. PEMBUKA: JEJAK PRESTASI SKANEDA -->
+  <!-- ================= 1. PEMBUKA: JEJAK PRESTASI SKANEDA ================= -->
   <section class="psk-opening">
     <div class="psk-section">
       <div data-reveal="left">
         <span class="psk-eyebrow">Institutional Achievement</span>
         <h2 class="psk-section-title">Jejak Prestasi<br><span class="psk-gold">Skaneda</span></h2>
         <p class="psk-opening-desc">Kumpulan pencapaian <strong>SMK Negeri 2 Mojokerto</strong> dalam membangun sekolah vokasi yang unggul dan berprestasi. Bukan hanya milik individu — setiap piala adalah hasil kerja sama seluruh warga sekolah: peserta didik, guru pembina, dan mitra industri.</p>
+        <!-- Ganti angka di bawah sesuai data riil sekolah. Kalau prestasi belum banyak,
+             pakai satuan yang tetap terasa "penuh" (mis. total penghargaan gabungan
+             semua tingkat, bukan dipecah per-tingkat). -->
         <div class="psk-opening-meta">
-          <div class="psk-om"><b><em data-count="42">0</em>+</b><span>Penghargaan Juara 1</span></div>
-          <div class="psk-om"><b><em data-count="12">0</em></b><span>Tingkat Nasional</span></div>
-          <div class="psk-om"><b>5</b><span>Kompetensi Raih Juara</span></div>
+          <div class="psk-om"><b><em data-count="12">0</em>+</b><span>Total Penghargaan</span></div>
+          <div class="psk-om"><b>Provinsi</b><span>Level Tertinggi Diraih</span></div>
+          <div class="psk-om"><b>3</b><span>Kompetensi Raih Juara</span></div>
         </div>
       </div>
       <div data-reveal="right">
@@ -438,11 +454,11 @@
           <div class="psk-cabinet-body">
             <span class="psk-cabinet-tag"><i class="fas fa-trophy"></i> Trophy Cabinet</span>
             <h3>Etalase Kehormatan<br>Sekolah</h3>
-            <p>Piala, medali, dan sertifikat dari berbagai ajang resmi — LKS, FLS2N, O2SN, OSN, hingga kompetisi industri — terpajang sebagai bukti nyata perjalanan institusi.</p>
+            <p>Piala, medali, dan sertifikat dari berbagai ajang resmi — LKS, FLS2N, O2SN, hingga kompetisi industri — terpajang sebagai bukti nyata perjalanan institusi.</p>
             <div class="psk-cabinet-foot">
-              <span><i class="fas fa-calendar-alt"></i> 2023 — 2025</span>
-              <span><i class="fas fa-medal"></i> 42+ Juara 1</span>
-              <span><i class="fas fa-flag"></i> Nasional</span>
+              <span><i class="fas fa-calendar-alt"></i> 2024 — 2025</span>
+              <span><i class="fas fa-medal"></i> 12+ Penghargaan</span>
+              <span><i class="fas fa-flag"></i> Provinsi</span>
             </div>
           </div>
         </div>
@@ -450,7 +466,8 @@
     </div>
   </section>
 
-  <!-- 2. FEATURED ACHIEVEMENT (editorial 2 kolom) -->
+  <!-- ================= 2. FEATURED ACHIEVEMENT ================= -->
+  <!-- Cukup 1 pencapaian terbaik yang paling dibanggakan sekolah — tidak perlu banyak. -->
   <section class="psk-featured">
     <div class="psk-section">
       <div class="psk-feat-photo" data-reveal="left">
@@ -460,20 +477,20 @@
       </div>
       <div class="psk-feat-info" data-reveal="right">
         <span class="psk-eyebrow">Capaian Utama Institusi</span>
-        <span class="psk-feat-rank"><i class="fas fa-trophy"></i> Juara 2 — LKS Tingkat Nasional</span>
-        <h3>IT Software <em>Solutions for Business</em></h3>
-        <p class="psk-feat-desc">Peserta didik Rekayasa Perangkat Lunak mewakili Jawa Timur di panggung Lomba Kompetensi Siswa tingkat nasional bidang IT Software Solutions — pencapaian tertinggi sekolah dalam ajang bergengsi pendidikan vokasi.</p>
+        <span class="psk-feat-rank"><i class="fas fa-trophy"></i> Juara 1 — LKS Tingkat Provinsi</span>
+        <h3>Cloud Computing <em>Jawa Timur</em></h3>
+        <p class="psk-feat-desc">Peserta didik Rekayasa Perangkat Lunak mewakili sekolah di Lomba Kompetensi Siswa tingkat provinsi bidang Cloud Computing — pencapaian tertinggi sekolah sejauh ini dalam ajang bergengsi pendidikan vokasi.</p>
         <div class="psk-feat-meta">
-          <span><i class="fas fa-flag"></i> Nasional</span>
+          <span><i class="fas fa-flag"></i> Provinsi</span>
           <span><i class="fas fa-user-graduate"></i> Rekayasa Perangkat Lunak</span>
           <span><i class="fas fa-calendar-alt"></i> 2025</span>
-          <span><i class="fas fa-medal"></i> Medali Perak</span>
+          <span><i class="fas fa-medal"></i> Juara 1</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 3. PENCAPAIAN UTAMA (angka besar — data project) -->
+  <!-- ================= 3. PENCAPAIAN UTAMA (3 kartu — angka yang tetap solid tanpa harus banyak data) ================= -->
   <section class="psk-stats">
     <div class="psk-section">
       <div data-reveal>
@@ -483,28 +500,22 @@
       </div>
       <div class="psk-stats-grid">
         <div class="psk-stat" data-reveal>
-          <div class="psk-stat-icon"><i class="fas fa-medal"></i></div>
-          <b><em data-count="42">0</em>+</b>
-          <span>Medali Juara 1</span>
-          <p class="psk-stat-note">Raihan tertinggi di setiap ajang resmi yang diikuti sekolah.</p>
+          <div class="psk-stat-icon"><i class="fas fa-trophy"></i></div>
+          <b><em data-count="12">0</em>+</b>
+          <span>Total Penghargaan</span>
+          <p class="psk-stat-note">Akumulasi seluruh juara dari berbagai ajang resmi yang diikuti sekolah.</p>
         </div>
         <div class="psk-stat" data-reveal style="--d:1">
-          <div class="psk-stat-icon"><i class="fas fa-award"></i></div>
-          <b><em data-count="35">0</em>+</b>
-          <span>Medali Juara 2–3</span>
-          <p class="psk-stat-note">Posisi podium kedua dan ketiga berbagai lomba.</p>
+          <div class="psk-stat-icon"><i class="fas fa-map-marked-alt"></i></div>
+          <b>Provinsi</b>
+          <span>Level Tertinggi Diraih</span>
+          <p class="psk-stat-note">Jenjang kompetisi tertinggi yang berhasil dicapai peserta didik.</p>
         </div>
         <div class="psk-stat" data-reveal style="--d:2">
-          <div class="psk-stat-icon"><i class="fas fa-flag"></i></div>
-          <b><em data-count="12">0</em></b>
-          <span>Lomba Tingkat Nasional</span>
-          <p class="psk-stat-note">Melaju mewakili Jawa Timur hingga panggung nasional.</p>
-        </div>
-        <div class="psk-stat" data-reveal style="--d:3">
           <div class="psk-stat-icon"><i class="fas fa-star"></i></div>
-          <b><em data-count="5">0</em></b>
+          <b><em data-count="3">0</em></b>
           <span>Kompetensi Raih Juara</span>
-          <p class="psk-stat-note">Seluruh kompetensi keahlian pernah menyumbang juara.</p>
+          <p class="psk-stat-note">Kompetensi keahlian yang pernah menyumbang juara bagi sekolah.</p>
         </div>
       </div>
       <div class="psk-ajang" data-reveal><i class="fas fa-tags"></i> Ajang resmi yang rutin diikuti</div>
@@ -512,14 +523,12 @@
         <span class="psk-chip"><i class="fas fa-code"></i> LKS SMK</span>
         <span class="psk-chip"><i class="fas fa-palette"></i> FLS2N</span>
         <span class="psk-chip"><i class="fas fa-running"></i> O2SN</span>
-        <span class="psk-chip"><i class="fas fa-microscope"></i> OSN</span>
-        <span class="psk-chip"><i class="fas fa-robot"></i> PIMNAS</span>
         <span class="psk-chip"><i class="fas fa-fire"></i> Kompetisi Digital</span>
       </div>
     </div>
   </section>
 
-  <!-- 4. GALERI PENGHARGAAN (masonry + filter + year nav) -->
+  <!-- ================= 4. GALERI PENGHARGAAN (dipersingkat jadi 6 foto — tambahin sendiri kalau nambah dokumentasi) ================= -->
   <section class="psk-gallery">
     <div class="psk-section">
       <div data-reveal>
@@ -529,84 +538,81 @@
       </div>
 
       <div class="psk-gallery-tools" data-reveal>
-        <div class="psk-filters" id="pskFilters">
-          <button class="psk-fbtn active" data-filter="all"><i class="fas fa-th-large"></i> Semua</button>
-          <button class="psk-fbtn" data-filter="kota"><i class="fas fa-building"></i> Kota / Kabupaten</button>
-          <button class="psk-fbtn" data-filter="prov"><i class="fas fa-map-marked-alt"></i> Provinsi</button>
-          <button class="psk-fbtn" data-filter="nas"><i class="fas fa-flag"></i> Nasional</button>
+        <div class="psk-gallery-tools-left">
+          <div class="psk-filters" id="pskFilters">
+            <button class="psk-fbtn active" data-filter="all"><i class="fas fa-th-large"></i> Semua</button>
+            <button class="psk-fbtn" data-filter="kota"><i class="fas fa-building"></i> Kota / Kabupaten</button>
+            <button class="psk-fbtn" data-filter="prov"><i class="fas fa-map-marked-alt"></i> Provinsi</button>
+          </div>
+          <div class="psk-yearnav" id="pskYearNav">
+            <span class="psk-yearnav-label"><i class="fas fa-calendar-alt"></i> Tahun</span>
+            <button class="psk-ybtn active" data-year="all">ALL</button>
+            <button class="psk-ybtn" data-year="2025">2025</button>
+            <button class="psk-ybtn" data-year="2024">2024</button>
+          </div>
         </div>
-        <div class="psk-yearnav" id="pskYearNav">
-          <span class="psk-yearnav-label"><i class="fas fa-calendar-alt"></i> Tahun</span>
-          <button class="psk-ybtn active" data-year="all">ALL</button>
-          <button class="psk-ybtn" data-year="2025">2025</button>
-          <button class="psk-ybtn" data-year="2024">2024</button>
-          <button class="psk-ybtn" data-year="2023">2023</button>
+        <div class="psk-slider-arrows">
+          <button class="psk-slider-arrow" id="pskSliderPrev" aria-label="Geser ke kiri"><i class="fas fa-chevron-left"></i></button>
+          <button class="psk-slider-arrow" id="pskSliderNext" aria-label="Geser ke kanan"><i class="fas fa-chevron-right"></i></button>
         </div>
       </div>
 
-      <div class="psk-masonry" id="pskMasonry" data-reveal>
-        <a class="psk-photo lg" href="#" data-full="images/ps-penghargaan.jpg" data-cap="Penyerahan Penghargaan" data-sub="Apresiasi piala juara lomba" data-level="kota" data-year="2025">
-          <img src="{{ asset('images/ps-penghargaan.jpg') }}" alt="Penyerahan penghargaan lomba" loading="eager">
-          <span class="psk-photo-zoom"><i class="fas fa-search-plus"></i></span>
-          <span class="psk-photo-cap"><strong>Penyerahan Penghargaan</strong><span><i class="fas fa-trophy"></i> Kota · 2025</span></span>
-        </a>
-        <a class="psk-photo tall" href="#" data-full="images/ps-piala.jpg" data-cap="Etalase Piala Sekolah" data-sub="Koleksi trofi kejuaraan" data-level="all" data-year="2024">
-          <img src="{{ asset('images/ps-piala.jpg') }}" alt="Etalase piala sekolah" loading="eager">
-          <span class="psk-photo-zoom"><i class="fas fa-search-plus"></i></span>
-          <span class="psk-photo-cap"><strong>Etalase Piala Sekolah</strong><span><i class="fas fa-award"></i> Arsip Trofi</span></span>
-        </a>
-        <a class="psk-photo" href="#" data-full="images/ps-juara.jpg" data-cap="Juara Bersama Guru" data-sub="Piala juara 1 lomba" data-level="prov" data-year="2025">
-          <img src="{{ asset('images/ps-juara.jpg') }}" alt="Siswa berpose dengan piala juara" loading="eager">
-          <span class="psk-photo-zoom"><i class="fas fa-search-plus"></i></span>
-          <span class="psk-photo-cap"><strong>Juara Bersama Guru</strong><span><i class="fas fa-map-marked-alt"></i> Provinsi · 2025</span></span>
-        </a>
-        <a class="psk-photo" href="#" data-full="images/ps-podium.jpg" data-cap="Momen Podium" data-sub="Peserta didik di atas podium" data-level="prov" data-year="2024">
-          <img src="{{ asset('images/ps-podium.jpg') }}" alt="Peserta didik di atas podium" loading="eager">
-          <span class="psk-photo-zoom"><i class="fas fa-search-plus"></i></span>
-          <span class="psk-photo-cap"><strong>Momen Podium</strong><span><i class="fas fa-map-marked-alt"></i> Provinsi · 2024</span></span>
-        </a>
-        <a class="psk-photo wide" href="#" data-full="images/ps-upacara.jpg" data-cap="Apresiasi Upacara" data-sub="Pengumuman prestasi saat upacara" data-level="all" data-year="2023">
-          <img src="{{ asset('images/ps-upacara.jpg') }}" alt="Apresiasi prestasi saat upacara bendera" loading="eager">
-          <span class="psk-photo-zoom"><i class="fas fa-search-plus"></i></span>
-          <span class="psk-photo-cap"><strong>Apresiasi Upacara</strong><span><i class="fas fa-star"></i> Sekolah · 2023</span></span>
-        </a>
-        <a class="psk-photo" href="#" data-full="images/ps-juara-cloud.jpg" data-cap="Juara 1 Cloud Computing" data-sub="Piala LKS Cloud Computing" data-level="prov" data-year="2025">
-          <img src="{{ asset('images/ps-juara-cloud.jpg') }}" alt="Piala Juara 1 Cloud Computing" loading="eager">
-          <span class="psk-photo-zoom"><i class="fas fa-search-plus"></i></span>
-          <span class="psk-photo-cap"><strong>Juara 1 Cloud Computing</strong><span><i class="fas fa-map-marked-alt"></i> Provinsi · 2025</span></span>
-        </a>
-        <a class="psk-photo" href="#" data-full="images/ps-bersama.jpg" data-cap="Perayaan Bersama" data-sub="Siswa dan pembina merayakan" data-level="kota" data-year="2024">
-          <img src="{{ asset('images/ps-bersama.jpg') }}" alt="Perayaan kemenangan bersama" loading="eager">
-          <span class="psk-photo-zoom"><i class="fas fa-search-plus"></i></span>
-          <span class="psk-photo-cap"><strong>Perayaan Bersama</strong><span><i class="fas fa-building"></i> Kota · 2024</span></span>
-        </a>
-        <a class="psk-photo" href="#" data-full="images/ps-lomba.jpg" data-cap="Saat Bertanding" data-sub="Peserta didik saat lomba" data-level="nas" data-year="2025">
-          <img src="{{ asset('images/ps-lomba.jpg') }}" alt="Peserta didik saat bertanding lomba" loading="eager">
-          <span class="psk-photo-zoom"><i class="fas fa-search-plus"></i></span>
-          <span class="psk-photo-cap"><strong>Saat Bertanding</strong><span><i class="fas fa-flag"></i> Nasional · 2025</span></span>
-        </a>
-        <a class="psk-photo" href="#" data-full="images/ps-tim.jpg" data-cap="Tim Prestasi" data-sub="Tim perwakilan sekolah" data-level="nas" data-year="2024">
-          <img src="{{ asset('images/ps-tim.jpg') }}" alt="Tim perwakilan sekolah" loading="eager">
-          <span class="psk-photo-zoom"><i class="fas fa-search-plus"></i></span>
-          <span class="psk-photo-cap"><strong>Tim Prestasi</strong><span><i class="fas fa-flag"></i> Nasional · 2024</span></span>
-        </a>
-        <a class="psk-photo" href="#" data-full="images/ps-trofi.jpg" data-cap="Koleksi Trofi" data-sub="Piala dan medali juara" data-level="all" data-year="2025">
-          <img src="{{ asset('images/ps-trofi.jpg') }}" alt="Koleksi trofi juara" loading="eager">
-          <span class="psk-photo-zoom"><i class="fas fa-search-plus"></i></span>
-          <span class="psk-photo-cap"><strong>Koleksi Trofi</strong><span><i class="fas fa-award"></i> Arsip</span></span>
-        </a>
+      <!-- Slider (geser/scroll horizontal). Tinggal 6 foto — mau nambah? Copy 1 blok <a class="psk-photo">...</a>, ganti gambar & caption-nya. -->
+      <div class="psk-slider-wrap">
+        <div class="psk-masonry" id="pskMasonry" data-reveal>
+          <a class="psk-photo" href="#" data-full="images/ps-penghargaan.jpg" data-cap="Penyerahan Penghargaan" data-sub="Apresiasi piala juara lomba" data-level="kota" data-year="2025">
+            <img src="{{ asset('images/ps-penghargaan.jpg') }}" alt="Penyerahan penghargaan lomba" loading="eager">
+            <span class="psk-photo-zoom"><i class="fas fa-search-plus"></i></span>
+            <span class="psk-photo-cap"><strong>Penyerahan Penghargaan</strong><span><i class="fas fa-trophy"></i> Kota · 2025</span></span>
+          </a>
+          <a class="psk-photo" href="#" data-full="images/ps-piala.jpg" data-cap="Etalase Piala Sekolah" data-sub="Koleksi trofi kejuaraan" data-level="all" data-year="2024">
+            <img src="{{ asset('images/ps-piala.jpg') }}" alt="Etalase piala sekolah" loading="eager">
+            <span class="psk-photo-zoom"><i class="fas fa-search-plus"></i></span>
+            <span class="psk-photo-cap"><strong>Etalase Piala Sekolah</strong><span><i class="fas fa-award"></i> Arsip Trofi</span></span>
+          </a>
+          <a class="psk-photo" href="#" data-full="images/ps-juara.jpg" data-cap="Juara Bersama Guru" data-sub="Piala juara 1 lomba" data-level="prov" data-year="2025">
+            <img src="{{ asset('images/ps-juara.jpg') }}" alt="Siswa berpose dengan piala juara" loading="eager">
+            <span class="psk-photo-zoom"><i class="fas fa-search-plus"></i></span>
+            <span class="psk-photo-cap"><strong>Juara Bersama Guru</strong><span><i class="fas fa-map-marked-alt"></i> Provinsi · 2025</span></span>
+          </a>
+          <a class="psk-photo" href="#" data-full="images/ps-podium.jpg" data-cap="Momen Podium" data-sub="Peserta didik di atas podium" data-level="prov" data-year="2024">
+            <img src="{{ asset('images/ps-podium.jpg') }}" alt="Peserta didik di atas podium" loading="eager">
+            <span class="psk-photo-zoom"><i class="fas fa-search-plus"></i></span>
+            <span class="psk-photo-cap"><strong>Momen Podium</strong><span><i class="fas fa-map-marked-alt"></i> Provinsi · 2024</span></span>
+          </a>
+          <a class="psk-photo" href="#" data-full="images/ps-upacara.jpg" data-cap="Apresiasi Upacara" data-sub="Pengumuman prestasi saat upacara" data-level="all" data-year="2024">
+            <img src="{{ asset('images/ps-upacara.jpg') }}" alt="Apresiasi prestasi saat upacara bendera" loading="eager">
+            <span class="psk-photo-zoom"><i class="fas fa-search-plus"></i></span>
+            <span class="psk-photo-cap"><strong>Apresiasi Upacara</strong><span><i class="fas fa-star"></i> Sekolah · 2024</span></span>
+          </a>
+          <a class="psk-photo" href="#" data-full="images/ps-juara-cloud.jpg" data-cap="Juara 1 Cloud Computing" data-sub="Piala LKS Cloud Computing" data-level="prov" data-year="2025">
+            <img src="{{ asset('images/ps-juara-cloud.jpg') }}" alt="Piala Juara 1 Cloud Computing" loading="eager">
+            <span class="psk-photo-zoom"><i class="fas fa-search-plus"></i></span>
+            <span class="psk-photo-cap"><strong>Juara 1 Cloud Computing</strong><span><i class="fas fa-map-marked-alt"></i> Provinsi · 2025</span></span>
+          </a>
+        </div>
       </div>
 
       <div class="psk-gallery-foot" data-reveal>
-        <span class="psk-note"><i class="fas fa-images"></i> Foto menampilkan sebagian dokumentasi penghargaan sekolah.</span>
+        <span class="psk-note"><i class="fas fa-images"></i> Geser atau pakai tombol panah untuk melihat foto lainnya.</span>
       </div>
     </div>
   </section>
 
-  <!-- 5. QUOTE STATEMENT (foto + overlay navy) -->
+  <!-- ================= 5. QUOTE / MOTO (background sudah lebih berisi — pattern + ornamen + foto opsional) ================= -->
   <section class="psk-quote">
     <div class="psk-quote-bg">
       <img src="{{ asset('images/ps-kampus.jpg') }}" alt="Lingkungan sekolah SMK Negeri 2 Mojokerto" loading="eager">
+    </div>
+    <div class="psk-quote-orn" aria-hidden="true">
+      <span class="qo-ring1"></span>
+      <span class="qo-ring2"></span>
+      <span class="qo-gold-l"></span>
+      <span class="qo-gold-r"></span>
+      <span class="qo-star"><i class="fas fa-star"></i></span>
+      <span class="qo-star2"><i class="fas fa-star"></i></span>
+      <span class="qo-corner"></span>
+      <span class="qo-corner2"></span>
     </div>
     <div class="psk-section" data-reveal>
       <span class="psk-quote-mark">"</span>
@@ -615,7 +621,7 @@
     </div>
   </section>
 
-  <!-- 6. DAFTAR PRESTASI (official archive, group by tahun — data project) -->
+  <!-- ================= 6. DAFTAR PRESTASI (arsip ringkas 2 tahun — tambah blok <div class="psk-year-block"> kalau perlu) ================= -->
   <section class="psk-archive">
     <div class="psk-section">
       <div class="psk-archive-head" data-reveal>
@@ -624,35 +630,49 @@
           <h2 class="psk-section-title">Daftar <span class="psk-gold">Prestasi</span></h2>
           <p class="psk-subtitle">Arsip resmi pencapaian sekolah, dikelompokkan berdasarkan tahun penyelenggaraan. Setiap entri merekam nama penghargaan, tingkat, dan kompetensi keahlian.</p>
         </div>
-        <span class="psk-archive-badge"><i class="fas fa-file-alt"></i> Arsip 2023 — 2025</span>
+        <span class="psk-archive-badge"><i class="fas fa-file-alt"></i> Arsip 2024 — 2025</span>
       </div>
 
       <div class="psk-year-block" data-reveal>
         <div class="psk-year-head">
           <span class="psk-year-num">2025<em>.</em></span>
           <span class="psk-year-line"></span>
-          <span class="psk-year-count"><i class="fas fa-trophy"></i> 4 Prestasi</span>
+          <span class="psk-year-count"><i class="fas fa-trophy"></i> 3 Prestasi</span>
         </div>
+        <!-- Tiap prestasi punya foto sendiri. Ganti gambar & class rank (gold/silver/bronze) sesuai juara. -->
         <div class="psk-archive-grid">
           <div class="psk-row">
-            <div class="psk-row-rank gold"><i class="fas fa-trophy"></i></div>
-            <div class="psk-row-info"><h4>LKS Web Technologies</h4><span><i class="fas fa-user-graduate"></i> Rekayasa Perangkat Lunak · Juara 1</span></div>
-            <span class="psk-row-tag"><i class="fas fa-building"></i> Kota</span>
+            <div class="psk-row-top">
+              <div class="psk-row-photo">
+                <img src="{{ asset('images/ps-juara-cloud.jpg') }}" alt="Juara 1 LKS Cloud Computing">
+                <span class="psk-row-rank gold"><i class="fas fa-trophy"></i></span>
+              </div>
+              <div class="psk-row-info"><h4>LKS Cloud Computing</h4><span><i class="fas fa-user-graduate"></i> Rekayasa Perangkat Lunak · Juara 1</span></div>
+              <span class="psk-row-tag t-prov"><i class="fas fa-map-marked-alt"></i> Provinsi</span>
+            </div>
+            <a href="#" class="psk-row-link">Lihat Berita <i class="fas fa-arrow-right"></i></a>
           </div>
           <div class="psk-row">
-            <div class="psk-row-rank gold"><i class="fas fa-trophy"></i></div>
-            <div class="psk-row-info"><h4>Lomba Cipta Menu Kuliner</h4><span><i class="fas fa-user-graduate"></i> Kuliner · Juara 1</span></div>
-            <span class="psk-row-tag"><i class="fas fa-building"></i> Kota</span>
+            <div class="psk-row-top">
+              <div class="psk-row-photo">
+                <img src="{{ asset('images/ps-piala.jpg') }}" alt="Juara 1 Lomba Cipta Menu Kuliner">
+                <span class="psk-row-rank gold"><i class="fas fa-trophy"></i></span>
+              </div>
+              <div class="psk-row-info"><h4>Lomba Cipta Menu Kuliner</h4><span><i class="fas fa-user-graduate"></i> Kuliner · Juara 1</span></div>
+              <span class="psk-row-tag"><i class="fas fa-building"></i> Kota</span>
+            </div>
+            <a href="#" class="psk-row-link">Lihat Berita <i class="fas fa-arrow-right"></i></a>
           </div>
           <div class="psk-row">
-            <div class="psk-row-rank gold"><i class="fas fa-trophy"></i></div>
-            <div class="psk-row-info"><h4>LKS Cloud Computing</h4><span><i class="fas fa-user-graduate"></i> Rekayasa Perangkat Lunak · Juara 1</span></div>
-            <span class="psk-row-tag t-prov"><i class="fas fa-map-marked-alt"></i> Provinsi</span>
-          </div>
-          <div class="psk-row">
-            <div class="psk-row-rank gold"><i class="fas fa-medal"></i></div>
-            <div class="psk-row-info"><h4>LKS IT Software Solutions</h4><span><i class="fas fa-user-graduate"></i> Rekayasa Perangkat Lunak · Juara 2</span></div>
-            <span class="psk-row-tag t-nas"><i class="fas fa-flag"></i> Nasional</span>
+            <div class="psk-row-top">
+              <div class="psk-row-photo">
+                <img src="{{ asset('images/ps-juara.jpg') }}" alt="Juara 2 Festival Desain Poster">
+                <span class="psk-row-rank silver"><i class="fas fa-medal"></i></span>
+              </div>
+              <div class="psk-row-info"><h4>Festival Desain Poster</h4><span><i class="fas fa-user-graduate"></i> DKV · Juara 2</span></div>
+              <span class="psk-row-tag"><i class="fas fa-building"></i> Kota</span>
+            </div>
+            <a href="#" class="psk-row-link">Lihat Berita <i class="fas fa-arrow-right"></i></a>
           </div>
         </div>
       </div>
@@ -661,85 +681,37 @@
         <div class="psk-year-head">
           <span class="psk-year-num">2024<em>.</em></span>
           <span class="psk-year-line"></span>
-          <span class="psk-year-count"><i class="fas fa-trophy"></i> 7 Prestasi</span>
+          <span class="psk-year-count"><i class="fas fa-trophy"></i> 2 Prestasi</span>
         </div>
         <div class="psk-archive-grid">
           <div class="psk-row">
-            <div class="psk-row-rank gold"><i class="fas fa-trophy"></i></div>
-            <div class="psk-row-info"><h4>Lomba Bakery &amp; Pastry</h4><span><i class="fas fa-user-graduate"></i> Kuliner · Juara 1</span></div>
-            <span class="psk-row-tag t-prov"><i class="fas fa-map-marked-alt"></i> Provinsi</span>
+            <div class="psk-row-top">
+              <div class="psk-row-photo">
+                <img src="{{ asset('images/ps-podium.jpg') }}" alt="Juara 1 Lomba Bakery & Pastry">
+                <span class="psk-row-rank gold"><i class="fas fa-trophy"></i></span>
+              </div>
+              <div class="psk-row-info"><h4>Lomba Bakery &amp; Pastry</h4><span><i class="fas fa-user-graduate"></i> Kuliner · Juara 1</span></div>
+              <span class="psk-row-tag t-prov"><i class="fas fa-map-marked-alt"></i> Provinsi</span>
+            </div>
+            <a href="#" class="psk-row-link">Lihat Berita <i class="fas fa-arrow-right"></i></a>
           </div>
           <div class="psk-row">
-            <div class="psk-row-rank gold"><i class="fas fa-trophy"></i></div>
-            <div class="psk-row-info"><h4>Festival Desain Poster</h4><span><i class="fas fa-user-graduate"></i> DKV · Juara 1</span></div>
-            <span class="psk-row-tag"><i class="fas fa-building"></i> Kota</span>
-          </div>
-          <div class="psk-row">
-            <div class="psk-row-rank"><i class="fas fa-medal"></i></div>
-            <div class="psk-row-info"><h4>LKS IT Network Systems Administration</h4><span><i class="fas fa-user-graduate"></i> Rekayasa Perangkat Lunak · Juara 2</span></div>
-            <span class="psk-row-tag t-prov"><i class="fas fa-map-marked-alt"></i> Provinsi</span>
-          </div>
-          <div class="psk-row">
-            <div class="psk-row-rank"><i class="fas fa-medal"></i></div>
-            <div class="psk-row-info"><h4>Lomba Inovasi Produk Olahan</h4><span><i class="fas fa-user-graduate"></i> APHP · Juara 2</span></div>
-            <span class="psk-row-tag"><i class="fas fa-building"></i> Kota</span>
-          </div>
-          <div class="psk-row">
-            <div class="psk-row-rank"><i class="fas fa-medal"></i></div>
-            <div class="psk-row-info"><h4>Lomba Bank Syariah &amp; Ekonomi Digital</h4><span><i class="fas fa-user-graduate"></i> Perbankan Syariah · Juara 3</span></div>
-            <span class="psk-row-tag t-prov"><i class="fas fa-map-marked-alt"></i> Provinsi</span>
-          </div>
-          <div class="psk-row">
-            <div class="psk-row-rank"><i class="fas fa-star"></i></div>
-            <div class="psk-row-info"><h4>LKS Nasional Culinary Arts</h4><span><i class="fas fa-user-graduate"></i> Kuliner · Harapan 1</span></div>
-            <span class="psk-row-tag t-nas"><i class="fas fa-flag"></i> Nasional</span>
-          </div>
-          <div class="psk-row">
-            <div class="psk-row-rank"><i class="fas fa-star"></i></div>
-            <div class="psk-row-info"><h4>OSN Informatika</h4><span><i class="fas fa-user-graduate"></i> Rekayasa Perangkat Lunak · Finalis</span></div>
-            <span class="psk-row-tag t-nas"><i class="fas fa-flag"></i> Nasional</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="psk-year-block" data-reveal>
-        <div class="psk-year-head">
-          <span class="psk-year-num">2023<em>.</em></span>
-          <span class="psk-year-line"></span>
-          <span class="psk-year-count"><i class="fas fa-trophy"></i> 5 Prestasi</span>
-        </div>
-        <div class="psk-archive-grid">
-          <div class="psk-row">
-            <div class="psk-row-rank gold"><i class="fas fa-trophy"></i></div>
-            <div class="psk-row-info"><h4>Lomba Inovasi Pangan Lokal</h4><span><i class="fas fa-user-graduate"></i> APHP · Juara 1</span></div>
-            <span class="psk-row-tag t-prov"><i class="fas fa-map-marked-alt"></i> Provinsi</span>
-          </div>
-          <div class="psk-row">
-            <div class="psk-row-rank"><i class="fas fa-medal"></i></div>
-            <div class="psk-row-info"><h4>FLS2N Kategori Desain Komunikasi Visual</h4><span><i class="fas fa-user-graduate"></i> DKV · Juara 2</span></div>
-            <span class="psk-row-tag t-prov"><i class="fas fa-map-marked-alt"></i> Provinsi</span>
-          </div>
-          <div class="psk-row">
-            <div class="psk-row-rank"><i class="fas fa-medal"></i></div>
-            <div class="psk-row-info"><h4>O2SN Bulu Tangkis</h4><span><i class="fas fa-user-graduate"></i> Umum · Juara 3</span></div>
-            <span class="psk-row-tag"><i class="fas fa-building"></i> Kota</span>
-          </div>
-          <div class="psk-row">
-            <div class="psk-row-rank"><i class="fas fa-star"></i></div>
-            <div class="psk-row-info"><h4>FLS2N Film Pendek</h4><span><i class="fas fa-user-graduate"></i> DKV · Harapan 1</span></div>
-            <span class="psk-row-tag"><i class="fas fa-building"></i> Kota</span>
-          </div>
-          <div class="psk-row">
-            <div class="psk-row-rank"><i class="fas fa-star"></i></div>
-            <div class="psk-row-info"><h4>Kompetisi Inovasi Digital Siswa</h4><span><i class="fas fa-user-graduate"></i> Rekayasa Perangkat Lunak · Top 10</span></div>
-            <span class="psk-row-tag t-nas"><i class="fas fa-flag"></i> Nasional</span>
+            <div class="psk-row-top">
+              <div class="psk-row-photo">
+                <img src="{{ asset('images/ps-upacara.jpg') }}" alt="Juara 3 O2SN Bulu Tangkis">
+                <span class="psk-row-rank bronze"><i class="fas fa-medal"></i></span>
+              </div>
+              <div class="psk-row-info"><h4>O2SN Bulu Tangkis</h4><span><i class="fas fa-user-graduate"></i> Umum · Juara 3</span></div>
+              <span class="psk-row-tag"><i class="fas fa-building"></i> Kota</span>
+            </div>
+            <a href="#" class="psk-row-link">Lihat Berita <i class="fas fa-arrow-right"></i></a>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 7. CTA -->
+  <!-- ================= 7. CTA ================= -->
   <section class="psk-cta">
     <div class="psk-section">
       <div class="psk-cta-box" data-reveal>
@@ -823,6 +795,7 @@
   }
 
   /* ---------- Filter galeri (kategori + tahun) ---------- */
+  var sliderTrack = doc.getElementById('pskMasonry');
   var photos = Array.prototype.slice.call(doc.querySelectorAll('#pskMasonry .psk-photo'));
   var fbtns = Array.prototype.slice.call(doc.querySelectorAll('#pskFilters .psk-fbtn'));
   var ybtns = Array.prototype.slice.call(doc.querySelectorAll('#pskYearNav .psk-ybtn'));
@@ -836,6 +809,7 @@
       var okYear = (curYear === 'all' || yr === 'all' || yr === curYear);
       p.style.display = (okLvl && okYear) ? '' : 'none';
     });
+    if (sliderTrack) sliderTrack.scrollTo({ left: 0, behavior: 'smooth' });
   }
   fbtns.forEach(function (b) {
     b.addEventListener('click', function () {
@@ -853,6 +827,25 @@
       applyFilter();
     });
   });
+
+  /* ---------- Slider: tombol panah geser foto ---------- */
+  var sliderPrev = doc.getElementById('pskSliderPrev');
+  var sliderNext = doc.getElementById('pskSliderNext');
+  function visiblePhotoWidth() {
+    var first = photos.filter(function (p) { return p.style.display !== 'none'; })[0];
+    if (!first) return 300;
+    var style = window.getComputedStyle(sliderTrack);
+    var gap = parseFloat(style.columnGap || style.gap || 0) || 19;
+    return first.getBoundingClientRect().width + gap;
+  }
+  if (sliderTrack && sliderPrev && sliderNext) {
+    sliderPrev.addEventListener('click', function () {
+      sliderTrack.scrollBy({ left: -visiblePhotoWidth(), behavior: 'smooth' });
+    });
+    sliderNext.addEventListener('click', function () {
+      sliderTrack.scrollBy({ left: visiblePhotoWidth(), behavior: 'smooth' });
+    });
+  }
 
   /* ---------- Lightbox ---------- */
   var box = doc.getElementById('pskLightbox');

@@ -47,6 +47,9 @@ Route::view('/profile/guru-staf', 'profile.guru-staf')
 Route::view('/profile/roadmap-pengembangan', 'profile.roadmap-pengembangan')
     ->name('profil.roadmap-pengembangan');
 
+Route::view('/profile/tour', 'profile.tour')
+    ->name('profil.tour');
+
 
 
 // ==========================================================================
@@ -118,3 +121,5 @@ Route::view('/keahlian/lps', 'keahlian.lps')
 
 Route::view('/keahlian/rpl', 'keahlian.rpl')
     ->name('rpl');
+
+

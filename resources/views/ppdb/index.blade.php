@@ -22,52 +22,30 @@
 .pd-page *{box-sizing:border-box}
 .pd-shell{width:100%}
 
-/* ---------- HERO: foto gedung + overlay + watermark (IDENTIK referensi) ---------- */
-.pd-hero{position:relative;min-height:88vh;display:flex;align-items:flex-start;overflow:hidden;
-  background-image:url('{{ asset('images/hero-sekolah.jpg') }}');
-  background-size:cover;background-position:center;background-repeat:no-repeat;color:#fff}
-.pd-hero::before{content:"";position:absolute;inset:0;z-index:1;
-  background:linear-gradient(100deg,rgba(7,22,42,.90) 0%,rgba(9,30,54,.68) 45%,rgba(9,30,54,.32) 78%,rgba(9,30,54,.12) 100%)}
-/* Watermark typography besar transparan */
-.pd-hero::after{content:"PPDB";position:absolute;z-index:2;right:-2%;top:50%;transform:translateY(-50%);
-  font-family:var(--font-display);font-size:clamp(5rem,19vw,19rem);font-weight:900;line-height:.82;
-  letter-spacing:.02em;color:rgba(255,255,255,.055);-webkit-text-stroke:1px rgba(255,255,255,.07);
-  text-shadow:0 0 90px rgba(13,58,102,.16);pointer-events:none;white-space:nowrap;user-select:none}
-.pd-hero-inner{position:relative;z-index:3;width:100%;max-width:none;margin:0 auto;
-  padding:clamp(3.5rem,9vh,5.5rem) clamp(1.5rem,5vw,5.5rem);
-  display:grid;grid-template-columns:minmax(0,1.05fr) minmax(340px,.95fr);gap:4rem;align-items:center}
-
-.pd-kicker{display:inline-flex;transform:translateY(0);align-items:center;gap:.65rem;font-size:.74rem;font-weight:800;
-  letter-spacing:.18em;text-transform:uppercase;color:#ffd54a;margin-bottom:0.6rem}
-.pd-kicker::before{content:"";width:34px;height:3px;border-radius:99px;background:linear-gradient(90deg,#ffd54a,#ffb300)}
-
-/* ---------- TITLE: PPDB putih, SKANEDA kuning-oranye ---------- */
-.pd-title{font-family:var(--font-display);font-size:clamp(2.9rem,6.6vw,6.2rem);line-height:.98;
-  letter-spacing:.01em;margin:0;max-width:820px;text-transform:uppercase;
-  text-shadow:0 2px 24px rgba(4,14,28,.35);animation:hdFadeUp .7s .1s var(--ease, ease) both}
-.pd-title .pd-white{color:#ffffff;display:inline-block}
-.pd-title .pd-gold{display:inline-block;
-  background:linear-gradient(135deg,#ffe66d 0%,#ffc107 45%,#ff8a00 100%);
-  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#ffc107;
-  text-shadow:0 4px 24px rgba(255,174,0,.18);letter-spacing:.025em}
-.pd-lead{font-size:1.02rem;line-height:1.85;color:rgba(235,245,253,.86);max-width:640px;
-  margin:1.3rem 0 0;animation:hdFadeUp .7s .26s var(--ease, ease) both}
-.pd-hero-meta{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.6rem;animation:hdFadeUp .7s .4s var(--ease, ease) both}
-.pd-pill{display:inline-flex;align-items:center;gap:.5rem;padding:.55rem .85rem;
-  border:1px solid rgba(255,255,255,.2);background:rgba(13,58,102,.30);border-radius:999px;
-  font-size:.72rem;font-weight:800;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
-.pd-pill i{color:#ffd54a}
-
-/* hero-photo (IDENTIK gaya referensi) */
-.hero-photo{position:relative;height:430px;border-radius:24px;overflow:hidden;
-  transform:translateY(-18px) rotate(2deg);box-shadow:0 34px 80px rgba(4,14,28,.45);
-  border:1px solid rgba(255,255,255,.18);animation:hdFadeUp .7s .34s var(--ease, ease) both}
-.hero-photo::before{content:"";position:absolute;inset:0;z-index:2;
-  background:linear-gradient(200deg,rgba(7,22,42,.08) 0%,rgba(9,30,54,.55) 100%)}
-.hero-photo img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.03)}
-.hero-photo-caption{position:absolute;z-index:3;left:1.5rem;right:1.5rem;bottom:1.3rem}
-.hero-photo-caption strong{display:block;font-family:var(--font-display);font-size:1.3rem;font-weight:600;color:#fff}
-.hero-photo-caption span{font-size:.72rem;color:rgba(255,255,255,.74)}
+/* ---------- HERO: 100% MIRIP HALAMAN SEJARAH SEKOLAH ---------- */
+.pd-hero{position:relative;min-height:clamp(620px,78vh,790px);display:flex;align-items:center;overflow:hidden;background:#fff;color:#0d3a66;isolation:isolate}
+.pd-hero::before{display:none}
+.pd-hero::after{content:"PPDB";position:absolute;z-index:0;left:2%;top:58%;transform:translateY(-50%);font-family:var(--font-display);font-size:clamp(9rem,23vw,23rem);font-weight:900;line-height:.78;letter-spacing:.015em;color:rgba(13,58,102,.035);-webkit-text-stroke:1px rgba(255,122,0,.09);pointer-events:none;white-space:nowrap;user-select:none}
+.pd-ref-ornaments{position:absolute!important;inset:0;z-index:1;overflow:hidden;pointer-events:none;opacity:1}
+.pd-ref-ornament-image{position:absolute!important;inset:0;width:100%;height:100%;display:block;object-fit:cover;object-position:center center;max-width:none;opacity:1}
+.pd-hero-inner{position:relative;z-index:4;width:100%;max-width:1500px;margin:0 auto;padding:clamp(4rem,10vh,7rem) clamp(1.25rem,4.2vw,4.5rem) clamp(4rem,9vh,6rem);display:block}
+.pd-kicker{position:relative;z-index:5;display:inline-flex;align-items:center;gap:.65rem;font-size:.72rem;font-weight:900;letter-spacing:.18em;text-transform:uppercase;color:#ff6f00;margin-bottom:1.2rem;padding:.55rem .85rem;border:1px solid rgba(255,111,0,.18);border-radius:999px;background:#fffaf5}
+.pd-kicker::before{content:"";width:9px;height:9px;border-radius:50%;background:#ff6f00;box-shadow:0 0 0 6px rgba(255,111,0,.10)}
+.pd-title{position:relative;z-index:5;font-family:var(--font-display);font-size:clamp(4.4rem,9.8vw,9.3rem);line-height:.82;letter-spacing:-.045em;margin:0;max-width:900px;text-transform:uppercase;text-shadow:none;animation:hdFadeUp .7s .1s var(--ease,ease) both}
+.pd-title .pd-white{color:#0d3a66;display:block}
+.pd-title .pd-gold{display:block;background:linear-gradient(135deg,#ffd54a 0%,#ffb300 48%,#ff7a00 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;text-shadow:none;letter-spacing:-.025em}
+.pd-lead{font-size:1rem;line-height:1.75;color:#52657a;max-width:720px;margin:1.7rem 0 0;animation:hdFadeUp .7s .26s var(--ease,ease) both}
+.pd-hero-meta{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.6rem;animation:hdFadeUp .7s .4s var(--ease,ease) both}
+.pd-pill{display:inline-flex;align-items:center;gap:.5rem;padding:.55rem .85rem;border:1px solid rgba(13,58,102,.12);background:#fff;border-radius:999px;color:#0d3a66;font-size:.72rem;font-weight:800;box-shadow:0 8px 24px rgba(13,58,102,.06);backdrop-filter:none;-webkit-backdrop-filter:none}
+.pd-pill i{color:#ff7a00}
+.hero-photo{display:none}
+.hero-photo::before,.hero-photo img,.hero-photo-caption{display:none}
+@keyframes hdFadeUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+@media(min-width:1050px){.pd-hero-inner{padding-right:44%}}
+@media(max-width:1050px){.pd-hero-inner{padding-right:1.25rem}.pd-ref-ornaments{opacity:.72}}
+@media(max-width:900px){.pd-title{font-size:clamp(4rem,11vw,7rem)}.pd-ref-ornament-image{opacity:.88}}
+@media(max-width:700px){.pd-hero{align-items:flex-start}.pd-hero-inner{width:90%}.pd-title{font-size:clamp(3rem,14vw,5rem)}}
+@media(max-width:560px){.pd-ref-ornament-image{opacity:.62}}
 
 /* ---------- HOME-ORN (ornamen geometris, IDENTIK referensi) ---------- */
 .home-orn{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
@@ -92,13 +70,6 @@
   background:rgba(13,58,102,.16)}
 
 /* posisi ornamen per section */
-.pd-hero .home-orn .ho-chevron{left:-150px;bottom:-60px;border-color:rgba(255,255,255,.10)}
-.pd-hero .home-orn .ho-chevron::after{border-color:rgba(255,213,74,.08)}
-.pd-hero .home-orn .ho-line{right:-80px;top:22%;opacity:.22}
-.pd-hero .home-orn .ho-dots{right:6%;bottom:14%;opacity:.3}
-.pd-hero .home-orn .ho-ring{left:44%;bottom:-90px;border-color:rgba(255,255,255,.12)}
-.pd-hero .home-orn .ho-gold{right:16%;top:20%}
-.pd-hero .home-orn .ho-square{left:12%;top:22%}
 .pd-intro .home-orn .ho-chevron{right:-145px;top:45px}
 .pd-intro .home-orn .ho-line{left:-80px;top:170px}
 .pd-intro .home-orn .ho-dots{left:3%;bottom:100px}
@@ -127,7 +98,7 @@
 .pd-cta .home-orn .ho-ring{right:-70px;top:20%;border-color:rgba(255,255,255,.10)}
 .pd-cta .home-orn .ho-gold{left:20%;bottom:26%}
 
-.pd-hero>*:not(.home-orn),
+.pd-hero>*:not(.home-orn):not(.pd-ref-ornaments),
 .pd-intro>*:not(.home-orn),
 .pd-track>*:not(.home-orn),
 .pd-jurusan>*:not(.home-orn),
@@ -323,17 +294,10 @@
   .pd-flow-track::before{display:none}
 }
 @media(max-width:950px){
-  .pd-hero-inner{grid-template-columns:1fr;gap:2rem}
-  .hero-photo{height:360px;transform:translateY(-18px) rotate(1deg)}
   .pd-intro-grid{grid-template-columns:1fr;gap:3rem}
   .pd-req-grid{grid-template-columns:1fr;gap:0 2.6rem}
 }
 @media(max-width:700px){
-  .pd-hero{min-height:0;align-items:flex-start}
-  .pd-hero-inner{padding:clamp(3rem,8vh,4.5rem) 5% 3.6rem;width:90%}
-  .pd-hero::after{font-size:clamp(3.6rem,22vw,6rem);opacity:.6;right:-4%}
-  .pd-title{font-size:clamp(2.4rem,11vw,3.6rem);margin-top:0}
-  .hero-photo{height:300px}
   .pd-section,.pd-intro,.pd-track{padding:85px 0 90px}
   .pd-req,.pd-jadwal,.pd-jurusan{padding:85px 0 90px}
   .pd-flow{padding:85px 0 90px}
@@ -351,7 +315,6 @@
   .home-orn .ho-line{width:190px}
   .home-orn .ho-square{width:42px;height:42px}
   .home-orn .ho-corner{width:70px;height:70px}
-  .pd-hero .home-orn .ho-chevron{left:-120px;bottom:-40px}
   [data-reveal]{opacity:1;transform:none}
 }
 </style>
@@ -360,29 +323,23 @@
 @section('content')
 <div class="pd-page">
 
-  <!-- HERO (IDENTIK gaya referensi: foto gedung + overlay + watermark + ornamen) -->
+  <!-- HERO (100% mirip halaman Sejarah Sekolah: watermark + ornamen foto + judul besar) -->
   <section class="pd-hero">
-    <div class="home-orn" aria-hidden="true">
-      <span class="ho-chevron"></span>
-      <span class="ho-line"></span>
-      <span class="ho-dots"></span>
-      <span class="ho-ring"></span>
-      <span class="ho-gold"></span>
-      <span class="ho-square"></span>
-      <span class="ho-corner"></span>
+    <div class="pd-ref-ornaments" aria-hidden="true" style="background-image:url('{{ asset('images/wide_minimalist_abstract_technology_background_des.png') }}');background-size:cover;background-position:center center;">
+      <img
+        src="{{ asset('images/wide_minimalist_abstract_technology_background_des.png') }}"
+        alt=""
+        class="pd-ref-ornament-image"
+        aria-hidden="true"
+      >
     </div>
-
     <div class="pd-hero-inner">
       <div>
         <div class="pd-kicker">Penerimaan Peserta Didik Baru</div>
         <h1 class="pd-title">
-          <span class="pd-white">PPDB</span> <span class="pd-gold">SKANEDA</span>
+          <span class="pd-white">PPDB</span>
+          <span class="pd-gold">SKANEDA</span>
         </h1>
-      </div>
-
-      <div class="hero-photo" data-reveal="right">
-        <img src="{{ asset('images/ppdb-banner.jpg') }}" alt="Poster PPDB SMK Negeri 2 Mojokerto" loading="eager">
-        <div class="hero-photo-caption"><strong>PPDB Skaneda</strong><span>Masa depanmu dimulai di sini.</span></div>
       </div>
     </div>
   </section>
@@ -438,11 +395,8 @@
 
       <div data-reveal="right">
         <div class="pd-banner">
-          <img src="{{ asset('images/ppdb-banner.jpg') }}" alt="Banner PPDB SMK Negeri 2 Mojokerto" loading="eager">
+          <img src="{{ asset('images/jurusan.jpeg') }}" alt="Banner PPDB SMK Negeri 2 Mojokerto" loading="eager">
           <div class="pd-banner-flag">
-            <strong>Informasi Resmi PPDB Skaneda</strong>
-            <span>Poster resmi PPDB SMK Negeri 2 Mojokerto — 5 kompetensi keahlian, satu tujuan besar.</span>
-          </div>
         </div>
       </div>
     </div>

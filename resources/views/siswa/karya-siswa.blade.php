@@ -21,52 +21,50 @@
 .ks-page{background:#f7f9fc;color:#0d3a66;overflow:hidden;position:relative}
 .ks-page *{box-sizing:border-box}
 
-/* ---------- HERO: foto gedung + overlay + watermark (IDENTIK referensi) ---------- */
-.ks-hero{position:relative;min-height:88vh;display:flex;align-items:flex-start;overflow:hidden;
-  background-image:url('{{ asset('images/hero-sekolah.jpg') }}');
-  background-size:cover;background-position:center;background-repeat:no-repeat;color:#fff}
-.ks-hero::before{content:"";position:absolute;inset:0;z-index:1;
-  background:linear-gradient(100deg,rgba(7,22,42,.90) 0%,rgba(9,30,54,.68) 45%,rgba(9,30,54,.32) 78%,rgba(9,30,54,.12) 100%)}
+/* ---------- HERO: 100% MIRIP HALAMAN PPDB (light theme + watermark + abstract ornamen) ---------- */
+.ks-hero{position:relative;min-height:clamp(620px,78vh,790px);display:flex;align-items:center;overflow:hidden;
+  background:#fff;color:#0d3a66;isolation:isolate}
+.ks-hero::before{display:none}
 /* Watermark typography besar transparan */
-.ks-hero::after{content:"KARYA";position:absolute;z-index:2;right:-2%;top:50%;transform:translateY(-50%);
-  font-family:var(--font-display);font-size:clamp(5rem,19vw,19rem);font-weight:900;line-height:.82;
-  letter-spacing:.02em;color:rgba(255,255,255,.055);-webkit-text-stroke:1px rgba(255,255,255,.07);
-  text-shadow:0 0 90px rgba(13,58,102,.16);pointer-events:none;white-space:nowrap;user-select:none}
-.ks-hero-inner{position:relative;z-index:3;width:100%;max-width:none;margin:0 auto;
-  padding:clamp(3.5rem,9vh,5.5rem) clamp(1.5rem,5vw,5.5rem);
-  display:grid;grid-template-columns:minmax(0,1.05fr) minmax(340px,.95fr);gap:4rem;align-items:center}
+.ks-hero::after{content:"KARYA";position:absolute;z-index:0;left:2%;top:58%;transform:translateY(-50%);
+  font-family:var(--font-display);font-size:clamp(9rem,23vw,23rem);font-weight:900;line-height:.78;
+  letter-spacing:.015em;color:rgba(13,58,102,.035);-webkit-text-stroke:1px rgba(255,122,0,.09);
+  pointer-events:none;white-space:nowrap;user-select:none}
+.ks-ref-ornaments{position:absolute!important;inset:0;z-index:1;overflow:hidden;pointer-events:none;opacity:1}
+.ks-ref-ornament-image{position:absolute!important;inset:0;width:100%;height:100%;display:block;
+  object-fit:cover;object-position:center center;max-width:none;opacity:1}
+.ks-hero-inner{position:relative;z-index:4;width:100%;max-width:1500px;margin:0 auto;
+  padding:clamp(4rem,10vh,7rem) clamp(1.25rem,4.2vw,4.5rem) clamp(4rem,9vh,6rem);display:block}
 
-.ks-kicker{display:inline-flex;transform:translateY(0);align-items:center;gap:.65rem;font-size:.74rem;font-weight:800;
-  letter-spacing:.18em;text-transform:uppercase;color:#ffd54a;margin-bottom:0.6rem}
-.ks-kicker::before{content:"";width:34px;height:3px;border-radius:99px;background:linear-gradient(90deg,#ffd54a,#ffb300)}
+.ks-kicker{position:relative;z-index:5;display:inline-flex;align-items:center;gap:.65rem;font-size:.72rem;
+  font-weight:900;letter-spacing:.18em;text-transform:uppercase;color:#ff6f00;margin-bottom:1.2rem;
+  padding:.55rem .85rem;border:1px solid rgba(255,111,0,.18);border-radius:999px;background:#fffaf5}
+.ks-kicker::before{content:"";width:9px;height:9px;border-radius:50%;background:#ff6f00;
+  box-shadow:0 0 0 6px rgba(255,111,0,.10)}
 
-/* ---------- TITLE: KARYA SISWA putih, SKANEDA kuning-oranye ---------- */
-.ks-title{font-family:var(--font-display);font-size:clamp(2.9rem,6.6vw,6.2rem);line-height:.98;
-  letter-spacing:.01em;margin:0;max-width:820px;text-transform:uppercase;
-  text-shadow:0 2px 24px rgba(4,14,28,.35);animation:hdFadeUp .7s .1s var(--ease, ease) both}
-.ks-title .ks-white{color:#ffffff;display:inline-block}
-.ks-title .ks-gold{display:inline-block;
-  background:linear-gradient(135deg,#ffe66d 0%,#ffc107 45%,#ff8a00 100%);
-  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#ffc107;
-  text-shadow:0 4px 24px rgba(255,174,0,.18);letter-spacing:.025em}
-.ks-lead{font-size:1.02rem;line-height:1.85;color:rgba(235,245,253,.86);max-width:640px;
-  margin:1.3rem 0 0;animation:hdFadeUp .7s .26s var(--ease, ease) both}
+/* ---------- TITLE: bertumpuk besar, 100% senada PPDB ---------- */
+.ks-title{position:relative;z-index:5;font-family:var(--font-display);font-size:clamp(5.2rem,11.5vw,11rem);
+  line-height:.82;letter-spacing:-.045em;margin:0;max-width:900px;text-transform:uppercase;
+  text-shadow:none;animation:hdFadeUp .7s .1s var(--ease, ease) both}
+.ks-title .ks-white{color:#0d3a66;display:block}
+.ks-title .ks-gold{display:block;
+  background:linear-gradient(135deg,#ffd54a 0%,#ffb300 48%,#ff7a00 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;
+  text-shadow:none;letter-spacing:-.025em}
+.ks-lead{font-size:1rem;line-height:1.75;color:#52657a;max-width:720px;
+  margin:1.7rem 0 0;animation:hdFadeUp .7s .26s var(--ease, ease) both}
 .ks-hero-meta{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.6rem;animation:hdFadeUp .7s .4s var(--ease, ease) both}
 .ks-pill{display:inline-flex;align-items:center;gap:.5rem;padding:.55rem .85rem;
-  border:1px solid rgba(255,255,255,.2);background:rgba(13,58,102,.30);border-radius:999px;
-  font-size:.72rem;font-weight:800;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
-.ks-pill i{color:#ffd54a}
+  border:1px solid rgba(13,58,102,.12);background:#fff;border-radius:999px;color:#0d3a66;
+  font-size:.72rem;font-weight:800;box-shadow:0 8px 24px rgba(13,58,102,.06)}
+.ks-pill i{color:#ff7a00}
 
-/* hero-photo (IDENTIK gaya referensi) */
-.hero-photo{position:relative;height:430px;border-radius:24px;overflow:hidden;
-  transform:translateY(-18px) rotate(2deg);box-shadow:0 34px 80px rgba(4,14,28,.45);
-  border:1px solid rgba(255,255,255,.18);animation:hdFadeUp .7s .34s var(--ease, ease) both}
-.hero-photo::before{content:"";position:absolute;inset:0;z-index:2;
-  background:linear-gradient(200deg,rgba(7,22,42,.08) 0%,rgba(9,30,54,.55) 100%)}
-.hero-photo img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.03)}
-.hero-photo-caption{position:absolute;z-index:3;left:1.5rem;right:1.5rem;bottom:1.3rem}
-.hero-photo-caption strong{display:block;font-family:var(--font-display);font-size:1.3rem;font-weight:600;color:#fff}
-.hero-photo-caption span{font-size:.72rem;color:rgba(255,255,255,.74)}
+.hero-photo{display:none}
+@media(min-width:1050px){.ks-hero-inner{padding-right:44%}}
+@media(max-width:1050px){.ks-hero-inner{padding-right:1.25rem}.ks-ref-ornaments{opacity:.72}}
+@media(max-width:900px){.ks-title{font-size:clamp(4.6rem,13vw,8rem)}.ks-ref-ornament-image{opacity:.88}}
+@media(max-width:700px){.ks-hero{align-items:flex-start}.ks-hero-inner{width:90%}.ks-title{font-size:clamp(3.4rem,16vw,5.6rem)}}
+@media(max-width:560px){.ks-ref-ornament-image{opacity:.62}}
 
 /* ---------- HOME-ORN (ornamen geometris, IDENTIK referensi) ---------- */
 .home-orn{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
@@ -138,8 +136,8 @@
 .ks-intro{position:relative;padding:96px 0 110px;background:#fff}
 .ks-intro-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:4.5rem;align-items:center}
 
-.big-heading{font-family:var(--font-display);font-size:clamp(1.7rem,3.4vw,2.6rem);font-weight:800;
-  line-height:1.16;letter-spacing:.01em;margin:0;color:#0d3a66}
+.big-heading{font-family:var(--font-display);font-size:clamp(2.2rem,4.6vw,3.6rem);font-weight:800;
+  line-height:1.16;letter-spacing:.01em;margin:0;color:#0d3a66;text-transform:uppercase}
 .big-heading span{background:linear-gradient(135deg,#ffd54a 0%,#ffb300 60%,#ff8a00 100%);
   -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
 .ks-intro-note{max-width:420px;color:#718396;font-size:.84rem;line-height:1.8;margin-top:1rem}
@@ -231,17 +229,23 @@
 /* ---------- 4. PRESTASI KARYA ---------- */
 .ks-prestasi{position:relative;padding:100px 0 110px;
   background-image:radial-gradient(rgba(13,58,102,.055) 1.4px,transparent 1.5px);background-size:22px 22px;overflow:hidden}
-.ks-prestasi::before{content:"PRESTASI";position:absolute;left:-1%;top:8%;transform:rotate(-90deg);
+.ks-prestasi::before{content:"PRODUK";position:absolute;left:-1%;top:8%;transform:rotate(-90deg);
   font-family:var(--font-display);font-size:clamp(4.5rem,11vw,9rem);font-weight:900;line-height:1;
   letter-spacing:.04em;color:rgba(13,58,102,.045);white-space:nowrap;pointer-events:none;user-select:none}
 .ks-prestasi-head{display:flex;justify-content:space-between;align-items:end;gap:2rem;flex-wrap:wrap}
 .ks-prestasi-note{max-width:360px;color:#718396;font-size:.8rem;line-height:1.7}
 .ks-prestasi-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem;margin-top:3rem}
-.ks-prestasi-card{display:flex;gap:1.2rem;align-items:flex-start;background:#fff;border:1px solid #e3edf0;
-  border-radius:20px;padding:1.4rem 1.5rem;transition:transform .35s var(--ease, ease),box-shadow .35s var(--ease, ease)}
+.ks-prestasi-card{position:relative;display:flex;gap:1.1rem;align-items:flex-start;background:#fff;border:1px solid #e3edf0;
+  border-radius:20px;padding:1.1rem 1.5rem 1.1rem 1.1rem;overflow:hidden;
+  transition:transform .35s var(--ease, ease),box-shadow .35s var(--ease, ease)}
 .ks-prestasi-card:hover{transform:translateY(-6px);box-shadow:0 22px 48px rgba(13,58,102,.12)}
-.ks-prestasi-medal{min-width:54px;height:54px;border-radius:16px;display:flex;align-items:center;justify-content:center;
-  font-size:1.3rem;color:#fff;background:linear-gradient(135deg,#ffd54a,#ffb300)}
+.ks-prestasi-media{position:relative;flex:0 0 86px;width:86px;height:86px;border-radius:16px;overflow:hidden}
+.ks-prestasi-media img{width:100%;height:100%;object-fit:cover;display:block;
+  transition:transform .5s var(--ease, ease)}
+.ks-prestasi-card:hover .ks-prestasi-media img{transform:scale(1.1)}
+.ks-prestasi-medal{position:absolute;z-index:2;right:-7px;bottom:-7px;width:32px;height:32px;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;font-size:.8rem;color:#fff;
+  background:linear-gradient(135deg,#ffd54a,#ffb300);box-shadow:0 8px 18px rgba(4,14,28,.28);border:2.5px solid #fff}
 .ks-prestasi-card:nth-child(2) .ks-prestasi-medal{background:linear-gradient(135deg,#9db2c8,#5a89b8)}
 .ks-prestasi-card:nth-child(3) .ks-prestasi-medal{background:linear-gradient(135deg,#d99a5b,#b06f2c)}
 .ks-prestasi-card:nth-child(4) .ks-prestasi-medal{background:linear-gradient(135deg,#2f6fa8,#0d3a66)}
@@ -292,7 +296,7 @@
   .ks-hero{min-height:0;align-items:flex-start}
   .ks-hero-inner{padding:clamp(3rem,8vh,4.5rem) 5% 3.6rem;width:90%}
   .ks-hero::after{font-size:clamp(3.6rem,22vw,6rem);opacity:.6;right:-4%}
-  .ks-title{font-size:clamp(2.4rem,11vw,3.6rem);margin-top:0}
+  .ks-title{font-size:clamp(2.8rem,13vw,4.2rem);margin-top:0}
   .hero-photo{height:300px}
   .ks-section,.ks-intro,.ks-slider{padding:85px 0 90px}
   .ks-kategori,.ks-prestasi{padding:85px 0 90px}
@@ -320,35 +324,23 @@
 @section('content')
 <div class="ks-page">
 
-  <!-- HERO (IDENTIK gaya referensi: foto gedung + overlay + watermark + ornamen) -->
+  <!-- HERO (100% mirip halaman PPDB: watermark + ornamen abstrak + judul besar bertumpuk) -->
   <section class="ks-hero">
-    <div class="home-orn" aria-hidden="true">
-      <span class="ho-chevron"></span>
-      <span class="ho-line"></span>
-      <span class="ho-dots"></span>
-      <span class="ho-ring"></span>
-      <span class="ho-gold"></span>
-      <span class="ho-square"></span>
-      <span class="ho-corner"></span>
+    <div class="ks-ref-ornaments" aria-hidden="true" style="background-image:url('{{ asset('images/wide_minimalist_abstract_technology_background_des.png') }}');background-size:cover;background-position:center center;">
+      <img
+        src="{{ asset('images/wide_minimalist_abstract_technology_background_des.png') }}"
+        alt=""
+        class="ks-ref-ornament-image"
+        aria-hidden="true"
+      >
     </div>
-
     <div class="ks-hero-inner">
       <div>
         <div class="ks-kicker">Galeri Karya Peserta Didik</div>
         <h1 class="ks-title">
-          <span class="ks-white">Karya</span> <span class="ks-gold">Siswa</span>
+          <span class="ks-white">Karya</span>
+          <span class="ks-gold">Siswa</span>
         </h1>
-        <p class="ks-lead">Dari dapur Kuliner hingga layar kode RPL, setiap karya adalah bukti nyata proses belajar. Jelajahi hasil karya terbaik peserta didik SMK Negeri 2 Mojokerto dari 5 kompetensi keahlian.</p>
-        <div class="ks-hero-meta">
-          <span class="ks-pill"><i class="fas fa-lightbulb"></i> Kreativitas</span>
-          <span class="ks-pill"><i class="fas fa-industry"></i> Siap Kerja</span>
-          <span class="ks-pill"><i class="fas fa-trophy"></i> Berprestasi</span>
-        </div>
-      </div>
-
-      <div class="hero-photo" data-reveal="right">
-        <img src="{{ asset('images/karya-dkv.jpg') }}" alt="Karya desain peserta didik SMK Negeri 2 Mojokerto" loading="eager">
-        <div class="hero-photo-caption"><strong>Karya Skaneda</strong><span>Hasil karya terbaik peserta didik dari 5 kompetensi keahlian.</span></div>
       </div>
     </div>
   </section>
@@ -600,7 +592,7 @@
     </div>
   </section>
 
-  <!-- 4. PRESTASI KARYA SISWA -->
+  <!-- 4. PRODUK KARYA SISWA -->
   <section class="ks-prestasi">
     <div class="home-orn" aria-hidden="true">
       <span class="ho-chevron"></span>
@@ -613,57 +605,75 @@
 
     <div class="ks-section">
       <div class="ks-prestasi-head" data-reveal>
-        <h2 class="big-heading">Karya yang <span>mengharumkan nama.</span></h2>
-        <p class="ks-prestasi-note">Sebagian dari capaian peserta didik Skaneda di ajang lomba dan pameran — tingkat kota, provinsi, hingga nasional.</p>
+        <h2 class="big-heading">Produk nyata, <span>karya siswa sendiri.</span></h2>
+        <p class="ks-prestasi-note">Sebagian produk hasil tangan peserta didik Skaneda — dari aplikasi, kuliner, desain, hingga olahan pertanian dan layanan keuangan syariah.</p>
       </div>
 
       <div class="ks-prestasi-grid">
         <div class="ks-prestasi-card" data-reveal>
-          <div class="ks-prestasi-medal"><i class="fas fa-medal"></i></div>
+          <div class="ks-prestasi-media">
+            <img src="{{ asset('images/karya-coding.jpg') }}" alt="Aplikasi Kasir Digital UMKM Skaneda karya siswa RPL" loading="lazy">
+            <div class="ks-prestasi-medal"><i class="fas fa-laptop-code"></i></div>
+          </div>
           <div class="ks-prestasi-body">
-            <h3>Juara 1 LKS Desain Grafis</h3>
-            <p>Lomba Kompetensi Siswa bidang Desain Grafis tingkat Provinsi Jawa Timur.</p>
-            <span class="ks-prestasi-year">2025</span>
+            <h3>Aplikasi Kasir Digital UMKM</h3>
+            <p>Aplikasi kasir berbasis web untuk UMKM binaan sekolah, dibangun penuh oleh siswa jurusan RPL.</p>
+            <span class="ks-prestasi-year">RPL &middot; 2025</span>
           </div>
         </div>
         <div class="ks-prestasi-card" data-reveal style="--d:1">
-          <div class="ks-prestasi-medal"><i class="fas fa-medal"></i></div>
+          <div class="ks-prestasi-media">
+            <img src="{{ asset('images/karya-cake.jpg') }}" alt="Kue kering kemasan modern karya siswa Kuliner" loading="lazy">
+            <div class="ks-prestasi-medal"><i class="fas fa-cookie"></i></div>
+          </div>
           <div class="ks-prestasi-body">
-            <h3>Juara 2 LKS Teknologi Informasi</h3>
-            <p>Lomba Kompetensi Siswa bidang IT Software Solutions for Business tingkat Provinsi.</p>
-            <span class="ks-prestasi-year">2025</span>
+            <h3>Kue Kering Kemasan Modern</h3>
+            <p>Produk kue kering dengan kemasan siap jual, hasil praktik tata boga siswa jurusan Kuliner.</p>
+            <span class="ks-prestasi-year">Kuliner &middot; 2025</span>
           </div>
         </div>
         <div class="ks-prestasi-card" data-reveal style="--d:2">
-          <div class="ks-prestasi-medal"><i class="fas fa-medal"></i></div>
+          <div class="ks-prestasi-media">
+            <img src="{{ asset('images/karya-dkv.jpg') }}" alt="Ilustrasi maskot dan identitas visual sekolah karya siswa DKV" loading="lazy">
+            <div class="ks-prestasi-medal"><i class="fas fa-palette"></i></div>
+          </div>
           <div class="ks-prestasi-body">
-            <h3>Juara 3 Lomba Cipta Menu Kuliner</h3>
-            <p>Lomba cipta menu berbahan dasar lokal tingkat kota Mojokerto.</p>
-            <span class="ks-prestasi-year">2024</span>
+            <h3>Maskot &amp; Identitas Visual Sekolah</h3>
+            <p>Karakter maskot dan panduan identitas visual sekolah, dirancang siswa jurusan Desain Komunikasi Visual.</p>
+            <span class="ks-prestasi-year">DKV &middot; 2024</span>
           </div>
         </div>
         <div class="ks-prestasi-card" data-reveal style="--d:3">
-          <div class="ks-prestasi-medal"><i class="fas fa-medal"></i></div>
+          <div class="ks-prestasi-media">
+            <img src="{{ asset('images/karya-olahan.jpg') }}" alt="Keripik buah kemasan vakum karya siswa APHP" loading="lazy">
+            <div class="ks-prestasi-medal"><i class="fas fa-seedling"></i></div>
+          </div>
           <div class="ks-prestasi-body">
-            <h3>Juara Harapan Pameran Produk Olahan</h3>
-            <p>Pameran produk olahan hasil pertanian tingkat provinsi — inovasi roti &amp; samosa.</p>
-            <span class="ks-prestasi-year">2024</span>
+            <h3>Keripik Buah Kemasan Vakum</h3>
+            <p>Produk olahan buah lokal jadi keripik siap jual, buah tangan siswa jurusan APHP.</p>
+            <span class="ks-prestasi-year">APHP &middot; 2024</span>
           </div>
         </div>
         <div class="ks-prestasi-card" data-reveal style="--d:4">
-          <div class="ks-prestasi-medal"><i class="fas fa-medal"></i></div>
+          <div class="ks-prestasi-media">
+            <img src="{{ asset('images/karya-bank.jpg') }}" alt="Simulasi tabungan pelajar syariah karya siswa LPS" loading="lazy">
+            <div class="ks-prestasi-medal"><i class="fas fa-landmark"></i></div>
+          </div>
           <div class="ks-prestasi-body">
-            <h3>Finalis O2SN &amp; FLS2N Seni</h3>
-            <p>Karya siswa tampil hingga babak final pada ajang seni dan kreativitas pelajar.</p>
-            <span class="ks-prestasi-year">2023</span>
+            <h3>Simulasi Tabungan Pelajar Syariah</h3>
+            <p>Produk layanan simulasi tabungan &amp; administrasi syariah, dipraktikkan langsung siswa jurusan LPS.</p>
+            <span class="ks-prestasi-year">LPS &middot; 2025</span>
           </div>
         </div>
         <div class="ks-prestasi-card" data-reveal style="--d:5">
-          <div class="ks-prestasi-medal"><i class="fas fa-medal"></i></div>
+          <div class="ks-prestasi-media">
+            <img src="{{ asset('images/karya-kuliner.jpg') }}" alt="Puding lapis rempah nusantara karya siswa Kuliner" loading="lazy">
+            <div class="ks-prestasi-medal"><i class="fas fa-utensils"></i></div>
+          </div>
           <div class="ks-prestasi-body">
-            <h3>Pameran Karya di Event Sekolah</h3>
-            <p>Pameran tahunan karya siswa lintas jurusan — disaksikan DUDI dan orang tua.</p>
-            <span class="ks-prestasi-year">2023 – 2025</span>
+            <h3>Puding Lapis Rempah Nusantara</h3>
+            <p>Kreasi dessert bercita rasa rempah khas Indonesia, hasil inovasi menu siswa jurusan Kuliner.</p>
+            <span class="ks-prestasi-year">Kuliner &middot; 2023 &ndash; 2025</span>
           </div>
         </div>
       </div>
