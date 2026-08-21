@@ -3387,7 +3387,7 @@
           <span class="vt-badge"><i class="fa-solid fa-street-view"></i> 360° Tour</span>
           <button class="vt-play" type="button" aria-label="Mulai Virtual Tour 360 derajat" onclick="document.getElementById('vtTourLink')?.click()"><i class="fa-solid fa-play"></i></button>
           <div class="vt-caption">
-            <div><strong>Jelajahi Sekolah</strong><span>Kampus SMK Negeri 2 Mojokerto</span></div>
+            <div><strong>Jelajahi Sekolah</strong><span>SMK Negeri 2 Mojokerto</span></div>
             <span class="vt-cam"><i class="fa-solid fa-camera"></i> 360°</span>
           </div>
         </div>

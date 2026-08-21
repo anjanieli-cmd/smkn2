@@ -358,7 +358,7 @@
 
     <div class="pd-section pd-intro-grid">
       <div data-reveal="left">
-        <h2 class="big-heading">Empat kata, satu <span>masa depan.</span></h2>
+        <h2 class="big-heading">EMPAT KATA, SATU <span>MASA DEPAN.</span></h2>
         <p class="pd-intro-note">PPDB adalah pintu masuk resmi bagi calon peserta didik untuk bergabung menjadi bagian dari keluarga besar Skaneda.</p>
 
         <div class="pd-def-stack" style="margin-top:2rem">
@@ -415,7 +415,7 @@
 
     <div class="pd-section">
       <div class="pd-track-head" data-reveal>
-        <h2 class="big-heading">Empat jalur menuju <span>Skaneda.</span></h2>
+        <h2 class="big-heading">EMPAT JALUR MENUJU <span>SKANEDA.</span></h2>
         <p class="pd-track-note">Setiap calon peserta didik dapat memilih jalur yang paling sesuai dengan kondisi dan potensinya.</p>
       </div>
 
@@ -456,7 +456,7 @@
   <section class="pd-req">
     <div class="pd-section">
       <div class="pd-req-card" data-reveal>
-        <h2 class="big-heading">Siapkan <span>berkasmu.</span></h2>
+        <h2 class="big-heading">SIAPKAN <span>BERKASMU.</span></h2>
         <div class="pd-req-grid">
           <div class="pd-req-item">
             <i class="fas fa-id-card"></i>
@@ -495,7 +495,7 @@
   <section class="pd-flow">
     <div class="pd-section">
       <div data-reveal>
-        <h2 class="big-heading">Enam langkah menuju <span>gerbang Skaneda.</span></h2>
+        <h2 class="big-heading">ENAM LANGKAH MENUJU <span>GERBANG SKANEDA.</span></h2>
       </div>
       <div class="pd-flow-track">
         <div class="pd-flow-grid">
@@ -538,7 +538,7 @@
   <section class="pd-jadwal">
     <div class="pd-section">
       <div data-reveal>
-        <h2 class="big-heading">Catat tanggal <span>pentingnya.</span></h2>
+        <h2 class="big-heading">CATAT TANGGAL <span>PENTINGNYA.</span></h2>
       </div>
 
       <div class="pd-jadwal-card" data-reveal>
@@ -610,7 +610,7 @@
 
     <div class="pd-section">
       <div class="pd-track-head" data-reveal>
-        <h2 class="big-heading">Pilih kompetensi, raih <span>masa depanmu.</span></h2>
+        <h2 class="big-heading">PILIH KOPETENSI, RAIH <span>MASA DEPANMU.</span></h2>
         <p class="pd-track-note">SMK Negeri 2 Mojokerto membuka 5 kompetensi keahlian yang selaras dengan kebutuhan dunia usaha dan dunia industri.</p>
       </div>
 
@@ -698,7 +698,7 @@
 
     <div class="pd-section">
       <div class="pd-track-head" data-reveal>
-        <h2 class="big-heading">Masih ada <span>pertanyaan?</span></h2>
+        <h2 class="big-heading">MASIH ADA <span>PERTANYAAN?</span></h2>
         <p class="pd-track-note">Jawaban singkat untuk pertanyaan yang paling sering ditanyakan calon peserta didik dan orang tua.</p>
       </div>
 

@@ -659,7 +659,7 @@
             <a href="{{ url('/siswa/karya-siswa') }}"><i class="fas fa-lightbulb"></i> Karya Siswa</a>
             <a href="{{ url('/siswa/prestasi-siswa') }}"><i class="fas fa-trophy"></i> Prestasi Siswa</a>
             <a href="{{ url('/siswa/ekstrakurikuler') }}"><i class="fas fa-people-group"></i> Ekstrakurikuler</a>
-            <a href="{{ url('/layanan/e-voice') }}"><i class="fas fa-comment-dots"></i> E-Voice</a>
+            <a href="{{ url('/siswa/voice') }}"><i class="fas fa-comment-dots"></i> E-Voice</a>
           </div>
         </li>
 
@@ -667,7 +667,7 @@
           <a href="#" class="nav-link dropdown-trigger">Berita <i class="fas fa-chevron-down"></i></a>
           <div class="dropdown-menu">
             <a href="{{ url('/berita/index') }}"><i class="fas fa-newspaper"></i> Semua Berita</a>
-            <a href="{{ url('/layanan/factcheck') }}"><i class="fas fa-shield-halved"></i> School FactCheck</a>
+            <a href="{{ url('/berita/factcheck') }}"><i class="fas fa-shield-halved"></i> School FactCheck</a>
           </div>
         </li>
 
@@ -683,7 +683,7 @@
           <a href="#" class="nav-link dropdown-trigger">PKL &amp; Alumni <i class="fas fa-chevron-down"></i></a>
           <div class="dropdown-menu">
             <a href="{{ route('pkl-alumni') }}"><i class="fas fa-briefcase"></i> Informasi PKL &amp; Alumni</a>
-            <a href="{{ url('/layanan/alumni-hub') }}"><i class="fas fa-graduation-cap"></i> Jejak &amp; Portofolio Alumni</a>
+            <a href="{{ url('/alumni/portofolio') }}"><i class="fas fa-graduation-cap"></i> Jejak &amp; Portofolio Alumni</a>
           </div>
         </li>
 
@@ -691,7 +691,7 @@
           <a href="{{ url('/ai-major-matchmaker') }}"
              class="nav-link nav-cta nav-ai-matchmaker {{ request()->is('ai-major-matchmaker*') ? 'active' : '' }}"
              aria-label="AI Major Matchmaker">
-            <i class="fas fa-wand-magic-sparkles ai-icon"></i>
+            <a href="{{ url('/ai') }}"><i class="fas fa-wand-magic-sparkles ai-icon"></i>
             <span>Cari Jurusanmu</span>
             <span class="ai-nav-badge">AI</span>
           </a>

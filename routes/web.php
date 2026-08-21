@@ -74,6 +74,8 @@ Route::view('/karya-siswa', 'karya-siswa')
     ->name('karya-siswa');
 
 
+
+
 // ==========================================================================
 // PPDB
 // ==========================================================================
@@ -121,5 +123,17 @@ Route::view('/keahlian/lps', 'keahlian.lps')
 
 Route::view('/keahlian/rpl', 'keahlian.rpl')
     ->name('rpl');
+
+Route::view('/siswa/voice', 'siswa.voice')
+    ->name('voice');
+
+Route::view('/berita/factcheck', 'berita.factcheck')
+    ->name('factcheck');
+
+Route::view('/alumni/portofolio', 'alumni.portofolio')
+    ->name('portofolio');
+
+Route::view('ai', 'ai')
+    ->name('ai');
 
 
