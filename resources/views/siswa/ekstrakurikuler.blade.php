@@ -854,7 +854,7 @@
               <span class="ek-card-menu" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg></span>
             </div>
             <div class="ek-card-media">
-              <img src="{{ asset('images/ekstra/silat.jpg') }}" alt="Kegiatan Silat SMKN 2 Mojokerto" loading="eager">
+              <img src="{{ asset('images/ekstra/silat.jpeg') }}" alt="Kegiatan Silat SMKN 2 Mojokerto" loading="eager">
             </div>
             <div class="ek-card-actions" aria-hidden="true">
               <span class="ek-act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.6l-1-1a5.5 5.5 0 10-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 000-7.8z"/></svg></span>
