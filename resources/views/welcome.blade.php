@@ -804,7 +804,7 @@
         <div class="vt-caption">
           <div>
             <strong>Jelajahi Sekolah</strong>
-            <span>Kampus SMK Negeri 2 Mojokerto</span>
+            <span>SMK Negeri 2 Mojokerto</span>
           </div>
           <span class="vt-cam"><i class="fa-solid fa-camera"></i> 360°</span>
         </div>
@@ -819,7 +819,7 @@
     <div class="vt-copy">
       <div class="vt-kicker" data-reveal style="--d:0">Virtual Experience</div>
       <h2 class="vt-title" data-reveal style="--d:1">Jelajahi <span class="vt-gold">SMKN 2 Mojokerto</span><span class="vt-sub">Lihat Virtual Tour 360°</span></h2>
-      <p class="vt-desc" data-reveal style="--d:2">Jelajahi lingkungan SMK Negeri 2 Mojokerto secara interaktif melalui Virtual Tour 360°. Rasakan suasana kampus dari sudut pandangmu — laboratorium, ruang kelas, bengkel, dan fasilitas unggulan lainnya.</p>
+      <p class="vt-desc" data-reveal style="--d:2">Jelajahi lingkungan SMK Negeri 2 Mojokerto secara interaktif melalui Virtual Tour 360°. Rasakan suasana sekolah dari sudut pandangmu — laboratorium, ruang kelas, bengkel, dan fasilitas unggulan lainnya.</p>
       <div class="vt-feats" data-reveal style="--d:3">
         <span class="vt-feat"><i class="fa-solid fa-check"></i> Interaktif</span>
         <span class="vt-feat"><i class="fa-solid fa-check"></i> Panorama 360°</span>

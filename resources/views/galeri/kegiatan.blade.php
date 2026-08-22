@@ -572,7 +572,7 @@
         <img src="{{ asset('images/kg-kampus.jpg') }}" alt="Kunjungan industri ke kampus" loading="eager">
         <div class="kg-card-info">
           <span class="kg-card-cat">Kunjungan/Industri</span>
-          <h4 class="kg-card-title">Kunjungan Industri &amp; Kampus</h4>
+          <h4 class="kg-card-title">Kunjungan Industri &amp; Sekolah</h4>
           <span class="kg-card-date"><i class="fas fa-circle"></i> 2026</span>
         </div>
       </article>

@@ -81,10 +81,10 @@
   align-items:center;
   gap:10px;
   padding:9px 14px;
-  border:1px solid #ffd5b0;
-  background:#fffaf5;
+  border:1px solid #ffe4a3;
+  background:#fffbf0;
   border-radius:999px;
-  color:#ff7a00;
+  color:#b8860b;
   font-size:.68rem;
   font-weight:900;
   letter-spacing:.16em;
@@ -93,9 +93,9 @@
 .visi-kicker::before{
   content:"";
   width:9px;height:9px;
-  background:#ff7a00;
+  background:#ffb300;
   border-radius:50%;
-  box-shadow:0 0 0 6px rgba(255,122,0,.1);
+  box-shadow:0 0 0 6px rgba(255,179,0,.14);
 }
 .visi-title{
   margin:20px 0 0;
@@ -115,9 +115,11 @@
 }
 .visi-title .visi-gold{
   display:block;
-  color:#ff7a00;
-  background:none;
-  -webkit-text-fill-color:#ff7a00;
+  background:linear-gradient(135deg,#ffd54a 0%,#ffb300 45%,#ff7a00 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  color:transparent;
   letter-spacing:-.055em;
 }
 .visi-lead{
@@ -206,7 +208,8 @@
   background-size:19px 19px;opacity:.5;pointer-events:none;z-index:0}
 .misi-head{width:min(1380px,92%);margin:0 auto 3.4rem;text-align:center;position:relative;z-index:2}
 .misi-head .eyebrow{justify-content:center}
-.misi-head .eyebrow::after{content:"\2022 \2022 \2022";color:#ffb300;letter-spacing:5px;font-size:12px;margin-left:.4rem}
+.misi-head .eyebrow .eyebrow-dots{display:inline-flex;align-items:center;gap:4px;margin-left:.4rem}
+.misi-head .eyebrow .eyebrow-dots i{color:#ffb300;font-size:5px}
 .misi-head .big-heading{margin:0 auto}
 .misi-desc{max-width:720px;margin:1.1rem auto 0;color:#5f7186;font-size:1rem;line-height:1.9}
 .misi-grid{width:min(1240px,94%);margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;position:relative;z-index:2}
@@ -260,7 +263,8 @@
   border:2px solid rgba(47,111,168,.14);border-radius:28px;transform:rotate(25deg);z-index:0;pointer-events:none}
 .nilai-head{width:min(1380px,92%);margin:0 auto 3.2rem;text-align:center;position:relative;z-index:2}
 .nilai-head .eyebrow{justify-content:center}
-.nilai-head .eyebrow::after{content:"\2022 \2022 \2022";color:#ffb300;letter-spacing:5px;font-size:12px;margin-left:.4rem}
+.nilai-head .eyebrow .eyebrow-dots{display:inline-flex;align-items:center;gap:4px;margin-left:.4rem}
+.nilai-head .eyebrow .eyebrow-dots i{color:#ffb300;font-size:5px}
 .nilai-head .big-heading{margin:0 auto}
 .nilai-grid{width:min(1180px,92%);margin:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem;position:relative;z-index:2}
 .nilai-card{position:relative;background:#fff;border:1px solid rgba(13,58,102,.14);border-radius:20px;
@@ -622,7 +626,7 @@
 
     <div class="misi-head" data-reveal>
       <div>
-        <div class="eyebrow">Langkah kami</div>
+        <div class="eyebrow">Langkah kami <span class="eyebrow-dots"><i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="fas fa-circle"></i></span></div>
         <h2 class="big-heading">Misi <span>Sekolah</span></h2>
       </div>
       <p class="misi-desc">Tiga langkah utama yang menjadi dasar SMK Negeri 2 Mojokerto dalam meningkatkan mutu pendidikan dan menyiapkan lulusan yang profesional.</p>
@@ -706,7 +710,7 @@
 
     <div class="nilai-head" data-reveal>
       <div>
-        <div class="eyebrow">Budaya sekolah</div>
+        <div class="eyebrow">Budaya sekolah <span class="eyebrow-dots"><i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="fas fa-circle"></i></span></div>
         <h2 class="big-heading">Nilai-nilai <span>Utama</span></h2>
       </div>
       <p class="misi-desc">Nilai-nilai yang menjadi budaya kerja seluruh warga sekolah.</p>

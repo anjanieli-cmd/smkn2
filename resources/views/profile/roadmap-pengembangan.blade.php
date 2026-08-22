@@ -824,7 +824,7 @@
             <ul class="rm-phase-list">
               <li>Pembinaan intensif lomba &amp; kompetisi siswa (LKS, OSN)</li>
               <li>Sertifikasi keahlian guru &amp; program guru penggerak</li>
-              <li>Kemitraan kampus &amp; program link and match lanjutan</li>
+              <li>Kemitraan sekolah &amp; program link and match lanjutan</li>
             </ul>
             <span class="rm-phase-tag">Prestasi</span>
           </div>
@@ -908,7 +908,7 @@
           </div>
           <div class="rm-target">
             <i class="fas fa-check"></i>
-            <div><strong>Kemitraan yang saling menguatkan</strong><span>DUDI, kampus, orang tua, dan masyarakat.</span></div>
+            <div><strong>Kemitraan yang saling menguatkan</strong><span>DUDI, sekolah, orang tua, dan masyarakat.</span></div>
           </div>
         </div>
       </div>
