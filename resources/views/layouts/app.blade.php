@@ -155,18 +155,7 @@
        GARIS BAWAH — DENGAN ANIMASI SLIDE IN
        ============================================================ */
     .nav-link::after{
-      content:"";
-      position:absolute;
-      bottom:2px;
-      left:50%;
-      transform:translateX(-50%) scaleX(0);
-      width:24px;
-      height:2.5px;
-      border-radius:99px;
-      background:linear-gradient(90deg,#f9a825,#ffd54f);
-      box-shadow:0 0 12px rgba(249,168,37,.6);
-      transition:transform .35s cubic-bezier(.22,.61,.36,1);
-      transform-origin:center;
+      display:none !important;
     }
 
     /* HOVER — garis muncul dengan animasi slide in */
@@ -175,7 +164,7 @@
       background:transparent !important;
     }
     .nav-link:hover::after{
-      transform:translateX(-50%) scaleX(1);
+      display:none !important;
     }
 
     /* ============================================================
@@ -203,7 +192,7 @@
       white-space:nowrap !important;
       text-decoration:none !important;
       box-shadow:0 4px 16px rgba(244,81,30,.35),inset 0 0 0 1px rgba(255,255,255,.18) !important;
-      overflow:visible !important;
+      overflow:hidden !important;
       flex-shrink:0 !important;
     }
     .nav-ai-matchmaker::before{
@@ -215,6 +204,7 @@
       transform:translateX(-120%);
       transition:transform .6s ease;
       pointer-events:none;
+      z-index:1;
     }
     .nav-ai-matchmaker:hover::before{transform:translateX(120%)}
     .nav-ai-matchmaker:hover{
@@ -269,7 +259,7 @@
       background:transparent !important;
     }
     .nav-link.active::after{
-      transform:translateX(-50%) scaleX(1);
+      display:none !important;
     }
 
     /* DROPDOWN — tetap bold */
