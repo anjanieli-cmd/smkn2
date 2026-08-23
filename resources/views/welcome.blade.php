@@ -397,6 +397,33 @@
     .ft-cta-btn:hover{transform:translateY(-3px);box-shadow:0 16px 32px rgba(245,158,11,.45)}
     .ft-cta-btn i{transition:transform .3s var(--ease)}
     .ft-cta-btn:hover i{transform:translateX(4px)}
+
+    /* ---------- box promosi E-Voice (aspirasi & pengaduan) ---------- */
+    .ft-evoice{position:relative;display:flex;align-items:center;gap:1.4rem;flex-wrap:wrap;margin-top:1.6rem;
+      padding:1.6rem clamp(1.3rem,3vw,2rem);border-radius:22px;overflow:hidden;
+      background:linear-gradient(120deg,#082846 0%,#0d3a66 55%,#0a3155 100%);color:#fff;
+      box-shadow:0 24px 54px rgba(8,40,70,.3)}
+    .ft-evoice::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+      background-image:radial-gradient(rgba(255,255,255,.08) 1.3px,transparent 1.4px);background-size:18px 18px;opacity:.5}
+    .ft-evoice::after{content:"";position:absolute;top:-70px;right:-40px;width:220px;height:220px;border-radius:50%;z-index:0;pointer-events:none;
+      background:radial-gradient(circle,rgba(255,122,0,.28),rgba(255,122,0,0) 70%)}
+    .ft-evoice>*{position:relative;z-index:1}
+    .ft-evoice-icon{width:56px;height:56px;border-radius:16px;flex:0 0 56px;display:flex;align-items:center;justify-content:center;
+      background:linear-gradient(135deg,#ffd54a,#ffb300);color:#0d3a66;font-size:1.3rem;box-shadow:0 14px 30px rgba(255,179,0,.28)}
+    .ft-evoice-text{flex:1 1 260px;min-width:220px;text-align:left}
+    .ft-evoice-text h3{font-family:var(--font-display);font-size:1.05rem;font-weight:800;margin:0 0 .3rem;color:#fff}
+    .ft-evoice-text p{margin:0;font-size:.82rem;color:rgba(235,245,253,.8);line-height:1.65;max-width:460px}
+    .ft-evoice-btn{display:inline-flex;align-items:center;gap:.55rem;border:none;border-radius:99px;
+      background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);color:#fff;font-weight:800;font-size:.82rem;
+      letter-spacing:.03em;padding:.75rem 1.4rem;cursor:pointer;white-space:nowrap;text-decoration:none;
+      transition:transform .3s var(--ease),background .3s var(--ease),border-color .3s var(--ease)}
+    .ft-evoice-btn:hover{transform:translateY(-2px);background:rgba(255,255,255,.16);border-color:rgba(255,213,74,.45)}
+    .ft-evoice-btn i{transition:transform .3s var(--ease);color:#ffd54a}
+    .ft-evoice-btn:hover i{transform:translateX(4px)}
+    @media(max-width:640px){
+      .ft-evoice{flex-direction:column;align-items:flex-start;text-align:left}
+      .ft-evoice-btn{width:100%;justify-content:center}
+    }
     @media(max-width:768px){
       .ft-map{height:430px}
       .ft-card{position:static;width:100%;margin:1.3rem auto 0;box-shadow:0 18px 44px rgba(18,59,96,.2)}
@@ -3058,6 +3085,14 @@
       <div class="ft-cta" data-reveal style="--d:3">
         <p>Punya pertanyaan? Kami siap membantu memberikan informasi seputar sekolah dan PPDB.</p>
         <button type="button" class="ft-cta-btn" onclick="toggleSibot()">Hubungi Kami <i class="fa-solid fa-arrow-right"></i></button>
+      </div>
+      <div class="ft-evoice" data-reveal style="--d:4">
+        <div class="ft-evoice-icon"><i class="fas fa-comment-dots"></i></div>
+        <div class="ft-evoice-text">
+          <h3>Punya Aspirasi atau Laporan?</h3>
+          <p>Sampaikan lewat E-Voice — bisa dikirim anonim, dan setiap laporan mendapat Ticket ID untuk dipantau perkembangannya kapan saja.</p>
+        </div>
+        <a href="{{ url('/siswa/voice') }}" class="ft-evoice-btn">Buka E-Voice <i class="fas fa-arrow-right"></i></a>
       </div>
     </div>
   </div>

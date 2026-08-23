@@ -366,7 +366,8 @@
         <h1>
           <span class="am-title-line">TEMUKAN JURUSAN</span>
           <span class="am-title-line am-title-gold">PALING COCOK BUATMU</span>
-</h1>
+        </h1>
+        <p>Temukan jurusan SMK yang paling cocok untukmu lewat beberapa pertanyaan singkat — hasil rekomendasi AI lengkap dengan alasan dan peluang kariernya.</p>
         <a class="am-hero-cta" href="#amQuizStart">
           <span class="am-hero-cta-icon"><i class="fas fa-wand-magic-sparkles"></i></span>
           <span><strong>Mulai Kuis Sekarang</strong><small>Temukan jurusan yang paling cocok buatmu</small></span>

@@ -32,26 +32,49 @@
   -webkit-mask-image:linear-gradient(180deg,#000 0,#000 340px,transparent 480px);
   mask-image:linear-gradient(180deg,#000 0,#000 340px,transparent 480px)}
 
-/* ---------- top banner (compact, bukan hero besar) ---------- */
-.ev-top{position:relative;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;
-  margin-bottom:2.4rem;padding:1.6rem clamp(1.2rem,3vw,2.2rem);border-radius:24px;overflow:hidden;
-  background:linear-gradient(120deg,#0d3a66 0%,#123f6e 55%,#0d3a66 100%);color:#fff;
-  box-shadow:0 24px 54px rgba(13,58,102,.22)}
-.ev-top::before{content:"";position:absolute;inset:0;
-  background-image:radial-gradient(rgba(255,255,255,.09) 1.3px,transparent 1.4px);background-size:18px 18px;opacity:.5}
-.ev-top::after{content:"";position:absolute;top:-60px;right:-40px;width:220px;height:220px;border-radius:50%;
-  background:radial-gradient(circle,rgba(255,213,74,.35),rgba(255,213,74,0) 70%)}
-.ev-top>*{position:relative;z-index:2}
-.ev-eyebrow{display:inline-flex;align-items:center;gap:.55rem;font-size:.7rem;font-weight:900;
-  letter-spacing:.16em;text-transform:uppercase;color:#ffd54a;margin-bottom:.6rem}
-.ev-eyebrow i{font-size:.68rem}
-.ev-top h1{font-family:var(--font-display);font-weight:900;font-size:clamp(1.6rem,3.2vw,2.3rem);
-  margin:0;color:#fff;letter-spacing:-.01em}
-.ev-top p{margin:.5rem 0 0;font-size:.86rem;color:rgba(235,245,253,.8);max-width:520px;line-height:1.7}
-.ev-shield{display:inline-flex;align-items:center;gap:.5rem;font-size:.72rem;font-weight:800;color:#0d3a66;
-  background:#fff;border-radius:999px;padding:.6rem .95rem;white-space:nowrap;
-  box-shadow:0 12px 26px rgba(4,14,28,.25)}
-.ev-shield i{color:#ffb300}
+/* ---------- hero (senada dengan School FactCheck) ---------- */
+.ev-hero{position:relative;margin-bottom:2.2rem;padding:clamp(1.9rem,4vw,2.7rem) clamp(1.5rem,3.4vw,2.7rem);
+  border-radius:28px;overflow:hidden;z-index:3;
+  background:linear-gradient(120deg,#082846 0%,#0d3a66 48%,#0a3155 100%);color:#fff;
+  box-shadow:0 30px 64px rgba(8,40,70,.36)}
+.ev-hero::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+  background-image:radial-gradient(rgba(255,255,255,.08) 1.3px,transparent 1.4px);background-size:20px 20px;opacity:.6}
+.ev-hero-glow-a{position:absolute;top:-90px;right:-50px;width:280px;height:280px;border-radius:50%;z-index:0;pointer-events:none;
+  background:radial-gradient(circle,rgba(255,122,0,.30),rgba(255,122,0,0) 70%)}
+.ev-hero-glow-b{position:absolute;bottom:-100px;left:-70px;width:240px;height:240px;border-radius:50%;z-index:0;pointer-events:none;
+  background:radial-gradient(circle,rgba(255,213,74,.22),rgba(255,213,74,0) 70%)}
+.ev-hero canvas.ev-hero-net{display:block;position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.5}
+.ev-hero-main{position:relative;z-index:2;max-width:820px;text-align:left}
+.ev-badge-ai{display:inline-flex;align-items:center;gap:.55rem;font-size:.68rem;font-weight:900;letter-spacing:.16em;
+  text-transform:uppercase;color:#ffd08a;margin-bottom:1.1rem;padding:.55rem .95rem;border-radius:999px;
+  border:1px solid rgba(255,208,138,.35);background:rgba(255,208,138,.1)}
+.ev-badge-ai i{font-size:.75rem;animation:evPulseIcon 2.4s ease-in-out infinite}
+@keyframes evPulseIcon{0%,100%{opacity:1}50%{opacity:.4}}
+.ev-hero h1{font-family:var(--font-display);font-weight:900;font-size:clamp(2.1rem,4.6vw,3.6rem);line-height:1.08;
+  margin:0;color:#fff;letter-spacing:-.015em;text-align:left}
+.ev-hero h1 .ev-title-line{display:block}
+.ev-hero h1 .ev-title-gold{color:#ffd54a}
+.ev-hero p{margin:1.3rem 0 0;font-size:.87rem;color:rgba(230,242,253,.82);line-height:1.85;max-width:520px;text-align:left}
+.ev-hero-cta{display:inline-flex;align-items:center;gap:.8rem;margin-top:1.7rem;padding:.8rem 1rem;border-radius:16px;
+  text-decoration:none;color:#fff;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);cursor:pointer;
+  box-shadow:0 12px 30px rgba(4,14,28,.22);transition:transform .3s ease,background .3s ease,border-color .3s ease,box-shadow .3s ease}
+.ev-hero-cta:hover{transform:translateY(-4px);background:rgba(255,255,255,.1);
+  border-color:rgba(255,213,74,.4);box-shadow:0 18px 38px rgba(4,14,28,.3)}
+.ev-hero-cta-icon{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;flex:0 0 46px;
+  background:linear-gradient(135deg,#ffd54a,#ff8a00);color:#0d3a66;font-size:.9rem}
+.ev-hero-cta strong{display:block;font-size:.92rem;line-height:1.15;font-weight:900;letter-spacing:.01em}
+.ev-hero-cta small{display:block;margin-top:.25rem;color:rgba(230,242,253,.65);font-size:.72rem;font-weight:600}
+.ev-hero-cta-arrow{margin-left:.3rem;color:#ffd54a;font-size:1rem;transition:transform .3s ease}
+.ev-hero-cta:hover .ev-hero-cta-arrow{transform:translateX(4px)}
+.ev-hero-live{position:absolute;top:clamp(1.5rem,3vw,2.1rem);right:clamp(1.5rem,3vw,2.1rem);z-index:3;
+  display:inline-flex;align-items:center;gap:.65rem;font-size:.74rem;font-weight:800;color:#0d3a66;
+  background:#fff;border-radius:999px;padding:.55rem .95rem;white-space:nowrap;box-shadow:0 16px 34px rgba(4,14,28,.32)}
+.ev-hero-live i{color:#ffb300}
+@media(max-width:640px){
+  .ev-hero-live{position:static;display:inline-flex;margin-top:1.2rem}
+  .ev-hero h1{font-size:clamp(1.8rem,8vw,2.5rem)}
+  .ev-hero-cta{width:100%}
+}
 
 /* ---------- layout dua kolom (full width) ---------- */
 .ev-layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:1.8rem;align-items:start}
@@ -94,13 +117,17 @@
 .ev-panel.active{display:block;animation:evFadeIn .4s var(--ease,ease) both}
 @keyframes evFadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 
+/* ---------- typography import (heading khusus E-Voice) ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800;900&display=swap');
+
 /* ---------- card shell ---------- */
 .ev-card{background:#fff;border:1px solid #eef2f6;border-radius:22px;padding:clamp(1.4rem,3vw,2.2rem);
   box-shadow:0 18px 46px rgba(13,58,102,.07)}
 .ev-card + .ev-card{margin-top:1.4rem}
-.ev-card-head{margin-bottom:1.4rem}
-.ev-card-head h2{font-family:var(--font-display);font-size:1.15rem;font-weight:800;margin:0 0 .3rem;color:#0d3a66}
-.ev-card-head p{font-size:.8rem;color:#718396;margin:0;line-height:1.6}
+.ev-card-head{margin-bottom:1.6rem}
+.ev-card-head h2{font-family:'Plus Jakarta Sans',var(--font-display),sans-serif;font-size:clamp(1.5rem,2.6vw,1.9rem);
+  font-weight:900;margin:0 0 .5rem;color:#0d3a66;letter-spacing:-.01em;line-height:1.2}
+.ev-card-head p{font-size:.86rem;color:#718396;margin:0;line-height:1.65}
 
 /* ---------- form fields ---------- */
 .ev-field{margin-bottom:1.4rem}
@@ -171,7 +198,8 @@
 .ev-success-icon{width:64px;height:64px;margin:0 auto 1.1rem;border-radius:50%;
   background:linear-gradient(135deg,#ffd54a,#ffb300);color:#0d3a66;display:flex;align-items:center;justify-content:center;
   font-size:1.6rem;box-shadow:0 16px 36px rgba(255,179,0,.3)}
-.ev-success h2{font-family:var(--font-display);font-size:1.3rem;font-weight:800;margin:0 0 .5rem;color:#0d3a66}
+.ev-success h2{font-family:'Plus Jakarta Sans',var(--font-display),sans-serif;font-size:clamp(1.6rem,2.8vw,2rem);
+  font-weight:900;margin:0 0 .6rem;color:#0d3a66;letter-spacing:-.01em;line-height:1.2}
 .ev-success>p{font-size:.85rem;color:#718396;max-width:420px;margin:0 auto 1.4rem;line-height:1.7}
 .ev-ticket-box{display:inline-flex;align-items:center;gap:.9rem;background:#0d3a66;color:#fff;border-radius:16px;
   padding:1rem 1.3rem;margin:0 auto}
@@ -189,17 +217,18 @@
 .ev-success-tip i{color:#ffb300;margin-top:.15rem;flex:0 0 14px}
 
 /* ---------- lacak laporan ---------- */
-.ev-track-row{display:flex;gap:.7rem}
-.ev-track-row .ev-input{flex:1;font-family:var(--font-display);letter-spacing:.03em}
-.ev-track-empty{text-align:center;padding:2rem 1rem;color:#a7b6c4}
-.ev-track-empty i{font-size:1.8rem;margin-bottom:.8rem;color:#dbe6ee}
-.ev-track-empty p{margin:0;font-size:.82rem}
-.ev-track-notfound{text-align:center;padding:1.6rem 1rem;color:#e0483b;display:none}
+.ev-track-row{display:flex;gap:.8rem;margin-bottom:1.8rem}
+.ev-track-row .ev-input{flex:1;font-family:var(--font-display);letter-spacing:.03em;padding:.9rem 1.1rem;font-size:.92rem}
+.ev-track-row .ev-btn{padding:.9rem 1.6rem;font-size:.88rem}
+.ev-track-empty{text-align:center;padding:2.8rem 1.2rem;color:#a7b6c4;background:#fbfdff;border:1px dashed #dbe6ee;border-radius:16px}
+.ev-track-empty i{font-size:2rem;margin-bottom:1rem;color:#dbe6ee}
+.ev-track-empty p{margin:0;font-size:.85rem}
+.ev-track-notfound{text-align:center;padding:1.8rem 1.2rem;color:#e0483b;display:none;background:#fdeceb;border-radius:16px;margin-top:.2rem}
 .ev-track-notfound.is-shown{display:block}
-.ev-track-notfound i{font-size:1.6rem;margin-bottom:.7rem}
-.ev-track-notfound p{margin:0;font-size:.82rem}
+.ev-track-notfound i{font-size:1.7rem;margin-bottom:.8rem}
+.ev-track-notfound p{margin:0;font-size:.85rem}
 
-.ev-result{display:none}
+.ev-result{display:none;margin-top:.2rem}
 .ev-result.is-shown{display:block;animation:evFadeIn .4s var(--ease,ease) both}
 .ev-result-head{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap;
   padding-bottom:1.2rem;margin-bottom:1.4rem;border-bottom:1px solid #eef2f6}
@@ -267,13 +296,24 @@
 
   <div class="ev-wrap">
 
-    <div class="ev-top">
-      <div>
-        <span class="ev-eyebrow"><i class="fas fa-comment-dots"></i> E-Voice Skaneda</span>
-        <h1>Sampaikan Aspirasi &amp; Laporan</h1>
-        <p>Setiap suara didengar. Pilih kategori, ceritakan situasinya, dan lacak tindak lanjutnya kapan saja pakai Ticket ID.</p>
+    <div class="ev-hero">
+      <span class="ev-hero-glow-a" aria-hidden="true"></span>
+      <span class="ev-hero-glow-b" aria-hidden="true"></span>
+      <canvas class="ev-hero-net" id="evHeroNet" style="position:absolute;inset:0;width:100%;height:100%" aria-hidden="true"></canvas>
+      <div class="ev-hero-main">
+        <span class="ev-badge-ai"><i class="fas fa-comment-dots"></i> E-Voice Skaneda</span>
+        <h1>
+          <span class="ev-title-line">SAMPAIKAN ASPIRASI</span>
+          <span class="ev-title-line ev-title-gold">&amp; LAPORAN</span>
+        </h1>
+        <p>Setiap suara didengar. Pilih kategori, ceritakan situasinya secara aman — bisa anonim — lalu lacak tindak lanjutnya kapan saja pakai Ticket ID.</p>
+        <a class="ev-hero-cta" id="evHeroCta" href="#evForm">
+          <span class="ev-hero-cta-icon"><i class="fas fa-paper-plane"></i></span>
+          <span><strong>Sampaikan Laporan Sekarang</strong><small>Pilih kategori dan ceritakan kejadiannya</small></span>
+          <i class="fas fa-arrow-right ev-hero-cta-arrow"></i>
+        </a>
       </div>
-      <span class="ev-shield"><i class="fas fa-shield-halved"></i> Identitas Anda aman</span>
+      <span class="ev-hero-live"><i class="fas fa-shield-halved"></i> Identitas Anda Aman</span>
     </div>
 
     <div class="ev-layout">
@@ -759,6 +799,75 @@
       trackEmpty.style.display = '';
     }
   });
+
+  /* ---------------- hero neural-network background ---------------- */
+  function initHeroNet() {
+    var canvas = document.getElementById('evHeroNet');
+    if (!canvas || !canvas.getContext) return;
+    var ctx = canvas.getContext('2d');
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var hero = canvas.closest('.ev-hero');
+    var nodes = [];
+    var raf = null;
+
+    function size() {
+      var w = hero.clientWidth, h = hero.clientHeight;
+      canvas.width = w * dpr;
+      canvas.height = h * dpr;
+      canvas.style.width = w + 'px';
+      canvas.style.height = h + 'px';
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      var count = Math.max(14, Math.min(34, Math.floor((w * h) / 16000)));
+      nodes = [];
+      for (var i = 0; i < count; i++) {
+        nodes.push({
+          x: Math.random() * w,
+          y: Math.random() * h,
+          vx: (Math.random() - 0.5) * 0.18,
+          vy: (Math.random() - 0.5) * 0.18,
+          r: 1.4 + Math.random() * 1.6
+        });
+      }
+    }
+
+    function frame() {
+      var w = hero.clientWidth, h = hero.clientHeight;
+      ctx.clearRect(0, 0, w, h);
+      nodes.forEach(function (n) {
+        n.x += n.vx; n.y += n.vy;
+        if (n.x < 0 || n.x > w) n.vx *= -1;
+        if (n.y < 0 || n.y > h) n.vy *= -1;
+      });
+      for (var i = 0; i < nodes.length; i++) {
+        for (var j = i + 1; j < nodes.length; j++) {
+          var dx = nodes[i].x - nodes[j].x, dy = nodes[i].y - nodes[j].y;
+          var dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 130) {
+            ctx.strokeStyle = 'rgba(255,255,255,' + (0.14 * (1 - dist / 130)) + ')';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(nodes[i].x, nodes[i].y);
+            ctx.lineTo(nodes[j].x, nodes[j].y);
+            ctx.stroke();
+          }
+        }
+      }
+      nodes.forEach(function (n) {
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(255,213,74,.55)';
+        ctx.fill();
+      });
+      raf = requestAnimationFrame(frame);
+    }
+
+    size();
+    if (raf) cancelAnimationFrame(raf);
+    raf = requestAnimationFrame(frame);
+    window.addEventListener('resize', function () { size(); });
+  }
+
+  initHeroNet();
 })();
 </script>
 @endpush

@@ -34,38 +34,123 @@
   -webkit-mask-image:linear-gradient(180deg,#000 0,#000 340px,transparent 480px);
   mask-image:linear-gradient(180deg,#000 0,#000 340px,transparent 480px)}
 
-/* top banner */
-.fc-top{position:relative;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;
-  margin-bottom:1.8rem;padding:1.6rem clamp(1.2rem,3vw,2.2rem);border-radius:24px;overflow:hidden;
-  background:linear-gradient(120deg,#0d3a66 0%,#123f6e 55%,#0d3a66 100%);color:#fff;
-  box-shadow:0 24px 54px rgba(13,58,102,.22)}
-.fc-top::before{content:"";position:absolute;inset:0;
-  background-image:radial-gradient(rgba(255,255,255,.09) 1.3px,transparent 1.4px);background-size:18px 18px;opacity:.5}
-.fc-top::after{content:"";position:absolute;top:-60px;right:-40px;width:220px;height:220px;border-radius:50%;
-  background:radial-gradient(circle,rgba(255,213,74,.35),rgba(255,213,74,0) 70%)}
-.fc-top>*{position:relative;z-index:2}
-.fc-eyebrow{display:inline-flex;align-items:center;gap:.55rem;font-size:.7rem;font-weight:900;
-  letter-spacing:.16em;text-transform:uppercase;color:#ffd54a;margin-bottom:.6rem}
-.fc-eyebrow i{font-size:.68rem}
-.fc-top h1{font-family:var(--font-display);font-weight:900;font-size:clamp(1.6rem,3.2vw,2.3rem);
-  margin:0;color:#fff;letter-spacing:-.01em}
-.fc-top p{margin:.5rem 0 0;font-size:.86rem;color:rgba(235,245,253,.8);max-width:560px;line-height:1.7}
-.fc-shield{display:inline-flex;align-items:center;gap:.5rem;font-size:.72rem;font-weight:800;color:#0d3a66;
-  background:#fff;border-radius:999px;padding:.6rem .95rem;white-space:nowrap;
-  box-shadow:0 12px 26px rgba(4,14,28,.25)}
-.fc-shield i{color:#ffb300}
+/* ---------- hero (senada dengan AI Major Matchmaker) ---------- */
+.fc-hero{position:relative;margin-bottom:2.2rem;padding:clamp(1.9rem,4vw,2.7rem) clamp(1.5rem,3.4vw,2.7rem);
+  border-radius:28px;overflow:hidden;z-index:3;
+  background:linear-gradient(120deg,#082846 0%,#0d3a66 48%,#0a3155 100%);color:#fff;
+  box-shadow:0 30px 64px rgba(8,40,70,.36)}
+.fc-hero::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+  background-image:radial-gradient(rgba(255,255,255,.08) 1.3px,transparent 1.4px);background-size:20px 20px;opacity:.6}
+.fc-hero-glow-a{position:absolute;top:-90px;right:-50px;width:280px;height:280px;border-radius:50%;z-index:0;pointer-events:none;
+  background:radial-gradient(circle,rgba(14,165,183,.32),rgba(14,165,183,0) 70%)}
+.fc-hero-glow-b{position:absolute;bottom:-100px;left:-70px;width:240px;height:240px;border-radius:50%;z-index:0;pointer-events:none;
+  background:radial-gradient(circle,rgba(255,213,74,.22),rgba(255,213,74,0) 70%)}
+.fc-hero canvas.fc-hero-net{display:block;position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.5}
+.fc-hero-main{position:relative;z-index:2;max-width:820px;text-align:left}
+.fc-badge-ai{display:inline-flex;align-items:center;gap:.55rem;font-size:.68rem;font-weight:900;letter-spacing:.16em;
+  text-transform:uppercase;color:#8be9f2;margin-bottom:1.1rem;padding:.55rem .95rem;border-radius:999px;
+  border:1px solid rgba(139,233,242,.35);background:rgba(139,233,242,.1)}
+.fc-badge-ai i{font-size:.75rem;animation:fcPulseIcon 2.4s ease-in-out infinite}
+@keyframes fcPulseIcon{0%,100%{opacity:1}50%{opacity:.4}}
+.fc-hero h1{font-family:var(--font-display);font-weight:900;font-size:clamp(2.1rem,4.6vw,3.6rem);line-height:1.08;
+  margin:0;color:#fff;letter-spacing:-.015em;text-align:left}
+.fc-hero h1 .fc-title-line{display:block}
+.fc-hero h1 .fc-title-gold{color:#ffd54a}
+.fc-hero p{margin:1.3rem 0 0;font-size:.87rem;color:rgba(230,242,253,.82);line-height:1.85;max-width:520px;text-align:left}
+.fc-hero-cta{display:inline-flex;align-items:center;gap:.8rem;margin-top:1.7rem;padding:.8rem 1rem;border-radius:16px;
+  text-decoration:none;color:#fff;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);
+  box-shadow:0 12px 30px rgba(4,14,28,.22);transition:transform .3s ease,background .3s ease,border-color .3s ease,box-shadow .3s ease}
+.fc-hero-cta:hover{transform:translateY(-4px);background:rgba(255,255,255,.1);
+  border-color:rgba(255,213,74,.4);box-shadow:0 18px 38px rgba(4,14,28,.3)}
+.fc-hero-cta-icon{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;flex:0 0 46px;
+  background:linear-gradient(135deg,#ffd54a,#ff8a00);color:#0d3a66;font-size:.9rem}
+.fc-hero-cta strong{display:block;font-size:.92rem;line-height:1.15;font-weight:900;letter-spacing:.01em}
+.fc-hero-cta small{display:block;margin-top:.25rem;color:rgba(230,242,253,.65);font-size:.72rem;font-weight:600}
+.fc-hero-cta-arrow{margin-left:.3rem;color:#ffd54a;font-size:1rem;transition:transform .3s ease}
+.fc-hero-cta:hover .fc-hero-cta-arrow{transform:translateX(4px)}
+.fc-hero-live{position:absolute;top:clamp(1.5rem,3vw,2.1rem);right:clamp(1.5rem,3vw,2.1rem);z-index:3;
+  display:inline-flex;align-items:center;gap:.65rem;font-size:.74rem;font-weight:800;color:#0d3a66;
+  background:#fff;border-radius:999px;padding:.55rem .95rem;white-space:nowrap;box-shadow:0 16px 34px rgba(4,14,28,.32)}
+.fc-hero-live i{color:#ffb300}
+@media(max-width:640px){
+  .fc-hero-live{position:static;display:inline-flex;margin-top:1.2rem}
+  .fc-hero h1{font-size:clamp(1.8rem,8vw,2.5rem)}
+  .fc-hero-cta{width:100%}
+}
+
+/* ---------- section head (senada dengan AI Major Matchmaker) ---------- */
+.fc-section-head{text-align:left;max-width:680px;margin:0 0 1.8rem}
+.fc-section-head span.tag{display:inline-flex;align-items:center;gap:.6rem;font-size:.7rem;font-weight:800;letter-spacing:.2em;
+  text-transform:uppercase;color:#0a7583;margin-bottom:1rem}
+.fc-section-head span.tag::before{content:"";width:24px;height:3px;border-radius:99px;background:linear-gradient(90deg,#0ea5b7,#ffb300)}
+.fc-section-head h2{font-family:var(--font-display);font-size:clamp(1.7rem,3.6vw,2.4rem);font-weight:900;
+  color:#0d3a66;margin:0;line-height:1.08;letter-spacing:-.015em;text-transform:uppercase}
+.fc-section-head h2 span{background:linear-gradient(135deg,#ffd54a 0%,#ffb300 45%,#0ea5b7 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.fc-section-head p{font-size:.85rem;color:#5a7086;margin:.9rem 0 0;line-height:1.75;max-width:520px}
+
+/* ---------- report box: user lapor link dugaan hoax ---------- */
+.fc-report{position:relative;margin-bottom:2.2rem;background:#fff;border:1px solid #eef2f6;border-radius:28px;
+  padding:clamp(1.8rem,3.6vw,2.6rem);box-shadow:0 24px 56px rgba(13,58,102,.08);overflow:hidden}
+.fc-report::before{content:"";position:absolute;inset:0;border-radius:28px;padding:1.5px;pointer-events:none;
+  background:linear-gradient(135deg,rgba(14,165,183,.35),rgba(255,255,255,0) 35%,rgba(255,179,0,.26) 100%);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+.fc-report-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:2.6rem;align-items:stretch;position:relative;z-index:1}
+.fc-report-info{position:relative;background:linear-gradient(160deg,rgba(14,165,183,.07),rgba(255,179,0,.06));
+  border:1px solid rgba(14,165,183,.16);border-radius:22px;padding:2rem 2.1rem;overflow:hidden}
+.fc-report-info::after{content:"\f3ed";font-family:"Font Awesome 5 Free";font-weight:900;position:absolute;
+  right:-18px;bottom:-26px;font-size:9rem;color:rgba(13,58,102,.05);pointer-events:none;line-height:1}
+.fc-report-tag{position:relative;display:inline-flex;align-items:center;gap:.6rem;font-size:.8rem;font-weight:900;
+  letter-spacing:.14em;text-transform:uppercase;color:#0a7583}
+.fc-report-tag::before{content:"";width:26px;height:3px;border-radius:99px;background:linear-gradient(90deg,#0ea5b7,#ffb300)}
+.fc-report-heading{position:relative;font-family:var(--font-display);font-size:clamp(1.5rem,2.4vw,1.8rem);font-weight:900;color:#0d3a66;
+  margin:1rem 0 0;line-height:1.25}
+.fc-report-lead{position:relative;font-size:.98rem;color:#4a6178;margin:.85rem 0 0;line-height:1.8;max-width:460px}
+.fc-report-info ul{position:relative;list-style:none;margin:1.6rem 0 0;padding:0;display:grid;gap:1.1rem}
+.fc-report-info li{display:flex;align-items:flex-start;gap:.9rem;font-size:.92rem;color:#33475a;line-height:1.65}
+.fc-report-info li i{width:38px;height:38px;border-radius:12px;flex:0 0 38px;display:flex;align-items:center;justify-content:center;
+  font-size:.92rem;margin-top:.05rem;box-shadow:0 8px 16px rgba(13,58,102,.1)}
+.fc-report-info li:nth-child(1) i{background:linear-gradient(135deg,#0ea5b7,#0a7583);color:#fff}
+.fc-report-info li:nth-child(2) i{background:linear-gradient(135deg,#ffd54a,#ffb300);color:#0d3a66}
+.fc-report-info li:nth-child(3) i{background:linear-gradient(135deg,#123f6e,#0d3a66);color:#fff}
+.fc-report-form{display:grid;gap:1.25rem;background:#f7fafd;border:1px solid #eef2f6;border-radius:20px;padding:1.9rem}
+.fc-field label{display:block;font-size:.85rem;font-weight:800;color:#0d3a66;margin-bottom:.5rem;letter-spacing:.02em}
+.fc-field input,.fc-field select,.fc-field textarea{width:100%;border:1.5px solid #e3edf0;border-radius:14px;
+  padding:.95rem 1.1rem;font-size:.95rem;color:#0d3a66;background:#fff;font-family:inherit;
+  transition:border-color .25s var(--ease,ease),box-shadow .25s var(--ease,ease)}
+.fc-field input:focus,.fc-field select:focus,.fc-field textarea:focus{outline:none;border-color:#ffb300;box-shadow:0 0 0 4px rgba(255,179,0,.16)}
+.fc-field textarea{resize:vertical;min-height:100px}
+.fc-field-hint{font-size:.78rem;color:#a7b6c4;margin-top:.4rem}
+.fc-field-icon{position:relative;display:flex;align-items:center}
+.fc-field-icon input{padding-left:2.9rem}
+.fc-field-icon > i{position:absolute;left:1rem;top:50%;transform:translateY(-50%);display:flex;align-items:center;color:#a7b6c4;font-size:.95rem;pointer-events:none}
+.fc-field-select{position:relative}
+.fc-field-select select{appearance:none;-webkit-appearance:none;padding-right:2.6rem;cursor:pointer}
+.fc-field-select::after{content:"\f078";font-family:"Font Awesome 5 Free";font-weight:900;position:absolute;
+  right:1.1rem;top:2.6rem;font-size:.72rem;color:#a7b6c4;pointer-events:none}
+.fc-report-submit{display:flex;align-items:center;justify-content:center;gap:.7rem;padding:1.1rem 1.6rem;border-radius:14px;
+  width:100%;border:none;background:linear-gradient(135deg,#ffd54a,#ffb300);color:#0a2d52;font-weight:900;font-size:1rem;cursor:pointer;
+  box-shadow:0 16px 34px rgba(255,179,0,.3);transition:transform .25s var(--ease,ease),box-shadow .25s var(--ease,ease)}
+.fc-report-submit:hover{transform:translateY(-2px);box-shadow:0 20px 42px rgba(255,179,0,.4)}
+.fc-report-submit i{font-size:.9rem}
+.fc-report-status{display:none;align-items:flex-start;gap:.7rem;font-size:.88rem;line-height:1.65;padding:1rem 1.15rem;
+  border-radius:14px;background:#e8f5ee;color:#1f8a4c;border:1px solid rgba(31,138,76,.18)}
+.fc-report-status.show{display:flex}
+.fc-report-status.is-error{background:#fdeceb;color:#e0483b;border-color:rgba(224,72,59,.2)}
+.fc-report-status i{margin-top:.15rem;font-size:.95rem}
+@media(max-width:900px){.fc-report-grid{grid-template-columns:1fr;gap:1.8rem}}
 
 /* stats strip */
 .fc-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:.9rem;margin-bottom:1.8rem}
-.fc-stat{background:#fff;border:1px solid #eef2f6;border-radius:16px;padding:1rem 1.1rem;display:flex;align-items:center;gap:.8rem;
-  box-shadow:0 10px 26px rgba(13,58,102,.05)}
-.fc-stat-icon{width:38px;height:38px;border-radius:11px;flex:0 0 38px;display:flex;align-items:center;justify-content:center;font-size:.9rem}
-.fc-stat b{display:block;font-family:var(--font-display);font-size:1.35rem;font-weight:900;line-height:1;color:#0d3a66}
-.fc-stat span{display:block;font-size:.66rem;font-weight:800;letter-spacing:.03em;color:#8698a9;margin-top:.25rem;text-transform:uppercase}
-.fc-stat.total .fc-stat-icon{background:#eef3f8;color:#5a7086}
-.fc-stat.verified .fc-stat-icon{background:#e8f5ee;color:#1f8a4c}
-.fc-stat.false .fc-stat-icon{background:#fdeceb;color:#e0483b}
-.fc-stat.pending .fc-stat-icon{background:#fff6e0;color:#b98a12}
+.fc-stat{background:#fff;border:1px solid #eef2f6;border-radius:18px;padding:1.5rem 1.1rem;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:.6rem;
+  box-shadow:0 10px 26px rgba(13,58,102,.05);transition:transform .25s var(--ease,ease),box-shadow .25s var(--ease,ease)}
+.fc-stat:hover{transform:translateY(-3px);box-shadow:0 16px 34px rgba(13,58,102,.09)}
+.fc-stat b{display:block;font-family:var(--font-display);font-size:1.8rem;font-weight:900;line-height:1;color:#0d3a66}
+.fc-stat span{display:block;font-size:.7rem;font-weight:800;letter-spacing:.04em;color:#8698a9;margin-top:.3rem;text-transform:uppercase}
+.fc-stat.verified b{color:#1f8a4c}
+.fc-stat.false b{color:#e0483b}
+.fc-stat.pending b{color:#b98a12}
 
 /* layout */
 .fc-layout{display:grid;grid-template-columns:290px minmax(0,1fr);gap:1.8rem;align-items:start}
@@ -168,6 +253,21 @@
 .fc-date{display:inline-flex;align-items:center;gap:.35rem;font-size:.68rem;color:#a7b6c4;font-weight:700;white-space:nowrap}
 .fc-date i{font-size:.66rem}
 
+/* link yang dilaporkan warga/user (tiktok/yt/berita) */
+.fc-report-link-row{display:flex;align-items:center;gap:.5rem;margin-bottom:.75rem;padding:.55rem .75rem;
+  border-radius:10px;background:#f7fafd;border:1px solid #eef2f6}
+.fc-report-link-row .plat-icon{width:24px;height:24px;border-radius:7px;flex:0 0 24px;display:flex;align-items:center;
+  justify-content:center;font-size:.7rem;color:#fff}
+.fc-report-link-row .plat-icon.tiktok{background:#010101}
+.fc-report-link-row .plat-icon.youtube{background:#ff0000}
+.fc-report-link-row .plat-icon.berita{background:#2f6fa8}
+.fc-report-link-row .plat-icon.lainnya{background:#5a7086}
+.fc-report-link-row a{font-size:.72rem;font-weight:700;color:#0d3a66;text-decoration:none;overflow:hidden;
+  text-overflow:ellipsis;white-space:nowrap}
+.fc-report-link-row a:hover{text-decoration:underline}
+.fc-report-link-row span.lbl{font-size:.62rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:#a7b6c4;
+  display:block;margin-bottom:.1rem}
+
 /* empty state */
 .fc-empty{display:none;text-align:center;padding:3.5rem 1rem;background:#fff;border:1px dashed #dbe6ee;border-radius:20px}
 .fc-empty.is-shown{display:block}
@@ -199,12 +299,15 @@
 }
 @media(max-width:700px){
   .fc-wrap{padding:32px 0 70px}
-  .fc-top{padding:1.3rem 1.1rem;border-radius:20px}
+  .fc-hero{padding:1.5rem 1.1rem;border-radius:20px}
   .fc-side{flex-direction:column}
   .fc-grid{grid-template-columns:1fr}
   .fc-toolbar{align-items:flex-start}
   .fc-cta{flex-direction:column;align-items:stretch;text-align:center}
   .fc-cta-btn{justify-content:center}
+  .fc-report{padding:1.4rem 1.1rem;border-radius:22px}
+  .fc-report-info{padding:1.5rem 1.3rem}
+  .fc-report-form{padding:1.3rem}
 }
 @media(max-width:480px){
   .fc-stats{grid-template-columns:1fr 1fr}
@@ -221,20 +324,73 @@
 
   <div class="fc-wrap">
 
-    <div class="fc-top">
-      <div>
-        <span class="fc-eyebrow"><i class="fas fa-search"></i> School FactCheck</span>
-        <h1>Klarifikasi Informasi &amp; Hoaks</h1>
+    <div class="fc-hero">
+      <span class="fc-hero-glow-a" aria-hidden="true"></span>
+      <span class="fc-hero-glow-b" aria-hidden="true"></span>
+      <canvas class="fc-hero-net" id="fcHeroNet" style="position:absolute;inset:0;width:100%;height:100%" aria-hidden="true"></canvas>
+      <div class="fc-hero-main">
+        <span class="fc-badge-ai"><i class="fas fa-shield-halved"></i> School FactCheck</span>
+        <h1>
+          <span class="fc-title-line">KLARIFIKASI INFORMASI</span>
+          <span class="fc-title-line fc-title-gold">&amp; HOAKS</span>
+        </h1>
         <p>Cek kebenaran informasi yang beredar seputar PPDB, jadwal kegiatan, pengumuman, dan kebijakan SMK Negeri 2 Mojokerto sebelum kamu percaya atau menyebarkannya.</p>
+        <a class="fc-hero-cta" href="#fcReportAnchor">
+          <span class="fc-hero-cta-icon"><i class="fas fa-link"></i></span>
+          <span><strong>Laporkan Link Dugaan Hoax</strong><small>Kirim link TikTok, YouTube, atau berita ke admin</small></span>
+          <i class="fas fa-arrow-right fc-hero-cta-arrow"></i>
+        </a>
       </div>
-      <span class="fc-shield"><i class="fas fa-certificate"></i> Diverifikasi Sumber Resmi</span>
+      <span class="fc-hero-live"><i class="fas fa-certificate"></i> Diverifikasi Sumber Resmi</span>
+    </div>
+
+    <!-- ================= BOX LAPORAN: user submit link dugaan hoax ================= -->
+    <div class="fc-report" id="fcReportAnchor">
+      <div class="fc-report-grid">
+        <div class="fc-report-info">
+          <span class="fc-report-tag"><i class="fas fa-paper-plane"></i> Laporkan Klarifikasi</span>
+          <h3 class="fc-report-heading">Nemu berita atau video mencurigakan?</h3>
+          <p class="fc-report-lead">Tempel link berita, TikTok, atau YouTube yang kamu temukan. Tim admin sekolah akan menelusuri kebenarannya, lalu hasilnya (benar/hoax) akan tampil di halaman ini lengkap dengan link aslinya.</p>
+          <ul>
+            <li><i class="fas fa-link"></i> Cukup satu link — TikTok, YouTube, atau artikel berita.</li>
+            <li><i class="fas fa-user-shield"></i> Diperiksa langsung oleh admin sekolah, bukan otomatis.</li>
+            <li><i class="fas fa-eye"></i> Hasil verifikasi tampil publik beserta link sumbernya.</li>
+          </ul>
+        </div>
+        <form class="fc-report-form" id="fcReportForm" novalidate>
+          <div class="fc-field">
+            <label for="fcReportLink">Link yang kamu temukan <span style="color:#e0483b">*</span></label>
+            <div class="fc-field-icon">
+              <i class="fas fa-link"></i>
+              <input type="url" id="fcReportLink" name="link" placeholder="https://tiktok.com/... atau https://youtube.com/..." required>
+            </div>
+            <span class="fc-field-hint">Bisa link TikTok, YouTube, Instagram, atau berita online.</span>
+          </div>
+          <div class="fc-field fc-field-select">
+            <label for="fcReportKategori">Terkait apa?</label>
+            <select id="fcReportKategori" name="kategori">
+              <option value="PPDB">PPDB</option>
+              <option value="Jadwal">Jadwal Kegiatan</option>
+              <option value="Pengumuman">Pengumuman</option>
+              <option value="Kebijakan">Kebijakan Sekolah</option>
+              <option value="Lainnya">Lainnya</option>
+            </select>
+          </div>
+          <div class="fc-field">
+            <label for="fcReportCatatan">Ceritakan singkat (opsional)</label>
+            <textarea id="fcReportCatatan" name="catatan" placeholder="Contoh: video ini bilang PPDB dibuka Januari, itu bener nggak sih?"></textarea>
+          </div>
+          <button type="submit" class="fc-report-submit"><i class="fas fa-paper-plane"></i> Kirim ke Admin</button>
+          <div class="fc-report-status" id="fcReportStatus"><i class="fas fa-circle-check"></i><span></span></div>
+        </form>
+      </div>
     </div>
 
     <div class="fc-stats" id="fcStats">
-      <div class="fc-stat total"><span class="fc-stat-icon"><i class="fas fa-layer-group"></i></span><div><b id="fcStatTotal">0</b><span>Total Klarifikasi</span></div></div>
-      <div class="fc-stat verified"><span class="fc-stat-icon"><i class="fas fa-check-circle"></i></span><div><b id="fcStatVerified">0</b><span>Terverifikasi</span></div></div>
-      <div class="fc-stat false"><span class="fc-stat-icon"><i class="fas fa-times-circle"></i></span><div><b id="fcStatFalse">0</b><span>Tidak Benar</span></div></div>
-      <div class="fc-stat pending"><span class="fc-stat-icon"><i class="fas fa-question-circle"></i></span><div><b id="fcStatPending">0</b><span>Belum Terkonfirmasi</span></div></div>
+      <div class="fc-stat total"><div><b id="fcStatTotal">0</b><span>Total Klarifikasi</span></div></div>
+      <div class="fc-stat verified"><div><b id="fcStatVerified">0</b><span>Terverifikasi</span></div></div>
+      <div class="fc-stat false"><div><b id="fcStatFalse">0</b><span>Tidak Benar</span></div></div>
+      <div class="fc-stat pending"><div><b id="fcStatPending">0</b><span>Belum Terkonfirmasi</span></div></div>
     </div>
 
     <div class="fc-layout">
@@ -270,12 +426,18 @@
 
         <div class="fc-side-note">
           <h3><i class="fas fa-exclamation-triangle"></i> Menemukan Info Meragukan?</h3>
-          <p>Laporkan informasi yang belum ada klarifikasinya di sini agar segera kami tindak lanjuti dan verifikasi kebenarannya.</p>
-          <a href="{{ route('kontak') }}">Laporkan Sekarang <i class="fas fa-arrow-right"></i></a>
+          <p>Punya link TikTok, YouTube, atau berita yang perlu dicek kebenarannya? Kirim ke admin lewat form laporan.</p>
+          <a href="#fcReportAnchor">Laporkan Sekarang <i class="fas fa-arrow-right"></i></a>
         </div>
       </aside>
 
       <div class="fc-main">
+
+        <div class="fc-section-head">
+          <span class="tag"><i class="fas fa-list-check"></i> Daftar Klarifikasi</span>
+          <h2>Sudah <span>Diverifikasi</span></h2>
+          <p>Hasil penelusuran admin atas laporan dari warga sekolah maupun temuan tim FactCheck sendiri.</p>
+        </div>
 
         <div class="fc-toolbar">
           <div class="fc-status-pills" id="fcStatusPills">
@@ -300,7 +462,7 @@
             <h3>Belum menemukan klarifikasi yang kamu cari?</h3>
             <p>Sampaikan isu atau kabar yang beredar dan tim sekolah akan segera menelusuri kebenarannya.</p>
           </div>
-          <a href="{{ route('kontak') }}" class="fc-cta-btn"><i class="fas fa-paper-plane"></i> Ajukan Klarifikasi</a>
+          <a href="#fcReportAnchor" class="fc-cta-btn"><i class="fas fa-paper-plane"></i> Ajukan Klarifikasi</a>
         </div>
 
       </div>
@@ -315,13 +477,24 @@
 (function () {
   /* ---------------- data klarifikasi ----------------
      Frontend-only: mudah diganti menjadi hasil fetch API
-     saat backend/CMS sudah tersedia. */
+     saat backend/CMS sudah tersedia. Nantinya tiap item ini
+     idealnya datang dari tabel "laporan_klarifikasi" di DB:
+       status, kategori, klaim, penjelasan  -> diisi admin
+       linkLaporan, platformLaporan          -> link yang dikirim pelapor
+                                                 (tiktok/youtube/berita/lainnya)
+       sumber, sumberUrl                     -> rujukan resmi dari admin
+       tanggal                                -> tanggal admin publish status
+     TODO backend: ganti array statis ini dengan
+       fetch('/berita/factcheck/data').then(r => r.json())
+  */
   var FACTS = [
     {
       status: 'Tidak Benar',
       kategori: 'PPDB',
       klaim: 'PPDB SMK Negeri 2 Mojokerto tahun ajaran baru dibuka mulai Januari.',
       penjelasan: 'Jadwal resmi PPDB ditentukan oleh Dinas Pendidikan Provinsi Jawa Timur dan biasanya diumumkan pertengahan tahun, bukan Januari. Calon peserta didik diimbau hanya merujuk pada jadwal resmi PPDB Jatim dan pengumuman sekolah, bukan pesan berantai.',
+      linkLaporan: 'https://www.tiktok.com/@contoh/video/000000',
+      platformLaporan: 'tiktok',
       sumber: 'ppdbjatim.net',
       sumberUrl: 'https://ppdbjatim.net',
       tanggal: '2026-08-15'
@@ -340,6 +513,8 @@
       kategori: 'Kebijakan',
       klaim: 'Sekolah akan menerapkan sistem full day school mulai semester depan.',
       penjelasan: 'Wacana ini masih dalam tahap kajian internal dan belum ada Surat Keputusan resmi yang diterbitkan. Informasi akan diperbarui begitu ada keputusan final dari pihak sekolah.',
+      linkLaporan: 'https://www.youtube.com/watch?v=contoh000',
+      platformLaporan: 'youtube',
       sumber: '',
       sumberUrl: '',
       tanggal: '2026-08-10'
@@ -385,6 +560,8 @@
       kategori: 'Pengumuman',
       klaim: 'Setiap peserta didik dikenakan sumbangan wajib Rp500.000 untuk kegiatan MPLS.',
       penjelasan: 'Sekolah tidak memungut biaya wajib untuk kegiatan MPLS. Jika ada pihak yang meminta sejumlah uang dengan mengatasnamakan sekolah, peserta didik dan orang tua diimbau segera melapor ke pihak sekolah.',
+      linkLaporan: 'https://contohberita.com/mplsmojokerto-viral',
+      platformLaporan: 'berita',
       sumber: 'Klarifikasi Humas Sekolah',
       sumberUrl: '',
       tanggal: '2026-07-10'
@@ -437,6 +614,26 @@
     });
   }
 
+  var PLATFORM_META = {
+    tiktok: { icon: 'fas fa-music', label: 'Dilaporkan dari TikTok' },
+    youtube: { icon: 'fas fa-play', label: 'Dilaporkan dari YouTube' },
+    berita: { icon: 'fas fa-newspaper', label: 'Dilaporkan dari berita' },
+    lainnya: { icon: 'fas fa-link', label: 'Dilaporkan dari link' }
+  };
+
+  function reportLinkHtml(item) {
+    if (!item.linkLaporan) return '';
+    var meta = PLATFORM_META[item.platformLaporan] || PLATFORM_META.lainnya;
+    var platCls = item.platformLaporan && PLATFORM_META[item.platformLaporan] ? item.platformLaporan : 'lainnya';
+    return (
+      '<div class="fc-report-link-row">' +
+        '<span class="plat-icon ' + platCls + '"><i class="' + meta.icon + '"></i></span>' +
+        '<span><span class="lbl">' + meta.label + '</span>' +
+        '<a href="' + item.linkLaporan + '" target="_blank" rel="noopener">' + escapeHtml(item.linkLaporan) + '</a></span>' +
+      '</div>'
+    );
+  }
+
   function cardHtml(item, idx) {
     var cls = STATUS_CLASS[item.status];
     var icon = STATUS_ICON[item.status];
@@ -452,6 +649,7 @@
           '<span class="fc-badge ' + cls + '"><i class="fas ' + icon + '"></i>' + item.status + '</span>' +
           '<span class="fc-cat-tag">' + item.kategori + '</span>' +
         '</div>' +
+        reportLinkHtml(item) +
         '<p class="fc-claim"><i class="fas fa-quote-left"></i><span>' + escapeHtml(item.klaim) + '</span></p>' +
         '<p class="fc-explain">' + escapeHtml(item.penjelasan) + '</p>' +
         '<button class="fc-more" type="button" data-toggle-explain>' +
@@ -543,6 +741,133 @@
     });
   });
 
+  /* ---------------- form laporan: user kirim link dugaan hoax ----------------
+     FRONTEND-ONLY untuk sekarang: submit langsung ditolak dari reload,
+     divalidasi ringan, lalu (sebagai simulasi) ditambahkan sebagai kartu
+     berstatus "Belum Terkonfirmasi" di grid supaya alurnya kelihatan utuh.
+     TODO backend: ganti blok "SIMULASI" di bawah dengan fetch POST asli, mis.
+       fetch('/berita/factcheck/store', {
+         method: 'POST',
+         headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': document.querySelector('meta[name=csrf-token]').content },
+         body: JSON.stringify({ link, kategori, catatan })
+       })
+       lalu admin yang login akan mengubah status & mengisi penjelasan resmi
+       lewat halaman admin, baru tampil final di sini (bukan auto Belum Terkonfirmasi). */
+  function detectPlatform(url) {
+    var u = url.toLowerCase();
+    if (u.indexOf('tiktok.com') !== -1) return 'tiktok';
+    if (u.indexOf('youtube.com') !== -1 || u.indexOf('youtu.be') !== -1) return 'youtube';
+    if (u.indexOf('instagram.com') !== -1 || u.indexOf('facebook.com') !== -1 || u.indexOf('x.com') !== -1 || u.indexOf('twitter.com') !== -1) return 'lainnya';
+    return 'berita';
+  }
+
+  function showReportStatus(message, isError) {
+    var box = document.getElementById('fcReportStatus');
+    box.classList.toggle('is-error', !!isError);
+    box.querySelector('i').className = isError ? 'fas fa-circle-exclamation' : 'fas fa-circle-check';
+    box.querySelector('span').textContent = message;
+    box.classList.add('show');
+  }
+
+  var reportForm = document.getElementById('fcReportForm');
+  reportForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var link = document.getElementById('fcReportLink').value.trim();
+    var kategori = document.getElementById('fcReportKategori').value;
+    var catatan = document.getElementById('fcReportCatatan').value.trim();
+
+    var isValidUrl = /^https?:\/\/.+\..+/i.test(link);
+    if (!isValidUrl) {
+      showReportStatus('Link belum valid. Pastikan diawali https:// dan lengkap ya.', true);
+      return;
+    }
+
+    /* ---- SIMULASI: tampilkan sebagai "Belum Terkonfirmasi" sampai admin memverifikasi ---- */
+    FACTS.unshift({
+      status: 'Belum Terkonfirmasi',
+      kategori: kategori,
+      klaim: catatan || 'Laporan baru menunggu verifikasi admin.',
+      penjelasan: 'Laporan ini baru saja dikirim dan sedang ditelusuri oleh tim admin sekolah. Status dan penjelasan resmi akan diperbarui begitu proses verifikasi selesai.',
+      linkLaporan: link,
+      platformLaporan: detectPlatform(link),
+      sumber: '',
+      sumberUrl: '',
+      tanggal: new Date().toISOString().slice(0, 10)
+    });
+
+    showReportStatus('Terkirim! Laporanmu sudah masuk ke daftar dan menunggu diverifikasi admin.', false);
+    reportForm.reset();
+    render();
+  });
+
+  /* ---------------- hero neural-network background ---------------- */
+  function initHeroNet() {
+    var canvas = document.getElementById('fcHeroNet');
+    if (!canvas || !canvas.getContext) return;
+    var ctx = canvas.getContext('2d');
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var hero = canvas.closest('.fc-hero');
+    var nodes = [];
+    var raf = null;
+
+    function size() {
+      var w = hero.clientWidth, h = hero.clientHeight;
+      canvas.width = w * dpr;
+      canvas.height = h * dpr;
+      canvas.style.width = w + 'px';
+      canvas.style.height = h + 'px';
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      var count = Math.max(14, Math.min(34, Math.floor((w * h) / 16000)));
+      nodes = [];
+      for (var i = 0; i < count; i++) {
+        nodes.push({
+          x: Math.random() * w,
+          y: Math.random() * h,
+          vx: (Math.random() - 0.5) * 0.18,
+          vy: (Math.random() - 0.5) * 0.18,
+          r: 1.4 + Math.random() * 1.6
+        });
+      }
+    }
+
+    function frame() {
+      var w = hero.clientWidth, h = hero.clientHeight;
+      ctx.clearRect(0, 0, w, h);
+      nodes.forEach(function (n) {
+        n.x += n.vx; n.y += n.vy;
+        if (n.x < 0 || n.x > w) n.vx *= -1;
+        if (n.y < 0 || n.y > h) n.vy *= -1;
+      });
+      for (var i = 0; i < nodes.length; i++) {
+        for (var j = i + 1; j < nodes.length; j++) {
+          var dx = nodes[i].x - nodes[j].x, dy = nodes[i].y - nodes[j].y;
+          var dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 130) {
+            ctx.strokeStyle = 'rgba(255,255,255,' + (0.14 * (1 - dist / 130)) + ')';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(nodes[i].x, nodes[i].y);
+            ctx.lineTo(nodes[j].x, nodes[j].y);
+            ctx.stroke();
+          }
+        }
+      }
+      nodes.forEach(function (n) {
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(255,213,74,.55)';
+        ctx.fill();
+      });
+      raf = requestAnimationFrame(frame);
+    }
+
+    size();
+    if (raf) cancelAnimationFrame(raf);
+    raf = requestAnimationFrame(frame);
+    window.addEventListener('resize', function () { size(); });
+  }
+
+  initHeroNet();
   render();
 })();
 </script>
