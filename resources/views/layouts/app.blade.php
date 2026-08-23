@@ -182,53 +182,85 @@
        AI MAJOR MATCHMAKER — NAVBAR FEATURE
        ============================================================ */
     .nav-ai-matchmaker{
-      background:linear-gradient(135deg,rgba(249,168,37,.18),rgba(40,169,225,.16)) !important;
-      border:1px solid rgba(249,168,37,.45);
-      color:#ffd54f !important;
+      display:inline-flex !important;
+      align-items:center !important;
+      justify-content:center !important;
+      gap:.55rem !important;
+      position:relative !important;
+      width:auto !important;
+      min-width:205px !important;
+      height:52px !important;
+      box-sizing:border-box !important;
+      padding:.65rem 1.15rem !important;
+      background:linear-gradient(135deg,#ff8f00,#ff5722) !important;
+      border:2px solid rgba(255,213,79,.65) !important;
+      color:#fff !important;
       border-radius:12px !important;
-      padding:.55rem .85rem !important;
-      box-shadow:0 4px 16px rgba(249,168,37,.12),inset 0 1px 0 rgba(255,255,255,.12);
-      overflow:hidden;
+      font-family:var(--font-body);
+      font-size:1rem !important;
+      font-weight:800 !important;
+      line-height:1 !important;
+      white-space:nowrap !important;
+      text-decoration:none !important;
+      box-shadow:0 4px 16px rgba(244,81,30,.35),inset 0 0 0 1px rgba(255,255,255,.18) !important;
+      overflow:visible !important;
+      flex-shrink:0 !important;
     }
     .nav-ai-matchmaker::before{
       content:"";
       position:absolute;
       inset:0;
+      border-radius:inherit;
       background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.16) 50%,transparent 70%);
       transform:translateX(-120%);
       transition:transform .6s ease;
+      pointer-events:none;
     }
     .nav-ai-matchmaker:hover::before{transform:translateX(120%)}
     .nav-ai-matchmaker:hover{
       color:#fff !important;
-      border-color:rgba(255,213,79,.8);
-      background:linear-gradient(135deg,rgba(249,168,37,.28),rgba(40,169,225,.24)) !important;
+      border-color:rgba(255,213,79,.9) !important;
+      background:linear-gradient(135deg,#ff9f1c,#ff681f) !important;
       transform:translateY(-2px);
-      box-shadow:0 8px 24px rgba(249,168,37,.25),inset 0 0 0 1px rgba(255,255,255,.18);
+      box-shadow:0 8px 24px rgba(244,81,30,.5),inset 0 0 0 1px rgba(255,255,255,.2) !important;
     }
     .nav-ai-matchmaker::after{display:none !important}
     .nav-ai-matchmaker .ai-icon{
       color:#ffd54f;
       filter:drop-shadow(0 0 7px rgba(255,213,79,.45));
       transition:transform .3s ease;
+      flex:0 0 auto;
     }
     .nav-ai-matchmaker:hover .ai-icon{
       transform:rotate(-8deg) scale(1.12);
     }
-    .ai-nav-badge{
-      position:absolute;
-      top:-7px;
-      right:-7px;
-      padding:2px 5px;
-      border-radius:999px;
-      background:linear-gradient(135deg,#ff6d00,#f4511e);
-      color:#fff;
-      font-size:.48rem;
-      line-height:1.1;
-      font-weight:800;
-      letter-spacing:.04em;
-      box-shadow:0 3px 9px rgba(244,81,30,.35);
+    .nav-ai-matchmaker > span:not(.ai-nav-badge){
+      display:inline-block;
+      position:relative;
       z-index:2;
+    }
+    .ai-nav-badge{
+      position:absolute !important;
+      top:-9px !important;
+      right:-8px !important;
+      display:flex !important;
+      align-items:center !important;
+      justify-content:center !important;
+      min-width:32px !important;
+      height:25px !important;
+      padding:0 7px !important;
+      box-sizing:border-box !important;
+      border-radius:999px !important;
+      background:linear-gradient(135deg,#ff6d00,#f4511e) !important;
+      color:#fff !important;
+      font-size:.78rem !important;
+      line-height:1 !important;
+      font-weight:900 !important;
+      letter-spacing:.02em !important;
+      box-shadow:0 3px 9px rgba(244,81,30,.35) !important;
+      border:1px solid rgba(255,255,255,.2) !important;
+      z-index:20 !important;
+      pointer-events:none !important;
     }
 
     /* ACTIVE — garis tetap terlihat */
@@ -338,7 +370,7 @@
       #navbar.scrolled .nav-inner{padding:.7rem 1rem}
       .nav-cta{font-size:1.05rem;padding:.7rem 1rem !important}
       .nav-ai-matchmaker{width:100%;padding:.7rem .8rem !important;border-radius:10px !important}
-      .ai-nav-badge{top:4px;right:10px}
+      .ai-nav-badge{top:4px !important;right:10px !important;min-width:34px !important;height:27px !important;font-size:.9rem !important;}
     }
     @media(max-width:600px){
       .section-py{padding:60px 0}
@@ -657,7 +689,6 @@
           <a href="#" class="nav-link dropdown-trigger">Siswa <i class="fas fa-chevron-down"></i></a>
           <div class="dropdown-menu">
             <a href="{{ url('/siswa/karya-siswa') }}"><i class="fas fa-lightbulb"></i> Karya Siswa</a>
-            <a href="{{ url('/siswa/prestasi-siswa') }}"><i class="fas fa-trophy"></i> Prestasi Siswa</a>
             <a href="{{ url('/siswa/ekstrakurikuler') }}"><i class="fas fa-people-group"></i> Ekstrakurikuler</a>
             <a href="{{ url('/siswa/voice') }}"><i class="fas fa-comment-dots"></i> E-Voice</a>
           </div>
@@ -675,23 +706,17 @@
           <a href="#" class="nav-link dropdown-trigger">Galeri <i class="fas fa-chevron-down"></i></a>
           <div class="dropdown-menu">
             <a href="{{ url('/galeri/kegiatan') }}"><i class="fas fa-school"></i> Kegiatan Sekolah</a>
-            <a href="{{ url('/galeri/prestasi-sekolah') }}"><i class="fas fa-medal"></i> Prestasi Sekolah</a>
+            <a href="{{ url('/galeri/prestasi-sekolah') }}"><i class="fas fa-medal"></i> Prestasi</a>
           </div>
         </li>
 
-        <li class="nav-item">
-          <a href="#" class="nav-link dropdown-trigger">PKL &amp; Alumni <i class="fas fa-chevron-down"></i></a>
-          <div class="dropdown-menu">
-            <a href="{{ route('pkl-alumni') }}"><i class="fas fa-briefcase"></i> Informasi PKL &amp; Alumni</a>
-            <a href="{{ url('/alumni/portofolio') }}"><i class="fas fa-graduation-cap"></i> Jejak &amp; Portofolio Alumni</a>
-          </div>
-        </li>
+        <li class="nav-item"><a href="{{ url('/bkk-loker') }}" class="nav-link {{ request()->is('bkk-loker*') ? 'active' : '' }}">BKK &amp; Loker</a></li>
 
         <li class="nav-item">
-          <a href="{{ url('/ai-major-matchmaker') }}"
-             class="nav-link nav-cta nav-ai-matchmaker {{ request()->is('ai-major-matchmaker*') ? 'active' : '' }}"
-             aria-label="AI Major Matchmaker">
-            <a href="{{ url('/ai') }}"><i class="fas fa-wand-magic-sparkles ai-icon"></i>
+          <a href="{{ url('/ai') }}"
+             class="nav-link nav-cta nav-ai-matchmaker {{ request()->is('ai*') ? 'active' : '' }}"
+             aria-label="Cari Jurusanmu">
+            <i class="fas fa-wand-magic-sparkles ai-icon"></i>
             <span>Cari Jurusanmu</span>
             <span class="ai-nav-badge">AI</span>
           </a>

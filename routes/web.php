@@ -83,9 +83,13 @@ Route::view('/ppdb', 'ppdb.index')
     ->name('ppdb');
 
 // ==========================================================================
-// PKL & ALUMNI
+// BKK & LOKER
 // ==========================================================================
-Route::view('/pkl-alumni', 'pkl-alumni')
+Route::view('/bkk-loker', 'bkk-loker')
+    ->name('bkk-loker');
+
+// Route lama tetap dipertahankan agar link lama tidak rusak.
+Route::redirect('/pkl-alumni', '/bkk-loker')
     ->name('pkl-alumni');
 
 Route::redirect('/kontak', '/#kontak')
@@ -106,7 +110,12 @@ Route::view('/berita/index', 'berita.index')
 Route::view('/galeri/kegiatan', 'galeri.kegiatan')
     ->name('kegiatan');
 
-Route::view('/galeri/prestasi-sekolah', 'galeri.prestasi-sekolah')
+// Prestasi — gabungan Prestasi Siswa & Prestasi Sekolah
+Route::view('/prestasi', 'siswa.prestasi-siswa')
+    ->name('prestasi');
+
+// Route lama tetap dipertahankan agar link lama tidak rusak.
+Route::redirect('/galeri/prestasi-sekolah', '/prestasi')
     ->name('prestasi-sekolah');
 
 Route::view('/keahlian/aphp', 'keahlian.aphp')
@@ -135,5 +144,3 @@ Route::view('/alumni/portofolio', 'alumni.portofolio')
 
 Route::view('ai', 'ai')
     ->name('ai');
-
-
