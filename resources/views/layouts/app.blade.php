@@ -154,8 +154,10 @@
     /* ============================================================
        GARIS BAWAH — DENGAN ANIMASI SLIDE IN
        ============================================================ */
+    .nav-link::before,
     .nav-link::after{
       display:none !important;
+      content:none !important;
     }
 
     /* HOVER — garis muncul dengan animasi slide in */
@@ -181,7 +183,14 @@
       height:52px !important;
       box-sizing:border-box !important;
       padding:.65rem 1.15rem !important;
-      background:linear-gradient(135deg,#ff8f00,#ff5722) !important;
+      /* Shine dibuat sebagai background di dalam tombol, bukan pseudo-element.
+         Jadi badge AI tetap boleh keluar dari tombol tanpa membawa shine keluar. */
+      background-image:
+        linear-gradient(110deg,transparent 30%,rgba(255,255,255,.16) 50%,transparent 70%),
+        linear-gradient(135deg,#ff8f00,#ff5722) !important;
+      background-size:250% 100%,100% 100% !important;
+      background-position:-100% 0,0 0 !important;
+      background-repeat:no-repeat !important;
       border:2px solid rgba(255,213,79,.65) !important;
       color:#fff !important;
       border-radius:12px !important;
@@ -192,25 +201,17 @@
       white-space:nowrap !important;
       text-decoration:none !important;
       box-shadow:0 4px 16px rgba(244,81,30,.35),inset 0 0 0 1px rgba(255,255,255,.18) !important;
-      overflow:hidden !important;
+      overflow:visible !important;
       flex-shrink:0 !important;
+      transition:background-position .6s ease, transform .3s ease, box-shadow .3s ease, border-color .3s ease !important;
     }
-    .nav-ai-matchmaker::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      border-radius:inherit;
-      background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.16) 50%,transparent 70%);
-      transform:translateX(-120%);
-      transition:transform .6s ease;
-      pointer-events:none;
-      z-index:1;
-    }
-    .nav-ai-matchmaker:hover::before{transform:translateX(120%)}
     .nav-ai-matchmaker:hover{
+      background-image:
+        linear-gradient(110deg,transparent 30%,rgba(255,255,255,.22) 50%,transparent 70%),
+        linear-gradient(135deg,#ff9f1c,#ff681f) !important;
+      background-position:120% 0,0 0 !important;
       color:#fff !important;
       border-color:rgba(255,213,79,.9) !important;
-      background:linear-gradient(135deg,#ff9f1c,#ff681f) !important;
       transform:translateY(-2px);
       box-shadow:0 8px 24px rgba(244,81,30,.5),inset 0 0 0 1px rgba(255,255,255,.2) !important;
     }
