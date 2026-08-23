@@ -41,39 +41,58 @@
 /* ---------- code-rain reveal overlay ---------- */
 .am-coderain{position:fixed;inset:0;z-index:60;pointer-events:none;opacity:0;transition:opacity .6s ease}
 
-/* ---------- top banner ---------- */
-.am-top{position:relative;text-align:center;max-width:760px;margin:0 auto 2.4rem;z-index:3}
+/* ---------- top banner: premium AI hero ---------- */
+.am-hero{position:relative;margin-bottom:2.6rem;padding:clamp(1.9rem,4vw,2.7rem) clamp(1.5rem,3.4vw,2.7rem);
+  border-radius:28px;overflow:hidden;z-index:3;
+  background:linear-gradient(120deg,#082846 0%,#0d3a66 48%,#0a3155 100%);color:#fff;
+  box-shadow:0 30px 64px rgba(8,40,70,.36)}
+.am-hero::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+  background-image:radial-gradient(rgba(255,255,255,.08) 1.3px,transparent 1.4px);background-size:20px 20px;opacity:.6}
+.am-hero-glow-a{position:absolute;top:-90px;right:-50px;width:280px;height:280px;border-radius:50%;z-index:0;pointer-events:none;
+  background:radial-gradient(circle,rgba(14,165,183,.38),rgba(14,165,183,0) 70%)}
+.am-hero-glow-b{position:absolute;bottom:-100px;left:-70px;width:240px;height:240px;border-radius:50%;z-index:0;pointer-events:none;
+  background:radial-gradient(circle,rgba(255,213,74,.22),rgba(255,213,74,0) 70%)}
+.am-hero canvas.am-hero-net{display:block;position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.5}
+.am-hero-main{position:relative;z-index:2;max-width:820px;text-align:left}
+.am-hero .am-badge-ai{color:#8be9f2;border-color:rgba(139,233,242,.35);background:rgba(139,233,242,.1)}
 .am-badge-ai{display:inline-flex;align-items:center;gap:.55rem;font-size:.68rem;font-weight:900;letter-spacing:.16em;
   text-transform:uppercase;color:var(--am-teal-ink);margin-bottom:1.1rem;padding:.55rem .95rem;border-radius:999px;
   border:1px solid rgba(14,165,183,.3);background:rgba(14,165,183,.08)}
 .am-badge-ai i{font-size:.75rem;animation:amPulseIcon 2.4s ease-in-out infinite}
 @keyframes amPulseIcon{0%,100%{opacity:1}50%{opacity:.4}}
-.am-top h1{font-family:var(--font-display);font-weight:900;font-size:clamp(1.9rem,4.4vw,3rem);line-height:1.14;
-  margin:0;color:var(--am-navy-dark);letter-spacing:-.01em}
-.am-top h1 span{background:linear-gradient(120deg,var(--am-gold-deep) 0%,var(--am-teal) 55%,var(--am-navy) 100%);
-  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.am-top p{margin:1rem auto 0;font-size:.92rem;color:var(--am-muted);max-width:560px;line-height:1.8}
-.am-top-meta{display:flex;align-items:center;justify-content:center;gap:1.1rem;margin-top:1.2rem;flex-wrap:wrap}
-.am-meta-chip{display:inline-flex;align-items:center;gap:.45rem;font-size:.72rem;font-weight:700;color:var(--am-muted)}
-.am-meta-chip i{color:var(--am-gold-deep);font-size:.7rem}
+.am-hero h1{font-family:var(--font-display);font-weight:900;font-size:clamp(2.1rem,4.6vw,3.6rem);line-height:1.08;
+  margin:0;color:#fff;letter-spacing:-.015em;text-align:left}
+.am-hero h1 .am-title-line{display:block}
+.am-hero h1 .am-title-gold{color:#ffd54a}
+.am-hero p{margin:1.3rem 0 0;font-size:.87rem;color:rgba(230,242,253,.82);line-height:1.85;max-width:520px;text-align:left}
+.am-hero-meta{display:flex;align-items:center;gap:.7rem;margin-top:1.5rem;flex-wrap:wrap;justify-content:flex-start}
+.am-meta-chip{display:inline-flex;align-items:center;gap:.5rem;padding:.55rem .85rem;border-radius:999px;
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);
+  font-size:.72rem;font-weight:800;color:rgba(230,242,253,.9)}
+.am-meta-chip i{color:#ffd54a;font-size:.7rem}
+.am-hero-cta{display:inline-flex;align-items:center;gap:.8rem;margin-top:1.7rem;padding:.8rem 1rem;border-radius:16px;
+  text-decoration:none;color:#fff;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);
+  box-shadow:0 12px 30px rgba(4,14,28,.22);transition:transform .3s ease,background .3s ease,border-color .3s ease,box-shadow .3s ease}
+.am-hero-cta:hover{transform:translateY(-4px);background:rgba(255,255,255,.1);
+  border-color:rgba(255,213,74,.4);box-shadow:0 18px 38px rgba(4,14,28,.3)}
+.am-hero-cta-icon{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;flex:0 0 46px;
+  background:linear-gradient(135deg,#ffd54a,#ff8a00);color:#0d3a66;font-size:.9rem}
+.am-hero-cta strong{display:block;font-size:.92rem;line-height:1.15;font-weight:900;letter-spacing:.01em}
+.am-hero-cta small{display:block;margin-top:.25rem;color:rgba(230,242,253,.65);font-size:.72rem;font-weight:600}
+.am-hero-cta-arrow{margin-left:.3rem;color:#ffd54a;font-size:1rem;transition:transform .3s ease}
+.am-hero-cta:hover .am-hero-cta-arrow{transform:translateX(4px)}
+.am-hero-live{position:absolute;top:clamp(1.5rem,3vw,2.1rem);right:clamp(1.5rem,3vw,2.1rem);z-index:3;
+  display:inline-flex;align-items:center;gap:.65rem;font-size:.74rem;font-weight:800;color:#0d3a66;
+  background:#fff;border-radius:999px;padding:.55rem .95rem;white-space:nowrap;box-shadow:0 16px 34px rgba(4,14,28,.32)}
+.am-hero-live-dot{width:8px;height:8px;border-radius:50%;background:#22c55e;flex:0 0 8px;animation:amLiveDot 2s infinite}
+@keyframes amLiveDot{0%{box-shadow:0 0 0 0 rgba(34,197,94,.55)}70%{box-shadow:0 0 0 8px rgba(34,197,94,0)}100%{box-shadow:0 0 0 0 rgba(34,197,94,0)}}
+@media(max-width:640px){
+  .am-hero-live{position:static;display:inline-flex;margin-top:1.2rem}
+  .am-hero h1{font-size:clamp(1.8rem,8vw,2.5rem)}
+  .am-hero-cta{width:100%}
+}
 
-/* ---------- stepper ---------- */
-.am-stepper{display:flex;align-items:flex-start;justify-content:space-between;max-width:960px;margin:0 auto 2.6rem;
-  position:relative;z-index:3}
-.am-step{flex:1;text-align:center;position:relative}
-.am-step-line{position:absolute;top:19px;left:-50%;width:100%;height:2px;background:var(--am-line);z-index:1}
-.am-step:first-child .am-step-line{display:none}
-.am-step-dot{width:40px;height:40px;border-radius:50%;background:#fff;border:1.5px solid var(--am-line);
-  color:var(--am-muted);display:flex;align-items:center;justify-content:center;margin:0 auto .55rem;font-size:.9rem;
-  position:relative;z-index:2;transition:all .4s var(--ease,ease);box-shadow:0 2px 8px rgba(13,58,102,.06)}
-.am-step-label{font-size:.66rem;font-weight:800;color:var(--am-muted);letter-spacing:.02em}
-.am-step.done .am-step-dot{background:var(--am-navy);border-color:var(--am-teal);color:#fff}
-.am-step.done .am-step-line{background:linear-gradient(90deg,var(--am-teal),var(--am-gold-deep))}
-.am-step.done .am-step-label{color:var(--am-ink)}
-.am-step.current .am-step-dot{background:linear-gradient(135deg,var(--am-gold),var(--am-gold-deep));border-color:var(--am-gold-deep);color:var(--am-navy-dark);
-  box-shadow:0 0 0 6px rgba(255,179,0,.14),0 0 26px rgba(255,179,0,.32)}
-.am-step.current .am-step-label{color:var(--am-gold-deep)}
-@media(max-width:760px){.am-step-label{font-size:.58rem}.am-step-dot{width:32px;height:32px;font-size:.75rem}.am-step-line{top:15px}}
+
 
 /* ---------- shared panel/card shell ---------- */
 .am-panel{display:none}
@@ -87,12 +106,15 @@
   -webkit-mask-composite:xor;mask-composite:exclude}
 
 /* ---------- QUIZ ---------- */
-.am-quiz-head{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:1.6rem}
+.am-quiz-head{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:1.4rem}
 .am-quiz-progress-text{font-size:.72rem;font-weight:800;color:var(--am-teal-ink);letter-spacing:.06em;text-transform:uppercase}
 .am-quiz-bar{flex:1;height:6px;border-radius:99px;background:var(--am-line);margin:0 1.2rem;overflow:hidden;min-width:120px}
 .am-quiz-bar-fill{height:100%;border-radius:99px;background:linear-gradient(90deg,var(--am-teal),var(--am-gold-deep));width:0%;transition:width .5s var(--ease,ease)}
-.am-quiz-question{font-family:var(--font-display);font-size:clamp(1.2rem,2.6vw,1.7rem);font-weight:800;color:var(--am-navy-dark);
-  line-height:1.35;margin:0 0 1.7rem}
+.am-quiz-tag{display:inline-flex;align-items:center;gap:.6rem;font-size:.7rem;font-weight:800;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--am-teal-ink);margin-bottom:1rem}
+.am-quiz-tag::before{content:"";width:24px;height:3px;border-radius:99px;background:linear-gradient(90deg,var(--am-teal),var(--am-gold-deep))}
+.am-quiz-question{font-family:var(--font-display);font-size:clamp(1.9rem,4vw,2.9rem);font-weight:900;color:var(--am-navy-dark);
+  line-height:1.08;letter-spacing:-.015em;margin:0 0 1.8rem}
 .am-quiz-options{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1rem}
 .am-opt{display:flex;align-items:center;gap:.9rem;text-align:left;padding:1.1rem 1.2rem;border-radius:16px;
   background:#f7fafd;border:1.5px solid var(--am-line);color:var(--am-ink);cursor:pointer;
@@ -141,11 +163,31 @@
 .am-ring-big-label{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
 .am-ring-big-label b{font-family:var(--font-display);font-size:2.1rem;font-weight:900;color:var(--am-navy-dark);line-height:1}
 .am-ring-big-label span{font-size:.62rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--am-teal-ink);margin-top:.3rem}
-.am-result-name{font-family:var(--font-display);font-size:clamp(1.5rem,3vw,2.1rem);font-weight:900;color:var(--am-navy-dark);margin:0 0 .5rem}
+.am-result-name{font-family:var(--font-display);font-size:clamp(1.5rem,3vw,2.1rem);font-weight:900;color:var(--am-navy-dark);
+  margin:0 0 .5rem;max-width:600px;margin-left:auto;margin-right:auto;text-wrap:balance}
 .am-result-tagline{font-size:.85rem;color:var(--am-muted);max-width:520px;margin:0 auto 1.2rem;line-height:1.75}
-.am-trait-row{display:flex;justify-content:center;gap:.55rem;flex-wrap:wrap}
-.am-trait{font-size:.68rem;font-weight:800;color:var(--am-navy-dark);background:linear-gradient(135deg,#ffe9b0,var(--am-gold));
-  padding:.4rem .8rem;border-radius:999px}
+.am-trait-row{display:flex;justify-content:center;gap:.6rem;flex-wrap:wrap}
+.am-trait{font-size:.7rem;font-weight:800;color:var(--am-navy-dark);background:linear-gradient(135deg,#fff3d2,var(--am-gold));
+  padding:.48rem .95rem;border-radius:999px;border:1px solid rgba(255,179,0,.4);box-shadow:0 6px 16px rgba(255,179,0,.16);
+  letter-spacing:.01em}
+
+/* ---------- tie banner (2+ jurusan sama persis di posisi teratas) ---------- */
+.am-tie-banner{display:none;margin-top:1.8rem;padding-top:1.8rem;border-top:1px dashed var(--am-line)}
+.am-tie-banner.show{display:block}
+.am-tie-banner-label{display:inline-flex;align-items:center;gap:10px;font-size:.72rem;font-weight:900;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--am-gold-deep);margin:0 auto 1.2rem;justify-content:center;width:100%;text-align:center}
+.am-tie-banner-label::before{content:"";width:28px;height:2px;border-radius:999px;background:var(--am-gold-deep);flex:0 0 28px}
+.am-tie-banner-label i{font-size:.8rem}
+.am-tie-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1rem;max-width:680px;margin:0 auto}
+.am-tie-card{display:flex;align-items:center;gap:.85rem;padding:1rem 1.1rem;border-radius:16px;
+  background:#fff;border:1.5px solid rgba(255,179,0,.3);box-shadow:0 10px 24px rgba(13,58,102,.06);
+  transition:transform .25s var(--ease,ease),box-shadow .25s var(--ease,ease),border-color .25s var(--ease,ease)}
+.am-tie-card:hover{transform:translateY(-3px);border-color:rgba(255,179,0,.55);box-shadow:0 16px 32px rgba(13,58,102,.1)}
+.am-tie-card-icon{width:42px;height:42px;border-radius:12px;flex:0 0 42px;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,var(--am-gold),var(--am-gold-deep));color:var(--am-navy-dark);font-size:.95rem}
+.am-tie-card-body{text-align:left;min-width:0}
+.am-tie-card-name{display:block;font-size:.78rem;font-weight:800;color:var(--am-navy-dark);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.am-tie-card-pct{font-size:.86rem;font-weight:900;color:var(--am-gold-deep)}
 
 /* ---------- per-major visual showcase ---------- */
 .am-visual{max-width:440px;margin:1.8rem auto 0}
@@ -157,11 +199,6 @@
 .am-visual-code-body{padding:1.1rem 1.2rem;font-family:'Courier New',monospace;font-size:.76rem;line-height:2;color:#d7ecfb;text-align:left}
 .am-visual-code-body .ln{color:rgba(215,236,251,.28);display:inline-block;width:18px}
 .am-visual-code-body .kw{color:#67e8f9}.am-visual-code-body .fn{color:#ffd54a}.am-visual-code-body .str{color:#a8e6a1}.am-visual-code-body .cm{color:rgba(215,236,251,.4)}
-.am-visual-generic{background:#f7fafd;border:1px solid var(--am-line);border-radius:18px;padding:1.8rem 1.6rem;
-  display:flex;flex-direction:column;align-items:center;gap:1rem;text-align:center}
-.am-visual-generic .am-visual-icon{width:64px;height:64px;border-radius:18px;display:flex;align-items:center;justify-content:center;
-  font-size:1.6rem;color:#fff;background:linear-gradient(135deg,var(--am-teal),var(--am-navy));box-shadow:0 14px 26px rgba(13,58,102,.2)}
-.am-visual-generic p{margin:0;font-size:.78rem;color:var(--am-muted);max-width:320px;line-height:1.7}
 .am-visual-chips{display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center}
 
 .am-narrative{display:flex;gap:.9rem;background:rgba(14,165,183,.06);border:1px solid rgba(14,165,183,.22);
@@ -170,11 +207,14 @@
 .am-narrative p{margin:0;font-size:.82rem;color:var(--am-ink);line-height:1.8}
 
 /* ---------- MBTI-style insight breakdown ---------- */
-.am-insight-intro{text-align:center;max-width:560px;margin:2.2rem auto 1.4rem}
-.am-insight-intro span.tag{display:inline-flex;align-items:center;gap:.5rem;font-size:.68rem;font-weight:900;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--am-teal-ink);margin-bottom:.6rem}
-.am-insight-intro h3{font-family:var(--font-display);font-size:clamp(1.15rem,2.2vw,1.4rem);font-weight:800;color:var(--am-navy-dark);margin:0}
-.am-insight-intro p{font-size:.82rem;color:var(--am-muted);margin:.6rem 0 0;line-height:1.75}
+.am-insight-intro{text-align:center;max-width:640px;margin:2.4rem auto 1.8rem}
+.am-insight-intro span.tag{display:inline-flex;align-items:center;gap:10px;font-size:.72rem;font-weight:900;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--am-gold-deep)}
+.am-insight-intro span.tag::before,.am-insight-intro span.tag::after{content:"";width:34px;height:2px;border-radius:999px;background:var(--am-gold-deep)}
+.am-insight-intro h3{font-family:var(--font-display);font-size:clamp(1.8rem,3.8vw,2.6rem);font-weight:950;
+  color:var(--am-navy-dark);margin:.8rem 0 .5rem;line-height:1.04;letter-spacing:-.02em;text-transform:uppercase}
+.am-insight-intro h3 span{color:var(--am-gold-deep)}
+.am-insight-intro p{font-size:.85rem;color:var(--am-muted);margin:.6rem auto 0;max-width:520px;line-height:1.75;text-transform:none}
 .am-insight-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem}
 .am-insight-card{background:#f7fafd;border:1px solid var(--am-line);border-radius:18px;padding:1.4rem 1.3rem}
 .am-insight-card h4{display:flex;align-items:center;gap:.55rem;font-size:.78rem;font-weight:900;letter-spacing:.03em;
@@ -196,6 +236,19 @@
 .am-runner-bar-fill{height:100%;border-radius:99px;background:linear-gradient(90deg,var(--am-navy),var(--am-teal));width:0%;transition:width 1s var(--ease,ease)}
 .am-runner-pct{font-size:.78rem;font-weight:800;color:var(--am-teal-ink);text-align:right}
 
+/* ---------- radar chart: peta kecocokan 5 jurusan ---------- */
+.am-radar-block{margin-top:2.2rem;padding-top:2rem;border-top:1px solid var(--am-line)}
+.am-radar-head{text-align:center;max-width:600px;margin:0 auto 1.8rem}
+.am-radar-head span.tag{display:inline-flex;align-items:center;gap:10px;font-size:.72rem;font-weight:900;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--am-gold-deep)}
+.am-radar-head span.tag::before,.am-radar-head span.tag::after{content:"";width:34px;height:2px;border-radius:999px;background:var(--am-gold-deep)}
+.am-radar-head h3{font-family:var(--font-display);font-size:clamp(1.8rem,3.8vw,2.6rem);font-weight:950;
+  color:var(--am-navy-dark);margin:.8rem 0 .5rem;line-height:1.04;letter-spacing:-.02em;text-transform:uppercase}
+.am-radar-head h3 span{color:var(--am-gold-deep)}
+.am-radar-head p{font-size:.85rem;color:var(--am-muted);margin:.6rem auto 0;max-width:520px;line-height:1.75;text-transform:none}
+.am-radar-wrap{display:flex;justify-content:center}
+.am-radar-wrap canvas{max-width:100%;height:auto}
+
 .am-result-actions{display:flex;justify-content:center;gap:.8rem;margin-top:2rem;flex-wrap:wrap}
 .am-btn{display:inline-flex;align-items:center;gap:.55rem;padding:.85rem 1.7rem;border-radius:999px;border:none;
   background:linear-gradient(135deg,var(--am-gold),var(--am-gold-deep));color:var(--am-navy-dark);font-weight:800;font-size:.85rem;cursor:pointer;
@@ -204,11 +257,15 @@
 .am-btn i{font-size:.74rem}
 
 /* ---------- EXPLORE tabs + detail ---------- */
-.am-section-head{text-align:center;max-width:600px;margin:0 auto 1.8rem}
-.am-section-head span.tag{display:inline-flex;align-items:center;gap:.5rem;font-size:.68rem;font-weight:900;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--am-teal-ink);margin-bottom:.7rem}
-.am-section-head h2{font-family:var(--font-display);font-size:clamp(1.3rem,2.6vw,1.8rem);font-weight:800;color:var(--am-navy-dark);margin:0}
-.am-section-head p{font-size:.82rem;color:var(--am-muted);margin:.6rem 0 0;line-height:1.75}
+.am-section-head{text-align:left;max-width:680px;margin:0 0 2.2rem}
+.am-section-head span.tag{display:inline-flex;align-items:center;gap:.6rem;font-size:.7rem;font-weight:800;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--am-teal-ink);margin-bottom:1rem}
+.am-section-head span.tag::before{content:"";width:24px;height:3px;border-radius:99px;background:linear-gradient(90deg,var(--am-teal),var(--am-gold-deep))}
+.am-section-head h2{font-family:var(--font-display);font-size:clamp(2.1rem,4.6vw,3.6rem);font-weight:900;
+  color:var(--am-navy-dark);margin:0;line-height:1.02;letter-spacing:-.015em;text-transform:uppercase}
+.am-section-head h2 span{background:linear-gradient(135deg,var(--am-gold) 0%,var(--am-gold-deep) 45%,var(--am-teal) 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.am-section-head p{font-size:.85rem;color:var(--am-muted);margin:1rem 0 0;line-height:1.75;max-width:520px}
 
 .am-jur-tabs{display:flex;justify-content:center;gap:.6rem;flex-wrap:wrap;margin-bottom:1.8rem}
 .am-jur-tab{display:inline-flex;align-items:center;gap:.5rem;padding:.6rem 1.1rem;border-radius:999px;
@@ -243,10 +300,18 @@
 .am-career-card p{font-size:.74rem;color:var(--am-muted);margin:0;line-height:1.6}
 
 /* ---------- PPDB ---------- */
-.am-ppdb-box{display:flex;align-items:center;justify-content:space-between;gap:1.6rem;flex-wrap:wrap}
+.am-ppdb-box{display:flex;align-items:center;justify-content:space-between;gap:1.6rem;flex-wrap:wrap;
+  background:linear-gradient(120deg,rgba(13,58,102,.05),rgba(255,179,0,.07));
+  border:1px solid var(--am-line);border-radius:22px;padding:1.7rem 1.9rem}
+.am-ppdb-left{display:flex;align-items:center;gap:1.1rem;flex:1 1 320px;min-width:0}
+.am-ppdb-icon{width:52px;height:52px;border-radius:16px;flex:0 0 52px;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,var(--am-gold),var(--am-gold-deep));color:var(--am-navy-dark);font-size:1.2rem;
+  box-shadow:0 12px 26px rgba(255,179,0,.28)}
 .am-ppdb-text h3{font-family:var(--font-display);font-size:1.15rem;font-weight:800;color:var(--am-navy-dark);margin:0 0 .5rem}
 .am-ppdb-text p{font-size:.82rem;color:var(--am-muted);margin:0;max-width:460px;line-height:1.75}
 .am-ppdb-quota{display:flex;align-items:center;gap:.6rem;margin-top:1rem;font-size:.74rem;font-weight:700;color:var(--am-gold-deep)}
+.am-ppdb-box .am-btn{flex:0 0 auto}
+@media(max-width:640px){.am-ppdb-box{padding:1.4rem}.am-ppdb-box .am-btn{width:100%;justify-content:center}}
 
 /* section spacing between stacked reveal blocks */
 .am-stack > * + *{margin-top:1.6rem}
@@ -264,7 +329,6 @@
 @media(max-width:560px){
   .am-wrap{padding:32px 0 70px}
   .am-card{border-radius:20px}
-  .am-stepper{overflow-x:auto}
 }
 </style>
 @endpush
@@ -293,52 +357,33 @@
 
   <div class="am-wrap">
 
-    <div class="am-top">
-      <span class="am-badge-ai"><i class="fas fa-robot"></i> AI Major Matchmaker</span>
-      <h1>Temukan Jurusan yang <span>Paling Cocok</span> Buatmu</h1>
-      <p>Jawab beberapa pertanyaan singkat, biar Skaneda AI menganalisis pola minatmu dan memberi rekomendasi jurusan yang personal — lengkap dengan penjelasan mendalam ala hasil tes kepribadian.</p>
-      <div class="am-top-meta">
-        <span class="am-meta-chip"><i class="fas fa-list-ol"></i> 8 Pertanyaan</span>
-        <span class="am-meta-chip"><i class="fas fa-clock"></i> ± 2 Menit</span>
-        <span class="am-meta-chip"><i class="fas fa-shield-alt"></i> Tanpa Data Pribadi</span>
+    <div class="am-hero">
+      <span class="am-hero-glow-a" aria-hidden="true"></span>
+      <span class="am-hero-glow-b" aria-hidden="true"></span>
+      <canvas class="am-hero-net" id="amHeroNet" style="position:absolute;inset:0;width:100%;height:100%" aria-hidden="true"></canvas>
+      <div class="am-hero-main">
+        <span class="am-badge-ai"><i class="fas fa-robot"></i> AI Major Matchmaker</span>
+        <h1>
+          <span class="am-title-line">TEMUKAN JURUSAN</span>
+          <span class="am-title-line am-title-gold">PALING COCOK BUATMU</span>
+</h1>
+        <a class="am-hero-cta" href="#amQuizStart">
+          <span class="am-hero-cta-icon"><i class="fas fa-wand-magic-sparkles"></i></span>
+          <span><strong>Mulai Kuis Sekarang</strong><small>Temukan jurusan yang paling cocok buatmu</small></span>
+          <i class="fas fa-arrow-right am-hero-cta-arrow"></i>
+        </a>
       </div>
-    </div>
-
-    <div class="am-stepper" id="amStepper">
-      <div class="am-step current" data-step="quiz">
-        <div class="am-step-line"></div>
-        <div class="am-step-dot"><i class="fas fa-list-ol"></i></div>
-        <div class="am-step-label">Kuis</div>
-      </div>
-      <div class="am-step" data-step="result">
-        <div class="am-step-line"></div>
-        <div class="am-step-dot"><i class="fas fa-bullseye"></i></div>
-        <div class="am-step-label">Hasil Personal</div>
-      </div>
-      <div class="am-step" data-step="explore">
-        <div class="am-step-line"></div>
-        <div class="am-step-dot"><i class="fas fa-compass"></i></div>
-        <div class="am-step-label">Eksplorasi Jurusan</div>
-      </div>
-      <div class="am-step" data-step="career">
-        <div class="am-step-line"></div>
-        <div class="am-step-dot"><i class="fas fa-briefcase"></i></div>
-        <div class="am-step-label">Prospek Karier</div>
-      </div>
-      <div class="am-step" data-step="ppdb">
-        <div class="am-step-line"></div>
-        <div class="am-step-dot"><i class="fas fa-graduation-cap"></i></div>
-        <div class="am-step-label">PPDB</div>
-      </div>
+      <span class="am-hero-live"><span class="am-hero-live-dot"></span> Skaneda AI Aktif</span>
     </div>
 
     <!-- ================= PANEL: KUIS ================= -->
-    <div class="am-panel active" data-panel="quiz">
+    <div class="am-panel active" data-panel="quiz" id="amQuizStart">
       <div class="am-card">
         <div class="am-quiz-head">
           <span class="am-quiz-progress-text" id="amQProgressText">Soal 1 / 8</span>
           <div class="am-quiz-bar"><div class="am-quiz-bar-fill" id="amQBarFill"></div></div>
         </div>
+        <span class="am-quiz-tag"><i class="fas fa-list-ol"></i> Pertanyaan Kuis</span>
         <h2 class="am-quiz-question" id="amQuestionText">Memuat pertanyaan...</h2>
         <div class="am-quiz-options" id="amOptionsWrap"></div>
         <div class="am-quiz-foot">
@@ -370,7 +415,7 @@
         <!-- HASIL PERSONAL -->
         <div class="am-card">
           <div class="am-result-top">
-            <span class="am-result-tag"><i class="fas fa-magic"></i> Hasil Kecocokan Personal</span>
+            <span class="am-result-tag"><i class="fas fa-magic"></i> <span id="amResultTagLabel">Hasil Kecocokan Personal</span></span>
             <div class="am-ring-big">
               <svg viewBox="0 0 180 180">
                 <circle class="track" cx="90" cy="90" r="80"></circle>
@@ -382,6 +427,11 @@
             <p class="am-result-tagline" id="amResultTagline">—</p>
             <div class="am-trait-row" id="amResultTraits"></div>
 
+            <div class="am-tie-banner" id="amTieBanner">
+              <div class="am-tie-banner-label"><i class="fas fa-equals"></i> <span id="amTieBannerLabel">Skormu seri persis dengan jurusan lain</span></div>
+              <div class="am-tie-grid" id="amTieGrid"></div>
+            </div>
+
             <div class="am-visual" id="amResultVisual"></div>
 
             <div class="am-narrative">
@@ -392,7 +442,7 @@
 
           <div class="am-insight-intro">
             <span class="tag"><i class="fas fa-chart-pie"></i> Analisis Mendalam</span>
-            <h3>Kenapa Jurusan Ini Cocok Buatmu?</h3>
+            <h3>Kenapa Jurusan Ini <span>Cocok Buatmu?</span></h3>
             <p>Sama seperti laporan hasil tes kepribadian, ini rincian kekuatan alami, gaya belajar, dan area yang perlu terus kamu asah.</p>
           </div>
           <div class="am-insight-grid">
@@ -413,6 +463,17 @@
           <div class="am-runner-title">Kecocokan dengan jurusan lain</div>
           <div class="am-runner-list" id="amRunnerList"></div>
 
+          <div class="am-radar-block">
+            <div class="am-radar-head">
+              <span class="tag"><i class="fas fa-diagram-project"></i> Peta Analisis AI</span>
+              <h3>Peta Kecocokan <span>5 Jurusan</span></h3>
+              <p>Visualisasi menyeluruh dari semua sinyal jawabanmu — bukan cuma satu angka, tapi pola lengkap kecenderungan minatmu di lima bidang sekaligus.</p>
+            </div>
+            <div class="am-radar-wrap">
+              <canvas id="amRadarChart" width="440" height="440"></canvas>
+            </div>
+          </div>
+
           <div class="am-result-actions">
             <a href="#amExploreAnchor" class="am-btn" id="amExploreBtn"><i class="fas fa-compass"></i> Eksplorasi Jurusan Ini</a>
           </div>
@@ -422,7 +483,7 @@
         <div class="am-card" id="amExploreAnchor">
           <div class="am-section-head">
             <span class="tag"><i class="fas fa-compass"></i> Eksplorasi Jurusan</span>
-            <h2>Kenali Lebih Dalam</h2>
+            <h2>Kenali <span>Lebih Dalam</span></h2>
             <p>Bandingkan tiga jurusan dengan skor kecocokan tertinggi versimu.</p>
           </div>
           <div class="am-jur-tabs" id="amJurTabs"></div>
@@ -433,7 +494,7 @@
         <div class="am-card">
           <div class="am-section-head">
             <span class="tag"><i class="fas fa-briefcase"></i> Prospek Karier</span>
-            <h2 id="amCareerHeading">Peluang Setelah Lulus</h2>
+            <h2 id="amCareerHeading">Peluang <span>Setelah Lulus</span></h2>
             <p>Gambaran profesi yang bisa kamu tuju dari jurusan yang sedang kamu lihat.</p>
           </div>
           <div class="am-career-grid" id="amCareerGrid"></div>
@@ -443,13 +504,16 @@
         <div class="am-card">
           <div class="am-section-head">
             <span class="tag"><i class="fas fa-graduation-cap"></i> Langkah Selanjutnya</span>
-            <h2>Siap Daftar?</h2>
+            <h2>Siap <span>Daftar?</span></h2>
           </div>
           <div class="am-ppdb-box">
-            <div class="am-ppdb-text">
-              <h3 id="amPpdbTitle">Info PPDB Jurusan —</h3>
-              <p id="amPpdbDesc">Pelajari alur pendaftaran, jadwal, dan persyaratan PPDB untuk jurusan pilihanmu.</p>
-              <div class="am-ppdb-quota"><i class="fas fa-users"></i> <span id="amPpdbQuota">Kuota tersedia setiap tahun ajaran</span></div>
+            <div class="am-ppdb-left">
+              <span class="am-ppdb-icon"><i class="fas fa-graduation-cap"></i></span>
+              <div class="am-ppdb-text">
+                <h3 id="amPpdbTitle">Info PPDB Jurusan —</h3>
+                <p id="amPpdbDesc">Pelajari alur pendaftaran, jadwal, dan persyaratan PPDB untuk jurusan pilihanmu.</p>
+                <div class="am-ppdb-quota"><i class="fas fa-users"></i> <span id="amPpdbQuota">Kuota tersedia setiap tahun ajaran</span></div>
+              </div>
             </div>
             <a href="{{ route('kontak') }}" class="am-btn"><i class="fas fa-paper-plane"></i> Info PPDB Sekarang</a>
           </div>
@@ -676,7 +740,35 @@
     });
   });
 
-  var state = { current: 0, answers: new Array(QUESTIONS.length).fill(null), scores: null, ranked: null, selectedTab: null };
+  /* ---------------- shuffle helpers ---------------- */
+  // Fisher-Yates. Dipakai supaya urutan soal & posisi tiap opsi jawaban
+  // acak setiap kali kuis dimulai/diulang — nggak "nyangkut" di posisi
+  // yang sama terus (mis. opsi DKV selalu di kiri).
+  function shuffle(arr) {
+    var a = arr.slice();
+    for (var i = a.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var tmp = a[i]; a[i] = a[j]; a[j] = tmp;
+    }
+    return a;
+  }
+
+  function buildSessionQuestions() {
+    // QUESTIONS (master data) tidak diubah — tiap sesi bikin salinan
+    // dengan urutan soal & urutan opsi yang sudah diacak sendiri-sendiri.
+    return shuffle(QUESTIONS).map(function (q) {
+      return { q: q.q, options: shuffle(q.options) };
+    });
+  }
+
+  var state = {
+    current: 0,
+    questions: buildSessionQuestions(),
+    answers: new Array(QUESTIONS.length).fill(null),
+    scores: null,
+    ranked: null,
+    selectedTab: null
+  };
 
   /* ---------------- stepper ---------------- */
   function setStepper(name) {
@@ -704,9 +796,9 @@
   var backBtn = document.getElementById('amBackBtn');
 
   function renderQuestion() {
-    var q = QUESTIONS[state.current];
-    progressText.textContent = 'Soal ' + (state.current + 1) + ' / ' + QUESTIONS.length;
-    barFill.style.width = Math.round(((state.current) / QUESTIONS.length) * 100) + '%';
+    var q = state.questions[state.current];
+    progressText.textContent = 'Soal ' + (state.current + 1) + ' / ' + state.questions.length;
+    barFill.style.width = Math.round(((state.current) / state.questions.length) * 100) + '%';
     qText.textContent = q.q;
     backBtn.disabled = state.current === 0;
 
@@ -725,7 +817,7 @@
         optWrap.querySelectorAll('.am-opt').forEach(function (b) { b.classList.remove('selected'); });
         btn.classList.add('selected');
         setTimeout(function () {
-          if (state.current < QUESTIONS.length - 1) {
+          if (state.current < state.questions.length - 1) {
             state.current++;
             renderQuestion();
           } else {
@@ -788,7 +880,7 @@
     Object.keys(JURUSAN).forEach(function (k) { scores[k] = 0; });
     state.answers.forEach(function (ansIdx, qIdx) {
       if (ansIdx === null) return;
-      var jur = QUESTIONS[qIdx].options[ansIdx].jur;
+      var jur = state.questions[qIdx].options[ansIdx].jur;
       scores[jur] += 3;
     });
     var ranked = Object.keys(scores).map(function (k) {
@@ -876,18 +968,106 @@
         '</div>';
       return;
     }
-    var visualMap = {
-      DKV: { icon: 'fa-palette', text: 'Warna, layout, dan komposisi adalah bahasamu untuk bercerita.' },
-      KULINER: { icon: 'fa-utensils', text: 'Rasa dan tampilan hidangan adalah karya yang kamu ciptakan setiap hari.' },
-      LPS: { icon: 'fa-landmark', text: 'Ketelitian dan kepercayaan adalah modal utamamu mengelola layanan keuangan.' },
-      APHP: { icon: 'fa-seedling', text: 'Dari bahan mentah jadi produk berkualitas — itu keahlianmu.' }
-    };
-    var v = visualMap[key] || visualMap.DKV;
-    wrap.innerHTML =
-      '<div class="am-visual-generic">' +
-        '<span class="am-visual-icon"><i class="fas ' + v.icon + '"></i></span>' +
-        '<p>' + v.text + '</p>' +
-      '</div>';
+    wrap.innerHTML = '';
+  }
+
+  /* ---------------- radar chart: peta kecocokan 5 jurusan ---------------- */
+  function drawRadarChart(highlightKey) {
+    var canvas = document.getElementById('amRadarChart');
+    if (!canvas || !canvas.getContext) return;
+    var ctx = canvas.getContext('2d');
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var size = canvas.clientWidth || 440;
+    canvas.width = size * dpr;
+    canvas.height = size * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    var cx = size / 2, cy = size / 2, maxR = size / 2 - 58;
+    var axes = state.ranked.slice().sort(function (a, b) {
+      // urutan tetap sesuai definisi JURUSAN biar posisi sumbu konsisten tiap kali dilihat
+      return Object.keys(JURUSAN).indexOf(a.key) - Object.keys(JURUSAN).indexOf(b.key);
+    });
+    var n = axes.length;
+    var angleFor = function (i) { return (Math.PI * 2 * i) / n - Math.PI / 2; };
+
+    var progress = 0;
+    var duration = 900;
+    var start = null;
+
+    function frame(ts) {
+      if (!start) start = ts;
+      progress = Math.min((ts - start) / duration, 1);
+      var eased = 1 - Math.pow(1 - progress, 3);
+
+      ctx.clearRect(0, 0, size, size);
+
+      // grid rings
+      var rings = 4;
+      for (var g = 1; g <= rings; g++) {
+        var rr = (maxR * g) / rings;
+        ctx.beginPath();
+        for (var i = 0; i <= n; i++) {
+          var a = angleFor(i % n);
+          var px = cx + rr * Math.cos(a), py = cy + rr * Math.sin(a);
+          if (i === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+        }
+        ctx.strokeStyle = 'rgba(13,58,102,.10)';
+        ctx.lineWidth = 1;
+        ctx.stroke();
+      }
+
+      // axis lines + labels
+      axes.forEach(function (r, i) {
+        var a = angleFor(i);
+        var px = cx + maxR * Math.cos(a), py = cy + maxR * Math.sin(a);
+        ctx.beginPath();
+        ctx.moveTo(cx, cy);
+        ctx.lineTo(px, py);
+        ctx.strokeStyle = 'rgba(13,58,102,.12)';
+        ctx.lineWidth = 1;
+        ctx.stroke();
+
+        var j = JURUSAN[r.key];
+        var lx = cx + (maxR + 34) * Math.cos(a), ly = cy + (maxR + 34) * Math.sin(a);
+        ctx.font = '700 12px "Poppins", sans-serif';
+        ctx.fillStyle = r.key === highlightKey ? '#ffb300' : '#5c7590';
+        ctx.textAlign = Math.cos(a) > 0.3 ? 'left' : (Math.cos(a) < -0.3 ? 'right' : 'center');
+        ctx.textBaseline = Math.sin(a) > 0.3 ? 'top' : (Math.sin(a) < -0.3 ? 'bottom' : 'middle');
+        ctx.fillText(j.singkatan, lx, ly);
+      });
+
+      // data polygon
+      ctx.beginPath();
+      axes.forEach(function (r, i) {
+        var a = angleFor(i);
+        var rr = (maxR * (r.pct / 100)) * eased;
+        var px = cx + rr * Math.cos(a), py = cy + rr * Math.sin(a);
+        if (i === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+      });
+      ctx.closePath();
+      ctx.fillStyle = 'rgba(14,165,183,.22)';
+      ctx.fill();
+      ctx.strokeStyle = '#0ea5b7';
+      ctx.lineWidth = 2.2;
+      ctx.stroke();
+
+      // vertex dots
+      axes.forEach(function (r, i) {
+        var a = angleFor(i);
+        var rr = (maxR * (r.pct / 100)) * eased;
+        var px = cx + rr * Math.cos(a), py = cy + rr * Math.sin(a);
+        ctx.beginPath();
+        ctx.arc(px, py, r.key === highlightKey ? 5.5 : 4, 0, Math.PI * 2);
+        ctx.fillStyle = r.key === highlightKey ? '#ffb300' : '#0d3a66';
+        ctx.fill();
+        ctx.strokeStyle = '#fff';
+        ctx.lineWidth = 1.5;
+        ctx.stroke();
+      });
+
+      if (progress < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
   }
 
   /* ---------------- result reveal ---------------- */
@@ -897,14 +1077,51 @@
     var top = state.ranked[0];
     var jur = JURUSAN[top.key];
 
-    document.getElementById('amResultName').textContent = jur.nama;
-    document.getElementById('amResultTagline').textContent = jur.tagline;
+    // Jurusan lain yang skornya PERSIS sama dengan top.pct dianggap
+    // sama-sama "top match" — bukan cuma satu yang menang sepihak.
+    var tiedGroup = state.ranked.filter(function (r) { return r.pct === top.pct; });
+    var isTie = tiedGroup.length > 1;
+
+    document.getElementById('amResultName').textContent = isTie
+      ? tiedGroup.length + ' Jurusan Skormu Seri Teratas'
+      : jur.nama;
+    document.getElementById('amResultTagline').textContent = isTie
+      ? tiedGroup.length + ' jurusan ini sama kuatnya buatmu — coba bandingkan lebih dekat sebelum menentukan pilihan.'
+      : jur.tagline;
     document.getElementById('amResultTraits').innerHTML = jur.traits.map(function (t) {
       return '<span class="am-trait">' + t + '</span>';
     }).join('');
-    document.getElementById('amResultNarrative').textContent =
-      'Berdasarkan analisis dari ' + QUESTIONS.length + ' jawabanmu, kecenderungan minat dan gaya berpikirmu paling dekat dengan jurusan ' + jur.nama + '. ' +
-      'Skor kecocokanmu ' + top.pct + '%, dihitung dari konsistensi jawaban yang mengarah ke bidang ini dibanding empat jurusan lainnya.';
+
+    var tagLabel = document.getElementById('amResultTagLabel');
+    var tieBanner = document.getElementById('amTieBanner');
+    var tieBannerLabel = document.getElementById('amTieBannerLabel');
+    var tieGrid = document.getElementById('amTieGrid');
+
+    if (isTie) {
+      var otherNames = tiedGroup.filter(function (r) { return r.key !== top.key; })
+        .map(function (r) { return JURUSAN[r.key].singkatan; }).join(', ');
+      tagLabel.textContent = 'Hasil Kecocokan Personal — Seri ' + tiedGroup.length + ' Jurusan';
+      tieBannerLabel.textContent = 'Skormu seri persis ' + top.pct + '% di ' + tiedGroup.length + ' jurusan sekaligus — rincian tiap jurusan:';
+      tieGrid.innerHTML = tiedGroup.map(function (r) {
+        var oj = JURUSAN[r.key];
+        return '<div class="am-tie-card">' +
+          '<span class="am-tie-card-icon"><i class="fas ' + oj.icon + '"></i></span>' +
+          '<span class="am-tie-card-body"><span class="am-tie-card-name">' + oj.nama + '</span><br>' +
+          '<span class="am-tie-card-pct">' + r.pct + '% Match</span></span>' +
+        '</div>';
+      }).join('');
+      tieBanner.classList.add('show');
+      document.getElementById('amResultNarrative').textContent =
+        'Berdasarkan analisis dari ' + state.questions.length + ' jawabanmu, minat dan gaya berpikirmu ternyata seimbang persis antara ' + jur.nama +
+        ' dan ' + otherNames + ', sama-sama di angka ' + top.pct + '%. Coba eksplorasi keduanya di bawah supaya kamu bisa bandingkan lebih dalam sebelum menentukan pilihan.';
+    } else {
+      tagLabel.textContent = 'Hasil Kecocokan Personal';
+      tieBanner.classList.remove('show');
+      tieGrid.innerHTML = '';
+      document.getElementById('amResultNarrative').textContent =
+        'Berdasarkan analisis dari ' + state.questions.length + ' jawabanmu, kecenderungan minat dan gaya berpikirmu paling dekat dengan jurusan ' + jur.nama + '. ' +
+        'Skor kecocokanmu ' + top.pct + '%, dihitung dari konsistensi jawaban yang mengarah ke bidang ini dibanding empat jurusan lainnya.';
+    }
 
     renderVisual(top.key);
 
@@ -924,7 +1141,10 @@
     });
     animateNumber(pctLabel, top.pct);
 
-    var runners = state.ranked.slice(1, 4);
+    // Runner-up list = sisa jurusan yang BELUM tampil di kartu/banner top
+    // match, jadi kalau ada seri di atas, nggak ada jurusan yang dobel
+    // muncul di dua tempat sekaligus. Total yang ditampilkan tetap 5.
+    var runners = state.ranked.slice(tiedGroup.length);
     document.getElementById('amRunnerList').innerHTML = runners.map(function (r) {
       var j = JURUSAN[r.key];
       return '<div class="am-runner">' +
@@ -938,6 +1158,8 @@
         el.style.width = el.getAttribute('data-pct') + '%';
       });
     }, 150);
+
+    drawRadarChart(top.key);
 
     renderJurTabs();
     renderJurDetail(state.selectedTab);
@@ -998,7 +1220,7 @@
 
   function renderCareer(key) {
     var j = JURUSAN[key];
-    document.getElementById('amCareerHeading').textContent = 'Peluang Karier Lulusan ' + j.singkatan;
+    document.getElementById('amCareerHeading').innerHTML = 'Peluang Karier Lulusan <span>' + j.singkatan + '</span>';
     document.getElementById('amCareerGrid').innerHTML = j.karier.map(function (k) {
       return '<div class="am-career-card">' +
         '<span class="am-career-icon"><i class="fas fa-briefcase"></i></span>' +
@@ -1017,6 +1239,7 @@
   /* ---------------- restart ---------------- */
   document.getElementById('amRestartBtn').addEventListener('click', function () {
     state.current = 0;
+    state.questions = buildSessionQuestions();
     state.answers = new Array(QUESTIONS.length).fill(null);
     state.scores = null;
     state.ranked = null;
@@ -1026,8 +1249,78 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
+  /* ---------------- hero neural-network background ---------------- */
+  function initHeroNet() {
+    var canvas = document.getElementById('amHeroNet');
+    if (!canvas || !canvas.getContext) return;
+    var ctx = canvas.getContext('2d');
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var hero = canvas.closest('.am-hero');
+    var nodes = [];
+    var raf = null;
+
+    function size() {
+      var w = hero.clientWidth, h = hero.clientHeight;
+      canvas.width = w * dpr;
+      canvas.height = h * dpr;
+      canvas.style.width = w + 'px';
+      canvas.style.height = h + 'px';
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      var count = Math.max(14, Math.min(34, Math.floor((w * h) / 16000)));
+      nodes = [];
+      for (var i = 0; i < count; i++) {
+        nodes.push({
+          x: Math.random() * w,
+          y: Math.random() * h,
+          vx: (Math.random() - 0.5) * 0.18,
+          vy: (Math.random() - 0.5) * 0.18,
+          r: 1.4 + Math.random() * 1.6
+        });
+      }
+    }
+
+    function frame() {
+      var w = hero.clientWidth, h = hero.clientHeight;
+      ctx.clearRect(0, 0, w, h);
+      nodes.forEach(function (n) {
+        n.x += n.vx; n.y += n.vy;
+        if (n.x < 0 || n.x > w) n.vx *= -1;
+        if (n.y < 0 || n.y > h) n.vy *= -1;
+      });
+      for (var i = 0; i < nodes.length; i++) {
+        for (var j = i + 1; j < nodes.length; j++) {
+          var dx = nodes[i].x - nodes[j].x, dy = nodes[i].y - nodes[j].y;
+          var dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 130) {
+            ctx.strokeStyle = 'rgba(255,255,255,' + (0.14 * (1 - dist / 130)) + ')';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(nodes[i].x, nodes[i].y);
+            ctx.lineTo(nodes[j].x, nodes[j].y);
+            ctx.stroke();
+          }
+        }
+      }
+      nodes.forEach(function (n) {
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(255,213,74,.55)';
+        ctx.fill();
+      });
+      raf = requestAnimationFrame(frame);
+    }
+
+    size();
+    if (raf) cancelAnimationFrame(raf);
+    raf = requestAnimationFrame(frame);
+    window.addEventListener('resize', function () {
+      size();
+    });
+  }
+
   /* ---------------- init ---------------- */
   renderQuestion();
+  initHeroNet();
 })();
 </script>
 @endpush
