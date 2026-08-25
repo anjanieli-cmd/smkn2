@@ -199,6 +199,9 @@
 .kg-card--md{grid-row:span 3}
 .kg-card--wide{grid-column:span 2;grid-row:span 3}
 .kg-card--tall{grid-row:span 5}
+/* Saat filter kategori aktif (bukan "Semua") kartu dibuat seragam & berjajar rapi.
+   Kategori "Semua" tetap pakai masonry asli (ukuran variatif) - TIDAK diubah. */
+.kg-masonry.is-filtered .kg-card{grid-column:span 1!important;grid-row:span 3!important}
 @keyframes kgPop{from{opacity:0;transform:translateY(22px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
 
 /* =========================================================
@@ -346,6 +349,7 @@
         <h2 class="kg-section-title">Hidup Sekolah<br>yang <em>Bergerak</em></h2>
         <div class="kg-rule"></div>
         <p class="kg-section-sub">Di SMK Negeri 2 Mojokerto, belajar tidak pernah berhenti di dalam kelas. Lomba, latihan, karya, upacara, dan kunjungan industri menjadi irama harian yang membentuk karakter, keterampilan, dan kebersamaan.</p>
+        <span class="kg-pill" style="margin-top:.3rem"><i class="fas fa-leaf"></i> Sekolah Adiwiyata 2025</span>
         <div class="kg-stats-row">
           <div class="kg-stat"><div class="kg-stat-num"><span>20+</span></div><div class="kg-stat-label">Kegiatan per Tahun</div></div>
           <div class="kg-stat"><div class="kg-stat-num"><span>12</span></div><div class="kg-stat-label">Ekstrakurikuler Aktif</div></div>
@@ -355,8 +359,8 @@
       </div>
       <div class="kg-intro-note" data-reveal="right" style="position:relative">
         <div class="kg-orn" aria-hidden="true">
-          <span class="ko-stamp"><i class="fas fa-circle"></i> #SkanedaAktif</span>
-          <span class="ko-circle" style="right:0;top:0"></span>
+          <span class="ko-stamp" style="position:absolute;right:0;top:-2.6rem"><i class="fas fa-circle"></i> #SkanedaAktif</span>
+          <span class="ko-circle" style="right:0;top:-2.4rem"></span>
         </div>
         <blockquote style="border-left:4px solid #ffc107;padding-left:1.3rem;margin:0 0 1.4rem">
           <p style="font-size:1.05rem;line-height:1.85;color:#0d3a66;font-style:italic;margin:0">"Sekolah bukan hanya tempat belajar, tetapi juga tempat bertumbuh — lewat setiap kegiatan, siswa belajar bekerja sama, memimpin, dan memberi."</p>
@@ -372,13 +376,11 @@
   <div class="kg-container">
     <div class="kg-feat" data-reveal>
       <div class="kg-feat-media">
-        <img src="{{ asset('images/kg-penghargaan.jpg') }}" alt="Penyerahan penghargaan juara lomba kepada siswa SMK Negeri 2 Mojokerto" loading="eager">
+        <img src="{{ asset('images/galeri/adiwiyata.jpeg') }}" alt="Penyerahan penghargaan juara lomba kepada siswa SMK Negeri 2 Mojokerto" loading="eager">
       </div>
       <div class="kg-feat-body">
-        <span class="kg-feat-tag"><i class="fas fa-trophy"></i> Kegiatan • 16 Agustus 2026</span>
-        <h3 class="kg-feat-title">Penghargaan Prestasi Siswa — Apresiasi di Hadapan Seluruh Warga Sekolah</h3>
-        <p class="kg-feat-desc">Momen puncak kegiatan sekolah: penyerahan penghargaan kepada siswa berprestasi di hadapan keluarga besar SKANEDA. Apresiasi ini menjadi penyemangat bagi seluruh peserta didik untuk terus berkarya dan berkompetisi secara sehat.</p>
-        <a href="{{ url('/siswa/prestasi-siswa') }}" class="kg-feat-btn">Lihat Prestasi Siswa <i class="fas fa-arrow-right"></i></a>
+        <span class="kg-feat-tag"><i class="fas fa-trophy"></i> Penghargaan • 25 Desember 2025</span>
+        <h3 class="kg-feat-title">Sekolah Adiwiyata 2025</h3>
       </div>
     </div>
   </div>
@@ -411,184 +413,192 @@
     </div>
 
     <div class="kg-masonry" id="kgMasonry">
-      <!-- KOMPETISI -->
-      <article class="kg-card kg-card--lg" data-cat="kompetisi" data-reveal>
-        <img src="{{ asset('images/kg-juara-1.jpg') }}" alt="Siswa menerima medali juara" loading="eager">
-        <div class="kg-card-info">
-          <span class="kg-card-cat">Kompetisi</span>
-          <h4 class="kg-card-title">Penganugerahan Medali Juara 1</h4>
-          <span class="kg-card-date"><i class="fas fa-circle"></i> 2026</span>
-        </div>
-      </article>
-      <article class="kg-card" data-cat="kompetisi" data-reveal>
-        <img src="{{ asset('images/kg-trofi.jpg') }}" alt="Trofi juara lomba" loading="eager">
-        <div class="kg-card-info">
-          <span class="kg-card-cat">Kompetisi</span>
-          <h4 class="kg-card-title">Trofi Kebanggaan Skaneda</h4>
-          <span class="kg-card-date"><i class="fas fa-circle"></i> 2026</span>
-        </div>
-      </article>
-      <article class="kg-card kg-card--md" data-cat="kompetisi" data-reveal>
-        <img src="{{ asset('images/kg-podium.jpg') }}" alt="Siswa di podium lomba" loading="eager">
-        <div class="kg-card-info">
-          <span class="kg-card-cat">Kompetisi</span>
-          <h4 class="kg-card-title">Naik Podium</h4>
-          <span class="kg-card-date"><i class="fas fa-circle"></i> 2025</span>
-        </div>
-      </article>
-
       <!-- AKADEMIK -->
-      <article class="kg-card kg-card--wide" data-cat="akademik" data-reveal>
-        <img src="{{ asset('images/kg-coding.jpg') }}" alt="Siswa praktik coding di lab RPL" loading="eager">
+      <article class="kg-card kg-card--lg" data-cat="akademik" data-reveal>
+        <img src="{{ asset('images/galeri/ukk.jpeg') }}" alt="Pelaksanaan Ujian Kompetensi Keahlian (UKK) siswa SMK Negeri 2 Mojokerto" loading="lazy" onerror="this.remove()">
         <div class="kg-card-info">
           <span class="kg-card-cat">Akademik</span>
-          <h4 class="kg-card-title">Praktik Coding di Lab RPL</h4>
+          <h4 class="kg-card-title">Ujian Kompetensi Keahlian (UKK)</h4>
           <span class="kg-card-date"><i class="fas fa-circle"></i> 2026</span>
         </div>
       </article>
-      <article class="kg-card kg-card--tall" data-cat="akademik" data-reveal>
-        <img src="{{ asset('images/kg-rpl.jpg') }}" alt="Pengembangan aplikasi siswa RPL" loading="eager">
+      <article class="kg-card kg-card--wide" data-cat="akademik" data-reveal>
+        <img src="{{ asset('images/galeri/pkl.jpg') }}" alt="Siswa menjalani Praktik Kerja Lapangan (PKL) di dunia industri" loading="lazy" onerror="this.remove()">
         <div class="kg-card-info">
           <span class="kg-card-cat">Akademik</span>
-          <h4 class="kg-card-title">Pengembangan Aplikasi</h4>
-          <span class="kg-card-date"><i class="fas fa-circle"></i> 2025</span>
+          <h4 class="kg-card-title">Praktik Kerja Lapangan (PKL)</h4>
+          <span class="kg-card-date"><i class="fas fa-circle"></i> 2026</span>
         </div>
       </article>
       <article class="kg-card" data-cat="akademik" data-reveal>
-        <img src="{{ asset('images/kg-dkv.jpg') }}" alt="Karya desain siswa DKV" loading="eager">
+        <img src="{{ asset('images/galeri/psaj.jpg') }}" alt="Pelaksanaan Penilaian Sumatif Akhir Jenjang (PSAJ)" loading="lazy" onerror="this.remove()">
         <div class="kg-card-info">
           <span class="kg-card-cat">Akademik</span>
-          <h4 class="kg-card-title">Sesi Desain Visual DKV</h4>
+          <h4 class="kg-card-title">Penilaian Sumatif Akhir Jenjang (PSAJ)</h4>
           <span class="kg-card-date"><i class="fas fa-circle"></i> 2026</span>
-        </div>
-      </article>
-      <article class="kg-card kg-card--md" data-cat="akademik" data-reveal>
-        <img src="{{ asset('images/kg-pastry.jpg') }}" alt="Siswa membuat pastry di dapur kuliner" loading="eager">
-        <div class="kg-card-info">
-          <span class="kg-card-cat">Akademik</span>
-          <h4 class="kg-card-title">Pastry &amp; Bakery</h4>
-          <span class="kg-card-date"><i class="fas fa-circle"></i> 2025</span>
         </div>
       </article>
 
       <!-- EKSTRAKURIKULER -->
-      <article class="kg-card kg-card--wide" data-cat="ekstrakurikuler" data-reveal>
-        <img src="{{ asset('images/kg-pramuka.jpg') }}" alt="Kegiatan pramuka di lapangan" loading="eager">
-        <div class="kg-card-info">
-          <span class="kg-card-cat">Ekstrakurikuler</span>
-          <h4 class="kg-card-title">Latihan Pramuka</h4>
-          <span class="kg-card-date"><i class="fas fa-circle"></i> 2026</span>
-        </div>
-      </article>
       <article class="kg-card kg-card--tall" data-cat="ekstrakurikuler" data-reveal>
-        <img src="{{ asset('images/kg-paskibra.jpg') }}" alt="Pasukan pengibar bendera berlatih" loading="eager">
+        <img src="{{ asset('images/galeri/lacurva.jpg') }}" alt="Latihan ekstrakurikuler Lacurva" loading="lazy" onerror="this.remove()">
         <div class="kg-card-info">
           <span class="kg-card-cat">Ekstrakurikuler</span>
-          <h4 class="kg-card-title">Latihan Paskibra</h4>
-          <span class="kg-card-date"><i class="fas fa-circle"></i> 2026</span>
-        </div>
-      </article>
-      <article class="kg-card" data-cat="ekstrakurikuler" data-reveal>
-        <img src="{{ asset('images/kg-futsal.jpg') }}" alt="Pertandingan futsal antar kelas" loading="eager">
-        <div class="kg-card-info">
-          <span class="kg-card-cat">Ekstrakurikuler</span>
-          <h4 class="kg-card-title">Futsal Skaneda</h4>
+          <h4 class="kg-card-title">Lacurva</h4>
           <span class="kg-card-date"><i class="fas fa-circle"></i> 2026</span>
         </div>
       </article>
       <article class="kg-card kg-card--md" data-cat="ekstrakurikuler" data-reveal>
-        <img src="{{ asset('images/kg-tari.jpg') }}" alt="Latihan seni tari tradisional" loading="eager">
+        <img src="{{ asset('images/galeri/tari.jpg') }}" alt="Latihan tari tradisional siswa SKANEDA" loading="lazy" onerror="this.remove()">
         <div class="kg-card-info">
           <span class="kg-card-cat">Ekstrakurikuler</span>
-          <h4 class="kg-card-title">Sanggar Tari</h4>
-          <span class="kg-card-date"><i class="fas fa-circle"></i> 2025</span>
+          <h4 class="kg-card-title">Tari Tradisional</h4>
+          <span class="kg-card-date"><i class="fas fa-circle"></i> 2026</span>
         </div>
       </article>
       <article class="kg-card" data-cat="ekstrakurikuler" data-reveal>
-        <img src="{{ asset('images/kg-musik.jpg') }}" alt="Latihan band siswa" loading="eager">
+        <img src="{{ asset('images/galeri/paskib.png') }}" alt="Latihan Pasukan Pengibar Bendera (Paskib)" loading="lazy" onerror="this.remove()">
         <div class="kg-card-info">
           <span class="kg-card-cat">Ekstrakurikuler</span>
-          <h4 class="kg-card-title">Latihan Musik</h4>
+          <h4 class="kg-card-title">Paskib</h4>
           <span class="kg-card-date"><i class="fas fa-circle"></i> 2026</span>
         </div>
       </article>
 
       <!-- KESISWAAN -->
-      <article class="kg-card kg-card--md" data-cat="kesiswaan" data-reveal>
-        <img src="{{ asset('images/kg-bersama.jpg') }}" alt="Foto bersama siswa berprestasi" loading="eager">
+      <article class="kg-card kg-card--wide" data-cat="kesiswaan" data-reveal>
+        <img src="{{ asset('images/galeri/mpls.jpg') }}" alt="Masa Pengenalan Lingkungan Sekolah (MPLS) peserta didik baru" loading="lazy" onerror="this.remove()">
         <div class="kg-card-info">
           <span class="kg-card-cat">Kesiswaan</span>
-          <h4 class="kg-card-title">Foto Bersama Juara</h4>
+          <h4 class="kg-card-title">MPLS Peserta Didik Baru</h4>
           <span class="kg-card-date"><i class="fas fa-circle"></i> 2026</span>
         </div>
       </article>
       <article class="kg-card" data-cat="kesiswaan" data-reveal>
-        <img src="{{ asset('images/kg-tim.jpg') }}" alt="Tim siswa berprestasi" loading="eager">
+        <img src="{{ asset('images/galeri/ldkpd.jpg') }}" alt="Latihan Dasar Kepemimpinan Peserta Didik (LDKPD)" loading="lazy" onerror="this.remove()">
         <div class="kg-card-info">
           <span class="kg-card-cat">Kesiswaan</span>
-          <h4 class="kg-card-title">Tim Prestasi</h4>
+          <h4 class="kg-card-title">LDKPD</h4>
           <span class="kg-card-date"><i class="fas fa-circle"></i> 2025</span>
+        </div>
+      </article>
+      <article class="kg-card kg-card--md" data-cat="kesiswaan" data-reveal>
+        <img src="{{ asset('images/galeri/perjusa.jpg') }}" alt="Perkemahan Jumat Sabtu (Perjusa) siswa SKANEDA" loading="lazy" onerror="this.remove()">
+        <div class="kg-card-info">
+          <span class="kg-card-cat">Kesiswaan</span>
+          <h4 class="kg-card-title">Perjusa</h4>
+          <span class="kg-card-date"><i class="fas fa-circle"></i> 2026</span>
         </div>
       </article>
 
       <!-- UPACARA -->
-      <article class="kg-card kg-card--wide" data-cat="upacara" data-reveal>
-        <img src="{{ asset('images/kg-upacara.jpg') }}" alt="Upacara bendera di halaman sekolah" loading="eager">
+      <article class="kg-card kg-card--lg" data-cat="upacara" data-reveal>
+        <img src="{{ asset('images/galeri/kemerdekaan.jpg') }}" alt="Upacara peringatan Hari Kemerdekaan Indonesia" loading="lazy" onerror="this.remove()">
         <div class="kg-card-info">
           <span class="kg-card-cat">Upacara</span>
-          <h4 class="kg-card-title">Upacara Bendera</h4>
+          <h4 class="kg-card-title">Hari Kemerdekaan</h4>
           <span class="kg-card-date"><i class="fas fa-circle"></i> 2026</span>
         </div>
       </article>
       <article class="kg-card" data-cat="upacara" data-reveal>
-        <img src="{{ asset('images/kg-piala.jpg') }}" alt="Etalase piala penghargaan" loading="eager">
+        <img src="{{ asset('images/galeri/pramuka.jpg') }}" alt="Upacara peringatan Hari Pramuka" loading="lazy" onerror="this.remove()">
         <div class="kg-card-info">
           <span class="kg-card-cat">Upacara</span>
-          <h4 class="kg-card-title">Etalase Piala</h4>
+          <h4 class="kg-card-title">Hari Pramuka</h4>
+          <span class="kg-card-date"><i class="fas fa-circle"></i> 2025</span>
+        </div>
+      </article>
+      <article class="kg-card" data-cat="upacara" data-reveal>
+        <img src="{{ asset('images/galeri/upacararutin.jpg') }}" alt="Upacara Rutin Hari Senin" loading="lazy" onerror="this.remove()">
+        <div class="kg-card-info">
+          <span class="kg-card-cat">Upacara</span>
+          <h4 class="kg-card-title">Rutin Hari Senin</h4>
           <span class="kg-card-date"><i class="fas fa-circle"></i> 2026</span>
+        </div>
+      </article>
+
+      <!-- KOMPETISI -->
+      <article class="kg-card kg-card--wide" data-cat="kompetisi" data-reveal>
+        <img src="{{ asset('images/galeri/festika.jpeg') }}" alt="Festival dan Lomba Karya (Festika) siswa SKANEDA" loading="lazy" onerror="this.remove()">
+        <div class="kg-card-info">
+          <span class="kg-card-cat">Kompetisi</span>
+          <h4 class="kg-card-title">Festika</h4>
+          <span class="kg-card-date"><i class="fas fa-circle"></i> 2025</span>
+        </div>
+      </article>
+      <article class="kg-card kg-card--tall" data-cat="kompetisi" data-reveal>
+        <img src="{{ asset('images/galeri/lks2026.jpeg') }}" alt="Lomba Kompetensi Siswa (LKS) tingkat nasional" loading="lazy" onerror="this.remove()">
+        <div class="kg-card-info">
+          <span class="kg-card-cat">Kompetisi</span>
+          <h4 class="kg-card-title">Lomba Kompetensi Siswa (LKS)</h4>
+          <span class="kg-card-date"><i class="fas fa-circle"></i> 2026</span>
+        </div>
+      </article>
+      <article class="kg-card kg-card--md" data-cat="kompetisi" data-reveal>
+        <img src="{{ asset('images/galeri/fiksi.jpg') }}" alt="Festival Inovasi dan Kewirausahaan Siswa Indonesia (FIKSI)" loading="lazy" onerror="this.remove()">
+        <div class="kg-card-info">
+          <span class="kg-card-cat">Kompetisi</span>
+          <h4 class="kg-card-title">FIKSI</h4>
+          <span class="kg-card-date"><i class="fas fa-circle"></i> 2024</span>
         </div>
       </article>
 
       <!-- KEGIATAN SEKOLAH -->
       <article class="kg-card kg-card--lg" data-cat="kegiatan-sekolah" data-reveal>
-        <img src="{{ asset('images/kg-ppdb.jpg') }}" alt="Kegiatan PPDB SMK Negeri 2 Mojokerto" loading="eager">
+        <img src="{{ asset('images/galeri/skrining.jpeg') }}" alt="Kegiatan skrining kesehatan siswa" loading="lazy" onerror="this.remove()">
         <div class="kg-card-info">
           <span class="kg-card-cat">Kegiatan Sekolah</span>
-          <h4 class="kg-card-title">Gelaran PPDB Skaneda</h4>
+          <h4 class="kg-card-title">Skrining Kesehatan</h4>
+          <span class="kg-card-date"><i class="fas fa-circle"></i> 2026</span>
+        </div>
+      </article>
+      <article class="kg-card" data-cat="kegiatan-sekolah" data-reveal>
+        <img src="{{ asset('images/galeri/isramiraj.jpg') }}" alt="Peringatan hari besar keagamaan di sekolah" loading="lazy" onerror="this.remove()">
+        <div class="kg-card-info">
+          <span class="kg-card-cat">Kegiatan Sekolah</span>
+          <h4 class="kg-card-title">Hari Besar Keagamaan</h4>
           <span class="kg-card-date"><i class="fas fa-circle"></i> 2026</span>
         </div>
       </article>
       <article class="kg-card kg-card--md" data-cat="kegiatan-sekolah" data-reveal>
-        <img src="{{ asset('images/kg-kuliner.jpg') }}" alt="Produksi kuliner siswa" loading="eager">
+        <img src="{{ asset('images/galeri/classmeet.jpg') }}" alt="Classmeeting antar kelas SMK Negeri 2 Mojokerto" loading="lazy" onerror="this.remove()">
         <div class="kg-card-info">
           <span class="kg-card-cat">Kegiatan Sekolah</span>
-          <h4 class="kg-card-title">Produksi Kuliner</h4>
-          <span class="kg-card-date"><i class="fas fa-circle"></i> 2025</span>
+          <h4 class="kg-card-title">Classmeet</h4>
+          <span class="kg-card-date"><i class="fas fa-circle"></i> 2026</span>
         </div>
       </article>
 
       <!-- KUNJUNGAN/INDUSTRI -->
       <article class="kg-card kg-card--wide" data-cat="kunjungan-industri" data-reveal>
-        <img src="{{ asset('images/kg-kampus.jpg') }}" alt="Kunjungan industri ke kampus" loading="eager">
+        <img src="{{ asset('images/galeri/ki-aphp.jpeg') }}" alt="Kunjungan industri jurusan APHP" loading="lazy" onerror="this.remove()">
         <div class="kg-card-info">
-          <span class="kg-card-cat">Kunjungan/Industri</span>
-          <h4 class="kg-card-title">Kunjungan Industri &amp; Sekolah</h4>
+          <span class="kg-card-cat">Kunjungan Industri</span>
+          <h4 class="kg-card-title">Kunjungan Industri APHP</h4>
+          <span class="kg-card-date"><i class="fas fa-circle"></i> 2026</span>
+        </div>
+      </article>
+      <article class="kg-card" data-cat="kunjungan-industri" data-reveal>
+        <img src="{{ asset('images/galeri/ki-rpl.jpg') }}" alt="Kunjungan industri jurusan DKV" loading="lazy" onerror="this.remove()">
+        <div class="kg-card-info">
+          <span class="kg-card-cat">Kunjungan Industri</span>
+          <h4 class="kg-card-title">Kunjungan Industri RPL</h4>
           <span class="kg-card-date"><i class="fas fa-circle"></i> 2026</span>
         </div>
       </article>
       <article class="kg-card kg-card--md" data-cat="kunjungan-industri" data-reveal>
-        <img src="{{ asset('images/kg-aphp.jpg') }}" alt="Kegiatan siswa APHP" loading="eager">
+        <img src="{{ asset('images/galeri/ki-kuliner.jpeg') }}" alt="Kunjungan industri jurusan Kuliner" loading="lazy" onerror="this.remove()">
         <div class="kg-card-info">
-          <span class="kg-card-cat">Kunjungan/Industri</span>
-          <h4 class="kg-card-title">Praktik Lapangan APHP</h4>
-          <span class="kg-card-date"><i class="fas fa-circle"></i> 2025</span>
+          <span class="kg-card-cat">Kunjungan Industri</span>
+          <h4 class="kg-card-title">Kunjungan Industri Kuliner</h4>
+          <span class="kg-card-date"><i class="fas fa-circle"></i> 2026</span>
         </div>
       </article>
       <article class="kg-card" data-cat="kunjungan-industri" data-reveal>
-        <img src="{{ asset('images/kg-digital.jpg') }}" alt="Kegiatan digital siswa" loading="eager">
+        <img src="{{ asset('images/galeri/ki-lps.jpg') }}" alt="Kunjungan industri jurusan LPS" loading="lazy" onerror="this.remove()">
         <div class="kg-card-info">
-          <span class="kg-card-cat">Kunjungan/Industri</span>
-          <h4 class="kg-card-title">Kelas Industri Digital</h4>
+          <span class="kg-card-cat">Kunjungan Industri</span>
+          <h4 class="kg-card-title">Kunjungan Industri LPS</h4>
           <span class="kg-card-date"><i class="fas fa-circle"></i> 2026</span>
         </div>
       </article>
@@ -622,32 +632,32 @@
         <div class="kg-month">
           <div class="kg-month-no">02</div>
           <div class="kg-month-name">FEB</div>
-          <div class="kg-month-evt">Seleksi &amp; Lomba Siswa Tingkat Sekolah</div>
-          <div class="kg-month-note">Menjaring calon utusan sekolah</div>
+          <div class="kg-month-evt">Kunjungan Industri</div>
+          <div class="kg-month-note">Belajar langsung ke dunia industri</div>
         </div>
         <div class="kg-month">
           <div class="kg-month-no">03</div>
           <div class="kg-month-name">MAR</div>
-          <div class="kg-month-evt">Kunjungan Industri &amp; Dunia Kerja</div>
-          <div class="kg-month-note">Pembelajaran kontekstual di DUDI</div>
+          <div class="kg-month-evt">Pembekalan PKL</div>
+          <div class="kg-month-note">Membekali siswa sebelum terjun ke DUDI</div>
         </div>
         <div class="kg-month">
           <div class="kg-month-no">04</div>
           <div class="kg-month-name">APR</div>
-          <div class="kg-month-evt">Panen Karya P5 &amp; Bazar Kewirausahaan</div>
-          <div class="kg-month-note">Menampilkan hasil proyek siswa</div>
+          <div class="kg-month-evt">Pemberangkatan PKL</div>
+          <div class="kg-month-note">Melepas siswa memulai praktik kerja lapangan</div>
         </div>
         <div class="kg-month">
           <div class="kg-month-no">05</div>
           <div class="kg-month-name">MEI</div>
-          <div class="kg-month-evt">Ujian &amp; Asesmen Akhir Semester</div>
-          <div class="kg-month-note">Evaluasi capaian pembelajaran</div>
+          <div class="kg-month-evt">Pelepasan &amp; Wisuda Kelas XII</div>
+          <div class="kg-month-note">Mengantar alumni menuju dunia kerja</div>
         </div>
         <div class="kg-month">
           <div class="kg-month-no">06</div>
           <div class="kg-month-name">JUN</div>
-          <div class="kg-month-evt">Pelepasan &amp; Wisuda Kelas XII</div>
-          <div class="kg-month-note">Mengantar alumni menuju dunia kerja</div>
+          <div class="kg-month-evt">Penerimaan Rapot</div>
+          <div class="kg-month-note">Evaluasi hasil belajar satu semester</div>
         </div>
         <div class="kg-month">
           <div class="kg-month-no">07</div>
@@ -670,8 +680,8 @@
         <div class="kg-month">
           <div class="kg-month-no">10</div>
           <div class="kg-month-name">OKT</div>
-          <div class="kg-month-evt">Pekan Karya &amp; Ekspo Kompetensi</div>
-          <div class="kg-month-note">Pameran karya seluruh jurusan</div>
+          <div class="kg-month-evt">Penjemputan PKL</div>
+          <div class="kg-month-note">Menyambut kembali siswa dari dunia industri</div>
         </div>
       </div>
     </div>
@@ -695,28 +705,28 @@
 
     <div class="kg-picks">
       <div class="kg-pick-big" data-reveal>
-        <img src="{{ asset('images/kg-lomba.jpg') }}" alt="Suasana lomba siswa SMK Negeri 2 Mojokerto" loading="eager">
+        <img src="{{ asset('images/galeri/ukk.jpeg') }}" alt="Momen pelaksanaan Ujian Kompetensi Keahlian (UKK)" loading="lazy" onerror="this.remove()">
         <div class="kg-pick-caption">
           <span>Momen Pilihan</span>
-          <strong>"Belajar tidak selalu terjadi di dalam kelas."</strong>
+          <strong>"Ujian Kompetensi Keahlian, bukti nyata dari setiap keterampilan yang diasah."</strong>
         </div>
       </div>
       <div class="kg-pick-side">
         <div class="kg-pick-small" data-reveal>
-          <img src="{{ asset('images/kg-tari.jpg') }}" alt="Latihan seni tari" loading="eager">
-          <span><i class="fas fa-circle"></i> Sanggar Tari</span>
+          <img src="{{ asset('images/galeri/ki-kuliner.jpeg') }}" alt="Kunjungan industri siswa SKANEDA" loading="lazy" onerror="this.remove()">
+          <span><i class="fas fa-circle"></i> Kunjungan Industri</span>
         </div>
         <div class="kg-pick-small" data-reveal>
-          <img src="{{ asset('images/kg-futsal.jpg') }}" alt="Pertandingan futsal" loading="eager">
-          <span><i class="fas fa-circle"></i> Futsal Skaneda</span>
+          <img src="{{ asset('images/galeri/lks.jpg') }}" alt="Lomba Kompetensi Siswa (LKS)" loading="lazy" onerror="this.remove()">
+          <span><i class="fas fa-circle"></i> LKS</span>
         </div>
         <div class="kg-pick-small" data-reveal>
-          <img src="{{ asset('images/kg-pramuka.jpg') }}" alt="Kegiatan pramuka" loading="eager">
-          <span><i class="fas fa-circle"></i> Pramuka</span>
+          <img src="{{ asset('images/galeri/fiksi.jpg') }}" alt="Festival Inovasi dan Kewirausahaan Siswa Indonesia (FIKSI)" loading="lazy" onerror="this.remove()">
+          <span><i class="fas fa-circle"></i> FIKSI</span>
         </div>
         <div class="kg-pick-small" data-reveal>
-          <img src="{{ asset('images/kg-coding.jpg') }}" alt="Praktik coding" loading="eager">
-          <span><i class="fas fa-circle"></i> Lab RPL</span>
+          <img src="{{ asset('images/galeri/pkl.jpg') }}" alt="Praktik Kerja Lapangan (PKL) siswa" loading="lazy" onerror="this.remove()">
+          <span><i class="fas fa-circle"></i> PKL</span>
         </div>
       </div>
     </div>
@@ -766,6 +776,7 @@
 
   /* ---------- FILTER KATEGORI JEJAK KEGIATAN ---------- */
   var filterBtns = document.querySelectorAll('.kg-fbtn');
+  var masonry = document.getElementById('kgMasonry');
   var cards = document.querySelectorAll('.kg-masonry .kg-card');
   var activeFilter = 'semua';
 
@@ -780,6 +791,10 @@
         card.style.animation = '';
       }
     });
+    /* Kategori "Semua" = masonry asli (ukuran variatif). Kategori spesifik = kartu seragam & berjajar rapi. */
+    if (masonry) {
+      masonry.classList.toggle('is-filtered', activeFilter !== 'semua');
+    }
   }
 
   filterBtns.forEach(function (btn) {
