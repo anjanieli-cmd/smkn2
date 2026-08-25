@@ -474,7 +474,7 @@
     /* ---------- TOMBOL NARA ---------- */
     .nara-fab{width:58px;height:58px;padding:0;border:0;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;background:linear-gradient(135deg,#f9a825,#fbbf24);box-shadow:0 12px 30px rgba(249,168,37,.45),inset 0 1px 0 rgba(255,255,255,.45);transition:transform .2s ease,box-shadow .2s ease;position:relative}
     .nara-fab:hover{transform:translateY(-2px) scale(1.04);box-shadow:0 16px 38px rgba(249,168,37,.55)}
-    .nara-fab svg{width:34px;height:34px;display:block}
+    .nara-fab i{font-size:26px;color:#fff;display:block}
     .nara-fab .fab-tip{position:absolute;right:calc(100% + 12px);top:50%;transform:translateY(-50%) translateX(6px);background:#0d3a66;color:#fff;font-size:.68rem;font-weight:700;letter-spacing:.08em;padding:.4rem .7rem;border-radius:8px;white-space:nowrap;opacity:0;visibility:hidden;transition:all .2s ease;pointer-events:none;text-transform:uppercase}
     .nara-fab:hover .fab-tip{opacity:1;visibility:visible;transform:translateY(-50%) translateX(0)}
     .nara-fab .nara-status-dot{position:absolute;bottom:2px;right:2px;width:13px;height:13px;border-radius:50%;background:#22c55e;border:2px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.3)}
@@ -516,9 +516,15 @@
     .pv-dot{width:7px;height:7px;border-radius:50%;background:#f9a825;margin-bottom:2px}
     .pv-line{height:4px;border-radius:99px;background:#bcd3e6}
     .pv-line:nth-child(3){width:78%}.pv-line:nth-child(4){width:55%}
-    .pv-sun,.pv-moon{width:13px;height:13px;border-radius:50%;margin:3px auto 0}
-    .pv-sun{background:linear-gradient(135deg,#f9a825,#ffd54f);box-shadow:0 0 8px rgba(249,168,37,.5)}
-    .pv-moon{background:#0d3a66;box-shadow:inset -3px -2px 0 rgba(255,255,255,.35);margin-left:20px}
+    .mode-card-preview i.fa-sun,.mode-card-preview i.fa-moon{display:block;margin:auto;font-size:1.15rem}
+    .mode-card-preview i.fa-sun{color:#f9a825}
+    .mode-card-preview i.fa-moon{color:#0d3a66}
+    .mode-toggle-single{width:100%;display:flex;align-items:center;gap:.6rem;border:1.5px solid #dce8f2;border-radius:12px;background:#fff;padding:10px 14px;cursor:pointer;text-align:left;transition:all .2s ease;font-family:inherit}
+    .mode-toggle-single:hover{border-color:#8fc8ea;transform:translateY(-1px)}
+    .mode-toggle-icon{width:34px;height:34px;border-radius:10px;background:#eef4fa;display:flex;align-items:center;justify-content:center;font-size:1.05rem;flex-shrink:0}
+    .mode-toggle-icon .fa-sun{color:#f9a825}
+    .mode-toggle-icon .fa-moon{color:#0d3a66}
+    .mode-toggle-name{font-size:.72rem;font-weight:800;letter-spacing:.08em;color:#33475c}
     .mode-card-name{font-size:.64rem;font-weight:800;letter-spacing:.08em;color:#33475c}
     .mode-card .mode-card-check{position:absolute;top:5px;right:5px;width:16px;height:16px;border-radius:50%;background:#1d6fb8;color:#fff;font-size:.5rem;display:flex;align-items:center;justify-content:center;opacity:0;transform:scale(.6);transition:all .2s ease}
     .mode-card.active .mode-card-check{opacity:1;transform:scale(1)}
@@ -532,7 +538,7 @@
     .nara-header{display:flex;align-items:center;gap:11px;padding:14px 15px;color:#fff;background:linear-gradient(135deg,#0d3a66,#1d6fb8);position:relative;overflow:hidden}
     .nara-header::after{content:"";position:absolute;width:110px;height:110px;border:1.4px dashed rgba(255,255,255,.18);border-radius:50%;top:-46px;right:-34px}
     .nara-avatar{width:48px;height:48px;flex:0 0 48px;border-radius:14px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.15);box-shadow:inset 0 0 0 1px rgba(255,255,255,.2)}
-    .nara-avatar svg{width:34px;height:34px;display:block}
+    .nara-avatar i{font-size:22px;color:#0d3a66;display:block}
     .nara-name{font-size:.92rem;font-weight:800;letter-spacing:.02em;line-height:1.15}
     .nara-name em{font-style:normal;color:#ffd54f}
     .nara-sub{font-size:.64rem;color:#a8d8f5;margin-top:2px}
@@ -586,7 +592,7 @@
       .acc-fab{width:50px;height:50px;font-size:24px}
       .acc-fab .acc-fab-icon,.acc-fab .acc-fab-icon i{font-size:24px}
       .nara-fab{width:54px;height:54px}
-      .nara-fab svg{width:32px;height:32px}
+      .nara-fab i{font-size:24px}
       .acc-panel{position:fixed;left:12px;right:12px;bottom:132px;width:auto;max-width:none;top:auto;transform:translateY(8px) scale(.98)}
       .acc-panel.open{transform:none}
       .nara-window{position:fixed;left:12px;right:12px;bottom:132px;width:auto;max-width:none;top:auto;max-height:calc(100vh - 160px);transform:translateY(8px) scale(.98)}
@@ -706,9 +712,9 @@
         <li class="nav-item">
           <a href="{{ url('/ai') }}"
              class="nav-link nav-cta nav-ai-matchmaker {{ request()->is('ai*') ? 'active' : '' }}"
-             aria-label="Cari Jurusanmu">
+             aria-label="Cari Ekskulmu">
             <i class="fas fa-wand-magic-sparkles ai-icon"></i>
-            <span>Cari Jurusanmu</span>
+            <span>Cari Ekskulmu</span>
             <span class="ai-nav-badge">AI</span>
           </a>
         </li>
@@ -791,93 +797,11 @@
 <!-- ================= FLOATING UTILITIES: AKSESIBILITAS + NARA SKANEDA ================= -->
 <div class="skn-stack">
 
-  <!-- ===== PANEL AKSESIBILITAS ===== -->
+  <!-- ===== TOGGLE MODE WARNA ===== -->
   <div class="acc-wrap">
-    <div class="acc-panel" id="accPanel" role="dialog" aria-label="Pengaturan Tampilan">
-      <div class="acc-head">
-        <div class="acc-head-icon"><i class="fas fa-sliders"></i></div>
-        <div>
-          <div class="acc-title">PENGATURAN TAMPILAN</div>
-          <div class="acc-sub">Sesuaikan tampilan sesuai kebutuhan Anda</div>
-        </div>
-        <button type="button" class="acc-close" onclick="toggleAccPanel()" aria-label="Tutup pengaturan"><i class="fas fa-times"></i></button>
-      </div>
-      <div class="acc-body">
-
-        <div class="acc-section">
-          <div class="acc-label">Aksesibilitas</div>
-          <div class="acc-row">
-            <div class="acc-row-name-wrap"><i class="fas fa-font"></i><div>
-              <div class="acc-row-name">Ukuran Teks</div>
-              <div class="acc-row-desc">Perbesar ukuran huruf halaman</div>
-            </div></div>
-            <div class="acc-seg" role="group" aria-label="Ukuran teks">
-              <button type="button" class="acc-seg-btn" data-a11y-text="normal" onclick="setTextSize('normal')" aria-label="Ukuran teks normal"><i class="fas fa-minus"></i></button>
-              <button type="button" class="acc-seg-btn" data-a11y-text="lg" onclick="setTextSize('lg')" aria-label="Ukuran teks besar">A</button>
-              <button type="button" class="acc-seg-btn" data-a11y-text="xl" onclick="setTextSize('xl')" aria-label="Ukuran teks ekstra besar"><i class="fas fa-plus"></i></button>
-            </div>
-          </div>
-          <div class="acc-row">
-            <div class="acc-row-name-wrap"><i class="fas fa-circle-half-stroke"></i><div>
-              <div class="acc-row-name">Kontras Tinggi</div>
-              <div class="acc-row-desc">Tingkatkan kontras warna teks</div>
-            </div></div>
-            <button type="button" class="acc-switch" id="accContrast" onclick="toggleContrast()" aria-pressed="false" aria-label="Kontras tinggi"><span></span></button>
-          </div>
-          <div class="acc-row">
-            <div class="acc-row-name-wrap"><i class="fas fa-wand-magic-sparkles"></i><div>
-              <div class="acc-row-name">Kurangi Animasi</div>
-              <div class="acc-row-desc">Matikan animasi &amp; transisi</div>
-            </div></div>
-            <button type="button" class="acc-switch" id="accReduceMotion" onclick="toggleReduceMotion()" aria-pressed="false" aria-label="Kurangi animasi"><span></span></button>
-          </div>
-          <div class="acc-row">
-            <div class="acc-row-name-wrap"><i class="fas fa-keyboard"></i><div>
-              <div class="acc-row-name">Fokus Keyboard</div>
-              <div class="acc-row-desc">Tampilkan garis fokus yang jelas</div>
-            </div></div>
-            <button type="button" class="acc-switch" id="accFocus" onclick="toggleFocusOutline()" aria-pressed="false" aria-label="Fokus keyboard"><span></span></button>
-          </div>
-        </div>
-
-        <div class="acc-section">
-          <div class="acc-label">Mode Tampilan</div>
-          <div class="mode-cards" role="group" aria-label="Mode tampilan">
-            <button type="button" class="mode-card" id="modeDisplay1" onclick="setDisplayMode('display1')" aria-pressed="false">
-              <span class="mode-card-preview"><span class="pv-dot"></span><span class="pv-line"></span><span class="pv-line"></span><span class="pv-line"></span></span>
-              <span class="mode-card-name">TAMPILAN 1</span>
-              <span class="mode-card-check"><i class="fas fa-check"></i></span>
-            </button>
-            <button type="button" class="mode-card" id="modeDisplay2" onclick="setDisplayMode('display2')" aria-pressed="false">
-              <span class="mode-card-preview"><span class="pv-line"></span><span class="pv-line"></span><span class="pv-line"></span><span class="pv-line"></span></span>
-              <span class="mode-card-name">TAMPILAN 2</span>
-              <span class="mode-card-check"><i class="fas fa-check"></i></span>
-            </button>
-          </div>
-        </div>
-
-        <div class="acc-section">
-          <div class="acc-label">Mode Warna</div>
-          <div class="mode-cards" role="group" aria-label="Mode warna">
-            <button type="button" class="mode-card" id="modeLight" onclick="setColorMode('light')" aria-pressed="false">
-              <span class="mode-card-preview"><span class="pv-sun"></span></span>
-              <span class="mode-card-name">LIGHT</span>
-              <span class="mode-card-check"><i class="fas fa-check"></i></span>
-            </button>
-            <button type="button" class="mode-card" id="modeDark" onclick="setColorMode('dark')" aria-pressed="false">
-              <span class="mode-card-preview"><span class="pv-moon"></span></span>
-              <span class="mode-card-name">DARK</span>
-              <span class="mode-card-check"><i class="fas fa-check"></i></span>
-            </button>
-          </div>
-        </div>
-
-        <button type="button" class="acc-reset" onclick="resetAllSettings()"><i class="fas fa-rotate-left"></i>&nbsp; Kembalikan ke Default</button>
-      </div>
-    </div>
-    <button type="button" class="acc-fab" id="accFab" onclick="toggleAccPanel()" aria-label="Buka pengaturan tampilan" title="Pengaturan Tampilan">
-      <span class="acc-fab-icon"><i class="fas fa-sliders" id="accIcon"></i></span>
-      <span class="fab-tip">Pengaturan Tampilan</span>
+    <button type="button" class="acc-fab" id="accFab" onclick="toggleColorMode()" aria-label="Ganti mode terang/gelap" title="Ganti Mode Terang/Gelap">
+      <span class="acc-fab-icon"><i class="fas fa-sun" id="accIcon"></i></span>
+      <span class="fab-tip">Mode Terang/Gelap</span>
     </button>
   </div>
 
@@ -886,17 +810,7 @@
     <div class="nara-window" id="naraWindow" role="dialog" aria-label="Nara Skaneda — Asisten Virtual">
       <div class="nara-header">
         <div class="nara-avatar">
-          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <defs>
-              <linearGradient id="naraGrad" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
-                <stop stop-color="#f9a825"/><stop offset="1" stop-color="#ffd54f"/>
-              </linearGradient>
-            </defs>
-            <path d="M24 2 42 9v14c0 11.2-7.6 19.6-18 23C13.6 42.6 6 34.2 6 23V9L24 2Z" fill="url(#naraGrad)"/>
-            <path d="M24 5.4 39.4 11.3V23c0 9.6-6.4 16.8-15.4 19.9C15 39.8 8.6 32.6 8.6 23V11.3L24 5.4Z" fill="#0d3a66"/>
-            <path d="M15 16h18v2.4H15zM15 21h18v2.4H15z" fill="#ffd54f"/>
-            <path d="M24 26c-4 0-6.4 2.6-6.4 6 0 3.4 2.4 6 6.4 6s6.4-2.6 6.4-6c0-3.4-2.4-6-6.4-6Zm0 2.2c2.3 0 3.6 1.5 3.6 3.8 0 2.3-1.3 3.8-3.6 3.8s-3.6-1.5-3.6-3.8c0-2.3 1.3-3.8 3.6-3.8Z" fill="#ffd54f"/>
-          </svg>
+          <i class="fas fa-robot"></i>
         </div>
         <div>
           <div class="nara-name">NARA <em>SKANEDA</em></div>
@@ -928,12 +842,7 @@
       </div>
     </div>
     <button type="button" class="nara-fab" id="naraFab" onclick="toggleNara()" aria-label="Buka Nara Skaneda" title="Nara Skaneda — Asisten Virtual">
-      <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M24 2 42 9v14c0 11.2-7.6 19.6-18 23C13.6 42.6 6 34.2 6 23V9L24 2Z" fill="#0d3a66"/>
-        <path d="M24 5.4 39.4 11.3V23c0 9.6-6.4 16.8-15.4 19.9C15 39.8 8.6 32.6 8.6 23V11.3L24 5.4Z" fill="#fff"/>
-        <path d="M15 17.5h18v2H15zM15 22h18v2H15z" fill="#f9a825"/>
-        <path d="M24 26.5c-3.8 0-6.1 2.5-6.1 5.7 0 3.2 2.3 5.7 6.1 5.7s6.1-2.5 6.1-5.7c0-3.2-2.3-5.7-6.1-5.7Zm0 2.1c2.2 0 3.5 1.4 3.5 3.6 0 2.2-1.3 3.6-3.5 3.6s-3.5-1.4-3.5-3.6c0-2.2 1.3-3.6 3.5-3.6Z" fill="#0d3a66"/>
-      </svg>
+      <i class="fas fa-robot"></i>
       <span class="nara-status-dot"></span>
       <span class="fab-tip">Nara Skaneda</span>
     </button>
@@ -1119,73 +1028,25 @@
 
   function applyA11y(s){
     const b = document.body;
-    b.classList.toggle('a11y-text-lg', s.text === 'lg');
-    b.classList.toggle('a11y-text-xl', s.text === 'xl');
-    b.classList.toggle('a11y-high-contrast', !!s.contrast);
-    b.classList.toggle('a11y-reduce-motion', !!s.reduceMotion);
-    b.classList.toggle('a11y-focus-outline', !!s.focus);
-    b.classList.toggle('skn-display-2', s.display === 'display2');
     b.classList.toggle('theme-dark', s.colorMode === 'dark');
 
-    document.querySelectorAll('.acc-seg-btn[data-a11y-text]').forEach(btn=>{
-      const v = s.text||'normal';
-      const on = v==='xl' ? btn.dataset.a11yText==='xl' : btn.dataset.a11yText===v;
-      btn.classList.toggle('active', on);
-    });
-    ['accContrast','accReduceMotion','accFocus'].forEach(id=>{
-      const el = document.getElementById(id);
-      if(!el) return;
-      const key = id === 'accContrast' ? 'contrast' : id === 'accReduceMotion' ? 'reduceMotion' : 'focus';
-      const on = !!s[key];
-      el.classList.toggle('on', on);
-      el.setAttribute('aria-pressed', String(on));
-    });
-    ['modeDisplay1','modeDisplay2'].forEach((id, i)=>{
-      const el = document.getElementById(id);
-      if(el){ el.classList.toggle('active', (s.display||'display1') === (i===0?'display1':'display2')); el.setAttribute('aria-pressed', String((s.display||'display1') === (i===0?'display1':'display2'))); }
-    });
-    ['modeLight','modeDark'].forEach((id, i)=>{
-      const el = document.getElementById(id);
-      if(el){ el.classList.toggle('active', (s.colorMode||'light') === (i===0?'light':'dark')); el.setAttribute('aria-pressed', String((s.colorMode||'light') === (i===0?'light':'dark'))); }
-    });
+    const colorIsDark = (s.colorMode||'light') === 'dark';
+    const fabIcon = document.getElementById('accIcon');
+    if(fabIcon){
+      fabIcon.classList.toggle('fa-sun', !colorIsDark);
+      fabIcon.classList.toggle('fa-moon', colorIsDark);
+    }
   }
 
-  window.toggleAccPanel = function(){
-    const p = document.getElementById('accPanel');
-    if(!p) return;
-    const opening = !p.classList.contains('open');
-    if(opening) applyPanelEdgeSafe(p, 'acc');
-    p.classList.toggle('open');
-  };
-
-  window.setTextSize = function(v){
-    const s = getA11y(); s.text = v; saveA11y(s); applyA11y(s);
-  };
-  window.toggleContrast = function(){
-    const s = getA11y(); s.contrast = !s.contrast; saveA11y(s); applyA11y(s);
-  };
-  window.toggleReduceMotion = function(){
-    const s = getA11y(); s.reduceMotion = !s.reduceMotion; saveA11y(s); applyA11y(s);
-  };
-  window.toggleFocusOutline = function(){
-    const s = getA11y(); s.focus = !s.focus; saveA11y(s); applyA11y(s);
-  };
-  window.setDisplayMode = function(v){
-    const s = getA11y(); s.display = v; saveA11y(s); applyA11y(s);
-  };
-  window.setColorMode = function(v){
-    const s = getA11y(); s.colorMode = v; saveA11y(s); applyA11y(s);
-  };
-  window.resetAllSettings = function(){
-    localStorage.removeItem(A11Y_KEY);
-    applyA11y({});
+  window.toggleColorMode = function(){
+    const s = getA11y();
+    s.colorMode = (s.colorMode === 'dark') ? 'light' : 'dark';
+    saveA11y(s); applyA11y(s);
   };
 
   document.addEventListener('DOMContentLoaded', function(){
     applyA11y(getA11y());
     document.addEventListener('click', function(e){
-      const acc = document.querySelector('.acc-wrap');
-      if(acc && !acc.contains(e.target)) document.getElementById('accPanel')?.classList.remove('open');
       const nara = document.querySelector('.nara-wrap');
       if(nara && !nara.contains(e.target)) document.getElementById('naraWindow')?.classList.remove('open');
     });

@@ -191,6 +191,10 @@
 .ev-error{font-size:.72rem;color:#e0483b;margin-top:.4rem;display:none;align-items:center;gap:.4rem}
 .ev-error.is-shown{display:flex}
 .ev-field.has-error .ev-input,.ev-field.has-error .ev-textarea{border-color:#e0483b}
+.ev-warn{font-size:.72rem;color:#b3760a;background:#fff6e0;border:1px solid #ffe2a8;border-radius:10px;
+  padding:.5rem .7rem;margin-top:.4rem;display:none;align-items:flex-start;gap:.45rem;line-height:1.5}
+.ev-warn.is-shown{display:flex}
+.ev-warn i{margin-top:.15rem;flex:0 0 auto}
 
 /* ---------- success state ---------- */
 .ev-success{display:none;text-align:center}
@@ -257,6 +261,100 @@
 .ev-step.current .ev-step-dot{background:linear-gradient(135deg,#ffd54a,#ffb300);border-color:#ffb300;color:#0d3a66;
   box-shadow:0 0 0 5px rgba(255,179,0,.16)}
 .ev-step.current .ev-step-label{color:#0d3a66}
+
+/* ---------- ulasan publik (saran & kritik) ---------- */
+.ev-ulasan-list-head{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.ev-ulasan-sort{display:flex;gap:.4rem;background:#eef3f8;border-radius:999px;padding:.3rem;flex:0 0 auto}
+.ev-ulasan-sort-btn{border:none;background:transparent;color:#5a7086;font-size:.72rem;font-weight:800;
+  padding:.45rem .9rem;border-radius:999px;cursor:pointer;transition:all .25s var(--ease,ease)}
+.ev-ulasan-sort-btn.active{background:#0d3a66;color:#fff;box-shadow:0 8px 18px rgba(13,58,102,.22)}
+.ev-ulasan-list{display:grid;gap:1rem}
+.ev-ulasan-item{border:1px solid #eef2f6;border-radius:16px;padding:1.1rem 1.2rem;background:#fbfdff;
+  animation:evFadeIn .35s var(--ease,ease) both}
+.ev-ulasan-item-head{display:flex;align-items:center;gap:.7rem;margin-bottom:.7rem}
+.ev-ulasan-avatar{width:36px;height:36px;border-radius:50%;flex:0 0 36px;display:flex;align-items:center;
+  justify-content:center;font-family:var(--font-display);font-weight:900;font-size:.9rem;color:#0d3a66;
+  background:linear-gradient(135deg,#ffd54a,#ffb300)}
+.ev-ulasan-item-meta{display:flex;flex-direction:column;line-height:1.35;flex:1;min-width:0}
+.ev-ulasan-item-meta strong{font-size:.82rem;color:#0d3a66;font-weight:800}
+.ev-ulasan-item-meta span{font-size:.68rem;color:#a7b6c4}
+.ev-ulasan-delete-btn{flex:0 0 auto;border:1.5px solid #f4d6d2;background:#fff;color:#c94a3d;
+  width:32px;height:32px;border-radius:10px;display:flex;align-items:center;justify-content:center;
+  font-size:.78rem;cursor:pointer;transition:all .2s var(--ease,ease)}
+.ev-ulasan-delete-btn:hover{background:#e0483b;border-color:#e0483b;color:#fff}
+.ev-ulasan-mine-badge{display:inline-block;margin-left:.5rem;font-size:.6rem;font-weight:800;
+  color:#ffb300;background:rgba(255,179,0,.12);border:1px solid rgba(255,179,0,.3);
+  border-radius:999px;padding:.15rem .5rem;vertical-align:middle;text-transform:uppercase;letter-spacing:.03em}
+.ev-ulasan-head-actions{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap}
+.ev-admin-toggle-btn{display:inline-flex;align-items:center;gap:.4rem;border:1.5px solid #e3edf0;
+  background:#fff;color:#5a7086;font-size:.72rem;font-weight:800;padding:.5rem .85rem;
+  border-radius:999px;cursor:pointer;transition:all .2s var(--ease,ease)}
+.ev-admin-toggle-btn:hover{border-color:#0d3a66;color:#0d3a66}
+.ev-admin-toggle-btn.is-active{background:#0d3a66;color:#fff;border-color:#0d3a66}
+.ev-admin-banner{display:none;align-items:center;gap:.6rem;font-size:.76rem;font-weight:700;color:#0d3a66;
+  background:linear-gradient(135deg,#fff6e0,#ffedc2);border:1px solid #ffe2a8;border-radius:14px;
+  padding:.75rem 1rem;margin-bottom:1.1rem}
+.ev-admin-banner.is-shown{display:flex}
+.ev-admin-banner i{color:#ffb300}
+.ev-admin-banner button{margin-left:auto;border:none;background:#0d3a66;color:#fff;font-size:.68rem;
+  font-weight:800;padding:.4rem .8rem;border-radius:999px;cursor:pointer}
+
+/* ---------- modal kustom (pengganti confirm()/prompt() bawaan browser) ---------- */
+.ev-modal-overlay{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;
+  padding:1.2rem;background:rgba(8,32,58,.55);backdrop-filter:blur(3px);opacity:0;
+  transition:opacity .22s var(--ease,ease)}
+.ev-modal-overlay.is-open{opacity:1}
+.ev-modal{width:100%;max-width:380px;background:#fff;border-radius:22px;padding:1.8rem 1.6rem 1.6rem;
+  box-shadow:0 30px 70px rgba(4,14,28,.35);transform:translateY(14px) scale(.96);opacity:0;
+  transition:transform .25s var(--ease,ease),opacity .25s var(--ease,ease);text-align:center}
+.ev-modal-overlay.is-open .ev-modal{transform:translateY(0) scale(1);opacity:1}
+.ev-modal-icon{width:52px;height:52px;margin:0 auto .9rem;border-radius:16px;display:flex;align-items:center;
+  justify-content:center;font-size:1.25rem;background:rgba(255,179,0,.12);color:#ffb300}
+.ev-modal-icon.is-danger{background:rgba(224,72,59,.1);color:#e0483b}
+.ev-modal-icon.is-admin{background:rgba(13,58,102,.1);color:#0d3a66}
+.ev-modal-title{font-family:var(--font-display);font-size:1.05rem;font-weight:900;color:#0d3a66;margin:0 0 .5rem}
+.ev-modal-message{font-size:.82rem;color:#5a7086;line-height:1.65;margin:0 0 1.3rem}
+.ev-modal-input-wrap{margin:0 0 .4rem;text-align:left}
+.ev-modal-input{width:100%;border:1.5px solid #e3edf0;border-radius:12px;padding:.75rem .9rem;
+  font-size:.95rem;letter-spacing:.15em;text-align:center;color:#0d3a66;background:#fbfdff;
+  transition:border-color .2s var(--ease,ease),box-shadow .2s var(--ease,ease)}
+.ev-modal-input:focus{outline:none;border-color:#ffb300;box-shadow:0 0 0 4px rgba(255,179,0,.14)}
+.ev-modal-error{font-size:.72rem;color:#e0483b;margin-top:.5rem;min-height:1em;font-weight:700}
+.ev-modal-actions{display:flex;gap:.7rem;margin-top:1.4rem}
+.ev-modal-btn{flex:1;border:none;border-radius:12px;padding:.75rem 1rem;font-size:.82rem;font-weight:800;
+  cursor:pointer;transition:transform .2s var(--ease,ease),box-shadow .2s var(--ease,ease)}
+.ev-modal-btn-ghost{background:#f2f6f9;color:#5a7086}
+.ev-modal-btn-ghost:hover{background:#e7edf2}
+.ev-modal-btn-primary{background:linear-gradient(135deg,#ffd54a,#ffb300);color:#0a2d52;
+  box-shadow:0 12px 26px rgba(255,179,0,.32)}
+.ev-modal-btn-primary:hover{transform:translateY(-2px)}
+.ev-modal-btn-danger{background:linear-gradient(135deg,#f0685a,#e0483b);color:#fff;
+  box-shadow:0 12px 26px rgba(224,72,59,.32)}
+.ev-modal-btn-danger:hover{transform:translateY(-2px)}
+.ev-ulasan-item-text{font-size:.85rem;color:#33475a;line-height:1.7;margin:0 0 .9rem;word-break:break-word}
+.ev-ulasan-votes{display:flex;gap:.6rem;flex-wrap:wrap}
+.ev-vote-btn{display:inline-flex;align-items:center;gap:.45rem;border:1.5px solid #e3edf0;background:#fff;
+  color:#5a7086;font-size:.74rem;font-weight:800;padding:.5rem .9rem;border-radius:999px;cursor:pointer;
+  transition:all .2s var(--ease,ease)}
+.ev-vote-btn span{font-family:var(--font-display);font-size:.78rem}
+.ev-vote-agree:hover{border-color:#3fb87a;color:#1f8a4c;background:#eefaf2}
+.ev-vote-disagree:hover{border-color:#e0483b;color:#c0392b;background:#fdeceb}
+.ev-vote-btn.is-pulsing{transform:scale(1.08)}
+.ev-vote-btn:disabled{cursor:not-allowed}
+.ev-vote-btn:disabled:not(.is-selected){opacity:.45}
+.ev-vote-agree.is-selected{border-color:#3fb87a;color:#1f8a4c;background:#eefaf2;box-shadow:0 0 0 2px rgba(63,184,122,.18)}
+.ev-vote-disagree.is-selected{border-color:#e0483b;color:#c0392b;background:#fdeceb;box-shadow:0 0 0 2px rgba(224,72,59,.18)}
+.ev-ulasan-voted-note{display:flex;align-items:center;gap:.4rem;margin-top:.7rem;font-size:.68rem;
+  font-weight:800;color:#a7b6c4}
+.ev-ulasan-voted-note i{color:#3fb87a;font-size:.7rem}
+.ev-ulasan-empty{display:none;text-align:center;padding:2.8rem 1.2rem;color:#a7b6c4;background:#fbfdff;
+  border:1px dashed #dbe6ee;border-radius:16px}
+.ev-ulasan-empty i{font-size:2rem;margin-bottom:1rem;color:#dbe6ee}
+.ev-ulasan-empty p{margin:0;font-size:.85rem}
+@media(max-width:480px){
+  .ev-ulasan-votes{flex-direction:column;align-items:stretch}
+  .ev-vote-btn{justify-content:center}
+}
 
 /* ---------- responsive ---------- */
 @media(max-width:1180px){
@@ -326,6 +424,9 @@
       <button class="ev-tab" type="button" data-tab="lacak" role="tab" aria-selected="false">
         <i class="fas fa-magnifying-glass"></i> Lacak Laporan
       </button>
+      <button class="ev-tab" type="button" data-tab="ulasan" role="tab" aria-selected="false">
+        <i class="fas fa-comments"></i> Saran &amp; Kritik
+      </button>
     </div>
 
     <!-- ================= PANEL 1: KIRIM LAPORAN ================= -->
@@ -385,12 +486,14 @@
           <label class="ev-label" for="evJudul">Judul Singkat</label>
           <input type="text" id="evJudul" class="ev-input" placeholder="Contoh: Keran air toilet lantai 2 rusak" maxlength="80">
           <div class="ev-error" id="evErrJudul"><i class="fas fa-circle-exclamation"></i> Judul laporan wajib diisi.</div>
+          <div class="ev-warn" id="evWarnJudul"><i class="fas fa-triangle-exclamation"></i> Terdeteksi kata kasar/tidak pantas. Ganti dulu sebelum bisa dikirim.</div>
         </div>
 
         <div class="ev-field" id="evFieldDesk">
           <label class="ev-label" for="evDeskripsi">Ceritakan Kejadiannya <span class="ev-counter"><span id="evCount">0</span>/600</span></label>
           <textarea id="evDeskripsi" class="ev-textarea" maxlength="600" placeholder="Jelaskan kapan, di mana, dan apa yang terjadi sedetail mungkin..."></textarea>
           <div class="ev-error" id="evErrDesk"><i class="fas fa-circle-exclamation"></i> Ceritakan kejadiannya minimal 20 karakter.</div>
+          <div class="ev-warn" id="evWarnDesk"><i class="fas fa-triangle-exclamation"></i> Terdeteksi kata kasar/tidak pantas. Ganti dulu sebelum bisa dikirim.</div>
         </div>
 
         <div class="ev-field">
@@ -510,6 +613,80 @@
       </div>
     </div>
 
+    <!-- ================= PANEL 3: SARAN & KRITIK (ULASAN PUBLIK) ================= -->
+    <div class="ev-panel" data-panel="ulasan">
+
+      <div class="ev-card">
+        <div class="ev-card-head">
+          <h2>Saran &amp; Kritik Terbuka</h2>
+          <p>Beda dengan laporan di atas yang privat, ulasan di sini bersifat publik — bisa dilihat dan divoting oleh siapa saja yang membuka halaman ini. Tidak ada Ticket ID untuk ulasan.</p>
+        </div>
+
+        <form id="evUlasanForm" novalidate>
+          <div class="ev-field">
+            <label class="ev-label" for="evUlasanTeks">Tulis Saran / Kritik <span class="ev-counter"><span id="evUlasanCount">0</span>/300</span></label>
+            <textarea id="evUlasanTeks" class="ev-textarea" maxlength="300" style="min-height:110px" placeholder="Tulis pendapatmu tentang sekolah, fasilitas, kegiatan, dan lainnya..."></textarea>
+            <div class="ev-error" id="evErrUlasan"><i class="fas fa-circle-exclamation"></i> Tulis dulu saran/kritikmu, minimal 10 karakter.</div>
+            <div class="ev-warn" id="evWarnUlasan"><i class="fas fa-triangle-exclamation"></i> Terdeteksi kata kasar/tidak pantas. Ganti dulu sebelum bisa dikirim.</div>
+          </div>
+
+          <div class="ev-field">
+            <div class="ev-switch-row">
+              <div class="ev-switch-text">
+                <strong>Kirim sebagai Anonim</strong>
+                <span>Kalau dimatikan, nama kamu akan tampil di ulasan publik ini.</span>
+              </div>
+              <span class="ev-switch is-on" id="evUlasanAnonSwitch">
+                <input type="checkbox" id="evUlasanAnonInput" checked>
+                <span class="ev-switch-knob"></span>
+              </span>
+            </div>
+
+            <div class="ev-identity" id="evUlasanIdentity">
+              <label class="ev-label" for="evUlasanNama">Nama</label>
+              <input type="text" id="evUlasanNama" class="ev-input" placeholder="Nama yang ditampilkan" maxlength="40">
+            </div>
+          </div>
+
+          <div class="ev-submit-row">
+            <p class="ev-privacy-note"><i class="fas fa-eye"></i> Ulasan ini tampil untuk semua pengunjung website, bukan hanya pihak sekolah.</p>
+            <button type="submit" class="ev-btn" id="evUlasanSubmitBtn"><i class="fas fa-paper-plane"></i> Kirim Ulasan</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="ev-card">
+        <div class="ev-card-head ev-ulasan-list-head">
+          <div>
+            <h2>Semua Ulasan</h2>
+            <p><span id="evUlasanTotal">0</span> ulasan dari pengunjung.</p>
+          </div>
+          <div class="ev-ulasan-head-actions">
+            <div class="ev-ulasan-sort" role="group" aria-label="Urutkan ulasan">
+              <button type="button" class="ev-ulasan-sort-btn active" data-sort="terbaru">Terbaru</button>
+              <button type="button" class="ev-ulasan-sort-btn" data-sort="populer">Terpopuler</button>
+            </div>
+            <button type="button" class="ev-admin-toggle-btn" id="evAdminToggleBtn" title="Mode Admin">
+              <i class="fas fa-user-shield"></i> <span id="evAdminToggleLabel">Admin</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="ev-admin-banner" id="evAdminBanner">
+          <i class="fas fa-shield-halved"></i> Mode Admin aktif — kamu bisa menghapus semua ulasan.
+          <button type="button" id="evAdminExitBtn">Keluar</button>
+        </div>
+
+        <div class="ev-ulasan-list" id="evUlasanList"></div>
+
+        <div class="ev-ulasan-empty" id="evUlasanEmpty">
+          <i class="fas fa-comments"></i>
+          <p>Belum ada ulasan. Jadilah yang pertama menyampaikan saran atau kritik!</p>
+        </div>
+      </div>
+
+    </div>
+
     </div>
     <!-- /.ev-main -->
 
@@ -561,6 +738,139 @@
 <script>
 (function () {
   var STORAGE_KEY = 'evoice_reports_v1';
+
+  /* ---------------- filter kata kasar & SARA ----------------
+     Dipakai di semua field teks bebas (judul & deskripsi laporan,
+     teks ulasan). Bukan daftar lengkap/final — tambah/kurangi
+     sesuai kebutuhan moderasi sekolah. Idealnya validasi yang
+     sama juga dijalankan ulang di backend saat data disimpan,
+     supaya tidak bisa dilewati lewat DevTools/console. */
+  var evForbiddenWords = [
+    /* kata kasar / umpatan umum + varian slang/typo yang sering dipakai */
+    'anjing','anjir','anjrit','anjay','anjeng','anjg','anjr','njir','njr',
+    'asu','asuu','babi','babii','bangsat','bgst','bgsd','bego','bgo',
+    'bodoh','goblok','goblog','gblk','tolol','tolool','kontol','kntl',
+    'kntol','memek','mmk','ngentot','ngntd','jancok','jancuk','cok',
+    'kampret','sialan','brengsek','tai','taik','sinting','idiot','pantek',
+    'bacot','kunyuk','monyet','setan','keparat','bajingan','pecun','lonte',
+    'fuck','fucking','shit','bitch','asshole','bastard','dick','pussy',
+    /* istilah bernuansa SARA (suku/agama/ras/antargolongan) —
+       ejekan berbasis etnis, agama, atau ras */
+    'cina','cino','pribumi','kafir','kristen anjing','islam teroris',
+    'teroris','komunis','pki','pki babi','yahudi babi','arab kampungan',
+    'jawa tolol','madura tolol','batak tolol','ambon monyet','papua monyet',
+    'negro','nigger','cebong','kampret tolol','antek asing'
+  ];
+  function containsForbiddenWord(text) {
+    var normalized = (' ' + String(text).toLowerCase() + ' ')
+      .replace(/[^a-z0-9\s]/g, ' ')
+      .replace(/(.)\1+/g, '$1'); // "anjingggg"/"jelekkk" -> "anjing"/"jelek" biar variasi huruf berulang tetap kena
+    return evForbiddenWords.some(function (bad) {
+      return normalized.indexOf(' ' + bad + ' ') !== -1;
+    });
+  }
+  function toggleWordWarning(inputEl, warnEl) {
+    var flagged = containsForbiddenWord(inputEl.value);
+    warnEl.classList.toggle('is-shown', flagged);
+    return flagged;
+  }
+
+  /* ---------------- modal kustom (pengganti confirm()/prompt() bawaan browser) ---------------- */
+  function closeEvModal(overlay) {
+    overlay.classList.remove('is-open');
+    setTimeout(function () { if (overlay.parentNode) overlay.parentNode.removeChild(overlay); }, 200);
+    document.removeEventListener('keydown', overlay._escHandler);
+  }
+
+  function openEvConfirmModal(opts) {
+    // opts: { title, message, confirmLabel, cancelLabel, danger }
+    return new Promise(function (resolve) {
+      var overlay = document.createElement('div');
+      overlay.className = 'ev-modal-overlay';
+      overlay.innerHTML =
+        '<div class="ev-modal" role="alertdialog" aria-modal="true">' +
+          '<div class="ev-modal-icon' + (opts.danger ? ' is-danger' : '') + '">' +
+            '<i class="fas ' + (opts.danger ? 'fa-trash' : 'fa-circle-question') + '"></i>' +
+          '</div>' +
+          '<h3 class="ev-modal-title">' + escapeHtml(opts.title || 'Konfirmasi') + '</h3>' +
+          '<p class="ev-modal-message">' + escapeHtml(opts.message || '') + '</p>' +
+          '<div class="ev-modal-actions">' +
+            '<button type="button" class="ev-modal-btn ev-modal-btn-ghost" data-act="cancel">' + escapeHtml(opts.cancelLabel || 'Batal') + '</button>' +
+            '<button type="button" class="ev-modal-btn ' + (opts.danger ? 'ev-modal-btn-danger' : 'ev-modal-btn-primary') + '" data-act="confirm">' + escapeHtml(opts.confirmLabel || 'Ya') + '</button>' +
+          '</div>' +
+        '</div>';
+      document.body.appendChild(overlay);
+      document.body.style.overflow = 'hidden';
+      requestAnimationFrame(function () { overlay.classList.add('is-open'); });
+
+      function finish(result) {
+        document.body.style.overflow = '';
+        closeEvModal(overlay);
+        resolve(result);
+      }
+      overlay.addEventListener('click', function (e) {
+        if (e.target === overlay) finish(false);
+        var act = e.target.closest('[data-act]');
+        if (!act) return;
+        finish(act.getAttribute('data-act') === 'confirm');
+      });
+      overlay._escHandler = function (e) { if (e.key === 'Escape') finish(false); };
+      document.addEventListener('keydown', overlay._escHandler);
+      var confirmBtn = overlay.querySelector('[data-act="confirm"]');
+      if (confirmBtn) confirmBtn.focus();
+    });
+  }
+
+  function openEvPinModal(opts) {
+    // opts: { title, message, validate: function(pin) -> boolean }
+    return new Promise(function (resolve) {
+      var overlay = document.createElement('div');
+      overlay.className = 'ev-modal-overlay';
+      overlay.innerHTML =
+        '<div class="ev-modal" role="alertdialog" aria-modal="true">' +
+          '<div class="ev-modal-icon is-admin"><i class="fas fa-user-shield"></i></div>' +
+          '<h3 class="ev-modal-title">' + escapeHtml(opts.title || 'Mode Admin') + '</h3>' +
+          '<p class="ev-modal-message">' + escapeHtml(opts.message || 'Masukkan PIN admin untuk melanjutkan.') + '</p>' +
+          '<div class="ev-modal-input-wrap">' +
+            '<input type="password" inputmode="numeric" class="ev-modal-input" id="evModalPinInput" placeholder="••••••" autocomplete="off">' +
+            '<div class="ev-modal-error" id="evModalPinError"></div>' +
+          '</div>' +
+          '<div class="ev-modal-actions">' +
+            '<button type="button" class="ev-modal-btn ev-modal-btn-ghost" data-act="cancel">Batal</button>' +
+            '<button type="button" class="ev-modal-btn ev-modal-btn-primary" data-act="confirm">Masuk</button>' +
+          '</div>' +
+        '</div>';
+      document.body.appendChild(overlay);
+      document.body.style.overflow = 'hidden';
+      requestAnimationFrame(function () { overlay.classList.add('is-open'); });
+
+      var input = overlay.querySelector('#evModalPinInput');
+      var errEl = overlay.querySelector('#evModalPinError');
+      setTimeout(function () { input.focus(); }, 220);
+
+      function finish(result) {
+        document.body.style.overflow = '';
+        closeEvModal(overlay);
+        resolve(result);
+      }
+      function trySubmit() {
+        var val = input.value.trim();
+        if (!val) { errEl.textContent = 'PIN tidak boleh kosong.'; input.focus(); return; }
+        if (opts.validate(val)) { finish(true); }
+        else { errEl.textContent = 'PIN salah, coba lagi.'; input.value = ''; input.focus(); }
+      }
+      overlay.addEventListener('click', function (e) {
+        if (e.target === overlay) { finish(false); return; }
+        var act = e.target.closest('[data-act]');
+        if (!act) return;
+        if (act.getAttribute('data-act') === 'cancel') finish(false);
+        else trySubmit();
+      });
+      input.addEventListener('keydown', function (e) { if (e.key === 'Enter') trySubmit(); });
+      overlay._escHandler = function (e) { if (e.key === 'Escape') finish(false); };
+      document.addEventListener('keydown', overlay._escHandler);
+    });
+  }
 
   /* ---------------- utils ---------------- */
   function loadReports() {
@@ -629,20 +939,24 @@
   /* ---------------- textarea counter ---------------- */
   var deskripsi = document.getElementById('evDeskripsi');
   var countEl = document.getElementById('evCount');
+  var deskWarnEl = document.getElementById('evWarnDesk');
   deskripsi.addEventListener('input', function () {
     countEl.textContent = deskripsi.value.length;
     if (deskripsi.value.trim().length >= 20) {
       document.getElementById('evFieldDesk').classList.remove('has-error');
       document.getElementById('evErrDesk').classList.remove('is-shown');
     }
+    toggleWordWarning(deskripsi, deskWarnEl);
   });
 
   var judul = document.getElementById('evJudul');
+  var judulWarnEl = document.getElementById('evWarnJudul');
   judul.addEventListener('input', function () {
     if (judul.value.trim().length > 0) {
       document.getElementById('evFieldJudul').classList.remove('has-error');
       document.getElementById('evErrJudul').classList.remove('is-shown');
     }
+    toggleWordWarning(judul, judulWarnEl);
   });
 
   /* ---------------- submit form ---------------- */
@@ -669,6 +983,16 @@
     if (deskripsi.value.trim().length < 20) {
       document.getElementById('evFieldDesk').classList.add('has-error');
       document.getElementById('evErrDesk').classList.add('is-shown');
+      valid = false;
+    }
+
+    if (toggleWordWarning(judul, judulWarnEl)) {
+      document.getElementById('evFieldJudul').classList.add('has-error');
+      valid = false;
+    }
+
+    if (toggleWordWarning(deskripsi, deskWarnEl)) {
+      document.getElementById('evFieldDesk').classList.add('has-error');
       valid = false;
     }
 
@@ -799,6 +1123,316 @@
       trackEmpty.style.display = '';
     }
   });
+
+  /* ---------------- ULASAN PUBLIK (saran & kritik) ---------------- */
+  var ULASAN_KEY = 'evoice_ulasan_v1';
+  var ULASAN_MYVOTES_KEY = 'evoice_ulasan_myvotes_v1'; // simpan pilihan vote milik browser ini per ulasan
+  var ULASAN_MINE_KEY = 'evoice_ulasan_mine_v1'; // id ulasan yang dikirim dari browser ini
+  var ADMIN_SESSION_KEY = 'evoice_admin_mode_v1'; // aktif hanya untuk tab/sesi ini
+  /* PIN admin sementara (prototype, client-side saja).
+     GANTI PIN INI dan pindahkan ke backend begitu sistem auth Laravel sudah siap —
+     siapapun yang buka DevTools bisa lihat/ubah nilai ini di kode. */
+  var ADMIN_PIN = '260826';
+
+  function loadUlasan() {
+    try { return JSON.parse(localStorage.getItem(ULASAN_KEY)) || []; }
+    catch (e) { return []; }
+  }
+  function saveUlasan(list) {
+    try { localStorage.setItem(ULASAN_KEY, JSON.stringify(list)); } catch (e) {}
+  }
+  function loadMyVotes() {
+    try { return JSON.parse(localStorage.getItem(ULASAN_MYVOTES_KEY)) || {}; }
+    catch (e) { return {}; }
+  }
+  function saveMyVotes(votes) {
+    try { localStorage.setItem(ULASAN_MYVOTES_KEY, JSON.stringify(votes)); } catch (e) {}
+  }
+  function loadMineIds() {
+    try { return JSON.parse(localStorage.getItem(ULASAN_MINE_KEY)) || []; }
+    catch (e) { return []; }
+  }
+  function saveMineIds(ids) {
+    try { localStorage.setItem(ULASAN_MINE_KEY, JSON.stringify(ids)); } catch (e) {}
+  }
+  function markAsMine(id) {
+    var ids = loadMineIds();
+    ids.push(id);
+    saveMineIds(ids);
+  }
+  function isAdminMode() {
+    try { return sessionStorage.getItem(ADMIN_SESSION_KEY) === '1'; }
+    catch (e) { return false; }
+  }
+  function setAdminMode(on) {
+    try { sessionStorage.setItem(ADMIN_SESSION_KEY, on ? '1' : '0'); } catch (e) {}
+  }
+  function generateUlasanId() {
+    return 'u' + Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
+  }
+  function formatUlasanDate(iso) {
+    var d = new Date(iso);
+    var opts = { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' };
+    return d.toLocaleDateString('id-ID', opts) + ' WIB';
+  }
+  function escapeHtml(str) {
+    return String(str)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  var ulasanSortMode = 'terbaru';
+  var ulasanListEl = document.getElementById('evUlasanList');
+  var ulasanEmptyEl = document.getElementById('evUlasanEmpty');
+  var ulasanTotalEl = document.getElementById('evUlasanTotal');
+
+  function renderUlasan() {
+    var list = loadUlasan();
+    ulasanTotalEl.textContent = list.length;
+
+    if (list.length === 0) {
+      ulasanListEl.innerHTML = '';
+      ulasanEmptyEl.style.display = '';
+      return;
+    }
+    ulasanEmptyEl.style.display = 'none';
+
+    var sorted = list.slice();
+    if (ulasanSortMode === 'populer') {
+      sorted.sort(function (a, b) {
+        return (b.setuju - b.tidakSetuju) - (a.setuju - a.tidakSetuju);
+      });
+    } else {
+      sorted.sort(function (a, b) { return new Date(b.createdAt) - new Date(a.createdAt); });
+    }
+
+    var myVotes = loadMyVotes();
+    var mineIds = loadMineIds();
+    var adminOn = isAdminMode();
+
+    ulasanListEl.innerHTML = sorted.map(function (item) {
+      var displayName = item.anonim ? 'Anonim' : (item.nama || 'Pengunjung');
+      var initial = displayName.trim().charAt(0).toUpperCase() || '?';
+      var myVote = myVotes[item.id]; // 'setuju' | 'tidak' | undefined
+      var locked = !!myVote;
+      var agreeCls = 'ev-vote-btn ev-vote-agree' + (myVote === 'setuju' ? ' is-selected' : '');
+      var disagreeCls = 'ev-vote-btn ev-vote-disagree' + (myVote === 'tidak' ? ' is-selected' : '');
+      var disabledAttr = locked ? ' disabled' : '';
+      var isMine = mineIds.indexOf(item.id) !== -1;
+      var canDelete = isMine || adminOn;
+      var deleteBtnHtml = canDelete
+        ? '<button type="button" class="ev-ulasan-delete-btn" data-id="' + item.id + '" title="Hapus ulasan ini" aria-label="Hapus ulasan ini">' +
+            '<i class="fas fa-trash"></i>' +
+          '</button>'
+        : '';
+      var mineBadge = isMine ? '<span class="ev-ulasan-mine-badge">Ulasanmu</span>' : '';
+      return '' +
+        '<div class="ev-ulasan-item" data-item-id="' + item.id + '">' +
+          '<div class="ev-ulasan-item-head">' +
+            '<div class="ev-ulasan-avatar">' + escapeHtml(initial) + '</div>' +
+            '<div class="ev-ulasan-item-meta">' +
+              '<strong>' + escapeHtml(displayName) + mineBadge + '</strong>' +
+              '<span>' + formatUlasanDate(item.createdAt) + '</span>' +
+            '</div>' +
+            deleteBtnHtml +
+          '</div>' +
+          '<p class="ev-ulasan-item-text">' + escapeHtml(item.teks) + '</p>' +
+          '<div class="ev-ulasan-votes">' +
+            '<button type="button" class="' + agreeCls + '" data-id="' + item.id + '" data-vote="setuju"' + disabledAttr + '>' +
+              '<i class="fas fa-thumbs-up"></i> Setuju <span>' + (item.setuju || 0) + '</span>' +
+            '</button>' +
+            '<button type="button" class="' + disagreeCls + '" data-id="' + item.id + '" data-vote="tidak"' + disabledAttr + '>' +
+              '<i class="fas fa-thumbs-down"></i> Tidak Setuju <span>' + (item.tidakSetuju || 0) + '</span>' +
+            '</button>' +
+          '</div>' +
+          (locked ? '<div class="ev-ulasan-voted-note"><i class="fas fa-check"></i> Kamu sudah memilih: ' + (myVote === 'setuju' ? 'Setuju' : 'Tidak Setuju') + '</div>' : '') +
+        '</div>';
+    }).join('');
+  }
+
+  document.querySelectorAll('.ev-ulasan-sort-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      document.querySelectorAll('.ev-ulasan-sort-btn').forEach(function (b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      ulasanSortMode = btn.getAttribute('data-sort');
+      renderUlasan();
+    });
+  });
+
+  /* mode admin: PIN-gate sederhana di sisi client (prototype).
+     Sekali aktif, berlaku untuk tab ini saja (sessionStorage) dan
+     tombol hapus akan muncul di semua ulasan, bukan cuma milik sendiri. */
+  var adminToggleBtn = document.getElementById('evAdminToggleBtn');
+  var adminToggleLabel = document.getElementById('evAdminToggleLabel');
+  var adminBanner = document.getElementById('evAdminBanner');
+  var adminExitBtn = document.getElementById('evAdminExitBtn');
+
+  function syncAdminUI() {
+    var on = isAdminMode();
+    adminToggleBtn.classList.toggle('is-active', on);
+    adminToggleLabel.textContent = on ? 'Admin Aktif' : 'Admin';
+    adminBanner.classList.toggle('is-shown', on);
+  }
+
+  adminToggleBtn.addEventListener('click', function () {
+    if (isAdminMode()) return; // sudah aktif, keluar lewat tombol "Keluar" di banner
+    openEvPinModal({
+      title: 'Masuk Mode Admin',
+      message: 'Masukkan PIN admin untuk mengelola dan menghapus semua ulasan.',
+      validate: function (pin) { return pin === ADMIN_PIN; }
+    }).then(function (success) {
+      if (!success) return;
+      setAdminMode(true);
+      syncAdminUI();
+      renderUlasan();
+    });
+  });
+
+  adminExitBtn.addEventListener('click', function () {
+    setAdminMode(false);
+    syncAdminUI();
+    renderUlasan();
+  });
+
+  syncAdminUI();
+
+  /* hapus ulasan */
+  ulasanListEl.addEventListener('click', function (e) {
+    var delBtn = e.target.closest('.ev-ulasan-delete-btn');
+    if (!delBtn) return;
+
+    var id = delBtn.getAttribute('data-id');
+    openEvConfirmModal({
+      title: 'Hapus ulasan ini?',
+      message: 'Tindakan ini tidak bisa dibatalkan. Ulasan akan hilang secara permanen.',
+      confirmLabel: 'Hapus',
+      cancelLabel: 'Batal',
+      danger: true
+    }).then(function (confirmed) {
+      if (!confirmed) return;
+
+      var list = loadUlasan().filter(function (it) { return it.id !== id; });
+      saveUlasan(list);
+
+      var mineIds = loadMineIds().filter(function (mid) { return mid !== id; });
+      saveMineIds(mineIds);
+
+      var myVotes = loadMyVotes();
+      if (myVotes[id]) {
+        delete myVotes[id];
+        saveMyVotes(myVotes);
+      }
+
+      renderUlasan();
+    });
+  });
+
+  /* voting: 1 orang (1 browser) cuma bisa vote 1x per ulasan, dan gak bisa ganti pilihan */
+  ulasanListEl.addEventListener('click', function (e) {
+    var btn = e.target.closest('.ev-vote-btn');
+    if (!btn || btn.disabled) return;
+
+    var id = btn.getAttribute('data-id');
+    var voteType = btn.getAttribute('data-vote');
+
+    var myVotes = loadMyVotes();
+    if (myVotes[id]) return; // sudah pernah vote di ulasan ini, abaikan
+
+    var list = loadUlasan();
+    var item = list.find(function (it) { return it.id === id; });
+    if (!item) return;
+
+    if (voteType === 'setuju') item.setuju = (item.setuju || 0) + 1;
+    else item.tidakSetuju = (item.tidakSetuju || 0) + 1;
+    saveUlasan(list);
+
+    myVotes[id] = voteType;
+    saveMyVotes(myVotes);
+
+    renderUlasan();
+  });
+
+  /* toggle anonim di form ulasan */
+  var ulasanAnonSwitch = document.getElementById('evUlasanAnonSwitch');
+  var ulasanAnonInput = document.getElementById('evUlasanAnonInput');
+  var ulasanIdentityBox = document.getElementById('evUlasanIdentity');
+  function syncUlasanAnon() {
+    var isAnon = ulasanAnonInput.checked;
+    ulasanAnonSwitch.classList.toggle('is-on', isAnon);
+    ulasanIdentityBox.classList.toggle('is-open', !isAnon);
+  }
+  ulasanAnonSwitch.addEventListener('click', function (e) {
+    if (e.target === ulasanAnonInput) return;
+    ulasanAnonInput.checked = !ulasanAnonInput.checked;
+    syncUlasanAnon();
+  });
+  ulasanAnonInput.addEventListener('change', syncUlasanAnon);
+
+  /* counter karakter textarea ulasan */
+  var ulasanTeks = document.getElementById('evUlasanTeks');
+  var ulasanCountEl = document.getElementById('evUlasanCount');
+  var ulasanWarnEl = document.getElementById('evWarnUlasan');
+  ulasanTeks.addEventListener('input', function () {
+    ulasanCountEl.textContent = ulasanTeks.value.length;
+    if (ulasanTeks.value.trim().length >= 10) {
+      document.getElementById('evErrUlasan').classList.remove('is-shown');
+    }
+    toggleWordWarning(ulasanTeks, ulasanWarnEl);
+  });
+
+  /* submit ulasan baru */
+  var ulasanForm = document.getElementById('evUlasanForm');
+  ulasanForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var errEl = document.getElementById('evErrUlasan');
+
+    if (ulasanTeks.value.trim().length < 10) {
+      errEl.innerHTML = '<i class="fas fa-circle-exclamation"></i> Tulis dulu saran/kritikmu, minimal 10 karakter.';
+      errEl.classList.add('is-shown');
+      ulasanTeks.focus();
+      ulasanTeks.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
+    if (toggleWordWarning(ulasanTeks, ulasanWarnEl)) {
+      errEl.innerHTML = '<i class="fas fa-circle-exclamation"></i> Ulasan mengandung kata kasar/SARA yang tidak pantas. Mohon gunakan bahasa yang sopan.';
+      errEl.classList.add('is-shown');
+      ulasanTeks.focus();
+      ulasanTeks.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
+    errEl.classList.remove('is-shown');
+
+    var list = loadUlasan();
+    var isAnon = ulasanAnonInput.checked;
+    var newId = generateUlasanId();
+    list.push({
+      id: newId,
+      nama: isAnon ? '' : document.getElementById('evUlasanNama').value.trim(),
+      anonim: isAnon,
+      teks: ulasanTeks.value.trim(),
+      setuju: 0,
+      tidakSetuju: 0,
+      createdAt: new Date().toISOString()
+    });
+    saveUlasan(list);
+    markAsMine(newId);
+
+    ulasanForm.reset();
+    ulasanCountEl.textContent = '0';
+    ulasanAnonInput.checked = true;
+    syncUlasanAnon();
+
+    ulasanSortMode = 'terbaru';
+    document.querySelectorAll('.ev-ulasan-sort-btn').forEach(function (b) {
+      b.classList.toggle('active', b.getAttribute('data-sort') === 'terbaru');
+    });
+
+    renderUlasan();
+  });
+
+  renderUlasan();
 
   /* ---------------- hero neural-network background ---------------- */
   function initHeroNet() {
