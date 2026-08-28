@@ -315,55 +315,159 @@ body:has(.vt360-fullpage) .app-header{display:none !important}
         { pitch: 6.27, yaw: -84.00, to: 'lobi-sekolah', label: 'Menuju Lobi', icon: 'fa-plus' }
       ]
     },
-    'lapangan-upacara': {
-      title: 'Lapangan Upacara', category: 'area', icon: 'fa-flag',
-      desc: 'Ruang terbuka untuk upacara bendera, olahraga, dan berbagai kegiatan siswa.',
-      panorama: '' // GANTI DI SINI
-    },
     'lobi-sekolah': {
       title: 'Lobi & Ruang Tunggu', category: 'area', icon: 'fa-door-open',
       desc: 'Area penerima tamu sekolah, penghubung menuju gedung kelas dan ruang program keahlian.',
-      panorama: '{{ asset("tour/lobi-sekolah.jpg") }}',
+      panorama: '{{ asset("tour/lobi-sekolah.jpg") }}?v={{ time() }}',
       // Foto ini juga panorama sebagian (8000x2713px) — vaov dihitung sama
       // seperti scene gerbang-utama di atas.
       haov: 360,
       vaov: 122,
       vOffset: 0
     },
-    'koridor-rpl': {
-      title: 'Koridor Kelas RPL', category: 'kelas', icon: 'fa-code',
-      desc: 'Akses menuju ruang teori dan laboratorium Rekayasa Perangkat Lunak.',
-      panorama: '' // GANTI DI SINI
+    'lapangan-utama': {
+      title: 'Lapangan Utama', category: 'area', icon: 'fa-flag',
+      desc: 'Lapangan terbuka utama sekolah, dipakai untuk upacara bendera dan kegiatan siswa.',
+      panorama: '{{ asset("tour/lapangan-utama.jpg") }}?v={{ time() }}',
+      // Ukuran asli 8000x2122px -> vaov = 360*2122/8000
+      haov: 360,
+      vaov: 95.49,
+      vOffset: 0
     },
-    'studio-dkv': {
-      title: 'Studio Desain DKV', category: 'kelas', icon: 'fa-palette',
-      desc: 'Ruang praktik siswa Desain Komunikasi Visual, dilengkapi perangkat desain digital.',
-      panorama: '' // GANTI DI SINI
+    'lapangan-tengah': {
+      title: 'Lapangan Tengah', category: 'area', icon: 'fa-shapes',
+      desc: 'Halaman tengah sekolah yang menghubungkan beberapa gedung kelas.',
+      panorama: '{{ asset("tour/lapangan-tengah.jpg") }}?v={{ time() }}',
+      // Ukuran asli 7840x2720px -> vaov = 360*2720/7840
+      haov: 360,
+      vaov: 124.90,
+      vOffset: 0
     },
-    'dapur-kuliner': {
-      title: 'Dapur Praktik Kuliner', category: 'kelas', icon: 'fa-utensils',
-      desc: 'Dapur produksi tempat siswa Kuliner mengasah keterampilan memasak dan tata boga.',
-      panorama: '' // GANTI DI SINI
+    'lapangan-basket': {
+      title: 'Lapangan Basket', category: 'fasilitas', icon: 'fa-basketball',
+      desc: 'Lapangan basket beratap yang juga dipakai untuk kegiatan olahraga dan futsal siswa.',
+      panorama: '{{ asset("tour/lapangan-basket.jpg") }}?v={{ time() }}',
+      // Ukuran asli 8000x2209px -> vaov = 360*2209/8000
+      haov: 360,
+      vaov: 99.41,
+      vOffset: 0
     },
-    'bank-mini-lps': {
-      title: 'Bank Mini LPS', category: 'kelas', icon: 'fa-building-columns',
-      desc: 'Ruang simulasi perbankan syariah untuk praktik layanan nasabah siswa LPS.',
-      panorama: '' // GANTI DI SINI
+    'parkiran': {
+      title: 'Area Parkir', category: 'fasilitas', icon: 'fa-square-parking',
+      desc: 'Area parkir kendaraan siswa dan tamu di lingkungan sekolah.',
+      panorama: '{{ asset("tour/parkiran.jpg") }}?v={{ time() }}',
+      // Ukuran asli 8000x2190px -> vaov = 360*2190/8000
+      haov: 360,
+      vaov: 98.55,
+      vOffset: 0
     },
-    'griya-aphp': {
-      title: 'Griya Produksi APHP', category: 'kelas', icon: 'fa-wheat-awn',
-      desc: 'Fasilitas pengolahan hasil pertanian tempat siswa APHP mempraktikkan produksi pangan.',
-      panorama: '' // GANTI DI SINI
-    },
-    'perpustakaan': {
-      title: 'Perpustakaan', category: 'fasilitas', icon: 'fa-book',
-      desc: 'Ruang baca dan koleksi referensi untuk mendukung kegiatan belajar siswa.',
-      panorama: '' // GANTI DI SINI
-    },
-    'aula-serbaguna': {
+    'aula': {
       title: 'Aula Serbaguna', category: 'fasilitas', icon: 'fa-people-roof',
       desc: 'Ruang besar untuk acara sekolah, seminar, dan pertemuan wali murid.',
-      panorama: '' // GANTI DI SINI
+      panorama: '{{ asset("tour/aula.jpg") }}?v={{ time() }}',
+      // Ukuran asli 4160x1225px -> vaov = 360*1225/4160
+      haov: 360,
+      vaov: 106.01,
+      vOffset: 0
+    },
+    'kantin': {
+      title: 'Kantin Sekolah', category: 'fasilitas', icon: 'fa-utensils',
+      desc: 'Area kantin tempat siswa dan guru membeli serta menyantap makanan saat istirahat.',
+      panorama: '{{ asset("tour/kantin.jpg") }}?v={{ time() }}',
+      // Ukuran asli 8000x2105px -> vaov = 360*2105/8000
+      haov: 360,
+      vaov: 94.73,
+      vOffset: 0
+    },
+    'musholla': {
+      title: 'Musholla', category: 'fasilitas', icon: 'fa-mosque',
+      desc: 'Tempat ibadah untuk siswa dan warga sekolah menjalankan sholat.',
+      panorama: '{{ asset("tour/musholla.jpg") }}?v={{ time() }}',
+      // Ukuran asli 8000x2077px -> vaov = 360*2077/8000
+      haov: 360,
+      vaov: 93.47,
+      vOffset: 0
+    },
+    'ruang-kelas': {
+      title: 'Ruang Kelas', category: 'kelas', icon: 'fa-chalkboard-user',
+      desc: 'Ruang kelas teori tempat siswa mengikuti kegiatan belajar mengajar.',
+      panorama: '{{ asset("tour/ruang-kelas.jpg") }}?v={{ time() }}',
+      // Foto diganti (28 Agu 2026) — ukuran asli 1280x305px -> vaov = 360*305/1280
+      haov: 360,
+      vaov: 85.78,
+      vOffset: 0
+    },
+    'lab-lps': {
+      title: 'Laboratorium LPS', category: 'kelas', icon: 'fa-building-columns',
+      desc: 'Ruang praktik siswa Layanan Perbankan Syariah, dilengkapi unit komputer untuk simulasi layanan nasabah.',
+      panorama: '{{ asset("tour/lab-lps.jpg") }}?v={{ time() }}',
+      // Ukuran asli 1280x328px -> vaov = 360*328/1280
+      haov: 360,
+      vaov: 92.25,
+      vOffset: 0
+    },
+    'kelas-belakang': {
+      title: 'Kelas Bagian Belakang', category: 'kelas', icon: 'fa-chalkboard',
+      desc: 'Deretan ruang kelas di bagian belakang lingkungan sekolah.',
+      panorama: '{{ asset("tour/kelas-belakang.jpg") }}?v={{ time() }}',
+      // Ukuran asli 8000x2195px -> vaov = 360*2195/8000
+      haov: 360,
+      vaov: 98.78,
+      vOffset: 0
+    },
+    'lab-rpl': {
+      title: 'Laboratorium RPL', category: 'kelas', icon: 'fa-code',
+      desc: 'Ruang praktik siswa Rekayasa Perangkat Lunak, dilengkapi unit komputer untuk kegiatan pemrograman.',
+      panorama: '{{ asset("tour/lab-rpl.jpg") }}?v={{ time() }}',
+      // Ukuran asli 8000x2104px -> vaov = 360*2104/8000
+      haov: 360,
+      vaov: 94.68,
+      vOffset: 0
+    },
+    'lab-dkv': {
+      title: 'Laboratorium DKV', category: 'kelas', icon: 'fa-palette',
+      desc: 'Ruang praktik siswa Desain Komunikasi Visual, dilengkapi perangkat desain digital.',
+      panorama: '{{ asset("tour/lab-dkv.jpg") }}?v={{ time() }}',
+      // Ukuran asli 8000x2287px -> vaov = 360*2287/8000
+      haov: 360,
+      vaov: 102.92,
+      vOffset: 0
+    },
+    'lab-1-aphp': {
+      title: 'Laboratorium APHP 1', category: 'kelas', icon: 'fa-wheat-awn',
+      desc: 'Ruang praktik pertama siswa Agribisnis Pengolahan Hasil Pertanian.',
+      panorama: '{{ asset("tour/lab-1-aphp.jpg") }}?v={{ time() }}',
+      // Ukuran asli 4160x1222px -> vaov = 360*1222/4160
+      haov: 360,
+      vaov: 105.76,
+      vOffset: 0
+    },
+    'lab-2-aphp': {
+      title: 'Laboratorium APHP 2', category: 'kelas', icon: 'fa-flask',
+      desc: 'Ruang praktik kedua siswa Agribisnis Pengolahan Hasil Pertanian.',
+      panorama: '{{ asset("tour/lab-2-aphp.jpg") }}?v={{ time() }}',
+      // Ukuran asli 4160x1064px -> vaov = 360*1064/4160
+      haov: 360,
+      vaov: 92.08,
+      vOffset: 0
+    },
+    'lab-pastry': {
+      title: 'Laboratorium Pastry', category: 'kelas', icon: 'fa-bread-slice',
+      desc: 'Dapur praktik siswa Kuliner untuk produk pastry dan bakery.',
+      panorama: '{{ asset("tour/lab-pastry.jpg") }}?v={{ time() }}',
+      // Ukuran asli 4160x1632px -> vaov = 360*1632/4160
+      haov: 360,
+      vaov: 141.23,
+      vOffset: 0
+    },
+    'lab-tata-hidang': {
+      title: 'Laboratorium Tata Hidang', category: 'kelas', icon: 'fa-champagne-glasses',
+      desc: 'Ruang praktik siswa Kuliner untuk pelayanan dan penataan hidangan (table setting).',
+      panorama: '{{ asset("tour/lab-tata-hidang.jpg") }}?v={{ time() }}',
+      // Ukuran asli 1280x638px -> vaov = 360*638/1280
+      haov: 360,
+      vaov: 179.44,
+      vOffset: 0
     }
   };
 
