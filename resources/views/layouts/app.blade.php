@@ -929,18 +929,8 @@
 <script>
 (function(){
   /* ============================================================
-     NARA SKANEDA — Asisten Virtual SMK Negeri 2 Mojokerto
+     NARA SKANEDA — Asisten Virtual SMK Negeri 2 Mojokerto (Pure API Engine)
      ============================================================ */
-  const naraResponses = {
-    jurusan:'SMK Negeri 2 Mojokerto memiliki 5 program keahlian: RPL, DKV, Kuliner, APHP, dan LPS.',
-    ppdb:'Untuk informasi PPDB terbaru, silakan buka halaman PPDB pada menu website.',
-    ekskul:'Informasi ekstrakurikuler tersedia pada menu Siswa → Ekstrakurikuler.',
-    jadwal:'Informasi jadwal sekolah dapat dilihat pada layanan informasi sekolah.',
-    pkl:'Informasi PKL tersedia pada menu PKL & Alumni.',
-    kontak:'Silakan gunakan halaman Kontak untuk mendapatkan informasi kontak resmi sekolah.',
-    default:'Terima kasih atas pertanyaannya. Silakan cari informasi melalui menu website SMK Negeri 2 Mojokerto.'
-  };
-
   window.toggleNara = function(){
     const w = document.getElementById('naraWindow');
     if(!w) return;
@@ -953,8 +943,7 @@
     }
   };
 
-  /* Safety: jika panel akan keluar viewport atas, alihkan ke posisi
-     fixed kanan-atas (dipanggil SATU KALI saat toggle, bukan loop). */
+  /* Safety: jika panel akan keluar viewport atas, alihkan ke posisi fixed kanan-atas */
   function applyPanelEdgeSafe(panel, kind){
     if(!panel) return;
     panel.classList.remove('edge-top');
@@ -974,27 +963,82 @@
   }
   window.applyPanelEdgeSafe = applyPanelEdgeSafe;
 
-  function naraGetResponse(text){
-    const t = (text||'').toLowerCase();
-    if(t.includes('jurusan')||t.includes('program')) return naraResponses.jurusan;
-    if(t.includes('ppdb')||t.includes('daftar')) return naraResponses.ppdb;
-    if(t.includes('ekskul')||t.includes('ekstrakurikuler')) return naraResponses.ekskul;
-    if(t.includes('jadwal')||t.includes('jam')) return naraResponses.jadwal;
-    if(t.includes('pkl')||t.includes('magang')) return naraResponses.pkl;
-    if(t.includes('kontak')||t.includes('alamat')||t.includes('telepon')) return naraResponses.kontak;
-    return naraResponses.default;
-  }
-
   function naraAddMsg(text, isUser){
     const msgs = document.getElementById('naraMessages');
     if(!msgs) return;
     const div = document.createElement('div');
     div.className = 'nara-msg' + (isUser ? ' user' : '');
     const safe = String(text).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>');
-    const icon = isUser ? 'user' : 'user-graduate';
+    const icon = isUser ? 'user' : 'robot';
     div.innerHTML = '<div class="nara-msg-avatar"><i class="fas fa-' + icon + '"></i></div><div><div class="nara-bubble">' + safe + '</div><div class="nara-time">Sekarang</div></div>';
     msgs.appendChild(div);
     msgs.scrollTop = msgs.scrollHeight;
+  }
+
+  function naraShowTyping(){
+    const msgs = document.getElementById('naraMessages');
+    if(!msgs || document.getElementById('naraTyping')) return;
+    const div = document.createElement('div');
+    div.className = 'nara-msg';
+    div.id = 'naraTyping';
+    div.innerHTML = '<div class="nara-msg-avatar"><i class="fas fa-robot"></i></div><div><div class="nara-bubble"><div class="typing-indicator"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div></div></div>';
+    msgs.appendChild(div);
+    msgs.scrollTop = msgs.scrollHeight;
+  }
+
+  function naraHideTyping(){
+    const typing = document.getElementById('naraTyping');
+    if(typing) typing.remove();
+  }
+
+  const smartLocalAnswers = {
+    jurusan: "SMK Negeri 2 Mojokerto memiliki 5 Konsentrasi Keahlian unggulan:\n1. Rekayasa Perangkat Lunak (RPL) - Software & Pemrograman\n2. Desain Komunikasi Visual (DKV) - Multimedia, Grafis & Animasi\n3. Agribisnis Pengolahan Hasil Pertanian (APHP) - Pangan Modern\n4. Kuliner (Tata Boga) - Seni Olah Rasa & Restoran\n5. Layanan Perbankan Syariah (LPS) - Keuangan Syariah",
+    ppdb: "Informasi PPDB SMKN 2 Mojokerto:\nPendaftaran dilakukan secara online melalui portal resmi PPDB Jawa Timur (Jalur Prestasi, Afirmasi, dan Zonasi). Pendaftaran TIDAK DIPUNGUT BIAYA (GRATIS).",
+    ekskul: "Ekstrakurikuler SMKN 2 Mojokerto:\nPramuka (Wajib), Paskibra, Robotik & Coding Club, PMR, Olahraga (Futsal, Basket, Voli), Seni Musik & Tari, serta Kerohanian Islam.",
+    jadwal: "Jam Belajar SMKN 2 Mojokerto:\nKegiatan Belajar Mengajar (KBM) berlangsung Senin hingga Jumat pukul 07.00 WIB - 15.30 WIB. Gerbang sekolah ditutup tepat pukul 07.00 WIB. Hari Sabtu dan Minggu libur.",
+    pkl: "BKK & Kemitraan Industri SMKN 2 Mojokerto:\nUnit BKK memfasilitasi Praktek Kerja Lapangan (PKL) dan penyaluran lulusan ke mitra industri seperti PT Telkom, PT Astra International, Bank Syariah Indonesia, dan industri perhotelan/pangan.",
+    kontak: "Alamat dan Kontak Resmi SMKN 2 Mojokerto:\nAlamat: Jl. Raden Wijaya No. 1, Kranggan, Kota Mojokerto, Jawa Timur\nTelepon: (0321) 321555\nEmail: info@smkn2mojokerto.sch.id",
+    default: "SMK Negeri 2 Mojokerto adalah SMK Pusat Keunggulan di Kota Mojokerto dengan 5 konsentrasi keahlian: RPL, DKV, APHP, Kuliner, dan LPS. Silakan tanyakan hal yang ingin kamu ketahui!"
+  };
+
+  function getSmartLocalAnswer(text){
+    const t = (text||'').toLowerCase();
+    if(t.includes('jurusan')||t.includes('proli')||t.includes('keahlian')||t.includes('rpl')||t.includes('dkv')||t.includes('aphp')||t.includes('kuliner')||t.includes('lps')) return smartLocalAnswers.jurusan;
+    if(t.includes('ppdb')||t.includes('daftar')||t.includes('masuk')) return smartLocalAnswers.ppdb;
+    if(t.includes('ekskul')||t.includes('ekstrakurikuler')) return smartLocalAnswers.ekskul;
+    if(t.includes('jadwal')||t.includes('jam')||t.includes('masuk')||t.includes('pulang')) return smartLocalAnswers.jadwal;
+    if(t.includes('pkl')||t.includes('magang')||t.includes('bkk')||t.includes('kerja')) return smartLocalAnswers.pkl;
+    if(t.includes('kontak')||t.includes('alamat')||t.includes('telepon')||t.includes('email')) return smartLocalAnswers.kontak;
+    return smartLocalAnswers.default;
+  }
+
+  function callChatbotApi(text){
+    naraShowTyping();
+
+    fetch('/api/chatbot/message', {
+      method: 'POST',
+      headers: { 
+        'Content-Type': 'application/json', 
+        'Accept': 'application/json',
+        'X-CSRF-TOKEN': '{{ csrf_token() }}' 
+      },
+      body: JSON.stringify({ message: text })
+    })
+    .then(res => res.json())
+    .then(data => {
+      naraHideTyping();
+      if(data && data.success && data.data && data.data.message) {
+        naraAddMsg(data.data.message, false);
+      } else if(data && data.message) {
+        naraAddMsg(data.message, false);
+      } else {
+        naraAddMsg(getSmartLocalAnswer(text), false);
+      }
+    })
+    .catch(() => {
+      naraHideTyping();
+      naraAddMsg(getSmartLocalAnswer(text), false);
+    });
   }
 
   window.sendNaraMsg = function(){
@@ -1004,12 +1048,12 @@
     if(!text) return;
     naraAddMsg(text, true);
     input.value = '';
-    setTimeout(()=>naraAddMsg(naraGetResponse(text), false), 500);
+    callChatbotApi(text);
   };
 
   window.sendNaraQuick = function(text){
     naraAddMsg(text, true);
-    setTimeout(()=>naraAddMsg(naraGetResponse(text), false), 450);
+    callChatbotApi(text);
   };
 
   /* ============================================================

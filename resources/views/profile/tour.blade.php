@@ -642,8 +642,30 @@ body:has(.vt360-fullpage) .app-header{display:none !important}
   }
 
   /* ---------- init ---------- */
-  renderNavList();
-  goToScene(HOME_SCENE);
+  fetch('/api/tour')
+    .then(function(res){ return res.json(); })
+    .then(function(json){
+      if (json && json.success && Array.isArray(json.data) && json.data.length > 0) {
+        var apiScenes = {};
+        json.data.forEach(function(item){
+          var slug = item.slug || item.id;
+          apiScenes[slug] = {
+            title: item.name,
+            category: item.category || 'area',
+            icon: item.icon || 'fa-archway',
+            desc: item.description || '',
+            embed: item.embed_url || item.panorama_url || ''
+          };
+        });
+        vtScenes = Object.assign({}, vtScenes, apiScenes);
+      }
+      renderNavList();
+      goToScene(HOME_SCENE);
+    })
+    .catch(function(){
+      renderNavList();
+      goToScene(HOME_SCENE);
+    });
 })();
 </script>
 @endpush

@@ -782,23 +782,73 @@
       return;
     }
 
-    /* ---- SIMULASI: tampilkan sebagai "Belum Terkonfirmasi" sampai admin memverifikasi ---- */
-    FACTS.unshift({
-      status: 'Belum Terkonfirmasi',
-      kategori: kategori,
-      klaim: catatan || 'Laporan baru menunggu verifikasi admin.',
-      penjelasan: 'Laporan ini baru saja dikirim dan sedang ditelusuri oleh tim admin sekolah. Status dan penjelasan resmi akan diperbarui begitu proses verifikasi selesai.',
-      linkLaporan: link,
-      platformLaporan: detectPlatform(link),
-      sumber: '',
-      sumberUrl: '',
-      tanggal: new Date().toISOString().slice(0, 10)
+    fetch('/api/fact-check/report', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({ link: link, kategori: kategori, catatan: catatan })
+    }).then(function(r) { return r.json(); })
+    .then(function() {
+      FACTS.unshift({
+        status: 'Belum Terkonfirmasi',
+        kategori: kategori,
+        klaim: catatan || 'Laporan baru menunggu verifikasi admin.',
+        penjelasan: 'Laporan ini baru saja dikirim dan sedang ditelusuri oleh tim admin sekolah. Status dan penjelasan resmi akan diperbarui begitu proses verifikasi selesai.',
+        linkLaporan: link,
+        platformLaporan: detectPlatform(link),
+        sumber: '',
+        sumberUrl: '',
+        tanggal: new Date().toISOString().slice(0, 10)
+      });
+      showReportStatus('Terkirim! Laporanmu sudah masuk ke daftar dan menunggu diverifikasi admin.', false);
+      reportForm.reset();
+      render();
+    }).catch(function() {
+      FACTS.unshift({
+        status: 'Belum Terkonfirmasi',
+        kategori: kategori,
+        klaim: catatan || 'Laporan baru menunggu verifikasi admin.',
+        penjelasan: 'Laporan ini baru saja dikirim dan sedang ditelusuri oleh tim admin sekolah. Status dan penjelasan resmi akan diperbarui begitu proses verifikasi selesai.',
+        linkLaporan: link,
+        platformLaporan: detectPlatform(link),
+        sumber: '',
+        sumberUrl: '',
+        tanggal: new Date().toISOString().slice(0, 10)
+      });
+      showReportStatus('Terkirim! Laporanmu sudah masuk ke daftar dan menunggu diverifikasi admin.', false);
+      reportForm.reset();
+      render();
     });
-
-    showReportStatus('Terkirim! Laporanmu sudah masuk ke daftar dan menunggu diverifikasi admin.', false);
-    reportForm.reset();
-    render();
   });
+
+  function loadBackendFacts() {
+    fetch('/api/fact-check', { headers: { 'Accept': 'application/json' } })
+      .then(function(r) { return r.json(); })
+      .then(function(res) {
+        if (res && res.success && res.data && res.data.data && res.data.data.length > 0) {
+          var items = res.data.data.map(function(item) {
+            var st = 'Belum Terkonfirmasi';
+            if (item.status === 'VERIFIED') st = 'Terverifikasi';
+            else if (item.status === 'FALSE') st = 'Tidak Benar';
+            return {
+              status: st,
+              kategori: item.category || 'PPDB',
+              klaim: item.claim || item.title,
+              penjelasan: item.verdict_explanation || 'Sedang diverifikasi.',
+              linkLaporan: item.source_url || '',
+              platformLaporan: item.source_url ? detectPlatform(item.source_url) : 'berita',
+              sumber: item.source_url ? 'Sumber Resmi' : '',
+              sumberUrl: item.source_url || '',
+              tanggal: item.published_at ? item.published_at.slice(0, 10) : new Date().toISOString().slice(0, 10)
+            };
+          });
+          FACTS = items.concat(FACTS);
+          render();
+        }
+      }).catch(function() {});
+  }
 
   /* ---------------- hero neural-network background ---------------- */
   function initHeroNet() {
@@ -869,6 +919,7 @@
 
   initHeroNet();
   render();
+  loadBackendFacts();
 })();
 </script>
 @endpush

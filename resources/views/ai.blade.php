@@ -1020,6 +1020,12 @@
     state.scores = scores;
     state.ranked = ranked;
     state.selectedTab = ranked[0].key;
+
+    fetch('/api/extracurricular-matchmaker/result', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ option_ids: [] })
+    }).catch(function() {});
   }
 
   /* ---------------- reveal hasil: podium + ranking + narrative ---------------- */

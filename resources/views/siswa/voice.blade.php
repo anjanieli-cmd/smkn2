@@ -1002,27 +1002,64 @@
       return;
     }
 
-    var ticketId = generateTicketId();
     var isAnon = anonInput.checked;
-    var reports = loadReports();
-    reports[ticketId] = {
-      ticketId: ticketId,
-      kategori: selectedCat.value,
-      judul: judul.value.trim(),
-      deskripsi: deskripsi.value.trim(),
-      anonim: isAnon,
-      nama: isAnon ? '' : (document.getElementById('evNama').value.trim()),
-      kontak: isAnon ? '' : (document.getElementById('evKontak').value.trim()),
-      status: 'Diterima',
-      createdAt: new Date().toISOString()
+    var payload = {
+      title: judul.value.trim(),
+      description: deskripsi.value.trim(),
+      category: selectedCat ? selectedCat.value : 'Lainnya'
     };
-    saveReports(reports);
-    lastTicketId = ticketId;
 
-    document.getElementById('evTicketNumber').textContent = ticketId;
-    form.style.display = 'none';
-    successCard.classList.add('is-shown');
-    successCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    fetch('/api/e-voice', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(payload)
+    }).then(function(r) { return r.json(); })
+    .then(function(res) {
+      var ticketId = (res && res.data && res.data.ticket_code) ? res.data.ticket_code : generateTicketId();
+      var reports = loadReports();
+      reports[ticketId] = {
+        ticketId: ticketId,
+        kategori: payload.category,
+        judul: payload.title,
+        deskripsi: payload.description,
+        anonim: isAnon,
+        nama: isAnon ? '' : (document.getElementById('evNama').value.trim()),
+        kontak: isAnon ? '' : (document.getElementById('evKontak').value.trim()),
+        status: 'Diterima',
+        createdAt: new Date().toISOString()
+      };
+      saveReports(reports);
+      lastTicketId = ticketId;
+
+      document.getElementById('evTicketNumber').textContent = ticketId;
+      form.style.display = 'none';
+      successCard.classList.add('is-shown');
+      successCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }).catch(function() {
+      var ticketId = generateTicketId();
+      var reports = loadReports();
+      reports[ticketId] = {
+        ticketId: ticketId,
+        kategori: payload.category,
+        judul: payload.title,
+        deskripsi: payload.description,
+        anonim: isAnon,
+        nama: isAnon ? '' : (document.getElementById('evNama').value.trim()),
+        kontak: isAnon ? '' : (document.getElementById('evKontak').value.trim()),
+        status: 'Diterima',
+        createdAt: new Date().toISOString()
+      };
+      saveReports(reports);
+      lastTicketId = ticketId;
+
+      document.getElementById('evTicketNumber').textContent = ticketId;
+      form.style.display = 'none';
+      successCard.classList.add('is-shown');
+      successCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
   });
 
   document.getElementById('evNewReportBtn').addEventListener('click', function () {
@@ -1071,6 +1108,15 @@
 
   var STEP_ORDER = ['Diterima', 'Diproses', 'Ditindaklanjuti', 'Selesai'];
 
+  function mapBackendStatus(statusStr) {
+    var s = String(statusStr || '').toUpperCase();
+    if (s === 'SUBMITTED' || s === 'DITERIMA') return 'Diterima';
+    if (s === 'REVIEWING' || s === 'DIPROSES') return 'Diproses';
+    if (s === 'IN_PROGRESS' || s === 'DITINDAKLANJUTI') return 'Ditindaklanjuti';
+    if (s === 'RESOLVED' || s === 'CLOSED' || s === 'SELESAI') return 'Selesai';
+    return 'Diterima';
+  }
+
   function renderResult(report) {
     document.getElementById('evResultCat').innerHTML = '<i class="fas fa-tag"></i> ' + report.kategori;
     document.getElementById('evResultTitle').textContent = report.judul;
@@ -1101,15 +1147,44 @@
   function runTrackSearch(rawValue) {
     var value = (rawValue || '').trim().toUpperCase();
     if (!value) return;
-    var reports = loadReports();
-    var report = reports[value];
-    if (report) {
-      renderResult(report);
-    } else {
-      trackEmpty.style.display = 'none';
-      resultBox.classList.remove('is-shown');
-      trackNotfound.classList.add('is-shown');
-    }
+
+    fetch('/api/e-voice/ticket/' + encodeURIComponent(value), {
+      headers: { 'Accept': 'application/json' }
+    }).then(function(r) { return r.json(); })
+    .then(function(res) {
+      if (res && res.success && res.data) {
+        var d = res.data;
+        renderResult({
+          ticketId: d.ticket_code,
+          kategori: d.category || 'Aspirasi',
+          judul: d.title,
+          deskripsi: d.description,
+          anonim: true,
+          status: mapBackendStatus(d.status),
+          createdAt: d.created_at
+        });
+      } else {
+        var reports = loadReports();
+        var report = reports[value];
+        if (report) {
+          renderResult(report);
+        } else {
+          trackEmpty.style.display = 'none';
+          resultBox.classList.remove('is-shown');
+          trackNotfound.classList.add('is-shown');
+        }
+      }
+    }).catch(function() {
+      var reports = loadReports();
+      var report = reports[value];
+      if (report) {
+        renderResult(report);
+      } else {
+        trackEmpty.style.display = 'none';
+        resultBox.classList.remove('is-shown');
+        trackNotfound.classList.add('is-shown');
+      }
+    });
   }
 
   trackBtn.addEventListener('click', function () { runTrackSearch(trackInput.value); });
