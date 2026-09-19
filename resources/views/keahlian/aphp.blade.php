@@ -1024,6 +1024,23 @@
 .vid-player .vid-brand{position:absolute;top:12px;right:14px;z-index:2;text-align:right;line-height:1.15}
 .vid-player .vid-brand b{display:block;font-family:var(--font-display);font-size:.78rem;font-weight:900;letter-spacing:.1em;color:#FFD54A}
 .vid-player .vid-brand span{font-size:.5rem;font-weight:800;letter-spacing:.22em;color:rgba(248,251,255,.65);text-transform:uppercase}
+.vid-player .vid-preview{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center center;
+  z-index:0;
+  background:#071b33;
+}
+.vid-player .vid-preview::-webkit-media-controls{display:none!important}
+.vid-player .vid-bg{
+  z-index:0;
+  opacity:.08;
+}
+.vid-player .vid-preview + .vid-bg{pointer-events:none}
+
 /* icon helpers (emoji-free) */
 .aphp-kicker i{font-size:.8rem;color:#6FAF45}
 .cari-opt-ic i{font-size:1.5rem;color:#FF8A00;line-height:1}
@@ -1546,7 +1563,11 @@
       </div>
       <div class="vid-stage" data-reveal="right">
         <span class="vid-side">APHP • SKANEDA</span>
-        <div class="vid-player" role="button" tabindex="0" aria-label="Putar video pengenalan APHP" onclick="alert('Video pengenalan APHP akan diputar di sini.')">
+        <div class="vid-player" role="button" tabindex="0" aria-label="Putar video pengenalan APHP"
+          onclick="document.getElementById('videoAphpModal').style.display='flex'; document.getElementById('videoAphpPlayer').play();">
+          <video class="vid-preview" muted playsinline preload="auto" aria-hidden="true">
+            <source src="{{ asset('images/videos/video-aphp.mp4') }}" type="video/mp4">
+          </video>
           <div class="vid-bg" aria-hidden="true"></div>
           <span class="vid-ring" aria-hidden="true"></span>
           <span class="vid-hex" aria-hidden="true"></span>
@@ -1558,6 +1579,21 @@
       </div>
     </div>
   </section>
+
+  <!-- ===== POPUP VIDEO APHP ===== -->
+  <div id="videoAphpModal" style="display:none;position:fixed;inset:0;z-index:99999;background:rgba(7,27,51,.88);align-items:center;justify-content:center;padding:20px;"
+       onclick="if(event.target===this){document.getElementById('videoAphpPlayer').pause();document.getElementById('videoAphpPlayer').currentTime=0;this.style.display='none';}">
+    <div style="position:relative;width:min(430px,92vw);max-height:92vh;background:#0d3a66;border-radius:20px;padding:10px;box-shadow:0 30px 80px rgba(0,0,0,.35);display:flex;align-items:center;justify-content:center;">
+      <button type="button" aria-label="Tutup video"
+        onclick="document.getElementById('videoAphpPlayer').pause();document.getElementById('videoAphpPlayer').currentTime=0;document.getElementById('videoAphpModal').style.display='none';"
+        style="position:absolute;right:-10px;top:-10px;width:38px;height:38px;border:0;border-radius:50%;background:#FFD54A;color:#0d3a66;font-size:22px;font-weight:900;line-height:1;cursor:pointer;z-index:2;">&times;</button>
+      <video id="videoAphpPlayer" controls playsinline preload="metadata"
+        style="display:block;width:auto;max-width:100%;height:auto;max-height:88vh;border-radius:14px;background:#06192e;object-fit:contain;">
+        <source src="{{ asset('images/videos/video-aphp.mp4') }}" type="video/mp4">
+        Browser kamu tidak mendukung pemutaran video.
+      </video>
+    </div>
+  </div>
 
   <!-- ===== SECTION 2 — TENTANG APHP ===== -->
   <section class="tentang-section section-pad" id="tentang-aphp">
@@ -2020,7 +2056,7 @@
         <h2 class="vt-title" data-reveal>Jelajahi <span class="vt-gold">Lab APHP</span><span class="vt-sub">Lihat Lab Tour APHP</span></h2>
         <p class="vt-desc" data-reveal>Kenali lebih dekat laboratorium APHP sebagai ruang belajar dan praktik untuk mengolah hasil pertanian menjadi produk pangan. Lihat fasilitas dan suasana praktik APHP dari dekat.</p>
         <div class="vt-feats" data-reveal><span class="vt-feat"><i class="fa-solid fa-check"></i> Fasilitas Praktik</span><span class="vt-feat"><i class="fa-solid fa-check"></i> Pengolahan Pangan</span><span class="vt-feat"><i class="fa-solid fa-check"></i> Pengujian Produk</span></div>
-        <a href="#" id="labTourLink" class="vt-btn" data-reveal>Mulai Lab Tour <i class="fa-solid fa-arrow-right"></i></a>
+        <a href="{{ route('profil.tour') }}?scene=lab-2-aphp" id="labTourLink" class="vt-btn" data-reveal>Mulai Lab Tour <i class="fa-solid fa-arrow-right"></i></a>
       </div>
     </div>
   </section>
