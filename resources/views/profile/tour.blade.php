@@ -1,5 +1,5 @@
 {{--
-  resources/views/profil/tour-virtual.blade.php
+  resources/views/profile/tour.blade.php
 
   VIRTUAL TOUR 360° — SMK NEGERI 2 MOJOKERTO (FULLSCREEN, PANNELLUM)
   ============================================================
@@ -66,7 +66,7 @@
   visual dan baca angkanya langsung di layar.
 
   Route tetap sama, contoh di routes/web.php:
-  Route::get('/profil/tour-virtual', fn () => view('profil.tour-virtual'))->name('profil.tour-virtual');
+  Route::view('/profile/tour', 'profile.tour')->name('profil.tour');
   ============================================================
 --}}
 @extends('layouts.app')
@@ -642,6 +642,17 @@ body:has(.vt360-fullpage) .app-header{display:none !important}
   }
 
   /* ---------- init ---------- */
+  function openInitialScene(){
+    var params = new URLSearchParams(window.location.search);
+    var targetScene = params.get('scene');
+
+    if (targetScene && vtScenes[targetScene]) {
+      goToScene(targetScene);
+    } else {
+      goToScene(HOME_SCENE);
+    }
+  }
+
   fetch('/api/tour')
     .then(function(res){ return res.json(); })
     .then(function(json){
@@ -660,11 +671,11 @@ body:has(.vt360-fullpage) .app-header{display:none !important}
         vtScenes = Object.assign({}, vtScenes, apiScenes);
       }
       renderNavList();
-      goToScene(HOME_SCENE);
+      openInitialScene();
     })
     .catch(function(){
       renderNavList();
-      goToScene(HOME_SCENE);
+      openInitialScene();
     });
 })();
 </script>
