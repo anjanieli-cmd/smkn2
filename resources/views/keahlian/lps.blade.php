@@ -1660,25 +1660,25 @@
       </div>
       <div class="ic-marquee-wrap" data-reveal aria-label="Mitra industri LPS">
         <div class="ic-marquee">
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-lps/bsi.png') }}" alt="Logo Bank Syariah Indonesia" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','BSI');"></span><span class="ic-name">Bank Syariah Indonesia</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-lps/muamalat.png') }}" alt="Logo Bank Muamalat Indonesia" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','BMI');"></span><span class="ic-name">Bank Muamalat Indonesia</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-lps/btpn-syariah.png') }}" alt="Logo BTPN Syariah" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','BTS');"></span><span class="ic-name">BTPN Syariah</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-lps/bank-jatim-syariah.png') }}" alt="Logo Bank Jatim Syariah" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','BJS');"></span><span class="ic-name">Bank Jatim Syariah</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-lps/bprs-lantabur.png') }}" alt="Logo BPRS Lantabur Tebuireng" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','BPRS');"></span><span class="ic-name">BPRS Lantabur Tebuireng</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-lps/bmt-nu.png') }}" alt="Logo BMT NU Jawa Timur" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','BMT');"></span><span class="ic-name">BMT NU Jawa Timur</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-lps/koperasi-syariah.png') }}" alt="Logo Koperasi Simpan Pinjam Syariah" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','KSPS');"></span><span class="ic-name">Koperasi Simpan Pinjam Syariah</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-lps/pegadaian-syariah.png') }}" alt="Logo Pegadaian Syariah" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','PGS');"></span><span class="ic-name">Pegadaian Syariah</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-lps/bri-syariah.png') }}" alt="Logo Unit Usaha Syariah BRI" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','UUS');"></span><span class="ic-name">Unit Usaha Syariah BRI</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-lps/ojk.png') }}" alt="Logo Otoritas Jasa Keuangan" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','OJK');"></span><span class="ic-name">Otoritas Jasa Keuangan</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-lps/kjks.png') }}" alt="Logo Koperasi Jasa Keuangan Syariah" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','KJKS');"></span><span class="ic-name">Koperasi Jasa Keuangan Syariah</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-lps/bsi.png') }}" alt="Logo Bank Syariah Indonesia" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','BSI');"></span><span class="ic-name">Bank Syariah Indonesia</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-lps/muamalat.png') }}" alt="Logo Bank Muamalat Indonesia" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','BMI');"></span><span class="ic-name">Bank Muamalat Indonesia</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-lps/btpn-syariah.png') }}" alt="Logo BTPN Syariah" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','BTS');"></span><span class="ic-name">BTPN Syariah</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-lps/bank-jatim-syariah.png') }}" alt="Logo Bank Jatim Syariah" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','BJS');"></span><span class="ic-name">Bank Jatim Syariah</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-lps/bprs-lantabur.png') }}" alt="Logo BPRS Lantabur Tebuireng" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','BPRS');"></span><span class="ic-name">BPRS Lantabur Tebuireng</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-lps/bmt-nu.png') }}" alt="Logo BMT NU Jawa Timur" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','BMT');"></span><span class="ic-name">BMT NU Jawa Timur</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-lps/koperasi-syariah.png') }}" alt="Logo Koperasi Simpan Pinjam Syariah" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','KSPS');"></span><span class="ic-name">Koperasi Simpan Pinjam Syariah</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-lps/pegadaian-syariah.png') }}" alt="Logo Pegadaian Syariah" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','PGS');"></span><span class="ic-name">Pegadaian Syariah</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/lps/baznas.png') }}" alt="Logo Baznas Kota Mojokerto" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','BKM');"></span><span class="ic-name">Baznas Kota Mojokerto</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/lps/bankmuamalat.png') }}" alt="Logo Bank Muamalat Indonesia" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','BMI');"></span><span class="ic-name">Bank Muamalat Indonesia</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/lps/lynn.png') }}" alt="Logo Lynn Hotel Mojokerto" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','LHM');"></span><span class="ic-name">Lynn Hotel Mojokerto</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/lps/mandiritaspen.png') }}" alt="Logo Bank Mandiri Taspen" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','BMS');"></span><span class="ic-name">Bank Mandiri Taspen</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/lps/wahyuredjo.png') }}" alt="Logo Toko Mas Wahyuredjo" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','WYR');"></span><span class="ic-name">Toko Mas Wahyuredjo</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/lps/bmt.png') }}" alt="Logo BMT Permata" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','BMT');"></span><span class="ic-name">BMT Permata</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/lps/sunrisehotel.png') }}" alt="Logo Sunrise Hotel" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','SRH');"></span><span class="ic-name">Sunrise Hotel</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/lps/pegadaian-syariah.png') }}" alt="Logo Pegadaian Syariah" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','PGS');"></span><span class="ic-name">Pegadaian Syariah</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/lps/bri-syariah.png') }}" alt="Logo Unit Usaha Syariah BRI" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','UUS');"></span><span class="ic-name">Unit Usaha Syariah BRI</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/lps/ojk.png') }}" alt="Logo Otoritas Jasa Keuangan" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','OJK');"></span><span class="ic-name">Otoritas Jasa Keuangan</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/lps/kjks.png') }}" alt="Logo Koperasi Jasa Keuangan Syariah" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','KJKS');"></span><span class="ic-name">Koperasi Jasa Keuangan Syariah</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/lps/baznas.png') }}" alt="Logo Baznas Kota Mojokerto" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','BKM');"></span><span class="ic-name">Baznas Kota Mojokerto</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/lps/bankmuamalat.png') }}" alt="Logo Bank Muamalat Indonesia" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','BMI');"></span><span class="ic-name">Bank Muamalat Indonesia</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/lps/lynn.png') }}" alt="Logo Lynn Hotel Mojokerto" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','LHM');"></span><span class="ic-name">Lynn Hotel Mojokerto</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/lps/mandiritaspen.png') }}" alt="Logo Bank Mandiri Taspen" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','BMS');"></span><span class="ic-name">Bank Mandiri Taspen</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/lps/wahyuredjo.png') }}" alt="Logo Toko Mas Wahyuredjo" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','WYR');"></span><span class="ic-name">Toko Mas Wahyuredjo</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/lps/bmt.png') }}" alt="Logo BMT Permata" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','BMT');"></span><span class="ic-name">BMT Permata</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/lps/sunrisehotel.png') }}" alt="Logo Sunrise Hotel" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','SRH');"></span><span class="ic-name">Sunrise Hotel</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/lps/pegadaian-syariah.png') }}" alt="Logo Pegadaian Syariah" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','PGS');"></span><span class="ic-name">Pegadaian Syariah</span></div>
         </div>
       </div>
       <div class="ic-footer" data-reveal><span>Belajar &bull; Praktik &bull; Berkolaborasi &bull; Siap Bekerja</span></div>
@@ -1738,27 +1738,27 @@
   <section class="praktik-section section-pad" id="praktik-aphp">
     <div class="praktik-head" data-reveal>
       <div class="eyebrow gold">BELAJAR LEWAT SIMULASI PERBANKAN</div>
-      <h2 class="big-heading">BELAJAR BUKAN <span>HANYA DI DALAM KELAS</span></h2>
+      <h2 class="big-heading">BELAJAR BUKAN <span>HANYA DI KELAS</span></h2>
     </div>
     <div class="praktik-grid">
       <div class="praktik-card" data-reveal>
-        <img src="{{ asset('images/lps-bank-mini.jpg') }}" alt="Praktik simulasi bank mini syariah" loading="lazy">
+        <img src="{{ asset('images/lps/praktik-koperasi.png') }}" alt="Praktik simulasi bank mini syariah" loading="lazy">
         <span class="pc-badge"><i class="fas fa-handshake"></i> Praktik</span>
         <div class="pc-body">
-          <h4>Praktik Bank Mini</h4>
-          <p>Mengerjakan simulasi transaksi perbankan di bank mini syariah yang mendukung praktik langsung.</p>
+          <h4>Praktik Koperasi</h4>
+          <p>Mengerjakan simulasi transaksi di koperasi dewantara yang mendukung praktik langsung.</p>
         </div>
       </div>
       <div class="praktik-card" data-reveal style="--d:1">
-        <img src="{{ asset('images/lps-praktik-teller.jpg') }}" alt="Praktik menjadi teller dan customer service" loading="lazy">
+        <img src="{{ asset('images/lps/pengelolaan-keuangan.png') }}" alt="Praktik menjadi teller dan customer service" loading="lazy">
         <span class="pc-badge"><i class="fas fa-calculator"></i> Transaksi</span>
         <div class="pc-body">
-          <h4>Simulasi Teller &amp; CS</h4>
-          <p>Melayani transaksi simpanan, penarikan, dan pembukaan rekening sesuai standar operasional bank.</p>
+          <h4>Pengelolaan Keuangan</h4>
+          <p>Siswa LPS mempelajari pengelolaan keuangan tentunya juga memperoleh pendidikan moral yang berakhlak mulia.</p>
         </div>
       </div>
       <div class="praktik-card" data-reveal style="--d:2">
-        <img src="{{ asset('images/lps-evaluasi-praktik.jpg') }}" alt="Evaluasi dan penilaian praktik perbankan" loading="lazy">
+        <img src="{{ asset('images/lps/ukk-lps.jpeg') }}" alt="Evaluasi dan penilaian praktik perbankan" loading="lazy">
         <span class="pc-badge"><i class="fas fa-circle-check"></i> Evaluasi</span>
         <div class="pc-body">
           <h4>Evaluasi &amp; Penilaian Praktik</h4>
@@ -1797,31 +1797,31 @@
     <div class="produk-head" data-reveal>
       <div>
         <div class="eyebrow">Dokumentasi Praktik Siswa</div>
-        <h2 class="big-heading">DARI TEORI <span>MENJADI PRAKTIK</span></h2>
+        <h2 class="big-heading">KOMPETENSI <span>DALAM AKSI</span></h2>
       </div>
       <div class="produk-note">Dokumentasi praktik siswa LPS — dirancang melalui simulasi transaksi, pelayanan nasabah, dan praktik administrasi perbankan.</div>
     </div>
     <div class="produk-filters" data-reveal>
       <button class="pf-btn active" data-f="all">SEMUA</button>
       <button class="pf-btn" data-f="teller">TELLER</button>
-      <button class="pf-btn" data-f="cs">CUSTOMER SERVICE</button>
-      <button class="pf-btn" data-f="administrasi">ADMINISTRASI</button>
+      <button class="pf-btn" data-f="pelayanan">PELAYANAN</button>
+      <button class="pf-btn" data-f="duta">DUTA</button>
     </div>
     <div class="produk-slider" data-reveal>
       <button class="produk-arrow prev" id="produkPrev" aria-label="Sebelumnya"><i class="fas fa-chevron-left"></i></button>
       <div class="produk-viewport">
         <div class="produk-track" id="produkTrack">
           <article class="produk-card" data-cat="teller">
-            <div class="produk-photo"><img src="{{ asset('images/lps-praktik1.jpg') }}" alt="Praktik teller karya siswa LPS" loading="lazy"><span class="produk-badge">Operasional Teller</span></div>
+            <div class="produk-photo"><img src="{{ asset('images/lps/pengelolaan-keuangan.png') }}" alt="Praktik teller karya siswa LPS" loading="lazy"><span class="produk-badge">Teller</span></div>
             <div class="pc-body"><h3>Praktik Teller</h3><p>Simulasi menerima setoran, penarikan tunai, dan transfer sesuai prosedur bank syariah.</p><div class="pc-foot"><span>Bank Mini</span><span><i class="fas fa-arrow-right"></i></span></div></div>
           </article>
           <article class="produk-card" data-cat="cs">
-            <div class="produk-photo"><img src="{{ asset('images/lps-praktik2.jpg') }}" alt="Simulasi customer service karya siswa LPS" loading="lazy"><span class="produk-badge">Customer Service</span></div>
-            <div class="pc-body"><h3>Simulasi Customer Service</h3><p>Melayani pembukaan rekening, konsultasi produk, dan penanganan keluhan nasabah.</p><div class="pc-foot"><span>Bank Mini</span><span><i class="fas fa-arrow-right"></i></span></div></div>
+            <div class="produk-photo"><img src="{{ asset('images/lps/praktik-koperasi.png') }}" alt="Simulasi customer service karya siswa LPS" loading="lazy"><span class="produk-badge">Pelayanan</span></div>
+            <div class="pc-body"><h3>Praktik Pelayanan Koperasi</h3><p>Melatih siswa dalam memberikan pelayanan, mengelola transaksi, dan menjalankan kegiatan koperasi secara langsung.</p><div class="pc-foot"><span>Koperasi</span><span><i class="fas fa-arrow-right"></i></span></div></div>
           </article>
           <article class="produk-card" data-cat="administrasi">
-            <div class="produk-photo"><img src="{{ asset('images/lps-praktik3.jpg') }}" alt="Praktik administrasi karya siswa LPS" loading="lazy"><span class="produk-badge">Administrasi</span></div>
-            <div class="pc-body"><h3>Praktik Administrasi</h3><p>Menyusun dan memeriksa dokumen transaksi sesuai standar operasional perbankan syariah.</p><div class="pc-foot"><span>Bank Mini</span><span><i class="fas fa-arrow-right"></i></span></div></div>
+            <div class="produk-photo"><img src="{{ asset('images/lps/vania-carla.jpeg') }}" alt="Praktik administrasi karya siswa LPS" loading="lazy"><span class="produk-badge">Duta</span></div>
+            <div class="pc-body"><h3>Duta Koperasi Jawa Timur</h3><p>Mengenalkan nilai, peran, dan manfaat koperasi serta mengajak generasi muda memahami & berpartisipasi dalam kegiatan koperasi.</p><div class="pc-foot"><span>Koperasi</span><span><i class="fas fa-arrow-right"></i></span></div></div>
           </article>
           <article class="produk-card" data-cat="teller">
             <div class="produk-photo"><img src="{{ asset('images/lps-praktik4.jpg') }}" alt="Presentasi laporan keuangan karya siswa LPS" loading="lazy"><span class="produk-badge">Operasional Teller</span></div>
@@ -1846,27 +1846,27 @@
     </div>
     <div class="kegiatan-grid">
       <div class="kegiatan-card tall" data-reveal>
-        <img src="{{ asset('images/lps-prestasi.jpg') }}" alt="Prestasi siswa LPS" loading="lazy">
+        <img src="{{ asset('images/lps/dugen-icha.jpeg') }}" alt="Prestasi siswa LPS" loading="lazy">
         <span class="kg-badge"><i class="fas fa-trophy"></i> Prestasi</span>
         <div class="kg-body"><h4>Prestasi Siswa LPS</h4><span>Prestasi lomba perbankan syariah, akuntansi, dan ekonomi syariah tingkat kota hingga nasional</span></div>
       </div>
       <div class="kegiatan-card" data-reveal style="--d:1">
-        <img src="{{ asset('images/lps-praktik-rutin.jpg') }}" alt="Praktik rutin LPS" loading="lazy">
+        <img src="{{ asset('images/lps/praktik-rutin.png') }}" alt="Praktik rutin LPS" loading="lazy">
         <span class="kg-badge"><i class="fas fa-handshake"></i> Praktik</span>
         <div class="kg-body"><h4>Praktik Rutin</h4><span>Kegiatan praktik rutin di bank mini syariah untuk melatih transaksi dan pelayanan</span></div>
       </div>
       <div class="kegiatan-card" data-reveal style="--d:2">
-        <img src="{{ asset('images/lps-kunjungan-industri.jpg') }}" alt="Kunjungan industri LPS" loading="lazy">
+        <img src="{{ asset('images/lps/ki-lps.jpg') }}" alt="Kunjungan industri LPS" loading="lazy">
         <span class="kg-badge"><i class="fas fa-building"></i> Industri</span>
         <div class="kg-body"><h4>Kunjungan Lembaga Keuangan</h4><span>Belajar langsung dari bank syariah, BPRS, dan lembaga keuangan syariah lainnya</span></div>
       </div>
       <div class="kegiatan-card" data-reveal>
-        <img src="{{ asset('images/lps-expo.jpg') }}" alt="Expo perbankan LPS" loading="lazy">
-        <span class="kg-badge"><i class="fas fa-users"></i> Expo</span>
-        <div class="kg-body"><h4>Expo &amp; Simulasi Perbankan</h4><span>Menampilkan hasil praktik terbaik dalam berbagai ajang dan expo sekolah</span></div>
+        <img src="{{ asset('images/lps/ukk-lps.jpeg') }}" alt="Expo perbankan LPS" loading="lazy">
+        <span class="kg-badge"><i class="fas fa-users"></i> Simulasi</span>
+        <div class="kg-body"><h4>Simulasi Perbankan</h4><span>Menampilkan hasil praktik terbaik dalam berbagai ajang dan expo sekolah</span></div>
       </div>
       <div class="kegiatan-card" data-reveal style="--d:1">
-        <img src="{{ asset('images/lps-pkl.jpg') }}" alt="PKL siswa LPS" loading="lazy">
+        <img src="{{ asset('images/lps/pkl-lps.jpeg') }}" alt="PKL siswa LPS" loading="lazy">
         <span class="kg-badge"><i class="fas fa-user-tie"></i> PKL</span>
         <div class="kg-body"><h4>PKL &amp; Magang di Lembaga Keuangan</h4><span>Pengalaman kerja langsung di bank syariah, BPRS, dan koperasi syariah</span></div>
       </div>
@@ -1881,15 +1881,15 @@
     </div>
     <div class="prospek-grid">
       <div class="prospek-card" data-reveal>
-        <div class="ps-photo"><span class="ps-num">01</span><img src="{{ asset('images/lps-kerja.jpg') }}" alt="Bekerja di industri perbankan syariah" loading="lazy"><i class="fas fa-user-tie blue"></i></div>
+        <div class="ps-photo"><span class="ps-num">01</span><img src="{{ asset('images/lps/kerja-lps.jpeg') }}" alt="Bekerja di industri perbankan syariah" loading="lazy"><i class="fas fa-user-tie blue"></i></div>
         <div class="ps-body"><h4>KERJA</h4><p>Teller, Customer Service, Back Office, Staff Administrasi, Frontliner, atau Marketing — siap bekerja di bank syariah maupun lembaga keuangan syariah lainnya.</p><div class="ps-tags"><span>Bank Syariah</span><span>BPRS</span><span>BMT / Koperasi Syariah</span><span>Lembaga Keuangan Mikro</span></div></div>
       </div>
       <div class="prospek-card" data-reveal style="--d:1">
-        <div class="ps-photo"><span class="ps-num">02</span><img src="{{ asset('images/lps-kuliah.jpg') }}" alt="Melanjutkan kuliah di bidang perbankan syariah" loading="lazy"><i class="fas fa-graduation-cap"></i></div>
+        <div class="ps-photo"><span class="ps-num">02</span><img src="{{ asset('images/lps/kuliah.jpeg') }}" alt="Melanjutkan kuliah di bidang perbankan syariah" loading="lazy"><i class="fas fa-graduation-cap"></i></div>
         <div class="ps-body"><h4>KULIAH</h4><p>Perbankan Syariah, Ekonomi Syariah, Akuntansi, Manajemen Keuangan, atau bidang ekonomi terkait — bekal LPS jadi modal kuat di perguruan tinggi.</p><div class="ps-tags"><span>Ekonomi Syariah</span><span>Akuntansi</span><span>Manajemen</span></div></div>
       </div>
       <div class="prospek-card" data-reveal style="--d:2">
-        <div class="ps-photo"><span class="ps-num">03</span><img src="{{ asset('images/lps-usaha.jpg') }}" alt="Membangun usaha keuangan syariah sendiri" loading="lazy"><i class="fas fa-user-tie green"></i></div>
+        <div class="ps-photo"><span class="ps-num">03</span><img src="{{ asset('images/lps/usaha-lps.jpeg') }}" alt="Membangun usaha keuangan syariah sendiri" loading="lazy"><i class="fas fa-user-tie green"></i></div>
         <div class="ps-body"><h4>USAHA</h4><p>Jasa keuangan mikro syariah, koperasi syariah, konsultan keuangan syariah, dan bisnis mandiri berbasis prinsip syariah.</p><div class="ps-tags"><span>Koperasi Syariah</span><span>Jasa Keuangan</span><span>Bisnis Mandiri</span></div></div>
       </div>
     </div>

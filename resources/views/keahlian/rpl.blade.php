@@ -1660,23 +1660,23 @@
       </div>
       <div class="ic-marquee-wrap" data-reveal aria-label="Mitra industri RPL">
         <div class="ic-marquee">
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-rpl/telkom.png') }}" alt="Logo Telkom Indonesia" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','TLK');"></span><span class="ic-name">Telkom Indonesia</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-rpl/dicoding.png') }}" alt="Logo Dicoding Indonesia" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','DIC');"></span><span class="ic-name">Dicoding Indonesia</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-rpl/gamatechno.png') }}" alt="Logo PT Gamatechno Indonesia" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','GMT');"></span><span class="ic-name">PT Gamatechno Indonesia</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-rpl/sagara.png') }}" alt="Logo PT Sagara Teknologi Nusantara" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','SGR');"></span><span class="ic-name">PT Sagara Teknologi Nusantara</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-rpl/binar.png') }}" alt="Logo Binar Academy" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','BNR');"></span><span class="ic-name">Binar Academy</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-rpl/erspace.png') }}" alt="Logo ERSpace Studio" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','ERS');"></span><span class="ic-name">ERSpace Studio</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-rpl/nurbaya.png') }}" alt="Logo Nurbaya Initiative" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','NBI');"></span><span class="ic-name">Nurbaya Initiative</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-rpl/du-anyar.png') }}" alt="Logo DU Anyar Teknologi" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','DAT');"></span><span class="ic-name">DU Anyar Teknologi</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-rpl/labkita.png') }}" alt="Logo Labkita Digital" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','LBK');"></span><span class="ic-name">Labkita Digital</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-rpl/mojo-digital.png') }}" alt="Logo Mojo Digital Solusi" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','MDS');"></span><span class="ic-name">Mojo Digital Solusi</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-rpl/codepolitan.png') }}" alt="Logo Codepolitan" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','CDP');"></span><span class="ic-name">Codepolitan</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-rpl/hacktiv8.png') }}" alt="Logo Hacktiv8" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','H8');"></span><span class="ic-name">Hacktiv8</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-rpl/telkom.png') }}" alt="Logo Telkom Indonesia" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','TLK');"></span><span class="ic-name">Telkom Indonesia</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-rpl/dicoding.png') }}" alt="Logo Dicoding Indonesia" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','DIC');"></span><span class="ic-name">Dicoding Indonesia</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-rpl/gamatechno.png') }}" alt="Logo PT Gamatechno Indonesia" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','GMT');"></span><span class="ic-name">PT Gamatechno Indonesia</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-rpl/sagara.png') }}" alt="Logo PT Sagara Teknologi Nusantara" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','SGR');"></span><span class="ic-name">PT Sagara Teknologi Nusantara</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-rpl/binar.png') }}" alt="Logo Binar Academy" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','BNR');"></span><span class="ic-name">Binar Academy</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/rpl/hummatech.png') }}" alt="Logo PT Hummatech Indonesia" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','HMT');"></span><span class="ic-name">PT Hummatech Indonesia</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/rpl/minarsih.png') }}" alt="Logo PT Minarsih Tech Mojokerto" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','MNT');"></span><span class="ic-name">PT Minarsih Tech Mojokerto</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/rpl/ubig.png') }}" alt="Logo PT Universal Big Data" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','UBG');"></span><span class="ic-name">PT Universal Big Data</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/rpl/it-brain.png') }}" alt="Logo IT Brain Indonesia" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','ITB');"></span><span class="ic-name">IT Brain Indonesia</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/rpl/otak-kanan.png') }}" alt="Logo PT Otak Kanan" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','OKN');"></span><span class="ic-name">PT Otak Kanan</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/rpl/it-corner.png') }}" alt="Logo IT Corner" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','ITC');"></span><span class="ic-name">IT Corner</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/rpl/topsell.png') }}" alt="Logo Topsell Mojokerto" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','TPM');"></span><span class="ic-name">Topsell Mojokerto</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/rpl/du-anyar.png') }}" alt="Logo DU Anyar Teknologi" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','DAT');"></span><span class="ic-name">DU Anyar Teknologi</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/rpl/labkita.png') }}" alt="Logo Labkita Digital" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','LBK');"></span><span class="ic-name">Labkita Digital</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/rpl/mojo-digital.png') }}" alt="Logo Mojo Digital Solusi" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','MDS');"></span><span class="ic-name">Mojo Digital Solusi</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/rpl/codepolitan.png') }}" alt="Logo Codepolitan" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','CDP');"></span><span class="ic-name">Codepolitan</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/rpl/hacktiv8.png') }}" alt="Logo Hacktiv8" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','H8');"></span><span class="ic-name">Hacktiv8</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/rpl/hummatech.png') }}" alt="Logo PT Hummatech Indonesia" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','HMT');"></span><span class="ic-name">PT Hummatech Indonesia</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/rpl/minarsih.png') }}" alt="Logo PT Minarsih Tech Mojokerto" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','MNT');"></span><span class="ic-name">PT Minarsih Tech Mojokerto</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/rpl/ubig.png') }}" alt="Logo PT Universal Big Data" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','UBG');"></span><span class="ic-name">PT Universal Big Data</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/rpl/it-brain.png') }}" alt="Logo IT Brain Indonesia" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','ITB');"></span><span class="ic-name">IT Brain Indonesia</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/rpl/otak-kanan.png') }}" alt="Logo PT Otak Kanan" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','OKN');"></span><span class="ic-name">PT Otak Kanan</span></div>
         </div>
       </div>
       <div class="ic-footer" data-reveal><span>Belajar &bull; Coding &bull; Berkolaborasi &bull; Siap Berkarya</span></div>
@@ -1740,7 +1740,7 @@
     </div>
     <div class="praktik-grid">
       <div class="praktik-card" data-reveal>
-        <img src="{{ asset('images/rpl-lab-coding.jpg') }}" alt="Praktik coding di laboratorium komputer" loading="lazy">
+        <img src="{{ asset('images/rpl/praktik-rpl.jpg') }}" alt="Praktik coding di laboratorium komputer" loading="lazy">
         <span class="pc-badge"><i class="fas fa-code"></i> Praktik</span>
         <div class="pc-body">
           <h4>Praktik Lab Komputer</h4>
@@ -1748,7 +1748,7 @@
         </div>
       </div>
       <div class="praktik-card" data-reveal style="--d:1">
-        <img src="{{ asset('images/rpl-praktik-aplikasi.jpg') }}" alt="Pengembangan aplikasi nyata" loading="lazy">
+        <img src="{{ asset('images/rpl/ukk-rpl.jpeg') }}" alt="Pengembangan aplikasi nyata" loading="lazy">
         <span class="pc-badge"><i class="fas fa-laptop-code"></i> Pengembangan</span>
         <div class="pc-body">
           <h4>Pengembangan Aplikasi</h4>
@@ -1756,11 +1756,11 @@
         </div>
       </div>
       <div class="praktik-card" data-reveal style="--d:2">
-        <img src="{{ asset('images/rpl-presentasi.jpg') }}" alt="Presentasi dan pengujian aplikasi" loading="lazy">
+        <img src="{{ asset('images/rpl/pengujian-rpl.jpg') }}" alt="Presentasi dan pengujian aplikasi" loading="lazy">
         <span class="pc-badge"><i class="fas fa-circle-check"></i> Evaluasi</span>
         <div class="pc-body">
-          <h4>Presentasi &amp; Pengujian Aplikasi</h4>
-          <p>Mempresentasikan, menguji, dan menyempurnakan aplikasi berdasarkan fungsi, tampilan, dan kebutuhan pengguna.</p>
+          <h4>Pengujian Aplikasi</h4>
+          <p>Menguji, dan menyempurnakan aplikasi berdasarkan fungsi, tampilan, dan kebutuhan pengguna.</p>
         </div>
       </div>
     </div>
@@ -1795,31 +1795,31 @@
     <div class="produk-head" data-reveal>
       <div>
         <div class="eyebrow">Karya Siswa</div>
-        <h2 class="big-heading">DARI KODE <span>MENJADI APLIKASI</span></h2>
+        <h2 class="big-heading">DARI IDE <span>MENJADI KARYA</span></h2>
       </div>
       <div class="produk-note">Kumpulan proyek siswa RPL — dirancang melalui proses analisis, coding, pengujian, dan presentasi aplikasi.</div>
     </div>
     <div class="produk-filters" data-reveal>
       <button class="pf-btn active" data-f="all">SEMUA</button>
-      <button class="pf-btn" data-f="web">WEBSITE</button>
       <button class="pf-btn" data-f="mobile">APLIKASI MOBILE</button>
-      <button class="pf-btn" data-f="uiux">UI/UX</button>
+      <button class="pf-btn" data-f="pengolahan">PENGOLAHAN</button>
+      <button class="pf-btn" data-f="web">WEBSITE</button>
     </div>
     <div class="produk-slider" data-reveal>
       <button class="produk-arrow prev" id="produkPrev" aria-label="Sebelumnya"><i class="fas fa-chevron-left"></i></button>
       <div class="produk-viewport">
         <div class="produk-track" id="produkTrack">
           <article class="produk-card" data-cat="web">
-            <div class="produk-photo"><img src="{{ asset('images/rpl-produk1.jpg') }}" alt="Website karya siswa RPL" loading="lazy"><span class="produk-badge">Pemrograman Web</span></div>
-            <div class="pc-body"><h3>Sistem Informasi Sekolah</h3><p>Website pengelolaan data siswa dan nilai berbasis web dengan basis data terintegrasi.</p><div class="pc-foot"><span>Lab Komputer</span><span><i class="fas fa-arrow-right"></i></span></div></div>
+            <div class="produk-photo"><img src="{{ asset('images/rpl/tambalbanexpres.jpeg') }}" alt="Aplikasi Tambal Ban Express" loading="lazy"><span class="produk-badge">Pemrograman Web</span></div>
+            <div class="pc-body"><h3>Aplikasi Tambal Ban Express</h3><p>Aplikasi layanan tambal ban berbasis web yang memudahkan pengguna memesan layanan tambal ban secara cepat dan praktis.</p><div class="pc-foot"><span>Lab Komputer</span><span><i class="fas fa-arrow-right"></i></span></div></div>
           </article>
           <article class="produk-card" data-cat="mobile">
-            <div class="produk-photo"><img src="{{ asset('images/rpl-produk2.jpg') }}" alt="Aplikasi mobile karya siswa RPL" loading="lazy"><span class="produk-badge">Pemrograman Mobile</span></div>
-            <div class="pc-body"><h3>Aplikasi Presensi Siswa</h3><p>Aplikasi mobile untuk pencatatan kehadiran siswa secara digital dan real-time.</p><div class="pc-foot"><span>Lab Komputer</span><span><i class="fas fa-arrow-right"></i></span></div></div>
+            <div class="produk-photo"><img src="{{ asset('images/rpl/estrakbuahmojo.jpeg') }}" alt="Maja Mojo" loading="lazy"><span class="produk-badge">Pengolahan</span></div>
+            <div class="pc-body"><h3>Maja Mojo</h3><p>Minuman olahan berbahan dasar buah mojo dengan cita rasa unik, inovasi kreatif siswa RPL dalam memanfaatkan bahan pangan lokal.</p><div class="pc-foot"><span>Lab Komputer</span><span><i class="fas fa-arrow-right"></i></span></div></div>
           </article>
           <article class="produk-card" data-cat="uiux">
-            <div class="produk-photo"><img src="{{ asset('images/rpl-produk3.jpg') }}" alt="Desain UI/UX karya siswa RPL" loading="lazy"><span class="produk-badge">UI/UX Design</span></div>
-            <div class="pc-body"><h3>Desain Antarmuka Aplikasi</h3><p>Rancangan antarmuka aplikasi yang intuitif berdasarkan riset kebutuhan pengguna.</p><div class="pc-foot"><span>Lab Komputer</span><span><i class="fas fa-arrow-right"></i></span></div></div>
+            <div class="produk-photo"><img src="{{ asset('images/rpl/festika-produk.jpeg') }}" alt="Website Berbasis Python" loading="lazy"><span class="produk-badge">UI/UX Design</span></div>
+            <div class="pc-body"><h3>Website Berbasis Python</h3><p>Meraih prestasi melalui pengembangan website berbasis Python dalam ajang FESTIKA 2025.</p><div class="pc-foot"><span>Lab Komputer</span><span><i class="fas fa-arrow-right"></i></span></div></div>
           </article>
           <article class="produk-card" data-cat="web">
             <div class="produk-photo"><img src="{{ asset('images/rpl-produk4.jpg') }}" alt="Website toko online karya siswa RPL" loading="lazy"><span class="produk-badge">Pemrograman Web</span></div>
@@ -1844,27 +1844,27 @@
     </div>
     <div class="kegiatan-grid">
       <div class="kegiatan-card tall" data-reveal>
-        <img src="{{ asset('images/rpl-prestasi.jpg') }}" alt="Prestasi siswa RPL" loading="lazy">
+        <img src="{{ asset('images/rpl/prestasi-rpl.jpg') }}" alt="Prestasi siswa RPL" loading="lazy">
         <span class="kg-badge"><i class="fas fa-trophy"></i> Prestasi</span>
         <div class="kg-body"><h4>Prestasi Siswa RPL</h4><span>Prestasi lomba pemrograman, hackathon, web design, dan aplikasi mobile tingkat kota hingga nasional</span></div>
       </div>
       <div class="kegiatan-card" data-reveal style="--d:1">
-        <img src="{{ asset('images/rpl-praktik-rutin.jpg') }}" alt="Praktik coding RPL" loading="lazy">
+        <img src="{{ asset('images/rpl/codingbareng.jpg') }}" alt="Praktik coding RPL" loading="lazy">
         <span class="kg-badge"><i class="fas fa-code"></i> Praktik</span>
         <div class="kg-body"><h4>Coding Bareng</h4><span>Kegiatan praktik rutin di laboratorium RPL untuk menghasilkan aplikasi nyata</span></div>
       </div>
       <div class="kegiatan-card" data-reveal style="--d:2">
-        <img src="{{ asset('images/rpl-kunjungan-industri.jpg') }}" alt="Kunjungan industri RPL" loading="lazy">
+        <img src="{{ asset('images/rpl/ki-rpl.jpg') }}" alt="Kunjungan industri RPL" loading="lazy">
         <span class="kg-badge"><i class="fas fa-building"></i> Industri</span>
         <div class="kg-body"><h4>Kunjungan Industri Teknologi</h4><span>Belajar langsung dari startup, software house, dan perusahaan teknologi</span></div>
       </div>
       <div class="kegiatan-card" data-reveal>
-        <img src="{{ asset('images/rpl-expo.jpg') }}" alt="Expo aplikasi RPL" loading="lazy">
-        <span class="kg-badge"><i class="fas fa-laptop-code"></i> Expo</span>
-        <div class="kg-body"><h4>Expo Aplikasi</h4><span>Memamerkan aplikasi terbaik karya siswa dalam berbagai pameran teknologi</span></div>
+        <img src="{{ asset('images/rpl/pameran.png') }}" alt="Pameran aplikasi RPL" loading="lazy">
+        <span class="kg-badge"><i class="fas fa-laptop-code"></i> Pameran</span>
+        <div class="kg-body"><h4>Pameran</h4><span>Memamerkan website terbaik karya siswa dalam berbagai pameran teknologi</span></div>
       </div>
       <div class="kegiatan-card" data-reveal style="--d:1">
-        <img src="{{ asset('images/rpl-pkl.jpg') }}" alt="PKL siswa RPL" loading="lazy">
+        <img src="{{ asset('images/rpl/pkl-rpl.jpeg') }}" alt="PKL siswa RPL" loading="lazy">
         <span class="kg-badge"><i class="fas fa-user-tie"></i> PKL</span>
         <div class="kg-body"><h4>PKL &amp; Magang di Industri Teknologi</h4><span>Pengalaman kerja langsung di software house, startup, dan perusahaan digital</span></div>
       </div>
@@ -1879,15 +1879,15 @@
     </div>
     <div class="prospek-grid">
       <div class="prospek-card" data-reveal>
-        <div class="ps-photo"><span class="ps-num">01</span><img src="{{ asset('images/rpl-kerja.jpg') }}" alt="Bekerja di industri teknologi" loading="lazy"><i class="fas fa-laptop-code blue"></i></div>
+        <div class="ps-photo"><span class="ps-num">01</span><img src="{{ asset('images/rpl/kerja-rpl.jpg') }}" alt="Bekerja di industri teknologi" loading="lazy"><i class="fas fa-laptop-code blue"></i></div>
         <div class="ps-body"><h4>KERJA</h4><p>Software Developer, Programmer, Web Developer, Mobile App Developer, UI/UX Designer, Database Administrator — siap berkarya di industri teknologi.</p><div class="ps-tags"><span>Software House</span><span>Startup Teknologi</span><span>IT Perusahaan</span><span>Freelancer</span></div></div>
       </div>
       <div class="prospek-card" data-reveal style="--d:1">
-        <div class="ps-photo"><span class="ps-num">02</span><img src="{{ asset('images/rpl-kuliah.jpg') }}" alt="Melanjutkan kuliah di bidang informatika" loading="lazy"><i class="fas fa-graduation-cap"></i></div>
+        <div class="ps-photo"><span class="ps-num">02</span><img src="{{ asset('images/rpl/kuliah.jpeg') }}" alt="Melanjutkan kuliah di bidang informatika" loading="lazy"><i class="fas fa-graduation-cap"></i></div>
         <div class="ps-body"><h4>KULIAH</h4><p>Teknik Informatika, Sistem Informasi, Ilmu Komputer, Teknologi Informasi, atau bidang teknologi terkait — bekal RPL jadi modal kuat di perguruan tinggi.</p><div class="ps-tags"><span>Teknik Informatika</span><span>Sistem Informasi</span><span>Ilmu Komputer</span></div></div>
       </div>
       <div class="prospek-card" data-reveal style="--d:2">
-        <div class="ps-photo"><span class="ps-num">03</span><img src="{{ asset('images/rpl-usaha.jpg') }}" alt="Membangun startup atau usaha digital sendiri" loading="lazy"><i class="fas fa-laptop-code green"></i></div>
+        <div class="ps-photo"><span class="ps-num">03</span><img src="{{ asset('images/rpl/usaha-rpl.jpeg') }}" alt="Membangun startup atau usaha digital sendiri" loading="lazy"><i class="fas fa-laptop-code green"></i></div>
         <div class="ps-body"><h4>USAHA DIGITAL</h4><p>Jasa pembuatan website, aplikasi, startup digital, freelance developer, dan bisnis teknologi mandiri — bangun usaha digital dengan produk dan idemu sendiri.</p><div class="ps-tags"><span>Startup</span><span>Freelance Developer</span><span>Produk Digital</span></div></div>
       </div>
     </div>
