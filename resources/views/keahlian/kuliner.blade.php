@@ -1660,34 +1660,34 @@
       </div>
       <div class="ic-marquee-wrap" data-reveal aria-label="Mitra industri KULINER">
         <div class="ic-marquee">
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-kuliner/spat.png') }}" alt="Logo Sentra Pengembangan Kuliner Terpadu" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','SPAT');"></span><span class="ic-name">Sentra Pengembangan Kuliner Terpadu</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-kuliner/kajeye-food.png') }}" alt="Logo CV Kajeye Food" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','KJF');"></span><span class="ic-name">CV Kajeye Food</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-kuliner/bhumi-suryatama.png') }}" alt="Logo PT Bhumi Suryatama" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','BHM');"></span><span class="ic-name">PT Bhumi Suryatama</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-kuliner/brawijaya-dairy.png') }}" alt="Logo CV Brawijaya Dairy Industry" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','BDI');"></span><span class="ic-name">CV Brawijaya Dairy Industry</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-kuliner/sido-jodo.png') }}" alt="Logo PT Sido Jodo" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','SJD');"></span><span class="ic-name">PT Sido Jodo</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-kuliner/olivia-bakery.png') }}" alt="Logo Olivia Bakery" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','OLI');"></span><span class="ic-name">Olivia Bakery</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-kuliner/sydney-bakery.png') }}" alt="Logo Sydney Bakery" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','SYD');"></span><span class="ic-name">Sydney Bakery</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-kuliner/munchies-bakery.png') }}" alt="Logo Munchies Bakery" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','MCH');"></span><span class="ic-name">Munchies Bakery</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-kuliner/manna-bakery.png') }}" alt="Logo Manna Bakery" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','MNA');"></span><span class="ic-name">Manna Bakery</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-kuliner/ada-rasa.png') }}" alt="Logo Ada Rasa Bakery" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','ADR');"></span><span class="ic-name">Ada Rasa Bakery</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-kuliner/carrefour.png') }}" alt="Logo Carrefour Mojokerto" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','CRF');"></span><span class="ic-name">Carrefour Mojokerto</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-kuliner/gunung-welirang.png') }}" alt="Logo Gunung Welirang" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','GWA');"></span><span class="ic-name">Gunung Welirang</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-kuliner/ganessa.png') }}" alt="Logo Ganessa" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','GNS');"></span><span class="ic-name">Ganessa</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-kuliner/bagus-agriseta.png') }}" alt="Logo Bagus Agriseta Mandiri" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','BAM');"></span><span class="ic-name">Bagus Agriseta Mandiri</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-kuliner/spat.png') }}" alt="Logo Sentra Pengembangan Kuliner Terpadu" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','SPAT');"></span><span class="ic-name">Sentra Pengembangan Kuliner Terpadu</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-kuliner/kajeye-food.png') }}" alt="Logo CV Kajeye Food" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','KJF');"></span><span class="ic-name">CV Kajeye Food</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-kuliner/bhumi-suryatama.png') }}" alt="Logo PT Bhumi Suryatama" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','BHM');"></span><span class="ic-name">PT Bhumi Suryatama</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-kuliner/brawijaya-dairy.png') }}" alt="Logo CV Brawijaya Dairy Industry" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','BDI');"></span><span class="ic-name">CV Brawijaya Dairy Industry</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-kuliner/sido-jodo.png') }}" alt="Logo PT Sido Jodo" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','SJD');"></span><span class="ic-name">PT Sido Jodo</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-kuliner/olivia-bakery.png') }}" alt="Logo Olivia Bakery" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','OLI');"></span><span class="ic-name">Olivia Bakery</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-kuliner/sydney-bakery.png') }}" alt="Logo Sydney Bakery" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','SYD');"></span><span class="ic-name">Sydney Bakery</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-kuliner/munchies-bakery.png') }}" alt="Logo Munchies Bakery" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','MCH');"></span><span class="ic-name">Munchies Bakery</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-kuliner/manna-bakery.png') }}" alt="Logo Manna Bakery" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','MNA');"></span><span class="ic-name">Manna Bakery</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-kuliner/ada-rasa.png') }}" alt="Logo Ada Rasa Bakery" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','ADR');"></span><span class="ic-name">Ada Rasa Bakery</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-kuliner/carrefour.png') }}" alt="Logo Carrefour Mojokerto" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','CRF');"></span><span class="ic-name">Carrefour Mojokerto</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-kuliner/gunung-welirang.png') }}" alt="Logo Gunung Welirang" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','GWA');"></span><span class="ic-name">Gunung Welirang</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-kuliner/ganessa.png') }}" alt="Logo Ganessa" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','GNS');"></span><span class="ic-name">Ganessa</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-kuliner/bagus-agriseta.png') }}" alt="Logo Bagus Agriseta Mandiri" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','BAM');"></span><span class="ic-name">Bagus Agriseta Mandiri</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/kuliner/aston.png') }}" alt="Logo Aston Hotel" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','AST');"></span><span class="ic-name">Aston Hotel</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/kuliner/manovkopi.png') }}" alt="Logo Manov Kopi" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','MVK');"></span><span class="ic-name">Manov Kopi</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/kuliner/movenpick.png') }}" alt="Logo Movenpick Surabaya City" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','MSC');"></span><span class="ic-name">Movenpick Surabaya City</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/kuliner/sitarasa.png') }}" alt="Logo Sitarasa" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','STR');"></span><span class="ic-name">Sitarasa</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/kuliner/sunrisehotel.png') }}" alt="Logo Sunrise Hotel" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','SRH);"></span><span class="ic-name">Sunrise Hotel</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/kuliner/the-southern.png') }}" alt="Logo The Southern Hotel" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','TSH');"></span><span class="ic-name">The Southern Hotel</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/kuliner/vasa-hotel.png') }}" alt="Logo Vasa Hotel Surabaya" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','VSH');"></span><span class="ic-name">Vasa Hotel Surabaya</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/kuliner/munchies-bakery.png') }}" alt="Logo Munchies Bakery" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','MCH');"></span><span class="ic-name">Munchies Bakery</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/kuliner/manna-bakery.png') }}" alt="Logo Manna Bakery" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','MNA');"></span><span class="ic-name">Manna Bakery</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/kuliner/ada-rasa.png') }}" alt="Logo Ada Rasa Bakery" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','ADR');"></span><span class="ic-name">Ada Rasa Bakery</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/kuliner/carrefour.png') }}" alt="Logo Carrefour Mojokerto" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','CRF');"></span><span class="ic-name">Carrefour Mojokerto</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/kuliner/gunung-welirang.png') }}" alt="Logo Gunung Welirang" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','GWA');"></span><span class="ic-name">Gunung Welirang</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/kuliner/ganessa.png') }}" alt="Logo Ganessa" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','GNS');"></span><span class="ic-name">Ganessa</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/kuliner/bagus-agriseta.png') }}" alt="Logo Bagus Agriseta Mandiri" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','BAM');"></span><span class="ic-name">Bagus Agriseta Mandiri</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/kuliner/aston.png') }}" alt="Logo Aston Hotel" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','AST');"></span><span class="ic-name">Aston Hotel</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/kuliner/manovkopi.png') }}" alt="Logo Manov Kopi" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','MVK');"></span><span class="ic-name">Manov Kopi</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/kuliner/movenpick.png') }}" alt="Logo Movenpick Surabaya City" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','MSC');"></span><span class="ic-name">Movenpick Surabaya City</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/kuliner/sitarasa.png') }}" alt="Logo Sitarasa" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','STR');"></span><span class="ic-name">Sitarasa</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/kuliner/sunrisehotel.png') }}" alt="Logo Sunrise Hotel" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','SRH);"></span><span class="ic-name">Sunrise Hotel</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/kuliner/the-southern.png') }}" alt="Logo The Southern Hotel" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','TSH');"></span><span class="ic-name">The Southern Hotel</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/kuliner/vasa-hotel.png') }}" alt="Logo Vasa Hotel Surabaya" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','VSH');"></span><span class="ic-name">Vasa Hotel Surabaya</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/kuliner/munchies-bakery.png') }}" alt="Logo Munchies Bakery" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','MCH');"></span><span class="ic-name">Munchies Bakery</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/kuliner/manna-bakery.png') }}" alt="Logo Manna Bakery" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','MNA');"></span><span class="ic-name">Manna Bakery</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/kuliner/ada-rasa.png') }}" alt="Logo Ada Rasa Bakery" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','ADR');"></span><span class="ic-name">Ada Rasa Bakery</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/kuliner/carrefour.png') }}" alt="Logo Carrefour Mojokerto" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','CRF');"></span><span class="ic-name">Carrefour Mojokerto</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/kuliner/gunung-welirang.png') }}" alt="Logo Gunung Welirang" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','GWA');"></span><span class="ic-name">Gunung Welirang</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/kuliner/ganessa.png') }}" alt="Logo Ganessa" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','GNS');"></span><span class="ic-name">Ganessa</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/kuliner/bagus-agriseta.png') }}" alt="Logo Bagus Agriseta Mandiri" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','BAM');"></span><span class="ic-name">Bagus Agriseta Mandiri</span></div>
         </div>
       </div>
       <div class="ic-footer" data-reveal><span>Belajar &bull; Praktik &bull; Berkolaborasi &bull; Siap Berkarya</span></div>
@@ -1747,11 +1747,11 @@
   <section class="praktik-section section-pad" id="praktik-aphp">
     <div class="praktik-head" data-reveal>
       <div class="eyebrow gold">BELAJAR LEWAT PROYEK KREATIF</div>
-      <h2 class="big-heading">BELAJAR BUKAN <span>HANYA DI DALAM KELAS</span></h2>
+      <h2 class="big-heading">BELAJAR BUKAN <span>HANYA DI KELAS</span></h2>
     </div>
     <div class="praktik-grid">
       <div class="praktik-card" data-reveal>
-        <img src="{{ asset('images/kuliner-dapur.jpg') }}" alt="Praktik memasak dan mengolah makanan" loading="lazy">
+        <img src="{{ asset('images/kuliner/kuliner-dapur.jpeg') }}" alt="Praktik memasak dan mengolah makanan" loading="lazy">
         <span class="pc-badge"><i class="fas fa-fire-burner"></i> Praktik</span>
         <div class="pc-body">
           <h4>Praktik Dapur</h4>
@@ -1759,15 +1759,15 @@
         </div>
       </div>
       <div class="praktik-card" data-reveal style="--d:1">
-        <img src="{{ asset('images/kuliner-pastry.jpg') }}" alt="Produksi produk nyata" loading="lazy">
+        <img src="{{ asset('images/kuliner/dapur-produksi.png') }}" alt="Produksi produk nyata" loading="lazy">
         <span class="pc-badge"><i class="fas fa-utensils"></i> Produksi</span>
         <div class="pc-body">
-          <h4>Studio Produksi</h4>
+          <h4>Dapur Produksi</h4>
           <p>Menghasilkan karya nyata seperti masakan utama, pastry dan bakery, plating kreatif, dan minuman inovatif.</p>
         </div>
       </div>
       <div class="praktik-card" data-reveal style="--d:2">
-        <img src="{{ asset('images/kuliner-prestasi.jpg') }}" alt="Evaluasi dan pengembangan hidangan" loading="lazy">
+        <img src="{{ asset('images/kuliner/kuliner-praktik.jpg') }}" alt="Evaluasi dan pengembangan hidangan" loading="lazy">
         <span class="pc-badge"><i class="fas fa-circle-check"></i> Evaluasi</span>
         <div class="pc-body">
           <h4>Presentasi &amp; Evaluasi Karya</h4>
@@ -1790,7 +1790,7 @@
     <div class="fasilitas-grid">
       <div class="fasilitas-card" data-reveal><div class="fc-ic"><i class="fas fa-fire-burner"></i></div><h4>Dapur Praktik Kuliner</h4><p>Dapur praktik lengkap dengan peralatan modern untuk praktik memasak dan mengolah makanan.</p></div>
       <div class="fasilitas-card" data-reveal style="--d:1"><div class="fc-ic green"><i class="fas fa-tools"></i></div><h4>Peralatan Masak</h4><p>Kompor, oven, mixer, dan peralatan masak yang lengkap, memadai, dan terawat.</p></div>
-      <div class="fasilitas-card" data-reveal style="--d:2"><div class="fc-ic gold"><i class="fas fa-camera"></i></div><h4>Studio Foto &amp; Video</h4><p>Ruang produksi untuk food photography, food styling, dan pembuatan konten kuliner.</p></div>
+      <div class="fasilitas-card" data-reveal style="--d:2"><div class="fc-ic gold"><i class="fas fa-camera"></i></div><h4>Ruang LKS</h4><p>Ruang khusus untuk mendukung kegiatan latihan dan persiapan Lomba Kompetensi Siswa.</p></div>
       <div class="fasilitas-card" data-reveal style="--d:3"><div class="fc-ic"><i class="fas fa-plate-wheat"></i></div><h4>Area Pastry &amp; Bakery</h4><p>Area khusus untuk membuat kue, roti, dan produk pastry dengan standar mutu dan kebersihan.</p></div>
       <div class="fasilitas-card" data-reveal style="--d:4"><div class="fc-ic green"><i class="fas fa-snowflake"></i></div><h4>Ruang Penyimpanan Dingin</h4><p>Fasilitas penyimpanan bahan baku dan produk jadi yang terjaga kualitas dan kesegarannya.</p></div>
       <div class="fasilitas-card" data-reveal style="--d:5"><div class="fc-ic gold"><i class="fas fa-laptop"></i></div><h4>Fasilitas Pendukung</h4><p>Ruang kelas, akses internet, referensi resep, dan perangkat digital untuk menunjang pembelajaran.</p></div>
@@ -1814,22 +1814,22 @@
       <button class="pf-btn active" data-f="all">SEMUA</button>
       <button class="pf-btn" data-f="masakan">MASAKAN UTAMA</button>
       <button class="pf-btn" data-f="pastry">PASTRY &amp; BAKERY</button>
-      <button class="pf-btn" data-f="plating">PLATING &amp; PENYAJIAN</button>
+      <button class="pf-btn" data-f="plating">FOOD PHOTOGRAPHY</button>
     </div>
     <div class="produk-slider" data-reveal>
       <button class="produk-arrow prev" id="produkPrev" aria-label="Sebelumnya"><i class="fas fa-chevron-left"></i></button>
       <div class="produk-viewport">
         <div class="produk-track" id="produkTrack">
           <article class="produk-card" data-cat="masakan">
-            <div class="produk-photo"><img src="{{ asset('images/aphp-produk1.jpg') }}" alt="Hidangan nusantara karya siswa KULINER" loading="lazy"><span class="produk-badge">Masakan Utama</span></div>
-            <div class="pc-body"><h3>Hidangan Nusantara</h3><p>Olahan masakan Indonesia dengan cita rasa autentik, dikerjakan dari pemilihan bahan hingga penyajian akhir.</p><div class="pc-foot"><span>Studio Produksi</span><span><i class="fas fa-arrow-right"></i></span></div></div>
+            <div class="produk-photo"><img src="{{ asset('images/kuliner/beimie.jpeg') }}" alt="Hidangan nusantara karya siswa KULINER" loading="lazy"><span class="produk-badge">Masakan Utama</span></div>
+            <div class="pc-body"><h3>BeiMie</h3><p>Mie unik berbahan dasar daun murbei yang alami dan kaya manfaat, perpaduan cita rasa lezat dengan pilihan yang lebih sehat.</p><div class="pc-foot"><span>Studio Produksi</span><span><i class="fas fa-arrow-right"></i></span></div></div>
           </article>
           <article class="produk-card" data-cat="plating">
-            <div class="produk-photo"><img src="{{ asset('images/aphp-olahan.jpg') }}" alt="Food photography karya siswa KULINER" loading="lazy"><span class="produk-badge">Food Photography</span></div>
+            <div class="produk-photo"><img src="{{ asset('images/kuliner/rotitawar-kuliner.jpeg') }}" alt="Food photography karya siswa KULINER" loading="lazy"><span class="produk-badge">Food Photography</span></div>
             <div class="pc-body"><h3>Fotografi Produk</h3><p>Eksplorasi komposisi, pencahayaan, dan sudut pengambilan untuk menghasilkan visual hidangan yang menggugah selera.</p><div class="pc-foot"><span>Studio Produksi</span><span><i class="fas fa-arrow-right"></i></span></div></div>
           </article>
           <article class="produk-card" data-cat="pastry">
-            <div class="produk-photo"><img src="{{ asset('images/kuliner-cake.jpg') }}" alt="Kreasi kue karya siswa KULINER" loading="lazy"><span class="produk-badge">Pastry &amp; Bakery</span></div>
+            <div class="produk-photo"><img src="{{ asset('images/kuliner/pastry-kuliner.jpeg') }}" alt="Kreasi kue karya siswa KULINER" loading="lazy"><span class="produk-badge">Pastry &amp; Bakery</span></div>
             <div class="pc-body"><h3>Kreasi Kue &amp; Roti</h3><p>Pembuatan aneka kue dan roti dengan teknik dan resep pastry yang tepat, tampil cantik dan lezat.</p><div class="pc-foot"><span>Studio Produksi</span><span><i class="fas fa-arrow-right"></i></span></div></div>
           </article>
           <article class="produk-card" data-cat="plating">
@@ -1855,27 +1855,27 @@
     </div>
     <div class="kegiatan-grid">
       <div class="kegiatan-card tall" data-reveal>
-        <img src="{{ asset('images/kuliner-bersama.jpg') }}" alt="Prestasi siswa KULINER" loading="lazy">
+        <img src="{{ asset('images/kuliner/lkslampung.jpg') }}" alt="Prestasi siswa KULINER" loading="lazy">
         <span class="kg-badge"><i class="fas fa-trophy"></i> Prestasi</span>
         <div class="kg-body"><h4>Prestasi Siswa KULINER</h4><span>Prestasi lomba kuliner, pengolahan makanan, pastry dan bakery, dan multimedia tingkat kota hingga nasional</span></div>
       </div>
       <div class="kegiatan-card" data-reveal style="--d:1">
-        <img src="{{ asset('images/kuliner-praktik.jpg') }}" alt="Praktik produksi KULINER" loading="lazy">
+        <img src="{{ asset('images/kuliner/kuliner-dapur.jpeg') }}" alt="Praktik produksi KULINER" loading="lazy">
         <span class="kg-badge"><i class="fas fa-cookie-bite"></i> Praktik</span>
         <div class="kg-body"><h4>Produksi Kreatif</h4><span>Kegiatan praktik rutin di studio KULINER untuk menghasilkan karya kreatif</span></div>
       </div>
       <div class="kegiatan-card" data-reveal style="--d:2">
-        <img src="{{ asset('images/kuliner-industri.jpg') }}" alt="Kunjungan industri KULINER" loading="lazy">
+        <img src="{{ asset('images/kuliner/ki-kuliner.jpeg') }}" alt="Kunjungan industri KULINER" loading="lazy">
         <span class="kg-badge"><i class="fas fa-building"></i> Industri</span>
         <div class="kg-body"><h4>Kunjungan Industri Kuliner</h4><span>Belajar langsung dari restoran, hotel, katering, dan industri kuliner</span></div>
       </div>
       <div class="kegiatan-card" data-reveal>
-        <img src="{{ asset('images/kuliner-penghargaan.jpg') }}" alt="Pameran produk KULINER" loading="lazy">
+        <img src="{{ asset('images/kuliner/pameran-kuliner.png') }}" alt="Pameran produk KULINER" loading="lazy">
         <span class="kg-badge"><i class="fas fa-plate-wheat"></i> Pameran</span>
         <div class="kg-body"><h4>Pameran Karya</h4><span>Memamerkan karya unggulan di berbagai pameran dan ajang kreatif</span></div>
       </div>
       <div class="kegiatan-card" data-reveal style="--d:1">
-        <img src="{{ asset('images/kuliner-tim.jpg') }}" alt="PKL siswa KULINER" loading="lazy">
+        <img src="{{ asset('images/kuliner/pkl.png') }}" alt="PKL siswa KULINER" loading="lazy">
         <span class="kg-badge"><i class="fas fa-briefcase"></i> PKL</span>
         <div class="kg-body"><h4>PKL & Magang di Industri F&B</h4><span>Pengalaman kerja langsung di studio, agensi, percetakan, dan perusahaan kreatif</span></div>
       </div>
@@ -1890,15 +1890,15 @@
     </div>
     <div class="prospek-grid">
       <div class="prospek-card" data-reveal>
-        <div class="ps-photo"><span class="ps-num">01</span><img src="{{ asset('images/kuliner-piala.jpg') }}" alt="Bekerja di industri kreatif" loading="lazy"><i class="fas fa-briefcase blue"></i></div>
+        <div class="ps-photo"><span class="ps-num">01</span><img src="{{ asset('images/kuliner/kerja-kuliner.jpg') }}" alt="Bekerja di industri kreatif" loading="lazy"><i class="fas fa-briefcase blue"></i></div>
         <div class="ps-body"><h4>KERJA</h4><p>Chef, Pastry Chef, Food Stylist, Cook, Entrepreneur Kuliner, Food & Beverage Professional — siap berkarya di industri kreatif.</p><div class="ps-tags"><span>Agensi Kreatif</span><span>Studio Kuliner</span><span>Production House</span><span>Branding</span></div></div>
       </div>
       <div class="prospek-card" data-reveal style="--d:1">
-        <div class="ps-photo"><span class="ps-num">02</span><img src="{{ asset('images/kuliner-industri.jpg') }}" alt="Melanjutkan kuliah di bidang kewirausahaan kuliner" loading="lazy"><i class="fas fa-graduation-cap"></i></div>
+        <div class="ps-photo"><span class="ps-num">02</span><img src="{{ asset('images/kuliner/kuliah.jpeg') }}" alt="Melanjutkan kuliah di bidang kewirausahaan kuliner" loading="lazy"><i class="fas fa-graduation-cap"></i></div>
         <div class="ps-body"><h4>KULIAH</h4><p>Tata Boga, Pariwisata, Perhotelan, Gizi &amp; Kesehatan, Bisnis Kuliner, atau bidang terkait — bekal KULINER jadi modal kuat di perguruan tinggi.</p><div class="ps-tags"><span>Tata Boga</span><span>Perhotelan</span><span>Gizi &amp; Kesehatan</span></div></div>
       </div>
       <div class="prospek-card" data-reveal style="--d:2">
-        <div class="ps-photo"><span class="ps-num">03</span><img src="{{ asset('images/kuliner-penghargaan.jpg') }}" alt="Membangun usaha kuliner sendiri" loading="lazy"><i class="fas fa-briefcase green"></i></div>
+        <div class="ps-photo"><span class="ps-num">03</span><img src="{{ asset('images/kuliner/usaha-kuliner.jpg') }}" alt="Membangun usaha kuliner sendiri" loading="lazy"><i class="fas fa-briefcase green"></i></div>
         <div class="ps-body"><h4>USAHA KREATIF</h4><p>Katering, restoran, cafe, bisnis kue dan roti, serta usaha kuliner mandiri — bangun usaha dengan karya dan cita rasa khasmu.</p><div class="ps-tags"><span>Katering</span><span>Usaha Kuliner</span><span>Bisnis Pastry</span></div></div>
       </div>
     </div>

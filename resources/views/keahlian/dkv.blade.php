@@ -1660,31 +1660,31 @@
       </div>
       <div class="ic-marquee-wrap" data-reveal aria-label="Mitra industri DKV">
         <div class="ic-marquee">
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-dkv/spat.png') }}" alt="Logo Sentra Pengembangan Desain Komunikasi Visual Terpadu" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','SPAT');"></span><span class="ic-name">Sentra Pengembangan Desain Komunikasi Visual Terpadu</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-dkv/kreasi-visual.png') }}" alt="Logo Kreasi Visual Studio" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','KVS');"></span><span class="ic-name">Kreasi Visual Studio</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-dkv/percetakan-jaya.png') }}" alt="Logo Percetakan Jaya Abadi" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','PJA');"></span><span class="ic-name">Percetakan Jaya Abadi</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-dkv/matahari-adv.png') }}" alt="Logo Matahari Advertising" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','MTA');"></span><span class="ic-name">Matahari Advertising</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-dkv/lensa-kreatif.png') }}" alt="Logo Lensa Kreatif Photography" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','LKP');"></span><span class="ic-name">Lensa Kreatif Photography</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-dkv/nusantara-production.png') }}" alt="Logo Nusantara Production House" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','NPH');"></span><span class="ic-name">Nusantara Production House</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-dkv/digital-kreasindo.png') }}" alt="Logo Digital Kreasindo Agency" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','DKA');"></span><span class="ic-name">Digital Kreasindo Agency</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-dkv/mojokerto-print.png') }}" alt="Logo Mojokerto Print &amp; Design" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','MPD');"></span><span class="ic-name">Mojokerto Print &amp; Design</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-dkv/rumah-desain.png') }}" alt="Logo Rumah Desain Nusantara" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','RDN');"></span><span class="ic-name">Rumah Desain Nusantara</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-dkv/bengkel-kreatif.png') }}" alt="Logo Bengkel Kreatif Studio" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','BKS');"></span><span class="ic-name">Bengkel Kreatif Studio</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-dkv/carrefour.png') }}" alt="Logo Carrefour Mojokerto" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','CRF');"></span><span class="ic-name">Carrefour Mojokerto</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-dkv/gunung-welirang.png') }}" alt="Logo Gunung Welirang" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','GWA');"></span><span class="ic-name">Gunung Welirang</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-dkv/ganessa.png') }}" alt="Logo Ganessa" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','GNS');"></span><span class="ic-name">Ganessa</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-dkv/warna-media.png') }}" alt="Logo Warna Media Kreasi" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','WMK');"></span><span class="ic-name">Warna Media Kreasi</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-dkv/spat.png') }}" alt="Logo Sentra Pengembangan Desain Komunikasi Visual Terpadu" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','SPAT');"></span><span class="ic-name">Sentra Pengembangan Desain Komunikasi Visual Terpadu</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-dkv/kreasi-visual.png') }}" alt="Logo Kreasi Visual Studio" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','KVS');"></span><span class="ic-name">Kreasi Visual Studio</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-dkv/percetakan-jaya.png') }}" alt="Logo Percetakan Jaya Abadi" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','PJA');"></span><span class="ic-name">Percetakan Jaya Abadi</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-dkv/matahari-adv.png') }}" alt="Logo Matahari Advertising" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','MTA');"></span><span class="ic-name">Matahari Advertising</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-dkv/lensa-kreatif.png') }}" alt="Logo Lensa Kreatif Photography" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','LKP');"></span><span class="ic-name">Lensa Kreatif Photography</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-dkv/nusantara-production.png') }}" alt="Logo Nusantara Production House" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','NPH');"></span><span class="ic-name">Nusantara Production House</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-dkv/digital-kreasindo.png') }}" alt="Logo Digital Kreasindo Agency" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','DKA');"></span><span class="ic-name">Digital Kreasindo Agency</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-dkv/mojokerto-print.png') }}" alt="Logo Mojokerto Print &amp; Design" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','MPD');"></span><span class="ic-name">Mojokerto Print &amp; Design</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-dkv/rumah-desain.png') }}" alt="Logo Rumah Desain Nusantara" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','RDN');"></span><span class="ic-name">Rumah Desain Nusantara</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-dkv/bengkel-kreatif.png') }}" alt="Logo Bengkel Kreatif Studio" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','BKS');"></span><span class="ic-name">Bengkel Kreatif Studio</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/mitra-dkv/warna-media.png') }}" alt="Logo Warna Media Kreasi" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','WMK');"></span><span class="ic-name">Warna Media Kreasi</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/dkv/casalamia.png') }}" alt="Logo Casalamia Photo Studio" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','CSM);"></span><span class="ic-name">Casalamia Photo Studio</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/dkv/ilham-camera.png') }}" alt="Logo Ilham Camera" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','IHC');"></span><span class="ic-name">Ilham Camera</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/dkv/ourastudio.png') }}" alt="Logo OURASTUDIO" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','ORS');"></span><span class="ic-name">OURASTUDIO</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/dkv/matahari-adver.png') }}" alt="Logo Matahari Advertising" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','MTA');"></span><span class="ic-name">Matahari Advertising</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/dkv/sensatype.png') }}" alt="Logo Sensatype Studio" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','SST');"></span><span class="ic-name">Sensatype Studio</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/dkv/utero.png') }}" alt="Logo Utero Mojokerto" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','UTR');"></span><span class="ic-name">Utero Mojokerto</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/dkv/zavision.png') }}" alt="Logo Zavision Digital Workshop" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','ZDW');"></span><span class="ic-name">Zavision Digital Workshop</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/dkv/mojokerto-print.png') }}" alt="Logo Mojokerto Print &amp; Design" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','MPD');"></span><span class="ic-name">Mojokerto Print &amp; Design</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/dkv/rumah-desain.png') }}" alt="Logo Rumah Desain Nusantara" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','RDN');"></span><span class="ic-name">Rumah Desain Nusantara</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/dkv/bengkel-kreatif.png') }}" alt="Logo Bengkel Kreatif Studio" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','BKS');"></span><span class="ic-name">Bengkel Kreatif Studio</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/dkv/carrefour.png') }}" alt="Logo Carrefour Mojokerto" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','CRF');"></span><span class="ic-name">Carrefour Mojokerto</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/dkv/gunung-welirang.png') }}" alt="Logo Gunung Welirang" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','GWA');"></span><span class="ic-name">Gunung Welirang</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/dkv/ganessa.png') }}" alt="Logo Ganessa" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','GNS');"></span><span class="ic-name">Ganessa</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/dkv/warna-media.png') }}" alt="Logo Warna Media Kreasi" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','WMK');"></span><span class="ic-name">Warna Media Kreasi</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/dkv/casalamia.png') }}" alt="Logo Casalamia Photo Studio" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','CSM');"></span><span class="ic-name">Casalamia Photo Studio</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/dkv/ilham-camera.png') }}" alt="Logo Ilham Camera" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','IHC');"></span><span class="ic-name">Ilham Camera</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/dkv/ourastudio.png') }}" alt="Logo OURASTUDIO" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','ORS');"></span><span class="ic-name">OURASTUDIO</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/dkv/matahari-adver.png') }}" alt="Logo Matahari Advertising" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','MTA');"></span><span class="ic-name">Matahari Advertising</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/dkv/sensatype.png') }}" alt="Logo Sensatype Studio" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','SST');"></span><span class="ic-name">Sensatype Studio</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/dkv/utero.png') }}" alt="Logo Utero Mojokerto" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','UTR');"></span><span class="ic-name">Utero Mojokerto</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/dkv/zavision.png') }}" alt="Logo Zavision Digital Workshop" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','ZDW');"></span><span class="ic-name">Zavision Digital Workshop</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/dkv/mojokerto-print.png') }}" alt="Logo Mojokerto Print &amp; Design" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','MPD');"></span><span class="ic-name">Mojokerto Print &amp; Design</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/dkv/rumah-desain.png') }}" alt="Logo Rumah Desain Nusantara" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','RDN');"></span><span class="ic-name">Rumah Desain Nusantara</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/dkv/bengkel-kreatif.png') }}" alt="Logo Bengkel Kreatif Studio" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','BKS');"></span><span class="ic-name">Bengkel Kreatif Studio</span></div>
+          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/dkv/warna-media.png') }}" alt="Logo Warna Media Kreasi" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','WMK');"></span><span class="ic-name">Warna Media Kreasi</span></div>
         </div>
       </div>
       <div class="ic-footer" data-reveal><span>Belajar &bull; Praktik &bull; Berkolaborasi &bull; Siap Berkarya</span></div>
@@ -1744,11 +1744,11 @@
   <section class="praktik-section section-pad" id="praktik-aphp">
     <div class="praktik-head" data-reveal>
       <div class="eyebrow gold">BELAJAR LEWAT PROYEK KREATIF</div>
-      <h2 class="big-heading">BELAJAR BUKAN <span>HANYA DI DALAM KELAS</span></h2>
+      <h2 class="big-heading">BELAJAR BUKAN <span>HANYA DI KELAS</span></h2>
     </div>
     <div class="praktik-grid">
       <div class="praktik-card" data-reveal>
-        <img src="{{ asset('images/aphp-lab.jpg') }}" alt="Praktik eksperimen dan desain" loading="lazy">
+        <img src="{{ asset('images/dkv/dkv-photo.jpg') }}" alt="Praktik eksperimen dan desain" loading="lazy">
         <span class="pc-badge"><i class="fas fa-vector-square"></i> Praktik</span>
         <div class="pc-body">
           <h4>Praktik Studio</h4>
@@ -1756,7 +1756,7 @@
         </div>
       </div>
       <div class="praktik-card" data-reveal style="--d:1">
-        <img src="{{ asset('images/aphp-pastry.jpg') }}" alt="Produksi produk nyata" loading="lazy">
+        <img src="{{ asset('images/dkv/dkv-labjurusan.jpg') }}" alt="Produksi produk nyata" loading="lazy">
         <span class="pc-badge"><i class="fas fa-film"></i> Produksi</span>
         <div class="pc-body">
           <h4>Studio Produksi</h4>
@@ -1764,11 +1764,11 @@
         </div>
       </div>
       <div class="praktik-card" data-reveal style="--d:2">
-        <img src="{{ asset('images/aphp-juara.jpg') }}" alt="Evaluasi dan pengembangan produk" loading="lazy">
-        <span class="pc-badge"><i class="fas fa-circle-check"></i> Evaluasi</span>
+        <img src="{{ asset('images/dkv/photography.jpg') }}" alt="Praktik" loading="lazy">
+        <span class="pc-badge"><i class="fas fa-circle-check"></i> Praktik</span>
         <div class="pc-body">
-          <h4>Presentasi &amp; Evaluasi Karya</h4>
-          <p>Mempresentasikan, mengevaluasi, dan mengembangkan karya berdasarkan konsep, pesan, estetika, dan kebutuhan audiens.</p>
+          <h4>Fotografi</h4>
+          <p>Menghasilkan karya visual melalui teknik pengambilan gambar, pencahayaan, komposisi, dan pengaturan objek.</p>
         </div>
       </div>
     </div>
@@ -1810,28 +1810,28 @@
     <div class="produk-filters" data-reveal>
       <button class="pf-btn active" data-f="all">SEMUA</button>
       <button class="pf-btn" data-f="desain">DESAIN GRAFIS</button>
-      <button class="pf-btn" data-f="foto">FOTOGRAFI &amp; VIDEO</button>
-      <button class="pf-btn" data-f="branding">BRANDING</button>
+      <button class="pf-btn" data-f="foto">FOTOGRAFI</button>
+      <button class="pf-btn" data-f="branding">PRODUK KREATIF</button>
     </div>
     <div class="produk-slider" data-reveal>
       <button class="produk-arrow prev" id="produkPrev" aria-label="Sebelumnya"><i class="fas fa-chevron-left"></i></button>
       <div class="produk-viewport">
         <div class="produk-track" id="produkTrack">
           <article class="produk-card" data-cat="desain">
-            <div class="produk-photo"><img src="{{ asset('images/aphp-produk1.jpg') }}" alt="Poster desain grafis karya siswa DKV" loading="lazy"><span class="produk-badge">Desain Grafis</span></div>
-            <div class="pc-body"><h3>Desain Poster</h3><p>Eksplorasi tipografi, warna, dan komposisi untuk menghasilkan poster yang komunikatif dan menarik.</p><div class="pc-foot"><span>Studio Produksi</span><span><i class="fas fa-arrow-right"></i></span></div></div>
+            <div class="produk-photo"><img src="{{ asset('images/dkv/tambalbanexpres.jpeg') }}" alt="Desain Aplikasi" loading="lazy"><span class="produk-badge">Desain Grafis</span></div>
+            <div class="pc-body"><h3>Desain Aplikasi</h3><p>Merancang tampilan untuk pengguna melalui eksplorasi layout, warna, tipografi, dan elemen visual yang fungsional dan menarik.</p><div class="pc-foot"><span>Studio Produksi</span><span><i class="fas fa-arrow-right"></i></span></div></div>
           </article>
           <article class="produk-card" data-cat="foto">
-            <div class="produk-photo"><img src="{{ asset('images/aphp-olahan.jpg') }}" alt="Fotografi produk karya siswa DKV" loading="lazy"><span class="produk-badge">Fotografi</span></div>
+            <div class="produk-photo"><img src="{{ asset('images/dkv/multimie.jpeg') }}" alt="Fotografi produk" loading="lazy"><span class="produk-badge">Fotografi</span></div>
             <div class="pc-body"><h3>Fotografi Produk</h3><p>Eksplorasi komposisi, pencahayaan, dan sudut pengambilan untuk menghasilkan visual yang menarik.</p><div class="pc-foot"><span>Studio Produksi</span><span><i class="fas fa-arrow-right"></i></span></div></div>
           </article>
           <article class="produk-card" data-cat="branding">
-            <div class="produk-photo"><img src="{{ asset('images/aphp-cake.jpg') }}" alt="Identitas brand karya siswa DKV" loading="lazy"><span class="produk-badge">Branding</span></div>
-            <div class="pc-body"><h3>Brand Identity</h3><p>Perancangan identitas visual untuk membangun karakter dan citra sebuah brand.</p><div class="pc-foot"><span>Studio Produksi</span><span><i class="fas fa-arrow-right"></i></span></div></div>
+            <div class="produk-photo"><img src="{{ asset('images/dkv/nirmana.jpeg') }}" alt="Produk Kreatif" loading="lazy"><span class="produk-badge">Produk Kreatif</span></div>
+            <div class="pc-body"><h3>NIRMANA 3D</h3><p>Mengeksplorasi bentuk, ruang, tekstur, dan komposisi untuk menghasilkan karya tiga dimensi yang harmonis dan menarik.</p><div class="pc-foot"><span>Studio Produksi</span><span><i class="fas fa-arrow-right"></i></span></div></div>
           </article>
           <article class="produk-card" data-cat="desain">
-            <div class="produk-photo"><img src="{{ asset('images/aphp-pastry.jpg') }}" alt="Ilustrasi digital karya siswa DKV" loading="lazy"><span class="produk-badge">Desain Grafis</span></div>
-            <div class="pc-body"><h3>Ilustrasi Digital</h3><p>Karya ilustrasi digital yang dibuat untuk kebutuhan editorial, promosi, dan media kreatif.</p><div class="pc-foot"><span>Studio Produksi</span><span><i class="fas fa-arrow-right"></i></span></div></div>
+            <div class="produk-photo"><img src="{{ asset('images/dkv/patung.jpeg') }}" alt="Figur Karakter" loading="lazy"><span class="produk-badge">Produk Kreatif</span></div>
+            <div class="pc-body"><h3>Figur Karakter</h3><p>Merancang karakter visual dengan bentuk, warna, dan identitas yang unik.</p><div class="pc-foot"><span>Studio Produksi</span><span><i class="fas fa-arrow-right"></i></span></div></div>
           </article>
         </div>
       </div>
@@ -1852,27 +1852,27 @@
     </div>
     <div class="kegiatan-grid">
       <div class="kegiatan-card tall" data-reveal>
-        <img src="{{ asset('images/aphp-bersama.jpg') }}" alt="Prestasi siswa DKV" loading="lazy">
+        <img src="{{ asset('images/dkv/dkv-fiksi.jpg') }}" alt="Prestasi siswa DKV" loading="lazy">
         <span class="kg-badge"><i class="fas fa-trophy"></i> Prestasi</span>
         <div class="kg-body"><h4>Prestasi Siswa DKV</h4><span>Prestasi lomba desain, ilustrasi, fotografi, dan multimedia tingkat kota hingga nasional</span></div>
       </div>
       <div class="kegiatan-card" data-reveal style="--d:1">
-        <img src="{{ asset('images/aphp-lab2.jpg') }}" alt="Praktik produksi DKV" loading="lazy">
+        <img src="{{ asset('images/dkv/patung.jpeg') }}" alt="Praktik produksi DKV" loading="lazy">
         <span class="kg-badge"><i class="fas fa-vector-square"></i> Praktik</span>
         <div class="kg-body"><h4>Produksi Kreatif</h4><span>Kegiatan praktik rutin di studio DKV untuk menghasilkan karya kreatif</span></div>
       </div>
       <div class="kegiatan-card" data-reveal style="--d:2">
-        <img src="{{ asset('images/aphp-kampus.jpg') }}" alt="Kunjungan industri DKV" loading="lazy">
+        <img src="{{ asset('images/dkv/ki-dkv.jpeg') }}" alt="Kunjungan industri DKV" loading="lazy">
         <span class="kg-badge"><i class="fas fa-building"></i> Industri</span>
         <div class="kg-body"><h4>Kunjungan Industri Kreatif</h4><span>Belajar langsung dari agensi, studio, percetakan, dan industri kreatif</span></div>
       </div>
       <div class="kegiatan-card" data-reveal>
-        <img src="{{ asset('images/aphp-penghargaan.jpg') }}" alt="Pameran produk DKV" loading="lazy">
+        <img src="{{ asset('images/dkv/pameran-dkv.jpeg') }}" alt="Pameran produk DKV" loading="lazy">
         <span class="kg-badge"><i class="fas fa-object-group"></i> Pameran</span>
         <div class="kg-body"><h4>Pameran Karya</h4><span>Memamerkan karya unggulan di berbagai pameran dan ajang kreatif</span></div>
       </div>
       <div class="kegiatan-card" data-reveal style="--d:1">
-        <img src="{{ asset('images/aphp-tim.jpg') }}" alt="PKL siswa DKV" loading="lazy">
+        <img src="{{ asset('images/dkv/pkl-dkv.jpeg') }}" alt="PKL siswa DKV" loading="lazy">
         <span class="kg-badge"><i class="fas fa-briefcase"></i> PKL</span>
         <div class="kg-body"><h4>PKL & Magang</h4><span>Pengalaman kerja langsung di studio, agensi, percetakan, dan perusahaan kreatif</span></div>
       </div>
@@ -1887,15 +1887,15 @@
     </div>
     <div class="prospek-grid">
       <div class="prospek-card" data-reveal>
-        <div class="ps-photo"><span class="ps-num">01</span><img src="{{ asset('images/aphp-piala.jpg') }}" alt="Bekerja di industri kreatif" loading="lazy"><i class="fas fa-briefcase blue"></i></div>
+        <div class="ps-photo"><span class="ps-num">01</span><img src="{{ asset('images/dkv/kerja-dkv.jpg') }}" alt="Bekerja di industri kreatif" loading="lazy"><i class="fas fa-briefcase blue"></i></div>
         <div class="ps-body"><h4>KERJA</h4><p>Graphic Designer, Illustrator, Photographer, Videographer, Content Creator, UI Designer — siap berkarya di industri kreatif.</p><div class="ps-tags"><span>Agensi Kreatif</span><span>Studio Desain</span><span>Production House</span><span>Branding</span></div></div>
       </div>
       <div class="prospek-card" data-reveal style="--d:1">
-        <div class="ps-photo"><span class="ps-num">02</span><img src="{{ asset('images/aphp-kampus.jpg') }}" alt="Melanjutkan kuliah di bidang media kreatif" loading="lazy"><i class="fas fa-graduation-cap"></i></div>
+        <div class="ps-photo"><span class="ps-num">02</span><img src="{{ asset('images/dkv/kuliah.jpeg') }}" alt="Melanjutkan kuliah di bidang media kreatif" loading="lazy"><i class="fas fa-graduation-cap"></i></div>
         <div class="ps-body"><h4>KULIAH</h4><p>Desain Komunikasi Visual, Desain Grafis, Fotografi, Animasi, Multimedia, atau bidang kreatif terkait — bekal DKV jadi modal kuat di perguruan tinggi.</p><div class="ps-tags"><span>Desain Grafis</span><span>Fotografi</span><span>Multimedia</span></div></div>
       </div>
       <div class="prospek-card" data-reveal style="--d:2">
-        <div class="ps-photo"><span class="ps-num">03</span><img src="{{ asset('images/aphp-penghargaan.jpg') }}" alt="Membangun studio atau usaha kreatif sendiri" loading="lazy"><i class="fas fa-briefcase green"></i></div>
+        <div class="ps-photo"><span class="ps-num">03</span><img src="{{ asset('images/dkv/usaha-dkv.jpg') }}" alt="Membangun studio atau usaha kreatif sendiri" loading="lazy"><i class="fas fa-briefcase green"></i></div>
         <div class="ps-body"><h4>USAHA KREATIF</h4><p>Jasa desain, studio kreatif, content production, branding, dan bisnis visual mandiri — bangun usaha kreatif dengan karya dan identitasmu.</p><div class="ps-tags"><span>Karya Kreatif</span><span>Studio Produksi</span><span>Bisnis</span></div></div>
       </div>
     </div>
