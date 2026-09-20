@@ -260,7 +260,8 @@
 .ev-step.done .ev-step-label{color:#0d3a66}
 .ev-step.current .ev-step-dot{background:linear-gradient(135deg,#ffd54a,#ffb300);border-color:#ffb300;color:#0d3a66;
   box-shadow:0 0 0 5px rgba(255,179,0,.16)}
-.ev-step.current .ev-step-label{color:#0d3a66}
+.ev-step.current .ev-step-line{background:#0d3a66}
+.ev-step.current .ev-step-label{color:#0d3a66;font-weight:900}
 
 /* ---------- ulasan publik (saran & kritik) ---------- */
 .ev-ulasan-list-head{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap}
@@ -582,7 +583,10 @@
               <h3 id="evResultTitle">Judul laporan</h3>
               <div class="ev-result-meta" id="evResultMeta">Dikirim pada —</div>
             </div>
-            <span class="ev-result-badge" id="evResultAnon">Anonim</span>
+            <div style="display:flex; flex-direction:column; align-items:flex-end; gap:.4rem;">
+              <span class="ev-result-badge" id="evResultAnon">Anonim</span>
+              <span id="evResultStatusText" style="padding:.35rem .75rem; border-radius:999px; font-weight:800; font-size:.72rem; text-transform:uppercase; display:inline-block; background:#eef3f8; color:#5a7086;">Diterima</span>
+            </div>
           </div>
 
           <p class="ev-result-desc" id="evResultDesc"></p>
@@ -1139,6 +1143,24 @@
       badge.className = 'ev-result-badge named';
     }
 
+    var statusTextEl = document.getElementById('evResultStatusText');
+    if (statusTextEl) {
+      statusTextEl.textContent = report.status;
+      if (report.status === 'Selesai') {
+        statusTextEl.style.background = '#e8f5ee';
+        statusTextEl.style.color = '#1f8a4c';
+      } else if (report.status === 'Ditindaklanjuti') {
+        statusTextEl.style.background = '#e3f2fd';
+        statusTextEl.style.color = '#1976d2';
+      } else if (report.status === 'Diproses') {
+        statusTextEl.style.background = '#fff6e0';
+        statusTextEl.style.color = '#b98a12';
+      } else {
+        statusTextEl.style.background = '#eef3f8';
+        statusTextEl.style.color = '#5a7086';
+      }
+    }
+
     var currentIndex = STEP_ORDER.indexOf(report.status);
     document.querySelectorAll('#evSteps .ev-step').forEach(function (stepEl, idx) {
       stepEl.classList.remove('done', 'current');
@@ -1170,16 +1192,25 @@
     .then(function(res) {
       if (res && res.success && res.data) {
         var d = res.data;
+        var mappedStatus = mapBackendStatus(d.status);
         renderResult({
           ticketId: d.ticket_code,
           kategori: d.category || 'Aspirasi',
           judul: d.title,
           deskripsi: d.description,
           anonim: true,
-          status: mapBackendStatus(d.status),
+          status: mappedStatus,
           admin_response: d.admin_response,
           createdAt: d.created_at
         });
+
+        // Sync local storage with latest status & response from API
+        var reports = loadReports();
+        if (reports[d.ticket_code]) {
+          reports[d.ticket_code].status = mappedStatus;
+          reports[d.ticket_code].admin_response = d.admin_response;
+          saveReports(reports);
+        }
       } else {
         var reports = loadReports();
         var report = reports[value];
