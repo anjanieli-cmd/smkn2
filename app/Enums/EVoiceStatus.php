@@ -8,5 +8,4 @@ enum EVoiceStatus: string
     case REVIEWING = 'REVIEWING';
     case IN_PROGRESS = 'IN_PROGRESS';
     case RESOLVED = 'RESOLVED';
-    case CLOSED = 'CLOSED';
 }

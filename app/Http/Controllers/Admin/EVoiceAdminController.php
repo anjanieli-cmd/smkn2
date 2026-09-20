@@ -41,7 +41,7 @@ class EVoiceAdminController extends Controller
         }
 
         $validated = $request->validate([
-            'status' => ['required', 'string', 'in:SUBMITTED,REVIEWING,IN_PROGRESS,RESOLVED,CLOSED'],
+            'status' => ['required', 'string', 'in:SUBMITTED,REVIEWING,IN_PROGRESS,RESOLVED'],
             'admin_response' => ['nullable', 'string', 'max:2000'],
         ]);
 

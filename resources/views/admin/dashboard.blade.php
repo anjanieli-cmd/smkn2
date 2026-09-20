@@ -247,10 +247,9 @@
             <select id="evoiceStatusFilter" class="adm-select">
               <option value="all">Semua Status E-Voice</option>
               <option value="SUBMITTED">SUBMITTED (Diterima)</option>
-              <option value="REVIEWING">REVIEWING (Ditinjau)</option>
-              <option value="IN_PROGRESS">IN_PROGRESS (Diproses)</option>
-              <option value="RESOLVED">RESOLVED (Selesai Ditangani)</option>
-              <option value="CLOSED">CLOSED (Ditutup)</option>
+              <option value="REVIEWING">REVIEWING (Diproses)</option>
+              <option value="IN_PROGRESS">IN_PROGRESS (Ditindaklanjuti)</option>
+              <option value="RESOLVED">RESOLVED (Selesai)</option>
             </select>
           </div>
           <button class="adm-btn-action adm-btn-gold" id="refreshEvoiceBtn"><i class="fas fa-sync-alt"></i> Refresh Data</button>
@@ -340,11 +339,10 @@
       <div class="adm-form-field">
         <label for="evModalStatus">Status Penanganan</label>
         <select id="evModalStatus" class="adm-select" required>
-          <option value="SUBMITTED">SUBMITTED — Laporan Baru Diterima</option>
-          <option value="REVIEWING">REVIEWING — Ditinjau Tim Kesiswaan/Admin</option>
-          <option value="IN_PROGRESS">IN_PROGRESS — Sedang Ditindaklanjuti Tim Sekolah</option>
-          <option value="RESOLVED">RESOLVED — Aspirasi / Masalah Selesai Ditangani</option>
-          <option value="CLOSED">CLOSED — Ditutup</option>
+          <option value="SUBMITTED">SUBMITTED — 1. Diterima</option>
+          <option value="REVIEWING">REVIEWING — 2. Diproses</option>
+          <option value="IN_PROGRESS">IN_PROGRESS — 3. Ditindaklanjuti</option>
+          <option value="RESOLVED">RESOLVED — 4. Selesai</option>
         </select>
       </div>
 
