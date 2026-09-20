@@ -10,11 +10,24 @@ use Illuminate\Http\Request;
 
 class EVoiceAdminController extends Controller
 {
-    public function index(): JsonResponse
+    public function index(Request $request): JsonResponse
     {
-        $items = EVoice::query()
-            ->orderBy('created_at', 'desc')
-            ->paginate(15);
+        $query = EVoice::query();
+
+        if ($request->has('search') && $request->input('search') !== '') {
+            $search = $request->input('search');
+            $query->where(function ($q) use ($search) {
+                $q->where('ticket_code', 'like', "%{$search}%")
+                  ->orWhere('title', 'like', "%{$search}%")
+                  ->orWhere('description', 'like', "%{$search}%");
+            });
+        }
+
+        if ($request->has('status') && $request->input('status') !== '' && $request->input('status') !== 'all') {
+            $query->where('status', $request->input('status'));
+        }
+
+        $items = $query->orderBy('created_at', 'desc')->paginate(15);
 
         return ApiResponse::success($items, 'Data pengaduan E-Voice berhasil diambil.');
     }
@@ -29,10 +42,11 @@ class EVoiceAdminController extends Controller
 
         $validated = $request->validate([
             'status' => ['required', 'string', 'in:SUBMITTED,REVIEWING,IN_PROGRESS,RESOLVED,CLOSED'],
+            'admin_response' => ['nullable', 'string', 'max:2000'],
         ]);
 
-        $item->update(['status' => $validated['status']]);
+        $item->update($validated);
 
-        return ApiResponse::success($item, 'Status E-Voice berhasil diperbarui.');
+        return ApiResponse::success($item, 'Status dan tanggapan E-Voice berhasil diperbarui.');
     }
 }

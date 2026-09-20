@@ -144,3 +144,6 @@ Route::view('/alumni/portofolio', 'alumni.portofolio')
 
 Route::view('ai', 'ai')
     ->name('ai');
+
+Route::view('/admin/dashboard', 'admin.dashboard')
+    ->name('admin.dashboard');

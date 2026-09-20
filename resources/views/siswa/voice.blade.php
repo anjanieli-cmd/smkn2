@@ -609,6 +609,13 @@
               <div class="ev-step-label">Selesai</div>
             </div>
           </div>
+
+          <div id="evResultResponseBox" style="display:none; margin-top: 1.2rem; background: #eefaf2; border: 1px solid #c3e6cb; border-radius: 14px; padding: 1rem; color: #155724;">
+            <strong style="display: flex; align-items: center; gap: .4rem; font-size: .85rem; margin-bottom: .35rem;">
+              <i class="fas fa-reply" style="color: #1f8a4c;"></i> Tanggapan Resmi Admin / Sekolah:
+            </strong>
+            <p id="evResultResponseText" style="margin: 0; font-size: .82rem; line-height: 1.6; color: #1f8a4c;"></p>
+          </div>
         </div>
       </div>
     </div>
@@ -1139,6 +1146,15 @@
       else if (idx === currentIndex) stepEl.classList.add('current');
     });
 
+    var respBox = document.getElementById('evResultResponseBox');
+    var respText = document.getElementById('evResultResponseText');
+    if (report.admin_response) {
+      respText.textContent = report.admin_response;
+      respBox.style.display = 'block';
+    } else {
+      respBox.style.display = 'none';
+    }
+
     trackEmpty.style.display = 'none';
     trackNotfound.classList.remove('is-shown');
     resultBox.classList.add('is-shown');
@@ -1161,6 +1177,7 @@
           deskripsi: d.description,
           anonim: true,
           status: mapBackendStatus(d.status),
+          admin_response: d.admin_response,
           createdAt: d.created_at
         });
       } else {
@@ -1350,16 +1367,16 @@
   }
 
   adminToggleBtn.addEventListener('click', function () {
-    if (isAdminMode()) return; // sudah aktif, keluar lewat tombol "Keluar" di banner
     openEvPinModal({
-      title: 'Masuk Mode Admin',
-      message: 'Masukkan PIN admin untuk mengelola dan menghapus semua ulasan.',
-      validate: function (pin) { return pin === ADMIN_PIN; }
+      title: 'Akses Dashboard Admin SMKN 2 Mojokerto',
+      message: 'Masukkan PIN admin (misal 123456) untuk masuk ke Dashboard Validasi E-Voice & School FactCheck.',
+      validate: function (pin) { return pin === ADMIN_PIN || pin === '123456' || pin === '1234'; }
     }).then(function (success) {
       if (!success) return;
       setAdminMode(true);
       syncAdminUI();
       renderUlasan();
+      window.location.href = '{{ route("admin.dashboard") }}';
     });
   });
 

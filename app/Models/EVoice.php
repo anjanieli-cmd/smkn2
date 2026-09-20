@@ -23,6 +23,7 @@ class EVoice extends Model
         'category',
         'upvotes_count',
         'status',
+        'admin_response',
     ];
 
     protected function casts(): array
