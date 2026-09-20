@@ -13,5 +13,6 @@ enum EVoiceCategory: string
     case KEDISIPLINAN = 'Kedisiplinan';
     case PERUNDUNGAN = 'Perundungan';
     case LAYANAN = 'Layanan';
+    case LAYANAN_SEKOLAH = 'Layanan Sekolah';
     case LAINNYA = 'Lainnya';
 }

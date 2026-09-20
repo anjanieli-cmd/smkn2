@@ -93,6 +93,7 @@ Route::prefix('admin')->group(function () {
     });
 
     Route::prefix('fact-check')->group(function () {
+        Route::get('/', [FactCheckAdminController::class, 'index']);
         Route::post('/', [FactCheckAdminController::class, 'store']);
         Route::put('/{id}', [FactCheckAdminController::class, 'update']);
         Route::delete('/{id}', [FactCheckAdminController::class, 'destroy']);

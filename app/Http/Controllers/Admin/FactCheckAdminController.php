@@ -10,6 +10,28 @@ use Illuminate\Http\Request;
 
 class FactCheckAdminController extends Controller
 {
+    public function index(Request $request): JsonResponse
+    {
+        $query = FactCheck::query();
+
+        if ($request->has('search') && $request->input('search') !== '') {
+            $search = $request->input('search');
+            $query->where(function ($q) use ($search) {
+                $q->where('title', 'like', "%{$search}%")
+                  ->orWhere('claim', 'like', "%{$search}%")
+                  ->orWhere('verdict_explanation', 'like', "%{$search}%");
+            });
+        }
+
+        if ($request->has('status') && $request->input('status') !== '' && $request->input('status') !== 'all') {
+            $query->where('status', $request->input('status'));
+        }
+
+        $items = $query->orderBy('created_at', 'desc')->paginate(15);
+
+        return ApiResponse::success($items, 'Data FactCheck berhasil diambil.');
+    }
+
     public function store(Request $request): JsonResponse
     {
         $validated = $request->validate([
