@@ -415,14 +415,14 @@
         <div class="ks-viewport">
           <div class="ks-track" id="ksTrack">
             <div class="ks-slide">
-              <img src="{{ asset('images/karya-rpl.jpg') }}" alt="Karya RPL: Aplikasi PPDB Online" loading="eager">
-              <span class="ks-slide-tag"><i class="fas fa-code"></i> Aplikasi &amp; IT</span>
+              <img src="{{ asset('images/karya/multimie.jpeg') }}" alt="Karya APHP: MultiMie" loading="eager">
+              <span class="ks-slide-tag"><i class="fas fa-cake-candles"></i> Makanan</span>
               <span class="ks-slide-no">01 / 08</span>
               <div class="ks-slide-cap">
-                <h3>Aplikasi PPDB Online Skaneda</h3>
-                <p>Platform pendaftaran peserta didik baru berbasis web yang dibangun penuh oleh siswa jurusan RPL — dari desain antarmuka hingga sistem database.</p>
+                <h3>MultiMie</h3>
+                <p>Mi instan praktis dengan bumbu siap seduh — produk inovasi siswa APHP.</p>
                 <div class="ks-slide-meta">
-                  <span><i class="fas fa-user"></i> Tim RPL Angkatan 2023</span>
+                  <span><i class="fas fa-user"></i> Tim APHP Angkatan 2023</span>
                   <span><i class="fas fa-laptop-code"></i> Rekayasa Perangkat Lunak</span>
                   <span><i class="fas fa-calendar-alt"></i> 2025</span>
                 </div>
@@ -612,24 +612,24 @@
       <div class="ks-prestasi-grid">
         <div class="ks-prestasi-card" data-reveal>
           <div class="ks-prestasi-media">
-            <img src="{{ asset('images/karya-coding.jpg') }}" alt="Aplikasi Kasir Digital UMKM Skaneda karya siswa RPL" loading="lazy">
-            <div class="ks-prestasi-medal"><i class="fas fa-laptop-code"></i></div>
+            <img src="{{ asset('images/karya/multimie.jpeg') }}" alt="MultiMie" loading="lazy">
+            <div class="ks-prestasi-medal"><i class="fas fa-utensils"></i></div>
           </div>
           <div class="ks-prestasi-body">
-            <h3>Aplikasi Kasir Digital UMKM</h3>
-            <p>Aplikasi kasir berbasis web untuk UMKM binaan sekolah, dibangun penuh oleh siswa jurusan RPL.</p>
-            <span class="ks-prestasi-year">RPL &middot; 2025</span>
+            <h3>MultiMie</h3>
+            <p>Mi instan praktis dengan bumbu siap seduh — produk inovasi siswa APHP.</p>
+            <span class="ks-prestasi-year">APHP &middot; 2025</span>
           </div>
         </div>
         <div class="ks-prestasi-card" data-reveal style="--d:1">
           <div class="ks-prestasi-media">
-            <img src="{{ asset('images/karya-cake.jpg') }}" alt="Kue kering kemasan modern karya siswa Kuliner" loading="lazy">
-            <div class="ks-prestasi-medal"><i class="fas fa-cookie"></i></div>
+            <img src="{{ asset('images/karya/bungatelang.jpeg') }}" alt="Sari Bunga Telang" loading="lazy">
+            <div class="ks-prestasi-medal"><i class="fas fa-cotton-bureau"></i></div>
           </div>
           <div class="ks-prestasi-body">
-            <h3>Kue Kering Kemasan Modern</h3>
-            <p>Produk kue kering dengan kemasan siap jual, hasil praktik tata boga siswa jurusan Kuliner.</p>
-            <span class="ks-prestasi-year">Kuliner &middot; 2025</span>
+            <h3>Sari Bunga Telang</h3>
+            <p>Minuman herbal alami dari ekstrak bunga telang dengan warna biru khas dan cita rasa menyegarkan — inovasi olahan kreatif siswa APHP.</p>
+            <span class="ks-prestasi-year">APHP &middot; 2025</span>
           </div>
         </div>
         <div class="ks-prestasi-card" data-reveal style="--d:2">

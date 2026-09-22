@@ -617,7 +617,7 @@
       <div class="pd-jurusan-grid">
         <div class="pd-jurusan-card" data-reveal>
           <div class="pd-jurusan-photo">
-            <img src="{{ asset('images/gallery-rpl.jpg') }}" alt="Rekayasa Perangkat Lunak" loading="eager">
+            <img src="{{ asset('images/ppdb/rpl.jpg') }}" alt="Rekayasa Perangkat Lunak" loading="eager">
           </div>
           <div class="pd-jurusan-body">
             <span class="pd-jurusan-tag">TEKNOLOGI INFORMASI</span>
@@ -628,7 +628,7 @@
         </div>
         <div class="pd-jurusan-card" data-reveal style="--d:1">
           <div class="pd-jurusan-photo">
-            <img src="{{ asset('images/gallery-kuliner.jpg') }}" alt="Kuliner" loading="eager">
+            <img src="{{ asset('images/ppdb/kuliner.jpg') }}" alt="Kuliner" loading="eager">
           </div>
           <div class="pd-jurusan-body">
             <span class="pd-jurusan-tag">PARIWISATA</span>
@@ -639,7 +639,7 @@
         </div>
         <div class="pd-jurusan-card" data-reveal style="--d:2">
           <div class="pd-jurusan-photo">
-            <img src="{{ asset('images/gallery-aphp.jpg') }}" alt="Agribisnis Pengolahan Hasil Pertanian" loading="eager">
+            <img src="{{ asset('images/ppdb/aphp.jpg') }}" alt="Agribisnis Pengolahan Hasil Pertanian" loading="eager">
           </div>
           <div class="pd-jurusan-body">
             <span class="pd-jurusan-tag">AGRIBISNIS &amp; AGROTEKNOLOGI</span>
@@ -650,7 +650,7 @@
         </div>
         <div class="pd-jurusan-card" data-reveal style="--d:3">
           <div class="pd-jurusan-photo">
-            <img src="{{ asset('images/gallery-dkv.jpg') }}" alt="Desain Komunikasi Visual" loading="eager">
+            <img src="{{ asset('images/ppdb/dkv.jpg') }}" alt="Desain Komunikasi Visual" loading="eager">
           </div>
           <div class="pd-jurusan-body">
             <span class="pd-jurusan-tag">SENI &amp; EKONOMI KREATIF</span>
@@ -661,7 +661,7 @@
         </div>
         <div class="pd-jurusan-card" data-reveal style="--d:4">
           <div class="pd-jurusan-photo">
-            <img src="{{ asset('images/gallery-bank.jpg') }}" alt="Layanan Perbankan Syariah" loading="eager">
+            <img src="{{ asset('images/ppdb/lps.jpg') }}" alt="Layanan Perbankan Syariah" loading="eager">
           </div>
           <div class="pd-jurusan-body">
             <span class="pd-jurusan-tag">BISNIS &amp; MANAJEMEN</span>
@@ -672,7 +672,7 @@
         </div>
         <div class="pd-jurusan-card" data-reveal style="--d:5">
           <div class="pd-jurusan-photo">
-            <img src="{{ asset('images/gallery-upacara.jpg') }}" alt="Lingkungan Sekolah" loading="eager">
+            <img src="{{ asset('images/smkn-guru.jpg') }}" alt="Lingkungan Sekolah" loading="eager">
           </div>
           <div class="pd-jurusan-body">
             <span class="pd-jurusan-tag">KARAKTER &amp; BUDAYA</span>
