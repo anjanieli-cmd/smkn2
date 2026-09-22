@@ -1043,7 +1043,6 @@
 
 /* icon helpers (emoji-free) */
 .aphp-kicker i{font-size:.8rem;color:#6FAF45}
-.cari-opt-ic i{font-size:1.5rem;color:#FF8A00;line-height:1}
 .fcta-copy h3 i{color:#FFD54A;margin-right:.4rem;font-size:1.1em;vertical-align:-2px}
 @media(max-width:1050px){.vid-wrap{grid-template-columns:1fr;gap:2.6rem}.vid-cards{grid-template-columns:repeat(3,1fr)}.vid-side{display:none}.vid-stage::before,.vid-stage::after{display:none}}
 @media(max-width:760px){.vid-cards{grid-template-columns:1fr}.vid-copy h2{font-size:clamp(1.9rem,7vw,2.6rem)}.vid-play{width:66px;height:66px;font-size:1.35rem}.vid-ring{width:110px;height:110px;right:-18px;top:-18px}.vid-section{padding:64px 0 72px}}
@@ -1273,63 +1272,6 @@
 @media(max-width:1050px){.prospek-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:640px){.prospek-grid{grid-template-columns:1fr}}
 
-/* ===== SECTION 10 — CARI JURUSANMU (QUIZ) ===== */
-.cari-section{background:linear-gradient(180deg,#f8fbff 0%,#eef5fb 100%)}
-.cari-head{width:min(860px,92%);margin:0 auto 52px;text-align:center}
-.cari-head .eyebrow{justify-content:center}
-.cari-head .eyebrow::before{display:none}
-.cari-head .eyebrow::after{content:"";width:24px;height:3px;border-radius:99px;background:linear-gradient(90deg,#FFD54A,#FF8A00)}
-.cari-head p{margin:.8rem auto 0;max-width:600px;color:#5f7186;font-size:.95rem;line-height:1.85}
-.cari-card{position:relative;z-index:2;width:min(860px,92%);margin:0 auto;border-radius:28px;background:#fff;border:1px solid rgba(7,27,51,.1);box-shadow:0 36px 80px rgba(7,27,51,.08);overflow:hidden;padding:clamp(1.6rem,3.6vw,2.8rem)}
-.cari-card::before{content:"";position:absolute;top:0;left:0;width:100%;height:5px;background:linear-gradient(90deg,#0d3a66,#0B5FA5,#FFD54A,#FF8A00,#6FAF45)}
-.cari-deco{position:absolute;right:-60px;top:-60px;width:180px;height:180px;border:2px solid rgba(255,179,0,.14);border-radius:50%;pointer-events:none}
-.cari-deco::before{content:"";position:absolute;inset:22px;border:1px dashed rgba(11,95,165,.2);border-radius:50%}
-.cari-deco2{position:absolute;left:-40px;bottom:-40px;width:110px;height:110px;border:2px solid rgba(7,27,51,.08);transform:rotate(45deg);pointer-events:none}
-.cari-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:1.2rem}
-.cari-count{font-family:var(--font-display);font-size:.9rem;font-weight:900;letter-spacing:.12em;color:#FF8A00}
-.cari-bar{height:5px;border-radius:99px;background:rgba(7,27,51,.08);overflow:hidden;margin-bottom:2rem}
-.cari-bar-fill{height:100%;width:20%;border-radius:99px;background:linear-gradient(90deg,#FFD54A,#FF8A00);transition:width .5s cubic-bezier(.4,0,.2,1)}
-.cari-ask{font-family:var(--font-display);font-size:clamp(1.2rem,2.4vw,1.8rem);font-weight:800;color:#0d3a66;line-height:1.3;margin:0 0 1.4rem;position:relative;z-index:2}
-.cari-options{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:.9rem;position:relative;z-index:2}
-.cari-opt{position:relative;border:1.5px solid rgba(7,27,51,.12);border-radius:16px;background:#fbfcfe;padding:1.2rem .9rem 1rem;text-align:center;cursor:pointer;transition:transform .25s ease,border-color .25s ease,background .25s ease,box-shadow .25s ease}
-.cari-opt:hover{transform:translateY(-4px);border-color:rgba(255,138,0,.35);box-shadow:0 14px 30px rgba(7,27,51,.08)}
-.cari-opt.selected{border-color:#FF8A00;background:#fff7ef;box-shadow:0 0 0 3px rgba(255,138,0,.12)}
-.cari-opt-ic{font-size:1.7rem;color:#FF8A00;margin-bottom:.45rem;display:block;line-height:1}
-.cari-opt-lb{font-size:.75rem;font-weight:700;color:#0d3a66;line-height:1.4;display:block}
-.cari-opt .cari-check{position:absolute;top:7px;right:7px;width:18px;height:18px;border-radius:50%;background:#FF8A00;color:#fff;font-size:.55rem;display:flex;align-items:center;justify-content:center;opacity:0;transform:scale(.5);transition:opacity .25s ease,transform .25s ease}
-.cari-opt.selected .cari-check{opacity:1;transform:scale(1)}
-.cari-nav{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-top:1.8rem;position:relative;z-index:2}
-.cari-back{background:none;border:none;color:#8aa0b5;font-size:.8rem;font-weight:700;cursor:pointer;padding:.4rem .2rem;display:inline-flex;align-items:center;gap:.35rem;transition:color .25s ease}
-.cari-back:hover{color:#0d3a66}
-.cari-next{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 1.7rem;border-radius:999px;border:none;background:linear-gradient(135deg,#FFD54A,#FFB300,#FF8A00);color:#0d3a66;font-weight:800;font-size:.85rem;cursor:pointer;box-shadow:0 14px 30px rgba(255,138,0,.28);transition:transform .25s ease,box-shadow .25s ease}
-.cari-next:hover{transform:translateY(-3px);box-shadow:0 18px 36px rgba(255,138,0,.38)}
-.cari-next:disabled{opacity:.4;cursor:default;transform:none;box-shadow:none}
-.cari-step{display:none}
-.cari-step.active{display:block;animation:cariIn .45s cubic-bezier(.22,.61,.36,1) both}
-@keyframes cariIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
-.cari-result{display:none;text-align:center;position:relative;z-index:2}
-.cari-result.show{display:block;animation:cariIn .5s cubic-bezier(.22,.61,.36,1) both}
-.cari-score-ring-wrap{position:relative;width:160px;height:160px;margin:0 auto 1.2rem}
-.cari-score-ring{position:absolute;inset:0;width:100%;height:100%;transform:rotate(-90deg)}
-.cari-score-ring .ring-bg{fill:none;stroke:rgba(7,27,51,.08);stroke-width:12}
-.cari-score-ring .ring-fg{fill:none;stroke:url(#cariGrad);stroke-width:12;stroke-linecap:round;stroke-dasharray:414;stroke-dashoffset:414;transition:stroke-dashoffset 1.4s cubic-bezier(.4,0,.2,1)}
-.cari-score-num{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
-.cari-score-num b{font-family:var(--font-display);font-size:2.4rem;font-weight:900;line-height:1;color:#0d3a66}
-.cari-score-num span{font-size:.62rem;font-weight:800;letter-spacing:.14em;color:#8aa0b5;text-transform:uppercase;margin-top:.15rem}
-.cari-score-label{font-family:var(--font-display);font-size:clamp(1.3rem,2.8vw,1.9rem);font-weight:900;color:#0d3a66;margin:0 0 .3rem}
-.cari-score-label em{font-style:normal;background:linear-gradient(135deg,#FFB300,#FF8A00);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.cari-score-desc{color:#5f7186;font-size:.9rem;line-height:1.8;max-width:500px;margin:0 auto 1.6rem}
-.cari-score-reasons{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;margin-bottom:1.7rem}
-.cari-reason{display:inline-flex;align-items:center;gap:.4rem;font-size:.7rem;font-weight:700;color:#0d3a66;background:#eef4fb;border:1px solid rgba(11,95,165,.2);padding:.4rem .8rem;border-radius:999px}
-.cari-reason i{color:#FF8A00}
-.cari-score-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem}
-.cari-cta-primary{display:inline-flex;align-items:center;gap:.5rem;padding:.9rem 1.9rem;border-radius:999px;text-decoration:none;background:linear-gradient(135deg,#0d3a66,#0B5FA5);color:#fff;font-weight:800;font-size:.88rem;box-shadow:0 16px 34px rgba(7,27,51,.3);transition:transform .25s ease,box-shadow .25s ease}
-.cari-cta-primary:hover{transform:translateY(-3px);box-shadow:0 20px 40px rgba(7,27,51,.4)}
-.cari-cta-primary i{transition:transform .25s ease}
-.cari-cta-primary:hover i{transform:translateX(5px)}
-.cari-cta-ghost{display:inline-flex;align-items:center;gap:.45rem;padding:.85rem 1.4rem;border-radius:999px;background:none;border:1.5px solid rgba(7,27,51,.22);color:#0d3a66;font-weight:700;font-size:.82rem;cursor:pointer;transition:border-color .25s ease,background .25s ease}
-.cari-cta-ghost:hover{background:#fff;border-color:#0d3a66}
-
 /* ===== SECTION 11 — FINAL CTA ===== */
 .aphp-cta{position:relative;width:min(1180px,94%);margin:20px auto 80px;padding:58px 2.5rem 62px;border-radius:28px;overflow:hidden;text-align:center;isolation:isolate;background:linear-gradient(135deg,#0d3a66 0%,#0a2a4e 50%,#0B5FA5 100%);box-shadow:0 30px 70px rgba(7,27,51,.28)}
 .aphp-cta .cta-bg{position:absolute;inset:0;z-index:0;opacity:.12}
@@ -1367,7 +1309,6 @@
   .tentang-visual{min-height:380px}
 }
 @media(max-width:760px){
-  .cari-options{grid-template-columns:repeat(2,1fr)}
   .tentang-mini{grid-template-columns:1fr}
   .tentang-visual{min-height:340px}
   .tentang-visual .tv-step{width:100%}
@@ -1407,69 +1348,32 @@
 .industry-collab .ic-head .big-heading span{color:#ff9f00}
 .industry-collab .ic-head p{max-width:760px;margin:0 auto;color:#687d95;font-size:.98rem;line-height:1.8}
 .industry-collab .ic-marquee-wrap{
+  position:relative;
   width:100%;
   overflow:hidden;
   margin-top:3.1rem;
-  padding:1rem 0 1.4rem;
-  mask-image:linear-gradient(90deg,transparent 0,#000 7%,#000 93%,transparent 100%);
-  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 7%,#000 93%,transparent 100%);
+  padding:1rem 0;
 }
-.industry-collab .ic-marquee{display:flex;width:max-content;align-items:flex-start;gap:62px;animation:aphpIndustryMarquee 38s linear infinite;will-change:transform}
+.industry-collab .ic-marquee-wrap::before,.industry-collab .ic-marquee-wrap::after{content:"";position:absolute;z-index:3;top:0;bottom:0;width:120px;pointer-events:none}
+.industry-collab .ic-marquee-wrap::before{left:0;background:linear-gradient(90deg,#fff,transparent)}
+.industry-collab .ic-marquee-wrap::after{right:0;background:linear-gradient(270deg,#fff,transparent)}
+.industry-collab .ic-marquee{display:flex;width:max-content;animation:aphpIndustryMarquee 28s linear infinite}
 .industry-collab .ic-marquee-wrap:hover .ic-marquee{animation-play-state:paused}
-.industry-collab .ic-logo{
-  width:190px;
-  min-width:190px;
-  min-height:155px;
-  padding:8px 12px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:flex-start;
-  gap:13px;
-  background:transparent;
-  border:0;
-  box-shadow:none;
-  text-align:center;
-  transition:transform .35s ease;
-}
-.industry-collab .ic-logo:hover{transform:translateY(-9px)}
-.industry-collab .ic-mark{
-  width:92px;
-  height:92px;
-  min-width:92px;
-  border-radius:22px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:#fff;
-  border:1px solid rgba(7,27,51,.08);
-  box-shadow:0 14px 32px rgba(7,27,51,.09);
-  overflow:hidden;
-  color:#0b5fa5;
-  font-weight:950;
-  font-size:.86rem;
-  letter-spacing:.04em;
-  transition:transform .35s ease,box-shadow .35s ease;border-color .35s ease;
-}
-.industry-collab .ic-mark img{width:100%;height:100%;object-fit:contain;padding:10px;display:block}
-.industry-collab .ic-logo:hover .ic-mark{transform:scale(1.06);border-color:rgba(255,159,0,.55);box-shadow:0 18px 38px rgba(7,27,51,.14)}
-.industry-collab .ic-name{font-size:.82rem;line-height:1.35;font-weight:900;color:#0d3a66;max-width:185px}
-.industry-collab .ic-name::after{content:"";display:block;width:24px;height:2px;background:#ffb51b;margin:8px auto 0;border-radius:999px;transition:width .3s ease}
-.industry-collab .ic-logo:hover .ic-name::after{width:44px}
+.industry-collab .ic-logo-group{display:flex;gap:1.1rem;padding-right:1.1rem}
+.industry-collab .ic-logo{width:190px;height:120px;border-radius:0;background:transparent!important;border:0!important;box-shadow:none!important;display:flex;align-items:center;justify-content:center;flex:0 0 auto;transition:transform .3s ease,filter .3s ease;padding:0;margin:0}
+.industry-collab .ic-logo:hover{transform:translateY(-6px);filter:drop-shadow(0 14px 20px rgba(23,32,79,.18))}
+.industry-collab .ic-logo-only{width:150px;height:96px;object-fit:contain;display:block}
 .industry-collab .ic-footer{text-align:center;margin-top:1.2rem;color:#7a8ca1;font-size:.76rem;font-weight:800;letter-spacing:.03em}
 .industry-collab .ic-footer::before{content:"";display:inline-block;width:34px;height:2px;background:#ffb51b;vertical-align:middle;margin-right:10px;border-radius:999px}
-@keyframes aphpIndustryMarquee{from{transform:translate3d(0,0,0)}to{transform:translate3d(calc(-50% - 31px),0,0)}}
+@keyframes aphpIndustryMarquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @media(max-width:700px){
  .industry-collab{padding-top:4.2rem;padding-bottom:3rem}
  .industry-collab .ic-head .big-heading{font-size:2.25rem}
  .industry-collab .ic-head p{padding:0 1rem;font-size:.88rem}
- .industry-collab .ic-marquee{gap:38px;animation-duration:30s}
- .industry-collab .ic-logo{width:145px;min-width:145px;min-height:135px}
- .industry-collab .ic-mark{width:76px;height:76px;min-width:76px;border-radius:18px}
- .industry-collab .ic-name{font-size:.7rem;max-width:145px}
+ .industry-collab .ic-marquee-wrap::before,.industry-collab .ic-marquee-wrap::after{width:55px}
+ .industry-collab .ic-logo{width:132px;height:100px}
+ .industry-collab .ic-logo-only{width:110px;height:80px}
 }
-
-.industry-collab .ic-mark.ic-fallback::after{content:attr(data-fallback);display:flex;align-items:center;justify-content:center;width:100%;height:100%;font-weight:950;color:#0b5fa5;font-size:.9rem}
 
 /* =========================================================
    LAB TOUR — SAMA PERSIS DENGAN VIRTUAL TOUR DI HALAMAN SEJARAH
@@ -1696,34 +1600,36 @@
       </div>
       <div class="ic-marquee-wrap" data-reveal aria-label="Mitra industri APHP">
         <div class="ic-marquee">
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/aphp/enicookies.png') }}" alt="Logo Eni Cookies" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','ENI');"></span><span class="ic-name">Eni Cookies</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/aphp/nawasena.png') }}" alt="Logo Nawasena's House" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','NSH');"></span><span class="ic-name">Nawasena's House</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/aphp/sigmafood.png') }}" alt="Logo Sigma Food" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','SGF');"></span><span class="ic-name">Sigma Food</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/aphp/hachi.png') }}" alt="Logo Hachi Donut" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','HCD');"></span><span class="ic-name">Hachi Donut</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/aphp/sidojodo.png') }}" alt="Logo PT Sido Jodo" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','SJD');"></span><span class="ic-name">PT Sido Jodo</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/aphp/olivia.png') }}" alt="Logo Olivia Bakery" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','OLI');"></span><span class="ic-name">Olivia Bakery</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/aphp/amateras.png') }}" alt="Logo Amateras Bakery" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','AMT');"></span><span class="ic-name">Amateras Bakery</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/aphp/munchies-bakery.png') }}" alt="Logo Munchies Bakery" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','MCH');"></span><span class="ic-name">Munchies Bakery</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/aphp/manna-bakery.png') }}" alt="Logo Manna Bakery" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','MNA');"></span><span class="ic-name">Manna Bakery</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/aphp/ada-rasa.png') }}" alt="Logo Ada Rasa Bakery" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','ADR');"></span><span class="ic-name">Ada Rasa Bakery</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/aphp/carrefour.png') }}" alt="Logo Carrefour Mojokerto" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','CRF');"></span><span class="ic-name">Carrefour Mojokerto</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/aphp/gunung-welirang.png') }}" alt="Logo Gunung Welirang" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','GWA');"></span><span class="ic-name">Gunung Welirang</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/aphp/ganessa.png') }}" alt="Logo Ganessa" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','GNS');"></span><span class="ic-name">Ganessa</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/aphp/bagus-agriseta.png') }}" alt="Logo Bagus Agriseta Mandiri" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','BAM');"></span><span class="ic-name">Bagus Agriseta Mandiri</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/aphp/enicookies.png') }}" alt="Logo Eni Cookies" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','SPAT');"></span><span class="ic-name">Eni Cookies</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/aphp/nawasena.png') }}" alt="Logo Nawasena's House" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','NSH');"></span><span class="ic-name">Nawasena's House</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/aphp/sigmafood.png') }}" alt="Logo Sigma Food" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','SGF');"></span><span class="ic-name">Sigma Food</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/aphp/hachi.png') }}" alt="Logo Hachi Donut" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','HCD');"></span><span class="ic-name">Hachi Donut</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/aphp/sidojodo.png') }}" alt="Logo PT Sido Jodo" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','SJD');"></span><span class="ic-name">PT Sido Jodo</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/aphp/olivia.png') }}" alt="Logo Olivia Bakery" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','OLI');"></span><span class="ic-name">Olivia Bakery</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/aphp/amateras.png') }}" alt="Logo Amateras Bakery" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','AMT');"></span><span class="ic-name">Amateras Bakery</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/aphp/munchies-bakery.png') }}" alt="Logo Munchies Bakery" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','MCH');"></span><span class="ic-name">Munchies Bakery</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/aphp/manna-bakery.png') }}" alt="Logo Manna Bakery" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','MNA');"></span><span class="ic-name">Manna Bakery</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/aphp/ada-rasa.png') }}" alt="Logo Ada Rasa Bakery" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','ADR');"></span><span class="ic-name">Ada Rasa Bakery</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/aphp/carrefour.png') }}" alt="Logo Carrefour Mojokerto" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','CRF');"></span><span class="ic-name">Carrefour Mojokerto</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/aphp/gunung-welirang.png') }}" alt="Logo Gunung Welirang" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','GWA');"></span><span class="ic-name">Gunung Welirang</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/aphp/ganessa.png') }}" alt="Logo Ganessa" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','GNS');"></span><span class="ic-name">Ganessa</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/aphp/bagus-agriseta.png') }}" alt="Logo Bagus Agriseta Mandiri" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','BAM');"></span><span class="ic-name">Bagus Agriseta Mandiri</span></div>
+          <div class="ic-logo-group">
+            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/aphp/enicookies.png') }}" alt="Logo Eni Cookies" loading="lazy"></div>
+            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/aphp/nawasena.png') }}" alt="Logo Nawasena's House" loading="lazy"></div>
+            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/aphp/sigmafood.png') }}" alt="Logo Sigma Food" loading="lazy"></div>
+            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/aphp/hachi.png') }}" alt="Logo Hachi Donut" loading="lazy"></div>
+            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/aphp/sidojodo.png') }}" alt="Logo PT Sido Jodo" loading="lazy"></div>
+            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/aphp/olivia.png') }}" alt="Logo Olivia Bakery" loading="lazy"></div>
+            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/aphp/amateras.png') }}" alt="Logo Amateras Bakery" loading="lazy"></div>
+            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/aphp/sanrio.png') }}" alt="Logo Sanrio" loading="lazy"></div>
+            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/aphp/nun-bakery.png') }}" alt="Logo Nun Bakery" loading="lazy"></div>
+            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/aphp/family-food.png') }}" alt="Logo Family Food" loading="lazy"></div>
+            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/aphp/dxavier.png') }}" alt="Logo Dxavier" loading="lazy"></div>
+            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/aphp/dku-donut.png') }}" alt="Logo DKU Donut" loading="lazy"></div>
+            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/aphp/arasa.png') }}" alt="Logo Arasa" loading="lazy"></div>
+          </div>
+          <div class="ic-logo-group" aria-hidden="true">
+            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/aphp/enicookies.png') }}" alt="" loading="lazy"></div>
+            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/aphp/nawasena.png') }}" alt="" loading="lazy"></div>
+            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/aphp/sigmafood.png') }}" alt="" loading="lazy"></div>
+            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/aphp/hachi.png') }}" alt="" loading="lazy"></div>
+            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/aphp/sidojodo.png') }}" alt="" loading="lazy"></div>
+            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/aphp/olivia.png') }}" alt="" loading="lazy"></div>
+            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/aphp/amateras.png') }}" alt="" loading="lazy"></div>
+            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/aphp/sanrio.png') }}" alt="" loading="lazy"></div>
+            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/aphp/nun-bakery.png') }}" alt="" loading="lazy"></div>
+            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/aphp/family-food.png') }}" alt="" loading="lazy"></div>
+            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/aphp/dxavier.png') }}" alt="" loading="lazy"></div>
+            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/aphp/dku-donut.png') }}" alt="" loading="lazy"></div>
+            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/aphp/arasa.png') }}" alt="" loading="lazy"></div>
+          </div>
         </div>
       </div>
       <div class="ic-footer" data-reveal><span>Belajar &bull; Praktik &bull; Berkolaborasi &bull; Siap Berkarya</span></div>
@@ -1939,100 +1845,6 @@
     </div>
   </section>
 
-  <!-- ===== SECTION 10 — CARI JURUSANMU (QUIZ) ===== -->
-  <section class="cari-section section-pad" id="cari-jurusan">
-    <div class="orn" aria-hidden="true">
-      <span class="o-chevron"></span><span class="o-line"></span><span class="o-dots"></span>
-      <span class="o-ring"></span><span class="o-gold"></span><span class="o-square"></span>
-    </div>
-    <div class="cari-head" data-reveal>
-      <div class="eyebrow gold">SEBERAPA COCOK?</div>
-      <h2 class="big-heading">APHP COCOK <span>BUAT KAMU?</span></h2>
-    </div>
-    <div class="cari-card" data-reveal>
-      <span class="cari-deco" aria-hidden="true"></span>
-      <span class="cari-deco2" aria-hidden="true"></span>
-      <div id="cariQuiz" class="cari-quiz">
-        <div class="cari-top">
-          <span class="cari-count" id="cariCount">01 / 05</span>
-          <span style="font-size:.65rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#8aa0b5">Kenali minatmu</span>
-        </div>
-        <div class="cari-bar"><div class="cari-bar-fill" id="cariBar"></div></div>
-        <div class="cari-step active" data-q="1">
-          <h3 class="cari-ask">Kamu lebih suka aktivitas yang mana?</h3>
-          <div class="cari-options">
-            <div class="cari-opt" data-v="0"><span class="cari-opt-ic"><i class="fas fa-seedling"></i></span><span class="cari-opt-lb">Mengolah bahan dari alam</span><span class="cari-check"><i class="fas fa-check"></i></span></div>
-            <div class="cari-opt" data-v="1"><span class="cari-opt-ic"><i class="fas fa-flask"></i></span><span class="cari-opt-lb">Bereksperimen dan menguji</span><span class="cari-check"><i class="fas fa-check"></i></span></div>
-            <div class="cari-opt" data-v="2"><span class="cari-opt-ic"><i class="fas fa-bread-slice"></i></span><span class="cari-opt-lb">Membuat produk makanan</span><span class="cari-check"><i class="fas fa-check"></i></span></div>
-            <div class="cari-opt" data-v="3"><span class="cari-opt-ic"><i class="fas fa-box-open"></i></span><span class="cari-opt-lb">Membuat kemasan & menjual</span><span class="cari-check"><i class="fas fa-check"></i></span></div>
-            <div class="cari-opt" data-v="4"><span class="cari-opt-ic"><i class="fas fa-lightbulb"></i></span><span class="cari-opt-lb">Mengembangkan ide usaha</span><span class="cari-check"><i class="fas fa-check"></i></span></div>
-          </div>
-        </div>
-        <div class="cari-step" data-q="2">
-          <h3 class="cari-ask">Mata pelajaran mana yang paling menarik?</h3>
-          <div class="cari-options">
-            <div class="cari-opt" data-v="2"><span class="cari-opt-ic"><i class="fas fa-microscope"></i></span><span class="cari-opt-lb">IPA & Biologi</span><span class="cari-check"><i class="fas fa-check"></i></span></div>
-            <div class="cari-opt" data-v="1"><span class="cari-opt-ic"><i class="fas fa-flask"></i></span><span class="cari-opt-lb">Kimia & Analisis</span><span class="cari-check"><i class="fas fa-check"></i></span></div>
-            <div class="cari-opt" data-v="0"><span class="cari-opt-ic"><i class="fas fa-wheat-awn"></i></span><span class="cari-opt-lb">Pertanian & Pangan</span><span class="cari-check"><i class="fas fa-check"></i></span></div>
-            <div class="cari-opt" data-v="3"><span class="cari-opt-ic"><i class="fas fa-chart-line"></i></span><span class="cari-opt-lb">Ekonomi & Bisnis</span><span class="cari-check"><i class="fas fa-check"></i></span></div>
-            <div class="cari-opt" data-v="4"><span class="cari-opt-ic"><i class="fas fa-palette"></i></span><span class="cari-opt-lb">Seni & Kreativitas</span><span class="cari-check"><i class="fas fa-check"></i></span></div>
-          </div>
-        </div>
-        <div class="cari-step" data-q="3">
-          <h3 class="cari-ask">Kalau bekerja di dapur produksi, kamu paling suka peran apa?</h3>
-          <div class="cari-options">
-            <div class="cari-opt" data-v="2"><span class="cari-opt-ic"><i class="fas fa-user-chef"></i></span><span class="cari-opt-lb">Mengolah & memasak</span><span class="cari-check"><i class="fas fa-check"></i></span></div>
-            <div class="cari-opt" data-v="1"><span class="cari-opt-ic"><i class="fas fa-flask"></i></span><span class="cari-opt-lb">Menguji mutu produk</span><span class="cari-check"><i class="fas fa-check"></i></span></div>
-            <div class="cari-opt" data-v="3"><span class="cari-opt-ic"><i class="fas fa-box-open"></i></span><span class="cari-opt-lb">Mengemas & mendesain</span><span class="cari-check"><i class="fas fa-check"></i></span></div>
-            <div class="cari-opt" data-v="4"><span class="cari-opt-ic"><i class="fas fa-briefcase"></i></span><span class="cari-opt-lb">Memasarkan & berjualan</span><span class="cari-check"><i class="fas fa-check"></i></span></div>
-            <div class="cari-opt" data-v="0"><span class="cari-opt-ic"><i class="fas fa-seedling"></i></span><span class="cari-opt-lb">Menyiapkan bahan baku</span><span class="cari-check"><i class="fas fa-check"></i></span></div>
-          </div>
-        </div>
-        <div class="cari-step" data-q="4">
-          <h3 class="cari-ask">Apa tujuanmu setelah lulus SMK?</h3>
-          <div class="cari-options">
-            <div class="cari-opt" data-v="2"><span class="cari-opt-ic"><i class="fas fa-industry"></i></span><span class="cari-opt-lb">Bekerja di industri pangan</span><span class="cari-check"><i class="fas fa-check"></i></span></div>
-            <div class="cari-opt" data-v="4"><span class="cari-opt-ic"><i class="fas fa-rocket"></i></span><span class="cari-opt-lb">Membangun usaha sendiri</span><span class="cari-check"><i class="fas fa-check"></i></span></div>
-            <div class="cari-opt" data-v="0"><span class="cari-opt-ic"><i class="fas fa-graduation-cap"></i></span><span class="cari-opt-lb">Kuliah di bidang pangan</span><span class="cari-check"><i class="fas fa-check"></i></span></div>
-            <div class="cari-opt" data-v="1"><span class="cari-opt-ic"><i class="fas fa-microscope"></i></span><span class="cari-opt-lb">Jadi ahli quality control</span><span class="cari-check"><i class="fas fa-check"></i></span></div>
-            <div class="cari-opt" data-v="3"><span class="cari-opt-ic"><i class="fas fa-chart-line"></i></span><span class="cari-opt-lb">Bekerja di bagian marketing</span><span class="cari-check"><i class="fas fa-check"></i></span></div>
-          </div>
-        </div>
-        <div class="cari-step" data-q="5">
-          <h3 class="cari-ask">Saat bekerja dalam tim, kamu biasanya?</h3>
-          <div class="cari-options">
-            <div class="cari-opt" data-v="2"><span class="cari-opt-ic"><i class="fas fa-handshake"></i></span><span class="cari-opt-lb">Praktik langsung di lapangan</span><span class="cari-check"><i class="fas fa-check"></i></span></div>
-            <div class="cari-opt" data-v="3"><span class="cari-opt-ic"><i class="fas fa-calendar-check"></i></span><span class="cari-opt-lb">Mengatur jadwal & produksi</span><span class="cari-check"><i class="fas fa-check"></i></span></div>
-            <div class="cari-opt" data-v="1"><span class="cari-opt-ic"><i class="fas fa-clipboard-list"></i></span><span class="cari-opt-lb">Mencatat & mengecek hasil</span><span class="cari-check"><i class="fas fa-check"></i></span></div>
-            <div class="cari-opt" data-v="0"><span class="cari-opt-ic"><i class="fas fa-leaf"></i></span><span class="cari-opt-lb">Mencari ide dari alam</span><span class="cari-check"><i class="fas fa-check"></i></span></div>
-            <div class="cari-opt" data-v="4"><span class="cari-opt-ic"><i class="fas fa-lightbulb"></i></span><span class="cari-opt-lb">Memberi ide kreatif baru</span><span class="cari-check"><i class="fas fa-check"></i></span></div>
-          </div>
-        </div>
-        <div class="cari-nav">
-          <button type="button" class="cari-back" id="cariBack"><i class="fas fa-arrow-left"></i> Kembali</button>
-          <button type="button" class="cari-next" id="cariNext">Lanjut <i class="fas fa-arrow-right"></i></button>
-        </div>
-      </div>
-      <div class="cari-result" id="cariResult">
-        <div class="cari-score-ring-wrap">
-          <svg class="cari-score-ring" viewBox="0 0 160 160" aria-hidden="true">
-            <defs><linearGradient id="cariGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#FFD54A"/><stop offset="100%" stop-color="#FF8A00"/></linearGradient></defs>
-            <circle class="ring-bg" cx="80" cy="80" r="66"></circle>
-            <circle class="ring-fg" id="cariRing" cx="80" cy="80" r="66"></circle>
-          </svg>
-          <div class="cari-score-num"><b id="cariScoreNum">0%</b><span>Kecocokan</span></div>
-        </div>
-        <h3 class="cari-score-label">TINGKAT KECOCOKANMU <em id="cariScoreLabel">—</em></h3>
-        <p class="cari-score-desc" id="cariScoreDesc">Kamu punya minat yang kuat pada pengolahan, eksperimen, dan menghasilkan produk nyata — semua itu ada di APHP.</p>
-        <div class="cari-score-reasons" id="cariReasons"></div>
-        <div class="cari-score-actions">
-          <a href="#tentang-aphp" class="cari-cta-primary">Kenali APHP Lebih Dalam <i class="fas fa-arrow-right"></i></a>
-          <button type="button" class="cari-cta-ghost" id="cariRestart"><i class="fas fa-redo"></i> Ulangi Tes</button>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- ===== LAB TOUR — VISUAL IDENTIK DENGAN VIRTUAL TOUR SEJARAH ===== -->
   <section class="vt-section" id="lab-tour" aria-label="Lab Tour APHP SMK Negeri 2 Mojokerto">
     <span class="vt-watermark" aria-hidden="true">LAB</span>
@@ -2073,8 +1885,7 @@
       <h2>Siap Menjadi Bagian dari <span>APHP?</span></h2>
       <p>Kenali potensimu, temukan pengalaman belajar yang sesuai, dan mulai perjalananmu bersama APHP — dari farm menuju future.</p>
       <div class="aphp-cta-actions">
-        <a href="#cari-jurusan" class="aphp-cta-btn"><i class="fas fa-star"></i> Cari Jurusanmu</a>
-        <a href="{{ route('home') }}#ppdb" class="aphp-cta-ghost"><i class="fas fa-pen"></i> Daftar PPDB</a>
+        <a href="{{ route('ppdb') }}" class="aphp-cta-btn"><i class="fas fa-pen"></i> Daftar PPDB</a>
       </div>
     </div>
   </section>
@@ -2107,56 +1918,6 @@
 </script>
 
 <script>
-/* ---- CARI JURUSANMU (Quiz) ---- */
-(function(){
-  var quiz=document.getElementById('cariQuiz'),result=document.getElementById('cariResult');
-  var steps=Array.prototype.slice.call(quiz.querySelectorAll('.cari-step'));
-  var countEl=document.getElementById('cariCount'),barEl=document.getElementById('cariBar');
-  var backBtn=document.getElementById('cariBack'),nextBtn=document.getElementById('cariNext');
-  var current=0,answers=[];
-  function selectOpt(opt){Array.prototype.forEach.call(opt.parentNode.children,function(c){c.classList.remove('selected')});opt.classList.add('selected')}
-  quiz.querySelectorAll('.cari-opt').forEach(function(opt){opt.addEventListener('click',function(){selectOpt(opt)})});
-  function goTo(i){
-    current=Math.max(0,Math.min(i,steps.length-1));
-    steps.forEach(function(s,idx){s.classList.toggle('active',idx===current)});
-    countEl.textContent='0'+(current+1)+' / 05';
-    barEl.style.width=((current+1)/steps.length*100)+'%';
-    backBtn.style.visibility=current===0?'hidden':'visible';
-    nextBtn.innerHTML=current===steps.length-1?'Lihat Hasil <i class="fas fa-star"></i>':'Lanjut <i class="fas fa-arrow-right"></i>'
-  }
-  backBtn.addEventListener('click',function(){if(current>0)goTo(current-1)});
-  nextBtn.addEventListener('click',function(){
-    var sel=steps[current].querySelector('.cari-opt.selected');
-    if(!sel)return;
-    answers[current]=parseInt(sel.getAttribute('data-v'),10);
-    if(current<steps.length-1){goTo(current+1)}else{showResult()}
-  });
-  function showResult(){
-    var sum=answers.reduce(function(a,b){return a+b},0);
-    var score=62+Math.round(sum/4);score=Math.max(62,Math.min(92,score));
-    quiz.style.display='none';result.classList.add('show');
-    document.getElementById('cariScoreNum').textContent=score+'%';
-    var label=document.getElementById('cariScoreLabel'),desc=document.getElementById('cariScoreDesc');
-    if(score>=85){label.textContent='Sangat Cocok';desc.textContent='Minatmu sangat selaras dengan dunia APHP — pengolahan, eksperimen, dan produk nyata adalah duniamu. Kamu akan berkembang pesat di sini!'}
-    else if(score>=75){label.textContent='Cocok';desc.textContent='Kamu punya ketertarikan kuat pada pengolahan dan produk. Dengan semangat praktik di APHP, potensimu akan terus terasah.'}
-    else{label.textContent='Cukup Cocok';desc.textContent='Ada banyak sisi APHP yang bisa kamu eksplorasi — dari produksi hingga kewirausahaan. Coba kenali lebih dalam lewat tur di bawah!'}
-    document.getElementById('cariReasons').innerHTML=[
-      {t:'Praktik nyata setiap minggu',i:'fa-flask'},{t:'Belajar membuat produk sendiri',i:'fa-box-open'},{t:'Bekal wirausaha & industri',i:'fa-rocket'}
-    ].map(function(r){return '<span class="cari-reason"><i class="fas '+r.i+'"></i> '+r.t+'</span>'}).join('');
-    requestAnimationFrame(function(){setTimeout(function(){document.getElementById('cariRing').style.strokeDashoffset=414-(414*score/100)},120)})
-  }
-  document.getElementById('cariRestart').addEventListener('click',restart);
-  function restart(){
-    answers=[];result.classList.remove('show');result.style.display='none';
-    quiz.style.display='block';
-    steps.forEach(function(s){s.classList.remove('active');Array.prototype.forEach.call(s.querySelectorAll('.cari-opt'),function(o){o.classList.remove('selected')})});
-    goTo(0);document.getElementById('cariRing').style.strokeDashoffset=414
-  }
-  goTo(0)
-})();
-</script>
-
-<script>
 /* ---- Produk Slider + Filter ---- */
 (function(){
   var track=document.getElementById('produkTrack'),prevBtn=document.getElementById('produkPrev'),nextBtn=document.getElementById('produkNext'),dotsWrap=document.getElementById('produkDots');
@@ -2175,8 +1936,8 @@
   function update(){
     var vis=visible(),per=pageSize(),maxIndex=Math.max(0,Math.ceil(vis.length/per)-1);
     if(index>maxIndex)index=maxIndex;
-    var offset=0,i=0;
-    for(;i<cards().length;i++){if(cards()[i].style.display==='none')continue;if(i===index*per)break;offset+=cards()[i].offsetWidth+19}
+    var offset=0,visIdx=0,i=0;
+    for(;i<cards().length;i++){if(cards()[i].style.display==='none')continue;if(visIdx===index*per)break;offset+=cards()[i].offsetWidth+19;visIdx++}
     track.style.transform='translateX(-'+offset+'px)';
     prevBtn.disabled=index<=0;nextBtn.disabled=index>=maxIndex;
     Array.prototype.forEach.call(dotsWrap.children,function(d,di){d.classList.toggle('active',di===index)})

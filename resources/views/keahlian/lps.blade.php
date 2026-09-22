@@ -1026,7 +1026,6 @@
 .vid-player .vid-brand span{font-size:.5rem;font-weight:800;letter-spacing:.22em;color:rgba(248,251,255,.65);text-transform:uppercase}
 /* icon helpers (emoji-free) */
 .dkv-kicker i{font-size:.8rem;color:#6FAF45}
-.cari-opt-ic i{font-size:1.5rem;color:#FF8A00;line-height:1}
 .fcta-copy h3 i{color:#FFD54A;margin-right:.4rem;font-size:1.1em;vertical-align:-2px}
 @media(max-width:1050px){.vid-wrap{grid-template-columns:1fr;gap:2.6rem}.vid-cards{grid-template-columns:repeat(3,1fr)}.vid-side{display:none}.vid-stage::before,.vid-stage::after{display:none}}
 @media(max-width:760px){.vid-cards{grid-template-columns:1fr}.vid-copy h2{font-size:clamp(1.9rem,7vw,2.6rem)}.vid-play{width:66px;height:66px;font-size:1.35rem}.vid-ring{width:110px;height:110px;right:-18px;top:-18px}.vid-section{padding:64px 0 72px}}
@@ -1177,13 +1176,8 @@
 .produk-section{background:#fff}
 .produk-head{width:min(1320px,92%);margin:0 auto 48px;display:flex;justify-content:space-between;align-items:end;gap:2rem}
 .produk-note{max-width:320px;color:#718396;font-size:.78rem;line-height:1.7;text-align:right}
-.produk-filters{display:flex;flex-wrap:wrap;gap:.5rem;width:min(1320px,92%);margin:0 auto 1.6rem}
-.pf-btn{padding:.45rem 1rem;border-radius:999px;border:1.5px solid rgba(7,27,51,.18);background:#fff;color:#0d3a66;font-size:.72rem;font-weight:800;cursor:pointer;transition:background .25s ease,color .25s ease,border-color .25s ease}
-.pf-btn:hover{border-color:#FF8A00;color:#FF8A00}
-.pf-btn.active{background:linear-gradient(135deg,#0d3a66,#0B5FA5);color:#fff;border-color:transparent}
 .produk-slider{position:relative;width:min(1320px,94%);margin:auto}
-.produk-viewport{overflow:hidden;border-radius:24px}
-.produk-track{display:flex;gap:1.2rem;transition:transform .5s cubic-bezier(.4,0,.2,1)}
+.produk-track{display:flex;flex-wrap:wrap;gap:1.2rem}
 .produk-card{position:relative;flex:0 0 calc(33.333% - .8rem);background:#fff;border:1px solid rgba(7,27,51,.1);border-radius:22px;overflow:hidden;box-shadow:0 20px 44px rgba(7,27,51,.08);transition:transform .3s ease,box-shadow .3s ease}
 .produk-card:hover{transform:translateY(-8px);box-shadow:0 28px 60px rgba(7,27,51,.15)}
 .produk-photo{position:relative;aspect-ratio:4/3;overflow:hidden;background:linear-gradient(135deg,#0d3a66,#0B5FA5)}
@@ -1195,15 +1189,6 @@
 .produk-card .pc-body h3{font-family:var(--font-display);font-size:1.05rem;font-weight:800;color:#0d3a66;margin:0 0 .2rem}
 .produk-card .pc-body p{font-size:.75rem;line-height:1.65;color:#718396;margin:0 0 .5rem}
 .produk-card .pc-foot{display:flex;align-items:center;justify-content:space-between;font-size:.65rem;font-weight:800;color:#FF8A00;text-transform:uppercase;letter-spacing:.08em}
-.produk-arrow{position:absolute;top:50%;translate:0 -50%;width:48px;height:48px;border-radius:50%;background:#0d3a66;border:none;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1rem;cursor:pointer;z-index:6;box-shadow:0 10px 22px rgba(7,27,51,.35);transition:background .25s ease,transform .25s ease,opacity .25s ease}
-.produk-arrow:hover{background:#FFB300;transform:translateY(-50%) scale(1.08)}
-.produk-arrow.prev{left:-24px}
-.produk-arrow.next{right:-24px}
-.produk-arrow:disabled{opacity:.3;cursor:default;pointer-events:none}
-.produk-dots{display:flex;justify-content:center;gap:.45rem;margin-top:1.6rem}
-.produk-dots button{width:8px;height:8px;border-radius:50%;border:none;background:rgba(7,27,51,.18);cursor:pointer;padding:0;transition:background .25s ease,width .25s ease}
-.produk-dots button.active{background:#FFB300;width:24px;border-radius:5px}
-.produk-dots.hidden{display:none}
 @media(max-width:1050px){.produk-card{flex-basis:calc(50% - .6rem)}}
 @media(max-width:640px){.produk-card{flex-basis:100%}}
 
@@ -1256,62 +1241,6 @@
 @media(max-width:1050px){.prospek-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:640px){.prospek-grid{grid-template-columns:1fr}}
 
-/* ===== SECTION 10 — CARI JURUSANMU (QUIZ) ===== */
-.cari-section{background:linear-gradient(180deg,#f8fbff 0%,#eef5fb 100%)}
-.cari-head{width:min(860px,92%);margin:0 auto 52px;text-align:center}
-.cari-head .eyebrow{justify-content:center}
-.cari-head .eyebrow::before{display:none}
-.cari-head .eyebrow::after{content:"";width:24px;height:3px;border-radius:99px;background:linear-gradient(90deg,#FFD54A,#FF8A00)}
-.cari-head p{margin:.8rem auto 0;max-width:600px;color:#5f7186;font-size:.95rem;line-height:1.85}
-.cari-card{position:relative;z-index:2;width:min(860px,92%);margin:0 auto;border-radius:28px;background:#fff;border:1px solid rgba(7,27,51,.1);box-shadow:0 36px 80px rgba(7,27,51,.08);overflow:hidden;padding:clamp(1.6rem,3.6vw,2.8rem)}
-.cari-card::before{content:"";position:absolute;top:0;left:0;width:100%;height:5px;background:linear-gradient(90deg,#0d3a66,#0B5FA5,#FFD54A,#FF8A00,#6FAF45)}
-.cari-deco{position:absolute;right:-60px;top:-60px;width:180px;height:180px;border:2px solid rgba(255,179,0,.14);border-radius:50%;pointer-events:none}
-.cari-deco::before{content:"";position:absolute;inset:22px;border:1px dashed rgba(11,95,165,.2);border-radius:50%}
-.cari-deco2{position:absolute;left:-40px;bottom:-40px;width:110px;height:110px;border:2px solid rgba(7,27,51,.08);transform:rotate(45deg);pointer-events:none}
-.cari-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:1.2rem}
-.cari-count{font-family:var(--font-display);font-size:.9rem;font-weight:900;letter-spacing:.12em;color:#FF8A00}
-.cari-bar{height:5px;border-radius:99px;background:rgba(7,27,51,.08);overflow:hidden;margin-bottom:2rem}
-.cari-bar-fill{height:100%;width:20%;border-radius:99px;background:linear-gradient(90deg,#FFD54A,#FF8A00);transition:width .5s cubic-bezier(.4,0,.2,1)}
-.cari-ask{font-family:var(--font-display);font-size:clamp(1.2rem,2.4vw,1.8rem);font-weight:800;color:#0d3a66;line-height:1.3;margin:0 0 1.4rem;position:relative;z-index:2}
-.cari-options{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:.9rem;position:relative;z-index:2}
-.cari-opt{position:relative;border:1.5px solid rgba(7,27,51,.12);border-radius:16px;background:#fbfcfe;padding:1.2rem .9rem 1rem;text-align:center;cursor:pointer;transition:transform .25s ease,border-color .25s ease,background .25s ease,box-shadow .25s ease}
-.cari-opt:hover{transform:translateY(-4px);border-color:rgba(255,138,0,.35);box-shadow:0 14px 30px rgba(7,27,51,.08)}
-.cari-opt.selected{border-color:#FF8A00;background:#fff7ef;box-shadow:0 0 0 3px rgba(255,138,0,.12)}
-.cari-opt-ic{font-size:1.7rem;color:#FF8A00;margin-bottom:.45rem;display:block;line-height:1}
-.cari-opt-lb{font-size:.75rem;font-weight:700;color:#0d3a66;line-height:1.4;display:block}
-.cari-opt .cari-check{position:absolute;top:7px;right:7px;width:18px;height:18px;border-radius:50%;background:#FF8A00;color:#fff;font-size:.55rem;display:flex;align-items:center;justify-content:center;opacity:0;transform:scale(.5);transition:opacity .25s ease,transform .25s ease}
-.cari-opt.selected .cari-check{opacity:1;transform:scale(1)}
-.cari-nav{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-top:1.8rem;position:relative;z-index:2}
-.cari-back{background:none;border:none;color:#8aa0b5;font-size:.8rem;font-weight:700;cursor:pointer;padding:.4rem .2rem;display:inline-flex;align-items:center;gap:.35rem;transition:color .25s ease}
-.cari-back:hover{color:#0d3a66}
-.cari-next{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 1.7rem;border-radius:999px;border:none;background:linear-gradient(135deg,#FFD54A,#FFB300,#FF8A00);color:#0d3a66;font-weight:800;font-size:.85rem;cursor:pointer;box-shadow:0 14px 30px rgba(255,138,0,.28);transition:transform .25s ease,box-shadow .25s ease}
-.cari-next:hover{transform:translateY(-3px);box-shadow:0 18px 36px rgba(255,138,0,.38)}
-.cari-next:disabled{opacity:.4;cursor:default;transform:none;box-shadow:none}
-.cari-step{display:none}
-.cari-step.active{display:block;animation:cariIn .45s cubic-bezier(.22,.61,.36,1) both}
-@keyframes cariIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
-.cari-result{display:none;text-align:center;position:relative;z-index:2}
-.cari-result.show{display:block;animation:cariIn .5s cubic-bezier(.22,.61,.36,1) both}
-.cari-score-ring-wrap{position:relative;width:160px;height:160px;margin:0 auto 1.2rem}
-.cari-score-ring{position:absolute;inset:0;width:100%;height:100%;transform:rotate(-90deg)}
-.cari-score-ring .ring-bg{fill:none;stroke:rgba(7,27,51,.08);stroke-width:12}
-.cari-score-ring .ring-fg{fill:none;stroke:url(#cariGrad);stroke-width:12;stroke-linecap:round;stroke-dasharray:414;stroke-dashoffset:414;transition:stroke-dashoffset 1.4s cubic-bezier(.4,0,.2,1)}
-.cari-score-num{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
-.cari-score-num b{font-family:var(--font-display);font-size:2.4rem;font-weight:900;line-height:1;color:#0d3a66}
-.cari-score-num span{font-size:.62rem;font-weight:800;letter-spacing:.14em;color:#8aa0b5;text-transform:uppercase;margin-top:.15rem}
-.cari-score-label{font-family:var(--font-display);font-size:clamp(1.3rem,2.8vw,1.9rem);font-weight:900;color:#0d3a66;margin:0 0 .3rem}
-.cari-score-label em{font-style:normal;background:linear-gradient(135deg,#FFB300,#FF8A00);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.cari-score-desc{color:#5f7186;font-size:.9rem;line-height:1.8;max-width:500px;margin:0 auto 1.6rem}
-.cari-score-reasons{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;margin-bottom:1.7rem}
-.cari-reason{display:inline-flex;align-items:center;gap:.4rem;font-size:.7rem;font-weight:700;color:#0d3a66;background:#eef4fb;border:1px solid rgba(11,95,165,.2);padding:.4rem .8rem;border-radius:999px}
-.cari-reason i{color:#FF8A00}
-.cari-score-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem}
-.cari-cta-primary{display:inline-flex;align-items:center;gap:.5rem;padding:.9rem 1.9rem;border-radius:999px;text-decoration:none;background:linear-gradient(135deg,#0d3a66,#0B5FA5);color:#fff;font-weight:800;font-size:.88rem;box-shadow:0 16px 34px rgba(7,27,51,.3);transition:transform .25s ease,box-shadow .25s ease}
-.cari-cta-primary:hover{transform:translateY(-3px);box-shadow:0 20px 40px rgba(7,27,51,.4)}
-.cari-cta-primary i{transition:transform .25s ease}
-.cari-cta-primary:hover i{transform:translateX(5px)}
-.cari-cta-ghost{display:inline-flex;align-items:center;gap:.45rem;padding:.85rem 1.4rem;border-radius:999px;background:none;border:1.5px solid rgba(7,27,51,.22);color:#0d3a66;font-weight:700;font-size:.82rem;cursor:pointer;transition:border-color .25s ease,background .25s ease}
-.cari-cta-ghost:hover{background:#fff;border-color:#0d3a66}
 
 /* ===== SECTION 11 — FINAL CTA ===== */
 .aphp-cta{position:relative;width:min(1180px,94%);margin:20px auto 80px;padding:58px 2.5rem 62px;border-radius:28px;overflow:hidden;text-align:center;isolation:isolate;background:linear-gradient(135deg,#0d3a66 0%,#0a2a4e 50%,#0B5FA5 100%);box-shadow:0 30px 70px rgba(7,27,51,.28)}
@@ -1350,7 +1279,6 @@
   .tentang-visual{min-height:380px}
 }
 @media(max-width:760px){
-  .cari-options{grid-template-columns:repeat(2,1fr)}
   .tentang-mini{grid-template-columns:1fr}
   .tentang-visual{min-height:340px}
   .tentang-visual .tv-step{width:100%}
@@ -1390,69 +1318,32 @@
 .industry-collab .ic-head .big-heading span{color:#ff9f00}
 .industry-collab .ic-head p{max-width:760px;margin:0 auto;color:#687d95;font-size:.98rem;line-height:1.8}
 .industry-collab .ic-marquee-wrap{
+  position:relative;
   width:100%;
   overflow:hidden;
   margin-top:3.1rem;
-  padding:1rem 0 1.4rem;
-  mask-image:linear-gradient(90deg,transparent 0,#000 7%,#000 93%,transparent 100%);
-  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 7%,#000 93%,transparent 100%);
+  padding:1rem 0;
 }
-.industry-collab .ic-marquee{display:flex;width:max-content;align-items:flex-start;gap:62px;animation:aphpIndustryMarquee 38s linear infinite;will-change:transform}
+.industry-collab .ic-marquee-wrap::before,.industry-collab .ic-marquee-wrap::after{content:"";position:absolute;z-index:3;top:0;bottom:0;width:120px;pointer-events:none}
+.industry-collab .ic-marquee-wrap::before{left:0;background:linear-gradient(90deg,#fff,transparent)}
+.industry-collab .ic-marquee-wrap::after{right:0;background:linear-gradient(270deg,#fff,transparent)}
+.industry-collab .ic-marquee{display:flex;width:max-content;animation:aphpIndustryMarquee 28s linear infinite}
 .industry-collab .ic-marquee-wrap:hover .ic-marquee{animation-play-state:paused}
-.industry-collab .ic-logo{
-  width:190px;
-  min-width:190px;
-  min-height:155px;
-  padding:8px 12px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:flex-start;
-  gap:13px;
-  background:transparent;
-  border:0;
-  box-shadow:none;
-  text-align:center;
-  transition:transform .35s ease;
-}
-.industry-collab .ic-logo:hover{transform:translateY(-9px)}
-.industry-collab .ic-mark{
-  width:92px;
-  height:92px;
-  min-width:92px;
-  border-radius:22px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:#fff;
-  border:1px solid rgba(7,27,51,.08);
-  box-shadow:0 14px 32px rgba(7,27,51,.09);
-  overflow:hidden;
-  color:#0b5fa5;
-  font-weight:950;
-  font-size:.86rem;
-  letter-spacing:.04em;
-  transition:transform .35s ease,box-shadow .35s ease;border-color .35s ease;
-}
-.industry-collab .ic-mark img{width:100%;height:100%;object-fit:contain;padding:10px;display:block}
-.industry-collab .ic-logo:hover .ic-mark{transform:scale(1.06);border-color:rgba(255,159,0,.55);box-shadow:0 18px 38px rgba(7,27,51,.14)}
-.industry-collab .ic-name{font-size:.82rem;line-height:1.35;font-weight:900;color:#0d3a66;max-width:185px}
-.industry-collab .ic-name::after{content:"";display:block;width:24px;height:2px;background:#ffb51b;margin:8px auto 0;border-radius:999px;transition:width .3s ease}
-.industry-collab .ic-logo:hover .ic-name::after{width:44px}
+.industry-collab .ic-logo-group{display:flex;gap:1.1rem;padding-right:1.1rem}
+.industry-collab .ic-logo{width:190px;height:120px;border-radius:0;background:transparent!important;border:0!important;box-shadow:none!important;display:flex;align-items:center;justify-content:center;flex:0 0 auto;transition:transform .3s ease,filter .3s ease;padding:0;margin:0}
+.industry-collab .ic-logo:hover{transform:translateY(-6px);filter:drop-shadow(0 14px 20px rgba(23,32,79,.18))}
+.industry-collab .ic-logo-only{width:150px;height:96px;object-fit:contain;display:block}
 .industry-collab .ic-footer{text-align:center;margin-top:1.2rem;color:#7a8ca1;font-size:.76rem;font-weight:800;letter-spacing:.03em}
 .industry-collab .ic-footer::before{content:"";display:inline-block;width:34px;height:2px;background:#ffb51b;vertical-align:middle;margin-right:10px;border-radius:999px}
-@keyframes aphpIndustryMarquee{from{transform:translate3d(0,0,0)}to{transform:translate3d(calc(-50% - 31px),0,0)}}
+@keyframes aphpIndustryMarquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @media(max-width:700px){
  .industry-collab{padding-top:4.2rem;padding-bottom:3rem}
  .industry-collab .ic-head .big-heading{font-size:2.25rem}
  .industry-collab .ic-head p{padding:0 1rem;font-size:.88rem}
- .industry-collab .ic-marquee{gap:38px;animation-duration:30s}
- .industry-collab .ic-logo{width:145px;min-width:145px;min-height:135px}
- .industry-collab .ic-mark{width:76px;height:76px;min-width:76px;border-radius:18px}
- .industry-collab .ic-name{font-size:.7rem;max-width:145px}
+ .industry-collab .ic-marquee-wrap::before,.industry-collab .ic-marquee-wrap::after{width:55px}
+ .industry-collab .ic-logo{width:132px;height:100px}
+ .industry-collab .ic-logo-only{width:110px;height:80px}
 }
-
-.industry-collab .ic-mark.ic-fallback::after{content:attr(data-fallback);display:flex;align-items:center;justify-content:center;width:100%;height:100%;font-weight:950;color:#0b5fa5;font-size:.9rem}
 
 /* =========================================================
    LAB TOUR — SAMA PERSIS DENGAN VIRTUAL TOUR DI HALAMAN SEJARAH
@@ -1660,25 +1551,28 @@
       </div>
       <div class="ic-marquee-wrap" data-reveal aria-label="Mitra industri LPS">
         <div class="ic-marquee">
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/lps/baznas.png') }}" alt="Logo Baznas Kota Mojokerto" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','BKM');"></span><span class="ic-name">Baznas Kota Mojokerto</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/lps/bankmuamalat.png') }}" alt="Logo Bank Muamalat Indonesia" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','BMI');"></span><span class="ic-name">Bank Muamalat Indonesia</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/lps/lynn.png') }}" alt="Logo Lynn Hotel Mojokerto" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','LHM');"></span><span class="ic-name">Lynn Hotel Mojokerto</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/lps/mandiritaspen.png') }}" alt="Logo Bank Mandiri Taspen" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','BMS');"></span><span class="ic-name">Bank Mandiri Taspen</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/lps/wahyuredjo.png') }}" alt="Logo Toko Mas Wahyuredjo" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','WYR');"></span><span class="ic-name">Toko Mas Wahyuredjo</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/lps/bmt.png') }}" alt="Logo BMT Permata" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','BMT');"></span><span class="ic-name">BMT Permata</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/lps/sunrisehotel.png') }}" alt="Logo Sunrise Hotel" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','SRH');"></span><span class="ic-name">Sunrise Hotel</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/lps/pegadaian-syariah.png') }}" alt="Logo Pegadaian Syariah" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','PGS');"></span><span class="ic-name">Pegadaian Syariah</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/lps/bri-syariah.png') }}" alt="Logo Unit Usaha Syariah BRI" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','UUS');"></span><span class="ic-name">Unit Usaha Syariah BRI</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/lps/ojk.png') }}" alt="Logo Otoritas Jasa Keuangan" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','OJK');"></span><span class="ic-name">Otoritas Jasa Keuangan</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/lps/kjks.png') }}" alt="Logo Koperasi Jasa Keuangan Syariah" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','KJKS');"></span><span class="ic-name">Koperasi Jasa Keuangan Syariah</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/lps/baznas.png') }}" alt="Logo Baznas Kota Mojokerto" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','BKM');"></span><span class="ic-name">Baznas Kota Mojokerto</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/lps/bankmuamalat.png') }}" alt="Logo Bank Muamalat Indonesia" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','BMI');"></span><span class="ic-name">Bank Muamalat Indonesia</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/lps/lynn.png') }}" alt="Logo Lynn Hotel Mojokerto" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','LHM');"></span><span class="ic-name">Lynn Hotel Mojokerto</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/lps/mandiritaspen.png') }}" alt="Logo Bank Mandiri Taspen" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','BMS');"></span><span class="ic-name">Bank Mandiri Taspen</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/lps/wahyuredjo.png') }}" alt="Logo Toko Mas Wahyuredjo" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','WYR');"></span><span class="ic-name">Toko Mas Wahyuredjo</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/lps/bmt.png') }}" alt="Logo BMT Permata" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','BMT');"></span><span class="ic-name">BMT Permata</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/lps/sunrisehotel.png') }}" alt="Logo Sunrise Hotel" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','SRH');"></span><span class="ic-name">Sunrise Hotel</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/lps/pegadaian-syariah.png') }}" alt="Logo Pegadaian Syariah" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','PGS');"></span><span class="ic-name">Pegadaian Syariah</span></div>
+          <div class="ic-logo-group">
+            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/lps/bankmuamalat.png') }}" alt="Logo Bank Muamalat Indonesia" loading="lazy"></div>
+            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/lps/lynn.png') }}" alt="Logo Lynn Hotel Mojokerto" loading="lazy"></div>
+            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/lps/mandiritaspen.png') }}" alt="Logo Bank Mandiri Taspen" loading="lazy"></div>
+            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/lps/bmt.png') }}" alt="Logo BMT Permata" loading="lazy"></div>
+            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/lps/sunrisehotel.png') }}" alt="Logo Sunrise Hotel" loading="lazy"></div>
+            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/lps/wahyuredjo.png') }}" alt="Logo Wahyu Redjo" loading="lazy"></div>
+            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/lps/bkm.png') }}" alt="Logo BKM" loading="lazy"></div>
+            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/lps/btpn.png') }}" alt="Logo BTPN" loading="lazy"></div>
+            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/lps/tiga-permata.png') }}" alt="Logo Tiga Permata" loading="lazy"></div>
+          </div>
+          <div class="ic-logo-group" aria-hidden="true">
+            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/lps/bankmuamalat.png') }}" alt="" loading="lazy"></div>
+            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/lps/lynn.png') }}" alt="" loading="lazy"></div>
+            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/lps/mandiritaspen.png') }}" alt="" loading="lazy"></div>
+            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/lps/bmt.png') }}" alt="" loading="lazy"></div>
+            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/lps/sunrisehotel.png') }}" alt="" loading="lazy"></div>
+            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/lps/wahyuredjo.png') }}" alt="" loading="lazy"></div>
+            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/lps/bkm.png') }}" alt="" loading="lazy"></div>
+            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/lps/btpn.png') }}" alt="" loading="lazy"></div>
+            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/lps/tiga-permata.png') }}" alt="" loading="lazy"></div>
+          </div>
         </div>
       </div>
       <div class="ic-footer" data-reveal><span>Belajar &bull; Praktik &bull; Berkolaborasi &bull; Siap Bekerja</span></div>
@@ -1780,11 +1674,8 @@
     </div>
     <div class="fasilitas-grid">
       <div class="fasilitas-card" data-reveal><div class="fc-ic"><i class="fas fa-building-columns"></i></div><h4>Bank Mini Syariah</h4><p>Ruang praktik lengkap dengan loket teller dan customer service layaknya bank sungguhan.</p></div>
-      <div class="fasilitas-card" data-reveal style="--d:1"><div class="fc-ic green"><i class="fas fa-tools"></i></div><h4>Aplikasi Core Banking</h4><p>Perangkat komputer dan aplikasi simulasi perbankan untuk praktik transaksi digital.</p></div>
-      <div class="fasilitas-card" data-reveal style="--d:2"><div class="fc-ic gold"><i class="fas fa-headset"></i></div><h4>Ruang Customer Service</h4><p>Ruang simulasi pelayanan nasabah untuk melatih komunikasi dan penyelesaian masalah.</p></div>
-      <div class="fasilitas-card" data-reveal style="--d:3"><div class="fc-ic"><i class="fas fa-file-invoice-dollar"></i></div><h4>Ruang Administrasi &amp; Kas</h4><p>Area khusus untuk praktik administrasi dokumen dan pengelolaan kas dengan standar mutu perbankan.</p></div>
-      <div class="fasilitas-card" data-reveal style="--d:4"><div class="fc-ic green"><i class="fas fa-users"></i></div><h4>Ruang Presentasi</h4><p>Area untuk presentasi materi, diskusi kasus, dan evaluasi praktik perbankan.</p></div>
-      <div class="fasilitas-card" data-reveal style="--d:5"><div class="fc-ic gold"><i class="fas fa-laptop"></i></div><h4>Fasilitas Pendukung</h4><p>Ruang kelas, akses internet, referensi ekonomi syariah, dan perangkat digital untuk menunjang pembelajaran.</p></div>
+      <div class="fasilitas-card" data-reveal style="--d:1"><div class="fc-ic green"><i class="fas fa-diagram-project"></i></div><h4>Laboratorium LPS</h4><p>Perangkat komputer dan aplikasi simulasi perbankan untuk praktik transaksi digital.</p></div>
+      <div class="fasilitas-card" data-reveal style="--d:2"><div class="fc-ic gold"><i class="fas fa-building-columns"></i></div><h4>Koperasi Dewantara</h4><p>Praktik keterampilan siswa LPS dalam pengelolaan, pelayanan, dan transaksi koperasi secara langsung.</p></div>
     </div>
   </section>
 
@@ -1801,16 +1692,8 @@
       </div>
       <div class="produk-note">Dokumentasi praktik siswa LPS — dirancang melalui simulasi transaksi, pelayanan nasabah, dan praktik administrasi perbankan.</div>
     </div>
-    <div class="produk-filters" data-reveal>
-      <button class="pf-btn active" data-f="all">SEMUA</button>
-      <button class="pf-btn" data-f="teller">TELLER</button>
-      <button class="pf-btn" data-f="pelayanan">PELAYANAN</button>
-      <button class="pf-btn" data-f="duta">DUTA</button>
-    </div>
     <div class="produk-slider" data-reveal>
-      <button class="produk-arrow prev" id="produkPrev" aria-label="Sebelumnya"><i class="fas fa-chevron-left"></i></button>
-      <div class="produk-viewport">
-        <div class="produk-track" id="produkTrack">
+      <div class="produk-track" id="produkTrack">
           <article class="produk-card" data-cat="teller">
             <div class="produk-photo"><img src="{{ asset('images/lps/pengelolaan-keuangan.png') }}" alt="Praktik teller karya siswa LPS" loading="lazy"><span class="produk-badge">Teller</span></div>
             <div class="pc-body"><h3>Praktik Teller</h3><p>Simulasi menerima setoran, penarikan tunai, dan transfer sesuai prosedur bank syariah.</p><div class="pc-foot"><span>Bank Mini</span><span><i class="fas fa-arrow-right"></i></span></div></div>
@@ -1823,15 +1706,8 @@
             <div class="produk-photo"><img src="{{ asset('images/lps/vania-carla.jpeg') }}" alt="Praktik administrasi karya siswa LPS" loading="lazy"><span class="produk-badge">Duta</span></div>
             <div class="pc-body"><h3>Duta Koperasi Jawa Timur</h3><p>Mengenalkan nilai, peran, dan manfaat koperasi serta mengajak generasi muda memahami & berpartisipasi dalam kegiatan koperasi.</p><div class="pc-foot"><span>Koperasi</span><span><i class="fas fa-arrow-right"></i></span></div></div>
           </article>
-          <article class="produk-card" data-cat="teller">
-            <div class="produk-photo"><img src="{{ asset('images/lps-praktik4.jpg') }}" alt="Presentasi laporan keuangan karya siswa LPS" loading="lazy"><span class="produk-badge">Operasional Teller</span></div>
-            <div class="pc-body"><h3>Presentasi Laporan</h3><p>Menyusun dan mempresentasikan hasil rekap transaksi harian bank mini syariah.</p><div class="pc-foot"><span>Bank Mini</span><span><i class="fas fa-arrow-right"></i></span></div></div>
-          </article>
-        </div>
       </div>
-      <button class="produk-arrow next" id="produkNext" aria-label="Selanjutnya"><i class="fas fa-chevron-right"></i></button>
     </div>
-    <div class="produk-dots" id="produkDots"></div>
   </section>
 
   <!-- ===== SECTION 8 — KEGIATAN & PRESTASI ===== -->
@@ -1895,100 +1771,6 @@
     </div>
   </section>
 
-  <!-- ===== SECTION 10 — CARI JURUSANMU (QUIZ) ===== -->
-  <section class="cari-section section-pad" id="cari-jurusan">
-    <div class="orn" aria-hidden="true">
-      <span class="o-chevron"></span><span class="o-line"></span><span class="o-dots"></span>
-      <span class="o-ring"></span><span class="o-gold"></span><span class="o-square"></span>
-    </div>
-    <div class="cari-head" data-reveal>
-      <div class="eyebrow gold">SEBERAPA COCOK?</div>
-      <h2 class="big-heading">LPS COCOK <span>BUAT KAMU?</span></h2>
-    </div>
-    <div class="cari-card" data-reveal>
-      <span class="cari-deco" aria-hidden="true"></span>
-      <span class="cari-deco2" aria-hidden="true"></span>
-      <div id="cariQuiz" class="cari-quiz">
-        <div class="cari-top">
-          <span class="cari-count" id="cariCount">01 / 05</span>
-          <span style="font-size:.65rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#8aa0b5">Kenali minatmu</span>
-        </div>
-        <div class="cari-bar"><div class="cari-bar-fill" id="cariBar"></div></div>
-        <div class="cari-step active" data-q="1">
-          <h3 class="cari-ask">Kamu lebih suka aktivitas yang mana?</h3>
-          <div class="cari-options">
-            <div class="cari-opt" data-v="0"><span class="cari-opt-ic"><i class="fas fa-headset"></i></span><span class="cari-opt-lb">Melayani orang lain dengan ramah</span><span class="cari-check"><i class="fas fa-check"></i></span></div>
-            <div class="cari-opt" data-v="1"><span class="cari-opt-ic"><i class="fas fa-calculator"></i></span><span class="cari-opt-lb">Menghitung dan mengelola uang</span><span class="cari-check"><i class="fas fa-check"></i></span></div>
-            <div class="cari-opt" data-v="2"><span class="cari-opt-ic"><i class="fas fa-file-invoice-dollar"></i></span><span class="cari-opt-lb">Menyusun dan memeriksa dokumen</span><span class="cari-check"><i class="fas fa-check"></i></span></div>
-            <div class="cari-opt" data-v="3"><span class="cari-opt-ic"><i class="fas fa-users"></i></span><span class="cari-opt-lb">Berkomunikasi dan bernegosiasi</span><span class="cari-check"><i class="fas fa-check"></i></span></div>
-            <div class="cari-opt" data-v="4"><span class="cari-opt-ic"><i class="fas fa-lightbulb"></i></span><span class="cari-opt-lb">Belajar tentang ekonomi &amp; keuangan</span><span class="cari-check"><i class="fas fa-check"></i></span></div>
-          </div>
-        </div>
-        <div class="cari-step" data-q="2">
-          <h3 class="cari-ask">Mata pelajaran mana yang paling menarik?</h3>
-          <div class="cari-options">
-            <div class="cari-opt" data-v="2"><span class="cari-opt-ic"><i class="fas fa-magnifying-glass"></i></span><span class="cari-opt-lb">Matematika &amp; Ekonomi</span><span class="cari-check"><i class="fas fa-check"></i></span></div>
-            <div class="cari-opt" data-v="1"><span class="cari-opt-ic"><i class="fas fa-flask"></i></span><span class="cari-opt-lb">IPA</span><span class="cari-check"><i class="fas fa-check"></i></span></div>
-            <div class="cari-opt" data-v="0"><span class="cari-opt-ic"><i class="fas fa-headset"></i></span><span class="cari-opt-lb">Bahasa &amp; Komunikasi</span><span class="cari-check"><i class="fas fa-check"></i></span></div>
-            <div class="cari-opt" data-v="3"><span class="cari-opt-ic"><i class="fas fa-lightbulb"></i></span><span class="cari-opt-lb">PPKn &amp; Sejarah</span><span class="cari-check"><i class="fas fa-check"></i></span></div>
-            <div class="cari-opt" data-v="4"><span class="cari-opt-ic"><i class="fas fa-piggy-bank"></i></span><span class="cari-opt-lb">Ekonomi Syariah &amp; Akuntansi</span><span class="cari-check"><i class="fas fa-check"></i></span></div>
-          </div>
-        </div>
-        <div class="cari-step" data-q="3">
-          <h3 class="cari-ask">Kalau praktik kerja, kamu paling suka peran apa?</h3>
-          <div class="cari-options">
-            <div class="cari-opt" data-v="0"><span class="cari-opt-ic"><i class="fas fa-headset"></i></span><span class="cari-opt-lb">Melayani nasabah di depan (teller/CS)</span><span class="cari-check"><i class="fas fa-check"></i></span></div>
-            <div class="cari-opt" data-v="1"><span class="cari-opt-ic"><i class="fas fa-calculator"></i></span><span class="cari-opt-lb">Menghitung dan mencatat transaksi</span><span class="cari-check"><i class="fas fa-check"></i></span></div>
-            <div class="cari-opt" data-v="3"><span class="cari-opt-ic"><i class="fas fa-file-invoice-dollar"></i></span><span class="cari-opt-lb">Memeriksa &amp; merapikan dokumen</span><span class="cari-check"><i class="fas fa-check"></i></span></div>
-            <div class="cari-opt" data-v="4"><span class="cari-opt-ic"><i class="fas fa-user-tie"></i></span><span class="cari-opt-lb">Memasarkan produk &amp; mencari nasabah</span><span class="cari-check"><i class="fas fa-check"></i></span></div>
-            <div class="cari-opt" data-v="2"><span class="cari-opt-ic"><i class="fas fa-scale-balanced"></i></span><span class="cari-opt-lb">Mengecek kepatuhan &amp; keakuratan data</span><span class="cari-check"><i class="fas fa-check"></i></span></div>
-          </div>
-        </div>
-        <div class="cari-step" data-q="4">
-          <h3 class="cari-ask">Apa tujuanmu setelah lulus SMK?</h3>
-          <div class="cari-options">
-            <div class="cari-opt" data-v="2"><span class="cari-opt-ic"><i class="fas fa-building-columns"></i></span><span class="cari-opt-lb">Bekerja di bank atau lembaga keuangan</span><span class="cari-check"><i class="fas fa-check"></i></span></div>
-            <div class="cari-opt" data-v="4"><span class="cari-opt-ic"><i class="fas fa-user-tie"></i></span><span class="cari-opt-lb">Membangun usaha keuangan mikro sendiri</span><span class="cari-check"><i class="fas fa-check"></i></span></div>
-            <div class="cari-opt" data-v="0"><span class="cari-opt-ic"><i class="fas fa-graduation-cap"></i></span><span class="cari-opt-lb">Kuliah di bidang ekonomi/perbankan syariah</span><span class="cari-check"><i class="fas fa-check"></i></span></div>
-            <div class="cari-opt" data-v="1"><span class="cari-opt-ic"><i class="fas fa-magnifying-glass"></i></span><span class="cari-opt-lb">Menjadi ahli keuangan profesional</span><span class="cari-check"><i class="fas fa-check"></i></span></div>
-            <div class="cari-opt" data-v="3"><span class="cari-opt-ic"><i class="fas fa-lightbulb"></i></span><span class="cari-opt-lb">Menjadi wirausahawan syariah</span><span class="cari-check"><i class="fas fa-check"></i></span></div>
-          </div>
-        </div>
-        <div class="cari-step" data-q="5">
-          <h3 class="cari-ask">Saat bekerja dalam tim, kamu biasanya?</h3>
-          <div class="cari-options">
-            <div class="cari-opt" data-v="2"><span class="cari-opt-ic"><i class="fas fa-users"></i></span><span class="cari-opt-lb">Melayani langsung dengan komunikasi</span><span class="cari-check"><i class="fas fa-check"></i></span></div>
-            <div class="cari-opt" data-v="3"><span class="cari-opt-ic"><i class="fas fa-calendar-days"></i></span><span class="cari-opt-lb">Mengatur alur &amp; jadwal transaksi</span><span class="cari-check"><i class="fas fa-check"></i></span></div>
-            <div class="cari-opt" data-v="1"><span class="cari-opt-ic"><i class="fas fa-list-check"></i></span><span class="cari-opt-lb">Memeriksa &amp; memastikan keakuratan data</span><span class="cari-check"><i class="fas fa-check"></i></span></div>
-            <div class="cari-opt" data-v="0"><span class="cari-opt-ic"><i class="fas fa-magnifying-glass"></i></span><span class="cari-opt-lb">Mencari peluang &amp; ide baru</span><span class="cari-check"><i class="fas fa-check"></i></span></div>
-            <div class="cari-opt" data-v="4"><span class="cari-opt-ic"><i class="fas fa-lightbulb"></i></span><span class="cari-opt-lb">Memberi solusi &amp; pendekatan baru</span><span class="cari-check"><i class="fas fa-check"></i></span></div>
-          </div>
-        </div>
-        <div class="cari-nav">
-          <button type="button" class="cari-back" id="cariBack"><i class="fas fa-arrow-left"></i> Kembali</button>
-          <button type="button" class="cari-next" id="cariNext">Lanjut <i class="fas fa-arrow-right"></i></button>
-        </div>
-      </div>
-      <div class="cari-result" id="cariResult">
-        <div class="cari-score-ring-wrap">
-          <svg class="cari-score-ring" viewBox="0 0 160 160" aria-hidden="true">
-            <defs><linearGradient id="cariGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#FFD54A"/><stop offset="100%" stop-color="#FF8A00"/></linearGradient></defs>
-            <circle class="ring-bg" cx="80" cy="80" r="66"></circle>
-            <circle class="ring-fg" id="cariRing" cx="80" cy="80" r="66"></circle>
-          </svg>
-          <div class="cari-score-num"><b id="cariScoreNum">0%</b><span>Kecocokan</span></div>
-        </div>
-        <h3 class="cari-score-label">TINGKAT KECOCOKANMU <em id="cariScoreLabel">—</em></h3>
-        <p class="cari-score-desc" id="cariScoreDesc">Kamu punya minat yang kuat pada pelayanan, ketelitian, dan pengelolaan keuangan — semua itu ada di LPS.</p>
-        <div class="cari-score-reasons" id="cariReasons"></div>
-        <div class="cari-score-actions">
-          <a href="#tentang-aphp" class="cari-cta-primary">Kenali LPS Lebih Dalam <i class="fas fa-arrow-right"></i></a>
-          <button type="button" class="cari-cta-ghost" id="cariRestart"><i class="fas fa-redo"></i> Ulangi Tes</button>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- ===== LAB TOUR — VISUAL IDENTIK DENGAN VIRTUAL TOUR SEJARAH ===== -->
   <section class="vt-section" id="lab-tour" aria-label="LPS Tour LPS SMK Negeri 2 Mojokerto">
     <span class="vt-watermark" aria-hidden="true">LPS</span>
@@ -2029,8 +1811,7 @@
       <h2>Siap Menjadi Bagian dari <span>LPS?</span></h2>
       <p>Kenali potensimu, temukan pengalaman belajar yang sesuai, dan mulai perjalananmu bersama LPS — dari teori menuju praktik dan karier di dunia perbankan syariah.</p>
       <div class="aphp-cta-actions">
-        <a href="#cari-jurusan" class="aphp-cta-btn"><i class="fas fa-star"></i> Cari Jurusanmu</a>
-        <a href="{{ route('home') }}#ppdb" class="aphp-cta-ghost"><i class="fas fa-pen"></i> Daftar PPDB</a>
+        <a href="{{ route('ppdb') }}" class="aphp-cta-btn"><i class="fas fa-pen"></i> Daftar PPDB</a>
       </div>
     </div>
   </section>
@@ -2062,94 +1843,4 @@
 })();
 </script>
 
-<script>
-/* ---- CARI JURUSANMU (Quiz) ---- */
-(function(){
-  var quiz=document.getElementById('cariQuiz'),result=document.getElementById('cariResult');
-  var steps=Array.prototype.slice.call(quiz.querySelectorAll('.cari-step'));
-  var countEl=document.getElementById('cariCount'),barEl=document.getElementById('cariBar');
-  var backBtn=document.getElementById('cariBack'),nextBtn=document.getElementById('cariNext');
-  var current=0,answers=[];
-  function selectOpt(opt){Array.prototype.forEach.call(opt.parentNode.children,function(c){c.classList.remove('selected')});opt.classList.add('selected')}
-  quiz.querySelectorAll('.cari-opt').forEach(function(opt){opt.addEventListener('click',function(){selectOpt(opt)})});
-  function goTo(i){
-    current=Math.max(0,Math.min(i,steps.length-1));
-    steps.forEach(function(s,idx){s.classList.toggle('active',idx===current)});
-    countEl.textContent='0'+(current+1)+' / 05';
-    barEl.style.width=((current+1)/steps.length*100)+'%';
-    backBtn.style.visibility=current===0?'hidden':'visible';
-    nextBtn.innerHTML=current===steps.length-1?'Lihat Hasil <i class="fas fa-star"></i>':'Lanjut <i class="fas fa-arrow-right"></i>'
-  }
-  backBtn.addEventListener('click',function(){if(current>0)goTo(current-1)});
-  nextBtn.addEventListener('click',function(){
-    var sel=steps[current].querySelector('.cari-opt.selected');
-    if(!sel)return;
-    answers[current]=parseInt(sel.getAttribute('data-v'),10);
-    if(current<steps.length-1){goTo(current+1)}else{showResult()}
-  });
-  function showResult(){
-    var sum=answers.reduce(function(a,b){return a+b},0);
-    var score=62+Math.round(sum/4);score=Math.max(62,Math.min(92,score));
-    quiz.style.display='none';result.classList.add('show');
-    document.getElementById('cariScoreNum').textContent=score+'%';
-    var label=document.getElementById('cariScoreLabel'),desc=document.getElementById('cariScoreDesc');
-    if(score>=85){label.textContent='Sangat Cocok';desc.textContent='Minatmu sangat selaras dengan dunia LPS — pelayanan, ketelitian, dan pengelolaan keuangan adalah duniamu. Kamu akan berkembang pesat di sini!'}
-    else if(score>=75){label.textContent='Cocok';desc.textContent='Kamu punya ketertarikan kuat pada pelayanan nasabah dan pengelolaan keuangan. Dengan semangat berlatih di LPS, potensimu akan terus terasah.'}
-    else{label.textContent='Cukup Cocok';desc.textContent='Ada banyak sisi LPS yang bisa kamu eksplorasi — dari pelayanan nasabah hingga administrasi perbankan. Coba kenali lebih dalam lewat tur di bawah!'}
-    document.getElementById('cariReasons').innerHTML=[
-      {t:'Praktik bank mini setiap minggu',i:'fa-building-columns'},{t:'Belajar melayani nasabah langsung',i:'fa-headset'},{t:'Bekal wirausaha & industri keuangan',i:'fa-user-tie'}
-    ].map(function(r){return '<span class="cari-reason"><i class="fas '+r.i+'"></i> '+r.t+'</span>'}).join('');
-    requestAnimationFrame(function(){setTimeout(function(){document.getElementById('cariRing').style.strokeDashoffset=414-(414*score/100)},120)})
-  }
-  document.getElementById('cariRestart').addEventListener('click',restart);
-  function restart(){
-    answers=[];result.classList.remove('show');result.style.display='none';
-    quiz.style.display='block';
-    steps.forEach(function(s){s.classList.remove('active');Array.prototype.forEach.call(s.querySelectorAll('.cari-opt'),function(o){o.classList.remove('selected')})});
-    goTo(0);document.getElementById('cariRing').style.strokeDashoffset=414
-  }
-  goTo(0)
-})();
-</script>
-
-<script>
-/* ---- Produk Slider + Filter ---- */
-(function(){
-  var track=document.getElementById('produkTrack'),prevBtn=document.getElementById('produkPrev'),nextBtn=document.getElementById('produkNext'),dotsWrap=document.getElementById('produkDots');
-  var filterBtns=Array.prototype.slice.call(document.querySelectorAll('.pf-btn'));
-  if(!track)return;
-  var index=0;
-  function cards(){return Array.prototype.slice.call(track.children)}
-  function visible(){return cards().filter(function(c){return c.style.display!=='none'})}
-  function pageSize(){if(window.innerWidth<=760)return 1;if(window.innerWidth<=1050)return 2;return 3}
-  function buildDots(){
-    dotsWrap.innerHTML='';var total=visible().length,pages=Math.max(1,Math.ceil(total/pageSize()));
-    if(total<=pageSize()){dotsWrap.classList.add('hidden');return}
-    dotsWrap.classList.remove('hidden');
-    for(var i=0;i<pages;i++){var b=document.createElement('button');if(i===index)b.classList.add('active');b.setAttribute('aria-label','Slide '+(i+1));(function(idx){b.addEventListener('click',function(){goTo(idx)})})(i);dotsWrap.appendChild(b)}
-  }
-  function update(){
-    var vis=visible(),per=pageSize(),maxIndex=Math.max(0,Math.ceil(vis.length/per)-1);
-    if(index>maxIndex)index=maxIndex;
-    var offset=0,i=0;
-    for(;i<cards().length;i++){if(cards()[i].style.display==='none')continue;if(i===index*per)break;offset+=cards()[i].offsetWidth+19}
-    track.style.transform='translateX(-'+offset+'px)';
-    prevBtn.disabled=index<=0;nextBtn.disabled=index>=maxIndex;
-    Array.prototype.forEach.call(dotsWrap.children,function(d,di){d.classList.toggle('active',di===index)})
-  }
-  function goTo(i){var maxIndex=Math.max(0,Math.ceil(visible().length/pageSize())-1);index=Math.min(Math.max(i,0),maxIndex);update()}
-  prevBtn.addEventListener('click',function(){goTo(index-1)});
-  nextBtn.addEventListener('click',function(){goTo(index+1)});
-  filterBtns.forEach(function(btn){
-    btn.addEventListener('click',function(){
-      filterBtns.forEach(function(b){b.classList.remove('active')});btn.classList.add('active');
-      var f=btn.getAttribute('data-f');
-      cards().forEach(function(c){c.style.display=(f==='all'||c.getAttribute('data-cat')===f)?'':'none'});
-      index=0;buildDots();update()
-    })
-  });
-  window.addEventListener('resize',function(){buildDots();update()});
-  buildDots();update()
-})();
-</script>
 @endpush
