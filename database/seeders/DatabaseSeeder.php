@@ -423,6 +423,39 @@ class DatabaseSeeder extends Seeder
             'published_at' => now(),
         ]);
 
+        ChatbotKnowledge::create([
+            'title' => 'Program Budaya Kawi Laras',
+            'category' => 'Budaya',
+            'content' => 'Kawi Laras (Kamis Wiwitan Laku Adab Lan Rasa Sayekti) adalah program pembiasaan budaya Jawa setiap Kamis minggu kedua dalam bulan. Seluruh siswa dan guru mengenakan pakaian tradisional Jawa (lurik & kebaya) untuk melestarikan nilai adab, sopan santun, dan rasa mulia.',
+            'keywords' => ['kawi laras', 'kawilaras', 'budaya', 'lurik', 'kebaya', 'kamis wiwitan', 'adab', 'jawa'],
+            'status' => ChatbotKnowledgeStatus::PUBLISHED,
+            'is_ai_allowed' => true,
+            'priority' => 8,
+            'published_at' => now(),
+        ]);
+
+        ChatbotKnowledge::create([
+            'title' => 'Peta Sebaran Alumni SKANEDA',
+            'category' => 'Karir',
+            'content' => 'Fitur Peta Sebaran Alumni menampilkan pemetaan lokasi kerja, wirausaha, dan perguruan tinggi tempat alumni SMKN 2 Mojokerto berkiprah di seluruh Indonesia dan internasional secara interaktif.',
+            'keywords' => ['alumni', 'peta', 'sebaran', 'karir', 'kuliah', 'perusahaan', 'lokasi'],
+            'status' => ChatbotKnowledgeStatus::PUBLISHED,
+            'is_ai_allowed' => true,
+            'priority' => 8,
+            'published_at' => now(),
+        ]);
+
+        ChatbotKnowledge::create([
+            'title' => 'Ekstrakurikuler Matchmaker Quiz',
+            'category' => 'Ekstrakurikuler',
+            'content' => 'Fitur Matchmaker Quiz membantu siswa baru memilih ekstrakurikuler yang paling sesuai dengan menjawab pertanyaan minat bakat secara otomatis.',
+            'keywords' => ['quiz', 'matchmaker', 'cocok', 'pilih ekskul', 'rekomendasi ekskul'],
+            'status' => ChatbotKnowledgeStatus::PUBLISHED,
+            'is_ai_allowed' => true,
+            'priority' => 8,
+            'published_at' => now(),
+        ]);
+
         // 8. Alumni & Map Aggregation Data
         Alumni::create([
             'name' => 'Budi Santoso',

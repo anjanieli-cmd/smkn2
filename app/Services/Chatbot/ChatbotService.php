@@ -42,7 +42,7 @@ class ChatbotService
             $totalMs = round((microtime(true) - $startTime) * 1000, 2);
             return [
                 'response_type' => ChatbotResponseType::OUT_OF_SCOPE->value,
-                'message' => 'Maaf, saya hanya dapat membantu mengenai informasi resmi SMKN 2 Mojokerto. Untuk pertanyaan lainnya, silakan hubungi admin sekolah.',
+                'message' => 'Halo! 👋 Saya NARA SKANEDA (Sahabat & Asisten Digital SMKN 2 Kota Mojokerto). 🏫✨ Saya hanya dapat membantu memberikan informasi resmi seputar SMKN 2 Kota Mojokerto (SKANEDA) dan website ini. Untuk pertanyaan lain, silakan hubungi kontak resmi sekolah kami! 😊',
                 'retrieval_ms' => 0.0,
                 'ai_ms' => 0.0,
                 'total_ms' => $totalMs,
@@ -58,7 +58,7 @@ class ChatbotService
             $totalMs = round((microtime(true) - $startTime) * 1000, 2);
             return [
                 'response_type' => ChatbotResponseType::NOT_FOUND->value,
-                'message' => 'Maaf, informasi tersebut belum tersedia dalam informasi resmi SMKN 2 Mojokerto. Silakan hubungi admin sekolah.',
+                'message' => 'Halo! 👋 Saya NARA SKANEDA. 🎓 Informasi spesifik yang kamu tanyakan belum tersedia dalam basis pengetahuan resmi SMKN 2 Kota Mojokerto. Silakan ajukan pertanyaan lain atau hubungi admin sekolah kami! 😊',
                 'retrieval_ms' => $retrievalMs,
                 'ai_ms' => 0.0,
                 'total_ms' => $totalMs,
