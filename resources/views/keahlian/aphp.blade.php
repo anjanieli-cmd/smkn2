@@ -1853,7 +1853,7 @@
     <div class="vt-inner">
       <div class="vt-media" data-reveal="left">
         <div class="vt-frame">
-          <img src="{{ asset('images/aphp-lab.jpg') }}" alt="Laboratorium APHP SMK Negeri 2 Mojokerto — Lab Tour" loading="lazy">
+          <img src="{{ asset('tour/lab-2-aphp.jpg') }}" alt="Laboratorium APHP SMK Negeri 2 Mojokerto — Lab Tour" loading="lazy">
           <span class="vt-badge"><i class="fa-solid fa-flask"></i> Lab Tour</span>
           <button class="vt-play" type="button" aria-label="Mulai Lab Tour APHP" onclick="document.getElementById('labTourLink')?.click()"><i class="fa-solid fa-play"></i></button>
           <div class="vt-caption">

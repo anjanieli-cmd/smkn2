@@ -1017,6 +1017,25 @@
 .vid-hex{position:absolute;left:-22px;bottom:26%;width:74px;height:74px;border:1px solid rgba(255,255,255,.14);clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);opacity:.6;z-index:1}
 .vid-hex::after{content:"";position:absolute;inset:8px;border:1px solid rgba(255,213,74,.22);clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%)}
 .vid-diag{position:absolute;right:12%;bottom:14%;width:120px;height:1px;background:linear-gradient(90deg,transparent,rgba(255,213,74,.5));transform:rotate(-24deg);z-index:1}
+
+/* ===== VIDEO PREVIEW FIX ===== */
+.vid-player .vid-preview{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center center;
+  z-index:0;
+  background:#071b33;
+}
+.vid-player .vid-preview::-webkit-media-controls{display:none!important}
+.vid-player .vid-bg{
+  z-index:0;
+  opacity:.08;
+}
+.vid-player .vid-preview + .vid-bg{pointer-events:none}
+
 .vid-player::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(7,27,51,.72));z-index:1}
 .vid-play{position:relative;z-index:2;width:82px;height:82px;border-radius:50%;background:linear-gradient(135deg,#FFD54A,#FFB300 50%,#FF8A00);display:flex;align-items:center;justify-content:center;font-size:1.7rem;color:#0d3a66;box-shadow:0 15px 40px rgba(255,138,0,.35),inset 0 0 0 6px rgba(7,27,51,.08);transition:transform .35s ease,box-shadow .35s ease}
 .vid-player:hover .vid-play{transform:scale(1.08);box-shadow:0 20px 46px rgba(255,138,0,.45)}
@@ -1437,7 +1456,10 @@
       </div>
       <div class="vid-stage" data-reveal="right">
         <span class="vid-side">KULINER • SKANEDA</span>
-        <div class="vid-player" role="button" tabindex="0" aria-label="Putar video pengenalan KULINER" onclick="alert('Video pengenalan KULINER akan diputar di sini.')">
+        <div class="vid-player" role="button" tabindex="0" aria-label="Putar video pengenalan KULINER" onclick="document.getElementById('videoKulinerModal').style.display='flex'; document.getElementById('videoKulinerPlayer').play();">
+          <video class="vid-preview" muted playsinline preload="auto" aria-hidden="true">
+            <source src="{{ asset('images/videos/video-kuliner.mp4') }}" type="video/mp4">
+          </video>
           <div class="vid-bg" aria-hidden="true"></div>
           <span class="vid-ring" aria-hidden="true"></span>
           <span class="vid-hex" aria-hidden="true"></span>
@@ -1449,6 +1471,21 @@
       </div>
     </div>
   </section>
+
+  <!-- ===== POPUP VIDEO KULINER ===== -->
+  <div id="videoKulinerModal" style="display:none;position:fixed;inset:0;z-index:99999;background:rgba(7,27,51,.88);align-items:center;justify-content:center;padding:20px;"
+       onclick="if(event.target===this){document.getElementById('videoKulinerPlayer').pause();document.getElementById('videoKulinerPlayer').currentTime=0;this.style.display='none';}">
+    <div style="position:relative;width:min(430px,92vw);max-height:92vh;background:#0d3a66;border-radius:20px;padding:10px;box-shadow:0 30px 80px rgba(0,0,0,.35);display:flex;align-items:center;justify-content:center;">
+      <button type="button" aria-label="Tutup video"
+        onclick="document.getElementById('videoKulinerPlayer').pause();document.getElementById('videoKulinerPlayer').currentTime=0;document.getElementById('videoKulinerModal').style.display='none';"
+        style="position:absolute;right:-10px;top:-10px;width:38px;height:38px;border:0;border-radius:50%;background:#FFD54A;color:#0d3a66;font-size:22px;font-weight:900;line-height:1;cursor:pointer;z-index:2;">&times;</button>
+      <video id="videoKulinerPlayer" controls playsinline preload="metadata"
+        style="display:block;width:auto;max-width:100%;height:auto;max-height:88vh;border-radius:14px;background:#06192e;object-fit:contain;">
+        <source src="{{ asset('images/videos/video-kuliner.mp4') }}" type="video/mp4">
+        Browser kamu tidak mendukung pemutaran video.
+      </video>
+    </div>
+  </div>
 
   <!-- ===== SECTION 2 — TENTANG KULINER ===== -->
   <section class="tentang-section section-pad" id="tentang-aphp">
@@ -1790,7 +1827,7 @@
     <div class="vt-inner">
       <div class="vt-media" data-reveal="left">
         <div class="vt-frame">
-          <img src="{{ asset('images/kuliner-dapur.jpg') }}" alt="Dapur Praktik Kuliner SMK Negeri 2 Mojokerto — Kitchen Tour" loading="lazy">
+          <img src="{{ asset('tour/lab-pastry.jpg') }}" alt="Dapur Praktik Kuliner SMK Negeri 2 Mojokerto — Kitchen Tour" loading="lazy">
           <span class="vt-badge"><i class="fa-solid fa-cookie-bite"></i> Kitchen Tour</span>
           <button class="vt-play" type="button" aria-label="Mulai Kitchen Tour KULINER" onclick="document.getElementById('labTourLink')?.click()"><i class="fa-solid fa-play"></i></button>
           <div class="vt-caption">
@@ -1805,7 +1842,7 @@
         <h2 class="vt-title" data-reveal>Jelajahi <span class="vt-gold">Dapur Praktik Kuliner</span><span class="vt-sub">Lihat Kitchen Tour KULINER</span></h2>
         <p class="vt-desc" data-reveal>Kenali lebih dekat studio KULINER sebagai ruang belajar dan praktik untuk merancang produk makanan, mengembangkan konsep, serta memproduksi kewirausahaan kuliner.</p>
         <div class="vt-feats" data-reveal><span class="vt-feat"><i class="fa-solid fa-check"></i> Fasilitas Studio</span><span class="vt-feat"><i class="fa-solid fa-check"></i> Pengolahan Makanan</span><span class="vt-feat"><i class="fa-solid fa-check"></i> Presentasi Karya</span></div>
-        <a href="#" id="labTourLink" class="vt-btn" data-reveal>Mulai Kitchen Tour <i class="fa-solid fa-arrow-right"></i></a>
+        <a href="{{ route('profil.tour') }}?scene=lab-pastry" id="labTourLink" class="vt-btn" data-reveal>Mulai Kitchen Tour <i class="fa-solid fa-arrow-right"></i></a>
       </div>
     </div>
   </section>
