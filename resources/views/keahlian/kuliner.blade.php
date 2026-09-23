@@ -1017,6 +1017,25 @@
 .vid-hex{position:absolute;left:-22px;bottom:26%;width:74px;height:74px;border:1px solid rgba(255,255,255,.14);clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);opacity:.6;z-index:1}
 .vid-hex::after{content:"";position:absolute;inset:8px;border:1px solid rgba(255,213,74,.22);clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%)}
 .vid-diag{position:absolute;right:12%;bottom:14%;width:120px;height:1px;background:linear-gradient(90deg,transparent,rgba(255,213,74,.5));transform:rotate(-24deg);z-index:1}
+
+/* ===== VIDEO PREVIEW FIX ===== */
+.vid-player .vid-preview{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center center;
+  z-index:0;
+  background:#071b33;
+}
+.vid-player .vid-preview::-webkit-media-controls{display:none!important}
+.vid-player .vid-bg{
+  z-index:0;
+  opacity:.08;
+}
+.vid-player .vid-preview + .vid-bg{pointer-events:none}
+
 .vid-player::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(7,27,51,.72));z-index:1}
 .vid-play{position:relative;z-index:2;width:82px;height:82px;border-radius:50%;background:linear-gradient(135deg,#FFD54A,#FFB300 50%,#FF8A00);display:flex;align-items:center;justify-content:center;font-size:1.7rem;color:#0d3a66;box-shadow:0 15px 40px rgba(255,138,0,.35),inset 0 0 0 6px rgba(7,27,51,.08);transition:transform .35s ease,box-shadow .35s ease}
 .vid-player:hover .vid-play{transform:scale(1.08);box-shadow:0 20px 46px rgba(255,138,0,.45)}
@@ -1026,7 +1045,6 @@
 .vid-player .vid-brand span{font-size:.5rem;font-weight:800;letter-spacing:.22em;color:rgba(248,251,255,.65);text-transform:uppercase}
 /* icon helpers (emoji-free) */
 .dkv-kicker i{font-size:.8rem;color:#6FAF45}
-.cari-opt-ic i{font-size:1.5rem;color:#FF8A00;line-height:1}
 .fcta-copy h3 i{color:#FFD54A;margin-right:.4rem;font-size:1.1em;vertical-align:-2px}
 @media(max-width:1050px){.vid-wrap{grid-template-columns:1fr;gap:2.6rem}.vid-cards{grid-template-columns:repeat(3,1fr)}.vid-side{display:none}.vid-stage::before,.vid-stage::after{display:none}}
 @media(max-width:760px){.vid-cards{grid-template-columns:1fr}.vid-copy h2{font-size:clamp(1.9rem,7vw,2.6rem)}.vid-play{width:66px;height:66px;font-size:1.35rem}.vid-ring{width:110px;height:110px;right:-18px;top:-18px}.vid-section{padding:64px 0 72px}}
@@ -1177,13 +1195,8 @@
 .produk-section{background:#fff}
 .produk-head{width:min(1320px,92%);margin:0 auto 48px;display:flex;justify-content:space-between;align-items:end;gap:2rem}
 .produk-note{max-width:320px;color:#718396;font-size:.78rem;line-height:1.7;text-align:right}
-.produk-filters{display:flex;flex-wrap:wrap;gap:.5rem;width:min(1320px,92%);margin:0 auto 1.6rem}
-.pf-btn{padding:.45rem 1rem;border-radius:999px;border:1.5px solid rgba(7,27,51,.18);background:#fff;color:#0d3a66;font-size:.72rem;font-weight:800;cursor:pointer;transition:background .25s ease,color .25s ease,border-color .25s ease}
-.pf-btn:hover{border-color:#FF8A00;color:#FF8A00}
-.pf-btn.active{background:linear-gradient(135deg,#0d3a66,#0B5FA5);color:#fff;border-color:transparent}
 .produk-slider{position:relative;width:min(1320px,94%);margin:auto}
-.produk-viewport{overflow:hidden;border-radius:24px}
-.produk-track{display:flex;gap:1.2rem;transition:transform .5s cubic-bezier(.4,0,.2,1)}
+.produk-track{display:flex;flex-wrap:wrap;gap:1.2rem}
 .produk-card{position:relative;flex:0 0 calc(33.333% - .8rem);background:#fff;border:1px solid rgba(7,27,51,.1);border-radius:22px;overflow:hidden;box-shadow:0 20px 44px rgba(7,27,51,.08);transition:transform .3s ease,box-shadow .3s ease}
 .produk-card:hover{transform:translateY(-8px);box-shadow:0 28px 60px rgba(7,27,51,.15)}
 .produk-photo{position:relative;aspect-ratio:4/3;overflow:hidden;background:linear-gradient(135deg,#0d3a66,#0B5FA5)}
@@ -1195,15 +1208,6 @@
 .produk-card .pc-body h3{font-family:var(--font-display);font-size:1.05rem;font-weight:800;color:#0d3a66;margin:0 0 .2rem}
 .produk-card .pc-body p{font-size:.75rem;line-height:1.65;color:#718396;margin:0 0 .5rem}
 .produk-card .pc-foot{display:flex;align-items:center;justify-content:space-between;font-size:.65rem;font-weight:800;color:#FF8A00;text-transform:uppercase;letter-spacing:.08em}
-.produk-arrow{position:absolute;top:50%;translate:0 -50%;width:48px;height:48px;border-radius:50%;background:#0d3a66;border:none;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1rem;cursor:pointer;z-index:6;box-shadow:0 10px 22px rgba(7,27,51,.35);transition:background .25s ease,transform .25s ease,opacity .25s ease}
-.produk-arrow:hover{background:#FFB300;transform:translateY(-50%) scale(1.08)}
-.produk-arrow.prev{left:-24px}
-.produk-arrow.next{right:-24px}
-.produk-arrow:disabled{opacity:.3;cursor:default;pointer-events:none}
-.produk-dots{display:flex;justify-content:center;gap:.45rem;margin-top:1.6rem}
-.produk-dots button{width:8px;height:8px;border-radius:50%;border:none;background:rgba(7,27,51,.18);cursor:pointer;padding:0;transition:background .25s ease,width .25s ease}
-.produk-dots button.active{background:#FFB300;width:24px;border-radius:5px}
-.produk-dots.hidden{display:none}
 @media(max-width:1050px){.produk-card{flex-basis:calc(50% - .6rem)}}
 @media(max-width:640px){.produk-card{flex-basis:100%}}
 
@@ -1256,62 +1260,6 @@
 @media(max-width:1050px){.prospek-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:640px){.prospek-grid{grid-template-columns:1fr}}
 
-/* ===== SECTION 10 — CARI JURUSANMU (QUIZ) ===== */
-.cari-section{background:linear-gradient(180deg,#f8fbff 0%,#eef5fb 100%)}
-.cari-head{width:min(860px,92%);margin:0 auto 52px;text-align:center}
-.cari-head .eyebrow{justify-content:center}
-.cari-head .eyebrow::before{display:none}
-.cari-head .eyebrow::after{content:"";width:24px;height:3px;border-radius:99px;background:linear-gradient(90deg,#FFD54A,#FF8A00)}
-.cari-head p{margin:.8rem auto 0;max-width:600px;color:#5f7186;font-size:.95rem;line-height:1.85}
-.cari-card{position:relative;z-index:2;width:min(860px,92%);margin:0 auto;border-radius:28px;background:#fff;border:1px solid rgba(7,27,51,.1);box-shadow:0 36px 80px rgba(7,27,51,.08);overflow:hidden;padding:clamp(1.6rem,3.6vw,2.8rem)}
-.cari-card::before{content:"";position:absolute;top:0;left:0;width:100%;height:5px;background:linear-gradient(90deg,#0d3a66,#0B5FA5,#FFD54A,#FF8A00,#6FAF45)}
-.cari-deco{position:absolute;right:-60px;top:-60px;width:180px;height:180px;border:2px solid rgba(255,179,0,.14);border-radius:50%;pointer-events:none}
-.cari-deco::before{content:"";position:absolute;inset:22px;border:1px dashed rgba(11,95,165,.2);border-radius:50%}
-.cari-deco2{position:absolute;left:-40px;bottom:-40px;width:110px;height:110px;border:2px solid rgba(7,27,51,.08);transform:rotate(45deg);pointer-events:none}
-.cari-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:1.2rem}
-.cari-count{font-family:var(--font-display);font-size:.9rem;font-weight:900;letter-spacing:.12em;color:#FF8A00}
-.cari-bar{height:5px;border-radius:99px;background:rgba(7,27,51,.08);overflow:hidden;margin-bottom:2rem}
-.cari-bar-fill{height:100%;width:20%;border-radius:99px;background:linear-gradient(90deg,#FFD54A,#FF8A00);transition:width .5s cubic-bezier(.4,0,.2,1)}
-.cari-ask{font-family:var(--font-display);font-size:clamp(1.2rem,2.4vw,1.8rem);font-weight:800;color:#0d3a66;line-height:1.3;margin:0 0 1.4rem;position:relative;z-index:2}
-.cari-options{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:.9rem;position:relative;z-index:2}
-.cari-opt{position:relative;border:1.5px solid rgba(7,27,51,.12);border-radius:16px;background:#fbfcfe;padding:1.2rem .9rem 1rem;text-align:center;cursor:pointer;transition:transform .25s ease,border-color .25s ease,background .25s ease,box-shadow .25s ease}
-.cari-opt:hover{transform:translateY(-4px);border-color:rgba(255,138,0,.35);box-shadow:0 14px 30px rgba(7,27,51,.08)}
-.cari-opt.selected{border-color:#FF8A00;background:#fff7ef;box-shadow:0 0 0 3px rgba(255,138,0,.12)}
-.cari-opt-ic{font-size:1.7rem;color:#FF8A00;margin-bottom:.45rem;display:block;line-height:1}
-.cari-opt-lb{font-size:.75rem;font-weight:700;color:#0d3a66;line-height:1.4;display:block}
-.cari-opt .cari-check{position:absolute;top:7px;right:7px;width:18px;height:18px;border-radius:50%;background:#FF8A00;color:#fff;font-size:.55rem;display:flex;align-items:center;justify-content:center;opacity:0;transform:scale(.5);transition:opacity .25s ease,transform .25s ease}
-.cari-opt.selected .cari-check{opacity:1;transform:scale(1)}
-.cari-nav{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-top:1.8rem;position:relative;z-index:2}
-.cari-back{background:none;border:none;color:#8aa0b5;font-size:.8rem;font-weight:700;cursor:pointer;padding:.4rem .2rem;display:inline-flex;align-items:center;gap:.35rem;transition:color .25s ease}
-.cari-back:hover{color:#0d3a66}
-.cari-next{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 1.7rem;border-radius:999px;border:none;background:linear-gradient(135deg,#FFD54A,#FFB300,#FF8A00);color:#0d3a66;font-weight:800;font-size:.85rem;cursor:pointer;box-shadow:0 14px 30px rgba(255,138,0,.28);transition:transform .25s ease,box-shadow .25s ease}
-.cari-next:hover{transform:translateY(-3px);box-shadow:0 18px 36px rgba(255,138,0,.38)}
-.cari-next:disabled{opacity:.4;cursor:default;transform:none;box-shadow:none}
-.cari-step{display:none}
-.cari-step.active{display:block;animation:cariIn .45s cubic-bezier(.22,.61,.36,1) both}
-@keyframes cariIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
-.cari-result{display:none;text-align:center;position:relative;z-index:2}
-.cari-result.show{display:block;animation:cariIn .5s cubic-bezier(.22,.61,.36,1) both}
-.cari-score-ring-wrap{position:relative;width:160px;height:160px;margin:0 auto 1.2rem}
-.cari-score-ring{position:absolute;inset:0;width:100%;height:100%;transform:rotate(-90deg)}
-.cari-score-ring .ring-bg{fill:none;stroke:rgba(7,27,51,.08);stroke-width:12}
-.cari-score-ring .ring-fg{fill:none;stroke:url(#cariGrad);stroke-width:12;stroke-linecap:round;stroke-dasharray:414;stroke-dashoffset:414;transition:stroke-dashoffset 1.4s cubic-bezier(.4,0,.2,1)}
-.cari-score-num{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
-.cari-score-num b{font-family:var(--font-display);font-size:2.4rem;font-weight:900;line-height:1;color:#0d3a66}
-.cari-score-num span{font-size:.62rem;font-weight:800;letter-spacing:.14em;color:#8aa0b5;text-transform:uppercase;margin-top:.15rem}
-.cari-score-label{font-family:var(--font-display);font-size:clamp(1.3rem,2.8vw,1.9rem);font-weight:900;color:#0d3a66;margin:0 0 .3rem}
-.cari-score-label em{font-style:normal;background:linear-gradient(135deg,#FFB300,#FF8A00);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.cari-score-desc{color:#5f7186;font-size:.9rem;line-height:1.8;max-width:500px;margin:0 auto 1.6rem}
-.cari-score-reasons{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;margin-bottom:1.7rem}
-.cari-reason{display:inline-flex;align-items:center;gap:.4rem;font-size:.7rem;font-weight:700;color:#0d3a66;background:#eef4fb;border:1px solid rgba(11,95,165,.2);padding:.4rem .8rem;border-radius:999px}
-.cari-reason i{color:#FF8A00}
-.cari-score-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem}
-.cari-cta-primary{display:inline-flex;align-items:center;gap:.5rem;padding:.9rem 1.9rem;border-radius:999px;text-decoration:none;background:linear-gradient(135deg,#0d3a66,#0B5FA5);color:#fff;font-weight:800;font-size:.88rem;box-shadow:0 16px 34px rgba(7,27,51,.3);transition:transform .25s ease,box-shadow .25s ease}
-.cari-cta-primary:hover{transform:translateY(-3px);box-shadow:0 20px 40px rgba(7,27,51,.4)}
-.cari-cta-primary i{transition:transform .25s ease}
-.cari-cta-primary:hover i{transform:translateX(5px)}
-.cari-cta-ghost{display:inline-flex;align-items:center;gap:.45rem;padding:.85rem 1.4rem;border-radius:999px;background:none;border:1.5px solid rgba(7,27,51,.22);color:#0d3a66;font-weight:700;font-size:.82rem;cursor:pointer;transition:border-color .25s ease,background .25s ease}
-.cari-cta-ghost:hover{background:#fff;border-color:#0d3a66}
 
 /* ===== SECTION 11 — FINAL CTA ===== */
 .aphp-cta{position:relative;width:min(1180px,94%);margin:20px auto 80px;padding:58px 2.5rem 62px;border-radius:28px;overflow:hidden;text-align:center;isolation:isolate;background:linear-gradient(135deg,#0d3a66 0%,#0a2a4e 50%,#0B5FA5 100%);box-shadow:0 30px 70px rgba(7,27,51,.28)}
@@ -1350,7 +1298,6 @@
   .tentang-visual{min-height:380px}
 }
 @media(max-width:760px){
-  .cari-options{grid-template-columns:repeat(2,1fr)}
   .tentang-mini{grid-template-columns:1fr}
   .tentang-visual{min-height:340px}
   .tentang-visual .tv-step{width:100%}
@@ -1390,69 +1337,32 @@
 .industry-collab .ic-head .big-heading span{color:#ff9f00}
 .industry-collab .ic-head p{max-width:760px;margin:0 auto;color:#687d95;font-size:.98rem;line-height:1.8}
 .industry-collab .ic-marquee-wrap{
+  position:relative;
   width:100%;
   overflow:hidden;
   margin-top:3.1rem;
-  padding:1rem 0 1.4rem;
-  mask-image:linear-gradient(90deg,transparent 0,#000 7%,#000 93%,transparent 100%);
-  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 7%,#000 93%,transparent 100%);
+  padding:1rem 0;
 }
-.industry-collab .ic-marquee{display:flex;width:max-content;align-items:flex-start;gap:62px;animation:aphpIndustryMarquee 38s linear infinite;will-change:transform}
+.industry-collab .ic-marquee-wrap::before,.industry-collab .ic-marquee-wrap::after{content:"";position:absolute;z-index:3;top:0;bottom:0;width:120px;pointer-events:none}
+.industry-collab .ic-marquee-wrap::before{left:0;background:linear-gradient(90deg,#fff,transparent)}
+.industry-collab .ic-marquee-wrap::after{right:0;background:linear-gradient(270deg,#fff,transparent)}
+.industry-collab .ic-marquee{display:flex;width:max-content;animation:aphpIndustryMarquee 28s linear infinite}
 .industry-collab .ic-marquee-wrap:hover .ic-marquee{animation-play-state:paused}
-.industry-collab .ic-logo{
-  width:190px;
-  min-width:190px;
-  min-height:155px;
-  padding:8px 12px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:flex-start;
-  gap:13px;
-  background:transparent;
-  border:0;
-  box-shadow:none;
-  text-align:center;
-  transition:transform .35s ease;
-}
-.industry-collab .ic-logo:hover{transform:translateY(-9px)}
-.industry-collab .ic-mark{
-  width:92px;
-  height:92px;
-  min-width:92px;
-  border-radius:22px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:#fff;
-  border:1px solid rgba(7,27,51,.08);
-  box-shadow:0 14px 32px rgba(7,27,51,.09);
-  overflow:hidden;
-  color:#0b5fa5;
-  font-weight:950;
-  font-size:.86rem;
-  letter-spacing:.04em;
-  transition:transform .35s ease,box-shadow .35s ease;border-color .35s ease;
-}
-.industry-collab .ic-mark img{width:100%;height:100%;object-fit:contain;padding:10px;display:block}
-.industry-collab .ic-logo:hover .ic-mark{transform:scale(1.06);border-color:rgba(255,159,0,.55);box-shadow:0 18px 38px rgba(7,27,51,.14)}
-.industry-collab .ic-name{font-size:.82rem;line-height:1.35;font-weight:900;color:#0d3a66;max-width:185px}
-.industry-collab .ic-name::after{content:"";display:block;width:24px;height:2px;background:#ffb51b;margin:8px auto 0;border-radius:999px;transition:width .3s ease}
-.industry-collab .ic-logo:hover .ic-name::after{width:44px}
+.industry-collab .ic-logo-group{display:flex;gap:1.1rem;padding-right:1.1rem}
+.industry-collab .ic-logo{width:190px;height:120px;border-radius:0;background:transparent!important;border:0!important;box-shadow:none!important;display:flex;align-items:center;justify-content:center;flex:0 0 auto;transition:transform .3s ease,filter .3s ease;padding:0;margin:0}
+.industry-collab .ic-logo:hover{transform:translateY(-6px);filter:drop-shadow(0 14px 20px rgba(23,32,79,.18))}
+.industry-collab .ic-logo-only{width:150px;height:96px;object-fit:contain;display:block}
 .industry-collab .ic-footer{text-align:center;margin-top:1.2rem;color:#7a8ca1;font-size:.76rem;font-weight:800;letter-spacing:.03em}
 .industry-collab .ic-footer::before{content:"";display:inline-block;width:34px;height:2px;background:#ffb51b;vertical-align:middle;margin-right:10px;border-radius:999px}
-@keyframes aphpIndustryMarquee{from{transform:translate3d(0,0,0)}to{transform:translate3d(calc(-50% - 31px),0,0)}}
+@keyframes aphpIndustryMarquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @media(max-width:700px){
  .industry-collab{padding-top:4.2rem;padding-bottom:3rem}
  .industry-collab .ic-head .big-heading{font-size:2.25rem}
  .industry-collab .ic-head p{padding:0 1rem;font-size:.88rem}
- .industry-collab .ic-marquee{gap:38px;animation-duration:30s}
- .industry-collab .ic-logo{width:145px;min-width:145px;min-height:135px}
- .industry-collab .ic-mark{width:76px;height:76px;min-width:76px;border-radius:18px}
- .industry-collab .ic-name{font-size:.7rem;max-width:145px}
+ .industry-collab .ic-marquee-wrap::before,.industry-collab .ic-marquee-wrap::after{width:55px}
+ .industry-collab .ic-logo{width:132px;height:100px}
+ .industry-collab .ic-logo-only{width:110px;height:80px}
 }
-
-.industry-collab .ic-mark.ic-fallback::after{content:attr(data-fallback);display:flex;align-items:center;justify-content:center;width:100%;height:100%;font-weight:950;color:#0b5fa5;font-size:.9rem}
 
 /* =========================================================
    LAB TOUR — SAMA PERSIS DENGAN VIRTUAL TOUR DI HALAMAN SEJARAH
@@ -1546,7 +1456,10 @@
       </div>
       <div class="vid-stage" data-reveal="right">
         <span class="vid-side">KULINER • SKANEDA</span>
-        <div class="vid-player" role="button" tabindex="0" aria-label="Putar video pengenalan KULINER" onclick="alert('Video pengenalan KULINER akan diputar di sini.')">
+        <div class="vid-player" role="button" tabindex="0" aria-label="Putar video pengenalan KULINER" onclick="document.getElementById('videoKulinerModal').style.display='flex'; document.getElementById('videoKulinerPlayer').play();">
+          <video class="vid-preview" muted playsinline preload="auto" aria-hidden="true">
+            <source src="{{ asset('images/videos/video-kuliner.mp4') }}" type="video/mp4">
+          </video>
           <div class="vid-bg" aria-hidden="true"></div>
           <span class="vid-ring" aria-hidden="true"></span>
           <span class="vid-hex" aria-hidden="true"></span>
@@ -1558,6 +1471,21 @@
       </div>
     </div>
   </section>
+
+  <!-- ===== POPUP VIDEO KULINER ===== -->
+  <div id="videoKulinerModal" style="display:none;position:fixed;inset:0;z-index:99999;background:rgba(7,27,51,.88);align-items:center;justify-content:center;padding:20px;"
+       onclick="if(event.target===this){document.getElementById('videoKulinerPlayer').pause();document.getElementById('videoKulinerPlayer').currentTime=0;this.style.display='none';}">
+    <div style="position:relative;width:min(430px,92vw);max-height:92vh;background:#0d3a66;border-radius:20px;padding:10px;box-shadow:0 30px 80px rgba(0,0,0,.35);display:flex;align-items:center;justify-content:center;">
+      <button type="button" aria-label="Tutup video"
+        onclick="document.getElementById('videoKulinerPlayer').pause();document.getElementById('videoKulinerPlayer').currentTime=0;document.getElementById('videoKulinerModal').style.display='none';"
+        style="position:absolute;right:-10px;top:-10px;width:38px;height:38px;border:0;border-radius:50%;background:#FFD54A;color:#0d3a66;font-size:22px;font-weight:900;line-height:1;cursor:pointer;z-index:2;">&times;</button>
+      <video id="videoKulinerPlayer" controls playsinline preload="metadata"
+        style="display:block;width:auto;max-width:100%;height:auto;max-height:88vh;border-radius:14px;background:#06192e;object-fit:contain;">
+        <source src="{{ asset('images/videos/video-kuliner.mp4') }}" type="video/mp4">
+        Browser kamu tidak mendukung pemutaran video.
+      </video>
+    </div>
+  </div>
 
   <!-- ===== SECTION 2 — TENTANG KULINER ===== -->
   <section class="tentang-section section-pad" id="tentang-aphp">
@@ -1660,34 +1588,36 @@
       </div>
       <div class="ic-marquee-wrap" data-reveal aria-label="Mitra industri KULINER">
         <div class="ic-marquee">
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/kuliner/aston.png') }}" alt="Logo Aston Hotel" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','AST');"></span><span class="ic-name">Aston Hotel</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/kuliner/manovkopi.png') }}" alt="Logo Manov Kopi" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','MVK');"></span><span class="ic-name">Manov Kopi</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/kuliner/movenpick.png') }}" alt="Logo Movenpick Surabaya City" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','MSC');"></span><span class="ic-name">Movenpick Surabaya City</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/kuliner/sitarasa.png') }}" alt="Logo Sitarasa" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','STR');"></span><span class="ic-name">Sitarasa</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/kuliner/sunrisehotel.png') }}" alt="Logo Sunrise Hotel" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','SRH);"></span><span class="ic-name">Sunrise Hotel</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/kuliner/the-southern.png') }}" alt="Logo The Southern Hotel" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','TSH');"></span><span class="ic-name">The Southern Hotel</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/kuliner/vasa-hotel.png') }}" alt="Logo Vasa Hotel Surabaya" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','VSH');"></span><span class="ic-name">Vasa Hotel Surabaya</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/kuliner/munchies-bakery.png') }}" alt="Logo Munchies Bakery" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','MCH');"></span><span class="ic-name">Munchies Bakery</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/kuliner/manna-bakery.png') }}" alt="Logo Manna Bakery" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','MNA');"></span><span class="ic-name">Manna Bakery</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/kuliner/ada-rasa.png') }}" alt="Logo Ada Rasa Bakery" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','ADR');"></span><span class="ic-name">Ada Rasa Bakery</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/kuliner/carrefour.png') }}" alt="Logo Carrefour Mojokerto" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','CRF');"></span><span class="ic-name">Carrefour Mojokerto</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/kuliner/gunung-welirang.png') }}" alt="Logo Gunung Welirang" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','GWA');"></span><span class="ic-name">Gunung Welirang</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/kuliner/ganessa.png') }}" alt="Logo Ganessa" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','GNS');"></span><span class="ic-name">Ganessa</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/kuliner/bagus-agriseta.png') }}" alt="Logo Bagus Agriseta Mandiri" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','BAM');"></span><span class="ic-name">Bagus Agriseta Mandiri</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/kuliner/aston.png') }}" alt="Logo Aston Hotel" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','AST');"></span><span class="ic-name">Aston Hotel</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/kuliner/manovkopi.png') }}" alt="Logo Manov Kopi" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','MVK');"></span><span class="ic-name">Manov Kopi</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/kuliner/movenpick.png') }}" alt="Logo Movenpick Surabaya City" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','MSC');"></span><span class="ic-name">Movenpick Surabaya City</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/kuliner/sitarasa.png') }}" alt="Logo Sitarasa" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','STR');"></span><span class="ic-name">Sitarasa</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/kuliner/sunrisehotel.png') }}" alt="Logo Sunrise Hotel" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','SRH);"></span><span class="ic-name">Sunrise Hotel</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/kuliner/the-southern.png') }}" alt="Logo The Southern Hotel" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','TSH');"></span><span class="ic-name">The Southern Hotel</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/kuliner/vasa-hotel.png') }}" alt="Logo Vasa Hotel Surabaya" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','VSH');"></span><span class="ic-name">Vasa Hotel Surabaya</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/kuliner/munchies-bakery.png') }}" alt="Logo Munchies Bakery" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','MCH');"></span><span class="ic-name">Munchies Bakery</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/kuliner/manna-bakery.png') }}" alt="Logo Manna Bakery" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','MNA');"></span><span class="ic-name">Manna Bakery</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/kuliner/ada-rasa.png') }}" alt="Logo Ada Rasa Bakery" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','ADR');"></span><span class="ic-name">Ada Rasa Bakery</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/kuliner/carrefour.png') }}" alt="Logo Carrefour Mojokerto" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','CRF');"></span><span class="ic-name">Carrefour Mojokerto</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/kuliner/gunung-welirang.png') }}" alt="Logo Gunung Welirang" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','GWA');"></span><span class="ic-name">Gunung Welirang</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/kuliner/ganessa.png') }}" alt="Logo Ganessa" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','GNS');"></span><span class="ic-name">Ganessa</span></div>
-          <div class="ic-logo"><span class="ic-mark"><img src="{{ asset('images/kuliner/bagus-agriseta.png') }}" alt="Logo Bagus Agriseta Mandiri" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('ic-fallback'); this.parentElement.setAttribute('data-fallback','BAM');"></span><span class="ic-name">Bagus Agriseta Mandiri</span></div>
+          <div class="ic-logo-group">
+            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/kuliner/aston.png') }}" alt="Logo Aston Hotel" loading="lazy"></div>
+            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/kuliner/manovkopi.png') }}" alt="Logo Manov Kopi" loading="lazy"></div>
+            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/kuliner/movenpick.png') }}" alt="Logo Movenpick Surabaya City" loading="lazy"></div>
+            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/kuliner/sitarasa.png') }}" alt="Logo Sitarasa" loading="lazy"></div>
+            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/kuliner/sunrisehotel.png') }}" alt="Logo Sunrise Hotel" loading="lazy"></div>
+            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/kuliner/the-southern.png') }}" alt="Logo The Southern Hotel" loading="lazy"></div>
+            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/kuliner/vasa-hotel.png') }}" alt="Logo Vasa Hotel Surabaya" loading="lazy"></div>
+            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/kuliner/aysha.png') }}" alt="Logo Aysha" loading="lazy"></div>
+            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/kuliner/deavy-hantaran.png') }}" alt="Logo Deavy Hantaran" loading="lazy"></div>
+            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/kuliner/favehotel.png') }}" alt="Logo Fave Hotel" loading="lazy"></div>
+            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/kuliner/fullspace.png') }}" alt="Logo Fullspace" loading="lazy"></div>
+            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/kuliner/lynn-tuban.png') }}" alt="Logo Lynn Hotel Tuban" loading="lazy"></div>
+            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/kuliner/proofco.png') }}" alt="Logo Proof.co" loading="lazy"></div>
+          </div>
+          <div class="ic-logo-group" aria-hidden="true">
+            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/kuliner/aston.png') }}" alt="" loading="lazy"></div>
+            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/kuliner/manovkopi.png') }}" alt="" loading="lazy"></div>
+            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/kuliner/movenpick.png') }}" alt="" loading="lazy"></div>
+            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/kuliner/sitarasa.png') }}" alt="" loading="lazy"></div>
+            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/kuliner/sunrisehotel.png') }}" alt="" loading="lazy"></div>
+            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/kuliner/the-southern.png') }}" alt="" loading="lazy"></div>
+            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/kuliner/vasa-hotel.png') }}" alt="" loading="lazy"></div>
+            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/kuliner/aysha.png') }}" alt="" loading="lazy"></div>
+            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/kuliner/deavy-hantaran.png') }}" alt="" loading="lazy"></div>
+            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/kuliner/favehotel.png') }}" alt="" loading="lazy"></div>
+            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/kuliner/fullspace.png') }}" alt="" loading="lazy"></div>
+            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/kuliner/lynn-tuban.png') }}" alt="" loading="lazy"></div>
+            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/kuliner/proofco.png') }}" alt="" loading="lazy"></div>
+          </div>
         </div>
       </div>
       <div class="ic-footer" data-reveal><span>Belajar &bull; Praktik &bull; Berkolaborasi &bull; Siap Berkarya</span></div>
@@ -1810,16 +1740,8 @@
       </div>
       <div class="produk-note">Kumpulan karya siswa KULINER — diolah melalui proses kreatif, uji rasa, presentasi, dan produksi hidangan nyata.</div>
     </div>
-    <div class="produk-filters" data-reveal>
-      <button class="pf-btn active" data-f="all">SEMUA</button>
-      <button class="pf-btn" data-f="masakan">MASAKAN UTAMA</button>
-      <button class="pf-btn" data-f="pastry">PASTRY &amp; BAKERY</button>
-      <button class="pf-btn" data-f="plating">FOOD PHOTOGRAPHY</button>
-    </div>
     <div class="produk-slider" data-reveal>
-      <button class="produk-arrow prev" id="produkPrev" aria-label="Sebelumnya"><i class="fas fa-chevron-left"></i></button>
-      <div class="produk-viewport">
-        <div class="produk-track" id="produkTrack">
+      <div class="produk-track" id="produkTrack">
           <article class="produk-card" data-cat="masakan">
             <div class="produk-photo"><img src="{{ asset('images/kuliner/beimie.jpeg') }}" alt="Hidangan nusantara karya siswa KULINER" loading="lazy"><span class="produk-badge">Masakan Utama</span></div>
             <div class="pc-body"><h3>BeiMie</h3><p>Mie unik berbahan dasar daun murbei yang alami dan kaya manfaat, perpaduan cita rasa lezat dengan pilihan yang lebih sehat.</p><div class="pc-foot"><span>Studio Produksi</span><span><i class="fas fa-arrow-right"></i></span></div></div>
@@ -1832,15 +1754,8 @@
             <div class="produk-photo"><img src="{{ asset('images/kuliner/pastry-kuliner.jpeg') }}" alt="Kreasi kue karya siswa KULINER" loading="lazy"><span class="produk-badge">Pastry &amp; Bakery</span></div>
             <div class="pc-body"><h3>Kreasi Kue &amp; Roti</h3><p>Pembuatan aneka kue dan roti dengan teknik dan resep pastry yang tepat, tampil cantik dan lezat.</p><div class="pc-foot"><span>Studio Produksi</span><span><i class="fas fa-arrow-right"></i></span></div></div>
           </article>
-          <article class="produk-card" data-cat="plating">
-            <div class="produk-photo"><img src="{{ asset('images/kuliner-pastry.jpg') }}" alt="Plating kreatif karya siswa KULINER" loading="lazy"><span class="produk-badge">Plating &amp; Penyajian</span></div>
-            <div class="pc-body"><h3>Plating Kreatif</h3><p>Penataan hidangan dengan teknik plating dan garnish untuk tampilan yang artistik dan menggugah selera.</p><div class="pc-foot"><span>Studio Produksi</span><span><i class="fas fa-arrow-right"></i></span></div></div>
-          </article>
-        </div>
       </div>
-      <button class="produk-arrow next" id="produkNext" aria-label="Selanjutnya"><i class="fas fa-chevron-right"></i></button>
     </div>
-    <div class="produk-dots" id="produkDots"></div>
   </section>
 
   <!-- ===== SECTION 8 — KEGIATAN & PRESTASI ===== -->
@@ -1904,100 +1819,6 @@
     </div>
   </section>
 
-  <!-- ===== SECTION 10 — CARI JURUSANMU (QUIZ) ===== -->
-  <section class="cari-section section-pad" id="cari-jurusan">
-    <div class="orn" aria-hidden="true">
-      <span class="o-chevron"></span><span class="o-line"></span><span class="o-dots"></span>
-      <span class="o-ring"></span><span class="o-gold"></span><span class="o-square"></span>
-    </div>
-    <div class="cari-head" data-reveal>
-      <div class="eyebrow gold">SEBERAPA COCOK?</div>
-      <h2 class="big-heading">KULINER COCOK <span>BUAT KAMU?</span></h2>
-    </div>
-    <div class="cari-card" data-reveal>
-      <span class="cari-deco" aria-hidden="true"></span>
-      <span class="cari-deco2" aria-hidden="true"></span>
-      <div id="cariQuiz" class="cari-quiz">
-        <div class="cari-top">
-          <span class="cari-count" id="cariCount">01 / 05</span>
-          <span style="font-size:.65rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#8aa0b5">Kenali minatmu</span>
-        </div>
-        <div class="cari-bar"><div class="cari-bar-fill" id="cariBar"></div></div>
-        <div class="cari-step active" data-q="1">
-          <h3 class="cari-ask">Kamu lebih suka aktivitas yang mana?</h3>
-          <div class="cari-options">
-            <div class="cari-opt" data-v="0"><span class="cari-opt-ic"><i class="fas fa-utensils"></i></span><span class="cari-opt-lb">Memasak dan mengolah makanan</span><span class="cari-check"><i class="fas fa-check"></i></span></div>
-            <div class="cari-opt" data-v="1"><span class="cari-opt-ic"><i class="fas fa-cookie-bite"></i></span><span class="cari-opt-lb">Membuat kue dan pastry</span><span class="cari-check"><i class="fas fa-check"></i></span></div>
-            <div class="cari-opt" data-v="2"><span class="cari-opt-ic"><i class="fas fa-camera"></i></span><span class="cari-opt-lb">Menata dan memotret hidangan</span><span class="cari-check"><i class="fas fa-check"></i></span></div>
-            <div class="cari-opt" data-v="3"><span class="cari-opt-ic"><i class="fas fa-plate-wheat"></i></span><span class="cari-opt-lb">Menata plating & penyajian</span><span class="cari-check"><i class="fas fa-check"></i></span></div>
-            <div class="cari-opt" data-v="4"><span class="cari-opt-ic"><i class="fas fa-lightbulb"></i></span><span class="cari-opt-lb">Mengembangkan resep &amp; menu baru</span><span class="cari-check"><i class="fas fa-check"></i></span></div>
-          </div>
-        </div>
-        <div class="cari-step" data-q="2">
-          <h3 class="cari-ask">Mata pelajaran mana yang paling menarik?</h3>
-          <div class="cari-options">
-            <div class="cari-opt" data-v="2"><span class="cari-opt-ic"><i class="fas fa-magnifying-glass"></i></span><span class="cari-opt-lb">IPA & Biologi</span><span class="cari-check"><i class="fas fa-check"></i></span></div>
-            <div class="cari-opt" data-v="1"><span class="cari-opt-ic"><i class="fas fa-flask"></i></span><span class="cari-opt-lb">Kimia & Analisis</span><span class="cari-check"><i class="fas fa-check"></i></span></div>
-            <div class="cari-opt" data-v="0"><span class="cari-opt-ic"><i class="fas fa-utensils"></i></span><span class="cari-opt-lb">Seni Kuliner &amp; Presentasi</span><span class="cari-check"><i class="fas fa-check"></i></span></div>
-            <div class="cari-opt" data-v="3"><span class="cari-opt-ic"><i class="fas fa-lightbulb"></i></span><span class="cari-opt-lb">Ekonomi & Bisnis Kuliner</span><span class="cari-check"><i class="fas fa-check"></i></span></div>
-            <div class="cari-opt" data-v="4"><span class="cari-opt-ic"><i class="fas fa-utensils"></i></span><span class="cari-opt-lb">Seni & Kreativitas</span><span class="cari-check"><i class="fas fa-check"></i></span></div>
-          </div>
-        </div>
-        <div class="cari-step" data-q="3">
-          <h3 class="cari-ask">Kalau mengerjakan proyek kreatif, kamu paling suka peran apa?</h3>
-          <div class="cari-options">
-            <div class="cari-opt" data-v="2"><span class="cari-opt-ic"><i class="fas fa-fire-burner"></i></span><span class="cari-opt-lb">Mengolah &amp; memasak</span><span class="cari-check"><i class="fas fa-check"></i></span></div>
-            <div class="cari-opt" data-v="1"><span class="cari-opt-ic"><i class="fas fa-cookie-bite"></i></span><span class="cari-opt-lb">Membuat kue &amp; pastry</span><span class="cari-check"><i class="fas fa-check"></i></span></div>
-            <div class="cari-opt" data-v="3"><span class="cari-opt-ic"><i class="fas fa-plate-wheat"></i></span><span class="cari-opt-lb">Menata plating &amp; garnish</span><span class="cari-check"><i class="fas fa-check"></i></span></div>
-            <div class="cari-opt" data-v="4"><span class="cari-opt-ic"><i class="fas fa-briefcase"></i></span><span class="cari-opt-lb">Memasarkan & berjualan</span><span class="cari-check"><i class="fas fa-check"></i></span></div>
-            <div class="cari-opt" data-v="0"><span class="cari-opt-ic"><i class="fas fa-utensils"></i></span><span class="cari-opt-lb">Mengambil foto &amp; video</span><span class="cari-check"><i class="fas fa-check"></i></span></div>
-          </div>
-        </div>
-        <div class="cari-step" data-q="4">
-          <h3 class="cari-ask">Apa tujuanmu setelah lulus SMK?</h3>
-          <div class="cari-options">
-            <div class="cari-opt" data-v="2"><span class="cari-opt-ic"><i class="fas fa-utensils"></i></span><span class="cari-opt-lb">Bekerja di industri kreatif</span><span class="cari-check"><i class="fas fa-check"></i></span></div>
-            <div class="cari-opt" data-v="4"><span class="cari-opt-ic"><i class="fas fa-briefcase"></i></span><span class="cari-opt-lb">Membangun studio atau usaha kreatif sendiri</span><span class="cari-check"><i class="fas fa-check"></i></span></div>
-            <div class="cari-opt" data-v="0"><span class="cari-opt-ic"><i class="fas fa-graduation-cap"></i></span><span class="cari-opt-lb">Kuliah di bidang kuliner &amp; kreatif</span><span class="cari-check"><i class="fas fa-check"></i></span></div>
-            <div class="cari-opt" data-v="1"><span class="cari-opt-ic"><i class="fas fa-magnifying-glass"></i></span><span class="cari-opt-lb">Menjadi chef profesional</span><span class="cari-check"><i class="fas fa-check"></i></span></div>
-            <div class="cari-opt" data-v="3"><span class="cari-opt-ic"><i class="fas fa-lightbulb"></i></span><span class="cari-opt-lb">Menjadi content creator</span><span class="cari-check"><i class="fas fa-check"></i></span></div>
-          </div>
-        </div>
-        <div class="cari-step" data-q="5">
-          <h3 class="cari-ask">Saat bekerja dalam tim, kamu biasanya?</h3>
-          <div class="cari-options">
-            <div class="cari-opt" data-v="2"><span class="cari-opt-ic"><i class="fas fa-users"></i></span><span class="cari-opt-lb">Mengerjakan proyek secara langsung</span><span class="cari-check"><i class="fas fa-check"></i></span></div>
-            <div class="cari-opt" data-v="3"><span class="cari-opt-ic"><i class="fas fa-calendar-days"></i></span><span class="cari-opt-lb">Mengatur alur &amp; deadline proyek</span><span class="cari-check"><i class="fas fa-check"></i></span></div>
-            <div class="cari-opt" data-v="1"><span class="cari-opt-ic"><i class="fas fa-list-check"></i></span><span class="cari-opt-lb">Mereview &amp; menyempurnakan karya</span><span class="cari-check"><i class="fas fa-check"></i></span></div>
-            <div class="cari-opt" data-v="0"><span class="cari-opt-ic"><i class="fas fa-image"></i></span><span class="cari-opt-lb">Mencari referensi visual</span><span class="cari-check"><i class="fas fa-check"></i></span></div>
-            <div class="cari-opt" data-v="4"><span class="cari-opt-ic"><i class="fas fa-lightbulb"></i></span><span class="cari-opt-lb">Memberi konsep kreatif baru</span><span class="cari-check"><i class="fas fa-check"></i></span></div>
-          </div>
-        </div>
-        <div class="cari-nav">
-          <button type="button" class="cari-back" id="cariBack"><i class="fas fa-arrow-left"></i> Kembali</button>
-          <button type="button" class="cari-next" id="cariNext">Lanjut <i class="fas fa-arrow-right"></i></button>
-        </div>
-      </div>
-      <div class="cari-result" id="cariResult">
-        <div class="cari-score-ring-wrap">
-          <svg class="cari-score-ring" viewBox="0 0 160 160" aria-hidden="true">
-            <defs><linearGradient id="cariGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#FFD54A"/><stop offset="100%" stop-color="#FF8A00"/></linearGradient></defs>
-            <circle class="ring-bg" cx="80" cy="80" r="66"></circle>
-            <circle class="ring-fg" id="cariRing" cx="80" cy="80" r="66"></circle>
-          </svg>
-          <div class="cari-score-num"><b id="cariScoreNum">0%</b><span>Kecocokan</span></div>
-        </div>
-        <h3 class="cari-score-label">TINGKAT KECOCOKANMU <em id="cariScoreLabel">—</em></h3>
-        <p class="cari-score-desc" id="cariScoreDesc">Kamu punya minat yang kuat pada memasak, eksperimen rasa, dan menghasilkan hidangan nyata — semua itu ada di KULINER.</p>
-        <div class="cari-score-reasons" id="cariReasons"></div>
-        <div class="cari-score-actions">
-          <a href="#tentang-aphp" class="cari-cta-primary">Kenali KULINER Lebih Dalam <i class="fas fa-arrow-right"></i></a>
-          <button type="button" class="cari-cta-ghost" id="cariRestart"><i class="fas fa-redo"></i> Ulangi Tes</button>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- ===== LAB TOUR — VISUAL IDENTIK DENGAN VIRTUAL TOUR SEJARAH ===== -->
   <section class="vt-section" id="lab-tour" aria-label="Kitchen Tour KULINER SMK Negeri 2 Mojokerto">
     <span class="vt-watermark" aria-hidden="true">KULINER</span>
@@ -2006,7 +1827,7 @@
     <div class="vt-inner">
       <div class="vt-media" data-reveal="left">
         <div class="vt-frame">
-          <img src="{{ asset('images/kuliner-dapur.jpg') }}" alt="Dapur Praktik Kuliner SMK Negeri 2 Mojokerto — Kitchen Tour" loading="lazy">
+          <img src="{{ asset('tour/lab-pastry.jpg') }}" alt="Dapur Praktik Kuliner SMK Negeri 2 Mojokerto — Kitchen Tour" loading="lazy">
           <span class="vt-badge"><i class="fa-solid fa-cookie-bite"></i> Kitchen Tour</span>
           <button class="vt-play" type="button" aria-label="Mulai Kitchen Tour KULINER" onclick="document.getElementById('labTourLink')?.click()"><i class="fa-solid fa-play"></i></button>
           <div class="vt-caption">
@@ -2021,7 +1842,7 @@
         <h2 class="vt-title" data-reveal>Jelajahi <span class="vt-gold">Dapur Praktik Kuliner</span><span class="vt-sub">Lihat Kitchen Tour KULINER</span></h2>
         <p class="vt-desc" data-reveal>Kenali lebih dekat studio KULINER sebagai ruang belajar dan praktik untuk merancang produk makanan, mengembangkan konsep, serta memproduksi kewirausahaan kuliner.</p>
         <div class="vt-feats" data-reveal><span class="vt-feat"><i class="fa-solid fa-check"></i> Fasilitas Studio</span><span class="vt-feat"><i class="fa-solid fa-check"></i> Pengolahan Makanan</span><span class="vt-feat"><i class="fa-solid fa-check"></i> Presentasi Karya</span></div>
-        <a href="#" id="labTourLink" class="vt-btn" data-reveal>Mulai Kitchen Tour <i class="fa-solid fa-arrow-right"></i></a>
+        <a href="{{ route('profil.tour') }}?scene=lab-pastry" id="labTourLink" class="vt-btn" data-reveal>Mulai Kitchen Tour <i class="fa-solid fa-arrow-right"></i></a>
       </div>
     </div>
   </section>
@@ -2038,8 +1859,7 @@
       <h2>Siap Menjadi Bagian dari <span>KULINER?</span></h2>
       <p>Kenali potensimu, temukan pengalaman belajar yang sesuai, dan mulai perjalananmu bersama KULINER — dari ide menuju karya dan masa depan kreatif.</p>
       <div class="aphp-cta-actions">
-        <a href="#cari-jurusan" class="aphp-cta-btn"><i class="fas fa-star"></i> Cari Jurusanmu</a>
-        <a href="{{ route('home') }}#ppdb" class="aphp-cta-ghost"><i class="fas fa-pen"></i> Daftar PPDB</a>
+        <a href="{{ route('ppdb') }}" class="aphp-cta-btn"><i class="fas fa-pen"></i> Daftar PPDB</a>
       </div>
     </div>
   </section>
@@ -2068,97 +1888,6 @@
     if(checks>=8){pending.forEach(function(el){el.classList.add('revealed')});clearInterval(iv)}
     else if(pending.length===0)clearInterval(iv)
   },400)
-})();
-</script>
-
-<script>
-/* ---- CARI JURUSANMU (Quiz) ---- */
-(function(){
-  var quiz=document.getElementById('cariQuiz'),result=document.getElementById('cariResult');
-  var steps=Array.prototype.slice.call(quiz.querySelectorAll('.cari-step'));
-  var countEl=document.getElementById('cariCount'),barEl=document.getElementById('cariBar');
-  var backBtn=document.getElementById('cariBack'),nextBtn=document.getElementById('cariNext');
-  var current=0,answers=[];
-  function selectOpt(opt){Array.prototype.forEach.call(opt.parentNode.children,function(c){c.classList.remove('selected')});opt.classList.add('selected')}
-  quiz.querySelectorAll('.cari-opt').forEach(function(opt){opt.addEventListener('click',function(){selectOpt(opt)})});
-  function goTo(i){
-    current=Math.max(0,Math.min(i,steps.length-1));
-    steps.forEach(function(s,idx){s.classList.toggle('active',idx===current)});
-    countEl.textContent='0'+(current+1)+' / 05';
-    barEl.style.width=((current+1)/steps.length*100)+'%';
-    backBtn.style.visibility=current===0?'hidden':'visible';
-    nextBtn.innerHTML=current===steps.length-1?'Lihat Hasil <i class="fas fa-star"></i>':'Lanjut <i class="fas fa-arrow-right"></i>'
-  }
-  backBtn.addEventListener('click',function(){if(current>0)goTo(current-1)});
-  nextBtn.addEventListener('click',function(){
-    var sel=steps[current].querySelector('.cari-opt.selected');
-    if(!sel)return;
-    answers[current]=parseInt(sel.getAttribute('data-v'),10);
-    if(current<steps.length-1){goTo(current+1)}else{showResult()}
-  });
-  function showResult(){
-    var sum=answers.reduce(function(a,b){return a+b},0);
-    var score=62+Math.round(sum/4);score=Math.max(62,Math.min(92,score));
-    quiz.style.display='none';result.classList.add('show');
-    document.getElementById('cariScoreNum').textContent=score+'%';
-    var label=document.getElementById('cariScoreLabel'),desc=document.getElementById('cariScoreDesc');
-    if(score>=85){label.textContent='Sangat Cocok';desc.textContent='Minatmu sangat selaras dengan dunia KULINER — memasak, eksperimen rasa, dan hidangan nyata adalah duniamu. Kamu akan berkembang pesat di sini!'}
-    else if(score>=75){label.textContent='Cocok';desc.textContent='Kamu punya ketertarikan kuat pada kuliner dan hidangan. Dengan semangat berkarya di KULINER, potensimu akan terus terasah.'}
-    else{label.textContent='Cukup Cocok';desc.textContent='Ada banyak sisi KULINER yang bisa kamu eksplorasi — dari memasak hingga industri kuliner. Coba kenali lebih dalam lewat tur di bawah!'}
-    document.getElementById('cariReasons').innerHTML=[
-      {t:'Proyek kreatif setiap minggu',i:'fa-cookie-bite'},{t:'Belajar membuat karya sendiri',i:'fa-plate-wheat'},{t:'Bekal wirausaha & industri',i:'fa-briefcase'}
-    ].map(function(r){return '<span class="cari-reason"><i class="fas '+r.i+'"></i> '+r.t+'</span>'}).join('');
-    requestAnimationFrame(function(){setTimeout(function(){document.getElementById('cariRing').style.strokeDashoffset=414-(414*score/100)},120)})
-  }
-  document.getElementById('cariRestart').addEventListener('click',restart);
-  function restart(){
-    answers=[];result.classList.remove('show');result.style.display='none';
-    quiz.style.display='block';
-    steps.forEach(function(s){s.classList.remove('active');Array.prototype.forEach.call(s.querySelectorAll('.cari-opt'),function(o){o.classList.remove('selected')})});
-    goTo(0);document.getElementById('cariRing').style.strokeDashoffset=414
-  }
-  goTo(0)
-})();
-</script>
-
-<script>
-/* ---- Produk Slider + Filter ---- */
-(function(){
-  var track=document.getElementById('produkTrack'),prevBtn=document.getElementById('produkPrev'),nextBtn=document.getElementById('produkNext'),dotsWrap=document.getElementById('produkDots');
-  var filterBtns=Array.prototype.slice.call(document.querySelectorAll('.pf-btn'));
-  if(!track)return;
-  var index=0;
-  function cards(){return Array.prototype.slice.call(track.children)}
-  function visible(){return cards().filter(function(c){return c.style.display!=='none'})}
-  function pageSize(){if(window.innerWidth<=760)return 1;if(window.innerWidth<=1050)return 2;return 3}
-  function buildDots(){
-    dotsWrap.innerHTML='';var total=visible().length,pages=Math.max(1,Math.ceil(total/pageSize()));
-    if(total<=pageSize()){dotsWrap.classList.add('hidden');return}
-    dotsWrap.classList.remove('hidden');
-    for(var i=0;i<pages;i++){var b=document.createElement('button');if(i===index)b.classList.add('active');b.setAttribute('aria-label','Slide '+(i+1));(function(idx){b.addEventListener('click',function(){goTo(idx)})})(i);dotsWrap.appendChild(b)}
-  }
-  function update(){
-    var vis=visible(),per=pageSize(),maxIndex=Math.max(0,Math.ceil(vis.length/per)-1);
-    if(index>maxIndex)index=maxIndex;
-    var offset=0,i=0;
-    for(;i<cards().length;i++){if(cards()[i].style.display==='none')continue;if(i===index*per)break;offset+=cards()[i].offsetWidth+19}
-    track.style.transform='translateX(-'+offset+'px)';
-    prevBtn.disabled=index<=0;nextBtn.disabled=index>=maxIndex;
-    Array.prototype.forEach.call(dotsWrap.children,function(d,di){d.classList.toggle('active',di===index)})
-  }
-  function goTo(i){var maxIndex=Math.max(0,Math.ceil(visible().length/pageSize())-1);index=Math.min(Math.max(i,0),maxIndex);update()}
-  prevBtn.addEventListener('click',function(){goTo(index-1)});
-  nextBtn.addEventListener('click',function(){goTo(index+1)});
-  filterBtns.forEach(function(btn){
-    btn.addEventListener('click',function(){
-      filterBtns.forEach(function(b){b.classList.remove('active')});btn.classList.add('active');
-      var f=btn.getAttribute('data-f');
-      cards().forEach(function(c){c.style.display=(f==='all'||c.getAttribute('data-cat')===f)?'':'none'});
-      index=0;buildDots();update()
-    })
-  });
-  window.addEventListener('resize',function(){buildDots();update()});
-  buildDots();update()
 })();
 </script>
 @endpush
