@@ -416,103 +416,13 @@
           <div class="ks-track" id="ksTrack">
             <div class="ks-slide">
               <img src="{{ asset('images/karya/multimie.jpeg') }}" alt="Karya APHP: MultiMie" loading="eager">
-              <span class="ks-slide-tag"><i class="fas fa-cake-candles"></i> Makanan</span>
+              <span class="ks-slide-tag"><i class="fas fa-utensils"></i> Makanan</span>
               <span class="ks-slide-no">01 / 08</span>
               <div class="ks-slide-cap">
                 <h3>MultiMie</h3>
                 <p>Mi instan praktis dengan bumbu siap seduh — produk inovasi siswa APHP.</p>
                 <div class="ks-slide-meta">
                   <span><i class="fas fa-user"></i> Tim APHP Angkatan 2023</span>
-                  <span><i class="fas fa-laptop-code"></i> Rekayasa Perangkat Lunak</span>
-                  <span><i class="fas fa-calendar-alt"></i> 2025</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="ks-slide">
-              <img src="{{ asset('images/karya-coding.jpg') }}" alt="Karya RPL: Pengembangan Aplikasi di Lab Komputer" loading="lazy">
-              <span class="ks-slide-tag"><i class="fas fa-code"></i> Aplikasi &amp; IT</span>
-              <span class="ks-slide-no">02 / 08</span>
-              <div class="ks-slide-cap">
-                <h3>Pengembangan Aplikasi di Lab RPL</h3>
-                <p>Proses pengembangan aplikasi mobile &amp; web oleh siswa RPL di laboratorium komputer — kolaborasi tim, coding, dan pengujian produk digital.</p>
-                <div class="ks-slide-meta">
-                  <span><i class="fas fa-user"></i> Kelas XI RPL</span>
-                  <span><i class="fas fa-laptop-code"></i> Rekayasa Perangkat Lunak</span>
-                  <span><i class="fas fa-calendar-alt"></i> 2025</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="ks-slide">
-              <img src="{{ asset('images/karya-kuliner.jpg') }}" alt="Karya Kuliner: Hidangan Khas Nusantara" loading="lazy">
-              <span class="ks-slide-tag"><i class="fas fa-utensils"></i> Kuliner</span>
-              <span class="ks-slide-no">03 / 08</span>
-              <div class="ks-slide-cap">
-                <h3>Hidangan Khas Nusantara</h3>
-                <p>Kreasi hidangan utama khas Indonesia dengan teknik modern — hasil praktik tata boga siswa jurusan Kuliner untuk uji kompetensi.</p>
-                <div class="ks-slide-meta">
-                  <span><i class="fas fa-user"></i> Kelas XII Kuliner</span>
-                  <span><i class="fas fa-utensils"></i> Kuliner</span>
-                  <span><i class="fas fa-calendar-alt"></i> 2025</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="ks-slide">
-              <img src="{{ asset('images/karya-cake.jpg') }}" alt="Karya Kuliner: Pastry &amp; Bakery" loading="lazy">
-              <span class="ks-slide-tag"><i class="fas fa-cake-candles"></i> Kuliner</span>
-              <span class="ks-slide-no">04 / 08</span>
-              <div class="ks-slide-cap">
-                <h3>Pastry &amp; Bakery Kreatif</h3>
-                <p>Kue dan roti dekoratif dengan teknik pastry modern — karya siswa jurusan Kuliner yang siap bersaing di industri bakery.</p>
-                <div class="ks-slide-meta">
-                  <span><i class="fas fa-user"></i> Kelas XI Kuliner</span>
-                  <span><i class="fas fa-cake-candles"></i> Kuliner</span>
-                  <span><i class="fas fa-calendar-alt"></i> 2024</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="ks-slide">
-              <img src="{{ asset('images/karya-dkv.jpg') }}" alt="Karya DKV: Desain Visual" loading="lazy">
-              <span class="ks-slide-tag"><i class="fas fa-palette"></i> Desain</span>
-              <span class="ks-slide-no">05 / 08</span>
-              <div class="ks-slide-cap">
-                <h3>Desain Visual &amp; Branding</h3>
-                <p>Karya desain grafis, ilustrasi, dan branding yang dibuat siswa DKV — dari identitas visual produk hingga materi promosi digital.</p>
-                <div class="ks-slide-meta">
-                  <span><i class="fas fa-user"></i> Kelas XI DKV</span>
-                  <span><i class="fas fa-palette"></i> Desain Komunikasi Visual</span>
-                  <span><i class="fas fa-calendar-alt"></i> 2025</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="ks-slide">
-              <img src="{{ asset('images/karya-poster.jpg') }}" alt="Karya DKV: Poster Kreatif" loading="lazy">
-              <span class="ks-slide-tag"><i class="fas fa-palette"></i> Desain</span>
-              <span class="ks-slide-no">06 / 08</span>
-              <div class="ks-slide-cap">
-                <h3>Poster Kreatif &amp; Media Visual</h3>
-                <p>Poster kampanye dan media visual karya siswa DKV — mengombinasikan tipografi, ilustrasi, dan warna untuk pesan yang kuat.</p>
-                <div class="ks-slide-meta">
-                  <span><i class="fas fa-user"></i> Tim DKV</span>
-                  <span><i class="fas fa-palette"></i> Desain Komunikasi Visual</span>
-                  <span><i class="fas fa-calendar-alt"></i> 2024</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="ks-slide">
-              <img src="{{ asset('images/karya-olahan.jpg') }}" alt="Karya APHP: Produk Olahan Pertanian" loading="lazy">
-              <span class="ks-slide-tag"><i class="fas fa-seedling"></i> Produk Olahan</span>
-              <span class="ks-slide-no">07 / 08</span>
-              <div class="ks-slide-cap">
-                <h3>Produk Olahan Hasil Pertanian</h3>
-                <p>Inovasi pengolahan hasil pertanian menjadi produk bernilai tambah — roti, samosa, es krim, hingga aneka cemilan wirausaha.</p>
-                <div class="ks-slide-meta">
-                  <span><i class="fas fa-user"></i> Kelas XII APHP</span>
                   <span><i class="fas fa-seedling"></i> Agribisnis Pengolahan Hasil Pertanian</span>
                   <span><i class="fas fa-calendar-alt"></i> 2025</span>
                 </div>
@@ -520,15 +430,105 @@
             </div>
 
             <div class="ks-slide">
-              <img src="{{ asset('images/karya-bank.jpg') }}" alt="Karya Perbankan Syariah: Layanan &amp; Administrasi" loading="lazy">
-              <span class="ks-slide-tag"><i class="fas fa-chart-line"></i> Bisnis &amp; Keuangan</span>
+              <img src="{{ asset('images/karya/tambalbanexpres.jpeg') }}" alt="Karya RPL: Pengembangan Aplikasi Mobile" loading="lazy">
+              <span class="ks-slide-tag"><i class="fas fa-code"></i> Aplikasi &amp; IT</span>
+              <span class="ks-slide-no">02 / 08</span>
+              <div class="ks-slide-cap">
+                <h3>Aplikasi Tambal Ban Express</h3>
+                <p>Mengembangkan aplikasi layanan tambal ban berbasis web untuk memudahkan pemesanan dan pelayanan secara cepat dan praktis.</p>
+                <div class="ks-slide-meta">
+                  <span><i class="fas fa-user"></i> Kelas XII RPL</span>
+                  <span><i class="fas fa-laptop-code"></i> Rekayasa Perangkat Lunak</span>
+                  <span><i class="fas fa-calendar-alt"></i> 2024</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="ks-slide">
+              <img src="{{ asset('images/karya/bungatelang.jpeg') }}" alt="Sari Bunga Telang" loading="lazy">
+              <span class="ks-slide-tag"><i class="fas fa-bottle-water"></i> Minuman</span>
+              <span class="ks-slide-no">03 / 08</span>
+              <div class="ks-slide-cap">
+                <h3>Sari Bunga Telang</h3>
+                <p>Minuman herbal alami dari ekstrak bunga telang dengan warna biru khas dan cita rasa menyegarkan — inovasi olahan kreatif siswa APHP.</p>
+                <div class="ks-slide-meta">
+                  <span><i class="fas fa-user"></i> Kelas XII APHP</span>
+                  <span><i class="fas fa-utensils"></i> Kuliner</span>
+                  <span><i class="fas fa-calendar-alt"></i> 2024</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="ks-slide">
+              <img src="{{ asset('images/karya/pastry-kuliner.jpeg') }}" alt="Karya Kuliner: Pastry &amp; Bakery" loading="lazy">
+              <span class="ks-slide-tag"><i class="fas fa-utensils"></i> Makanan</span>
+              <span class="ks-slide-no">04 / 08</span>
+              <div class="ks-slide-cap">
+                <h3>Pastry &amp; Bakery Kreatif</h3>
+                <p>Pembuatan aneka kue dan roti dengan teknik dan resep pastry yang tepat, tampil cantik dan lezat.</p>
+                <div class="ks-slide-meta">
+                  <span><i class="fas fa-user"></i> Kelas XI Kuliner</span>
+                  <span><i class="fas fa-utensils"></i> Kuliner</span>
+                  <span><i class="fas fa-calendar-alt"></i> 2025</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="ks-slide">
+              <img src="{{ asset('images/karya/nirmana.jpeg') }}" alt="Nirmana 3D" loading="lazy">
+              <span class="ks-slide-tag"><i class="fas fa-palette"></i> Produk Kreatif</span>
+              <span class="ks-slide-no">05 / 08</span>
+              <div class="ks-slide-cap">
+                <h3>Nirmana 3D</h3>
+                <p>Mengeksplorasi bentuk, ruang, tekstur, dan komposisi untuk menghasilkan karya tiga dimensi yang harmonis dan menarik.</p>
+                <div class="ks-slide-meta">
+                  <span><i class="fas fa-user"></i> Kelas XII DKV</span>
+                  <span><i class="fas fa-palette"></i> Desain Komunikasi Visual</span>
+                  <span><i class="fas fa-calendar-alt"></i> 2025</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="ks-slide">
+              <img src="{{ asset('images/karya/estrakbuahmojo.jpeg') }}" alt="Maja Mojo" loading="lazy">
+              <span class="ks-slide-tag"><i class="fas fa-bottle-water"></i> Minuman</span>
+              <span class="ks-slide-no">06 / 08</span>
+              <div class="ks-slide-cap">
+                <h3>Maja Mojo</h3>
+                <p>Minuman olahan berbahan dasar buah mojo dengan cita rasa unik, inovasi kreatif siswa RPL dalam memanfaatkan bahan pangan lokal.</p>
+                <div class="ks-slide-meta">
+                  <span><i class="fas fa-user"></i> Tim RPL</span>
+                  <span><i class="fas fa-laptop-code"></i> Rekayasa Perangkat Lunak</span>
+                  <span><i class="fas fa-calendar-alt"></i> 2024</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="ks-slide">
+              <img src="{{ asset('images/karya/vocamo.png') }}" alt="Karya APHP: Produk Olahan Pertanian" loading="lazy">
+              <span class="ks-slide-tag"><i class="fas fa-seedling"></i> Produk Olahan</span>
+              <span class="ks-slide-no">07 / 08</span>
+              <div class="ks-slide-cap">
+                <h3>Produk Olahan Hasil Pertanian</h3>
+                <p>Mengolah bahan pangan menjadi berbagai produk roti bernilai tambah — dari roti manis, roti isi, hingga kreasi roti inovatif.</p>
+                <div class="ks-slide-meta">
+                  <span><i class="fas fa-user"></i>APHP</span>
+                  <span><i class="fas fa-seedling"></i> Agribisnis Pengolahan Hasil Pertanian</span>
+                  <span><i class="fas fa-calendar-alt"></i> 2024</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="ks-slide">
+              <img src="{{ asset('images/karya/bei-mie.jpeg') }}" alt="Bei Mie" loading="lazy">
+              <span class="ks-slide-tag"><i class="fas fa-utensils"></i> Makanan</span>
               <span class="ks-slide-no">08 / 08</span>
               <div class="ks-slide-cap">
-                <h3>Layanan &amp; Administrasi Perbankan Syariah</h3>
-                <p>Simulasi layanan perbankan syariah — administrasi transaksi, kas, dan literasi keuangan yang dipraktikkan langsung oleh siswa.</p>
+                <h3>Bei Mie</h3>
+                <p>Mie unik berbahan dasar daun murbei yang alami dan kaya manfaat, perpaduan cita rasa lezat dengan pilihan yang lebih sehat.</p>
                 <div class="ks-slide-meta">
-                  <span><i class="fas fa-user"></i> Kelas XI Perbankan</span>
-                  <span><i class="fas fa-chart-line"></i> Layanan Perbankan Syariah</span>
+                  <span><i class="fas fa-user"></i> Kelas XI Kuliner</span>
+                  <span><i class="fas fa-utensils"></i> Kuliner</span>
                   <span><i class="fas fa-calendar-alt"></i> 2025</span>
                 </div>
               </div>
@@ -624,7 +624,7 @@
         <div class="ks-prestasi-card" data-reveal style="--d:1">
           <div class="ks-prestasi-media">
             <img src="{{ asset('images/karya/bungatelang.jpeg') }}" alt="Sari Bunga Telang" loading="lazy">
-            <div class="ks-prestasi-medal"><i class="fas fa-cotton-bureau"></i></div>
+            <div class="ks-prestasi-medal"><i class="fas fa-bottle-water"></i></div>
           </div>
           <div class="ks-prestasi-body">
             <h3>Sari Bunga Telang</h3>
@@ -634,46 +634,46 @@
         </div>
         <div class="ks-prestasi-card" data-reveal style="--d:2">
           <div class="ks-prestasi-media">
-            <img src="{{ asset('images/karya-dkv.jpg') }}" alt="Ilustrasi maskot dan identitas visual sekolah karya siswa DKV" loading="lazy">
+            <img src="{{ asset('images/karya/nirmana.jpeg') }}" alt="Nirmana 3D" loading="lazy">
             <div class="ks-prestasi-medal"><i class="fas fa-palette"></i></div>
           </div>
           <div class="ks-prestasi-body">
-            <h3>Maskot &amp; Identitas Visual Sekolah</h3>
-            <p>Karakter maskot dan panduan identitas visual sekolah, dirancang siswa jurusan Desain Komunikasi Visual.</p>
+            <h3>Nirmana 3D</h3>
+            <p>Mengeksplorasi bentuk, ruang, tekstur, dan komposisi untuk menghasilkan karya tiga dimensi yang harmonis dan menarik.</p>
             <span class="ks-prestasi-year">DKV &middot; 2024</span>
           </div>
         </div>
         <div class="ks-prestasi-card" data-reveal style="--d:3">
           <div class="ks-prestasi-media">
-            <img src="{{ asset('images/karya-olahan.jpg') }}" alt="Keripik buah kemasan vakum karya siswa APHP" loading="lazy">
-            <div class="ks-prestasi-medal"><i class="fas fa-seedling"></i></div>
+            <img src="{{ asset('images/karya/beimie.jpeg') }}" alt="Bei Mie" loading="lazy">
+            <div class="ks-prestasi-medal"><i class="fas fa-utensils"></i></div>
           </div>
           <div class="ks-prestasi-body">
-            <h3>Keripik Buah Kemasan Vakum</h3>
-            <p>Produk olahan buah lokal jadi keripik siap jual, buah tangan siswa jurusan APHP.</p>
-            <span class="ks-prestasi-year">APHP &middot; 2024</span>
+            <h3>Bei Mie</h3>
+            <p>Mie unik berbahan dasar daun murbei yang alami dan kaya manfaat, perpaduan cita rasa lezat dengan pilihan yang lebih sehat.</p>
+            <span class="ks-prestasi-year">Kuliner &middot; 2025</span>
           </div>
         </div>
         <div class="ks-prestasi-card" data-reveal style="--d:4">
           <div class="ks-prestasi-media">
-            <img src="{{ asset('images/karya-bank.jpg') }}" alt="Simulasi tabungan pelajar syariah karya siswa LPS" loading="lazy">
-            <div class="ks-prestasi-medal"><i class="fas fa-landmark"></i></div>
+            <img src="{{ asset('images/karya/estrakmojo.jpeg') }}" alt="Maja Mojo" loading="lazy">
+            <div class="ks-prestasi-medal"><i class="fas fa-bottle-water"></i></div>
           </div>
           <div class="ks-prestasi-body">
-            <h3>Simulasi Tabungan Pelajar Syariah</h3>
-            <p>Produk layanan simulasi tabungan &amp; administrasi syariah, dipraktikkan langsung siswa jurusan LPS.</p>
-            <span class="ks-prestasi-year">LPS &middot; 2025</span>
+            <h3>Maja Mojo</h3>
+            <p>Minuman olahan berbahan dasar buah mojo dengan cita rasa unik, inovasi kreatif siswa RPL dalam memanfaatkan bahan pangan lokal.</p>
+            <span class="ks-prestasi-year">RPL &middot; 2024</span>
           </div>
         </div>
         <div class="ks-prestasi-card" data-reveal style="--d:5">
           <div class="ks-prestasi-media">
-            <img src="{{ asset('images/karya-kuliner.jpg') }}" alt="Puding lapis rempah nusantara karya siswa Kuliner" loading="lazy">
+            <img src="{{ asset('images/karya/dapur-produksi.png') }}" alt="Puding lapis rempah nusantara karya siswa Kuliner" loading="lazy">
             <div class="ks-prestasi-medal"><i class="fas fa-utensils"></i></div>
           </div>
           <div class="ks-prestasi-body">
-            <h3>Puding Lapis Rempah Nusantara</h3>
-            <p>Kreasi dessert bercita rasa rempah khas Indonesia, hasil inovasi menu siswa jurusan Kuliner.</p>
-            <span class="ks-prestasi-year">Kuliner &middot; 2023 &ndash; 2025</span>
+            <h3>Bakery & Pastry</h3>
+            <p>Kreasi dessert bercita rasa khas Indonesia, hasil inovasi menu siswa jurusan Kuliner.</p>
+            <span class="ks-prestasi-year">Kuliner &middot; 2025</span>
           </div>
         </div>
       </div>
