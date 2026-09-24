@@ -26,11 +26,18 @@ class KnowledgeRetrieverService
         $matchedContexts = [];
         $normalizedMessage = mb_strtolower(trim($userMessage));
 
-        // Tokenize user message into lower-case words (minimum 3 characters)
+        // Tokenize user message into lower-case words (minimum 2 characters)
         $tokens = array_filter(
             preg_split('/\s+/', preg_replace('/[^\w\s]/u', '', $normalizedMessage)),
-            fn ($token) => mb_strlen($token) >= 3
+            fn ($token) => mb_strlen($token) >= 2
         );
+
+        $stopWords = [
+            'smkn', 'smk', 'mojokerto', 'sekolah', 'kota', 'jurusan', 'ekskul', 'ekstrakurikuler',
+            'profil', 'info', 'informasi', 'dengan', 'untuk', 'yang', 'pada', 'atau', 'serta',
+            'daftar', 'detail', 'tentang', 'mana', 'gimana', 'apa', 'aja', 'bisa', 'ada', 'mau',
+            'tanya', 'kalo', 'kalau', 'bagaimana', 'apakah', 'ini', 'itu', 'dan', 'di', 'ke', 'dari'
+        ];
 
         // 1. Query ChatbotKnowledge base
         $cacheKey = 'chatbot.knowledge.published.v3';
@@ -83,12 +90,12 @@ class KnowledgeRetrieverService
                 // 1. Direct title match or specific token match in title
                 if ($titleNorm !== '') {
                     if (str_contains($normalizedMessage, $titleNorm)) {
-                        $score += 100;
+                        $score += 120;
                     }
                     foreach ($tokens as $token) {
-                        if (mb_strlen($token) >= 3 && str_contains($titleNorm, $token)) {
-                            if (in_array($token, ['jurusan', 'ekskul', 'ekstrakurikuler', 'profil', 'sekolah'], true)) {
-                                $score += 10;
+                        if (str_contains($titleNorm, $token)) {
+                            if (in_array($token, $stopWords, true)) {
+                                $score += 2;
                             } else {
                                 $score += 80;
                             }
@@ -102,24 +109,24 @@ class KnowledgeRetrieverService
                         $kwNorm = mb_strtolower((string) $keyword);
                         if ($kwNorm !== '') {
                             if (str_contains($normalizedMessage, $kwNorm)) {
-                                $score += 50;
+                                $score += 60;
                             } elseif (in_array($kwNorm, $tokens, true)) {
-                                $score += 40;
+                                $score += 50;
                             }
                         }
                     }
                 }
 
                 // 3. Category match
-                if ($categoryNorm !== '' && str_contains($normalizedMessage, $categoryNorm)) {
-                    $score += 15;
+                if ($categoryNorm !== '' && (str_contains($normalizedMessage, $categoryNorm) || in_array($categoryNorm, $tokens, true))) {
+                    $score += 30;
                 }
 
                 // 4. Content token overlap
                 if (!empty($tokens)) {
                     foreach ($tokens as $token) {
-                        if (mb_strlen($token) >= 3 && str_contains($contentNorm, $token)) {
-                            $score += 5;
+                        if (!in_array($token, $stopWords, true) && str_contains($contentNorm, $token)) {
+                            $score += 10;
                         }
                     }
                 }
@@ -229,6 +236,15 @@ class KnowledgeRetrieverService
                 $fallbackContexts[] = "[Kemitraan DUDI] Perusahaan Mitra Industri & BKK: {$partnerList}";
             } else {
                 $fallbackContexts[] = "[Kemitraan DUDI] Bursa Kerja Khusus (BKK) SMKN 2 Mojokerto bekerja sama dengan PT Telkom Indonesia, PT Astra International, Bank Syariah Indonesia, dan industri perhotelan/pangan.";
+            }
+        }
+
+        // Check News & Events
+        if (str_contains($normalizedMessage, 'berita') || str_contains($normalizedMessage, 'kabar') || str_contains($normalizedMessage, 'terbaru') || str_contains($normalizedMessage, 'kegiatan') || str_contains($normalizedMessage, 'acara') || str_contains($normalizedMessage, 'event')) {
+            $news = \App\Models\NewsArticle::latest()->take(3)->get(['title', 'summary']);
+            if ($news->isNotEmpty()) {
+                $newsList = $news->map(fn ($n) => "• {$n->title}: {$n->summary}")->implode(' ');
+                $fallbackContexts[] = "[Berita Terbaru] Berita & Agenda SMKN 2 Mojokerto: {$newsList}";
             }
         }
 
