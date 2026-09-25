@@ -125,7 +125,7 @@ class DatabaseSeeder extends Seeder
 
         // 5. Teacher & Staff
         TeacherStaff::create([
-            'name' => 'Drs. H. Ahmad Fauzi, M.Pd.',
+            'name' => 'Drs. Iswahyudi, M.Pd.',
             'nip' => '196805121994031005',
             'role_position' => 'Kepala Sekolah',
             'is_active' => true,
@@ -187,6 +187,28 @@ class DatabaseSeeder extends Seeder
             'status' => ChatbotKnowledgeStatus::PUBLISHED,
             'is_ai_allowed' => true,
             'priority' => 10,
+            'published_at' => now(),
+        ]);
+
+        ChatbotKnowledge::create([
+            'title' => 'Kepala Sekolah dan Kepemimpinan SMKN 2 Mojokerto',
+            'category' => 'Profil',
+            'content' => 'Kepala SMK Negeri 2 Mojokerto saat ini adalah Bapak Drs. Iswahyudi, M.Pd. Beliau memimpin SMKN 2 Mojokerto dalam mewujudkan sekolah kejuruan yang unggul, berkarakter, dan berdaya saing global.',
+            'keywords' => ['kepsek', 'kepala sekolah', 'iswahyudi', 'pak iswahyudi', 'bapak iswahyudi', 'pemimpin', 'pimpinan'],
+            'status' => ChatbotKnowledgeStatus::PUBLISHED,
+            'is_ai_allowed' => true,
+            'priority' => 10,
+            'published_at' => now(),
+        ]);
+
+        ChatbotKnowledge::create([
+            'title' => 'Fasilitas Kantin Sehat Sekolah',
+            'category' => 'Fasilitas',
+            'content' => 'SMK Negeri 2 Mojokerto menyediakan fasilitas Kantin Sehat yang bersih dan higienis bagi siswa dan warga sekolah untuk membeli aneka makanan, minuman, serta camilan sehat selama jam istirahat sekolah.',
+            'keywords' => ['kantin', 'kantin sehat', 'makanan', 'minuman', 'jajanan', 'makan'],
+            'status' => ChatbotKnowledgeStatus::PUBLISHED,
+            'is_ai_allowed' => true,
+            'priority' => 8,
             'published_at' => now(),
         ]);
 

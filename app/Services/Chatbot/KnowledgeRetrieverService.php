@@ -170,13 +170,13 @@ class KnowledgeRetrieverService
     {
         $fallbackContexts = [];
 
-        // Check PPDB / Pendaftaran
-        if (str_contains($normalizedMessage, 'ppdb') || str_contains($normalizedMessage, 'daftar') || str_contains($normalizedMessage, 'pendaftaran') || str_contains($normalizedMessage, 'syarat') || str_contains($normalizedMessage, 'masuk')) {
+        // Check PPDB
+        if (str_contains($normalizedMessage, 'ppdb') || str_contains($normalizedMessage, 'pendaftaran ppdb') || str_contains($normalizedMessage, 'jalur ppdb')) {
             $fallbackContexts[] = "[PPDB] Informasi PPDB 2026: Pendaftaran PPDB SMKN 2 Mojokerto dilakukan secara online melalui portal resmi PPDB Jawa Timur (Jalur Prestasi, Afirmasi, Zonasi). Pendaftaran TIDAK DIPUNGUT BIAYA (GRATIS).";
         }
 
         // Check Majors (Jurusan)
-        if (str_contains($normalizedMessage, 'jurusan') || str_contains($normalizedMessage, 'keahlian') || str_contains($normalizedMessage, 'proli') || str_contains($normalizedMessage, 'rpl') || str_contains($normalizedMessage, 'dkv') || str_contains($normalizedMessage, 'aphp') || str_contains($normalizedMessage, 'kuliner') || str_contains($normalizedMessage, 'lps')) {
+        if (str_contains($normalizedMessage, 'jurusan') || str_contains($normalizedMessage, 'keahlian') || str_contains($normalizedMessage, 'proli')) {
             $majors = Major::all(['code', 'name', 'description']);
             if ($majors->isNotEmpty()) {
                 $majorList = $majors->map(fn ($m) => "{$m->code} ({$m->name}): {$m->description}")->implode(' | ');
@@ -187,7 +187,7 @@ class KnowledgeRetrieverService
         }
 
         // Check School Profile (Visi, Misi, Alamat, Kontak)
-        if (str_contains($normalizedMessage, 'visi') || str_contains($normalizedMessage, 'misi') || str_contains($normalizedMessage, 'alamat') || str_contains($normalizedMessage, 'kontak') || str_contains($normalizedMessage, 'sekolah') || str_contains($normalizedMessage, 'profil') || str_contains($normalizedMessage, 'telepon')) {
+        if (str_contains($normalizedMessage, 'visi') || str_contains($normalizedMessage, 'misi') || str_contains($normalizedMessage, 'alamat sekolah') || str_contains($normalizedMessage, 'kontak sekolah') || str_contains($normalizedMessage, 'profil sekolah')) {
             $profile = SchoolProfile::where('key', 'general')->first();
             if ($profile && is_array($profile->content)) {
                 $c = $profile->content;
@@ -204,12 +204,12 @@ class KnowledgeRetrieverService
         }
 
         // Check Jam Belajar & Operasional
-        if (str_contains($normalizedMessage, 'jam') || str_contains($normalizedMessage, 'jadwal') || str_contains($normalizedMessage, 'masuk') || str_contains($normalizedMessage, 'pulang') || str_contains($normalizedMessage, 'kbm')) {
+        if (str_contains($normalizedMessage, 'jam belajar') || str_contains($normalizedMessage, 'jadwal masuk') || str_contains($normalizedMessage, 'jam masuk') || str_contains($normalizedMessage, 'jam pulang')) {
             $fallbackContexts[] = "[Tata Tertib] Jam Belajar dan Operasional Sekolah: Kegiatan Belajar Mengajar (KBM) di SMKN 2 Mojokerto berlangsung hari Senin hingga Jumat pukul 07.00 WIB - 15.30 WIB. Gerbang sekolah ditutup tepat pukul 07.00 WIB. Hari Sabtu dan Minggu libur.";
         }
 
         // Check Extracurriculars
-        if (str_contains($normalizedMessage, 'ekskul') || str_contains($normalizedMessage, 'ekstrakurikuler') || str_contains($normalizedMessage, 'kegiatan') || str_contains($normalizedMessage, 'pramuka') || str_contains($normalizedMessage, 'paskibra') || str_contains($normalizedMessage, 'robotik')) {
+        if (str_contains($normalizedMessage, 'ekskul') || str_contains($normalizedMessage, 'ekstrakurikuler')) {
             $ekskuls = Extracurricular::all(['name', 'category', 'description']);
             if ($ekskuls->isNotEmpty()) {
                 $ekskulList = $ekskuls->map(fn ($e) => "{$e->name} ({$e->category}): {$e->description}")->implode(' | ');
@@ -219,17 +219,19 @@ class KnowledgeRetrieverService
             }
         }
 
-        // Check Teacher & Staff
-        if (str_contains($normalizedMessage, 'guru') || str_contains($normalizedMessage, 'staf') || str_contains($normalizedMessage, 'pengajar') || str_contains($normalizedMessage, 'kepala sekolah')) {
+        // Check Teacher & Staff / Kepsek
+        if (str_contains($normalizedMessage, 'kepsek') || str_contains($normalizedMessage, 'kepala sekolah') || str_contains($normalizedMessage, 'iswahyudi') || str_contains($normalizedMessage, 'guru') || str_contains($normalizedMessage, 'pengajar') || str_contains($normalizedMessage, 'staf')) {
             $teachers = TeacherStaff::where('is_active', true)->get(['name', 'role_position']);
             if ($teachers->isNotEmpty()) {
                 $teacherList = $teachers->map(fn ($t) => "{$t->name} ({$t->role_position})")->implode(', ');
-                $fallbackContexts[] = "[Guru & Staf] Daftar Pengajar SMKN 2 Mojokerto: {$teacherList}";
+                $fallbackContexts[] = "[Guru & Staf] Kepala Sekolah: Drs. Iswahyudi, M.Pd. Daftar Pengajar SMKN 2 Mojokerto: {$teacherList}";
+            } else {
+                $fallbackContexts[] = "[Guru & Staf] Kepala Sekolah SMKN 2 Mojokerto saat ini adalah Bapak Drs. Iswahyudi, M.Pd.";
             }
         }
 
         // Check Industry Partnerships & BKK
-        if (str_contains($normalizedMessage, 'dudi') || str_contains($normalizedMessage, 'industri') || str_contains($normalizedMessage, 'mitra') || str_contains($normalizedMessage, 'bkk') || str_contains($normalizedMessage, 'kerja') || str_contains($normalizedMessage, 'lowongan') || str_contains($normalizedMessage, 'pkl') || str_contains($normalizedMessage, 'magang')) {
+        if (str_contains($normalizedMessage, 'dudi') || str_contains($normalizedMessage, 'bkk') || str_contains($normalizedMessage, 'mitra industri') || str_contains($normalizedMessage, 'lowongan kerja')) {
             $partners = IndustryPartnership::where('is_active', true)->get(['company_name', 'field_of_work', 'partnership_scope']);
             if ($partners->isNotEmpty()) {
                 $partnerList = $partners->map(fn ($p) => "{$p->company_name} ({$p->field_of_work} - {$p->partnership_scope})")->implode(', ');
@@ -240,7 +242,7 @@ class KnowledgeRetrieverService
         }
 
         // Check News & Events
-        if (str_contains($normalizedMessage, 'berita') || str_contains($normalizedMessage, 'kabar') || str_contains($normalizedMessage, 'terbaru') || str_contains($normalizedMessage, 'kegiatan') || str_contains($normalizedMessage, 'acara') || str_contains($normalizedMessage, 'event')) {
+        if (str_contains($normalizedMessage, 'berita') || str_contains($normalizedMessage, 'kabar berita')) {
             $news = \App\Models\NewsArticle::latest()->take(3)->get(['title', 'summary']);
             if ($news->isNotEmpty()) {
                 $newsList = $news->map(fn ($n) => "• {$n->title}: {$n->summary}")->implode(' ');

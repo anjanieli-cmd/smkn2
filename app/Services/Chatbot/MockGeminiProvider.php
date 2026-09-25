@@ -43,7 +43,8 @@ class MockGeminiProvider implements AIProviderInterface
             'bkk' => ['bkk', 'dudi', 'industri', 'lowongan', 'pkl', 'magang', 'mitra'],
             'quiz' => ['quiz', 'matchmaker', 'cocok', 'rekomendasi ekskul'],
             'prestasi' => ['prestasi', 'juara', 'lks', 'karya'],
-            'guru' => ['guru', 'kepala sekolah', 'pengajar', 'staf'],
+            'guru' => ['guru', 'kepala sekolah', 'kepsek', 'iswahyudi', 'pak iswahyudi', 'bapak iswahyudi', 'pengajar', 'staf'],
+            'kantin' => ['kantin', 'makanan', 'minuman', 'kantin sehat'],
             'kawilaras' => ['kawi laras', 'budaya', 'kamis wiwitan'],
             'sehat' => ['sehat', 'kebugaran', 'gerakan sekolah sehat'],
         ];
@@ -67,6 +68,11 @@ class MockGeminiProvider implements AIProviderInterface
         }
 
         // 2. Direct topic handling for rich, detailed, persona-aligned responses
+        // Kepala Sekolah / Kepsek
+        if (str_contains($promptLower, 'kepsek') || str_contains($promptLower, 'kepala sekolah') || str_contains($promptLower, 'iswahyudi')) {
+            return "Halo! 👋 Kepala Sekolah SMKN 2 Kota Mojokerto saat ini adalah **Bapak Drs. Iswahyudi, M.Pd.** 👨‍🏫.\n\nBeliau memimpin SMKN 2 Kota Mojokerto dalam mewujudkan sekolah kejuruan yang unggul, berkarakter, dan berdaya saing global. Ada hal lain yang ingin kamu tanyakan seputar kepemimpinan atau program sekolah kami? 😊";
+        }
+
         // RPL
         if (str_contains($promptLower, 'rpl') || str_contains($promptLower, 'perangkat lunak') || str_contains($promptLower, 'pplg')) {
             return "Halo! 👋 Konsentrasi Keahlian **Rekayasa Perangkat Lunak / PPLG (RPL)** di SMKN 2 Kota Mojokerto berfokus pada pengembangan aplikasi web, mobile, pemrograman berorientasi objek, serta manajemen basis data.\n\n💻 **Lokasi Pembelajaran**: Lab Komputer RPL 1 & RPL 2 (Lantai 2 Gedung Utama).\n💼 **Peluang Karir**: Software Engineer, Web Developer, Mobile App Developer, UI/UX Designer, & Database Administrator.\n🤝 **Mitra Industri**: PT Telkom Indonesia, Otak Kanan Surabaya, Khofie Soft. 😊";
@@ -122,18 +128,23 @@ class MockGeminiProvider implements AIProviderInterface
         }
 
         // PPDB
-        if (str_contains($promptLower, 'ppdb') || str_contains($promptLower, 'daftar') || str_contains($promptLower, 'pendaftaran') || str_contains($promptLower, 'biaya')) {
+        if (str_contains($promptLower, 'ppdb') || str_contains($promptLower, 'pendaftaran ppdb') || str_contains($promptLower, 'biaya ppdb')) {
             return "Halo! 👋 Informasi Pendaftaran PPDB SMKN 2 Kota Mojokerto:\n\n✨ **Biaya Pendaftaran**: **GRATIS (100% TIDAK DIPUNGUT BIAYA)**.\n📌 **4 Jalur Masuk**: 1. Jalur Afirmasi, 2. Jalur Prestasi (Rapor & Kejuaraan), 3. Jalur Zonasi, 4. Jalur Mutasi Orang Tua.\n📋 **Syarat Umum**: Lulusan SMP/MTs, Ijazah/SKL, usia maks 21 tahun, sehat jasmani & rohani. 😊";
         }
 
         // Profil & Alamat
-        if (str_contains($promptLower, 'alamat') || str_contains($promptLower, 'kontak') || str_contains($promptLower, 'lokasi') || str_contains($promptLower, 'dimana') || str_contains($promptLower, 'telepon')) {
+        if (str_contains($promptLower, 'alamat') || str_contains($promptLower, 'kontak') || str_contains($promptLower, 'lokasi sekolah') || str_contains($promptLower, 'dimana sekolah')) {
             return "Halo! 👋 Informasi Resmi Profil & Alamat SMKN 2 Kota Mojokerto:\n\n🏫 **Alamat**: Jl. Raden Wijaya No. 1, Kranggan, Kota Mojokerto, Jawa Timur.\n📞 **Telepon**: (0321) 321555 | ✉️ **Email**: info@smkn2mojokerto.sch.id\n⭐ **Akreditasi**: A (Unggul) | **Status**: SMK Pusat Keunggulan (PK)\n🎯 **Motto**: *Disiplin • Berakhlak • Berprestasi*. 😊";
         }
 
-        // Kepala Sekolah & Guru
-        if (str_contains($promptLower, 'guru') || str_contains($promptLower, 'kepala sekolah') || str_contains($promptLower, 'pengajar') || str_contains($promptLower, 'staf')) {
-            return "Halo! 👋 Tenaga Pendidik & Staf SMKN 2 Kota Mojokerto dipimpin oleh:\n\n👨‍🏫 **Kepala Sekolah**: Drs. Akhmad Mukhlason (Drs. H. Ahmad Fauzi, M.Pd.)\n👩‍💻 **Ketua Program RPL**: Rina Wijaya, S.Kom., M.T.\n🎨 **Ketua Program DKV**: Bambang Sugiarto, S.Sn.\n\nSeluruh dewan guru terverifikasi profesional dan bersertifikasi pendidik di bidangnya masing-masing. 😊";
+        // Guru & Staf
+        if (str_contains($promptLower, 'guru') || str_contains($promptLower, 'pengajar') || str_contains($promptLower, 'staf')) {
+            return "Halo! 👋 Tenaga Pendidik & Staf SMKN 2 Kota Mojokerto dipimpin oleh:\n\n👨‍🏫 **Kepala Sekolah**: Drs. Iswahyudi, M.Pd.\n👩‍💻 **Ketua Program RPL**: Rina Wijaya, S.Kom., M.T.\n🎨 **Ketua Program DKV**: Bambang Sugiarto, S.Sn.\n\nSeluruh dewan guru terverifikasi profesional dan bersertifikasi pendidik di bidangnya masing-masing. 😊";
+        }
+
+        // Kantin
+        if (str_contains($promptLower, 'kantin')) {
+            return "Halo! 👋 SMKN 2 Kota Mojokerto memiliki fasilitas **Kantin Sehat** yang bersih dan higienis. Kantin ini menyediakan berbagai pilihan makanan, minuman, dan camilan sehat bagi seluruh siswa selama jam istirahat sekolah. 🍱🥤😊";
         }
 
         // Fasilitas
