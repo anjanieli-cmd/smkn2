@@ -8,9 +8,6 @@ use App\Http\Controllers\Admin\FactCheckAdminController;
 use App\Http\Controllers\Admin\IndustryAdminController;
 use App\Http\Controllers\Admin\JobVacancyAdminController;
 use App\Http\Controllers\Admin\MajorAdminController;
-use App\Http\Controllers\Admin\NewsAdminController;
-use App\Http\Controllers\Admin\StudentWorkAdminController;
-use App\Http\Controllers\Admin\TeacherStaffAdminController;
 use App\Http\Controllers\Public\AlumniController;
 use App\Http\Controllers\Public\BkkController;
 use App\Http\Controllers\Public\ChatbotController;
@@ -117,59 +114,4 @@ Route::prefix('admin')->group(function () {
         Route::delete('/{id}', [AlumniAdminController::class, 'destroy']);
     });
 
-    Route::prefix('news')->group(function () {
-        Route::get('/', [NewsAdminController::class, 'index']);
-        Route::post('/', [NewsAdminController::class, 'store']);
-        Route::get('/{id}', [NewsAdminController::class, 'show']);
-        Route::put('/{id}', [NewsAdminController::class, 'update']);
-        Route::delete('/{id}', [NewsAdminController::class, 'destroy']);
-    });
-
-    Route::prefix('teacher-staff')->group(function () {
-        Route::get('/', [TeacherStaffAdminController::class, 'index']);
-        Route::post('/', [TeacherStaffAdminController::class, 'store']);
-        Route::get('/{id}', [TeacherStaffAdminController::class, 'show']);
-        Route::put('/{id}', [TeacherStaffAdminController::class, 'update']);
-        Route::delete('/{id}', [TeacherStaffAdminController::class, 'destroy']);
-    });
-
-    Route::prefix('job-vacancies')->group(function () {
-        Route::get('/', [JobVacancyAdminController::class, 'index']);
-        Route::post('/', [JobVacancyAdminController::class, 'store']);
-        Route::get('/{id}', [JobVacancyAdminController::class, 'show']);
-        Route::put('/{id}', [JobVacancyAdminController::class, 'update']);
-        Route::delete('/{id}', [JobVacancyAdminController::class, 'destroy']);
-    });
-
-    Route::prefix('industry-partnerships')->group(function () {
-        Route::get('/', [IndustryAdminController::class, 'index']);
-        Route::post('/', [IndustryAdminController::class, 'store']);
-        Route::get('/{id}', [IndustryAdminController::class, 'show']);
-        Route::put('/{id}', [IndustryAdminController::class, 'update']);
-        Route::delete('/{id}', [IndustryAdminController::class, 'destroy']);
-    });
-
-    Route::prefix('majors')->group(function () {
-        Route::get('/', [MajorAdminController::class, 'index']);
-        Route::post('/', [MajorAdminController::class, 'store']);
-        Route::get('/{id}', [MajorAdminController::class, 'show']);
-        Route::put('/{id}', [MajorAdminController::class, 'update']);
-        Route::delete('/{id}', [MajorAdminController::class, 'destroy']);
-    });
-
-    Route::prefix('extracurriculars')->group(function () {
-        Route::get('/', [ExtracurricularAdminController::class, 'index']);
-        Route::post('/', [ExtracurricularAdminController::class, 'store']);
-        Route::get('/{id}', [ExtracurricularAdminController::class, 'show']);
-        Route::put('/{id}', [ExtracurricularAdminController::class, 'update']);
-        Route::delete('/{id}', [ExtracurricularAdminController::class, 'destroy']);
-    });
-
-    Route::prefix('student-works')->group(function () {
-        Route::get('/', [StudentWorkAdminController::class, 'index']);
-        Route::post('/', [StudentWorkAdminController::class, 'store']);
-        Route::get('/{id}', [StudentWorkAdminController::class, 'show']);
-        Route::put('/{id}', [StudentWorkAdminController::class, 'update']);
-        Route::delete('/{id}', [StudentWorkAdminController::class, 'destroy']);
-    });
 });

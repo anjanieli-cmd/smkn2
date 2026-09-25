@@ -609,5 +609,9 @@ class DatabaseSeeder extends Seeder
             'upvotes_count' => 15,
             'status' => EVoiceStatus::REVIEWING,
         ]);
+
+           $this->call([
+       AdminSeeder::class,
+   ]);
     }
 }

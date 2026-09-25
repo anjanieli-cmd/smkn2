@@ -403,13 +403,24 @@
     .footer-social-row{display:flex;gap:.9rem}
     .footer-social-row a{width:44px;height:44px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,.22);color:rgba(255,255,255,.85);font-size:1.05rem;transition:all .3s}
     .footer-social-row a:hover{background:#F59E0B;border-color:#F59E0B;color:#092C4C;transform:translateY(-3px)}
+
+    /* ---------- FOOTER PARTNERS / MITRA LOGO ---------- */
+    .footer-partners{padding:2.4rem 0 0;text-align:center}
+    .footer-partners-label{font-size:.7rem;font-weight:800;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:1.2rem}
+    .footer-partners-row{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:1.4rem 2.2rem}
+    .footer-partner-logo{display:flex;align-items:center;justify-content:center;height:44px;padding:0 .4rem;opacity:.75;filter:grayscale(100%) brightness(1.8);transition:all .3s}
+    .footer-partner-logo:hover{opacity:1;filter:none}
+    .footer-partner-logo img{height:100%;width:auto;max-width:120px;object-fit:contain}
+
     .footer-bottom{border-top:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.18);color:rgba(255,255,255,.55);font-size:.8rem;padding:1.15rem 0;margin-top:3.2rem}
     .footer-bottom-inner{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
     .footer-copy{display:flex;align-items:center;gap:.8rem;flex-wrap:wrap}
     .footer-copy-sign{font-style:italic;color:rgba(255,255,255,.72)}
-    .footer-legal{display:flex;gap:1.2rem;flex-wrap:wrap}
+    .footer-legal{display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap}
     .footer-legal a{color:rgba(255,255,255,.6);transition:color .25s}
     .footer-legal a:hover{color:#F59E0B}
+    .footer-admin-link{display:inline-flex;align-items:center;gap:.35rem;color:rgba(255,255,255,.45) !important;border:1px solid rgba(255,255,255,.18);border-radius:7px;padding:.28rem .6rem;font-size:.76rem}
+    .footer-admin-link:hover{color:#F59E0B !important;border-color:rgba(245,158,11,.5)}
 
     /* ---------- SIBOT ---------- */
     .sibot-fab{position:fixed;right:22px;bottom:22px;z-index:900}
@@ -777,6 +788,18 @@
         <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
       </div>
     </div>
+
+    {{-- ===== MITRA & PENDUKUNG (logo Garuda Spark, JHIC 2.0, Jagoan Hosting, Ngalup, Komdigi) ===== --}}
+    <div class="footer-partners">
+      <div class="footer-partners-label">Didukung Oleh</div>
+      <div class="footer-partners-row">
+        <div class="footer-partner-logo"><img src="{{ asset('images/partners/garuda-spark.png') }}" alt="Garuda Spark"></div>
+        <div class="footer-partner-logo"><img src="{{ asset('images/partners/jhic.png') }}" alt="JHIC 2.0"></div>
+        <div class="footer-partner-logo"><img src="{{ asset('images/partners/jagoan-hosting.png') }}" alt="Jagoan Hosting"></div>
+        <div class="footer-partner-logo"><img src="{{ asset('images/partners/ngalup.png') }}" alt="Ngalup"></div>
+        <div class="footer-partner-logo"><img src="{{ asset('images/partners/komdigi.png') }}" alt="Komdigi"></div>
+      </div>
+    </div>
   </div>
   <div class="footer-bottom">
     <div class="container">
@@ -788,6 +811,7 @@
         <div class="footer-legal">
           <a href="#">Kebijakan Privasi</a>
           <a href="#">Syarat &amp; Ketentuan</a>
+          <a href="{{ route('admin.login') }}" class="footer-admin-link"><i class="fas fa-lock"></i> Admin login</a>
         </div>
       </div>
     </div>
@@ -850,9 +874,6 @@
 
 </div>
 
-  {{-- ================= BACK TO TOP ================= --}}
-  <button id="backToTop" aria-label="Kembali ke atas"><i class="fas fa-arrow-up"></i></button>
-
   {{-- ================= SCRIPT GLOBAL ================= --}}
   <script>
     window.addEventListener('load', () => {
@@ -903,15 +924,6 @@
           if (openItem !== item) openItem.classList.remove('dropdown-open');
         });
       });
-    });
-
-    const backToTop = document.getElementById('backToTop');
-    window.addEventListener('scroll', () => {
-      if (window.pageYOffset > 400) backToTop.classList.add('show');
-      else backToTop.classList.remove('show');
-    });
-    backToTop?.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
     const revealElements = document.querySelectorAll('[data-reveal]');

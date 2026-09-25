@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\AdminAuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -69,11 +71,9 @@ Route::view('/keahlian/aphp', 'keahlian.aphp')
 // SISWA
 // ==========================================================================
 
-// Karya Siswa
+// Karya Siswa (legacy path — dipertahankan biar link lama tidak 404)
 Route::view('/karya-siswa', 'karya-siswa')
-    ->name('karya-siswa');
-
-
+    ->name('karya-siswa.legacy');
 
 
 // ==========================================================================
@@ -118,9 +118,6 @@ Route::view('/prestasi', 'siswa.prestasi-siswa')
 Route::redirect('/galeri/prestasi-sekolah', '/prestasi')
     ->name('prestasi-sekolah');
 
-Route::view('/keahlian/aphp', 'keahlian.aphp')
-    ->name('aphp');
-
 Route::view('/keahlian/dkv', 'keahlian.dkv')
     ->name('dkv');
 
@@ -145,5 +142,27 @@ Route::view('/alumni/portofolio', 'alumni.portofolio')
 Route::view('ai', 'ai')
     ->name('ai');
 
-Route::view('/admin/dashboard', 'admin.dashboard')
-    ->name('admin.dashboard');
+
+// ==========================================================================
+// ADMIN
+// ==========================================================================
+Route::prefix('admin')->name('admin.')->group(function () {
+
+    // ===== Halaman login (khusus tamu / belum login) =====
+    Route::middleware('guest')->group(function () {
+        Route::get('/login', [AdminAuthController::class, 'showLoginForm'])->name('login');
+        Route::post('/login', [AdminAuthController::class, 'login'])->name('login.submit');
+    });
+
+    // ===== Halaman yang butuh login =====
+    Route::middleware('auth')->group(function () {
+        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+        Route::post('/logout', [AdminAuthController::class, 'logout'])->name('logout');
+
+        // contoh route modul lain, tinggal tambah sesuai kebutuhan:
+        // Route::resource('berita', BeritaController::class);
+        // Route::resource('galeri', GaleriController::class);
+        // Route::resource('ppdb', PpdbController::class);
+    });
+
+});
