@@ -70,6 +70,10 @@ class ChatbotService
         $aiResponse = $this->aiProvider->generateResponse($message, $contextChunks);
         $aiMs = round((microtime(true) - $aiStart) * 1000, 2);
 
+        // Sanitize any triple asterisks (***) from response
+        $aiResponse = str_replace('***', '', $aiResponse);
+        $aiResponse = (string) preg_replace('/\*{3,}/', '**', $aiResponse);
+
         $totalMs = round((microtime(true) - $startTime) * 1000, 2);
 
         return [

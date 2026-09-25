@@ -35,12 +35,18 @@ class KnowledgeRetrieverService
         $stopWords = [
             'smkn', 'smk', 'mojokerto', 'sekolah', 'kota', 'jurusan', 'ekskul', 'ekstrakurikuler',
             'profil', 'info', 'informasi', 'dengan', 'untuk', 'yang', 'pada', 'atau', 'serta',
-            'daftar', 'detail', 'tentang', 'mana', 'gimana', 'apa', 'aja', 'bisa', 'ada', 'mau',
-            'tanya', 'kalo', 'kalau', 'bagaimana', 'apakah', 'ini', 'itu', 'dan', 'di', 'ke', 'dari'
+            'daftar', 'detail', 'tentang', 'mana', 'gimana', 'gmana', 'apa', 'aja', 'bisa', 'ada',
+            'mau', 'tanya', 'kalo', 'kalau', 'bagaimana', 'apakah', 'ini', 'itu', 'dan', 'di', 'ke',
+            'dari', 'aku', 'saya', 'kamu', 'anda', 'dia', 'mereka', 'kita', 'kami', 'sama', 'benci',
+            'suka', 'sedih', 'senang', 'marah', 'lagi', 'sudah', 'telah', 'akan', 'jadi', 'juga',
+            'tapi', 'tetapi', 'jika', 'karena', 'sebab', 'maka', 'ia', 'tersebut', 'banyak', 'punya',
+            'tidak', 'gak', 'ngga', 'nggak', 'bukan', 'dong', 'deh', 'sih', 'kok', 'kah', 'lah',
+            'ya', 'yah', 'kan', 'banget', 'bener', 'benar', 'iseng', 'woi', 'halo', 'haloo', 'hi',
+            'hey', 'hari', 'ini', 'es', 'teh', 'beli', 'bro', 'sis', 'gan', 'guys', 'nih', 'mah'
         ];
 
         // 1. Query ChatbotKnowledge base
-        $cacheKey = 'chatbot.knowledge.published.v3';
+        $cacheKey = 'chatbot.knowledge.published.v7';
         $knowledges = Cache::remember($cacheKey, 3600, function () {
             return ChatbotKnowledge::query()
                 ->where('status', ChatbotKnowledgeStatus::PUBLISHED)
@@ -86,11 +92,13 @@ class KnowledgeRetrieverService
                 $contentNorm = mb_strtolower((string) $content);
 
                 $score = 0;
+                $hasDirectMatch = false;
 
                 // 1. Direct title match or specific token match in title
                 if ($titleNorm !== '') {
                     if (str_contains($normalizedMessage, $titleNorm)) {
                         $score += 120;
+                        $hasDirectMatch = true;
                     }
                     foreach ($tokens as $token) {
                         if (str_contains($titleNorm, $token)) {
@@ -98,6 +106,7 @@ class KnowledgeRetrieverService
                                 $score += 2;
                             } else {
                                 $score += 80;
+                                $hasDirectMatch = true;
                             }
                         }
                     }
@@ -110,8 +119,10 @@ class KnowledgeRetrieverService
                         if ($kwNorm !== '') {
                             if (str_contains($normalizedMessage, $kwNorm)) {
                                 $score += 60;
+                                $hasDirectMatch = true;
                             } elseif (in_array($kwNorm, $tokens, true)) {
                                 $score += 50;
+                                $hasDirectMatch = true;
                             }
                         }
                     }
@@ -120,21 +131,29 @@ class KnowledgeRetrieverService
                 // 3. Category match
                 if ($categoryNorm !== '' && (str_contains($normalizedMessage, $categoryNorm) || in_array($categoryNorm, $tokens, true))) {
                     $score += 30;
+                    $hasDirectMatch = true;
                 }
 
-                // 4. Content token overlap
+                // 4. Content token overlap (requires at least 3 non-stopword token matches)
+                $contentTokenMatches = 0;
                 if (!empty($tokens)) {
                     foreach ($tokens as $token) {
                         if (!in_array($token, $stopWords, true) && str_contains($contentNorm, $token)) {
                             $score += 10;
+                            $contentTokenMatches++;
                         }
                     }
                 }
+                if ($contentTokenMatches >= 3) {
+                    $hasDirectMatch = true;
+                }
 
-                // Priority weight bonus
-                $score += ($priority * 2);
+                // Priority weight bonus only applied if there's a direct match
+                if ($hasDirectMatch) {
+                    $score += ($priority * 2);
+                }
 
-                if ($score >= 25) {
+                if ($hasDirectMatch && $score >= 40) {
                     $scoredMatches[] = [
                         'score' => $score,
                         'chunk' => "[{$category}] {$title}: {$content}",
@@ -209,13 +228,13 @@ class KnowledgeRetrieverService
         }
 
         // Check Extracurriculars (& Specific Ekskul Sub-Keywords)
-        if (str_contains($normalizedMessage, 'ekskul') || str_contains($normalizedMessage, 'ekstrakurikuler') || str_contains($normalizedMessage, 'pramuka') || str_contains($normalizedMessage, 'paskibra') || str_contains($normalizedMessage, 'robotik') || str_contains($normalizedMessage, 'pmr') || str_contains($normalizedMessage, 'futsal') || str_contains($normalizedMessage, 'basket') || str_contains($normalizedMessage, 'voli') || str_contains($normalizedMessage, 'silat') || str_contains($normalizedMessage, 'tari') || str_contains($normalizedMessage, 'musik') || str_contains($normalizedMessage, 'rhisma') || str_contains($normalizedMessage, 'kir')) {
+        if (str_contains($normalizedMessage, 'ekskul') || str_contains($normalizedMessage, 'ekstrakurikuler') || str_contains($normalizedMessage, 'banjari') || str_contains($normalizedMessage, 'basket') || str_contains($normalizedMessage, 'voli') || str_contains($normalizedMessage, 'btq') || str_contains($normalizedMessage, 'futsal') || str_contains($normalizedMessage, 'jurnalistik') || str_contains($normalizedMessage, 'paskib') || str_contains($normalizedMessage, 'pramuka') || str_contains($normalizedMessage, 'tari') || str_contains($normalizedMessage, 'pena') || str_contains($normalizedMessage, 'silat') || str_contains($normalizedMessage, 'pmr') || str_contains($normalizedMessage, 'pik-r') || str_contains($normalizedMessage, 'pikr') || str_contains($normalizedMessage, 'osis') || str_contains($normalizedMessage, 'lacurva') || str_contains($normalizedMessage, 'pasus')) {
             $ekskuls = Extracurricular::all(['name', 'category', 'description']);
             if ($ekskuls->isNotEmpty()) {
                 $ekskulList = $ekskuls->map(fn ($e) => "{$e->name} ({$e->category}): {$e->description}")->implode(' | ');
                 $fallbackContexts[] = "[Ekstrakurikuler] Daftar Ekskul SMKN 2 Mojokerto: {$ekskulList}";
             } else {
-                $fallbackContexts[] = "[Ekstrakurikuler] Kegiatan Ekstrakurikuler: Pramuka (Wajib), Paskibra, Robotik & Coding Club, PMR, Olahraga (Futsal, Basket, Voli), Seni Musik & Tari, serta Kerohanian Islam (Rhisma).";
+                $fallbackContexts[] = "[Ekstrakurikuler] Kegiatan Ekstrakurikuler: Banjari, Basket, Bola Voli, BTQ, Futsal, Jurnalistik, Paskib, Pramuka, Tari, PENA, Silat, PMR, PIK-R, OSIS, Lacurva, Pasus.";
             }
         }
 

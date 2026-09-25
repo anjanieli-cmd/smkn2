@@ -83,27 +83,24 @@ class DatabaseSeeder extends Seeder
             'description' => 'Manajemen keuangan syariah dan administrasi perbankan.',
         ]);
 
-        // 3. Extracurriculars
-        $pramuka = Extracurricular::create([
-            'name' => 'Pramuka',
-            'slug' => 'pramuka',
-            'category' => 'Kepanduan',
-            'description' => 'Pembentukan karakter kepemimpinan dan kemandirian.',
-        ]);
-
-        $paskibra = Extracurricular::create([
-            'name' => 'Paskibra',
-            'slug' => 'paskibra',
-            'category' => 'Kedisiplinan',
-            'description' => 'Pelatihan kedisiplinan dan baris-berbaris.',
-        ]);
-
-        $robotik = Extracurricular::create([
-            'name' => 'Robotik & Coding Club',
-            'slug' => 'robotik-coding-club',
-            'category' => 'Teknologi',
-            'description' => 'Eksplorasi IoT, robotika, dan kompetisi pemetaan kode.',
-        ]);
+        // 3. Extracurriculars & Organizations (Exact from Website Frontend)
+        $pramuka = Extracurricular::create(['name' => 'Pramuka', 'slug' => 'pramuka', 'category' => 'Kepanduan', 'description' => 'Membentuk kemandirian, kepemimpinan, kepedulian lingkungan, dan keterampilan melalui kegiatan kepanduan.']);
+        $paskibra = Extracurricular::create(['name' => 'Paskib', 'slug' => 'paskib', 'category' => 'Kedisiplinan', 'description' => 'Membentuk kedisiplinan, keteguhan, tanggung jawab, dan kekompakan melalui latihan baris-berbaris.']);
+        $robotik = Extracurricular::create(['name' => 'Robotik & Coding Club', 'slug' => 'robotik-coding-club', 'category' => 'Teknologi', 'description' => 'Pengembangan minat bakat di bidang mikrokontroler, IoT, perakitan robot, dan pemrograman.']);
+        $banjari = Extracurricular::create(['name' => 'Banjari', 'slug' => 'banjari', 'category' => 'Keagamaan', 'description' => 'Mengembangkan seni musik Islami melalui lantunan shalawat, kekompakan, dan penampilan dalam kegiatan sekolah.']);
+        $basket = Extracurricular::create(['name' => 'Basket', 'slug' => 'basket', 'category' => 'Olahraga', 'description' => 'Melatih teknik permainan, kebugaran, sportivitas, dan kerja sama tim melalui latihan serta pertandingan pelajar.']);
+        $voli = Extracurricular::create(['name' => 'Bola Voli', 'slug' => 'bola-voli', 'category' => 'Olahraga', 'description' => 'Membangun kekompakan tim melalui latihan teknik dasar, strategi permainan, dan kompetisi antarpelajar.']);
+        $btq = Extracurricular::create(['name' => 'BTQ', 'slug' => 'btq', 'category' => 'Keagamaan', 'description' => 'Meningkatkan kemampuan membaca Al-Qur’an dengan baik serta membangun kebiasaan belajar agama secara rutin.']);
+        $futsal = Extracurricular::create(['name' => 'Futsal', 'slug' => 'futsal', 'category' => 'Olahraga', 'description' => 'Mengasah kecepatan, strategi, disiplin, dan kerja sama tim melalui latihan futsal dan pertandingan pelajar.']);
+        $jurnalistik = Extracurricular::create(['name' => 'Jurnalistik', 'slug' => 'jurnalistik', 'category' => 'Media & Literasi', 'description' => 'Menjadi ruang bagi siswa untuk menulis, meliput kegiatan sekolah, mengolah informasi, dan menghasilkan karya media.']);
+        $tari = Extracurricular::create(['name' => 'Tari', 'slug' => 'tari', 'category' => 'Seni & Budaya', 'description' => 'Melestarikan budaya melalui tari tradisional dan kreasi serta memberikan ruang untuk tampil dan berkarya.']);
+        $pena = Extracurricular::create(['name' => 'PENA', 'slug' => 'pena', 'category' => 'Seni & Budaya', 'description' => 'Wadah mini teater untuk melatih ekspresi, kepercayaan diri, penulisan naskah, dan kemampuan tampil di depan publik.']);
+        $silat = Extracurricular::create(['name' => 'Silat', 'slug' => 'silat', 'category' => 'Bela Diri', 'description' => 'Melatih bela diri, ketahanan fisik, kedisiplinan, dan sikap percaya diri melalui latihan pencak silat.']);
+        $pmr = Extracurricular::create(['name' => 'PMR', 'slug' => 'pmr', 'category' => 'Kesehatan', 'description' => 'Membekali siswa dengan kepedulian kemanusiaan, pertolongan pertama, dan kesiapsiagaan dalam kegiatan sekolah.']);
+        $pikr = Extracurricular::create(['name' => 'PIK-R', 'slug' => 'pik-r', 'category' => 'Kesehatan', 'description' => 'Menjadi ruang edukasi dan konseling sebaya untuk membangun remaja yang sehat, bertanggung jawab, dan berencana.']);
+        $osis = Extracurricular::create(['name' => 'OSIS', 'slug' => 'osis', 'category' => 'Organisasi', 'description' => 'Wadah utama kepemimpinan siswa untuk merancang dan menjalankan berbagai program kegiatan sekolah.']);
+        $lacurva = Extracurricular::create(['name' => 'Lacurva', 'slug' => 'lacurva', 'category' => 'Organisasi', 'description' => 'Komunitas suporter Skaneda yang membangun semangat, kreativitas, dan dukungan positif untuk kegiatan serta prestasi siswa.']);
+        $pasus = Extracurricular::create(['name' => 'Pasus', 'slug' => 'pasus', 'category' => 'Organisasi', 'description' => 'Organisasi siswa yang menumbuhkan kedisiplinan, tanggung jawab, kekompakan, dan kesiapan membantu kegiatan sekolah.']);
 
         // 4. Extracurricular Matchmaker Quiz
         $q1 = ExtracurricularQuestion::create([
@@ -120,7 +117,7 @@ class DatabaseSeeder extends Seeder
         ExtracurricularOption::create([
             'question_id' => $q1->id,
             'option_text' => 'Melatih kedisiplinan dan kegiatan fisik berbaris',
-            'extracurricular_scores' => ['Paskibra' => 10, 'Pramuka' => 5],
+            'extracurricular_scores' => ['Paskib' => 10, 'Pramuka' => 5],
         ]);
 
         // 5. Teacher & Staff
@@ -202,17 +199,6 @@ class DatabaseSeeder extends Seeder
         ]);
 
         ChatbotKnowledge::create([
-            'title' => 'Fasilitas Kantin Sehat Sekolah',
-            'category' => 'Fasilitas',
-            'content' => 'SMK Negeri 2 Mojokerto menyediakan fasilitas Kantin Sehat yang bersih dan higienis bagi siswa dan warga sekolah untuk membeli aneka makanan, minuman, serta camilan sehat selama jam istirahat sekolah.',
-            'keywords' => ['kantin', 'kantin sehat', 'makanan', 'minuman', 'jajanan', 'makan'],
-            'status' => ChatbotKnowledgeStatus::PUBLISHED,
-            'is_ai_allowed' => true,
-            'priority' => 8,
-            'published_at' => now(),
-        ]);
-
-        ChatbotKnowledge::create([
             'title' => 'Sejarah Singkat SMKN 2 Mojokerto',
             'category' => 'Profil',
             'content' => 'SMK Negeri 2 Mojokerto didirikan untuk mencetak tenaga kerja terampil dan profesional di Kota Mojokerto dan sekitarnya. Berdiri di kawasan strategis Kranggan, sekolah ini berkembang pesat menjadi SMK Pusat Keunggulan (PK) dengan 5 konsentrasi keahlian berstandar nasional dan internasional.',
@@ -237,8 +223,8 @@ class DatabaseSeeder extends Seeder
         ChatbotKnowledge::create([
             'title' => 'Fasilitas dan Sarana Prasarana Sekolah',
             'category' => 'Fasilitas',
-            'content' => 'SMKN 2 Mojokerto dilengkapi fasilitas modern: Laboratorium Komputer RPL High-Spec, Studio DKV & Fotografi, Lab Pengolahan Pangan APHP, Commercial Kitchen & Restaurant Kuliner, Bank Mini Syariah LPS, Perpustakaan Digital, Musala, UKS, Lapangan Olahraga, Kantin Sehat, dan Akses Free High-Speed WiFi di seluruh area sekolah.',
-            'keywords' => ['fasilitas', 'sarana', 'prasarana', 'lab', 'laboratorium', 'studio', 'perpustakaan', 'wifi', 'musala', 'musholla', 'uks', 'kantin', 'lapangan'],
+            'content' => 'SMKN 2 Mojokerto dilengkapi fasilitas modern: Laboratorium Komputer RPL High-Spec, Studio DKV & Fotografi, Lab Pengolahan Pangan APHP, Commercial Kitchen & Restaurant Kuliner, Bank Mini Syariah LPS, Perpustakaan Digital, Musala, UKS, Lapangan Olahraga, dan Akses Free High-Speed WiFi di seluruh area sekolah.',
+            'keywords' => ['fasilitas', 'sarana', 'prasarana', 'lab', 'laboratorium', 'studio', 'perpustakaan', 'wifi', 'musala', 'musholla', 'uks', 'lapangan'],
             'status' => ChatbotKnowledgeStatus::PUBLISHED,
             'is_ai_allowed' => true,
             'priority' => 9,
@@ -249,7 +235,7 @@ class DatabaseSeeder extends Seeder
             'title' => 'Jam Belajar dan Operational Sekolah',
             'category' => 'Tata Tertib',
             'content' => 'Kegiatan Belajar Mengajar (KBM) di SMKN 2 Mojokerto berlangsung hari Senin hingga Jumat pukul 07.00 WIB - 15.30 WIB. Gerbang sekolah ditutup tepat pukul 07.00 WIB. Hari Sabtu dan Minggu libur.',
-            'keywords' => ['jam', 'waktu', 'jadwal', 'masuk', 'pulang', 'belajar', 'operasional', 'hari'],
+            'keywords' => ['jam', 'waktu', 'jadwal', 'masuk', 'pulang', 'belajar', 'operasional'],
             'status' => ChatbotKnowledgeStatus::PUBLISHED,
             'is_ai_allowed' => true,
             'priority' => 9,
@@ -257,10 +243,10 @@ class DatabaseSeeder extends Seeder
         ]);
 
         ChatbotKnowledge::create([
-            'title' => 'Kegiatan Ekstrakurikuler',
+            'title' => 'Kegiatan Ekstrakurikuler dan Organisasi Siswa',
             'category' => 'Ekstrakurikuler',
-            'content' => 'SMKN 2 Mojokerto memiliki beragam ekstrakurikuler: Pramuka (wajib), Paskibra, Robotik & Coding Club, PMR, Olahraga (Futsal, Basket, Voli), Seni Musik & Tari, serta Kerohanian Islam (Rhisma).',
-            'keywords' => ['ekskul', 'ekstrakurikuler', 'kegiatan', 'organisasi', 'pramuka', 'paskibra', 'robotik', 'pmr', 'futsal', 'basket', 'osis'],
+            'content' => 'SMKN 2 Mojokerto memiliki 13 Ekstrakurikuler (Banjari, Basket, Bola Voli, BTQ, Futsal, Jurnalistik, Paskib, Pramuka, Tari, PENA, Silat, PMR, PIK-R) dan 3 Organisasi Siswa (OSIS, Lacurva, Pasus).',
+            'keywords' => ['ekskul', 'ekstrakurikuler', 'kegiatan', 'organisasi', 'wadah'],
             'status' => ChatbotKnowledgeStatus::PUBLISHED,
             'is_ai_allowed' => true,
             'priority' => 9,
@@ -294,39 +280,6 @@ class DatabaseSeeder extends Seeder
             'category' => 'Prestasi',
             'content' => 'SMKN 2 Mojokerto meraih berbagai prestasi: Juara LKS Web Technologies & Graphic Design tingkat Jawa Timur, Juara Inovasi Pangan, serta berstatus Sekolah Pusat Keunggulan (PK) dan Sekolah Adiwiyata.',
             'keywords' => ['prestasi', 'juara', 'lks', 'penghargaan', 'pencapaian', 'lomba', 'keunggulan'],
-            'status' => ChatbotKnowledgeStatus::PUBLISHED,
-            'is_ai_allowed' => true,
-            'priority' => 8,
-            'published_at' => now(),
-        ]);
-
-        ChatbotKnowledge::create([
-            'title' => 'Layanan Aspirasi Siswa (E-Voice)',
-            'category' => 'Layanan',
-            'content' => 'E-Voice adalah portal pengaduan dan saran online resmi SMKN 2 Mojokerto. Siswa dapat mengirimkan aspirasi, mendukung usulan teman (upvote), dan memantau status penyelesaian dari manajemen sekolah.',
-            'keywords' => ['evoice', 'e-voice', 'aspirasi', 'pengaduan', 'saran', 'lapor', 'keluhan'],
-            'status' => ChatbotKnowledgeStatus::PUBLISHED,
-            'is_ai_allowed' => true,
-            'priority' => 8,
-            'published_at' => now(),
-        ]);
-
-        ChatbotKnowledge::create([
-            'title' => 'Layanan School FactCheck (Klarifikasi Hoaks)',
-            'category' => 'Layanan',
-            'content' => 'School FactCheck adalah fitur verifikasi berita dan informasi seputar SMKN 2 Mojokerto untuk menangkal sirkulasi isu hoaks, pendaftaran palsu, atau klaim tidak benar di masyarakat.',
-            'keywords' => ['factcheck', 'fact check', 'hoaks', 'hoax', 'fakta', 'klarifikasi', 'verifikasi'],
-            'status' => ChatbotKnowledgeStatus::PUBLISHED,
-            'is_ai_allowed' => true,
-            'priority' => 8,
-            'published_at' => now(),
-        ]);
-
-        ChatbotKnowledge::create([
-            'title' => 'Virtual School Tour 360°',
-            'category' => 'Layanan',
-            'content' => 'Fitur Virtual Tour 360° memungkinkan calon siswa dan orang tua untuk mengeksplorasi seluruh sudut area SMKN 2 Mojokerto, laboratorium keahlian, dan sarana umum secara interaktif.',
-            'keywords' => ['tour', 'virtual tour', '360', 'keliling', 'lihat sekolah', 'panorama'],
             'status' => ChatbotKnowledgeStatus::PUBLISHED,
             'is_ai_allowed' => true,
             'priority' => 8,
@@ -389,48 +342,180 @@ class DatabaseSeeder extends Seeder
             'published_at' => now(),
         ]);
 
-        // 7c. Detailed Extracurriculars Knowledge
+        // 7c. Detailed Extracurriculars & Organizations Knowledge (Matching Website Frontend Exact Data)
         ChatbotKnowledge::create([
-            'title' => 'Ekstrakurikuler Robotik & Coding Club',
+            'title' => 'Ekstrakurikuler Banjari',
             'category' => 'Ekstrakurikuler',
-            'content' => 'Robotik & Coding Club SMKN 2 Mojokerto adalah wadah pengembangan minat bakat di bidang mikrokontroler, IoT (Internet of Things), perakitan robot, dan pemrograman kompetitif untuk lomba tingkat daerah hingga nasional.',
-            'keywords' => ['robotik', 'coding club', 'iot', 'robot', 'komputer', 'elektronika', 'coding'],
+            'content' => 'Banjari (Keagamaan): Mengembangkan seni musik Islami melalui lantunan shalawat, kekompakan, dan penampilan dalam kegiatan sekolah. Pembina: Pembina kegiatan keagamaan. Latihan: Jumat. Kegiatan: Latihan vokal, rebana, shalawat, dan penampilan sekolah.',
+            'keywords' => ['banjari', 'rebana', 'shalawat', 'sholawat', 'hadrah', 'keagamaan'],
             'status' => ChatbotKnowledgeStatus::PUBLISHED,
             'is_ai_allowed' => true,
-            'priority' => 8,
+            'priority' => 9,
+            'published_at' => now(),
+        ]);
+
+        ChatbotKnowledge::create([
+            'title' => 'Ekstrakurikuler Basket',
+            'category' => 'Ekstrakurikuler',
+            'content' => 'Basket (Olahraga): Melatih teknik permainan, kebugaran, sportivitas, dan kerja sama tim melalui latihan serta pertandingan pelajar. Pembina: Pembina olahraga sekolah. Latihan: Selasa & Jumat. Kegiatan: Latihan teknik, sparing, dan turnamen pelajar.',
+            'keywords' => ['basket', 'bola basket', 'olahraga'],
+            'status' => ChatbotKnowledgeStatus::PUBLISHED,
+            'is_ai_allowed' => true,
+            'priority' => 9,
+            'published_at' => now(),
+        ]);
+
+        ChatbotKnowledge::create([
+            'title' => 'Ekstrakurikuler Bola Voli',
+            'category' => 'Ekstrakurikuler',
+            'content' => 'Bola Voli (Olahraga): Membangun kekompakan tim melalui latihan teknik dasar, strategi permainan, dan kompetisi antarpelajar. Pembina: Pembina olahraga sekolah. Latihan: Kamis & Sabtu. Kegiatan: Passing, servis, smash, sparing, dan turnamen.',
+            'keywords' => ['voli', 'bola voli', 'volley', 'olahraga'],
+            'status' => ChatbotKnowledgeStatus::PUBLISHED,
+            'is_ai_allowed' => true,
+            'priority' => 9,
+            'published_at' => now(),
+        ]);
+
+        ChatbotKnowledge::create([
+            'title' => 'Ekstrakurikuler BTQ',
+            'category' => 'Ekstrakurikuler',
+            'content' => 'BTQ (Keagamaan): Meningkatkan kemampuan membaca Al-Qur’an dengan baik serta membangun kebiasaan belajar agama secara rutin. Pembina: Pembina kegiatan keagamaan. Latihan: Jumat. Kegiatan: Tilawah, tahsin, hafalan, dan pembinaan keagamaan.',
+            'keywords' => ['btq', 'baca tulis al quran', 'baca tulis al-qur\'an', 'al-qur\'an', 'alquran', 'tahsin', 'tilawah', 'hafalan'],
+            'status' => ChatbotKnowledgeStatus::PUBLISHED,
+            'is_ai_allowed' => true,
+            'priority' => 9,
+            'published_at' => now(),
+        ]);
+
+        ChatbotKnowledge::create([
+            'title' => 'Ekstrakurikuler Futsal',
+            'category' => 'Ekstrakurikuler',
+            'content' => 'Futsal (Olahraga): Mengasah kecepatan, strategi, disiplin, dan kerja sama tim melalui latihan futsal dan pertandingan pelajar. Pembina: Pembina olahraga sekolah. Latihan: Senin & Rabu. Kegiatan: Latihan teknik, sparing, dan turnamen antarsekolah.',
+            'keywords' => ['futsal', 'sepak bola', 'bola', 'olahraga'],
+            'status' => ChatbotKnowledgeStatus::PUBLISHED,
+            'is_ai_allowed' => true,
+            'priority' => 9,
+            'published_at' => now(),
+        ]);
+
+        ChatbotKnowledge::create([
+            'title' => 'Ekstrakurikuler Jurnalistik',
+            'category' => 'Ekstrakurikuler',
+            'content' => 'Jurnalistik (Media & Literasi): Menjadi ruang bagi siswa untuk menulis, meliput kegiatan sekolah, mengolah informasi, dan menghasilkan karya media. Pembina: Pembina jurnalistik sekolah. Latihan: Rabu. Kegiatan: Menulis berita, wawancara, fotografi, dan publikasi sekolah.',
+            'keywords' => ['jurnalistik', 'jurnal', 'pers', 'liputan', 'wawancara', 'media', 'berita'],
+            'status' => ChatbotKnowledgeStatus::PUBLISHED,
+            'is_ai_allowed' => true,
+            'priority' => 9,
+            'published_at' => now(),
+        ]);
+
+        ChatbotKnowledge::create([
+            'title' => 'Ekstrakurikuler Paskib',
+            'category' => 'Ekstrakurikuler',
+            'content' => 'Paskib (Kedisiplinan): Membentuk kedisiplinan, keteguhan, tanggung jawab, dan kekompakan melalui latihan baris-berbaris. Pembina: Pembina Paskib sekolah. Latihan: Rabu & Sabtu. Kegiatan: PBB, formasi, upacara, dan kegiatan kebangsaan.',
+            'keywords' => ['paskib', 'paskibra', 'baris berbaris', 'pbb', 'pengibar bendera', 'kedisiplinan'],
+            'status' => ChatbotKnowledgeStatus::PUBLISHED,
+            'is_ai_allowed' => true,
+            'priority' => 9,
             'published_at' => now(),
         ]);
 
         ChatbotKnowledge::create([
             'title' => 'Ekstrakurikuler Pramuka',
             'category' => 'Ekstrakurikuler',
-            'content' => 'Pramuka merupakan ekstrakurikuler wajib bagi siswa kelas X SMKN 2 Mojokerto yang melatih kedisiplinan, kepemimpinan, kemandirian, kecintaan pada alam, serta kecakapan hidup (life skills).',
-            'keywords' => ['pramuka', 'kepanduan', 'scout', 'kemah', 'bantara'],
+            'content' => 'Pramuka (Kepanduan): Membentuk kemandirian, kepemimpinan, kepedulian lingkungan, dan keterampilan melalui kegiatan kepanduan. Pembina: Pembina Pramuka sekolah. Latihan: Jumat. Kegiatan: Latihan kepramukaan, kemah, keterampilan, dan kegiatan sosial.',
+            'keywords' => ['pramuka', 'kepanduan', 'scout', 'kemah', 'gugus depan', 'skaneda'],
             'status' => ChatbotKnowledgeStatus::PUBLISHED,
             'is_ai_allowed' => true,
-            'priority' => 8,
+            'priority' => 9,
             'published_at' => now(),
         ]);
 
         ChatbotKnowledge::create([
-            'title' => 'Ekstrakurikuler Paskibra',
+            'title' => 'Ekstrakurikuler Tari',
             'category' => 'Ekstrakurikuler',
-            'content' => 'Paskibra SMKN 2 Mojokerto melatih fisik, mental, ketangkasan baris-berbaris (PBB), serta pembentukan karakter disiplin tinggi untuk penugasan upacara sekolah dan peringatan hari besar nasional.',
-            'keywords' => ['paskibra', 'paskib', 'baris berbaris', 'pbb', 'pengibar bendera'],
+            'content' => 'Tari (Seni & Budaya): Melestarikan budaya melalui tari tradisional dan kreasi serta memberikan ruang untuk tampil dan berkarya. Pembina: Pembina seni sekolah. Latihan: Rabu & Sabtu. Kegiatan: Latihan tari tradisional, tari kreasi, dan pentas seni.',
+            'keywords' => ['tari', 'dance', 'seni tari', 'tari tradisional', 'tari kreasi', 'budaya'],
             'status' => ChatbotKnowledgeStatus::PUBLISHED,
             'is_ai_allowed' => true,
-            'priority' => 8,
+            'priority' => 9,
             'published_at' => now(),
         ]);
 
         ChatbotKnowledge::create([
-            'title' => 'Ekstrakurikuler PMR (Palang Merah Remaja)',
+            'title' => 'Ekstrakurikuler PENA',
             'category' => 'Ekstrakurikuler',
-            'content' => 'PMR SMKN 2 Mojokerto bergerak di bidang kemanusiaan, pertolongan pertama pada kecelakaan (P3K), donor darah, kesehatan remaja, serta kesiapsiagaan bencana.',
+            'content' => 'PENA (Seni & Budaya): Wadah mini teater untuk melatih ekspresi, kepercayaan diri, penulisan naskah, dan kemampuan tampil di depan publik. Pembina: Pembina seni dan teater sekolah. Latihan: Kamis. Kegiatan: Latihan akting, olah vokal, naskah, dan pementasan.',
+            'keywords' => ['pena', 'teater', 'theater', 'drama', 'akting', 'naskah', 'seni'],
+            'status' => ChatbotKnowledgeStatus::PUBLISHED,
+            'is_ai_allowed' => true,
+            'priority' => 9,
+            'published_at' => now(),
+        ]);
+
+        ChatbotKnowledge::create([
+            'title' => 'Ekstrakurikuler Silat',
+            'category' => 'Ekstrakurikuler',
+            'content' => 'Silat (Bela Diri): Melatih bela diri, ketahanan fisik, kedisiplinan, dan sikap percaya diri melalui latihan pencak silat. Pembina: Pembina bela diri sekolah. Latihan: Selasa & Kamis. Kegiatan: Teknik dasar, jurus, sparing, dan kejuaraan.',
+            'keywords' => ['silat', 'pencak silat', 'bela diri', 'beladiri'],
+            'status' => ChatbotKnowledgeStatus::PUBLISHED,
+            'is_ai_allowed' => true,
+            'priority' => 9,
+            'published_at' => now(),
+        ]);
+
+        ChatbotKnowledge::create([
+            'title' => 'Ekstrakurikuler PMR',
+            'category' => 'Ekstrakurikuler',
+            'content' => 'PMR (Kesehatan): Membekali siswa dengan kepedulian kemanusiaan, pertolongan pertama, dan kesiapsiagaan dalam kegiatan sekolah. Pembina: Pembina PMR sekolah. Latihan: Sabtu. Kegiatan: P3K, kesehatan remaja, kegiatan sosial, dan siaga bencana.',
             'keywords' => ['pmr', 'palang merah remaja', 'p3k', 'kesehatan', 'pertolongan pertama'],
             'status' => ChatbotKnowledgeStatus::PUBLISHED,
             'is_ai_allowed' => true,
-            'priority' => 8,
+            'priority' => 9,
+            'published_at' => now(),
+        ]);
+
+        ChatbotKnowledge::create([
+            'title' => 'Ekstrakurikuler PIK-R',
+            'category' => 'Ekstrakurikuler',
+            'content' => 'PIK-R (Kesehatan): Menjadi ruang edukasi dan konseling sebaya untuk membangun remaja yang sehat, bertanggung jawab, dan berencana. Pembina: Pembina PIK-R sekolah. Latihan: Kamis. Kegiatan: Edukasi remaja, konseling sebaya, kampanye kesehatan, dan kegiatan sosial.',
+            'keywords' => ['pik-r', 'pikr', 'pik r', 'konseling', 'konseling sebaya', 'kesehatan remaja'],
+            'status' => ChatbotKnowledgeStatus::PUBLISHED,
+            'is_ai_allowed' => true,
+            'priority' => 9,
+            'published_at' => now(),
+        ]);
+
+        ChatbotKnowledge::create([
+            'title' => 'Organisasi OSIS',
+            'category' => 'Organisasi',
+            'content' => 'OSIS (Organisasi): Wadah utama kepemimpinan siswa untuk merancang dan menjalankan berbagai program kegiatan sekolah. Pembina: Pembina OSIS sekolah. Latihan/Agenda: Sesuai program kerja. Kegiatan: Program kerja siswa, kegiatan sekolah, kepemimpinan, dan bakti sosial.',
+            'keywords' => ['osis', 'organisasi siswa', 'pengurus osis', 'kepemimpinan'],
+            'status' => ChatbotKnowledgeStatus::PUBLISHED,
+            'is_ai_allowed' => true,
+            'priority' => 9,
+            'published_at' => now(),
+        ]);
+
+        ChatbotKnowledge::create([
+            'title' => 'Organisasi Lacurva',
+            'category' => 'Organisasi',
+            'content' => 'Lacurva (Organisasi): Komunitas suporter Skaneda yang membangun semangat, kreativitas, dan dukungan positif untuk kegiatan serta prestasi siswa. Pembina: Pembina kegiatan siswa. Latihan/Agenda: Sesuai agenda pertandingan. Kegiatan: Dukungan pertandingan, koreografi, kreativitas suporter, dan solidaritas.',
+            'keywords' => ['lacurva', 'la curva', 'suporter', 'supporter', 'ultras', 'skaneda suporter'],
+            'status' => ChatbotKnowledgeStatus::PUBLISHED,
+            'is_ai_allowed' => true,
+            'priority' => 9,
+            'published_at' => now(),
+        ]);
+
+        ChatbotKnowledge::create([
+            'title' => 'Organisasi Pasus',
+            'category' => 'Organisasi',
+            'content' => 'Pasus (Organisasi): Organisasi siswa yang menumbuhkan kedisiplinan, tanggung jawab, kekompakan, dan kesiapan membantu kegiatan sekolah. Pembina: Pembina Pasus sekolah. Latihan/Agenda: Sesuai agenda sekolah. Kegiatan: Pengamanan kegiatan, kedisiplinan, ketertiban, dan dukungan acara sekolah.',
+            'keywords' => ['pasus', 'pasukan khusus', 'keamanan sekolah', 'ketertiban'],
+            'status' => ChatbotKnowledgeStatus::PUBLISHED,
+            'is_ai_allowed' => true,
+            'priority' => 9,
             'published_at' => now(),
         ]);
 

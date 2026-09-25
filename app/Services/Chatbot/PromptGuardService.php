@@ -43,6 +43,16 @@ class PromptGuardService
         'lagu',
         'crypto',
         'kripto',
+        'kantin',
+        'menu kantin',
+        'persiapan',
+        'dipersiapkan',
+        'diperlukan',
+        'benci',
+        'suka',
+        'cinta',
+        'curhat',
+        'sayang',
     ];
 
     /**
