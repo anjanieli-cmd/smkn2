@@ -175,8 +175,8 @@ class KnowledgeRetrieverService
             $fallbackContexts[] = "[PPDB] Informasi PPDB 2026: Pendaftaran PPDB SMKN 2 Mojokerto dilakukan secara online melalui portal resmi PPDB Jawa Timur (Jalur Prestasi, Afirmasi, Zonasi). Pendaftaran TIDAK DIPUNGUT BIAYA (GRATIS).";
         }
 
-        // Check Majors (Jurusan)
-        if (str_contains($normalizedMessage, 'jurusan') || str_contains($normalizedMessage, 'keahlian') || str_contains($normalizedMessage, 'proli')) {
+        // Check Majors (Jurusan & Specific Major Sub-Keywords)
+        if (str_contains($normalizedMessage, 'jurusan') || str_contains($normalizedMessage, 'keahlian') || str_contains($normalizedMessage, 'proli') || str_contains($normalizedMessage, 'rpl') || str_contains($normalizedMessage, 'dkv') || str_contains($normalizedMessage, 'aphp') || str_contains($normalizedMessage, 'kuliner') || str_contains($normalizedMessage, 'boga') || str_contains($normalizedMessage, 'lps') || str_contains($normalizedMessage, 'perbankan')) {
             $majors = Major::all(['code', 'name', 'description']);
             if ($majors->isNotEmpty()) {
                 $majorList = $majors->map(fn ($m) => "{$m->code} ({$m->name}): {$m->description}")->implode(' | ');
@@ -208,8 +208,8 @@ class KnowledgeRetrieverService
             $fallbackContexts[] = "[Tata Tertib] Jam Belajar dan Operasional Sekolah: Kegiatan Belajar Mengajar (KBM) di SMKN 2 Mojokerto berlangsung hari Senin hingga Jumat pukul 07.00 WIB - 15.30 WIB. Gerbang sekolah ditutup tepat pukul 07.00 WIB. Hari Sabtu dan Minggu libur.";
         }
 
-        // Check Extracurriculars
-        if (str_contains($normalizedMessage, 'ekskul') || str_contains($normalizedMessage, 'ekstrakurikuler')) {
+        // Check Extracurriculars (& Specific Ekskul Sub-Keywords)
+        if (str_contains($normalizedMessage, 'ekskul') || str_contains($normalizedMessage, 'ekstrakurikuler') || str_contains($normalizedMessage, 'pramuka') || str_contains($normalizedMessage, 'paskibra') || str_contains($normalizedMessage, 'robotik') || str_contains($normalizedMessage, 'pmr') || str_contains($normalizedMessage, 'futsal') || str_contains($normalizedMessage, 'basket') || str_contains($normalizedMessage, 'voli') || str_contains($normalizedMessage, 'silat') || str_contains($normalizedMessage, 'tari') || str_contains($normalizedMessage, 'musik') || str_contains($normalizedMessage, 'rhisma') || str_contains($normalizedMessage, 'kir')) {
             $ekskuls = Extracurricular::all(['name', 'category', 'description']);
             if ($ekskuls->isNotEmpty()) {
                 $ekskulList = $ekskuls->map(fn ($e) => "{$e->name} ({$e->category}): {$e->description}")->implode(' | ');
