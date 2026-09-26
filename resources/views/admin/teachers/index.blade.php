@@ -96,8 +96,10 @@
           </div>
 
           <div class="db-form-group">
-            <label>Path Photo (URL / Upload Path)</label>
-            <input type="text" id="teacherPhoto" class="db-form-control" placeholder="images/guru/iswahyudi.png">
+            <label>Upload Foto Guru / Staf (Format: JPG, PNG, WEBP)</label>
+            <input type="file" id="teacherPhotoFile" accept="image/*" class="db-form-control" style="padding:.45rem .9rem">
+            <small style="font-size:.72rem;color:var(--text-muted);display:block;margin-top:.25rem">Atau masukkan URL/Path secara manual di bawah jika tidak upload file:</small>
+            <input type="text" id="teacherPhoto" class="db-form-control" placeholder="images/guru/iswahyudi.png" style="margin-top:.35rem">
           </div>
 
           <div class="db-form-group">
@@ -142,6 +144,7 @@
     document.getElementById('teacherNip').value = '';
     document.getElementById('teacherRole').value = '';
     document.getElementById('teacherPhoto').value = '';
+    document.getElementById('teacherPhotoFile').value = '';
     document.getElementById('teacherStatus').value = '1';
     document.getElementById('teacherModal').classList.add('active');
   }
@@ -153,6 +156,7 @@
     document.getElementById('teacherNip').value = item.nip || '';
     document.getElementById('teacherRole').value = item.role_position || '';
     document.getElementById('teacherPhoto').value = item.photo_url || '';
+    document.getElementById('teacherPhotoFile').value = '';
     document.getElementById('teacherStatus').value = item.is_active ? '1' : '0';
     document.getElementById('teacherModal').classList.add('active');
   }
@@ -164,26 +168,31 @@
   async function saveTeacher(e) {
     e.preventDefault();
     const id = document.getElementById('teacherId').value;
-    const payload = {
-      name: document.getElementById('teacherName').value,
-      nip: document.getElementById('teacherNip').value,
-      role_position: document.getElementById('teacherRole').value,
-      photo_url: document.getElementById('teacherPhoto').value,
-      is_active: document.getElementById('teacherStatus').value === '1'
-    };
+    const formData = new FormData();
+    formData.append('name', document.getElementById('teacherName').value);
+    formData.append('nip', document.getElementById('teacherNip').value);
+    formData.append('role_position', document.getElementById('teacherRole').value);
+    formData.append('photo_url', document.getElementById('teacherPhoto').value);
+    formData.append('is_active', document.getElementById('teacherStatus').value);
+
+    const fileInput = document.getElementById('teacherPhotoFile');
+    if (fileInput.files.length > 0) {
+      formData.append('photo_file', fileInput.files[0]);
+    }
 
     const url = id ? `/api/admin/teachers/${id}` : '/api/admin/teachers';
-    const method = id ? 'PUT' : 'POST';
+    if (id) {
+      formData.append('_method', 'PUT');
+    }
 
     try {
       const res = await fetch(url, {
-        method: method,
+        method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
           'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
           'Accept': 'application/json'
         },
-        body: JSON.stringify(payload)
+        body: formData
       });
       const data = await res.json();
       if (res.ok && data.success) {

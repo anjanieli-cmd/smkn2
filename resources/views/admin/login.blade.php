@@ -266,7 +266,7 @@
           </div>
         @endif
 
-        @if ($errors->any() && !$errors->has('email') && !$errors->has('password'))
+        @if (isset($errors) && $errors->any() && !$errors->has('email') && !$errors->has('password'))
           <div class="al-alert">
             <i class="fas fa-circle-exclamation"></i>
             <span>{{ $errors->first() }}</span>

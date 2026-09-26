@@ -276,10 +276,8 @@
       </div>
 
       <div class="db-nav-group">
-        <div class="db-nav-title">Konten &amp; Publikasi</div>
-        <a href="{{ route('admin.news.index') }}" class="db-nav-item {{ request()->routeIs('admin.news.*') ? 'active' : '' }}"><i class="fas fa-newspaper"></i> Berita / Artikel</a>
+        <div class="db-nav-title">Konten &amp; Karya</div>
         <a href="{{ route('admin.student-works.index') }}" class="db-nav-item {{ request()->routeIs('admin.student-works.*') ? 'active' : '' }}"><i class="fas fa-palette"></i> Karya Siswa</a>
-        <a href="{{ route('admin.alumni.index') }}" class="db-nav-item {{ request()->routeIs('admin.alumni.*') ? 'active' : '' }}"><i class="fas fa-user-graduate"></i> Alumni &amp; Portofolio</a>
       </div>
 
       <div class="db-nav-group">

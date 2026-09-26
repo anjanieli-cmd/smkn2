@@ -113,10 +113,17 @@ Route::view('/ppdb', 'ppdb.index')->name('ppdb');
 Route::view('/ai', 'ai')->name('ai');
 
 
+// Standard Login fallback route for Laravel Auth middleware
+Route::get('/login', [AdminAuthController::class, 'showLoginForm'])->name('login');
+
 // ==========================================================================
 // ADMIN PANEL (DEDICATED PAGES)
 // ==========================================================================
 Route::prefix('admin')->name('admin.')->group(function () {
+
+    Route::get('/', function () {
+        return redirect()->route('admin.dashboard');
+    });
 
     // ===== Halaman login (khusus tamu / belum login) =====
     Route::middleware('guest')->group(function () {
@@ -130,11 +137,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('/logout', [AdminAuthController::class, 'logout'])->name('logout');
 
         // Dedicated Admin Pages
-        Route::get('/news', function () {
-            $items = \App\Models\NewsArticle::latest()->get();
-            return view('admin.news.index', compact('items'));
-        })->name('news.index');
-
         Route::get('/teachers', function () {
             $teachers = \App\Models\TeacherStaff::orderBy('name', 'asc')->get();
             return view('admin.teachers.index', compact('teachers'));
@@ -164,11 +166,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
             $items = \App\Models\StudentWork::with('major')->latest()->get();
             return view('admin.student-works.index', compact('items'));
         })->name('student-works.index');
-
-        Route::get('/alumni', function () {
-            $items = \App\Models\Alumni::with('major')->latest()->get();
-            return view('admin.alumni.index', compact('items'));
-        })->name('alumni.index');
 
         Route::get('/fact-checks', function () {
             $items = \App\Models\FactCheck::latest()->get();

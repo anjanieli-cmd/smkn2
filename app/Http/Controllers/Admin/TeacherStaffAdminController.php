@@ -35,10 +35,22 @@ class TeacherStaffAdminController extends Controller
             'nip' => ['nullable', 'string', 'max:100'],
             'role_position' => ['required', 'string', 'max:255'],
             'photo_url' => ['nullable', 'string', 'max:500'],
-            'is_active' => ['nullable', 'boolean'],
+            'photo_file' => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp,gif', 'max:5012'],
+            'is_active' => ['nullable'],
         ]);
 
-        $validated['is_active'] = $validated['is_active'] ?? true;
+        if ($request->hasFile('photo_file')) {
+            $file = $request->file('photo_file');
+            $filename = time() . '_' . preg_replace('/[^a-zA-Z0-9._-]/', '', $file->getClientOriginalName());
+            $destinationPath = public_path('images/guru');
+            if (!file_exists($destinationPath)) {
+                mkdir($destinationPath, 0755, true);
+            }
+            $file->move($destinationPath, $filename);
+            $validated['photo_url'] = 'images/guru/' . $filename;
+        }
+
+        $validated['is_active'] = isset($validated['is_active']) ? filter_var($validated['is_active'], FILTER_VALIDATE_BOOLEAN) : true;
 
         $teacher = TeacherStaff::create($validated);
 
@@ -69,8 +81,24 @@ class TeacherStaffAdminController extends Controller
             'nip' => ['nullable', 'string', 'max:100'],
             'role_position' => ['sometimes', 'required', 'string', 'max:255'],
             'photo_url' => ['nullable', 'string', 'max:500'],
-            'is_active' => ['nullable', 'boolean'],
+            'photo_file' => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp,gif', 'max:5012'],
+            'is_active' => ['nullable'],
         ]);
+
+        if ($request->hasFile('photo_file')) {
+            $file = $request->file('photo_file');
+            $filename = time() . '_' . preg_replace('/[^a-zA-Z0-9._-]/', '', $file->getClientOriginalName());
+            $destinationPath = public_path('images/guru');
+            if (!file_exists($destinationPath)) {
+                mkdir($destinationPath, 0755, true);
+            }
+            $file->move($destinationPath, $filename);
+            $validated['photo_url'] = 'images/guru/' . $filename;
+        }
+
+        if (isset($validated['is_active'])) {
+            $validated['is_active'] = filter_var($validated['is_active'], FILTER_VALIDATE_BOOLEAN);
+        }
 
         $teacher->update($validated);
 

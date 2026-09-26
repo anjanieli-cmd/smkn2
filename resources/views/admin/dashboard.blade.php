@@ -49,15 +49,7 @@
       <span style="font-size:.78rem;color:var(--text-muted)">Klik modul untuk mengelola data di halaman khusus</span>
     </div>
 
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.1rem">
-      <a href="{{ route('admin.news.index') }}" class="db-module-card">
-        <div style="width:40px;height:40px;border-radius:11px;background:rgba(255,179,0,.12);color:var(--gold);display:flex;align-items:center;justify-content:center"><i class="fas fa-newspaper"></i></div>
-        <div>
-          <h3 style="font-size:.9rem;font-weight:700;color:#fff;margin-bottom:.2rem">Berita &amp; Artikel</h3>
-          <p style="font-size:.72rem;color:var(--text-muted);line-height:1.4">Kelola publikasi pengumuman &amp; artikel sekolah.</p>
-        </div>
-        <span style="font-size:.72rem;font-weight:700;color:var(--gold-light);margin-top:auto">Buka Halaman &rarr;</span>
-      </a>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem">
 
       <a href="{{ route('admin.teachers.index') }}" class="db-module-card">
         <div style="width:40px;height:40px;border-radius:11px;background:rgba(255,179,0,.12);color:var(--gold);display:flex;align-items:center;justify-content:center"><i class="fas fa-chalkboard-user"></i></div>

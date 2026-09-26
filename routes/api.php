@@ -92,7 +92,6 @@ Route::prefix('chatbot')->group(function () {
 */
 
 Route::prefix('admin')->group(function () {
-    Route::apiResource('news', NewsAdminController::class);
     Route::apiResource('extracurriculars', ExtracurricularAdminController::class);
     Route::apiResource('majors', MajorAdminController::class);
     Route::apiResource('teacher-staff', TeacherStaffAdminController::class);
@@ -101,7 +100,6 @@ Route::prefix('admin')->group(function () {
     Route::apiResource('industries', IndustryAdminController::class);
     Route::apiResource('job-vacancies', JobVacancyAdminController::class);
     Route::apiResource('student-works', StudentWorkAdminController::class);
-    Route::apiResource('alumni', AlumniAdminController::class);
     Route::apiResource('fact-check', FactCheckAdminController::class);
     Route::apiResource('chatbot-knowledge', ChatbotKnowledgeAdminController::class);
     Route::apiResource('chatbot/knowledge', ChatbotKnowledgeAdminController::class);
