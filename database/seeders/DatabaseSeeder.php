@@ -20,7 +20,9 @@ use App\Models\IndustryPartnership;
 use App\Models\JobVacancy;
 use App\Models\Major;
 use App\Models\NewsArticle;
+use App\Models\Portfolio;
 use App\Models\SchoolProfile;
+use App\Models\StudentWork;
 use App\Models\TeacherStaff;
 use App\Models\TourLocation;
 use Illuminate\Database\Seeder;
@@ -120,27 +122,72 @@ class DatabaseSeeder extends Seeder
             'extracurricular_scores' => ['Paskib' => 10, 'Pramuka' => 5],
         ]);
 
-        // 5. Teacher & Staff
-        TeacherStaff::create([
-            'name' => 'Drs. Iswahyudi, M.Pd.',
-            'nip' => '196805121994031005',
-            'role_position' => 'Kepala Sekolah',
-            'is_active' => true,
-        ]);
+        // 5. Teacher & Staff (All entries matching user page)
+        $teachersData = [
+            ['name' => 'Iswahyudi, S.ST.', 'nip' => 'SKN-001-G', 'role_position' => 'Kepala Sekolah', 'photo_url' => 'images/guru/iswahyudi.png'],
+            ['name' => 'Dra. Lugiati', 'nip' => 'SKN-002-G', 'role_position' => 'Guru Produktif Kuliner', 'photo_url' => 'images/guru/lugiati.png'],
+            ['name' => 'Sri Mulyati, S.Pd.', 'nip' => 'SKN-003-G', 'role_position' => 'Guru Normatif Pendidikan Pancasila', 'photo_url' => 'images/guru/srimul.png'],
+            ['name' => 'Harjo Santoso, S.Pd.', 'nip' => 'SKN-004-G', 'role_position' => 'Guru Normatif PJOK', 'photo_url' => 'images/guru/harjo.png'],
+            ['name' => 'Endah Trapsilawati Nawangsih, S.Pd.', 'nip' => 'SKN-005-G', 'role_position' => 'Guru Produktif Kuliner', 'photo_url' => 'images/guru/endah.png'],
+            ['name' => 'Ainur Rofik, M.Pd., Si', 'nip' => 'SKN-006-G', 'role_position' => 'Guru Normatif IPAS', 'photo_url' => 'images/guru/rofik.png'],
+            ['name' => 'Liawanti Gestika Ardiyana, S.Pi.', 'nip' => 'SKN-007-G', 'role_position' => 'Guru Produktif APHP', 'photo_url' => 'images/guru/liawanti.png'],
+            ['name' => 'Sri Andrijanti, S.Pd.', 'nip' => 'SKN-008-G', 'role_position' => 'Guru Produktif Kuliner', 'photo_url' => 'images/guru/andri.png'],
+            ['name' => 'Nurul Hidayah, S.E.', 'nip' => 'SKN-009-G', 'role_position' => 'Guru Normatif Pendidikan Pancasila', 'photo_url' => 'images/guru/nurul.png'],
+            ['name' => 'Rudik Sanjaya Sugiarto, SS.,MBA.', 'nip' => 'SKN-010-G', 'role_position' => 'Guru Normatif Bahasa Inggris', 'photo_url' => 'images/guru/rudik.png'],
+            ['name' => 'Indira Kusumaning Fuadah, S.Pd.', 'nip' => 'SKN-011-G', 'role_position' => 'Guru Normatif Informatika', 'photo_url' => 'images/guru/indira.png'],
+            ['name' => 'Arikaweku Ckrisna, S. Pd., M.Pd.', 'nip' => 'SKN-012-G', 'role_position' => 'Guru Produktif LPS', 'photo_url' => 'images/guru/arikaweku.png'],
+            ['name' => 'Leni Kristiana Dewi, S.T.', 'nip' => 'SKN-013-G', 'role_position' => 'Guru Produktif RPL', 'photo_url' => 'images/guru/leni.png'],
+            ['name' => 'Supriati, S.Kom.', 'nip' => 'SKN-014-G', 'role_position' => 'Guru Produktif RPL', 'photo_url' => 'images/guru/supriati.png'],
+            ['name' => 'Mochammad Arsori, S.Pd.', 'nip' => 'SKN-015-G', 'role_position' => 'Guru Normatif Bahasa Indonesia', 'photo_url' => 'images/guru/asrori.png'],
+            ['name' => 'Rahmat Efendi, S.Pd.', 'nip' => 'SKN-016-G', 'role_position' => 'Guru Normatif Bahasa Indonesia', 'photo_url' => 'images/guru/rahmat.png'],
+            ['name' => 'Sumber Arum', 'nip' => 'SKN-018-S', 'role_position' => 'Staff Kebersihan', 'photo_url' => 'images/guru/sumber.png'],
+            ['name' => 'Suyanto', 'nip' => 'SKN-019-S', 'role_position' => 'Staff Kebersihan', 'photo_url' => 'images/guru/suyanto.png'],
+            ['name' => 'Tria Ayu Anggraini', 'nip' => 'SKN-020-S', 'role_position' => 'Staff Tata Usaha', 'photo_url' => 'images/guru/tria.png'],
+        ];
 
-        TeacherStaff::create([
-            'name' => 'Rina Wijaya, S.Kom., M.T.',
-            'nip' => '198503152010012011',
-            'role_position' => 'Ketua Program Keahlian RPL',
-            'is_active' => true,
-        ]);
+        foreach ($teachersData as $t) {
+            TeacherStaff::create(array_merge($t, ['is_active' => true]));
+        }
 
-        TeacherStaff::create([
-            'name' => 'Bambang Sugiarto, S.Sn.',
-            'nip' => '198207202008021003',
-            'role_position' => 'Ketua Program Keahlian DKV',
-            'is_active' => true,
-        ]);
+        // 5b. News Articles (Matching User Berita Page)
+        $newsArticles = [
+            ['title' => 'Uji Kompetensi Keahlian (UKK) Jurusan APHP', 'slug' => 'ukk-jurusan-aphp', 'category' => 'kegiatan', 'summary' => 'Melaksanakan kegiatan Uji Kompetensi Keahlian (UKK) pada jurusan Agribisnis Pengolahan Hasil Pertanian (APHP) dengan melakukan praktik pembuatan produk roti.', 'content' => 'Melaksanakan kegiatan Uji Kompetensi Keahlian (UKK) pada jurusan Agribisnis Pengolahan Hasil Pertanian (APHP) dengan melakukan praktik pembuatan produk roti.', 'image_url' => 'images/berita/ukk-aphp.jpeg'],
+            ['title' => 'Uji Kompetensi Keahlian (UKK) Jurusan DKV', 'slug' => 'ukk-jurusan-dkv', 'category' => 'kegiatan', 'summary' => 'Melaksanakan kegiatan Uji Kompetensi Keahlian (UKK) pada jurusan Desain Komunikasi Visual (DKV) dengan membuat dan menampilkan cosplay berdasarkan karakter yang disukai.', 'content' => 'Melaksanakan kegiatan Uji Kompetensi Keahlian (UKK) pada jurusan Desain Komunikasi Visual (DKV) dengan membuat dan menampilkan cosplay berdasarkan karakter yang disukai.', 'image_url' => 'images/berita/ukk-dkv.jpeg'],
+            ['title' => 'Uji Kompetensi Keahlian (UKK) Jurusan Kuliner', 'slug' => 'ukk-jurusan-kuliner', 'category' => 'kegiatan', 'summary' => 'Melaksanakan kegiatan Uji Kompetensi Keahlian (UKK) pada jurusan Kuliner dengan melakukan praktik pengolahan dan penyajian makanan.', 'content' => 'Melaksanakan kegiatan Uji Kompetensi Keahlian (UKK) pada jurusan Kuliner dengan melakukan praktik pengolahan dan penyajikan makanan.', 'image_url' => 'images/berita/ukk-kuliner.jpeg'],
+            ['title' => 'Uji Kompetensi Keahlian (UKK) Jurusan LPS', 'slug' => 'ukk-jurusan-lps', 'category' => 'kegiatan', 'summary' => 'Melaksanakan kegiatan Uji Kompetensi Keahlian (UKK) pada jurusan Layanan Perbankan Syariah (LPS) dengan melakukan praktik yang berkaitan dengan pelayanan di bidang perbankan.', 'content' => 'Melaksanakan kegiatan Uji Kompetensi Keahlian (UKK) pada jurusan Layanan Perbankan Syariah (LPS) dengan melakukan praktik yang berkaitan dengan pelayanan di bidang perbankan.', 'image_url' => 'images/berita/ukk-lps.jpeg'],
+            ['title' => 'Sukses! Rekayasa Perangkat Lunak (RPL) SMK Negeri 2 Mojokerto Laksanakan Uji Kompetensi Keahlian', 'slug' => 'ukk-jurusan-rpl', 'category' => 'kegiatan', 'summary' => 'Kegiatan Uji Kompetensi Kelulusan Kompetensi Keahlian Rekayasa Perangkat Lunak (RPL) dilaksanakan pada 18–20 Februari 2025.', 'content' => 'Kegiatan Uji Kompetensi Kelulusan Kompetensi Keahlian Rekayasa Perangkat Lunak (RPL) dilaksanakan pada 18–20 Februari 2025 dan diikuti oleh siswa kelas XII RPL SMK Negeri 2 Mojokerto.', 'image_url' => 'images/berita/ukk-rpl.jpeg'],
+            ['title' => 'P5: Praktik Simulasi Pernikahan', 'slug' => 'p5-simulasi-pernikahan', 'category' => 'kegiatan', 'summary' => 'Melaksanakan kegiatan Projek Penguatan Profil Pelajar Pancasila (P5) melalui praktik simulasi pernikahan yang dilakukan oleh siswa kelas XI.', 'content' => 'Melaksanakan kegiatan Projek Penguatan Profil Pelajar Pancasila (P5) melalui praktik simulasi pernikahan yang dilakukan oleh siswa kelas XI.', 'image_url' => 'images/berita/nikah.jpeg'],
+            ['title' => 'Paduan Suara Skaneda', 'slug' => 'paduan-suara-skaneda', 'category' => 'kegiatan', 'summary' => 'Melaksanakan kegiatan paduan suara yang diikuti oleh seluruh angkatan sebagai bagian dari kegiatan sekolah.', 'content' => 'Melaksanakan kegiatan paduan suara yang diikuti oleh seluruh angkatan sebagai bagian dari kegiatan sekolah.', 'image_url' => 'images/berita/padus.jpeg'],
+            ['title' => 'SMKN 2 Mojokerto Jadi Tuan Rumah Pelatihan Pembelajaran Mendalam Batch 2', 'slug' => 'tuan-rumah-pelatihan-pembelajaran-mendalam', 'category' => 'akademik', 'summary' => 'Pelatihan Pembelajaran Mendalam bagi Guru Jenjang SMK Batch 2 dilaksanakan selama enam hari di Aula SMK Negeri 2 Mojokerto.', 'content' => 'Pelatihan Pembelajaran Mendalam bagi Guru Jenjang SMK Batch 2 dilaksanakan selama enam hari, mulai tanggal 11 hingga 16 Agustus 2025, bertempat di Aula SMK Negeri 2 Mojokerto.', 'image_url' => 'images/berita/tuan-rumah.jpeg'],
+            ['title' => 'Sosialisasi Genre Goes To School Ciptakan Harmonisasi di Kalangan Siswa', 'slug' => 'sosialisasi-genre-goes-to-school', 'category' => 'kegiatan', 'summary' => 'Kegiatan Sosialisasi Genre Goes To School dilaksanakan di Aula SMK Negeri 2 Mojokerto pada Rabu, 6 Agustus 2025.', 'content' => 'Kegiatan Sosialisasi Genre Goes To School dilaksanakan di Aula SMK Negeri 2 Mojokerto pada Rabu, 6 Agustus 2025.', 'image_url' => 'images/berita/genre.jpeg'],
+            ['title' => 'SMK Negeri 2 Mojokerto Sukses Laksanakan Rekrutmen Toko Emas Wahyu Redjo', 'slug' => 'rekrutmen-wahyu-redjo', 'category' => 'sekolah', 'summary' => 'Kegiatan Rekrutmen Pramuniaga Toko Emas Wahyu Redjo dilaksanakan bekerja sama dengan BKK SMK Negeri 2 Mojokerto.', 'content' => 'Kegiatan Rekrutmen Pramuniaga Toko Emas Wahyu Redjo dilaksanakan bekerja sama dengan BKK SMK Negeri 2 Mojokerto pada Rabu, 23 Juli 2025.', 'image_url' => 'images/berita/wahyu-redjo.jpeg'],
+            ['title' => 'LPS SMKN 2 Mojokerto Gelar Literasi Keuangan Bersama FIF Group', 'slug' => 'literasi-keuangan-fif-group', 'category' => 'akademik', 'summary' => 'Literasi Keuangan dan Edukasi Pembiayaan bersama FIF Group dilaksanakan oleh jurusan Layanan Perbankan Syariah (LPS).', 'content' => 'Kegiatan Literasi Keuangan dan Edukasi Pembiayaan bersama FIF Group dilaksanakan oleh jurusan Layanan Perbankan Syariah (LPS) SMK Negeri 2 Mojokerto pada Kamis, 24 Juli 2025.', 'image_url' => 'images/berita/literasikeuangan.jpeg'],
+            ['title' => 'RPL SMKN 2 Mojokerto Gelar Pelatihan Web dengan Framework Laravel', 'slug' => 'pelatihan-web-laravel-rpl', 'category' => 'akademik', 'summary' => 'Pelatihan Web dengan Framework Laravel dilaksanakan pada September 2024 dan diikuti oleh 37 perwakilan siswa kelas XII.', 'content' => 'Kegiatan Pelatihan Web dengan Framework Laravel dilaksanakan pada September 2024 dan diikuti oleh 37 perwakilan siswa kelas XII SMK Negeri 2 Mojokerto.', 'image_url' => 'images/berita/pelatihan-web.jpeg'],
+        ];
+
+        foreach ($newsArticles as $n) {
+            NewsArticle::create(array_merge($n, [
+                'author_name' => 'Tim Humas SKANEDA',
+                'status' => 'PUBLISHED',
+                'published_at' => now(),
+            ]));
+        }
+
+        // 5c. Student Works (Matching User Karya Siswa Page)
+        $studentWorksData = [
+            ['title' => 'MultiMie', 'student_name' => 'Tim APHP Angkatan 2023', 'major_id' => $aphp->id, 'description' => 'Mi instan praktis dengan bumbu siap seduh — produk inovasi siswa APHP.', 'media_url' => 'images/karya/multimie.jpeg'],
+            ['title' => 'Aplikasi Tambal Ban Express', 'student_name' => 'Kelas XII RPL', 'major_id' => $rpl->id, 'description' => 'Mengembangkan aplikasi layanan tambal ban berbasis web untuk memudahkan pemesanan dan pelayanan secara cepat dan praktis.', 'media_url' => 'images/karya/tambalbanexpres.jpeg'],
+            ['title' => 'Sari Bunga Telang', 'student_name' => 'Kelas XII APHP', 'major_id' => $aphp->id, 'description' => 'Minuman herbal alami dari ekstrak bunga telang dengan warna biru khas dan cita rasa menyegarkan — inovasi olahan kreatif siswa APHP.', 'media_url' => 'images/karya/bungatelang.jpeg'],
+            ['title' => 'Pastry & Bakery Kreatif', 'student_name' => 'Kelas XI Kuliner', 'major_id' => $kuliner->id, 'description' => 'Pembuatan aneka kue dan roti dengan teknik dan resep pastry yang tepat, tampil cantik dan lezat.', 'media_url' => 'images/karya/pastry-kuliner.jpeg'],
+            ['title' => 'Nirmana 3D', 'student_name' => 'Kelas XII DKV', 'major_id' => $dkv->id, 'description' => 'Mengeksplorasi bentuk, ruang, tekstur, dan komposisi untuk menghasilkan karya tiga dimensi yang harmonis dan menarik.', 'media_url' => 'images/karya/nirmana.jpeg'],
+            ['title' => 'Maja Mojo', 'student_name' => 'Tim RPL', 'major_id' => $rpl->id, 'description' => 'Minuman olahan berbahan dasar buah mojo dengan cita rasa unik, inovasi kreatif siswa RPL dalam memanfaatkan bahan pangan lokal.', 'media_url' => 'images/karya/estrakbuahmojo.jpeg'],
+            ['title' => 'Produk Olahan Hasil Pertanian', 'student_name' => 'APHP', 'major_id' => $aphp->id, 'description' => 'Mengolah bahan pangan menjadi berbagai produk roti bernilai tambah — dari roti manis, roti isi, hingga kreasi roti inovatif.', 'media_url' => 'images/karya/vocamo.png'],
+            ['title' => 'Bei Mie', 'student_name' => 'Kelas XI Kuliner', 'major_id' => $kuliner->id, 'description' => 'Mie unik berbahan dasar daun murbei yang alami dan kaya manfaat, perpaduan cita rasa lezat dengan pilihan yang lebih sehat.', 'media_url' => 'images/karya/bei-mie.jpeg'],
+        ];
+
+        foreach ($studentWorksData as $sw) {
+            StudentWork::create(array_merge($sw, ['status' => 'PUBLISHED']));
+        }
 
         // 6. Industry Partnerships & DUDI
         IndustryPartnership::create([
@@ -163,6 +210,39 @@ class DatabaseSeeder extends Seeder
             'partnership_scope' => 'Laboratorium Bank Mini Syariah & Magang LPS',
             'is_active' => true,
         ]);
+
+        IndustryPartnership::create([
+            'company_name' => 'PT Surabaya Autocomp Indonesia (SAI)',
+            'field_of_work' => 'Manufaktur Kabel Otomotif',
+            'partnership_scope' => 'Rekrutmen Lulusan & PKL',
+            'is_active' => true,
+        ]);
+
+        IndustryPartnership::create([
+            'company_name' => 'PT Pesta Pora Abadi (Mie Gacoan)',
+            'field_of_work' => 'Food & Beverage',
+            'partnership_scope' => 'Rekrutmen Alumni Kuliner & Penyaluran Kerja',
+            'is_active' => true,
+        ]);
+
+        // 6b. Job Vacancies (Matching BKK & Loker Page)
+        $jobsData = [
+            ['title' => 'Rekrutmen Operator Produksi', 'company_name' => 'PT Surabaya Autocomp Indonesia (SAI)', 'location' => 'Mojokerto', 'description' => 'BKK memfasilitasi seleksi alumni dan masyarakat umum melalui tahapan administrasi, tes, wawancara, dan kesehatan.'],
+            ['title' => 'Sosialisasi & Rekrutmen Bank Syariah', 'company_name' => 'BTPN Syariah', 'location' => 'Mojokerto', 'description' => 'Terdokumentasi sebagai kegiatan rekrutmen dan sosialisasi BKK.'],
+            ['title' => 'Rekrutmen Crew Restaurant', 'company_name' => 'PT Pesta Pora Abadi (Mie Gacoan)', 'location' => 'Mojokerto', 'description' => 'Rekrutmen tercatat pada Desember 2023 dan Mei 2024 sebagai bagian dari kegiatan penyaluran kerja melalui BKK.'],
+            ['title' => 'Rekrutmen Ritel Supermarket', 'company_name' => 'PT Lion Superindo & PT Sumber Alfaria Trijaya Tbk', 'location' => 'Jawa Timur', 'description' => 'PT Lion Superindo tercatat melakukan rekrutmen melalui online. PT Sumber Alfaria Trijaya Tbk tercatat dalam pengajuan kerja sama rekrutmen.'],
+            ['title' => 'Rekrutmen Pramuniaga', 'company_name' => 'Toko Emas Wahyu Redjo', 'location' => 'Mojokerto', 'description' => 'Rekrutmen Pramuniaga di SMK Negeri 2 Mojokerto. Kegiatan diikuti 131 siswa kelas XII dan difasilitasi bersama BKK sekolah.'],
+            ['title' => 'Walk-in Interview Server, Cook, Barista', 'company_name' => 'Tong Tji', 'location' => 'SMKN 2 Mojokerto', 'description' => 'Walk-in Interview di SMKN 2 Mojokerto untuk posisi Server, Cook, dan Barista. Minimal SMA/SMK sederajat; fresh graduate dipersilakan.'],
+            ['title' => 'Walk-in Interview Operational Staff', 'company_name' => 'Dea Bakery', 'location' => 'Kota Mojokerto', 'description' => 'Walk-in Interview pukul 09.00–15.00 WIB di SMKN 2 Kota Mojokerto.'],
+            ['title' => 'Program Magang & Part-time', 'company_name' => 'PT Pendekar Bodoh (D\'Cost Seafood)', 'location' => 'Mojokerto', 'description' => 'Program Magang & Part-time bersama BKK SMK Negeri 2 Mojokerto.'],
+            ['title' => 'Sosialisasi & Rekrutmen Industri', 'company_name' => 'Jotun', 'location' => 'Mojokerto', 'description' => 'Sosialisasi dan rekrutmen kerja yang terdokumentasi pada arsip BKK.'],
+            ['title' => 'School Hiring Cooker & Video Editor', 'company_name' => 'PT Motasa Indonesia', 'location' => 'Mojokerto', 'description' => 'School Hiring dengan posisi Cooker dan Video Editor, penempatan Mojokerto, Jawa Timur.'],
+            ['title' => 'Direct Sales Agent - Career Day', 'company_name' => 'XLSMART Career Day', 'location' => 'Aula SMKN 2 Mojokerto', 'description' => 'Posisi Direct Sales Agent di Aula SMKN 2 Mojokerto.'],
+        ];
+
+        foreach ($jobsData as $job) {
+            JobVacancy::create(array_merge($job, ['status' => 'ACTIVE']));
+        }
 
         // 7. Chatbot Knowledge Base (Comprehensive School Information)
         ChatbotKnowledge::create([

@@ -8,7 +8,7 @@ class MockGeminiProvider implements AIProviderInterface
 {
     public function generateResponse(string $userPrompt, array $contextChunks): string
     {
-        $notFoundMessage = "Halo! 👋 Saya NARA SKANEDA (Sahabat & Asisten Digital SMKN 2 Kota Mojokerto). 🎓 Informasi spesifik yang kamu tanyakan belum tersedia dalam basis pengetahuan resmi SMKN 2 Kota Mojokerto. Silakan ajukan pertanyaan lain atau hubungi admin sekolah kami! 😊";
+        $notFoundMessage = "Halo! 👋 Saya NARA SKANEDA (Sahabat & Asisten Digital SMKN 2 Kota Mojokerto). 🎓 Maaf, informasi tersebut belum tersedia dalam basis pengetahuan resmi SMKN 2 Kota Mojokerto. Silakan tanyakan informasi resmi seputar SMKN 2 Kota Mojokerto! 😊";
 
         if (empty($contextChunks)) {
             return $notFoundMessage;

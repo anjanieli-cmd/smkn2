@@ -17,6 +17,17 @@ class ChatbotKnowledgeAdminController extends Controller
         return ApiResponse::success($items, 'Data knowledge base chatbot berhasil diambil.');
     }
 
+    public function show(string $id): JsonResponse
+    {
+        $item = ChatbotKnowledge::query()->find($id);
+
+        if (! $item) {
+            return ApiResponse::error('Knowledge tidak ditemukan.', null, 404);
+        }
+
+        return ApiResponse::success($item, 'Detail knowledge base chatbot berhasil diambil.');
+    }
+
     public function store(Request $request): JsonResponse
     {
         $validated = $request->validate([
@@ -31,6 +42,7 @@ class ChatbotKnowledgeAdminController extends Controller
 
         $item = ChatbotKnowledge::create($validated);
         Cache::forget('chatbot.knowledge.published');
+        Cache::forget('chatbot.knowledge.published.v7');
 
         return ApiResponse::success($item, 'Knowledge base chatbot berhasil ditambahkan.', null, 201);
     }
@@ -55,6 +67,7 @@ class ChatbotKnowledgeAdminController extends Controller
 
         $item->update($validated);
         Cache::forget('chatbot.knowledge.published');
+        Cache::forget('chatbot.knowledge.published.v7');
 
         return ApiResponse::success($item, 'Knowledge base chatbot berhasil diperbarui.');
     }
@@ -69,6 +82,7 @@ class ChatbotKnowledgeAdminController extends Controller
 
         $item->delete();
         Cache::forget('chatbot.knowledge.published');
+        Cache::forget('chatbot.knowledge.published.v7');
 
         return ApiResponse::success(null, 'Knowledge base chatbot berhasil dihapus.');
     }

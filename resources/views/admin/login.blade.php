@@ -273,7 +273,7 @@
           </div>
         @endif
 
-        <form method="POST" action="{{ route('admin.login.submit') }}" novalidate>
+        <form method="POST" action="{{ route('admin.login.submit', [], false) }}" novalidate>
           @csrf
 
           <div class="al-group">

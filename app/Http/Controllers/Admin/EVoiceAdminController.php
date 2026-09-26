@@ -32,6 +32,36 @@ class EVoiceAdminController extends Controller
         return ApiResponse::success($items, 'Data pengaduan E-Voice berhasil diambil.');
     }
 
+    public function show(string $id): JsonResponse
+    {
+        $item = EVoice::query()->find($id);
+
+        if (! $item) {
+            return ApiResponse::error('E-Voice tidak ditemukan.', null, 404);
+        }
+
+        return ApiResponse::success($item, 'Detail pengaduan E-Voice berhasil diambil.');
+    }
+
+    public function store(Request $request): JsonResponse
+    {
+        $validated = $request->validate([
+            'title' => ['required', 'string', 'max:255'],
+            'description' => ['required', 'string'],
+            'category' => ['nullable', 'string'],
+            'status' => ['nullable', 'string'],
+        ]);
+
+        $validated['ticket_code'] = 'EV-' . strtoupper(\Illuminate\Support\Str::random(4)) . '-' . date('Y');
+        $validated['status'] = $validated['status'] ?? 'REVIEWING';
+        $validated['category'] = $validated['category'] ?? 'ASPIRASI';
+        $validated['upvotes_count'] = 0;
+
+        $item = EVoice::create($validated);
+
+        return ApiResponse::success($item, 'Pengaduan / Aspirasi E-Voice berhasil dibuat.', null, 201);
+    }
+
     public function updateStatus(Request $request, string $id): JsonResponse
     {
         $item = EVoice::query()->find($id);
@@ -48,5 +78,18 @@ class EVoiceAdminController extends Controller
         $item->update($validated);
 
         return ApiResponse::success($item, 'Status dan tanggapan E-Voice berhasil diperbarui.');
+    }
+
+    public function destroy(string $id): JsonResponse
+    {
+        $item = EVoice::query()->find($id);
+
+        if (! $item) {
+            return ApiResponse::error('E-Voice tidak ditemukan.', null, 404);
+        }
+
+        $item->delete();
+
+        return ApiResponse::success(null, 'Pengaduan E-Voice berhasil dihapus.');
     }
 }

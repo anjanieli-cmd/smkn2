@@ -11,6 +11,36 @@ use Illuminate\Support\Facades\Cache;
 
 class AlumniAdminController extends Controller
 {
+    public function index(Request $request): JsonResponse
+    {
+        $query = Alumni::with('major');
+
+        if ($request->has('search') && $request->input('search') !== '') {
+            $search = $request->input('search');
+            $query->where(function ($q) use ($search) {
+                $q->where('name', 'like', "%{$search}%")
+                  ->orWhere('company', 'like', "%{$search}%")
+                  ->orWhere('university', 'like', "%{$search}%")
+                  ->orWhere('job_title', 'like', "%{$search}%");
+            });
+        }
+
+        $items = $query->orderBy('name', 'asc')->paginate(15);
+
+        return ApiResponse::success($items, 'Data alumni berhasil diambil.');
+    }
+
+    public function show(string $id): JsonResponse
+    {
+        $alumni = Alumni::with('major')->find($id);
+
+        if (! $alumni) {
+            return ApiResponse::error('Data alumni tidak ditemukan.', null, 404);
+        }
+
+        return ApiResponse::success($alumni, 'Detail alumni berhasil diambil.');
+    }
+
     public function store(Request $request): JsonResponse
     {
         $validated = $request->validate([

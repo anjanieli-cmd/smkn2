@@ -8,6 +8,9 @@ use App\Http\Controllers\Admin\FactCheckAdminController;
 use App\Http\Controllers\Admin\IndustryAdminController;
 use App\Http\Controllers\Admin\JobVacancyAdminController;
 use App\Http\Controllers\Admin\MajorAdminController;
+use App\Http\Controllers\Admin\NewsAdminController;
+use App\Http\Controllers\Admin\StudentWorkAdminController;
+use App\Http\Controllers\Admin\TeacherStaffAdminController;
 use App\Http\Controllers\Public\AlumniController;
 use App\Http\Controllers\Public\BkkController;
 use App\Http\Controllers\Public\ChatbotController;
@@ -89,29 +92,26 @@ Route::prefix('chatbot')->group(function () {
 */
 
 Route::prefix('admin')->group(function () {
-    Route::prefix('chatbot/knowledge')->group(function () {
-        Route::get('/', [ChatbotKnowledgeAdminController::class, 'index']);
-        Route::post('/', [ChatbotKnowledgeAdminController::class, 'store']);
-        Route::put('/{id}', [ChatbotKnowledgeAdminController::class, 'update']);
-        Route::delete('/{id}', [ChatbotKnowledgeAdminController::class, 'destroy']);
-    });
-
-    Route::prefix('fact-check')->group(function () {
-        Route::get('/', [FactCheckAdminController::class, 'index']);
-        Route::post('/', [FactCheckAdminController::class, 'store']);
-        Route::put('/{id}', [FactCheckAdminController::class, 'update']);
-        Route::delete('/{id}', [FactCheckAdminController::class, 'destroy']);
-    });
+    Route::apiResource('news', NewsAdminController::class);
+    Route::apiResource('extracurriculars', ExtracurricularAdminController::class);
+    Route::apiResource('majors', MajorAdminController::class);
+    Route::apiResource('teacher-staff', TeacherStaffAdminController::class);
+    Route::apiResource('teachers', TeacherStaffAdminController::class);
+    Route::apiResource('industry', IndustryAdminController::class);
+    Route::apiResource('industries', IndustryAdminController::class);
+    Route::apiResource('job-vacancies', JobVacancyAdminController::class);
+    Route::apiResource('student-works', StudentWorkAdminController::class);
+    Route::apiResource('alumni', AlumniAdminController::class);
+    Route::apiResource('fact-check', FactCheckAdminController::class);
+    Route::apiResource('chatbot-knowledge', ChatbotKnowledgeAdminController::class);
+    Route::apiResource('chatbot/knowledge', ChatbotKnowledgeAdminController::class);
 
     Route::prefix('e-voice')->group(function () {
         Route::get('/', [EVoiceAdminController::class, 'index']);
+        Route::post('/', [EVoiceAdminController::class, 'store']);
+        Route::get('/{id}', [EVoiceAdminController::class, 'show']);
+        Route::patch('/{id}/status', [EVoiceAdminController::class, 'updateStatus']);
         Route::put('/{id}/status', [EVoiceAdminController::class, 'updateStatus']);
+        Route::delete('/{id}', [EVoiceAdminController::class, 'destroy']);
     });
-
-    Route::prefix('alumni')->group(function () {
-        Route::post('/', [AlumniAdminController::class, 'store']);
-        Route::put('/{id}', [AlumniAdminController::class, 'update']);
-        Route::delete('/{id}', [AlumniAdminController::class, 'destroy']);
-    });
-
 });
