@@ -852,7 +852,7 @@
         <span class="vt-feat"><i class="fa-solid fa-check"></i> Panorama 360°</span>
         <span class="vt-feat"><i class="fa-solid fa-check"></i> Akses Mudah</span>
       </div>
-      <a href="#" id="vtTourLink" class="vt-btn" data-reveal style="--d:4">Mulai Tour <i class="fa-solid fa-arrow-right"></i></a>
+      <a href="{{ route('profil.tour') }}?scene=gerbang-utama" id="vtTourLink" class="vt-btn" data-reveal style="--d:4">Mulai Tour <i class="fa-solid fa-arrow-right"></i></a>
     </div>
   </div>
 </section>
