@@ -7,11 +7,11 @@
   <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin-bottom:2.2rem">
     <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:18px;padding:1.4rem">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem">
-        <div style="width:44px;height:44px;border-radius:12px;background:rgba(255,179,0,.14);color:var(--gold);display:flex;align-items:center;justify-content:center;font-size:1.1rem"><i class="fas fa-newspaper"></i></div>
-        <span style="font-size:.72rem;font-weight:700;color:#5ce0a3;background:rgba(76,201,141,.12);padding:.2rem .5rem;border-radius:999px">+{{ $stats['total_news'] ?? 0 }} artikel</span>
+        <div style="width:44px;height:44px;border-radius:12px;background:rgba(255,179,0,.14);color:var(--gold);display:flex;align-items:center;justify-content:center;font-size:1.1rem"><i class="fas fa-graduation-cap"></i></div>
+        <span style="font-size:.72rem;font-weight:700;color:#5ce0a3;background:rgba(76,201,141,.12);padding:.2rem .5rem;border-radius:999px">{{ $stats['total_majors'] ?? 0 }} konsentrasi</span>
       </div>
-      <div style="font-family:var(--font-display);font-size:1.9rem;color:#fff;margin-bottom:.3rem">{{ $stats['total_news'] ?? 0 }}</div>
-      <div style="font-size:.8rem;color:var(--text-muted)">Total Berita &amp; Artikel</div>
+      <div style="font-family:var(--font-display);font-size:1.9rem;color:#fff;margin-bottom:.3rem">{{ $stats['total_majors'] ?? 0 }}</div>
+      <div style="font-size:.8rem;color:var(--text-muted)">Jurusan Keahlian</div>
     </div>
 
     <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:18px;padding:1.4rem">
@@ -37,7 +37,7 @@
         <div style="width:44px;height:44px;border-radius:12px;background:rgba(179,136,255,.14);color:#c9a6ff;display:flex;align-items:center;justify-content:center;font-size:1.1rem"><i class="fas fa-robot"></i></div>
         <span style="font-size:.72rem;font-weight:700;color:#c9a6ff;background:rgba(179,136,255,.12);padding:.2rem .5rem;border-radius:999px">AI NARA</span>
       </div>
-      <div style="font-family:var(--font-display);font-size:1.9rem;color:#fff;margin-bottom:.3rem">{{ $stats['total_chatbot_kb'] ?? 0 }}</div>
+      <div style="font-family:var(--font-display);font-size:1.9rem;color:#fff;margin-bottom:.3rem">{{ $stats['total_knowledge'] ?? 0 }}</div>
       <div style="font-size:.8rem;color:var(--text-muted)">Pengetahuan AI Chatbot</div>
     </div>
   </div>
@@ -55,7 +55,7 @@
         <div style="width:40px;height:40px;border-radius:11px;background:rgba(255,179,0,.12);color:var(--gold);display:flex;align-items:center;justify-content:center"><i class="fas fa-chalkboard-user"></i></div>
         <div>
           <h3 style="font-size:.9rem;font-weight:700;color:#fff;margin-bottom:.2rem">Guru &amp; Staf</h3>
-          <p style="font-size:.72rem;color:var(--text-muted);line-height:1.4">Kelola data pendidik, jabatan &amp; NIP.</p>
+          <p style="font-size:.72rem;color:var(--text-muted);line-height:1.4">Kelola data pendidik, foto, jabatan &amp; NIP.</p>
         </div>
         <span style="font-size:.72rem;font-weight:700;color:var(--gold-light);margin-top:auto">Buka Halaman &rarr;</span>
       </a>
@@ -118,32 +118,30 @@
 
   <!-- RECENT TABLES SPLIT -->
   <div style="display:grid;grid-template-columns:1.6fr 1fr;gap:1.4rem">
-    <!-- RECENT NEWS TABLE -->
+    <!-- RECENT TEACHERS TABLE -->
     <div class="db-panel">
       <div class="db-panel-head">
-        <h2>Berita &amp; Artikel Terbaru</h2>
-        <a href="{{ route('admin.news.index') }}" style="font-size:.78rem;color:var(--gold-light);font-weight:700">Lihat Semua &rarr;</a>
+        <h2>Guru &amp; Staf Pendidik Terbaru</h2>
+        <a href="{{ route('admin.teachers.index') }}" style="font-size:.78rem;color:var(--gold-light);font-weight:700">Lihat Semua &rarr;</a>
       </div>
       <div class="db-table-wrap">
         <table class="db-table">
           <thead>
             <tr>
-              <th>Judul Berita</th>
-              <th>Kategori</th>
-              <th>Status</th>
-              <th>Tanggal</th>
+              <th>Nama Lengkap</th>
+              <th>Jabatan</th>
+              <th>NIP / Kode</th>
             </tr>
           </thead>
           <tbody>
-            @forelse($recent_news ?? [] as $item)
+            @forelse($recentTeachers ?? [] as $item)
               <tr>
-                <td><strong>{{ $item->title }}</strong></td>
-                <td><span style="font-size:.75rem;color:var(--text-muted)">{{ $item->category }}</span></td>
-                <td><span class="db-tag {{ strtolower($item->status ?? 'published') }}">{{ $item->status ?? 'PUBLISHED' }}</span></td>
-                <td>{{ \Carbon\Carbon::parse($item->created_at)->format('d M Y') }}</td>
+                <td><strong>{{ $item->name }}</strong></td>
+                <td><span style="font-size:.75rem;color:var(--text-muted)">{{ $item->role_position }}</span></td>
+                <td><span class="db-tag active">{{ $item->nip }}</span></td>
               </tr>
             @empty
-              <tr><td colspan="4" style="text-align:center;color:var(--text-muted);padding:1.5rem">Belum ada berita terbaru.</td></tr>
+              <tr><td colspan="3" style="text-align:center;color:var(--text-muted);padding:1.5rem">Belum ada data guru.</td></tr>
             @endforelse
           </tbody>
         </table>
@@ -165,13 +163,13 @@
             </tr>
           </thead>
           <tbody>
-            @forelse($recent_evoice ?? [] as $item)
+            @forelse($recentEVoices ?? [] as $item)
               <tr>
                 <td>
                   <strong style="color:var(--gold-light);font-size:.78rem">{{ $item->ticket_code }}</strong><br>
                   <span style="font-size:.8rem">{{ Str::limit($item->title, 35) }}</span>
                 </td>
-                <td><span class="db-tag {{ $item->status }}">{{ $item->status }}</span></td>
+                <td><span class="db-tag {{ is_object($item->status) ? strtolower($item->status->value) : strtolower($item->status) }}">{{ is_object($item->status) ? $item->status->value : $item->status }}</span></td>
               </tr>
             @empty
               <tr><td colspan="2" style="text-align:center;color:var(--text-muted);padding:1.5rem">Belum ada aspirasi E-Voice.</td></tr>
