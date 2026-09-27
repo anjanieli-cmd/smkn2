@@ -4,25 +4,7 @@
 
 @section('content')
   <!-- STAT CARDS -->
-  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin-bottom:2.2rem">
-    <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:18px;padding:1.4rem">
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem">
-        <div style="width:44px;height:44px;border-radius:12px;background:rgba(255,179,0,.14);color:var(--gold);display:flex;align-items:center;justify-content:center;font-size:1.1rem"><i class="fas fa-graduation-cap"></i></div>
-        <span style="font-size:.72rem;font-weight:700;color:#5ce0a3;background:rgba(76,201,141,.12);padding:.2rem .5rem;border-radius:999px">{{ $stats['total_majors'] ?? 0 }} konsentrasi</span>
-      </div>
-      <div style="font-family:var(--font-display);font-size:1.9rem;color:#fff;margin-bottom:.3rem">{{ $stats['total_majors'] ?? 0 }}</div>
-      <div style="font-size:.8rem;color:var(--text-muted)">Jurusan Keahlian</div>
-    </div>
-
-    <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:18px;padding:1.4rem">
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem">
-        <div style="width:44px;height:44px;border-radius:12px;background:rgba(40,169,225,.14);color:#4fc3f7;display:flex;align-items:center;justify-content:center;font-size:1.1rem"><i class="fas fa-comments"></i></div>
-        <span style="font-size:.72rem;font-weight:700;color:#ffb300;background:rgba(255,179,0,.12);padding:.2rem .5rem;border-radius:999px">{{ $stats['total_evoice_unread'] ?? 0 }} belum diulas</span>
-      </div>
-      <div style="font-family:var(--font-display);font-size:1.9rem;color:#fff;margin-bottom:.3rem">{{ $stats['total_evoice'] ?? 0 }}</div>
-      <div style="font-size:.8rem;color:var(--text-muted)">Total E-Voice Aspirasi</div>
-    </div>
-
+  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem;margin-bottom:2.2rem">
     <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:18px;padding:1.4rem">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem">
         <div style="width:44px;height:44px;border-radius:12px;background:rgba(76,201,141,.14);color:#5ce0a3;display:flex;align-items:center;justify-content:center;font-size:1.1rem"><i class="fas fa-chalkboard-user"></i></div>
@@ -34,11 +16,11 @@
 
     <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:18px;padding:1.4rem">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem">
-        <div style="width:44px;height:44px;border-radius:12px;background:rgba(179,136,255,.14);color:#c9a6ff;display:flex;align-items:center;justify-content:center;font-size:1.1rem"><i class="fas fa-robot"></i></div>
-        <span style="font-size:.72rem;font-weight:700;color:#c9a6ff;background:rgba(179,136,255,.12);padding:.2rem .5rem;border-radius:999px">AI NARA</span>
+        <div style="width:44px;height:44px;border-radius:12px;background:rgba(40,169,225,.14);color:#4fc3f7;display:flex;align-items:center;justify-content:center;font-size:1.1rem"><i class="fas fa-comments"></i></div>
+        <span style="font-size:.72rem;font-weight:700;color:#ffb300;background:rgba(255,179,0,.12);padding:.2rem .5rem;border-radius:999px">{{ $stats['total_evoice_unread'] ?? 0 }} belum diulas</span>
       </div>
-      <div style="font-family:var(--font-display);font-size:1.9rem;color:#fff;margin-bottom:.3rem">{{ $stats['total_knowledge'] ?? 0 }}</div>
-      <div style="font-size:.8rem;color:var(--text-muted)">Pengetahuan AI Chatbot</div>
+      <div style="font-family:var(--font-display);font-size:1.9rem;color:#fff;margin-bottom:.3rem">{{ $stats['total_evoice'] ?? 0 }}</div>
+      <div style="font-size:.8rem;color:var(--text-muted)">Total E-Voice Aspirasi</div>
     </div>
   </div>
 
@@ -56,15 +38,6 @@
         <div>
           <h3 style="font-size:.9rem;font-weight:700;color:#fff;margin-bottom:.2rem">Guru &amp; Staf</h3>
           <p style="font-size:.72rem;color:var(--text-muted);line-height:1.4">Kelola data pendidik, foto, jabatan &amp; NIP.</p>
-        </div>
-        <span style="font-size:.72rem;font-weight:700;color:var(--gold-light);margin-top:auto">Buka Halaman &rarr;</span>
-      </a>
-
-      <a href="{{ route('admin.majors.index') }}" class="db-module-card">
-        <div style="width:40px;height:40px;border-radius:11px;background:rgba(255,179,0,.12);color:var(--gold);display:flex;align-items:center;justify-content:center"><i class="fas fa-graduation-cap"></i></div>
-        <div>
-          <h3 style="font-size:.9rem;font-weight:700;color:#fff;margin-bottom:.2rem">Jurusan &amp; Konsentrasi</h3>
-          <p style="font-size:.72rem;color:var(--text-muted);line-height:1.4">Kelola keahlian RPL, DKV, APHP, Kuliner, LPS.</p>
         </div>
         <span style="font-size:.72rem;font-weight:700;color:var(--gold-light);margin-top:auto">Buka Halaman &rarr;</span>
       </a>
@@ -104,15 +77,6 @@
         </div>
         <span style="font-size:.72rem;font-weight:700;color:var(--gold-light);margin-top:auto">Buka Halaman &rarr;</span>
       </a>
-
-      <a href="{{ route('admin.chatbot-knowledge.index') }}" class="db-module-card">
-        <div style="width:40px;height:40px;border-radius:11px;background:rgba(255,179,0,.12);color:var(--gold);display:flex;align-items:center;justify-content:center"><i class="fas fa-robot"></i></div>
-        <div>
-          <h3 style="font-size:.9rem;font-weight:700;color:#fff;margin-bottom:.2rem">Knowledge Base AI</h3>
-          <p style="font-size:.72rem;color:var(--text-muted);line-height:1.4">Kelola basis pengetahuan Chatbot NARA.</p>
-        </div>
-        <span style="font-size:.72rem;font-weight:700;color:var(--gold-light);margin-top:auto">Buka Halaman &rarr;</span>
-      </a>
     </div>
   </div>
 
@@ -128,6 +92,7 @@
         <table class="db-table">
           <thead>
             <tr>
+              <th>Foto</th>
               <th>Nama Lengkap</th>
               <th>Jabatan</th>
               <th>NIP / Kode</th>
@@ -136,12 +101,21 @@
           <tbody>
             @forelse($recentTeachers ?? [] as $item)
               <tr>
+                <td style="width:50px">
+                  @if($item->photo_url)
+                    <img src="{{ asset($item->photo_url) }}" alt="{{ $item->name }}" style="width:36px;height:36px;border-radius:10px;object-fit:cover">
+                  @else
+                    <div style="width:36px;height:36px;border-radius:10px;background:rgba(255,179,0,.15);color:var(--gold);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.85rem">
+                      {{ substr($item->name, 0, 1) }}
+                    </div>
+                  @endif
+                </td>
                 <td><strong>{{ $item->name }}</strong></td>
                 <td><span style="font-size:.75rem;color:var(--text-muted)">{{ $item->role_position }}</span></td>
-                <td><span class="db-tag active">{{ $item->nip }}</span></td>
+                <td><span class="db-tag active">{{ $item->nip ?? 'Staf' }}</span></td>
               </tr>
             @empty
-              <tr><td colspan="3" style="text-align:center;color:var(--text-muted);padding:1.5rem">Belum ada data guru.</td></tr>
+              <tr><td colspan="4" style="text-align:center;color:var(--text-muted);padding:1.5rem">Belum ada data guru.</td></tr>
             @endforelse
           </tbody>
         </table>

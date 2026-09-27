@@ -123,30 +123,715 @@ class DatabaseSeeder extends Seeder
         ]);
 
         // 5. Teacher & Staff (All entries matching user page)
-        $teachersData = [
-            ['name' => 'Iswahyudi, S.ST.', 'nip' => 'SKN-001-G', 'role_position' => 'Kepala Sekolah', 'photo_url' => 'images/guru/iswahyudi.png'],
-            ['name' => 'Dra. Lugiati', 'nip' => 'SKN-002-G', 'role_position' => 'Guru Produktif Kuliner', 'photo_url' => 'images/guru/lugiati.png'],
-            ['name' => 'Sri Mulyati, S.Pd.', 'nip' => 'SKN-003-G', 'role_position' => 'Guru Normatif Pendidikan Pancasila', 'photo_url' => 'images/guru/srimul.png'],
-            ['name' => 'Harjo Santoso, S.Pd.', 'nip' => 'SKN-004-G', 'role_position' => 'Guru Normatif PJOK', 'photo_url' => 'images/guru/harjo.png'],
-            ['name' => 'Endah Trapsilawati Nawangsih, S.Pd.', 'nip' => 'SKN-005-G', 'role_position' => 'Guru Produktif Kuliner', 'photo_url' => 'images/guru/endah.png'],
-            ['name' => 'Ainur Rofik, M.Pd., Si', 'nip' => 'SKN-006-G', 'role_position' => 'Guru Normatif IPAS', 'photo_url' => 'images/guru/rofik.png'],
-            ['name' => 'Liawanti Gestika Ardiyana, S.Pi.', 'nip' => 'SKN-007-G', 'role_position' => 'Guru Produktif APHP', 'photo_url' => 'images/guru/liawanti.png'],
-            ['name' => 'Sri Andrijanti, S.Pd.', 'nip' => 'SKN-008-G', 'role_position' => 'Guru Produktif Kuliner', 'photo_url' => 'images/guru/andri.png'],
-            ['name' => 'Nurul Hidayah, S.E.', 'nip' => 'SKN-009-G', 'role_position' => 'Guru Normatif Pendidikan Pancasila', 'photo_url' => 'images/guru/nurul.png'],
-            ['name' => 'Rudik Sanjaya Sugiarto, SS.,MBA.', 'nip' => 'SKN-010-G', 'role_position' => 'Guru Normatif Bahasa Inggris', 'photo_url' => 'images/guru/rudik.png'],
-            ['name' => 'Indira Kusumaning Fuadah, S.Pd.', 'nip' => 'SKN-011-G', 'role_position' => 'Guru Normatif Informatika', 'photo_url' => 'images/guru/indira.png'],
-            ['name' => 'Arikaweku Ckrisna, S. Pd., M.Pd.', 'nip' => 'SKN-012-G', 'role_position' => 'Guru Produktif LPS', 'photo_url' => 'images/guru/arikaweku.png'],
-            ['name' => 'Leni Kristiana Dewi, S.T.', 'nip' => 'SKN-013-G', 'role_position' => 'Guru Produktif RPL', 'photo_url' => 'images/guru/leni.png'],
-            ['name' => 'Supriati, S.Kom.', 'nip' => 'SKN-014-G', 'role_position' => 'Guru Produktif RPL', 'photo_url' => 'images/guru/supriati.png'],
-            ['name' => 'Mochammad Arsori, S.Pd.', 'nip' => 'SKN-015-G', 'role_position' => 'Guru Normatif Bahasa Indonesia', 'photo_url' => 'images/guru/asrori.png'],
-            ['name' => 'Rahmat Efendi, S.Pd.', 'nip' => 'SKN-016-G', 'role_position' => 'Guru Normatif Bahasa Indonesia', 'photo_url' => 'images/guru/rahmat.png'],
-            ['name' => 'Sumber Arum', 'nip' => 'SKN-018-S', 'role_position' => 'Staff Kebersihan', 'photo_url' => 'images/guru/sumber.png'],
-            ['name' => 'Suyanto', 'nip' => 'SKN-019-S', 'role_position' => 'Staff Kebersihan', 'photo_url' => 'images/guru/suyanto.png'],
-            ['name' => 'Tria Ayu Anggraini', 'nip' => 'SKN-020-S', 'role_position' => 'Staff Tata Usaha', 'photo_url' => 'images/guru/tria.png'],
-        ];
+        $teachersData = array (
+  0 => 
+  array (
+    'name' => 'Iswahyudi, S.ST.',
+    'nip' => 'SKN-001-G',
+    'role_position' => 'Kepala Sekolah - Kepemimpinan & Manajemen Sekolah',
+    'photo_url' => 'images/guru/iswahyudi.png',
+    'is_active' => true,
+  ),
+  1 => 
+  array (
+    'name' => 'Dra. Lugiati',
+    'nip' => 'SKN-002-G',
+    'role_position' => 'Guru Produktif - Kuliner',
+    'photo_url' => 'images/guru/lugiati.png',
+    'is_active' => true,
+  ),
+  2 => 
+  array (
+    'name' => 'Sri Mulyati, S.Pd.',
+    'nip' => 'SKN-003-G',
+    'role_position' => 'Guru Normatif - Pendidikan Pancasila',
+    'photo_url' => 'images/guru/srimul.png',
+    'is_active' => true,
+  ),
+  3 => 
+  array (
+    'name' => 'Harjo Santoso, S.Pd.',
+    'nip' => 'SKN-004-G',
+    'role_position' => 'Guru Normatif - PJOK',
+    'photo_url' => 'images/guru/harjo.png',
+    'is_active' => true,
+  ),
+  4 => 
+  array (
+    'name' => 'Endah Trapsilawati Nawangsih, S.Pd.',
+    'nip' => 'SKN-005-G',
+    'role_position' => 'Guru Produktif - Kuliner',
+    'photo_url' => 'images/guru/endah.png',
+    'is_active' => true,
+  ),
+  5 => 
+  array (
+    'name' => 'Ainur Rofik, M.Pd.,Si.',
+    'nip' => 'SKN-006-G',
+    'role_position' => 'Guru Normatif - IPAS',
+    'photo_url' => 'images/guru/rofik.png',
+    'is_active' => true,
+  ),
+  6 => 
+  array (
+    'name' => 'Liawanti Gestika Ardiyana, S.Pi.',
+    'nip' => 'SKN-007-G',
+    'role_position' => 'Guru Produktif - APHP',
+    'photo_url' => 'images/guru/liawanti.png',
+    'is_active' => true,
+  ),
+  7 => 
+  array (
+    'name' => 'Sri Andrijanti, S.Pd.',
+    'nip' => 'SKN-008-G',
+    'role_position' => 'Guru Produktif - Kuliner',
+    'photo_url' => 'images/guru/andri.png',
+    'is_active' => true,
+  ),
+  8 => 
+  array (
+    'name' => 'Nurul Hidayah, S.E.',
+    'nip' => 'SKN-009-G',
+    'role_position' => 'Guru Normatif - Pendidikan Pancasila',
+    'photo_url' => 'images/guru/nurul.png',
+    'is_active' => true,
+  ),
+  9 => 
+  array (
+    'name' => 'Rudik Sanjaya Sugiarto, SS.,MBA.',
+    'nip' => 'SKN-010-G',
+    'role_position' => 'Guru Normatif - Bahasa Inggris',
+    'photo_url' => 'images/guru/rudik.png',
+    'is_active' => true,
+  ),
+  10 => 
+  array (
+    'name' => 'Indira Kusumaning Fuadah, S.Pd.',
+    'nip' => 'SKN-011-G',
+    'role_position' => 'Guru Normatif - Informatika',
+    'photo_url' => 'images/guru/indira.png',
+    'is_active' => true,
+  ),
+  11 => 
+  array (
+    'name' => 'Arikaweku Ckrisna, S. Pd., M.Pd.',
+    'nip' => 'SKN-012-G',
+    'role_position' => 'Guru Produktif - LPS',
+    'photo_url' => 'images/guru/arikaweku.png',
+    'is_active' => true,
+  ),
+  12 => 
+  array (
+    'name' => 'Leni Kristiana Dewi, S.T.',
+    'nip' => 'SKN-013-G',
+    'role_position' => 'Guru Produktif - RPL',
+    'photo_url' => 'images/guru/leni.png',
+    'is_active' => true,
+  ),
+  13 => 
+  array (
+    'name' => 'Supriati, S.Kom.',
+    'nip' => 'SKN-014-G',
+    'role_position' => 'Guru Produktif - RPL',
+    'photo_url' => 'images/guru/supriati.png',
+    'is_active' => true,
+  ),
+  14 => 
+  array (
+    'name' => 'Mochammad Arsori, S.Pd.',
+    'nip' => 'SKN-015-G',
+    'role_position' => 'Guru Normatif - Bahasa Indonesia',
+    'photo_url' => 'images/guru/asrori.png',
+    'is_active' => true,
+  ),
+  15 => 
+  array (
+    'name' => 'Rahmat Efendi, S.Pd.',
+    'nip' => 'SKN-016-G',
+    'role_position' => 'Guru Normatif - Bahasa Inggris',
+    'photo_url' => 'images/guru/efendi.png',
+    'is_active' => true,
+  ),
+  16 => 
+  array (
+    'name' => 'Metiy Ardiana, S.Pd, M.Pd.',
+    'nip' => 'SKN-017-G',
+    'role_position' => 'Guru Produktif - LPS',
+    'photo_url' => 'images/guru/metiy.png',
+    'is_active' => true,
+  ),
+  17 => 
+  array (
+    'name' => 'M. Wira Hendy Himawan, M.Pd.',
+    'nip' => 'SKN-018-G',
+    'role_position' => 'Guru Normatif - IPAS',
+    'photo_url' => 'images/guru/wira.png',
+    'is_active' => true,
+  ),
+  18 => 
+  array (
+    'name' => 'Danang Teguh Santoso, S.Kom.',
+    'nip' => 'SKN-019-G',
+    'role_position' => 'Guru Produktif - RPL',
+    'photo_url' => 'images/guru/danang.png',
+    'is_active' => true,
+  ),
+  19 => 
+  array (
+    'name' => 'Dhiyah Amanati Kartika Sari, S.Pd.',
+    'nip' => 'SKN-020-G',
+    'role_position' => 'Guru Produktif - Kuliner',
+    'photo_url' => 'images/guru/dhiyah.png',
+    'is_active' => true,
+  ),
+  20 => 
+  array (
+    'name' => 'Melati Puspita Sari, S.Pd.',
+    'nip' => 'SKN-021-G',
+    'role_position' => 'Guru Produktif - LPS',
+    'photo_url' => 'images/guru/melati.png',
+    'is_active' => true,
+  ),
+  21 => 
+  array (
+    'name' => 'Intan Switzerlistania Martha, S.Pi.',
+    'nip' => 'SKN-022-G',
+    'role_position' => 'Guru Produktif - APHP',
+    'photo_url' => 'images/guru/martha.png',
+    'is_active' => true,
+  ),
+  22 => 
+  array (
+    'name' => 'Eka Ardian Suharko, M.Pd.',
+    'nip' => 'SKN-023-G',
+    'role_position' => 'Guru Normatif - Bahasa Inggris',
+    'photo_url' => 'images/guru/eka.png',
+    'is_active' => true,
+  ),
+  23 => 
+  array (
+    'name' => 'Hafid Setiawan, S.Pd.',
+    'nip' => 'SKN-024-G',
+    'role_position' => 'Guru Normatif - Seni Budaya',
+    'photo_url' => 'images/guru/hafid.png',
+    'is_active' => true,
+  ),
+  24 => 
+  array (
+    'name' => 'Sri Astutik Ningsih, ST.',
+    'nip' => 'SKN-025-G',
+    'role_position' => 'Guru Produktif - DKV',
+    'photo_url' => 'images/guru/ningsih.png',
+    'is_active' => true,
+  ),
+  25 => 
+  array (
+    'name' => 'Anissa Diana Sugiyono, S.Pd.',
+    'nip' => 'SKN-026-G',
+    'role_position' => 'Guru Produktif - Kuliner',
+    'photo_url' => 'images/guru/anissa.png',
+    'is_active' => true,
+  ),
+  26 => 
+  array (
+    'name' => 'Lastiani Sundari, S.Pd.',
+    'nip' => 'SKN-027-G',
+    'role_position' => 'Guru Produktif - Kuliner',
+    'photo_url' => 'images/guru/lastiani.png',
+    'is_active' => true,
+  ),
+  27 => 
+  array (
+    'name' => 'Ika Noviyati, S.Pd.',
+    'nip' => 'SKN-028-G',
+    'role_position' => 'Guru Produktif - Kuliner',
+    'photo_url' => 'images/guru/ika.png',
+    'is_active' => true,
+  ),
+  28 => 
+  array (
+    'name' => 'Vebriyanti Dwi Anggraini, S.Pd., M.Pd.',
+    'nip' => 'SKN-029-G',
+    'role_position' => 'Guru Produktif - RPL',
+    'photo_url' => 'images/guru/vebri.png',
+    'is_active' => true,
+  ),
+  29 => 
+  array (
+    'name' => 'Lilik Emi Rahayu, S.Pd., M.Pd.',
+    'nip' => 'SKN-030-G',
+    'role_position' => 'Guru Produktif - RPL',
+    'photo_url' => 'images/guru/lilik.png',
+    'is_active' => true,
+  ),
+  30 => 
+  array (
+    'name' => 'Indah Tri Utami, S.Pd.',
+    'nip' => 'SKN-031-G',
+    'role_position' => 'Guru Produktif - RPL',
+    'photo_url' => 'images/guru/indahtri.png',
+    'is_active' => true,
+  ),
+  31 => 
+  array (
+    'name' => 'Arini Prasetyoningsyas, S.Pd.',
+    'nip' => 'SKN-032-G',
+    'role_position' => 'Guru Produktif - Kuliner',
+    'photo_url' => 'images/guru/arini.png',
+    'is_active' => true,
+  ),
+  32 => 
+  array (
+    'name' => 'Mulat Adityawiranti, S.Pd.',
+    'nip' => 'SKN-033-G',
+    'role_position' => 'Guru Produktif - Kuliner',
+    'photo_url' => 'images/guru/mulat.png',
+    'is_active' => true,
+  ),
+  33 => 
+  array (
+    'name' => 'Ahmad Rofi\'i Noprianto, S.Pd.I.',
+    'nip' => 'SKN-034-G',
+    'role_position' => 'Guru Normatif - PABP',
+    'photo_url' => 'images/guru/rofii.png',
+    'is_active' => true,
+  ),
+  34 => 
+  array (
+    'name' => 'Fajar Dhilamaya, S.Pd.',
+    'nip' => 'SKN-035-G',
+    'role_position' => 'Guru Normatif - Matematika',
+    'photo_url' => 'images/guru/maya.png',
+    'is_active' => true,
+  ),
+  35 => 
+  array (
+    'name' => 'Yusuf Widhiarso, S.Pd.',
+    'nip' => 'SKN-036-G',
+    'role_position' => 'Guru Normatif - Bahasa Jawa',
+    'photo_url' => 'images/guru/yusuf.png',
+    'is_active' => true,
+  ),
+  36 => 
+  array (
+    'name' => 'Novaria Fajar Kurniawan, S.Sn.',
+    'nip' => 'SKN-037-G',
+    'role_position' => 'Guru Produktif - DKV',
+    'photo_url' => 'images/guru/fajar.png',
+    'is_active' => true,
+  ),
+  37 => 
+  array (
+    'name' => 'Ani Latifah, S.Pd.',
+    'nip' => 'SKN-038-G',
+    'role_position' => 'Guru BK - Bimbingan Konseling',
+    'photo_url' => 'images/guru/ani.png',
+    'is_active' => true,
+  ),
+  38 => 
+  array (
+    'name' => 'Sutarjo Suparman Nurc., S.Pd.',
+    'nip' => 'SKN-039-G',
+    'role_position' => 'Guru Produktif - Kuliner',
+    'photo_url' => 'images/guru/tj.png',
+    'is_active' => true,
+  ),
+  39 => 
+  array (
+    'name' => 'Mega Novinda Sari, S.Pd.',
+    'nip' => 'SKN-040-G',
+    'role_position' => 'Guru Normatif - Matematika',
+    'photo_url' => 'images/guru/mega.png',
+    'is_active' => true,
+  ),
+  40 => 
+  array (
+    'name' => 'Susi Suryani Rahayu, S.Sn.',
+    'nip' => 'SKN-041-G',
+    'role_position' => 'Guru Produktif - DKV',
+    'photo_url' => 'images/guru/susi.png',
+    'is_active' => true,
+  ),
+  41 => 
+  array (
+    'name' => 'Irsam Muhammad Fathoni, S.Pd.',
+    'nip' => 'SKN-042-G',
+    'role_position' => 'Guru Produktif - RPL',
+    'photo_url' => 'images/guru/irsam.png',
+    'is_active' => true,
+  ),
+  42 => 
+  array (
+    'name' => 'Nur Maulidah Hasanah, S.Pd.',
+    'nip' => 'SKN-043-G',
+    'role_position' => 'Guru Normatif - Pendidikan Pancasila',
+    'photo_url' => 'images/guru/maulidah.png',
+    'is_active' => true,
+  ),
+  43 => 
+  array (
+    'name' => 'Yeti Diah Retnowulan, S.Sos',
+    'nip' => 'SKN-044-G',
+    'role_position' => 'Guru Produktif - KIK',
+    'photo_url' => 'images/guru/yeti.png',
+    'is_active' => true,
+  ),
+  44 => 
+  array (
+    'name' => 'Erik Efendi, S.Pd.',
+    'nip' => 'SKN-045-G',
+    'role_position' => 'Guru Normatif - Bahasa Inggris',
+    'photo_url' => 'images/guru/erik.png',
+    'is_active' => true,
+  ),
+  45 => 
+  array (
+    'name' => 'Indah Chodijah, S.Pd.',
+    'nip' => 'SKN-046-G',
+    'role_position' => 'Guru Normatif - Bahasa Indonesia',
+    'photo_url' => 'images/guru/indah.png',
+    'is_active' => true,
+  ),
+  46 => 
+  array (
+    'name' => 'Oktavia Catur Handini, S.Pd.',
+    'nip' => 'SKN-047-G',
+    'role_position' => 'Guru Normatif - Bahasa Indonesia',
+    'photo_url' => 'images/guru/okta.png',
+    'is_active' => true,
+  ),
+  47 => 
+  array (
+    'name' => 'Tyas Wahyu Ningsih, S.Pd.',
+    'nip' => 'SKN-048-G',
+    'role_position' => 'Guru Normatif - Sejarah',
+    'photo_url' => 'images/guru/tyas.png',
+    'is_active' => true,
+  ),
+  48 => 
+  array (
+    'name' => 'Basukisna Setya Candra, S.Pd.',
+    'nip' => 'SKN-049-G',
+    'role_position' => 'Guru Normatif - PJOK',
+    'photo_url' => 'images/guru/candra.png',
+    'is_active' => true,
+  ),
+  49 => 
+  array (
+    'name' => 'Rani Puspitasari, S.T.P.',
+    'nip' => 'SKN-050-G',
+    'role_position' => 'Guru Produktif - APHP',
+    'photo_url' => 'images/guru/rani.png',
+    'is_active' => true,
+  ),
+  50 => 
+  array (
+    'name' => 'Yusi Herawati, S. Pd.',
+    'nip' => 'SKN-051-G',
+    'role_position' => 'Guru Normatif - IPAS',
+    'photo_url' => 'images/guru/yusi.png',
+    'is_active' => true,
+  ),
+  51 => 
+  array (
+    'name' => 'Jatmiko Tri Wijayanto, ST.',
+    'nip' => 'SKN-052-G',
+    'role_position' => 'Guru Produktif - DKV',
+    'photo_url' => 'images/guru/miko.png',
+    'is_active' => true,
+  ),
+  52 => 
+  array (
+    'name' => 'Cindy Endriana, S.Pd.',
+    'nip' => 'SKN-053-G',
+    'role_position' => 'Guru Normatif - Sejarah',
+    'photo_url' => 'images/guru/cindy.png',
+    'is_active' => true,
+  ),
+  53 => 
+  array (
+    'name' => 'Desy Andini Diliawati, S.TP.',
+    'nip' => 'SKN-054-G',
+    'role_position' => 'Guru Produktif - APHP',
+    'photo_url' => 'images/guru/desy.png',
+    'is_active' => true,
+  ),
+  54 => 
+  array (
+    'name' => 'Puji Indah Kurniawati, S.Pd.',
+    'nip' => 'SKN-055-G',
+    'role_position' => 'Guru Normatif - Bahasa Inggris',
+    'photo_url' => 'images/guru/puji.png',
+    'is_active' => true,
+  ),
+  55 => 
+  array (
+    'name' => 'Nurfalah Septyagoya, S.Kom.',
+    'nip' => 'SKN-056-G',
+    'role_position' => 'Guru Produktif - DKV',
+    'photo_url' => 'images/guru/yoga.png',
+    'is_active' => true,
+  ),
+  56 => 
+  array (
+    'name' => 'Elok Zakiyatul M., S.Si.',
+    'nip' => 'SKN-057-G',
+    'role_position' => 'Guru Normatif - Matematika',
+    'photo_url' => 'images/guru/elok.png',
+    'is_active' => true,
+  ),
+  57 => 
+  array (
+    'name' => 'Alif Nursyah, S.Pd.',
+    'nip' => 'SKN-058-G',
+    'role_position' => 'Guru Normatif - Matematika',
+    'photo_url' => 'images/guru/alif.png',
+    'is_active' => true,
+  ),
+  58 => 
+  array (
+    'name' => 'Nur Choiroh Bektiwiyati, S.Pd.',
+    'nip' => 'SKN-059-G',
+    'role_position' => 'Guru Normatif - Bahasa Jawa',
+    'photo_url' => 'images/guru/choi.png',
+    'is_active' => true,
+  ),
+  59 => 
+  array (
+    'name' => 'Gisik Giriantoko, S.Pd.',
+    'nip' => 'SKN-060-G',
+    'role_position' => 'Guru Normatif - PJOK',
+    'photo_url' => 'images/guru/gisik.png',
+    'is_active' => true,
+  ),
+  60 => 
+  array (
+    'name' => 'Sri Wahyuni, S.Pd.',
+    'nip' => 'SKN-061-G',
+    'role_position' => 'Guru Normatif - Matematika',
+    'photo_url' => 'images/guru/sriwah.png',
+    'is_active' => true,
+  ),
+  61 => 
+  array (
+    'name' => 'Intan Nur Fitri, S.Pd.',
+    'nip' => 'SKN-062-G',
+    'role_position' => 'Guru Normatif - PABP',
+    'photo_url' => 'images/guru/intan.png',
+    'is_active' => true,
+  ),
+  62 => 
+  array (
+    'name' => 'Brillian Wahyu Andrian, S.Pd.',
+    'nip' => 'SKN-063-G',
+    'role_position' => 'Guru Normatif - Bahasa Inggris',
+    'photo_url' => 'images/guru/brillian.png',
+    'is_active' => true,
+  ),
+  63 => 
+  array (
+    'name' => 'Ariqa Ayni Alfianti A.S., S.Psi.',
+    'nip' => 'SKN-064-G',
+    'role_position' => 'Guru BK - Bimbingan Konseling',
+    'photo_url' => 'images/guru/ariqa.png',
+    'is_active' => true,
+  ),
+  64 => 
+  array (
+    'name' => 'Hafifah Ratna Damayanti, S.Pd',
+    'nip' => 'SKN-065-G',
+    'role_position' => 'Guru Produktif - LPS',
+    'photo_url' => 'images/guru/hafifah.png',
+    'is_active' => true,
+  ),
+  65 => 
+  array (
+    'name' => 'Ma\'ratus Sholihah W., S.Pd.',
+    'nip' => 'SKN-066-G',
+    'role_position' => 'Guru Produktif - LPS',
+    'photo_url' => 'images/guru/maratus.png',
+    'is_active' => true,
+  ),
+  66 => 
+  array (
+    'name' => 'Avif Sulaiman Nur, S.Ag.',
+    'nip' => 'SKN-067-G',
+    'role_position' => 'Guru Normatif - PABP',
+    'photo_url' => 'images/guru/avif.png',
+    'is_active' => true,
+  ),
+  67 => 
+  array (
+    'name' => 'Septa Yuda Pratama, S. Pd.',
+    'nip' => 'SKN-067-G',
+    'role_position' => 'Guru Normatif - Bahasa Indonesia',
+    'photo_url' => 'images/guru/yuda.png',
+    'is_active' => true,
+  ),
+  68 => 
+  array (
+    'name' => 'Agastya Indra Permana',
+    'nip' => 'SKN-001-S',
+    'role_position' => 'Staff Tata Usaha',
+    'photo_url' => 'images/guru/agastya.png',
+    'is_active' => true,
+  ),
+  69 => 
+  array (
+    'name' => 'Anang Hariyono',
+    'nip' => 'SKN-002-S',
+    'role_position' => 'Staff Keamanan',
+    'photo_url' => 'images/guru/anang.png',
+    'is_active' => true,
+  ),
+  70 => 
+  array (
+    'name' => 'Anjarsari Ayuwangi',
+    'nip' => 'SKN-003-S',
+    'role_position' => 'Staff Tata Usaha',
+    'photo_url' => 'images/guru/anjarsari.png',
+    'is_active' => true,
+  ),
+  71 => 
+  array (
+    'name' => 'Dwi Arif Hawibowo',
+    'nip' => 'SKN-004-S',
+    'role_position' => 'Staff IT',
+    'photo_url' => 'images/guru/arif.png',
+    'is_active' => true,
+  ),
+  72 => 
+  array (
+    'name' => 'Moch. Arifin',
+    'nip' => 'SKN-005-S',
+    'role_position' => 'Staff Kebersihan',
+    'photo_url' => 'images/guru/arifin.png',
+    'is_active' => true,
+  ),
+  73 => 
+  array (
+    'name' => 'Dhulit Cahyono',
+    'nip' => 'SKN-006-S',
+    'role_position' => 'Staff Kebersihan',
+    'photo_url' => 'images/guru/dhulit.png',
+    'is_active' => true,
+  ),
+  74 => 
+  array (
+    'name' => 'Eko Subagiyo',
+    'nip' => 'SKN-007-S',
+    'role_position' => 'Staff Kebersihan',
+    'photo_url' => 'images/guru/eko.png',
+    'is_active' => true,
+  ),
+  75 => 
+  array (
+    'name' => 'Fendik Novan',
+    'nip' => 'SKN-008-S',
+    'role_position' => 'Staff Kebersihan',
+    'photo_url' => 'images/guru/fendik.png',
+    'is_active' => true,
+  ),
+  76 => 
+  array (
+    'name' => 'Galih Purnama Aji',
+    'nip' => 'SKN-009-S',
+    'role_position' => 'Staff Tata Usaha',
+    'photo_url' => 'images/guru/galih.png',
+    'is_active' => true,
+  ),
+  77 => 
+  array (
+    'name' => 'Ghea Averira Malohing',
+    'nip' => 'SKN-010-S',
+    'role_position' => 'Staff Tata Usaha',
+    'photo_url' => 'images/guru/ghea.png',
+    'is_active' => true,
+  ),
+  78 => 
+  array (
+    'name' => 'Inggar Suriyani',
+    'nip' => 'SKN-011-S',
+    'role_position' => 'Staff Tata Usaha',
+    'photo_url' => 'images/guru/inggar.png',
+    'is_active' => true,
+  ),
+  79 => 
+  array (
+    'name' => 'Junaipah Murjayani, S.M.',
+    'nip' => 'SKN-012-S',
+    'role_position' => 'Staff Tata Usaha',
+    'photo_url' => 'images/guru/jun.png',
+    'is_active' => true,
+  ),
+  80 => 
+  array (
+    'name' => 'Lutfi Kustilawati',
+    'nip' => 'SKN-013-S',
+    'role_position' => 'Staff Tata Usaha',
+    'photo_url' => 'images/guru/lutfi.png',
+    'is_active' => true,
+  ),
+  81 => 
+  array (
+    'name' => 'Masrukan Adi',
+    'nip' => 'SKN-014-S',
+    'role_position' => 'Staff Kebersihan',
+    'photo_url' => 'images/guru/masrukan.png',
+    'is_active' => true,
+  ),
+  82 => 
+  array (
+    'name' => 'Achmad Nuroso',
+    'nip' => 'SKN-015-S',
+    'role_position' => 'Staff Keamanan',
+    'photo_url' => 'images/guru/nuroso.png',
+    'is_active' => true,
+  ),
+  83 => 
+  array (
+    'name' => 'Purwadi',
+    'nip' => 'SKN-016-S',
+    'role_position' => 'Staff Keamanan',
+    'photo_url' => 'images/guru/purwadi.png',
+    'is_active' => true,
+  ),
+  84 => 
+  array (
+    'name' => 'Mohamad Rizky Novyanto',
+    'nip' => 'SKN-017-S',
+    'role_position' => 'Staff Tata Usaha',
+    'photo_url' => 'images/guru/rizky.png',
+    'is_active' => true,
+  ),
+  85 => 
+  array (
+    'name' => 'Sumber Arum',
+    'nip' => 'SKN-018-S',
+    'role_position' => 'Staff Kebersihan',
+    'photo_url' => 'images/guru/sumber.png',
+    'is_active' => true,
+  ),
+  86 => 
+  array (
+    'name' => 'Suyanto',
+    'nip' => 'SKN-019-S',
+    'role_position' => 'Staff Kebersihan',
+    'photo_url' => 'images/guru/suyanto.png',
+    'is_active' => true,
+  ),
+  87 => 
+  array (
+    'name' => 'Tria Ayu Anggraini',
+    'nip' => 'SKN-020-S',
+    'role_position' => 'Staff Tata Usaha',
+    'photo_url' => 'images/guru/tria.png',
+    'is_active' => true,
+  ),
+);
 
         foreach ($teachersData as $t) {
-            TeacherStaff::create(array_merge($t, ['is_active' => true]));
+            TeacherStaff::updateOrCreate(['nip' => $t['nip']], array_merge($t, ['is_active' => true]));
         }
 
         // 5b. News Articles (Matching User Berita Page)

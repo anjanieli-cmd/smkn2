@@ -78,6 +78,7 @@
       <div class="db-modal-body">
         <form id="teacherForm" onsubmit="saveTeacher(event)">
           <input type="hidden" id="teacherId" name="id">
+          <input type="hidden" id="teacherPhoto">
 
           <div class="db-form-group">
             <label>Nama Lengkap (dengan Gelar) *</label>
@@ -96,10 +97,17 @@
           </div>
 
           <div class="db-form-group">
-            <label>Upload Foto Guru / Staf (Format: JPG, PNG, WEBP)</label>
-            <input type="file" id="teacherPhotoFile" accept="image/*" class="db-form-control" style="padding:.45rem .9rem">
-            <small style="font-size:.72rem;color:var(--text-muted);display:block;margin-top:.25rem">Atau masukkan URL/Path secara manual di bawah jika tidak upload file:</small>
-            <input type="text" id="teacherPhoto" class="db-form-control" placeholder="images/guru/iswahyudi.png" style="margin-top:.35rem">
+            <label>Upload Foto Guru / Staf *</label>
+            <div style="display:flex;gap:1rem;align-items:center;margin-top:.4rem">
+              <div id="photoPreviewContainer" style="width:70px;height:70px;border-radius:14px;background:rgba(255,255,255,.05);border:2px dashed rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0">
+                <img id="photoPreview" src="" alt="Preview" style="width:100%;height:100%;object-fit:cover;display:none">
+                <i id="photoPlaceholderIcon" class="fas fa-camera" style="font-size:1.4rem;color:var(--text-muted)"></i>
+              </div>
+              <div style="flex:1">
+                <input type="file" id="teacherPhotoFile" accept="image/*" class="db-form-control" onchange="previewSelectedImage(this)" style="padding:.45rem .9rem">
+                <small style="font-size:.73rem;color:var(--text-muted);display:block;margin-top:.35rem">Pilih berkas foto dari komputer/HP (Format: JPG, PNG, WEBP, Maks: 5MB)</small>
+              </div>
+            </div>
           </div>
 
           <div class="db-form-group">
@@ -122,6 +130,20 @@
 
 @push('scripts')
 <script>
+  function previewSelectedImage(input) {
+    const preview = document.getElementById('photoPreview');
+    const icon = document.getElementById('photoPlaceholderIcon');
+    if (input.files && input.files[0]) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        preview.src = e.target.result;
+        preview.style.display = 'block';
+        icon.style.display = 'none';
+      }
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+
   function filterTeachers() {
     const query = document.getElementById('teacherSearch').value.toLowerCase();
     const rows = document.querySelectorAll('#teacherTableBody tr');
@@ -146,6 +168,13 @@
     document.getElementById('teacherPhoto').value = '';
     document.getElementById('teacherPhotoFile').value = '';
     document.getElementById('teacherStatus').value = '1';
+
+    const preview = document.getElementById('photoPreview');
+    const icon = document.getElementById('photoPlaceholderIcon');
+    preview.style.display = 'none';
+    preview.src = '';
+    icon.style.display = 'block';
+
     document.getElementById('teacherModal').classList.add('active');
   }
 
@@ -158,6 +187,18 @@
     document.getElementById('teacherPhoto').value = item.photo_url || '';
     document.getElementById('teacherPhotoFile').value = '';
     document.getElementById('teacherStatus').value = item.is_active ? '1' : '0';
+
+    const preview = document.getElementById('photoPreview');
+    const icon = document.getElementById('photoPlaceholderIcon');
+    if (item.photo_url) {
+      preview.src = item.photo_url.startsWith('http') ? item.photo_url : '/' + item.photo_url;
+      preview.style.display = 'block';
+      icon.style.display = 'none';
+    } else {
+      preview.style.display = 'none';
+      icon.style.display = 'block';
+    }
+
     document.getElementById('teacherModal').classList.add('active');
   }
 

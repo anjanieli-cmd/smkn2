@@ -291,13 +291,7 @@
       <div class="db-nav-group">
         <div class="db-nav-title">Akademik &amp; Profil</div>
         <a href="{{ route('admin.teachers.index') }}" class="db-nav-item {{ request()->routeIs('admin.teachers.*') ? 'active' : '' }}"><i class="fas fa-chalkboard-user"></i> Guru &amp; Staf</a>
-        <a href="{{ route('admin.majors.index') }}" class="db-nav-item {{ request()->routeIs('admin.majors.*') ? 'active' : '' }}"><i class="fas fa-graduation-cap"></i> Jurusan</a>
         <a href="{{ route('admin.extracurriculars.index') }}" class="db-nav-item {{ request()->routeIs('admin.extracurriculars.*') ? 'active' : '' }}"><i class="fas fa-futbol"></i> Ekstrakurikuler</a>
-      </div>
-
-      <div class="db-nav-group">
-        <div class="db-nav-title">Chatbot AI</div>
-        <a href="{{ route('admin.chatbot-knowledge.index') }}" class="db-nav-item {{ request()->routeIs('admin.chatbot-knowledge.*') ? 'active' : '' }}"><i class="fas fa-robot"></i> Knowledge Base NARA</a>
       </div>
     </nav>
 

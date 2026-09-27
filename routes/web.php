@@ -142,11 +142,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
             return view('admin.teachers.index', compact('teachers'));
         })->name('teachers.index');
 
-        Route::get('/majors', function () {
-            $items = \App\Models\Major::all();
-            return view('admin.majors.index', compact('items'));
-        })->name('majors.index');
-
         Route::get('/extracurriculars', function () {
             $items = \App\Models\Extracurricular::orderBy('name', 'asc')->get();
             return view('admin.extracurriculars.index', compact('items'));
@@ -176,11 +171,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
             $items = \App\Models\EVoice::latest()->get();
             return view('admin.e-voices.index', compact('items'));
         })->name('e-voices.index');
-
-        Route::get('/chatbot-knowledge', function () {
-            $items = \App\Models\ChatbotKnowledge::latest()->get();
-            return view('admin.chatbot-knowledge.index', compact('items'));
-        })->name('chatbot-knowledge.index');
     });
 
 });
