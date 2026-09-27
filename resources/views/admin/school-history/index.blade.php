@@ -111,7 +111,7 @@
         <input type="file" name="hero_image" class="db-form-control" accept="image/*">
         @if($history->hero_image)
           <div class="sh-img-current">
-            <img src="{{ asset('storage/'.$history->hero_image) }}" alt="Hero saat ini">
+            <img src="{{ $history->hero_image_url }}" alt="Hero saat ini">
             <span>Gambar saat ini — upload baru untuk mengganti</span>
           </div>
         @endif
@@ -185,7 +185,7 @@
         <input type="file" name="story_image" class="db-form-control" accept="image/*">
         @if($history->story_image)
           <div class="sh-img-current">
-            <img src="{{ asset('storage/'.$history->story_image) }}" alt="Story saat ini">
+            <img src="{{ $history->story_image_url }}" alt="Story saat ini">
             <span>Gambar saat ini — upload baru untuk mengganti</span>
           </div>
         @endif
@@ -240,7 +240,7 @@
         <input type="file" name="vt_image" class="db-form-control" accept="image/*">
         @if($history->vt_image)
           <div class="sh-img-current">
-            <img src="{{ asset('storage/'.$history->vt_image) }}" alt="VT saat ini">
+            <img src="{{ $history->vt_image_url }}" alt="VT saat ini">
             <span>Gambar saat ini — upload baru untuk mengganti</span>
           </div>
         @endif
@@ -397,7 +397,14 @@
       Object.keys(data).forEach(key => {
         const el = node.querySelector(`[name$="[${key}]"]`);
         if (!el) return;
+        // PENTING: input type="file" tidak boleh diisi lewat JS
+        // (browser akan melempar error dan menghentikan loop pre-fill
+        // di tengah jalan, membuat item-item berikutnya hilang dari form).
+        // Preview foto/gambar sudah ditangani terpisah lewat blok
+        // existing_photo / existing_image di bawah, jadi field file
+        // cukup dilewati di sini.
         if (el.type === 'checkbox') el.checked = !!data[key];
+        else if (el.type === 'file') return;
         else el.value = data[key] ?? '';
       });
       if (data.existing_photo) {
@@ -430,12 +437,12 @@
 
   // ---------- PRE-FILL DATA DARI SERVER ----------
   const seedChapters = @json($history->chapters);
-  const seedPrincipals = @json($history->principals);
-  const seedGalleries = @json($history->galleries);
+const seedPrincipals = @json($history->principals->each->append(['photo_url']));
+const seedGalleries = @json($history->galleries->each->append(['image_url']));
 
   seedChapters.forEach(c => chapters.addItem(c));
-  seedPrincipals.forEach(p => principals.addItem({ ...p, existing_photo: p.photo, photo_url: p.photo ? '{{ asset('storage') }}/' + p.photo : '' }));
-  seedGalleries.forEach(g => galleries.addItem({ ...g, existing_image: g.image, image_url: g.image ? '{{ asset('storage') }}/' + g.image : '' }));
+  seedPrincipals.forEach(p => principals.addItem({ ...p, existing_photo: p.photo }));
+seedGalleries.forEach(g => galleries.addItem({ ...g, existing_image: g.image }));
 
   const seedChips = @json($history->story_chips ?? []);
   if (seedChips.length) {

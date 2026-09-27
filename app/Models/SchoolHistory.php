@@ -2,11 +2,15 @@
 
 namespace App\Models;
 
+use App\Models\Concerns\HasResolvableImages;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class SchoolHistory extends Model
 {
+    use HasResolvableImages;
+
     protected $fillable = [
         'hero_kicker', 'hero_image',
         'intro_eyebrow', 'intro_title', 'intro_desc',
@@ -35,6 +39,21 @@ class SchoolHistory extends Model
     public function galleries(): HasMany
     {
         return $this->hasMany(SchoolHistoryGallery::class)->orderBy('order');
+    }
+
+    protected function heroImageUrl(): Attribute
+    {
+        return Attribute::make(get: fn () => $this->resolveImageUrl($this->hero_image));
+    }
+
+    protected function storyImageUrl(): Attribute
+    {
+        return Attribute::make(get: fn () => $this->resolveImageUrl($this->story_image));
+    }
+
+    protected function vtImageUrl(): Attribute
+    {
+        return Attribute::make(get: fn () => $this->resolveImageUrl($this->vt_image));
     }
 
     /** Selalu ambil satu baris singleton, buat kalau belum ada. */

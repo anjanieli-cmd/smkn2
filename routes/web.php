@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\SchoolHistoryController;
+use App\Http\Controllers\SejarahSekolahController;
 
 
 /*
@@ -24,7 +25,11 @@ Route::get('/', function () {
 // PROFIL
 // ==========================================================================
 Route::view('/profil', 'profil')->name('profil');
-Route::view('/profile/sejarah-sekolah', 'profile.sejarah-sekolah')->name('profil.sejarah-sekolah');
+
+// Sejarah Sekolah (Dynamic DB data — diisi lewat Admin > Sejarah Sekolah)
+Route::get('/profile/sejarah-sekolah', [SejarahSekolahController::class, 'index'])
+    ->name('profil.sejarah-sekolah');
+
 Route::view('/profile/visi-misi', 'profile.visi-misi')->name('profil.visi-misi');
 Route::view('/profile/struktur-organisasi', 'profile.struktur-organisasi')->name('profil.struktur-organisasi');
 
@@ -173,15 +178,12 @@ Route::prefix('admin')->name('admin.')->group(function () {
             $items = \App\Models\EVoice::latest()->get();
             return view('admin.e-voices.index', compact('items'));
         })->name('e-voices.index');
+
+        // Sejarah Sekolah
+        Route::get('/school-history', [SchoolHistoryController::class, 'index'])
+            ->name('school-history.index');
+
+        Route::put('/school-history', [SchoolHistoryController::class, 'update'])
+            ->name('school-history.update');
     });
-
-    Route::middleware('auth')->group(function () {
-    // ... route lain ...
-
-    Route::get('/school-history', [SchoolHistoryController::class, 'index'])
-        ->name('school-history.index');
-
-    Route::put('/school-history', [SchoolHistoryController::class, 'update'])
-        ->name('school-history.update');
-});
 });
