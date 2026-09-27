@@ -8,6 +8,18 @@
   <title>@yield('title', 'SMK Negeri 2 Mojokerto — Beranda')</title>
   <meta name="description" content="@yield('description', 'Website resmi SMK Negeri 2 Mojokerto — Sekolah Menengah Kejuruan unggulan di Kota Mojokerto, Jawa Timur.')" />
 
+  <!-- Pre-render theme check to prevent white flash -->
+  <script>
+    (function(){
+      try{
+        var s = JSON.parse(localStorage.getItem('sknA11y')||'{}');
+        if(s.colorMode === 'dark'){
+          document.documentElement.classList.add('theme-dark');
+        }
+      }catch(e){}
+    })();
+  </script>
+
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -785,6 +797,488 @@
 
   {{-- CSS tambahan khusus per halaman --}}
   @stack('styles')
+
+  {{-- ================= GLOBAL DARK MODE STYLES (Supports ALL Pages) ================= --}}
+  <style>
+    /* Global Base Dark Mode Theme Overrides */
+    body.theme-dark, html.theme-dark body {
+      background-color: #061221 !important;
+      color: #eaf2fb !important;
+    }
+
+    /* Headings, Titles & Accents */
+    body.theme-dark h1, body.theme-dark h2, body.theme-dark h3, 
+    body.theme-dark h4, body.theme-dark h5, body.theme-dark h6,
+    body.theme-dark .section-title, body.theme-dark .big-heading, body.theme-dark .heading,
+    body.theme-dark .bkk-heading, body.theme-dark .vt-title, body.theme-dark .cc-title,
+    body.theme-dark .card-title, body.theme-dark .teacher-name, body.theme-dark .person-name,
+    body.theme-dark .kg-card-title, body.theme-dark .br-card-title, body.theme-dark .news-title,
+    body.theme-dark .fc-card h3, body.theme-dark .am-proc h2, body.theme-dark .am-podium-name,
+    body.theme-dark .bkk-title .navy, body.theme-dark .ft-title, body.theme-dark .ft-row-title,
+    body.theme-dark .vm-card h3, body.theme-dark .misi-item h4, body.theme-dark .bkk-card h3,
+    body.theme-dark .bkk-service h4, body.theme-dark .bkk-job h3, body.theme-dark .bkk-year-head h3,
+    body.theme-dark .bkk-person strong, body.theme-dark .bkk-tracer-card h4, body.theme-dark .side-title-text {
+      color: #f4f8fc !important;
+    }
+
+    /* Paragraphs, Subtitles & Secondary Text */
+    body.theme-dark p, body.theme-dark .section-desc, body.theme-dark .intro-copy,
+    body.theme-dark .lead, body.theme-dark .sub-text, body.theme-dark .desc,
+    body.theme-dark .bkk-lead, body.theme-dark .bkk-sub, body.theme-dark .bkk-card p,
+    body.theme-dark .bkk-service p, body.theme-dark .bkk-job p, body.theme-dark .bkk-event p,
+    body.theme-dark .bkk-person span, body.theme-dark .bkk-tracer-card p,
+    body.theme-dark .teacher-subject, body.theme-dark .person-role, body.theme-dark .org-subtitle,
+    body.theme-dark .cc-desc, body.theme-dark .vt-desc, body.theme-dark .news-excerpt,
+    body.theme-dark .br-card-desc, body.theme-dark .fc-card p, body.theme-dark .ft-row-sub,
+    body.theme-dark .misi-item p, body.theme-dark .tujuan-item p {
+      color: #94b3d4 !important;
+    }
+
+    /* Strong text */
+    body.theme-dark strong, body.theme-dark b {
+      color: #ffffff !important;
+    }
+
+    /* Navbar & Preloader & Announce Bar */
+    body.theme-dark #navbar {
+      background: rgba(6, 18, 33, 0.96) !important;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    }
+    body.theme-dark .nav-brand-text strong { color: #f4f8fc !important; }
+    body.theme-dark .nav-link { color: #dce8f2 !important; }
+    body.theme-dark .nav-link:hover, body.theme-dark .nav-link.active { color: #ffd54a !important; }
+    body.theme-dark .announce-bar {
+      background: #091a2e !important;
+      color: #bcd8ef !important;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+    }
+    body.theme-dark #preloader { background: #061221 !important; }
+    body.theme-dark .preloader-text { color: #f4f8fc !important; }
+
+    /* Page Section Containers */
+    body.theme-dark section,
+    body.theme-dark .section-py,
+    body.theme-dark .hd-hero,
+    body.theme-dark .vt-section,
+    body.theme-dark .window-section,
+    body.theme-dark .jurusan-section,
+    body.theme-dark .fast-track-sec,
+    body.theme-dark .out-sec,
+    body.theme-dark .out-alumni,
+    body.theme-dark .out-industry,
+    body.theme-dark .out-ptn,
+    body.theme-dark .prestasi-section,
+    body.theme-dark .kontak-section,
+    body.theme-dark .history-page,
+    body.theme-dark .history-hero,
+    body.theme-dark .history-intro,
+    body.theme-dark .timeline-section,
+    body.theme-dark .history-book-section,
+    body.theme-dark .vm-page,
+    body.theme-dark .vm-hero,
+    body.theme-dark .vm-section,
+    body.theme-dark .so-page,
+    body.theme-dark .so-hero,
+    body.theme-dark .so-section,
+    body.theme-dark .gs-page,
+    body.theme-dark .gs-hero,
+    body.theme-dark .gs-section,
+    body.theme-dark .tour-page,
+    body.theme-dark .tour-hero,
+    body.theme-dark .tour-sec,
+    body.theme-dark .tentang-section,
+    body.theme-dark .belajar-section,
+    body.theme-dark .praktik-section,
+    body.theme-dark .fasilitas-section,
+    body.theme-dark .produk-section,
+    body.theme-dark .kegiatan-section,
+    body.theme-dark .prospek-section,
+    body.theme-dark .industry-collab,
+    body.theme-dark .vid-section,
+    body.theme-dark .ppdb-page,
+    body.theme-dark .ppdb-hero,
+    body.theme-dark .ppdb-section,
+    body.theme-dark .ek-page,
+    body.theme-dark .ek-hero,
+    body.theme-dark .ek-sec,
+    body.theme-dark .karya-page,
+    body.theme-dark .karya-hero,
+    body.theme-dark .karya-sec,
+    body.theme-dark .prestasi-page,
+    body.theme-dark .prestasi-hero,
+    body.theme-dark .prestasi-sec,
+    body.theme-dark .voice-page,
+    body.theme-dark .voice-hero,
+    body.theme-dark .voice-sec,
+    body.theme-dark .br-page,
+    body.theme-dark .br-hero,
+    body.theme-dark .br-sec,
+    body.theme-dark .br-story,
+    body.theme-dark .br-cta,
+    body.theme-dark .fc-page,
+    body.theme-dark .fc-hero,
+    body.theme-dark .fc-sec,
+    body.theme-dark .kg-page,
+    body.theme-dark .kg-hero,
+    body.theme-dark .kg-sec,
+    body.theme-dark .bkk-page,
+    body.theme-dark .bkk-hero,
+    body.theme-dark .bkk-section,
+    body.theme-dark .bkk-jobs,
+    body.theme-dark .alumni-page,
+    body.theme-dark .alumni-hero,
+    body.theme-dark .alumni-sec,
+    body.theme-dark .ai-page,
+    body.theme-dark .am-page,
+    body.theme-dark .am-hero,
+    body.theme-dark .am-proc {
+      background-color: #061221 !important;
+      color: #eaf2fb !important;
+    }
+
+    /* Alternating section contrast backgrounds */
+    body.theme-dark .vt-section,
+    body.theme-dark .jurusan-section,
+    body.theme-dark .out-sec,
+    body.theme-dark .bkk-jobs,
+    body.theme-dark .belajar-section,
+    body.theme-dark .fasilitas-section,
+    body.theme-dark .kegiatan-section,
+    body.theme-dark .br-story,
+    body.theme-dark .history-intro {
+      background-color: #09182b !important;
+    }
+
+    /* Universal Cards, Panels & Boxes */
+    body.theme-dark .card,
+    body.theme-dark .sec-card,
+    body.theme-dark .feature-card,
+    body.theme-dark .info-card,
+    body.theme-dark .stat-box,
+    body.theme-dark .stat-card,
+    body.theme-dark .item-card,
+    body.theme-dark .shadow-card,
+    body.theme-dark .glass-card,
+    body.theme-dark .box,
+    body.theme-dark .panel,
+    body.theme-dark .cc-card,
+    body.theme-dark .cc-body,
+    body.theme-dark .ft-card,
+    body.theme-dark .out-card,
+    body.theme-dark .alumni-card,
+    body.theme-dark .industry-card,
+    body.theme-dark .ptn-card,
+    body.theme-dark .prestasi-card,
+    body.theme-dark .kontak-card,
+    body.theme-dark .window-frame,
+    body.theme-dark .ws-inner,
+    body.theme-dark .ws-card,
+    body.theme-dark .principal-quote-box,
+    body.theme-dark .history-book,
+    body.theme-dark .book-spread,
+    body.theme-dark .book-page,
+    body.theme-dark .book-cover,
+    body.theme-dark .vm-card,
+    body.theme-dark .misi-card,
+    body.theme-dark .tujuan-card,
+    body.theme-dark .misi-item,
+    body.theme-dark .tujuan-item,
+    body.theme-dark .so-card,
+    body.theme-dark .person-card,
+    body.theme-dark .tree-node,
+    body.theme-dark .org-box,
+    body.theme-dark .teacher-card,
+    body.theme-dark .staff-card,
+    body.theme-dark .gs-card,
+    body.theme-dark .scene-card,
+    body.theme-dark .hotspot-card,
+    body.theme-dark .proli-card,
+    body.theme-dark .competency-card,
+    body.theme-dark .facility-card,
+    body.theme-dark .career-card,
+    body.theme-dark .product-card,
+    body.theme-dark .head-card,
+    body.theme-dark .collab-card,
+    body.theme-dark .ppdb-card,
+    body.theme-dark .step-card,
+    body.theme-dark .requirement-card,
+    body.theme-dark .faq-card,
+    body.theme-dark .accordion-item,
+    body.theme-dark .ek-card,
+    body.theme-dark .karya-card,
+    body.theme-dark .work-card,
+    body.theme-dark .medal-box,
+    body.theme-dark .voice-card,
+    body.theme-dark .form-card,
+    body.theme-dark .aspiration-card,
+    body.theme-dark .br-card,
+    body.theme-dark .br-featured,
+    body.theme-dark .news-card,
+    body.theme-dark .sidebar-card,
+    body.theme-dark .fact-card,
+    body.theme-dark .fc-card,
+    body.theme-dark .fc-fact-card,
+    body.theme-dark .kg-card,
+    body.theme-dark .galeri-card,
+    body.theme-dark .bkk-card,
+    body.theme-dark .bkk-service,
+    body.theme-dark .bkk-job,
+    body.theme-dark .bkk-year,
+    body.theme-dark .bkk-person,
+    body.theme-dark .bkk-tracer-card,
+    body.theme-dark .portfolio-card,
+    body.theme-dark .story-card,
+    body.theme-dark .am-card,
+    body.theme-dark .ai-card {
+      background-color: #102744 !important;
+      border: 1px solid rgba(255, 255, 255, 0.09) !important;
+      color: #eaf2fb !important;
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.4) !important;
+    }
+
+    /* Regular Form Controls & Textareas (Dark theme for standalone form fields) */
+    body.theme-dark textarea,
+    body.theme-dark select,
+    body.theme-dark .form-control,
+    body.theme-dark .db-form-control,
+    body.theme-dark .ev-input {
+      background-color: #0d213a !important;
+      color: #eaf2fb !important;
+      border: 1px solid rgba(40, 169, 225, 0.3) !important;
+    }
+    body.theme-dark textarea::placeholder,
+    body.theme-dark select::placeholder,
+    body.theme-dark .form-control::placeholder,
+    body.theme-dark .db-form-control::placeholder,
+    body.theme-dark .ev-input::placeholder {
+      color: #7995b5 !important;
+    }
+
+    /* ALL SEARCH BARS & SEARCH INPUTS — ALWAYS CLEAN WHITE & DARK TEXT (NO BLUE COLOR BLOCK) */
+    body.theme-dark .so-search,
+    body.theme-dark .sg-search,
+    body.theme-dark .br-search,
+    body.theme-dark .fc-search,
+    body.theme-dark .so-toolbar,
+    body.theme-dark .sg-toolbar,
+    body.theme-dark .search-box,
+    body.theme-dark .search-wrapper,
+    body.theme-dark .search-bar,
+    body.theme-dark .search-group,
+    body.theme-dark .search-container,
+    body.theme-dark .br-search-box,
+    body.theme-dark .fc-side-card .fc-search,
+    body.theme-dark div[class*="search"],
+    body.theme-dark div[class*="Search"] {
+      background: #ffffff !important;
+      background-color: #ffffff !important;
+      border: 1px solid rgba(13, 58, 102, 0.18) !important;
+    }
+
+    body.theme-dark .so-search input,
+    body.theme-dark .sg-search input,
+    body.theme-dark .br-search input,
+    body.theme-dark .fc-search input,
+    body.theme-dark .so-toolbar input,
+    body.theme-dark .sg-toolbar input,
+    body.theme-dark .search-box input,
+    body.theme-dark .search-wrapper input,
+    body.theme-dark .search-bar input,
+    body.theme-dark .search-group input,
+    body.theme-dark .search-container input,
+    body.theme-dark .br-search-box input,
+    body.theme-dark [class*="search"] input,
+    body.theme-dark [class*="Search"] input,
+    body.theme-dark input#soSearchInput,
+    body.theme-dark input#sgSearchInput,
+    body.theme-dark input#brSearch,
+    body.theme-dark input#fcSearchInput,
+    body.theme-dark input#evoiceSearch,
+    body.theme-dark input#factSearch,
+    body.theme-dark input#teacherSearch,
+    body.theme-dark input#dbSearchGlobal,
+    body.theme-dark input[type="search"],
+    body.theme-dark input[placeholder*="Cari"],
+    body.theme-dark input[placeholder*="cari"],
+    body.theme-dark input[placeholder*="Search"],
+    body.theme-dark input[placeholder*="search"] {
+      background: transparent !important;
+      background-color: transparent !important;
+      color: #0d3a66 !important;
+      border: none !important;
+      outline: none !important;
+      box-shadow: none !important;
+    }
+
+    body.theme-dark .so-search input::placeholder,
+    body.theme-dark .sg-search input::placeholder,
+    body.theme-dark .br-search input::placeholder,
+    body.theme-dark .fc-search input::placeholder,
+    body.theme-dark .so-toolbar input::placeholder,
+    body.theme-dark .sg-toolbar input::placeholder,
+    body.theme-dark .search-box input::placeholder,
+    body.theme-dark .search-wrapper input::placeholder,
+    body.theme-dark .search-bar input::placeholder,
+    body.theme-dark [class*="search"] input::placeholder,
+    body.theme-dark input#soSearchInput::placeholder,
+    body.theme-dark input#sgSearchInput::placeholder,
+    body.theme-dark input#brSearch::placeholder,
+    body.theme-dark input#fcSearchInput::placeholder,
+    body.theme-dark input#evoiceSearch::placeholder,
+    body.theme-dark input#factSearch::placeholder,
+    body.theme-dark input#teacherSearch::placeholder,
+    body.theme-dark input#dbSearchGlobal::placeholder,
+    body.theme-dark input[type="search"]::placeholder,
+    body.theme-dark input[placeholder*="Cari"]::placeholder,
+    body.theme-dark input[placeholder*="cari"]::placeholder,
+    body.theme-dark input[placeholder*="Search"]::placeholder,
+    body.theme-dark input[placeholder*="search"]::placeholder {
+      color: #8fa3b6 !important;
+    }
+
+    body.theme-dark .so-search i,
+    body.theme-dark .sg-search i,
+    body.theme-dark .br-search i,
+    body.theme-dark .fc-search i,
+    body.theme-dark .search-box i,
+    body.theme-dark .search-bar i,
+    body.theme-dark [class*="search"] i {
+      color: #2f6fa8 !important;
+    }
+
+    body.theme-dark .so-fchip,
+    body.theme-dark .sg-fchip,
+    body.theme-dark .br-filter-btn {
+      background: #ffffff !important;
+      color: #0d3a66 !important;
+      border: 1px solid rgba(13, 58, 102, 0.18) !important;
+    }
+    body.theme-dark .so-fchip.is-active,
+    body.theme-dark .sg-fchip.is-active,
+    body.theme-dark .br-filter-btn.active {
+      background: linear-gradient(135deg, #0d3a66, #2f6fa8) !important;
+      color: #ffffff !important;
+      border-color: transparent !important;
+    }
+
+    /* Ekstra Matchmaker Quiz Stage Dark Theme */
+    body.theme-dark .qz-stage {
+      background: linear-gradient(145deg, #0d2338 0%, #102a45 100%) !important;
+      border: 1px solid #1d3a5c !important;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45) !important;
+    }
+    body.theme-dark .qz-question {
+      color: #f4f8fc !important;
+    }
+    body.theme-dark .qz-question-tag {
+      background: rgba(136, 84, 208, 0.22) !important;
+      color: #d6bbfb !important;
+      border: 1px solid rgba(136, 84, 208, 0.35) !important;
+    }
+    body.theme-dark .qz-qcounter {
+      background: #15314f !important;
+      color: #d6bbfb !important;
+      border: 1px solid #1d3a5c !important;
+    }
+    body.theme-dark .qz-qcounter i { color: #a879f9 !important; }
+    body.theme-dark .qz-timer-track { stroke: #1d3a5c !important; }
+    body.theme-dark .qz-timer span { color: #d6bbfb !important; }
+    body.theme-dark .qz-progressbar { background: #15314f !important; }
+    body.theme-dark .qz-back {
+      background: #15314f !important;
+      color: #c9d8e8 !important;
+      border-color: #1d3a5c !important;
+    }
+    body.theme-dark .qz-back:hover {
+      border-color: #a879f9 !important;
+      color: #ffffff !important;
+    }
+
+    /* Tabs, Pills & Badges */
+    body.theme-dark .ek-tab,
+    body.theme-dark .filter-pill,
+    body.theme-dark .category-pill,
+    body.theme-dark .kg-filter-pill,
+    body.theme-dark .filter-btn,
+    body.theme-dark .bkk-tag,
+    body.theme-dark .bkk-key,
+    body.theme-dark .bkk-pill,
+    body.theme-dark .vt-feat {
+      background-color: #0d213a !important;
+      color: #94b3d4 !important;
+      border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    }
+    body.theme-dark .ek-tab.active,
+    body.theme-dark .filter-pill.active,
+    body.theme-dark .category-pill.active,
+    body.theme-dark .kg-filter-pill.active,
+    body.theme-dark .filter-btn.active {
+      background-color: #1d6fb8 !important;
+      color: #ffffff !important;
+      border-color: #28a9e1 !important;
+    }
+
+    /* Accordions & Tables */
+    body.theme-dark .accordion-button {
+      background-color: #0d213a !important;
+      color: #f4f8fc !important;
+    }
+    body.theme-dark table,
+    body.theme-dark .table,
+    body.theme-dark .schedule-table,
+    body.theme-dark .table-ppdb {
+      background-color: #0d213a !important;
+      color: #eaf2fb !important;
+    }
+    body.theme-dark table th,
+    body.theme-dark .table th,
+    body.theme-dark .schedule-table th,
+    body.theme-dark .table-ppdb th {
+      background-color: #07172b !important;
+      color: #f4f8fc !important;
+      border-color: rgba(255, 255, 255, 0.1) !important;
+    }
+    body.theme-dark table td,
+    body.theme-dark .table td,
+    body.theme-dark .schedule-table td,
+    body.theme-dark .table-ppdb td {
+      border-color: rgba(255, 255, 255, 0.06) !important;
+      color: #eaf2fb !important;
+    }
+
+    /* BKK Special Component Overrides */
+    body.theme-dark .bkk-kicker {
+      background: #0d213a !important;
+      color: #ffd54a !important;
+      border-color: rgba(255,213,74,0.3) !important;
+    }
+    body.theme-dark .bkk-vision {
+      background: #0d2746 !important;
+      border-color: rgba(255,213,74,0.3) !important;
+    }
+    body.theme-dark .bkk-icon {
+      background: #0d213a !important;
+      color: #38bdf8 !important;
+    }
+    body.theme-dark .bkk-strip { background: #09182b !important; }
+
+    /* Sejarah Book Section Tweaks */
+    body.theme-dark .page-left, body.theme-dark .page-right {
+      background: #0b1d33 !important;
+    }
+
+    /* Modals & Dialogs */
+    body.theme-dark .modal-content,
+    body.theme-dark .dialog-content {
+      background-color: #102744 !important;
+      color: #eaf2fb !important;
+      border: 1px solid rgba(40, 169, 225, 0.3) !important;
+    }
+    body.theme-dark .modal-header,
+    body.theme-dark .modal-footer {
+      border-color: rgba(255, 255, 255, 0.08) !important;
+    }
+  </style>
 </head>
 <body>
 
@@ -1370,10 +1864,10 @@
   }
 
   function applyA11y(s){
-    const b = document.body;
-    b.classList.toggle('theme-dark', s.colorMode === 'dark');
+    const colorIsDark = (s.colorMode || 'light') === 'dark';
+    document.body.classList.toggle('theme-dark', colorIsDark);
+    document.documentElement.classList.toggle('theme-dark', colorIsDark);
 
-    const colorIsDark = (s.colorMode||'light') === 'dark';
     const fabIcon = document.getElementById('accIcon');
     if(fabIcon){
       fabIcon.classList.toggle('fa-sun', !colorIsDark);
