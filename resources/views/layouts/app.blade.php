@@ -55,6 +55,7 @@
       -webkit-font-smoothing:antialiased;
       position:relative;
       isolation:isolate;
+      transition:background-color .4s ease,color .4s ease;
     }
     body.a11y-text-lg{font-size:1.1rem}
     body.a11y-text-xl{font-size:1.22rem}
@@ -705,6 +706,39 @@
     body.theme-dark .nara-quick-btn{background:#15314f;border-color:#1d3a5c;color:#bcd8ef}
     body.theme-dark .nara-close-float{background:rgba(21,49,79,.85);color:#eaf2fb}
     body.theme-dark .acc-reset{background:#0d2338;border-color:#1d3a5c;color:#c9d8e8}
+
+    /* ---------- DARK MODE — PATCH LANJUTAN (elemen yang masih hardcode terang) ---------- */
+    body.theme-dark .dropdown-menu{background:rgba(16,42,69,.98);border-color:rgba(255,255,255,.1);box-shadow:0 20px 50px rgba(0,0,0,.45)}
+    body.theme-dark .dropdown-menu a{color:#dce8f2}
+    body.theme-dark .dropdown-menu a i{color:#5bb3ea}
+    body.theme-dark .dropdown-menu a:hover{background:rgba(255,255,255,.06);color:#ffd54f}
+
+    body.theme-dark .acc-row-name-wrap>i{background:#0d2338;color:#5bb3ea}
+    body.theme-dark .acc-row-desc{color:#8fa8c2}
+    body.theme-dark .acc-switch{background:#1d3a5c}
+    body.theme-dark .acc-switch span{background:#eaf2fb}
+    body.theme-dark .acc-switch.on{background:#1d6fb8}
+
+    body.theme-dark .mode-card:hover{border-color:#3f7fb8}
+    body.theme-dark .mode-card.active{background:#0d2338;border-color:#28a9e1;box-shadow:0 0 0 3px rgba(40,169,225,.18)}
+    body.theme-dark .mode-card-preview{background:#0d2338}
+    body.theme-dark .pv-line{background:#2a4a68}
+    body.theme-dark .mode-toggle-single{background:#102a45;border-color:#1d3a5c}
+    body.theme-dark .mode-toggle-single:hover{border-color:#3f7fb8}
+    body.theme-dark .mode-toggle-icon{background:#0d2338}
+    body.theme-dark .mode-toggle-name{color:#eaf2fb}
+
+    body.theme-dark .sibot-window{border-color:#1d3a5c}
+    body.theme-dark .sibot-messages{background:#0a1f33}
+    body.theme-dark .msg-bubble{background:#102a45;border-color:#1d3a5c;color:#dce8f2}
+    body.theme-dark .msg-user .msg-bubble{color:#fff}
+    body.theme-dark .sibot-quick,body.theme-dark .sibot-input-row{background:#102a45;border-color:#1d3a5c}
+    body.theme-dark .quick-btn{background:#0d2338;border-color:#1d3a5c;color:#c9d8e8}
+    body.theme-dark .sibot-input{background:#0d2338;border-color:#1d3a5c;color:#eaf2fb}
+
+    body.theme-dark .bg-blob{opacity:.28}
+    body.theme-dark #cursorGlow{opacity:.7}
+    body.theme-dark .footer-partner-logo{filter:grayscale(100%) brightness(2.4) contrast(.85)}
 
     @media(max-width:600px){
       .skn-stack{right:12px;bottom:12px;gap:12px}

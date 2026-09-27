@@ -614,6 +614,163 @@
   }
 }
 </style>
+
+<style id="rm-dark-mode">
+/* ==========================================================
+   DARK MODE — ROADMAP SKANEDA (v2, lebih dalam & premium)
+   Default halaman selalu LIGHT. Dark mode HANYA aktif kalau
+   body.theme-dark dipasang di <html> lewat tombol toggle,
+   dan tersimpan di localStorage ("skaneda-theme").
+   Palet: navy sangat gelap (#050d18 → #0c2038) + aksen gold
+   yang sama seperti mode terang, supaya identitas tetap konsisten.
+   ========================================================== */
+
+:root{
+  --rm-d-bg-0:#050d18;      /* base halaman paling gelap */
+  --rm-d-bg-1:#0a1728;      /* section gelap */
+  --rm-d-bg-2:#0f2136;      /* card gelap */
+  --rm-d-bg-3:#152c46;      /* card hover / elevated */
+  --rm-d-border:rgba(255,255,255,.08);
+  --rm-d-border-hi:rgba(255,213,74,.35);
+  --rm-d-text-hi:#f4f8fc;
+  --rm-d-text:#c3d2e2;
+  --rm-d-text-dim:#8ea3bb;
+  --rm-d-gold:#ffd54a;
+  --rm-d-gold-2:#ffb300;
+}
+
+html{transition:background-color .4s ease}
+
+/* Catatan: tombol toggle dark/light memakai tombol global yang sudah ada
+   di layout (ikon bulan di floating stack, class body.theme-dark),
+   jadi halaman ini TIDAK punya tombol toggle sendiri lagi. */
+
+/* ---------- Base page & sections ---------- */
+body.theme-dark .rm-page{
+  background:linear-gradient(180deg,var(--rm-d-bg-0) 0%,var(--rm-d-bg-1) 100%);
+  color:var(--rm-d-text)}
+body.theme-dark .rm-section,
+body.theme-dark .rm-intro,
+body.theme-dark .rm-pillars{background:var(--rm-d-bg-1)}
+body.theme-dark .rm-timeline-section{background:linear-gradient(180deg,var(--rm-d-bg-0) 0%,var(--rm-d-bg-1) 55%,var(--rm-d-bg-1) 100%)}
+body.theme-dark .rm-timeline-section::before{background:linear-gradient(90deg,transparent,rgba(255,213,74,.28),transparent)}
+body.theme-dark .rm-future{background:var(--rm-d-bg-0)}
+
+/* ---------- Typography ---------- */
+body.theme-dark .eyebrow{color:var(--rm-d-gold)}
+body.theme-dark .eyebrow::before{background:linear-gradient(90deg,var(--rm-d-gold),var(--rm-d-gold-2))}
+body.theme-dark .big-heading{color:var(--rm-d-text-hi);text-shadow:none}
+body.theme-dark .rm-sec-desc,
+body.theme-dark .intro-copy,
+body.theme-dark .pillar-text,
+body.theme-dark .rm-phase-text,
+body.theme-dark .rm-phase-list li,
+body.theme-dark .rm-goal p,
+body.theme-dark .stat-label,
+body.theme-dark .rm-goal-metric span,
+body.theme-dark .timeline-note,
+body.theme-dark .rm-dest-sub{color:var(--rm-d-text-dim)}
+body.theme-dark .rm-phase-list li::before{color:var(--rm-d-gold)}
+
+/* Watermark teks raksasa jadi lebih halus di background gelap */
+body.theme-dark .rm-hero::after,
+body.theme-dark .rm-future::after,
+body.theme-dark .rm-cta::after,
+body.theme-dark .sg-history-hero::after{
+  color:rgba(255,213,74,.045)!important;-webkit-text-stroke:1px rgba(255,213,74,.08)!important}
+
+/* ---------- Stat boxes (glass di atas gelap) ---------- */
+body.theme-dark .stat-box{
+  background:linear-gradient(150deg,rgba(21,44,70,.85),rgba(15,33,54,.65));
+  border-color:var(--rm-d-border);
+  box-shadow:0 18px 40px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.04)}
+body.theme-dark .stat-box::after{border-color:rgba(255,213,74,.2)}
+body.theme-dark .stat-num{
+  background:linear-gradient(135deg,var(--rm-d-gold),var(--rm-d-gold-2));
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:var(--rm-d-gold)}
+
+/* ---------- Pillar cards ---------- */
+body.theme-dark .pillar-card{
+  background:linear-gradient(160deg,var(--rm-d-bg-2),var(--rm-d-bg-1));
+  border-color:var(--rm-d-border);box-shadow:0 14px 30px rgba(0,0,0,.35)}
+body.theme-dark .pillar-card::after{border-color:rgba(255,213,74,.16)}
+body.theme-dark .pillar-card:hover{
+  background:linear-gradient(160deg,var(--rm-d-bg-3),var(--rm-d-bg-2));
+  border-color:var(--rm-d-border-hi);box-shadow:0 26px 55px rgba(0,0,0,.5)}
+body.theme-dark .pillar-title{color:var(--rm-d-text-hi)}
+body.theme-dark .pillar-icon{box-shadow:0 12px 26px rgba(0,0,0,.5),0 0 0 1px rgba(255,213,74,.12)}
+
+/* ---------- Timeline / phase cards ---------- */
+body.theme-dark .rm-phase-card{
+  background:linear-gradient(160deg,var(--rm-d-bg-2),var(--rm-d-bg-1));
+  border-color:var(--rm-d-border);box-shadow:0 14px 32px rgba(0,0,0,.4)}
+body.theme-dark .rm-phase-card::before{background:linear-gradient(90deg,var(--rm-d-gold),var(--rm-d-gold-2))}
+body.theme-dark .rm-phase-card:hover{
+  background:linear-gradient(160deg,var(--rm-d-bg-3),var(--rm-d-bg-2));
+  border-color:var(--rm-d-border-hi);box-shadow:0 28px 60px rgba(0,0,0,.55)}
+body.theme-dark .rm-phase-title{color:var(--rm-d-text-hi)}
+body.theme-dark .rm-phase-no{color:rgba(255,255,255,.05)}
+body.theme-dark .rm-phase-kick{
+  color:var(--rm-d-gold);background:rgba(255,213,74,.08);border-color:rgba(255,213,74,.22)}
+body.theme-dark .rm-phase-tag{
+  background:rgba(255,213,74,.08);color:var(--rm-d-gold);border-color:rgba(255,213,74,.22)}
+body.theme-dark .rm-phase-node{
+  border-color:var(--rm-d-bg-0);box-shadow:0 10px 24px rgba(0,0,0,.5)}
+body.theme-dark .rm-phase--goal .rm-phase-card{
+  background:linear-gradient(160deg,#26210f,#1a2438);border-color:rgba(255,179,0,.45);
+  box-shadow:0 22px 55px rgba(255,138,0,.15)}
+body.theme-dark .rm-phase--goal .rm-phase-no{color:rgba(255,179,0,.12)}
+body.theme-dark .rm-route::before{background:linear-gradient(180deg,#2f6fa8 0%,#4a8bc4 55%,var(--rm-d-gold-2) 100%)}
+body.theme-dark .rm-dest-label{color:var(--rm-d-text-hi)}
+body.theme-dark .rm-dest::after{border-color:rgba(255,179,0,.2)}
+
+/* ---------- Future band & goal card ---------- */
+body.theme-dark .rm-future-card{
+  background:linear-gradient(135deg,#081324,var(--rm-d-bg-1) 55%,#0d2032);
+  box-shadow:0 30px 70px rgba(0,0,0,.5)}
+body.theme-dark .rm-future-card .eyebrow{color:#7fb4de}
+body.theme-dark .rm-future-card p{color:var(--rm-d-text)}
+body.theme-dark .rm-target{background:rgba(255,255,255,.045);border-color:var(--rm-d-border)}
+body.theme-dark .rm-target:hover{background:rgba(255,255,255,.08)}
+body.theme-dark .rm-target span{color:var(--rm-d-text-dim)}
+body.theme-dark .rm-goal{
+  background:linear-gradient(160deg,var(--rm-d-bg-2),var(--rm-d-bg-1));
+  border-color:var(--rm-d-border);box-shadow:0 24px 55px rgba(0,0,0,.45)}
+body.theme-dark .rm-goal::after{border-color:rgba(255,213,74,.2)}
+body.theme-dark .rm-goal h4{color:var(--rm-d-text-hi)}
+body.theme-dark .rm-goal-num{
+  background:linear-gradient(135deg,var(--rm-d-gold),var(--rm-d-gold-2));
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:var(--rm-d-gold)}
+body.theme-dark .rm-goal-metric{background:var(--rm-d-bg-0);border-color:var(--rm-d-border)}
+body.theme-dark .rm-goal-metric b{color:var(--rm-d-text-hi)}
+
+/* ---------- Ornaments — dibuat halus, jangan berat di gelap ---------- */
+body.theme-dark .home-orn .ho-chevron{border-color:rgba(255,255,255,.06)}
+body.theme-dark .home-orn .ho-chevron::after{border-color:rgba(111,168,208,.14)}
+body.theme-dark .home-orn .ho-line{background:linear-gradient(90deg,transparent,#4a8bc4,transparent);opacity:.3}
+body.theme-dark .home-orn .ho-line::after{background:linear-gradient(90deg,transparent,var(--rm-d-gold),transparent)}
+body.theme-dark .home-orn .ho-dots{background-image:radial-gradient(circle,#4a8bc4 2px,transparent 2.8px);opacity:.28}
+body.theme-dark .home-orn .ho-ring{border-color:rgba(255,255,255,.08);
+  box-shadow:0 0 0 20px rgba(255,255,255,.015),0 0 0 42px rgba(255,213,74,.02)}
+body.theme-dark .home-orn .ho-ring::before{border-color:rgba(111,168,208,.16)}
+body.theme-dark .home-orn .ho-square{border-color:rgba(255,179,0,.25)}
+body.theme-dark .home-orn .ho-square::before{border-color:rgba(255,255,255,.1)}
+body.theme-dark .home-orn .ho-corner{border-color:rgba(255,255,255,.07)}
+body.theme-dark .rm-page::before,
+body.theme-dark .rm-page::after{border-color:rgba(255,255,255,.08)}
+
+/* ---------- Hero (Sejarah-style, reused di halaman ini) ---------- */
+body.theme-dark .sg-history-hero{background:var(--rm-d-bg-0)!important;color:var(--rm-d-text-hi)!important}
+body.theme-dark .sg-history-hero .history-title .sejarah-white{
+  color:var(--rm-d-text-hi)!important;-webkit-text-fill-color:var(--rm-d-text-hi)!important}
+body.theme-dark .sg-history-hero .history-ref-ornament-image{opacity:.5!important;filter:brightness(.65) saturate(1.05)}
+
+/* ---------- CTA penutup ---------- */
+body.theme-dark .rm-cta{
+  background:linear-gradient(135deg,#081324,#0d2032 45%,#0d2032);
+  box-shadow:0 28px 70px rgba(0,0,0,.55)}
+body.theme-dark .rm-cta p{color:var(--rm-d-text)}
+</style>
 @endpush
 
 @section('content')
