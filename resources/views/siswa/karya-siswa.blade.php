@@ -610,72 +610,92 @@
       </div>
 
       <div class="ks-prestasi-grid">
-        <div class="ks-prestasi-card" data-reveal>
-          <div class="ks-prestasi-media">
-            <img src="{{ asset('images/karya/multimie.jpeg') }}" alt="MultiMie" loading="lazy">
-            <div class="ks-prestasi-medal"><i class="fas fa-utensils"></i></div>
+        @if(isset($studentWorks) && count($studentWorks) > 0)
+          @foreach($studentWorks as $index => $item)
+            <div class="ks-prestasi-card" data-reveal style="--d:{{ $index % 6 }}">
+              <div class="ks-prestasi-media">
+                @if($item->media_url || $item->image_url)
+                  <img src="{{ asset($item->media_url ?? $item->image_url) }}" alt="{{ $item->title }}" loading="lazy">
+                @else
+                  <img src="{{ asset('images/karya/multimie.jpeg') }}" alt="{{ $item->title }}" loading="lazy">
+                @endif
+                <div class="ks-prestasi-medal"><i class="fas fa-lightbulb"></i></div>
+              </div>
+              <div class="ks-prestasi-body">
+                <h3>{{ $item->title }}</h3>
+                <p>{{ $item->description }}</p>
+                <span class="ks-prestasi-year">{{ $item->major->name ?? $item->student_name }} &middot; {{ $item->student_name }}</span>
+              </div>
+            </div>
+          @endforeach
+        @else
+          <div class="ks-prestasi-card" data-reveal>
+            <div class="ks-prestasi-media">
+              <img src="{{ asset('images/karya/multimie.jpeg') }}" alt="MultiMie" loading="lazy">
+              <div class="ks-prestasi-medal"><i class="fas fa-utensils"></i></div>
+            </div>
+            <div class="ks-prestasi-body">
+              <h3>MultiMie</h3>
+              <p>Mi instan praktis dengan bumbu siap seduh — produk inovasi siswa APHP.</p>
+              <span class="ks-prestasi-year">APHP &middot; 2025</span>
+            </div>
           </div>
-          <div class="ks-prestasi-body">
-            <h3>MultiMie</h3>
-            <p>Mi instan praktis dengan bumbu siap seduh — produk inovasi siswa APHP.</p>
-            <span class="ks-prestasi-year">APHP &middot; 2025</span>
+          <div class="ks-prestasi-card" data-reveal style="--d:1">
+            <div class="ks-prestasi-media">
+              <img src="{{ asset('images/karya/bungatelang.jpeg') }}" alt="Sari Bunga Telang" loading="lazy">
+              <div class="ks-prestasi-medal"><i class="fas fa-bottle-water"></i></div>
+            </div>
+            <div class="ks-prestasi-body">
+              <h3>Sari Bunga Telang</h3>
+              <p>Minuman herbal alami dari ekstrak bunga telang dengan warna biru khas dan cita rasa menyegarkan — inovasi olahan kreatif siswa APHP.</p>
+              <span class="ks-prestasi-year">APHP &middot; 2025</span>
+            </div>
           </div>
-        </div>
-        <div class="ks-prestasi-card" data-reveal style="--d:1">
-          <div class="ks-prestasi-media">
-            <img src="{{ asset('images/karya/bungatelang.jpeg') }}" alt="Sari Bunga Telang" loading="lazy">
-            <div class="ks-prestasi-medal"><i class="fas fa-bottle-water"></i></div>
+          <div class="ks-prestasi-card" data-reveal style="--d:2">
+            <div class="ks-prestasi-media">
+              <img src="{{ asset('images/karya/nirmana.jpeg') }}" alt="Nirmana 3D" loading="lazy">
+              <div class="ks-prestasi-medal"><i class="fas fa-palette"></i></div>
+            </div>
+            <div class="ks-prestasi-body">
+              <h3>Nirmana 3D</h3>
+              <p>Mengeksplorasi bentuk, ruang, tekstur, dan komposisi untuk menghasilkan karya tiga dimensi yang harmonis dan menarik.</p>
+              <span class="ks-prestasi-year">DKV &middot; 2024</span>
+            </div>
           </div>
-          <div class="ks-prestasi-body">
-            <h3>Sari Bunga Telang</h3>
-            <p>Minuman herbal alami dari ekstrak bunga telang dengan warna biru khas dan cita rasa menyegarkan — inovasi olahan kreatif siswa APHP.</p>
-            <span class="ks-prestasi-year">APHP &middot; 2025</span>
+          <div class="ks-prestasi-card" data-reveal style="--d:3">
+            <div class="ks-prestasi-media">
+              <img src="{{ asset('images/karya/beimie.jpeg') }}" alt="Bei Mie" loading="lazy">
+              <div class="ks-prestasi-medal"><i class="fas fa-utensils"></i></div>
+            </div>
+            <div class="ks-prestasi-body">
+              <h3>Bei Mie</h3>
+              <p>Mie unik berbahan dasar daun murbei yang alami dan kaya manfaat, perpaduan cita rasa lezat dengan pilihan yang lebih sehat.</p>
+              <span class="ks-prestasi-year">Kuliner &middot; 2025</span>
+            </div>
           </div>
-        </div>
-        <div class="ks-prestasi-card" data-reveal style="--d:2">
-          <div class="ks-prestasi-media">
-            <img src="{{ asset('images/karya/nirmana.jpeg') }}" alt="Nirmana 3D" loading="lazy">
-            <div class="ks-prestasi-medal"><i class="fas fa-palette"></i></div>
+          <div class="ks-prestasi-card" data-reveal style="--d:4">
+            <div class="ks-prestasi-media">
+              <img src="{{ asset('images/karya/estrakmojo.jpeg') }}" alt="Maja Mojo" loading="lazy">
+              <div class="ks-prestasi-medal"><i class="fas fa-bottle-water"></i></div>
+            </div>
+            <div class="ks-prestasi-body">
+              <h3>Maja Mojo</h3>
+              <p>Minuman olahan berbahan dasar buah mojo dengan cita rasa unik, inovasi kreatif siswa RPL dalam memanfaatkan bahan pangan lokal.</p>
+              <span class="ks-prestasi-year">RPL &middot; 2024</span>
+            </div>
           </div>
-          <div class="ks-prestasi-body">
-            <h3>Nirmana 3D</h3>
-            <p>Mengeksplorasi bentuk, ruang, tekstur, dan komposisi untuk menghasilkan karya tiga dimensi yang harmonis dan menarik.</p>
-            <span class="ks-prestasi-year">DKV &middot; 2024</span>
+          <div class="ks-prestasi-card" data-reveal style="--d:5">
+            <div class="ks-prestasi-media">
+              <img src="{{ asset('images/karya/dapur-produksi.png') }}" alt="Puding lapis rempah nusantara karya siswa Kuliner" loading="lazy">
+              <div class="ks-prestasi-medal"><i class="fas fa-utensils"></i></div>
+            </div>
+            <div class="ks-prestasi-body">
+              <h3>Bakery & Pastry</h3>
+              <p>Kreasi dessert bercita rasa khas Indonesia, hasil inovasi menu siswa jurusan Kuliner.</p>
+              <span class="ks-prestasi-year">Kuliner &middot; 2025</span>
+            </div>
           </div>
-        </div>
-        <div class="ks-prestasi-card" data-reveal style="--d:3">
-          <div class="ks-prestasi-media">
-            <img src="{{ asset('images/karya/beimie.jpeg') }}" alt="Bei Mie" loading="lazy">
-            <div class="ks-prestasi-medal"><i class="fas fa-utensils"></i></div>
-          </div>
-          <div class="ks-prestasi-body">
-            <h3>Bei Mie</h3>
-            <p>Mie unik berbahan dasar daun murbei yang alami dan kaya manfaat, perpaduan cita rasa lezat dengan pilihan yang lebih sehat.</p>
-            <span class="ks-prestasi-year">Kuliner &middot; 2025</span>
-          </div>
-        </div>
-        <div class="ks-prestasi-card" data-reveal style="--d:4">
-          <div class="ks-prestasi-media">
-            <img src="{{ asset('images/karya/estrakmojo.jpeg') }}" alt="Maja Mojo" loading="lazy">
-            <div class="ks-prestasi-medal"><i class="fas fa-bottle-water"></i></div>
-          </div>
-          <div class="ks-prestasi-body">
-            <h3>Maja Mojo</h3>
-            <p>Minuman olahan berbahan dasar buah mojo dengan cita rasa unik, inovasi kreatif siswa RPL dalam memanfaatkan bahan pangan lokal.</p>
-            <span class="ks-prestasi-year">RPL &middot; 2024</span>
-          </div>
-        </div>
-        <div class="ks-prestasi-card" data-reveal style="--d:5">
-          <div class="ks-prestasi-media">
-            <img src="{{ asset('images/karya/dapur-produksi.png') }}" alt="Puding lapis rempah nusantara karya siswa Kuliner" loading="lazy">
-            <div class="ks-prestasi-medal"><i class="fas fa-utensils"></i></div>
-          </div>
-          <div class="ks-prestasi-body">
-            <h3>Bakery & Pastry</h3>
-            <p>Kreasi dessert bercita rasa khas Indonesia, hasil inovasi menu siswa jurusan Kuliner.</p>
-            <span class="ks-prestasi-year">Kuliner &middot; 2025</span>
-          </div>
-        </div>
+        @endif
       </div>
     </div>
   </section>

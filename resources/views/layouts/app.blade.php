@@ -1267,16 +1267,434 @@
       background: #0b1d33 !important;
     }
 
-    /* Modals & Dialogs */
-    body.theme-dark .modal-content,
-    body.theme-dark .dialog-content {
-      background-color: #102744 !important;
-      color: #eaf2fb !important;
-      border: 1px solid rgba(40, 169, 225, 0.3) !important;
+    /* -----------------------------------------------------------------
+       DARK MODE FIXES — WELCOME PAGE (Jurusan Cards, Alumni, PTN, Industry)
+       ----------------------------------------------------------------- */
+
+    /* 1. Jurusan Card Subtitle Fix (Text under RPL, KULINER, etc.) */
+    body.theme-dark .cc-full {
+      color: #f4f8fc !important;
     }
-    body.theme-dark .modal-header,
-    body.theme-dark .modal-footer {
-      border-color: rgba(255, 255, 255, 0.08) !important;
+
+    /* 2. Lulusan Terbaik / Featured Alumni Section Dark Mode */
+    body.theme-dark .out-alumni,
+    body.theme-dark .out-sec.out-alumni {
+      background: #061221 !important;
+      background-color: #061221 !important;
+      color: #eaf2fb !important;
+    }
+    body.theme-dark .out-alumni .out-copy::before {
+      color: rgba(255, 255, 255, 0.04) !important;
+    }
+    body.theme-dark .out-alumni .out-kicker {
+      color: #ffb300 !important;
+    }
+    body.theme-dark .out-alumni .out-title {
+      color: #f4f8fc !important;
+    }
+    body.theme-dark .out-alumni .out-desc {
+      color: #c9d8e8 !important;
+    }
+    body.theme-dark .out-alumni .out-route-node {
+      background: #0d213a !important;
+      color: #c9d8e8 !important;
+      border-color: rgba(255, 255, 255, 0.1) !important;
+    }
+    body.theme-dark .out-alumni .out-route-node.gold {
+      background: rgba(255, 179, 0, 0.18) !important;
+      color: #ffd54a !important;
+      border-color: rgba(255, 179, 0, 0.3) !important;
+    }
+    body.theme-dark .out-alumni .out-jurusan-label span {
+      color: #92a0ae !important;
+    }
+    body.theme-dark .out-alumni .out-jurusan-label small {
+      color: #8198b0 !important;
+    }
+    body.theme-dark .out-alumni .out-jurusan-pill {
+      background: #0d213a !important;
+      color: #c9d8e8 !important;
+      border-color: rgba(255, 255, 255, 0.1) !important;
+    }
+    body.theme-dark .out-alumni .out-jurusan-pill.active {
+      background: #1d6fb8 !important;
+      color: #ffffff !important;
+      border-color: #28a9e1 !important;
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.4) !important;
+    }
+    body.theme-dark .out-alumni .out-id-viewport {
+      background: linear-gradient(135deg, rgba(13, 58, 102, 0.5), rgba(29, 111, 184, 0.25)) !important;
+      box-shadow: 0 28px 75px rgba(0, 0, 0, 0.5) !important;
+    }
+    body.theme-dark .out-alumni .out-id-card {
+      background: linear-gradient(145deg, #102744 0%, #0d2338 100%) !important;
+      border-color: rgba(255, 255, 255, 0.12) !important;
+      color: #eaf2fb !important;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.45) !important;
+    }
+    body.theme-dark .out-alumni .out-id-photo {
+      background: #09182b !important;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1), 0 12px 28px rgba(0, 0, 0, 0.4) !important;
+    }
+    body.theme-dark .out-alumni .out-id-brand {
+      color: #f4f8fc !important;
+    }
+    body.theme-dark .out-alumni .out-id-code {
+      color: #8fa8c2 !important;
+    }
+    body.theme-dark .out-alumni .out-id-name {
+      color: #ffffff !important;
+    }
+    body.theme-dark .out-alumni .out-id-role {
+      color: #ffd54a !important;
+    }
+    body.theme-dark .out-alumni .out-id-meta div {
+      background: #0d213a !important;
+      border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    }
+    body.theme-dark .out-alumni .out-id-meta div small {
+      color: #8fa8c2 !important;
+    }
+    body.theme-dark .out-alumni .out-id-meta div b {
+      color: #ffffff !important;
+    }
+    body.theme-dark .out-alumni .out-id-chip {
+      background: #0d213a !important;
+      color: #ffd54a !important;
+      border-color: rgba(255, 213, 74, 0.3) !important;
+    }
+    body.theme-dark .out-alumni .out-arrow {
+      background: #102744 !important;
+      border-color: rgba(255, 255, 255, 0.15) !important;
+      color: #ffffff !important;
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.3) !important;
+    }
+    body.theme-dark .out-alumni .out-arrow:hover {
+      background: #1d6fb8 !important;
+      color: #ffffff !important;
+    }
+    body.theme-dark .out-alumni .out-dot {
+      background: rgba(255, 255, 255, 0.25) !important;
+    }
+    body.theme-dark .out-alumni .out-dot.active {
+      background: #ffb300 !important;
+    }
+
+    /* 3. Lulusan PTN Section Dark Mode */
+    body.theme-dark .out-ptn,
+    body.theme-dark .out-sec.out-ptn {
+      background: #061221 !important;
+      background-color: #061221 !important;
+      color: #eaf2fb !important;
+    }
+    body.theme-dark .out-ptn::before {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px), linear-gradient(45deg, rgba(255, 179, 0, 0.02) 1px, transparent 1px) !important;
+    }
+    body.theme-dark .out-ptn .out-copy::after {
+      color: rgba(255, 255, 255, 0.04) !important;
+    }
+    body.theme-dark .out-ptn .out-kicker {
+      color: #ffb300 !important;
+    }
+    body.theme-dark .out-ptn .out-title {
+      color: #f4f8fc !important;
+    }
+    body.theme-dark .out-ptn .out-desc {
+      color: #c9d8e8 !important;
+    }
+    body.theme-dark .out-ptn-route>span {
+      background: #0d213a !important;
+      color: #c9d8e8 !important;
+      border-color: rgba(255, 255, 255, 0.1) !important;
+    }
+    body.theme-dark .out-ptn-route>span.gold {
+      background: rgba(255, 179, 0, 0.18) !important;
+      color: #ffd54a !important;
+      border-color: rgba(255, 179, 0, 0.3) !important;
+    }
+    body.theme-dark .out-ptn-window {
+      background: linear-gradient(135deg, rgba(13, 58, 102, 0.4), rgba(255, 179, 0, 0.15)) !important;
+      box-shadow: 0 24px 64px rgba(0, 0, 0, 0.45) !important;
+      border-color: rgba(255, 255, 255, 0.1) !important;
+    }
+    body.theme-dark .out-ptn-window::after {
+      color: rgba(255, 255, 255, 0.1) !important;
+    }
+    body.theme-dark .out-ptn-destination-card {
+      background: linear-gradient(145deg, #102744 0%, #0d2338 100%) !important;
+      border-color: rgba(255, 255, 255, 0.12) !important;
+      box-shadow: 0 18px 46px rgba(0, 0, 0, 0.45) !important;
+    }
+    body.theme-dark .out-ptn-card-top {
+      border-bottom-color: rgba(255, 255, 255, 0.08) !important;
+    }
+    body.theme-dark .out-ptn-card-kicker {
+      color: #ffb300 !important;
+    }
+    body.theme-dark .out-ptn-card-mark {
+      background: #0d213a !important;
+      color: #5bb3ea !important;
+      border-color: rgba(255, 255, 255, 0.1) !important;
+    }
+    body.theme-dark .out-ptn-logo-panel {
+      border-right-color: rgba(255, 255, 255, 0.08) !important;
+      border-bottom-color: rgba(255, 255, 255, 0.08) !important;
+    }
+    body.theme-dark .out-ptn-logo-panel small {
+      color: #8fa8c2 !important;
+    }
+    body.theme-dark .out-ptn-logo {
+      background: #0d213a !important;
+      border-color: rgba(255, 255, 255, 0.12) !important;
+      box-shadow: 0 18px 36px rgba(0, 0, 0, 0.4), 0 0 0 9px rgba(255, 179, 0, 0.06) !important;
+    }
+    body.theme-dark .out-ptn-logo span {
+      color: #f4f8fc !important;
+    }
+    body.theme-dark .out-ptn-label {
+      color: #8fa8c2 !important;
+    }
+    body.theme-dark .out-ptn-card-info h3 {
+      color: #ffffff !important;
+    }
+    body.theme-dark .out-ptn-card-info p {
+      color: #c9d8e8 !important;
+    }
+    body.theme-dark .out-ptn-student {
+      background: #0d213a !important;
+      border-color: rgba(255, 179, 0, 0.25) !important;
+      color: #f4f8fc !important;
+      box-shadow: 0 7px 18px rgba(0, 0, 0, 0.3) !important;
+    }
+    body.theme-dark .ptn-student-slide .ptn-student-detail {
+      color: #94b3d4 !important;
+    }
+    body.theme-dark .out-ptn-card-bottom {
+      border-top-color: rgba(255, 255, 255, 0.08) !important;
+      color: #8fa8c2 !important;
+    }
+    body.theme-dark .out-ptn-card-bottom span:first-child {
+      color: #f4f8fc !important;
+    }
+    body.theme-dark .out-ptn .out-arrow {
+      background: #102744 !important;
+      border-color: rgba(255, 255, 255, 0.15) !important;
+      color: #ffffff !important;
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.3) !important;
+    }
+    body.theme-dark .out-ptn .out-arrow:hover {
+      background: #1d6fb8 !important;
+      color: #ffffff !important;
+    }
+    body.theme-dark .out-ptn .out-dot {
+      background: rgba(255, 255, 255, 0.25) !important;
+    }
+    body.theme-dark .out-ptn .out-dot.active {
+      background: #ffb300 !important;
+    }
+
+    /* 4. Kerja Sama Industri Dark Mode */
+    body.theme-dark .out-industry,
+    body.theme-dark .out-sec.out-industry {
+      background: #09182b !important;
+      background-color: #09182b !important;
+    }
+    body.theme-dark .out-industry .out-title {
+      color: #f4f8fc !important;
+    }
+    body.theme-dark .out-industry .out-desc {
+      color: #c9d8e8 !important;
+    }
+    body.theme-dark .out-logo-card {
+      background: #102744 !important;
+      border-color: rgba(255, 255, 255, 0.1) !important;
+    }
+    body.theme-dark .out-ind-pills span {
+      background: #0d213a !important;
+      color: #eaf2fb !important;
+      border-color: rgba(255, 255, 255, 0.1) !important;
+    }
+
+    /* 5. Marquee / Logo Window Side Fade Mask Overrides (Dark Mode) */
+    body.theme-dark .out-logo-window::before,
+    body.theme-dark .ic-marquee-wrap::before {
+      background: linear-gradient(90deg, #09182b, transparent) !important;
+    }
+    body.theme-dark .out-logo-window::after,
+    body.theme-dark .ic-marquee-wrap::after {
+      background: linear-gradient(270deg, #09182b, transparent) !important;
+    }
+
+    /* 6. Sejarah & Page Hero Title (.sejarah-white) White Text in Dark Mode */
+    body.theme-dark .history-title .sejarah-white,
+    body.theme-dark .sejarah-white {
+      color: #ffffff !important;
+    }
+
+    /* 7. Jurusan Card Text (White in Dark Mode, original in Light Mode) */
+    body.theme-dark .cc-full,
+    body.theme-dark .cc-abbr {
+      color: #ffffff !important;
+    }
+
+    /* 8. Navbar "Cari Ekskulmu" Button Text (White in Dark Mode) */
+    body.theme-dark .nav-ai-matchmaker,
+    body.theme-dark .nav-ai-matchmaker > span,
+    body.theme-dark .nav-ai-matchmaker span:not(.ai-nav-badge) {
+      color: #ffffff !important;
+    }
+
+    /* 9. Homepage "Prestasi Sekolah" Cards Dark Mode */
+    body.theme-dark .prestasi-section {
+      background: #061221 !important;
+      color: #eaf2fb !important;
+    }
+    body.theme-dark .prestasi-section .prestasi-title {
+      color: #f4f8fc !important;
+    }
+    body.theme-dark .prestasi-section .prestasi-desc {
+      color: #c9d8e8 !important;
+    }
+    body.theme-dark .prestasi-section .prestasi-feed {
+      background: #102744 !important;
+      border: 1px solid rgba(255, 255, 255, 0.1) !important;
+      color: #eaf2fb !important;
+      box-shadow: 0 24px 54px rgba(0, 0, 0, 0.45) !important;
+    }
+    body.theme-dark .prestasi-section .prestasi-feed-head {
+      background: #0d213a !important;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    }
+    body.theme-dark .prestasi-section .prestasi-feed-account strong {
+      color: #ffffff !important;
+    }
+    body.theme-dark .prestasi-section .prestasi-feed-account span,
+    body.theme-dark .prestasi-section .prestasi-feed-more,
+    body.theme-dark .prestasi-section .prestasi-feed-meta span {
+      color: #8fa8c2 !important;
+    }
+    body.theme-dark .prestasi-section .prestasi-feed-actions {
+      color: #eaf2fb !important;
+    }
+    body.theme-dark .prestasi-section .prestasi-feed-tag {
+      background: #0d213a !important;
+      color: #ffd54a !important;
+      border: 1px solid rgba(255, 213, 74, 0.3) !important;
+    }
+    body.theme-dark .prestasi-section .prestasi-feed-body h3 {
+      color: #ffffff !important;
+    }
+    body.theme-dark .prestasi-section .prestasi-feed-body p {
+      color: #c9d8e8 !important;
+    }
+    body.theme-dark .prestasi-section .prestasi-arrow {
+      background: #102744 !important;
+      border-color: rgba(255, 255, 255, 0.15) !important;
+      color: #ffffff !important;
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.4) !important;
+    }
+    body.theme-dark .prestasi-section .prestasi-arrow:hover {
+      background: #1d6fb8 !important;
+      color: #ffffff !important;
+    }
+
+    /* 10. Visi & Misi Page Dark Mode & White Titles */
+    body.theme-dark .visi-page,
+    body.theme-dark .visi-section,
+    body.theme-dark .nilai-section {
+      background: #061221 !important;
+      color: #eaf2fb !important;
+    }
+    body.theme-dark .visi-hero,
+    body.theme-dark .misi-section,
+    body.theme-dark .tujuan-section {
+      background: #09182b !important;
+      color: #eaf2fb !important;
+    }
+    body.theme-dark .misi-section::before,
+    body.theme-dark .misi-section::after {
+      opacity: 0.15 !important;
+    }
+    body.theme-dark .visi-card,
+    body.theme-dark .misi-card,
+    body.theme-dark .tujuan-card,
+    body.theme-dark .nilai-card {
+      background: #102744 !important;
+      border-color: rgba(255, 255, 255, 0.1) !important;
+      color: #eaf2fb !important;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45) !important;
+    }
+    body.theme-dark .visi-title .visi-white,
+    body.theme-dark .big-heading,
+    body.theme-dark .visi-statement,
+    body.theme-dark .misi-title,
+    body.theme-dark .nilai-title,
+    body.theme-dark .tujuan-title {
+      color: #ffffff !important;
+    }
+    body.theme-dark .eyebrow {
+      color: #5bb3ea !important;
+    }
+    body.theme-dark .eyebrow::before {
+      background: linear-gradient(90deg, #5bb3ea, #2f6fa8) !important;
+    }
+    body.theme-dark .visi-lead,
+    body.theme-dark .misi-desc,
+    body.theme-dark .misi-text,
+    body.theme-dark .nilai-text,
+    body.theme-dark .tujuan-text {
+      color: #c9d8e8 !important;
+    }
+    body.theme-dark .visi-tag {
+      background: #0d213a !important;
+      color: #ffffff !important;
+      border-color: rgba(255, 255, 255, 0.1) !important;
+    }
+    body.theme-dark .visi-kicker {
+      background: #0d213a !important;
+      color: #ffd54a !important;
+      border-color: rgba(255, 213, 74, 0.3) !important;
+    }
+    body.theme-dark .misi-num {
+      color: rgba(255, 255, 255, 0.08) !important;
+      -webkit-text-stroke: 1px rgba(255, 255, 255, 0.1) !important;
+    }
+    body.theme-dark .nilai-icon {
+      background: #0d213a !important;
+      color: #5bb3ea !important;
+      border-color: rgba(255, 255, 255, 0.1) !important;
+    }
+
+    /* 11. Karya Siswa Card Titles (White in Dark Mode) */
+    body.theme-dark .ks-hero,
+    body.theme-dark .ks-page,
+    body.theme-dark .ks-section {
+      background: #061221 !important;
+      color: #eaf2fb !important;
+    }
+    body.theme-dark .ks-title .ks-white {
+      color: #ffffff !important;
+    }
+    body.theme-dark .ks-prestasi-card,
+    body.theme-dark .karya-card,
+    body.theme-dark .work-card {
+      background: #102744 !important;
+      border-color: rgba(255, 255, 255, 0.1) !important;
+    }
+    body.theme-dark .ks-prestasi-body h3,
+    body.theme-dark .ks-prestasi-card h3,
+    body.theme-dark .karya-card h3,
+    body.theme-dark .work-card h3 {
+      color: #ffffff !important;
+    }
+    body.theme-dark .ks-prestasi-body p,
+    body.theme-dark .ks-prestasi-card p,
+    body.theme-dark .karya-card p,
+    body.theme-dark .work-card p {
+      color: #c9d8e8 !important;
+    }
+    body.theme-dark .ks-prestasi-year {
+      color: #8fa8c2 !important;
     }
   </style>
 </head>

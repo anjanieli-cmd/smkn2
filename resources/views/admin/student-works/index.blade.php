@@ -31,8 +31,8 @@
           @forelse($items as $item)
             <tr>
               <td style="width:60px">
-                @if($item->image_url)
-                  <img src="{{ asset($item->image_url) }}" alt="" style="width:40px;height:40px;border-radius:10px;object-fit:cover">
+                @if($item->media_url || $item->image_url)
+                  <img src="{{ asset($item->media_url ?? $item->image_url) }}" alt="" style="width:40px;height:40px;border-radius:10px;object-fit:cover">
                 @else
                   <div style="width:40px;height:40px;border-radius:10px;background:rgba(255,179,0,.15);color:var(--gold);display:flex;align-items:center;justify-content:center"><i class="fas fa-palette"></i></div>
                 @endif
@@ -62,7 +62,7 @@
         <button class="db-modal-close" onclick="closeModal()">&times;</button>
       </div>
       <div class="db-modal-body">
-        <form id="workForm" onsubmit="saveWork(event)">
+        <form id="workForm" onsubmit="saveWork(event)" enctype="multipart/form-data">
           <input type="hidden" id="workId">
 
           <div class="db-form-group">
@@ -85,9 +85,25 @@
             </div>
           </div>
 
-          <div class="db-form-group">
-            <label>Image / Banner URL Path</label>
-            <input type="text" id="workImage" class="db-form-control" placeholder="images/karya/smart-app.jpg">
+          <!-- UPLOAD FOTO / GAMBAR KARYA -->
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+            <div class="db-form-group">
+              <label>Upload File Foto / Banner</label>
+              <input type="file" id="workFile" accept="image/*" class="db-form-control" style="padding:.45rem .9rem" onchange="previewSelectedImage(this)">
+            </div>
+            <div class="db-form-group">
+              <label>atau Path / URL Gambar</label>
+              <input type="text" id="workImage" class="db-form-control" placeholder="images/karya/smart-app.jpg" oninput="updateUrlPreview(this.value)">
+            </div>
+          </div>
+
+          <!-- IMAGE PREVIEW -->
+          <div id="imagePreviewContainer" style="display:none;margin-bottom:1rem;align-items:center;gap:1rem;background:rgba(255,255,255,.05);padding:.8rem 1rem;border-radius:12px;border:1px solid rgba(255,255,255,.1)">
+            <img id="imagePreview" src="" alt="Preview Foto Karya" style="width:60px;height:60px;border-radius:10px;object-fit:cover">
+            <div>
+              <strong style="font-size:.8rem;color:#fff;display:block">Preview Foto Karya</strong>
+              <span id="previewText" style="font-size:.74rem;color:var(--text-muted)">Foto siap disimpan</span>
+            </div>
           </div>
 
           <div class="db-form-group">
@@ -107,13 +123,43 @@
 
 @push('scripts')
 <script>
+  function previewSelectedImage(input) {
+    if (input.files && input.files[0]) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        document.getElementById('imagePreview').src = e.target.result;
+        document.getElementById('imagePreviewContainer').style.display = 'flex';
+        document.getElementById('previewText').textContent = 'File foto terpilih: ' + input.files[0].name;
+      };
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+
+  function updateUrlPreview(url) {
+    if (url && url.trim() !== '') {
+      let finalUrl = url.trim();
+      if (!finalUrl.startsWith('http://') && !finalUrl.startsWith('https://') && !finalUrl.startsWith('/')) {
+        finalUrl = '/' + finalUrl;
+      }
+      document.getElementById('imagePreview').src = finalUrl;
+      document.getElementById('imagePreviewContainer').style.display = 'flex';
+      document.getElementById('previewText').textContent = 'Path/URL gambar';
+    } else {
+      if (!document.getElementById('workFile').files.length) {
+        document.getElementById('imagePreviewContainer').style.display = 'none';
+      }
+    }
+  }
+
   function openCreateModal() {
     document.getElementById('modalTitle').textContent = 'Tambah Karya Siswa Baru';
     document.getElementById('workId').value = '';
     document.getElementById('workTitle').value = '';
     document.getElementById('studentName').value = '';
     document.getElementById('workImage').value = '';
+    document.getElementById('workFile').value = '';
     document.getElementById('workDescription').value = '';
+    document.getElementById('imagePreviewContainer').style.display = 'none';
     document.getElementById('workModal').classList.add('active');
   }
 
@@ -123,8 +169,17 @@
     document.getElementById('workTitle').value = item.title;
     document.getElementById('studentName').value = item.student_name;
     document.getElementById('workMajorId').value = item.major_id || '';
-    document.getElementById('workImage').value = item.image_url || '';
+    const imgPath = item.media_url || item.image_url || '';
+    document.getElementById('workImage').value = imgPath;
+    document.getElementById('workFile').value = '';
     document.getElementById('workDescription').value = item.description || '';
+
+    if (imgPath) {
+      updateUrlPreview(imgPath);
+    } else {
+      document.getElementById('imagePreviewContainer').style.display = 'none';
+    }
+
     document.getElementById('workModal').classList.add('active');
   }
 
@@ -135,26 +190,33 @@
   async function saveWork(e) {
     e.preventDefault();
     const id = document.getElementById('workId').value;
-    const payload = {
-      title: document.getElementById('workTitle').value,
-      student_name: document.getElementById('studentName').value,
-      major_id: document.getElementById('workMajorId').value,
-      image_url: document.getElementById('workImage').value,
-      description: document.getElementById('workDescription').value
-    };
+    const formData = new FormData();
+
+    formData.append('title', document.getElementById('workTitle').value);
+    formData.append('student_name', document.getElementById('studentName').value);
+    formData.append('major_id', document.getElementById('workMajorId').value);
+    formData.append('description', document.getElementById('workDescription').value);
+    formData.append('image_url', document.getElementById('workImage').value);
+
+    const fileInput = document.getElementById('workFile');
+    if (fileInput.files.length > 0) {
+      formData.append('image_file', fileInput.files[0]);
+    }
+
+    if (id) {
+      formData.append('_method', 'PUT');
+    }
 
     const url = id ? `/api/admin/student-works/${id}` : '/api/admin/student-works';
-    const method = id ? 'PUT' : 'POST';
 
     try {
       const res = await fetch(url, {
-        method: method,
+        method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
           'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
           'Accept': 'application/json'
         },
-        body: JSON.stringify(payload)
+        body: formData
       });
       const data = await res.json();
       if (res.ok && data.success) {

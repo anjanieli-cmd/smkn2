@@ -22,6 +22,13 @@ class StudentWork extends Model
         'status',
     ];
 
+    protected $appends = ['image_url'];
+
+    public function getImageUrlAttribute()
+    {
+        return $this->media_url;
+    }
+
     public function major(): BelongsTo
     {
         return $this->belongsTo(Major::class);
