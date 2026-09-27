@@ -2105,7 +2105,9 @@
     </div>
 <div class="history-hero-inner">
       <div>
-        <div class="history-kicker"></div>
+        @if($history->hero_kicker)
+  <div class="history-kicker">{{ $history->hero_kicker }}</div>
+@endif
         <h1 class="history-title">
           <span class="sejarah-white">SEJARAH</span>
           <span class="skaneda-gold">SKANEDA</span>
@@ -2133,16 +2135,16 @@
 
     <div class="history-wide intro-grid">
       <div data-reveal>
-        <div class="eyebrow">Dari masa ke masa</div>
-        <h2 class="big-heading">2013 → <span>HARI INI.</span></h2>
-        <p class="intro-copy">SMK Negeri 2 Mojokerto mulai berdiri pada 24 Juni 2013 sebagai bagian dari upaya menghadirkan pendidikan kejuruan bagi masyarakat Kota Mojokerto. Dari awal yang sederhana, sekolah ini terus berkembang melalui perpindahan tempat layanan pendidikan, pembangunan gedung baru, penambahan kompetensi keahlian, hingga kini memiliki lima bidang keahlian yang menjadi bagian dari perjalanan vokasi SMKN 2 Mojokerto.</p>
+        <div class="eyebrow">{{ $history->intro_eyebrow }}</div>
+<h2 class="big-heading">{{ $history->intro_title }}</h2>
+<p class="intro-copy">{{ $history->intro_desc }}</p>
       </div>
       <div class="stat-strip" data-reveal="right">
-        <div class="stat-box"><div class="stat-num gold">2013</div><div class="stat-label">Tahun berdiri</div></div>
-        <div class="stat-box"><div class="stat-num">24</div><div class="stat-label">Juni · Tanggal berdiri</div></div>
-        <div class="stat-box"><div class="stat-num gold">2</div><div class="stat-label">Kompetensi keahlian awal</div></div>
-        <div class="stat-box"><div class="stat-num">5</div><div class="stat-label">Bidang keahlian saat ini</div></div>
-      </div>
+  <div class="stat-box"><div class="stat-num gold">{{ $history->stat1_value }}</div><div class="stat-label">{{ $history->stat1_label }}</div></div>
+  <div class="stat-box"><div class="stat-num">{{ $history->stat2_value }}</div><div class="stat-label">{{ $history->stat2_label }}</div></div>
+  <div class="stat-box"><div class="stat-num gold">{{ $history->stat3_value }}</div><div class="stat-label">{{ $history->stat3_label }}</div></div>
+  <div class="stat-box"><div class="stat-num">{{ $history->stat4_value }}</div><div class="stat-label">{{ $history->stat4_label }}</div></div>
+</div>
     </div>
   </section>
 
@@ -2169,112 +2171,37 @@
           <span class="cover-foot">SMK NEGERI 2 MOJOKERTO <i>2013 — HARI INI</i></span>
         </button>
 
-        <div class="book-spread" aria-live="polite">
-          <article class="book-page page-left" data-page="0">
-            <div class="page-corner">01</div>
-            <div class="page-kicker">BAB PERTAMA</div>
-            <div class="page-year">24 JUNI 2013</div>
-            <div class="page-rule"></div>
-            <div class="page-icon"><i class="fas fa-flag"></i></div>
-            <h3>Awal<br>Berdiri</h3>
-            <p>SMK Negeri 2 Mojokerto mulai berdiri pada 24 Juni 2013 berdasarkan SK Pendirian Sekolah Nomor 188.45/630/417.111/2013.</p>
-            <span class="page-tag">Fondasi</span>
-            <div class="page-footer"><span>SKANEDA · SEJARAH</span><span>01</span></div>
-          </article>
+       <div class="book-spread" aria-live="polite">
+  @foreach($history->chapters as $i => $chapter)
+    <article class="book-page page-left" data-page="{{ $i }}">
+      <div class="page-corner">{{ str_pad($i+1, 2, '0', STR_PAD_LEFT) }}</div>
+      <div class="page-kicker">{{ $chapter->kicker }}</div>
+      <div class="page-year">{{ $chapter->year_label }}</div>
+      <div class="page-rule"></div>
+      <div class="page-icon"><i class="fas {{ $chapter->icon ?: 'fa-flag' }}"></i></div>
+      <h3>{!! nl2br(e($chapter->short_title)) !!}</h3>
+      <p>{{ $chapter->short_desc }}</p>
+      @if($chapter->tag)<span class="page-tag">{{ $chapter->tag }}</span>@endif
+      <div class="page-footer"><span>SKANEDA · SEJARAH</span><span>{{ str_pad($i+1, 2, '0', STR_PAD_LEFT) }}</span></div>
+    </article>
 
-          <article class="book-page page-right" data-page="0">
-            <div class="page-corner">24 JUNI 2013</div>
-            <div class="page-kicker"></div>
-            <div class="page-number-big">01</div>
-            <h4>Awal Berdiri</h4>
-            <p class="lead">Sebuah perjalanan baru dimulai dari satu langkah.</p>
-            <p>SMK Negeri 2 Mojokerto mulai berdiri pada 24 Juni 2013 dengan SK Pendirian Sekolah dan SK Ijin Operasional Sekolah Nomor 188.45/630/417.111/2013.</p>
-            <div class="quote-mark">“</div>
-            <div class="page-note">Dari awal berdiri, SMKN 2 Mojokerto mulai membangun fondasi sebagai sekolah menengah kejuruan di Kota Mojokerto.</div>
-            <div class="page-footer"><span>SMK NEGERI 2 MOJOKERTO</span><span>2013</span></div>
-          </article>
-
-          <article class="book-page page-left" data-page="1">
-            <div class="page-corner">02</div><div class="page-kicker">BAB KEDUA</div><div class="page-year">2013</div>
-            <div class="page-rule"></div><div class="page-icon"><i class="fas fa-school"></i></div>
-            <h3>Langkah<br>Pertama</h3>
-            <p>Pada awal berdiri, layanan pendidikan masih bertempat di gedung SMKN 1 Mojokerto, Jl. Kedungsari, Magersari, Kota Mojokerto.</p>
-            <span class="page-tag">Awal Perjalanan</span><div class="page-footer"><span>SKANEDA · SEJARAH</span><span>02</span></div>
-          </article>
-          <article class="book-page page-right" data-page="1">
-            <div class="page-corner">2013</div><div class="page-kicker"></div><div class="page-number-big">02</div>
-            <h4>Langkah Pertama</h4><p class="lead">Sebelum memiliki gedung sendiri, perjalanan pendidikan dimulai dari tempat yang sederhana.</p>
-            <p>Pelaksanaan layanan pendidikan SMKN 2 Mojokerto pada awal berdiri bertempat di gedung SMKN 1 Mojokerto, Jl. Kedungsari, Magersari, Kota Mojokerto.</p>
-            <div class="page-note">Pada masa awal tersebut, sekolah dikepalai oleh Bapak Drs. Harol Kristiyandoko, MT yang kala itu juga menjabat sebagai Kepala SMKN 1 Mojokerto.</div>
-            <div class="page-footer"><span>SMK NEGERI 2 MOJOKERTO</span><span>2013</span></div>
-          </article>
-
-          <article class="book-page page-left" data-page="2">
-            <div class="page-corner">03</div><div class="page-kicker">BAB KETIGA</div><div class="page-year">16 JANUARI 2014</div>
-            <div class="page-rule"></div><div class="page-icon"><i class="fas fa-building"></i></div>
-            <h3>Menempati<br>Gedung Baru</h3>
-            <p>SMKN 2 Kota Mojokerto mulai menempati gedung baru di Jl. Pulorejo, Kecamatan Prajuritkulon, Kota Mojokerto.</p>
-            <span class="page-tag">Perkembangan</span><div class="page-footer"><span>SKANEDA · SEJARAH</span><span>03</span></div>
-          </article>
-          <article class="book-page page-right" data-page="2">
-            <div class="page-corner">16 JANUARI 2014</div><div class="page-kicker"></div><div class="page-number-big">03</div>
-            <h4>Gedung Baru</h4><p class="lead">Langkah berikutnya membawa SKANEDA ke rumahnya sendiri.</p>
-            <p>Pada 16 Januari 2014, SMKN 2 Kota Mojokerto menempati gedung baru di Jl. Pulorejo, Kecamatan Prajuritkulon, Kota Mojokerto.</p>
-            <div class="page-note">Gedung baru tersebut diresmikan oleh Walikota Mojokerto, Drs. H. Mas’ud Yunus, menjadi salah satu tonggak penting dalam perkembangan sekolah.</div>
-            <div class="page-footer"><span>SMK NEGERI 2 MOJOKERTO</span><span>2014</span></div>
-          </article>
-
-          <article class="book-page page-left" data-page="3">
-            <div class="page-corner">04</div><div class="page-kicker">BAB KEEMPAT</div><div class="page-year">AWAL BERDIRI</div>
-            <div class="page-rule"></div><div class="page-icon"><i class="fas fa-utensils"></i></div>
-            <h3>Dua Kompetensi<br>Keahlian</h3>
-            <p>Pada awal berdirinya, SMKN 2 Mojokerto membuka dua kompetensi keahlian: Tata Boga (TB) dan Rekayasa Perangkat Lunak (RPL).</p>
-            <span class="page-tag">Kompetensi</span><div class="page-footer"><span>SKANEDA · SEJARAH</span><span>04</span></div>
-          </article>
-          <article class="book-page page-right" data-page="3">
-            <div class="page-corner">AWAL BERDIRI</div><div class="page-kicker"></div><div class="page-number-big">04</div>
-            <h4>Dua Kompetensi Keahlian</h4><p class="lead">Dari dua kompetensi, perjalanan pendidikan kejuruan mulai dibangun.</p>
-            <p>Pada awal berdirinya, SMKN 2 Mojokerto membuka dua kompetensi keahlian, yaitu Tata Boga (TB) dan Rekayasa Perangkat Lunak (RPL).</p>
-            <div class="page-note">Keduanya menjadi bagian awal dari pilihan pendidikan kejuruan yang disediakan untuk masyarakat Kota Mojokerto.</div>
-            <div class="page-footer"><span>SMK NEGERI 2 MOJOKERTO</span><span>AWAL</span></div>
-          </article>
-
-          <article class="book-page page-left" data-page="4">
-            <div class="page-corner">05</div><div class="page-kicker">BAB KELIMA</div><div class="page-year">TAHUN BERIKUTNYA</div>
-            <div class="page-rule"></div><div class="page-icon"><i class="fas fa-layer-group"></i></div>
-            <h3>Kompetensi<br>Semakin Beragam</h3>
-            <p>Tahun berikutnya, sekolah membuka tiga kompetensi keahlian baru: DKV, APHP, dan Perbankan Syari’ah.</p>
-            <span class="page-tag">Ekspansi</span><div class="page-footer"><span>SKANEDA · SEJARAH</span><span>05</span></div>
-          </article>
-          <article class="book-page page-right" data-page="4">
-            <div class="page-corner">TAHUN BERIKUTNYA</div><div class="page-kicker"></div><div class="page-number-big">05</div>
-            <h4>Kompetensi Semakin Beragam</h4><p class="lead">Pertumbuhan sekolah diikuti dengan semakin luasnya pilihan bidang keahlian.</p>
-            <p>Tahun berikutnya, SMKN 2 Mojokerto membuka tiga kompetensi keahlian lainnya, yaitu Desain Komunikasi Visual (DKV), Agribisnis Pengolahan Hasil Pertanian (APHP), dan Perbankan Syari’ah (PS).</p>
-            <div class="page-note">Penambahan kompetensi memperluas ruang belajar dan pilihan pengembangan keterampilan bagi peserta didik.</div>
-            <div class="page-footer"><span>SMK NEGERI 2 MOJOKERTO</span><span>05</span></div>
-          </article>
-
-          <article class="book-page page-left" data-page="5">
-            <div class="page-corner">06</div><div class="page-kicker">BAB TERKINI</div><div class="page-year">HARI INI</div>
-            <div class="page-rule"></div><div class="page-icon"><i class="fas fa-graduation-cap"></i></div>
-            <h3>Lima Bidang<br>Keahlian</h3>
-            <p>Hingga saat ini, SMKN 2 Kota Mojokerto memiliki lima bidang keahlian yang terus menjadi bagian dari perkembangan sekolah.</p>
-            <span class="page-tag">Hari Ini</span><div class="page-footer"><span>SKANEDA · SEJARAH</span><span>06</span></div>
-          </article>
-          <article class="book-page page-right" data-page="5">
-            <div class="page-corner">HARI INI</div><div class="page-kicker">PERJALANAN BERLANJUT</div><div class="page-number-big">06</div>
-            <h4>Lima Bidang Keahlian</h4><p class="lead">Dari dua kompetensi awal, SKANEDA kini hadir dengan lima bidang keahlian.</p>
-            <p>Hingga saat ini, SMKN 2 Kota Mojokerto memiliki lima bidang keahlian, yaitu pariwisata; seni dan industri kreatif; agribisnis dan agroteknologi; teknologi informasi dan komunikasi; serta bisnis manajemen.</p>
-            <div class="page-note">Perjalanan sejak 2013 terus berlanjut dengan semangat mengembangkan pendidikan vokasi sesuai kebutuhan peserta didik dan masyarakat.</div>
-            <div class="page-footer"><span>SMK NEGERI 2 MOJOKERTO</span><span>HARI INI</span></div>
-          </article>
-        </div>
-      </div>
+    <article class="book-page page-right" data-page="{{ $i }}">
+      <div class="page-corner">{{ $chapter->year_label }}</div>
+      <div class="page-kicker">{{ $chapter->kicker }}</div>
+      <div class="page-number-big">{{ str_pad($i+1, 2, '0', STR_PAD_LEFT) }}</div>
+      <h4>{{ $chapter->long_title }}</h4>
+      @if($chapter->lead)<p class="lead">{{ $chapter->lead }}</p>@endif
+      <p>{{ $chapter->body }}</p>
+      @if($chapter->note)<div class="page-note">{{ $chapter->note }}</div>@endif
+      <div class="page-footer"><span>SMK NEGERI 2 MOJOKERTO</span><span>{{ $chapter->year_label }}</span></div>
+    </article>
+  @endforeach
+</div>
 
       <div class="book-actions">
         <button type="button" class="book-nav book-prev" id="bookPrev"><i class="fas fa-chevron-left"></i></button>
         <button type="button" class="book-open" id="bookOpen"><i class="fas fa-book-open"></i><span>Buka buku</span></button>
-        <div class="book-count"><b id="bookCount">01</b><span>/ 06</span></div>
+        <div class="book-count"><b id="bookCount">01</b><span>/ {{ str_pad($history->chapters->count(), 2, '0', STR_PAD_LEFT) }}</span></div>
         <button type="button" class="book-nav book-next" id="bookNext"><i class="fas fa-chevron-right"></i></button>
       </div>
     </div>
@@ -2310,12 +2237,16 @@
 
     <div class="mosaic-head" data-reveal><div class="eyebrow">Wajah vokasi hari ini</div><h2 class="big-heading">DARI SEJARAH, LAHIR <span>KARYA BARU.</span></h2></div>
     <div class="mosaic">
-      <div class="mosaic-card big" data-reveal><img src="{{ asset('images/aphp1.jpeg') }}" alt="Siswa program APHP" loading="lazy"><div class="mosaic-label"><small>Program keahlian</small><strong>APHP · Agribisnis Pengolahan Hasil Pertanian</strong></div></div>
-      <div class="mosaic-card" data-reveal style="--d:1"><img src="{{ asset('images/dkv1.jpeg') }}" alt="Siswa program DKV" loading="lazy"><div class="mosaic-label"><small>Kreatif</small><strong>Desain Komunikasi Visual</strong></div></div>
-      <div class="mosaic-card" data-reveal style="--d:2"><img src="{{ asset('images/kuliner1.jpeg') }}" alt="Siswa program Kuliner" loading="lazy"><div class="mosaic-label"><small>Industri kreatif</small><strong>Kuliner</strong></div></div>
-      <div class="mosaic-card" data-reveal style="--d:3"><img src="{{ asset('images/rpl1.jpeg') }}" alt="Siswa program RPL" loading="lazy"><div class="mosaic-label"><small>Teknologi</small><strong>Rekayasa Perangkat Lunak</strong></div></div>
-      <div class="mosaic-card" data-reveal style="--d:4"><img src="{{ asset('images/lps1.jpeg') }}" alt="Siswa program LPS" loading="lazy"><div class="mosaic-label"><small>Ekonomi</small><strong>Layanan Perbankan Syariah</strong></div></div>
+  @foreach($history->galleries as $i => $item)
+    <div class="mosaic-card {{ $item->is_featured ? 'big' : '' }}" data-reveal @if($i > 0) style="--d:{{ $i }}" @endif>
+      <img src="{{ $item->image_url }}" alt="{{ $item->big_label }}" loading="lazy">
+      <div class="mosaic-label">
+        <small>{{ $item->small_label }}</small>
+        <strong>{{ $item->big_label }}</strong>
+      </div>
     </div>
+  @endforeach
+</div>
   </section>
 
   <!-- KEPEMIMPINAN: Kepala Sekolah dari Masa ke Masa -->
@@ -2343,119 +2274,31 @@
 
       <div class="principal-viewport">
         <div class="principal-track" id="principalTrack">
-
-          <article class="principal-post" data-principal data-reveal>
-            <div class="principal-post-head">
-              <div class="principal-profile">
-                <span class="principal-avatar"><img src="{{ asset('images/logo_smkn2.png') }}" alt="Logo SMKN 2 Mojokerto" loading="lazy"></span>
-                <div><strong>SMKN 2 Mojokerto</strong><span>Kepemimpinan · 2014-2018</span></div>
-              </div>
-              <span class="principal-more"><i class="fas fa-ellipsis-h"></i></span>
-            </div>
-            <div class="principal-photo">
-              <img src="{{ asset('images/kepsek1.jpeg') }}" alt="Kepala Sekolah 1" loading="lazy">
-            </div>
-            <div class="principal-post-actions">
-              <i class="far fa-heart"></i><i class="far fa-comment"></i><i class="far fa-paper-plane"></i>
-              <i class="far fa-bookmark spacer"></i>
-            </div>
-            <div class="principal-post-body">
-              <div class="principal-like">Drs. Harol Kristiandoko, M.T.</div>
-              <p class="principal-caption"><strong>Periode kepemimpinan.</strong> Salah satu bagian awal dari perjalanan panjang SMK Negeri 2 Mojokerto.</p>
-              <span class="principal-period">2014 &ndash; 2018</span>
-            </div>
-          </article>
-
-          <article class="principal-post" data-principal data-reveal>
-            <div class="principal-post-head">
-              <div class="principal-profile">
-                <span class="principal-avatar"><img src="{{ asset('images/logo_smkn2.png') }}" alt="Logo SMKN 2 Mojokerto" loading="lazy"></span>
-                <div><strong>SMKN 2 Mojokerto</strong><span>Kepemimpinan · 2014-2018</span></div>
-              </div>
-              <span class="principal-more"><i class="fas fa-ellipsis-h"></i></span>
-            </div>
-            <div class="principal-photo">
-              <img src="{{ asset('images/kepsek2.jpeg') }}" alt="Kepala Sekolah 1" loading="lazy">
-            </div>
-            <div class="principal-post-actions">
-              <i class="far fa-heart"></i><i class="far fa-comment"></i><i class="far fa-paper-plane"></i>
-              <i class="far fa-bookmark spacer"></i>
-            </div>
-            <div class="principal-post-body">
-              <div class="principal-like">Drs. Heru Susianto, M.Pd</div>
-              <p class="principal-caption"><strong>Periode kepemimpinan.</strong> Salah satu bagian awal dari perjalanan panjang SMK Negeri 2 Mojokerto.</p>
-              <span class="principal-period">2018 &ndash; 2019</span>
-            </div>
-          </article>
-
-          <article class="principal-post" data-principal data-reveal style="--d:1">
-            <div class="principal-post-head">
-              <div class="principal-profile">
-                <span class="principal-avatar"><img src="{{ asset('images/logo_smkn2.png') }}" alt="Logo SMKN 2 Mojokerto" loading="lazy"></span>
-                <div><strong>SMKN 2 Mojokerto</strong><span>Kepemimpinan · 2019-2020</span></div>
-              </div>
-              <span class="principal-more"><i class="fas fa-ellipsis-h"></i></span>
-            </div>
-            <div class="principal-photo">
-              <img src="{{ asset('images/kepsek3.jpeg') }}" alt="Kepala Sekolah 2" loading="lazy">
-            </div>
-            <div class="principal-post-actions">
-              <i class="far fa-heart"></i><i class="far fa-comment"></i><i class="far fa-paper-plane"></i>
-              <i class="far fa-bookmark spacer"></i>
-            </div>
-            <div class="principal-post-body">
-              <div class="principal-like">Siti Fatimah, S.Pd., M.M.</div>
-              <p class="principal-caption"><strong>Periode kepemimpinan.</strong> Melanjutkan fondasi dan pertumbuhan sekolah dari masa ke masa.</p>
-              <span class="principal-period">2019 &ndash; 2020</span>
-            </div>
-          </article>
-
-          <article class="principal-post" data-principal data-reveal style="--d:2">
-            <div class="principal-post-head">
-              <div class="principal-profile">
-                <span class="principal-avatar"><img src="{{ asset('images/logo_smkn2.png') }}" alt="Logo SMKN 2 Mojokerto" loading="lazy"></span>
-                <div><strong>SMKN 2 Mojokerto</strong><span>Kepemimpinan · 2020—2026</span></div>
-              </div>
-              <span class="principal-more"><i class="fas fa-ellipsis-h"></i></span>
-            </div>
-            <div class="principal-photo">
-              <img src="{{ asset('images/kepsek4.png') }}" alt="Kepala Sekolah 3" loading="lazy">
-            </div>
-            <div class="principal-post-actions">
-              <i class="far fa-heart"></i><i class="far fa-comment"></i><i class="far fa-paper-plane"></i>
-              <i class="far fa-bookmark spacer"></i>
-            </div>
-            <div class="principal-post-body">
-              <div class="principal-like">Drs. Akhmad Mukhlason, M.M.Pd.</div>
-              <p class="principal-caption"><strong>Periode kepemimpinan.</strong> Fase penting menuju sekolah vokasi yang semakin modern dan adaptif.</p>
-              <span class="principal-period">2020 &ndash; 2026</span>
-            </div>
-          </article>
-
-          <article class="principal-post" data-principal data-current data-reveal style="--d:3">
-            <div class="principal-post-head">
-              <div class="principal-profile">
-                <span class="principal-avatar"><img src="{{ asset('images/logo_smkn2.png') }}" alt="Logo SMKN 2 Mojokerto" loading="lazy"></span>
-                <div><strong>SMKN 2 Mojokerto</strong><span>Kepemimpinan · 2026—Sekarang</span></div>
-              </div>
-              <span class="principal-more"><i class="fas fa-ellipsis-h"></i></span>
-            </div>
-            <div class="principal-photo">
-              <img src="{{ asset('images/kepsek5.jpeg') }}" alt="Iswahyudi, S.ST. M.Pd" loading="lazy">
-              <span class="principal-current">Saat Ini</span>
-            </div>
-            <div class="principal-post-actions">
-              <i class="far fa-heart"></i><i class="far fa-comment"></i><i class="far fa-paper-plane"></i>
-              <i class="far fa-bookmark spacer"></i>
-            </div>
-            <div class="principal-post-body">
-              <div class="principal-like">Iswahyudi, S.ST. M.Pd</div>
-              <p class="principal-caption"><strong>Kepala sekolah saat ini.</strong> Membawa SKANEDA terus bergerak menuju pendidikan vokasi yang unggul.</p>
-              <span class="principal-period">2026 &ndash; Sekarang</span>
-            </div>
-          </article>
-
+  @foreach($history->principals as $i => $p)
+    <article class="principal-post" data-principal @if($p->is_current) data-current @endif data-reveal @if($i > 0) style="--d:{{ $i }}" @endif>
+      <div class="principal-post-head">
+        <div class="principal-profile">
+          <span class="principal-avatar"><img src="{{ asset('images/logo_smkn2.png') }}" alt="Logo SMKN 2 Mojokerto" loading="lazy"></span>
+          <div><strong>SMKN 2 Mojokerto</strong><span>Kepemimpinan · {{ $p->period_label }}</span></div>
         </div>
+        <span class="principal-more"><i class="fas fa-ellipsis-h"></i></span>
+      </div>
+      <div class="principal-photo">
+        <img src="{{ $p->photo_url }}" alt="{{ $p->name }}" loading="lazy">
+        @if($p->is_current)<span class="principal-current">Saat Ini</span>@endif
+      </div>
+      <div class="principal-post-actions">
+        <i class="far fa-heart"></i><i class="far fa-comment"></i><i class="far fa-paper-plane"></i>
+        <i class="far fa-bookmark spacer"></i>
+      </div>
+      <div class="principal-post-body">
+        <div class="principal-like">{{ $p->name }}</div>
+        <p class="principal-caption">{!! nl2br(e($p->caption)) !!}</p>
+        <span class="principal-period">{{ $p->period_label }}</span>
+      </div>
+    </article>
+  @endforeach
+</div>
       </div>
 
       <button class="principal-arrow principal-next" type="button" aria-label="Kepala sekolah berikutnya">
@@ -2472,26 +2315,26 @@
     <div class="vt-decor-ring" aria-hidden="true"></div>
     <div class="vt-decor-dots" aria-hidden="true"></div>
     <div class="vt-inner">
-      <div class="vt-media" data-reveal="left">
-        <div class="vt-frame">
-          <img src="{{ asset('images/hero-sekolah.jpg') }}" alt="Lingkungan SMK Negeri 2 Mojokerto — Virtual Tour 360 derajat" loading="lazy">
-          <span class="vt-badge"><i class="fa-solid fa-street-view"></i> 360° Tour</span>
-          <button class="vt-play" type="button" aria-label="Mulai Virtual Tour 360 derajat" onclick="document.getElementById('vtTourLink')?.click()"><i class="fa-solid fa-play"></i></button>
-          <div class="vt-caption">
-            <div><strong>Jelajahi Sekolah</strong><span>SMK Negeri 2 Mojokerto</span></div>
-            <span class="vt-cam"><i class="fa-solid fa-camera"></i> 360°</span>
-          </div>
-        </div>
-        <div class="vt-chip"><i class="fa-solid fa-compass"></i><div><strong>Virtual Tour 360°</strong><span>Interactive Campus Experience</span></div></div>
-      </div>
-      <div class="vt-copy">
-        <div class="vt-kicker" data-reveal>Virtual Experience</div>
-        <h2 class="vt-title" data-reveal>Jelajahi <span class="vt-gold">SMKN 2 Mojokerto</span><span class="vt-sub">Lihat Virtual Tour 360°</span></h2>
-        <p class="vt-desc" data-reveal>Jelajahi lingkungan SMK Negeri 2 Mojokerto secara interaktif melalui Virtual Tour 360°. Rasakan suasana sekolah dari sudut pandangmu dan lihat fasilitas sekolah secara lebih dekat.</p>
-        <div class="vt-feats" data-reveal><span class="vt-feat"><i class="fa-solid fa-check"></i> Interaktif</span><span class="vt-feat"><i class="fa-solid fa-check"></i> Panorama 360°</span><span class="vt-feat"><i class="fa-solid fa-check"></i> Akses Mudah</span></div>
-        <a href="#" id="vtTourLink" class="vt-btn" data-reveal>Mulai Virtual Tour <i class="fa-solid fa-arrow-right"></i></a>
+  <div class="vt-media" data-reveal="left">
+    <div class="vt-frame">
+      <img src="{{ $history->vt_image_url ?: asset('images/hero-sekolah.jpg') }}" ...>
+      <span class="vt-badge"><i class="fa-solid fa-street-view"></i> 360° Tour</span>
+      <button class="vt-play" type="button" aria-label="Mulai Virtual Tour 360 derajat" onclick="document.getElementById('vtTourLink')?.click()"><i class="fa-solid fa-play"></i></button>
+      <div class="vt-caption">
+        <div><strong>Jelajahi Sekolah</strong><span>SMK Negeri 2 Mojokerto</span></div>
+        <span class="vt-cam"><i class="fa-solid fa-camera"></i> 360°</span>
       </div>
     </div>
+    <div class="vt-chip"><i class="fa-solid fa-compass"></i><div><strong>Virtual Tour 360°</strong><span>Interactive Campus Experience</span></div></div>
+  </div>
+  <div class="vt-copy">
+    <div class="vt-kicker" data-reveal>Virtual Experience</div>
+    <h2 class="vt-title" data-reveal>{{ $history->vt_title }}</h2>
+    <p class="vt-desc" data-reveal>{{ $history->vt_desc }}</p>
+    <div class="vt-feats" data-reveal><span class="vt-feat"><i class="fa-solid fa-check"></i> Interaktif</span><span class="vt-feat"><i class="fa-solid fa-check"></i> Panorama 360°</span><span class="vt-feat"><i class="fa-solid fa-check"></i> Akses Mudah</span></div>
+    <a href="{{ $history->vt_link ?: '#' }}" id="vtTourLink" class="vt-btn" data-reveal>Mulai Virtual Tour <i class="fa-solid fa-arrow-right"></i></a>
+  </div>
+</div>
   </section>
 </div>
 @endsection
@@ -2630,7 +2473,8 @@
     var cover=document.getElementById('bookCover'), open=document.getElementById('bookOpen');
     var prev=document.getElementById('bookPrev'), next=document.getElementById('bookNext'), count=document.getElementById('bookCount');
     var pages=Array.prototype.slice.call(book.querySelectorAll('.book-page[data-page]'));
-    var total=6, idx=0, opened=true;
+    var total=pages.length ? (Math.max.apply(null, pages.map(function(p){return Number(p.getAttribute('data-page'));}))+1) : 1;
+var idx=0, opened=true;
     /* Buku selalu terbuka. Tidak ada mode tutup/buka lagi. */
     book.classList.add('is-open');
     if(open) open.style.display='none';
