@@ -33,12 +33,18 @@ class IndustryAdminController extends Controller
         $validated = $request->validate([
             'company_name' => ['required', 'string', 'max:255'],
             'logo_url' => ['nullable', 'string', 'max:500'],
+            'logo_file' => ['nullable', 'image', 'max:5120'],
             'field_of_work' => ['nullable', 'string', 'max:255'],
             'partnership_scope' => ['nullable', 'string', 'max:255'],
             'is_active' => ['nullable', 'boolean'],
         ]);
 
-        $validated['is_active'] = $validated['is_active'] ?? true;
+        if ($request->hasFile('logo_file')) {
+            $path = $request->file('logo_file')->store('industries', 'public');
+            $validated['logo_url'] = '/storage/' . $path;
+        }
+
+        $validated['is_active'] = isset($validated['is_active']) ? filter_var($validated['is_active'], FILTER_VALIDATE_BOOLEAN) : true;
 
         $partner = IndustryPartnership::create($validated);
 
@@ -67,10 +73,20 @@ class IndustryAdminController extends Controller
         $validated = $request->validate([
             'company_name' => ['sometimes', 'required', 'string', 'max:255'],
             'logo_url' => ['nullable', 'string', 'max:500'],
+            'logo_file' => ['nullable', 'image', 'max:5120'],
             'field_of_work' => ['nullable', 'string', 'max:255'],
             'partnership_scope' => ['nullable', 'string', 'max:255'],
-            'is_active' => ['nullable', 'boolean'],
+            'is_active' => ['nullable'],
         ]);
+
+        if ($request->hasFile('logo_file')) {
+            $path = $request->file('logo_file')->store('industries', 'public');
+            $validated['logo_url'] = '/storage/' . $path;
+        }
+
+        if (array_key_exists('is_active', $validated)) {
+            $validated['is_active'] = filter_var($validated['is_active'], FILTER_VALIDATE_BOOLEAN);
+        }
 
         $partner->update($validated);
 

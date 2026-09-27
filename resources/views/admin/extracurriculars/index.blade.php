@@ -445,15 +445,17 @@
     $categories = $items->pluck('category')->filter()->unique()->values();
   @endphp
 
-  <!-- HEADER -->
-  <div class="adm-ek-header">
+  <!-- HEADER MATCHING SCHOOL-HISTORY PATTERN -->
+  <div class="db-panel-head">
     <div>
-      <h1>Ekstrakurikuler &amp; Organisasi Siswa</h1>
-      <p>Kelola data kegiatan non-akademik, pembina, jadwal latihan, dan foto galeri untuk publik.</p>
+      <h2><i class="fas fa-futbol" style="color:var(--a-gold);margin-right:.5rem"></i> Ekstrakurikuler &amp; Organisasi Siswa</h2>
+      <p style="font-size:.8rem;color:var(--a-muted);margin-top:.25rem">Kelola data kegiatan non-akademik, pembina, jadwal latihan, dan foto galeri untuk publik.</p>
     </div>
-    <button class="db-btn db-btn-gold" onclick="openCreateModal()">
-      <i class="fas fa-plus"></i> Tambah Kegiatan Baru
-    </button>
+    <div class="db-panel-actions">
+      <a href="{{ route('admin.extracurriculars.create') }}" class="db-btn db-btn-gold">
+        <i class="fas fa-plus"></i> Tambah Kegiatan Baru
+      </a>
+    </div>
   </div>
 
   <!-- STAT CARDS -->
@@ -461,7 +463,7 @@
     <div class="adm-ek-stat-card" style="--stat-bg:rgba(76,201,141,.14);--stat-fg:#5ce0a3">
       <div class="adm-ek-stat-top">
         <div class="adm-ek-stat-icon"><i class="fas fa-futbol"></i></div>
-        <span class="db-tag active">Terdata</span>
+        <span class="db-tag active"><i class="fas fa-circle-check"></i> Terdata</span>
       </div>
       <div class="adm-ek-stat-val">{{ $items->count() }}</div>
       <div class="adm-ek-stat-lbl">Total Wadah Kegiatan</div>
@@ -470,7 +472,7 @@
     <div class="adm-ek-stat-card" style="--stat-bg:rgba(255,179,0,.14);--stat-fg:#ffb300">
       <div class="adm-ek-stat-top">
         <div class="adm-ek-stat-icon"><i class="fas fa-bullseye"></i></div>
-        <span class="db-tag PENDING">Ekstrakurikuler</span>
+        <span class="db-tag PENDING"><i class="fas fa-star"></i> Ekstrakurikuler</span>
       </div>
       <div class="adm-ek-stat-val">{{ $totalEkskul }}</div>
       <div class="adm-ek-stat-lbl">Kegiatan Ekskul</div>
@@ -479,7 +481,7 @@
     <div class="adm-ek-stat-card" style="--stat-bg:rgba(79,195,247,.14);--stat-fg:#4fc3f7">
       <div class="adm-ek-stat-top">
         <div class="adm-ek-stat-icon"><i class="fas fa-sitemap"></i></div>
-        <span class="db-tag REVIEWING">Organisasi</span>
+        <span class="db-tag REVIEWING"><i class="fas fa-users-rectangle"></i> Organisasi</span>
       </div>
       <div class="adm-ek-stat-val">{{ $totalOrg }}</div>
       <div class="adm-ek-stat-lbl">Organisasi Siswa</div>
@@ -488,7 +490,7 @@
     <div class="adm-ek-stat-card" style="--stat-bg:rgba(198,120,255,.14);--stat-fg:#c678ff">
       <div class="adm-ek-stat-top">
         <div class="adm-ek-stat-icon"><i class="fas fa-layer-group"></i></div>
-        <span class="db-tag active">Variasi</span>
+        <span class="db-tag active"><i class="fas fa-shapes"></i> Variasi</span>
       </div>
       <div class="adm-ek-stat-val">{{ $categories->count() }}</div>
       <div class="adm-ek-stat-lbl">Bidang &amp; Kategori</div>
@@ -549,9 +551,9 @@
           <div class="adm-ek-card-foot">
             <span class="db-tag active"><i class="fas fa-circle-check"></i> Aktif</span>
             <div style="display:flex;gap:.4rem">
-              <button class="db-btn db-btn-ghost" style="padding:.35rem .65rem;font-size:.74rem" onclick='openEditModal(@json($item))'>
+              <a href="{{ route('admin.extracurriculars.edit', $item->id) }}" class="db-btn db-btn-ghost" style="padding:.35rem .65rem;font-size:.74rem">
                 <i class="fas fa-pen-to-square"></i> Edit
-              </button>
+              </a>
               <button class="db-btn db-btn-danger" style="padding:.35rem .65rem;font-size:.74rem" onclick="deleteExtra('{{ $item->id }}')">
                 <i class="fas fa-trash"></i> Hapus
               </button>
@@ -568,124 +570,11 @@
   </div>
 
 </div>
-
-<!-- MODAL CREATE / EDIT (PREMIUM REFINED UI) -->
-<div class="db-modal-overlay" id="extraModal">
-  <div class="db-modal" style="max-width:680px">
-    <div class="db-modal-header-banner">
-      <div class="db-modal-header-icon"><i class="fas fa-futbol"></i></div>
-      <div style="flex:1">
-        <h3 id="modalTitle" style="font-family:var(--font-display);font-size:1.15rem;color:#fff;margin:0">Tambah Kegiatan Baru</h3>
-        <p style="font-size:.76rem;color:var(--a-muted);margin:.15rem 0 0">Isi formulir untuk menambahkan atau memperbarui data ekstrakurikuler / organisasi.</p>
-      </div>
-      <button class="db-modal-close" onclick="closeModal()">&times;</button>
-    </div>
-    <div class="db-modal-body">
-      <form id="extraForm" onsubmit="saveExtra(event)">
-        <input type="hidden" id="extraId">
-
-        <!-- PILIHAN TIPE & BIDANG KEGIATAN -->
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.1rem">
-          <div class="db-form-group">
-            <label><i class="fas fa-layer-group" style="color:var(--a-gold)"></i> Tipe Kegiatan *</label>
-            <select id="extraType" class="db-form-control" onchange="toggleCategoryType(this.value)">
-              <option value="EKSTRAKURIKULER">🏆 Ekstrakurikuler (Non-Akademik)</option>
-              <option value="ORGANISASI">🏛️ Organisasi Siswa (OSIS / MPK / DKR)</option>
-            </select>
-          </div>
-
-          <div class="db-form-group" id="bidangGroup">
-            <label><i class="fas fa-tag" style="color:var(--a-gold)"></i> Bidang Ekstrakurikuler *</label>
-            <select id="extraCategory" class="db-form-control">
-              <option value="Teknologi">💻 Teknologi &amp; Robotika</option>
-              <option value="Olahraga">⚽ Olahraga &amp; Atletik</option>
-              <option value="Seni & Budaya">🎨 Seni, Musik &amp; Budaya</option>
-              <option value="Keagamaan">🕌 Keagamaan &amp; Kerohanian</option>
-              <option value="Kedisiplinan">🎖️ Kedisiplinan &amp; Paskibra</option>
-              <option value="Kepanduan">🏕️ Kepanduan &amp; Pramuka</option>
-              <option value="Kesehatan">🚑 Kesehatan (PMR / PIK-R)</option>
-              <option value="Media & Literasi">📰 Media &amp; Jurnalistik</option>
-              <option value="Bela Diri">🥋 Bela Diri &amp; Pencak Silat</option>
-              <option value="Lainnya">📌 Lainnya</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="db-form-group" style="margin-top:.4rem">
-          <label><i class="fas fa-signature" style="color:var(--a-gold)"></i> Nama Kegiatan / Organisasi *</label>
-          <input type="text" id="extraName" class="db-form-control" placeholder="Contoh: Robotik &amp; Coding Club / Pasus Paskibra" required>
-        </div>
-
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.1rem;margin-top:.4rem">
-          <div class="db-form-group">
-            <label><i class="fas fa-user-shield" style="color:var(--a-gold)"></i> Nama Pembina / Pelatih</label>
-            <input type="text" id="extraCoach" class="db-form-control" placeholder="Contoh: Pembina Olahraga Sekolah">
-          </div>
-
-          <div class="db-form-group">
-            <label><i class="fas fa-calendar-alt" style="color:var(--a-gold)"></i> Jadwal Latihan / Pertemuan</label>
-            <input type="text" id="extraSchedule" class="db-form-control" placeholder="Contoh: Setiap Jumat Selesai KBM">
-          </div>
-        </div>
-
-        <div class="db-form-group" style="margin-top:.4rem">
-          <label><i class="fas fa-list-check" style="color:var(--a-gold)"></i> Fokus Kegiatan Utama (Koma Separated)</label>
-          <input type="text" id="extraActivities" class="db-form-control" placeholder="Contoh: Latihan PBB, pengibaran bendera, diklat kepemimpinan">
-        </div>
-
-        <div class="db-form-group" style="margin-top:.4rem">
-          <label><i class="fas fa-align-left" style="color:var(--a-gold)"></i> Deskripsi Singkat *</label>
-          <textarea id="extraDescription" class="db-form-control" rows="3" placeholder="Penjelasan mengenai visi, tujuan &amp; aktivitas kegiatan..." required></textarea>
-        </div>
-
-        <div class="db-form-group" style="margin-top:.4rem">
-          <label><i class="fas fa-image" style="color:var(--a-gold)"></i> Upload Foto Kegiatan / Logo</label>
-          <div class="adm-file-dropzone" onclick="document.getElementById('extraImageFile').click()">
-            <div id="extraImgPreviewWrap" class="adm-file-thumb">
-              <img id="extraImgPreview" src="" alt="Preview" style="display:none">
-              <i id="extraImgPlaceholder" class="fas fa-camera"></i>
-            </div>
-            <div class="adm-file-info">
-              <div class="adm-file-actions">
-                <button type="button" class="adm-file-btn">
-                  <i class="fas fa-cloud-arrow-up"></i> <span id="extraBtnLabel">Pilih Gambar Komputer</span>
-                </button>
-                <span id="extraFileName" class="adm-file-name" style="display:none"></span>
-              </div>
-              <small class="adm-file-hint">Klik di sini untuk mengunggah foto kegiatan atau logo (Format: JPG, PNG, WEBP &bull; Maks: 5MB)</small>
-            </div>
-            <input type="file" id="extraImageFile" accept="image/*" style="display:none" onchange="previewExtraImage(this)">
-            <input type="hidden" id="extraImageUrl">
-          </div>
-        </div>
-
-        <div style="display:flex;justify-content:flex-end;gap:.75rem;margin-top:1.5rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,.08)">
-          <button type="button" class="db-btn db-btn-ghost" onclick="closeModal()">Batal</button>
-          <button type="submit" class="db-btn db-btn-gold"><i class="fas fa-floppy-disk"></i> Simpan Data</button>
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
 @endsection
 
 @push('scripts')
 <script>
   let activeCategoryFilter = 'all';
-
-  // Toggle tipe kegiatan di Form (Ekstrakurikuler vs Organisasi)
-  function toggleCategoryType(type) {
-    const bidangGroup = document.getElementById('bidangGroup');
-    const categorySelect = document.getElementById('extraCategory');
-
-    if (type === 'ORGANISASI') {
-      bidangGroup.style.opacity = '0.4';
-      bidangGroup.style.pointerEvents = 'none';
-    } else {
-      bidangGroup.style.opacity = '1';
-      bidangGroup.style.pointerEvents = 'auto';
-    }
-  }
 
   // Filter Tabs
   document.querySelectorAll('#ekAdminTabs .adm-ek-tab').forEach(btn => {
@@ -712,152 +601,6 @@
 
       card.style.display = (matchCat && matchQuery) ? '' : 'none';
     });
-  }
-
-  function openCreateModal() {
-    document.getElementById('modalTitle').textContent = 'Tambah Kegiatan Baru';
-    document.getElementById('extraId').value = '';
-    document.getElementById('extraType').value = 'EKSTRAKURIKULER';
-    document.getElementById('extraCategory').value = 'Teknologi';
-    toggleCategoryType('EKSTRAKURIKULER');
-
-    document.getElementById('extraName').value = '';
-    document.getElementById('extraCoach').value = '';
-    document.getElementById('extraSchedule').value = '';
-    document.getElementById('extraActivities').value = '';
-    document.getElementById('extraDescription').value = '';
-    document.getElementById('extraImageFile').value = '';
-    document.getElementById('extraImageUrl').value = '';
-    
-    document.getElementById('extraImgPreview').style.display = 'none';
-    const placeholder = document.getElementById('extraImgPlaceholder');
-    if (placeholder) placeholder.style.display = 'block';
-    
-    const fileNameBadge = document.getElementById('extraFileName');
-    const btnLabel = document.getElementById('extraBtnLabel');
-    if (fileNameBadge) { fileNameBadge.style.display = 'none'; fileNameBadge.textContent = ''; }
-    if (btnLabel) btnLabel.textContent = 'Pilih Gambar Komputer';
-
-    document.getElementById('extraModal').classList.add('active');
-  }
-
-  function openEditModal(item) {
-    document.getElementById('modalTitle').textContent = 'Edit Data Kegiatan / Organisasi';
-    document.getElementById('extraId').value = item.id;
-    document.getElementById('extraName').value = item.name || '';
-
-    const isOrg = (item.category === 'Organisasi');
-    if (isOrg) {
-      document.getElementById('extraType').value = 'ORGANISASI';
-      toggleCategoryType('ORGANISASI');
-    } else {
-      document.getElementById('extraType').value = 'EKSTRAKURIKULER';
-      document.getElementById('extraCategory').value = item.category || 'Teknologi';
-      toggleCategoryType('EKSTRAKURIKULER');
-    }
-
-    document.getElementById('extraCoach').value = item.coach_name || '';
-    const attrs = item.attributes || {};
-    document.getElementById('extraSchedule').value = attrs.schedule || '';
-    document.getElementById('extraActivities').value = attrs.activities || '';
-    document.getElementById('extraDescription').value = item.description || '';
-    document.getElementById('extraImageFile').value = '';
-    document.getElementById('extraImageUrl').value = item.image_url || '';
-
-    const placeholder = document.getElementById('extraImgPlaceholder');
-    const fileNameBadge = document.getElementById('extraFileName');
-    const btnLabel = document.getElementById('extraBtnLabel');
-    if (fileNameBadge) { fileNameBadge.style.display = 'none'; fileNameBadge.textContent = ''; }
-
-    if (item.image_url) {
-      const src = item.image_url.startsWith('http') ? item.image_url : '{{ asset("") }}' + item.image_url;
-      document.getElementById('extraImgPreview').src = src;
-      document.getElementById('extraImgPreview').style.display = 'block';
-      if (placeholder) placeholder.style.display = 'none';
-      if (btnLabel) btnLabel.textContent = 'Ganti Gambar Komputer';
-    } else {
-      document.getElementById('extraImgPreview').style.display = 'none';
-      if (placeholder) placeholder.style.display = 'block';
-      if (btnLabel) btnLabel.textContent = 'Pilih Gambar Komputer';
-    }
-
-    document.getElementById('extraModal').classList.add('active');
-  }
-
-  function closeModal() {
-    document.getElementById('extraModal').classList.remove('active');
-  }
-
-  function previewExtraImage(input) {
-    const preview = document.getElementById('extraImgPreview');
-    const placeholder = document.getElementById('extraImgPlaceholder');
-    const fileNameBadge = document.getElementById('extraFileName');
-    const btnLabel = document.getElementById('extraBtnLabel');
-
-    if (input.files && input.files[0]) {
-      const file = input.files[0];
-      const reader = new FileReader();
-      reader.onload = function(e) {
-        preview.src = e.target.result;
-        preview.style.display = 'block';
-        if (placeholder) placeholder.style.display = 'none';
-      };
-      reader.readAsDataURL(file);
-
-      if (fileNameBadge) {
-        fileNameBadge.textContent = '🖼️ ' + file.name;
-        fileNameBadge.style.display = 'inline-flex';
-      }
-      if (btnLabel) btnLabel.textContent = 'Ganti Berkas Gambar';
-    }
-  }
-
-  async function saveExtra(e) {
-    e.preventDefault();
-    const id = document.getElementById('extraId').value;
-    const fileInput = document.getElementById('extraImageFile');
-    const extraType = document.getElementById('extraType').value;
-    const categoryValue = (extraType === 'ORGANISASI') ? 'Organisasi' : document.getElementById('extraCategory').value;
-
-    const formData = new FormData();
-    formData.append('name', document.getElementById('extraName').value);
-    formData.append('category', categoryValue);
-    formData.append('coach_name', document.getElementById('extraCoach').value);
-    formData.append('schedule', document.getElementById('extraSchedule').value);
-    formData.append('activities', document.getElementById('extraActivities').value);
-    formData.append('description', document.getElementById('extraDescription').value);
-
-    if (fileInput.files && fileInput.files[0]) {
-      formData.append('image_file', fileInput.files[0]);
-    } else if (document.getElementById('extraImageUrl').value) {
-      formData.append('image_url', document.getElementById('extraImageUrl').value);
-    }
-
-    let url = id ? `/api/admin/extracurriculars/${id}` : '/api/admin/extracurriculars';
-    if (id) {
-      formData.append('_method', 'PUT');
-    }
-
-    try {
-      const res = await fetch(url, {
-        method: 'POST',
-        headers: {
-          'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
-          'Accept': 'application/json'
-        },
-        body: formData
-      });
-      const data = await res.json();
-      if (res.ok && data.success) {
-        showToast(id ? 'Data berhasil diperbarui!' : 'Kegiatan baru berhasil ditambahkan!');
-        closeModal();
-        setTimeout(() => location.reload(), 800);
-      } else {
-        showToast(data.message || 'Gagal menyimpan data.', 'error');
-      }
-    } catch (err) {
-      showToast('Terjadi kesalahan koneksi server.', 'error');
-    }
   }
 
   async function deleteExtra(id) {

@@ -6,7 +6,7 @@
   <div class="db-panel">
     <div class="db-panel-head">
       <div>
-        <h2>Karya &amp; Inovasi Siswa</h2>
+        <h2><i class="fas fa-palette" style="color:var(--gold);margin-right:.5rem"></i> Karya &amp; Inovasi Siswa</h2>
         <p style="font-size:.78rem;color:var(--text-muted);margin-top:.2rem">Tampilkan portofolio, karya aplikasi, desain, &amp; hasil praktek siswa SKANEDA.</p>
       </div>
       <div class="db-panel-actions">

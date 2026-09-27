@@ -76,7 +76,7 @@
 
 @section('content')
 <div class="db-panel-head">
-  <h2>Sejarah Sekolah</h2>
+  <h2><i class="fas fa-landmark" style="color:var(--gold);margin-right:.5rem"></i> Sejarah Sekolah</h2>
 </div>
 
 @if(session('status'))

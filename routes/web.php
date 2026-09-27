@@ -143,41 +143,101 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
         Route::post('/logout', [AdminAuthController::class, 'logout'])->name('logout');
 
-        // Dedicated Admin Pages
+        // 1. Teachers & Staff
         Route::get('/teachers', function () {
             $teachers = \App\Models\TeacherStaff::orderBy('name', 'asc')->get();
             return view('admin.teachers.index', compact('teachers'));
         })->name('teachers.index');
 
+        Route::get('/teachers/create', function () {
+            return view('admin.teachers.create');
+        })->name('teachers.create');
+
+        Route::get('/teachers/{id}/edit', function ($id) {
+            $item = \App\Models\TeacherStaff::findOrFail($id);
+            return view('admin.teachers.edit', compact('item'));
+        })->name('teachers.edit');
+
+        // 2. Extracurriculars & Organizations
         Route::get('/extracurriculars', function () {
             $items = \App\Models\Extracurricular::orderBy('name', 'asc')->get();
             return view('admin.extracurriculars.index', compact('items'));
         })->name('extracurriculars.index');
 
+        Route::get('/extracurriculars/create', function () {
+            return view('admin.extracurriculars.create');
+        })->name('extracurriculars.create');
+
+        Route::get('/extracurriculars/{id}/edit', function ($id) {
+            $item = \App\Models\Extracurricular::findOrFail($id);
+            return view('admin.extracurriculars.edit', compact('item'));
+        })->name('extracurriculars.edit');
+
+        // 3. Mitra Industri DUDI
         Route::get('/industries', function () {
             $items = \App\Models\IndustryPartnership::all();
             return view('admin.industries.index', compact('items'));
         })->name('industries.index');
 
+        Route::get('/industries/create', function () {
+            return view('admin.industries.create');
+        })->name('industries.create');
+
+        Route::get('/industries/{id}/edit', function ($id) {
+            $item = \App\Models\IndustryPartnership::findOrFail($id);
+            return view('admin.industries.edit', compact('item'));
+        })->name('industries.edit');
+
+        // 4. Job Vacancies
         Route::get('/job-vacancies', function () {
             $items = \App\Models\JobVacancy::latest()->get();
             return view('admin.job-vacancies.index', compact('items'));
         })->name('job-vacancies.index');
 
+        Route::get('/job-vacancies/create', function () {
+            return view('admin.job-vacancies.create');
+        })->name('job-vacancies.create');
+
+        Route::get('/job-vacancies/{id}/edit', function ($id) {
+            $item = \App\Models\JobVacancy::findOrFail($id);
+            return view('admin.job-vacancies.edit', compact('item'));
+        })->name('job-vacancies.edit');
+
+        // 5. Student Works
         Route::get('/student-works', function () {
             $items = \App\Models\StudentWork::with('major')->latest()->get();
             return view('admin.student-works.index', compact('items'));
         })->name('student-works.index');
 
+        // 6. School Fact-Check
         Route::get('/fact-checks', function () {
             $items = \App\Models\FactCheck::latest()->get();
             return view('admin.fact-checks.index', compact('items'));
         })->name('fact-checks.index');
 
+        Route::get('/fact-checks/create', function () {
+            return view('admin.fact-checks.create');
+        })->name('fact-checks.create');
+
+        Route::get('/fact-checks/{id}/edit', function ($id) {
+            $item = \App\Models\FactCheck::findOrFail($id);
+            return view('admin.fact-checks.edit', compact('item'));
+        })->name('fact-checks.edit');
+
+        // 7. E-Voices
         Route::get('/e-voices', function () {
             $items = \App\Models\EVoice::latest()->get();
             return view('admin.e-voices.index', compact('items'));
         })->name('e-voices.index');
+
+        Route::get('/e-voices/create', function () {
+            return view('admin.e-voices.create');
+        })->name('e-voices.create');
+
+        Route::get('/e-voices/{id}/edit', function ($id) {
+            $item = \App\Models\EVoice::findOrFail($id);
+            return view('admin.e-voices.edit', compact('item'));
+        })->name('e-voices.edit');
 
         // Sejarah Sekolah
         Route::get('/school-history', [SchoolHistoryController::class, 'index'])
