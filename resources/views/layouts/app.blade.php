@@ -1196,7 +1196,12 @@
     if(!msgs) return;
     const div = document.createElement('div');
     div.className = 'nara-msg' + (isUser ? ' user' : '');
-    const safe = String(text).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>');
+    let safe = String(text).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    safe = safe.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, function(match, alt, url) {
+      return `<div style="margin-top:8px;margin-bottom:6px;"><img src="${url}" alt="${alt}" style="max-width:100%;border-radius:10px;border:1px solid rgba(13,58,102,0.15);display:block;cursor:pointer;" onclick="window.open('${url}', '_blank')"><span style="font-size:0.75rem;color:#64748b;display:block;margin-top:4px;">📷 ${alt}</span></div>`;
+    });
+    safe = safe.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+    safe = safe.replace(/\n/g,'<br>');
     div.innerHTML = '<div class="nara-bubble">' + safe + '</div><div class="nara-time">' + naraNowLabel() + '</div>';
     msgs.appendChild(div);
     msgs.scrollTop = msgs.scrollHeight;
@@ -1238,7 +1243,7 @@
     const t = (text||'').toLowerCase();
     if(t.includes('jurusan')||t.includes('proli')||t.includes('keahlian')||t.includes('rpl')||t.includes('dkv')||t.includes('aphp')||t.includes('kuliner')||t.includes('lps')) return smartLocalAnswers.jurusan;
     if(t.includes('ppdb')||t.includes('daftar')||t.includes('masuk')) return smartLocalAnswers.ppdb;
-    if(t.includes('ekskul')||t.includes('ekstrakurikuler')) return smartLocalAnswers.ekskul;
+    if(t.includes('ekskul')||t.includes('ekstrakurikuler')||t.includes('ekstra')) return smartLocalAnswers.ekskul;
     if(t.includes('jadwal')||t.includes('jam')||t.includes('masuk')||t.includes('pulang')) return smartLocalAnswers.jadwal;
     if(t.includes('pkl')||t.includes('magang')||t.includes('bkk')||t.includes('kerja')) return smartLocalAnswers.pkl;
     if(t.includes('kontak')||t.includes('alamat')||t.includes('telepon')||t.includes('email')) return smartLocalAnswers.kontak;

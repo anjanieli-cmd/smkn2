@@ -36,10 +36,32 @@ class ExtracurricularAdminController extends Controller
             'category' => ['nullable', 'string', 'max:100'],
             'description' => ['nullable', 'string'],
             'coach_name' => ['nullable', 'string', 'max:255'],
+            'schedule' => ['nullable', 'string', 'max:255'],
+            'activities' => ['nullable', 'string'],
             'image_url' => ['nullable', 'string', 'max:500'],
-            'attributes' => ['nullable', 'array'],
+            'image_file' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,webp', 'max:5120'],
             'is_active' => ['nullable', 'boolean'],
         ]);
+
+        if ($request->hasFile('image_file')) {
+            $file = $request->file('image_file');
+            $filename = time() . '_' . Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)) . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('images/ekstra'), $filename);
+            $validated['image_url'] = 'images/ekstra/' . $filename;
+        }
+
+        $attributes = [];
+        if (!empty($validated['schedule'])) {
+            $attributes['schedule'] = $validated['schedule'];
+        }
+        if (!empty($validated['activities'])) {
+            $attributes['activities'] = $validated['activities'];
+        }
+        if (!empty($attributes)) {
+            $validated['attributes'] = $attributes;
+        }
+
+        unset($validated['schedule'], $validated['activities'], $validated['image_file']);
 
         $validated['slug'] = Str::slug($validated['name']);
         $validated['is_active'] = $validated['is_active'] ?? true;
@@ -73,10 +95,30 @@ class ExtracurricularAdminController extends Controller
             'category' => ['nullable', 'string', 'max:100'],
             'description' => ['nullable', 'string'],
             'coach_name' => ['nullable', 'string', 'max:255'],
+            'schedule' => ['nullable', 'string', 'max:255'],
+            'activities' => ['nullable', 'string'],
             'image_url' => ['nullable', 'string', 'max:500'],
-            'attributes' => ['nullable', 'array'],
+            'image_file' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,webp', 'max:5120'],
             'is_active' => ['nullable', 'boolean'],
         ]);
+
+        if ($request->hasFile('image_file')) {
+            $file = $request->file('image_file');
+            $filename = time() . '_' . Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)) . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('images/ekstra'), $filename);
+            $validated['image_url'] = 'images/ekstra/' . $filename;
+        }
+
+        $currentAttrs = $extra->attributes ?? [];
+        if (array_key_exists('schedule', $validated)) {
+            $currentAttrs['schedule'] = $validated['schedule'];
+        }
+        if (array_key_exists('activities', $validated)) {
+            $currentAttrs['activities'] = $validated['activities'];
+        }
+        $validated['attributes'] = $currentAttrs;
+
+        unset($validated['schedule'], $validated['activities'], $validated['image_file']);
 
         if (isset($validated['name']) && $validated['name'] !== $extra->name) {
             $validated['slug'] = Str::slug($validated['name']);

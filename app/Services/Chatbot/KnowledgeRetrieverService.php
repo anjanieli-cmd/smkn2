@@ -279,6 +279,27 @@ class KnowledgeRetrieverService
             }
         }
 
+        // Check Greetings & Conversational Openers
+        $greetings = ['halo', 'haloo', 'hi', 'hai', 'p', 'ping', 'tes', 'test', 'selamat pagi', 'selamat siang', 'selamat sore', 'selamat malam', 'assalamualaikum', 'aku mau tanya', 'mau tanya', 'mau tanya dong', 'permisi', 'nara', 'halo nara', 'hai nara'];
+        if (in_array($normalizedMessage, $greetings) || str_contains($normalizedMessage, 'mau tanya') || str_contains($normalizedMessage, 'nara')) {
+            $fallbackContexts[] = "[Greeting] NARA Virtual Assistant SMKN 2 Kota Mojokerto: Halo! Saya NARA SKANEDA. Ada yang bisa NARA bantu seputar informasi SMKN 2 Kota Mojokerto?";
+        }
+
+        // Check Virtual Tour 360 & Tempat / Fasilitas / Lokasi
+        if (
+            str_contains($normalizedMessage, 'perpustakaan') || str_contains($normalizedMessage, 'perpus') ||
+            str_contains($normalizedMessage, 'buku') || str_contains($normalizedMessage, 'literasi') ||
+            str_contains($normalizedMessage, 'tour') || str_contains($normalizedMessage, '360') ||
+            str_contains($normalizedMessage, 'lokasi') || str_contains($normalizedMessage, 'tempat') ||
+            str_contains($normalizedMessage, 'gerbang') || str_contains($normalizedMessage, 'lobi') ||
+            str_contains($normalizedMessage, 'lapangan') || str_contains($normalizedMessage, 'aula') ||
+            str_contains($normalizedMessage, 'kantin') || str_contains($normalizedMessage, 'musholla') ||
+            str_contains($normalizedMessage, 'parkir') || str_contains($normalizedMessage, 'lab') ||
+            str_contains($normalizedMessage, 'dapur')
+        ) {
+            $fallbackContexts[] = "[Virtual Tour 360° & Fasilitas] SMKN 2 Mojokerto memiliki fitur Virtual Tour 360° interaktif di /profile/tour dengan lokasi 360° asli: Perpustakaan Digital, Gerbang Utama, Lobi & Ruang Tunggu, Lapangan Utama & Basket, Aula Serbaguna, Kantin Sekolah, Musholla, Lab RPL, DKV, LPS, APHP & Dapur Kuliner.";
+        }
+
         // Check Teacher & Staff / Kepsek
         if (str_contains($normalizedMessage, 'kepsek') || str_contains($normalizedMessage, 'kepala sekolah') || str_contains($normalizedMessage, 'iswahyudi') || str_contains($normalizedMessage, 'guru') || str_contains($normalizedMessage, 'pengajar') || str_contains($normalizedMessage, 'staf')) {
             try {

@@ -43,7 +43,6 @@ class PromptGuardService
         'lagu',
         'crypto',
         'kripto',
-        'kantin',
         'menu kantin',
         'persiapan',
         'dipersiapkan',
@@ -91,10 +90,11 @@ class PromptGuardService
         'pena', 'silat', 'pmr', 'pik-r', 'pikr', 'ppdb', 'pendaftaran', 'zonasi',
         'afirmasi', 'bkk', 'loker', 'lowongan', 'dudi', 'industri', 'pkl', 'magang',
         'alumni', 'portofolio', 'evoice', 'e-voice', 'aspirasi', 'factcheck', 'fact check',
-        'hoaks', 'hoax', 'berita', 'karya', 'prestasi', 'lks', 'virtual tour', 'tour',
+        'hoaks', 'hoax', 'berita', 'karya', 'prestasi', 'lks', 'virtual tour', 'tour', '360',
         'kawi laras', 'kawilaras', 'matchmaker', 'jadwal', 'jam belajar', 'kbm',
-        'alamat', 'kontak', 'telepon', 'email', 'lokasi', 'fasilitas', 'perpus',
-        'lab', 'studio', 'masjid', 'visi', 'misi', 'profil', 'sejarah', 'struktur'
+        'alamat', 'kontak', 'telepon', 'email', 'lokasi', 'tempat', 'fasilitas', 'perpus', 'perpustakaan', 'buku', 'literasi', 'baca',
+        'lab', 'studio', 'masjid', 'musholla', 'kantin', 'gerbang', 'lobi', 'lapangan',
+        'aula', 'parkir', 'dapur', 'ruang', 'gedung', 'area', 'visi', 'misi', 'profil', 'sejarah', 'struktur', 'tanya', 'mau tanya', 'nara'
     ];
 
     /**
@@ -128,7 +128,7 @@ class PromptGuardService
         }
 
         // 2. If message contains greetings only, allow it to pass to retriever
-        if (in_array($normalized, ['halo', 'haloo', 'hi', 'hai', 'p', 'ping', 'tes', 'test', 'selamat pagi', 'selamat siang', 'selamat sore', 'selamat malam', 'assalamualaikum'])) {
+        if (in_array($normalized, ['halo', 'haloo', 'hi', 'hai', 'p', 'ping', 'tes', 'test', 'selamat pagi', 'selamat siang', 'selamat sore', 'selamat malam', 'assalamualaikum', 'aku mau tanya', 'mau tanya', 'mau tanya dong', 'permisi', 'nara', 'halo nara', 'hai nara'])) {
             return false;
         }
 

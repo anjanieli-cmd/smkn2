@@ -16,10 +16,35 @@ class MockGeminiProvider implements AIProviderInterface
 
         $promptLower = mb_strtolower(trim($userPrompt));
 
+        // 0. Greetings & Conversational Openers (only when no specific topic keyword is present)
+        $hasSpecificTopic = str_contains($promptLower, 'rpl') || str_contains($promptLower, 'dkv') || str_contains($promptLower, 'aphp') ||
+                            str_contains($promptLower, 'kuliner') || str_contains($promptLower, 'boga') || str_contains($promptLower, 'lps') ||
+                            str_contains($promptLower, 'perbankan') || str_contains($promptLower, 'jurusan') || str_contains($promptLower, 'keahlian') ||
+                            str_contains($promptLower, 'proli') || str_contains($promptLower, 'ekskul') || str_contains($promptLower, 'ekstrakurikuler') ||
+                            str_contains($promptLower, 'ppdb') || str_contains($promptLower, 'pendaftaran') || str_contains($promptLower, 'guru') ||
+                            str_contains($promptLower, 'kepsek') || str_contains($promptLower, 'iswahyudi') || str_contains($promptLower, 'kantin') ||
+                            str_contains($promptLower, 'perpustakaan') || str_contains($promptLower, 'perpus') || str_contains($promptLower, 'musholla') ||
+                            str_contains($promptLower, 'masjid') || str_contains($promptLower, 'gerbang') || str_contains($promptLower, 'lobi') ||
+                            str_contains($promptLower, 'lapangan') || str_contains($promptLower, 'aula') || str_contains($promptLower, 'parkir') ||
+                            str_contains($promptLower, 'bkk') || str_contains($promptLower, 'dudi') || str_contains($promptLower, 'alumni') ||
+                            str_contains($promptLower, 'fasilitas') || str_contains($promptLower, 'alamat') || str_contains($promptLower, 'kontak') ||
+                            str_contains($promptLower, 'tour') || str_contains($promptLower, '360') || str_contains($promptLower, 'berita') ||
+                            str_contains($promptLower, 'evoice') || str_contains($promptLower, 'factcheck') || str_contains($promptLower, 'prestasi') ||
+                            str_contains($promptLower, 'kawi laras');
+
+        $greetings = ['halo', 'haloo', 'hi', 'hai', 'p', 'ping', 'tes', 'test', 'selamat pagi', 'selamat siang', 'selamat sore', 'selamat malam', 'assalamualaikum', 'aku mau tanya', 'mau tanya', 'mau tanya dong', 'permisi', 'nara', 'halo nara', 'hai nara'];
+
+        if (!$hasSpecificTopic && (in_array($promptLower, $greetings) || str_contains($promptLower, 'mau tanya') || str_contains($promptLower, 'apa yang bisa'))) {
+            return "Halo! 👋 Saya NARA SKANEDA (SMKN 2 Kota Mojokerto Assistance & Resource Agent). Ada yang bisa NARA bantu seputar informasi SMKN 2 Kota Mojokerto? 😊";
+        }
+
+        // 0b. Perpustakaan & Literasi
+        if (str_contains($promptLower, 'perpustakaan') || str_contains($promptLower, 'perpus') || str_contains($promptLower, 'buku') || str_contains($promptLower, 'literasi')) {
+            return "Halo! 👋 Ya, di SMKN 2 Kota Mojokerto terdapat **Perpustakaan Digital** 📚 yang menyediakan koleksi buku cetak, e-book, referensi pembelajaran, dan area baca yang tenang serta nyaman bagi seluruh siswa dan guru.\n\nAnda dapat melihat dan mengunjungi lokasi tempat ini secara langsung di halaman [Virtual Tour 360°](/profile/tour). 😊";
+        }
+
         // Reject out-of-scope queries explicitly
         if (
-            str_contains($promptLower, 'kantin') ||
-            str_contains($promptLower, 'menu kantin') ||
             str_contains($promptLower, 'persiapan') ||
             str_contains($promptLower, 'dipersiapkan') ||
             str_contains($promptLower, 'diperlukan')
