@@ -42,7 +42,7 @@ class ChatbotService
             $totalMs = round((microtime(true) - $startTime) * 1000, 2);
             return [
                 'response_type' => ChatbotResponseType::OUT_OF_SCOPE->value,
-                'message' => 'Halo! 👋 Saya NARA SKANEDA (Sahabat & Asisten Digital SMKN 2 Kota Mojokerto). 🏫✨ Maaf, informasi tersebut belum tersedia dalam basis pengetahuan resmi SMKN 2 Kota Mojokerto. Silakan tanyakan informasi resmi seputar SMKN 2 Kota Mojokerto! 😊',
+                'message' => 'Halo! 👋 Saya NARA SKANEDA (SMKN 2 Kota Mojokerto Assistance & Resource Agent). Maaf, informasi tersebut belum tersedia dalam basis pengetahuan resmi SMKN 2 Kota Mojokerto.',
                 'retrieval_ms' => 0.0,
                 'ai_ms' => 0.0,
                 'total_ms' => $totalMs,
@@ -58,7 +58,7 @@ class ChatbotService
             $totalMs = round((microtime(true) - $startTime) * 1000, 2);
             return [
                 'response_type' => ChatbotResponseType::NOT_FOUND->value,
-                'message' => 'Halo! 👋 Saya NARA SKANEDA (Sahabat & Asisten Digital SMKN 2 Kota Mojokerto). 🎓 Maaf, informasi tersebut belum tersedia dalam basis pengetahuan resmi SMKN 2 Kota Mojokerto. Silakan tanyakan informasi resmi seputar SMKN 2 Kota Mojokerto! 😊',
+                'message' => 'Halo! 👋 Saya NARA SKANEDA (SMKN 2 Kota Mojokerto Assistance & Resource Agent). Maaf, informasi tersebut belum tersedia dalam basis pengetahuan resmi SMKN 2 Kota Mojokerto.',
                 'retrieval_ms' => $retrievalMs,
                 'ai_ms' => 0.0,
                 'total_ms' => $totalMs,
@@ -70,9 +70,8 @@ class ChatbotService
         $aiResponse = $this->aiProvider->generateResponse($message, $contextChunks);
         $aiMs = round((microtime(true) - $aiStart) * 1000, 2);
 
-        // Sanitize any triple asterisks (***) from response
-        $aiResponse = str_replace('***', '', $aiResponse);
-        $aiResponse = (string) preg_replace('/\*{3,}/', '**', $aiResponse);
+        // Strip all asterisk symbols (*) from chatbot response
+        $aiResponse = str_replace('*', '', $aiResponse);
 
         $totalMs = round((microtime(true) - $startTime) * 1000, 2);
 
