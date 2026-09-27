@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\AdminAuthController;
+use App\Http\Controllers\Admin\SchoolHistoryController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -172,4 +174,14 @@ Route::prefix('admin')->name('admin.')->group(function () {
             return view('admin.e-voices.index', compact('items'));
         })->name('e-voices.index');
     });
+
+    Route::middleware('auth')->group(function () {
+    // ... route lain ...
+
+    Route::get('/school-history', [SchoolHistoryController::class, 'index'])
+        ->name('school-history.index');
+
+    Route::put('/school-history', [SchoolHistoryController::class, 'update'])
+        ->name('school-history.update');
+});
 });
