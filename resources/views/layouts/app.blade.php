@@ -1010,7 +1010,7 @@
     jadwal: "Jam Belajar SMKN 2 Mojokerto:\nKegiatan Belajar Mengajar (KBM) berlangsung Senin hingga Jumat pukul 07.00 WIB - 15.30 WIB. Gerbang sekolah ditutup tepat pukul 07.00 WIB. Hari Sabtu dan Minggu libur.",
     pkl: "BKK & Kemitraan Industri SMKN 2 Mojokerto:\nUnit BKK memfasilitasi Praktek Kerja Lapangan (PKL) dan penyaluran lulusan ke mitra industri seperti PT Telkom, PT Astra International, Bank Syariah Indonesia, dan industri perhotelan/pangan.",
     kontak: "Alamat dan Kontak Resmi SMKN 2 Mojokerto:\nAlamat: Jl. Raden Wijaya No. 1, Kranggan, Kota Mojokerto, Jawa Timur\nTelepon: (0321) 321555\nEmail: info@smkn2mojokerto.sch.id",
-    default: "SMK Negeri 2 Mojokerto adalah SMK Pusat Keunggulan di Kota Mojokerto dengan 5 konsentrasi keahlian: RPL, DKV, APHP, Kuliner, dan LPS. Silakan tanyakan hal yang ingin kamu ketahui!"
+    default: "Halo! 👋 Saya NARA SKANEDA (SMKN 2 Kota Mojokerto Assistance & Resource Agent). Maaf, informasi tersebut belum tersedia dalam basis pengetahuan resmi SMKN 2 Kota Mojokerto."
   };
 
   function getSmartLocalAnswer(text){
