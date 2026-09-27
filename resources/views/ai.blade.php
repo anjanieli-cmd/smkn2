@@ -357,6 +357,91 @@
   .am-runner{grid-template-columns:110px 1fr 40px;gap:.7rem}
   .am-join-box{flex-direction:column;align-items:flex-start;text-align:left}
 }
+/* ---------- DARK MODE OVERRIDES (Ekstra Matchmaker) ---------- */
+body.theme-dark .am-page {
+  --am-bg: #061221;
+  --am-card: #102a45;
+  --am-navy: #f4f8fc;
+  --am-navy-dark: #eaf2fb;
+  --am-ink: #eaf2fb;
+  --am-muted: #8fa8c2;
+  --am-line: #1d3a5c;
+  background: #061221 !important;
+  color: #eaf2fb !important;
+}
+
+body.theme-dark .qz-stage {
+  background: linear-gradient(145deg, #0d2338 0%, #102a45 100%) !important;
+  border: 1px solid #1d3a5c !important;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45) !important;
+}
+
+body.theme-dark .qz-question {
+  color: #f4f8fc !important;
+}
+
+body.theme-dark .qz-question-tag {
+  background: rgba(136, 84, 208, 0.22) !important;
+  color: #d6bbfb !important;
+  border: 1px solid rgba(136, 84, 208, 0.35) !important;
+}
+
+body.theme-dark .qz-qcounter {
+  background: #15314f !important;
+  color: #d6bbfb !important;
+  border: 1px solid #1d3a5c !important;
+}
+
+body.theme-dark .qz-qcounter i {
+  color: #a879f9 !important;
+}
+
+body.theme-dark .qz-timer-track {
+  stroke: #1d3a5c !important;
+}
+
+body.theme-dark .qz-timer span {
+  color: #d6bbfb !important;
+}
+
+body.theme-dark .qz-progressbar {
+  background: #15314f !important;
+}
+
+body.theme-dark .qz-back {
+  background: #15314f !important;
+  color: #c9d8e8 !important;
+  border-color: #1d3a5c !important;
+}
+
+body.theme-dark .qz-back:hover {
+  border-color: #a879f9 !important;
+  color: #ffffff !important;
+}
+
+body.theme-dark .am-card,
+body.theme-dark .am-proc,
+body.theme-dark .am-podium-block,
+body.theme-dark .am-eks-card {
+  background: #102a45 !important;
+  border-color: #1d3a5c !important;
+  color: #eaf2fb !important;
+}
+
+body.theme-dark .am-podium-title {
+  color: #f4f8fc !important;
+}
+
+body.theme-dark .am-podium-sub {
+  color: #8fa8c2 !important;
+}
+
+body.theme-dark .am-narrative {
+  background: #0d2338 !important;
+  border-color: #1d3a5c !important;
+  color: #eaf2fb !important;
+}
+
 @media(max-width:560px){
   .am-wrap{padding:32px 0 70px}
   .am-card{border-radius:20px}
