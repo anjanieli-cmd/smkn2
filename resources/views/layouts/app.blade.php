@@ -740,6 +740,30 @@
     body.theme-dark #cursorGlow{opacity:.7}
     body.theme-dark .footer-partner-logo{filter:grayscale(100%) brightness(2.4) contrast(.85)}
 
+    /* ---------- DARK MODE — NAVBAR & ANNOUNCE BAR ---------- */
+    body.theme-dark .announce-bar{
+      background:linear-gradient(90deg,#051019,#0d2338,#051019);
+      border-bottom-color:rgba(255,255,255,.08);
+    }
+    body.theme-dark #navbar .nav-inner{
+      background:linear-gradient(135deg,#081c30,#102a45);
+      border-bottom-color:rgba(255,255,255,.1);
+      box-shadow:0 10px 34px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.08);
+    }
+    body.theme-dark #navbar.scrolled .nav-inner{
+      background:linear-gradient(135deg,#051019,#0d2338);
+      box-shadow:0 14px 44px rgba(0,0,0,.55);
+      border-bottom-color:rgba(255,255,255,.06);
+    }
+    body.theme-dark .nav-brand-text strong{color:#eaf2fb}
+    body.theme-dark .nav-brand-text .brand-sub{color:#ffd54f}
+    body.theme-dark .nav-link{color:rgba(255,255,255,.72)}
+    body.theme-dark .nav-link:hover,
+    body.theme-dark .nav-link.active{color:#ffd54f !important}
+    @media(max-width:900px){
+      body.theme-dark .nav-menu{background:rgba(5,16,25,.97)}
+    }
+
     @media(max-width:600px){
       .skn-stack{right:12px;bottom:12px;gap:12px}
       .skn-stack.skn-intro-safe{right:12px;bottom:150px}

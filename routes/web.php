@@ -172,5 +172,4 @@ Route::prefix('admin')->name('admin.')->group(function () {
             return view('admin.e-voices.index', compact('items'));
         })->name('e-voices.index');
     });
-
 });

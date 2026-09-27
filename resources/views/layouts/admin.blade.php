@@ -71,9 +71,11 @@
     .db-nav{flex:1;overflow-y:auto;padding:1.1rem .9rem 1.5rem}
     .db-nav-group{margin-bottom:1.3rem}
     .db-nav-title{
+      display:flex;align-items:center;gap:.4rem;
       font-size:.66rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;
       color:var(--text-dim);padding:0 .7rem;margin-bottom:.55rem;
     }
+    .db-nav-title i{font-size:.62rem;opacity:.7}
     .db-nav-item{
       display:flex;align-items:center;gap:.75rem;
       padding:.62rem .7rem;border-radius:11px;margin-bottom:.2rem;
@@ -259,6 +261,60 @@
 
   <div class="db-overlay" id="dbOverlay" style="display:none;position:fixed;inset:0;background:rgba(3,10,20,.6);z-index:35"></div>
 
+  {{--
+    Peta menu sidebar admin.
+    Setiap item: [route_name, icon_fa, label].
+    route_name boleh null (untuk item non-CRUD seperti "Pengaturan Chatbot NARA"
+    yang mungkin belum punya route sama sekali).
+    Kalau route_name diisi tapi belum terdaftar di routes/web.php (php artisan route:list
+    belum ada namanya), link otomatis nonaktif + badge "Segera" — tidak akan error 404
+    atau RouteNotFoundException.
+  --}}
+  @php
+    $adminMenu = [
+      'Profil Sekolah' => [
+        ['admin.school-history.index',  'fa-landmark',          'Sejarah Sekolah'],
+        ['admin.vision-mission.index',  'fa-bullseye',          'Visi &amp; Misi'],
+        ['admin.org-structure.index',   'fa-sitemap',           'Struktur Organisasi'],
+        ['admin.teachers.index',        'fa-chalkboard-user',   'Guru &amp; Staf'],
+        ['admin.roadmap.index',         'fa-road',              'Roadmap Pengembangan'],
+        ['admin.virtual-tour.index',    'fa-street-view',       'Tour Virtual 360°'],
+      ],
+      'Program Keahlian' => [
+        ['admin.majors.index',          'fa-graduation-cap',    'Jurusan / Program Keahlian'],
+      ],
+      'PPDB' => [
+        ['admin.ppdb.index',            'fa-file-signature',    'Jalur &amp; Kuota Pendaftaran'],
+      ],
+      'Siswa' => [
+        ['admin.student-works.index',   'fa-palette',           'Karya Siswa'],
+        ['admin.extracurriculars.index','fa-futbol',            'Ekstrakurikuler'],
+        ['admin.e-voices.index',        'fa-comments',          'E-Voice Aspirasi'],
+      ],
+      'Berita' => [
+        ['admin.news.index',            'fa-newspaper',         'Berita &amp; Artikel'],
+        ['admin.fact-checks.index',     'fa-shield-halved',     'School Factcheck'],
+      ],
+      'Galeri' => [
+        ['admin.gallery.index',         'fa-images',            'Kegiatan Sekolah'],
+        ['admin.achievements.index',    'fa-trophy',            'Prestasi Sekolah'],
+      ],
+      'BKK & Kemitraan' => [
+        ['admin.job-vacancies.index',   'fa-briefcase',         'Lowongan Kerja'],
+        ['admin.industries.index',      'fa-handshake',         'DUDI &amp; Mitra Industri'],
+      ],
+      'AI &amp; Chatbot' => [
+        ['admin.ai-matchmaker.index',   'fa-robot',             'AI Matchmaker Ekskul'],
+        ['admin.chatbot-nara.index',    'fa-message',           'Isi Jawaban Chatbot NARA'],
+      ],
+      'Pengaturan Situs' => [
+        ['admin.announcement.index',    'fa-bullhorn',          'Announcement Bar'],
+        ['admin.partners.index',        'fa-building',          'Logo Partner / Mitra'],
+        ['admin.users.index',           'fa-user-shield',       'Manajemen User &amp; Admin'],
+      ],
+    ];
+  @endphp
+
   <!-- ===================== SIDEBAR ===================== -->
   <aside class="db-sidebar" id="dbSidebar">
     <div class="db-side-brand">
@@ -272,27 +328,28 @@
     <nav class="db-nav">
       <div class="db-nav-group">
         <div class="db-nav-title">Utama</div>
-        <a href="{{ route('admin.dashboard') }}" class="db-nav-item {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}"><i class="fas fa-gauge-high"></i> Dashboard</a>
+        <a href="{{ route('admin.dashboard') }}" class="db-nav-item {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
+          <i class="fas fa-gauge-high"></i> Dashboard
+        </a>
       </div>
 
-      <div class="db-nav-group">
-        <div class="db-nav-title">Konten &amp; Karya</div>
-        <a href="{{ route('admin.student-works.index') }}" class="db-nav-item {{ request()->routeIs('admin.student-works.*') ? 'active' : '' }}"><i class="fas fa-palette"></i> Karya Siswa</a>
-      </div>
-
-      <div class="db-nav-group">
-        <div class="db-nav-title">Layanan Digital</div>
-        <a href="{{ route('admin.e-voices.index') }}" class="db-nav-item {{ request()->routeIs('admin.e-voices.*') ? 'active' : '' }}"><i class="fas fa-comments"></i> E-Voice</a>
-        <a href="{{ route('admin.fact-checks.index') }}" class="db-nav-item {{ request()->routeIs('admin.fact-checks.*') ? 'active' : '' }}"><i class="fas fa-shield-halved"></i> School Factcheck</a>
-        <a href="{{ route('admin.job-vacancies.index') }}" class="db-nav-item {{ request()->routeIs('admin.job-vacancies.*') ? 'active' : '' }}"><i class="fas fa-briefcase"></i> BKK &amp; Loker</a>
-        <a href="{{ route('admin.industries.index') }}" class="db-nav-item {{ request()->routeIs('admin.industries.*') ? 'active' : '' }}"><i class="fas fa-handshake"></i> DUDI &amp; Kemitraan</a>
-      </div>
-
-      <div class="db-nav-group">
-        <div class="db-nav-title">Akademik &amp; Profil</div>
-        <a href="{{ route('admin.teachers.index') }}" class="db-nav-item {{ request()->routeIs('admin.teachers.*') ? 'active' : '' }}"><i class="fas fa-chalkboard-user"></i> Guru &amp; Staf</a>
-        <a href="{{ route('admin.extracurriculars.index') }}" class="db-nav-item {{ request()->routeIs('admin.extracurriculars.*') ? 'active' : '' }}"><i class="fas fa-futbol"></i> Ekstrakurikuler</a>
-      </div>
+      @foreach($adminMenu as $groupTitle => $items)
+        <div class="db-nav-group">
+          <div class="db-nav-title">{!! $groupTitle !!}</div>
+          @foreach($items as [$routeName, $icon, $label])
+            @php
+              // route() dipanggil aman: kalau nama route belum terdaftar, fallback ke '#'
+              // supaya tidak melempar RouteNotFoundException saat halaman dirender.
+              $routeExists = \Illuminate\Support\Facades\Route::has($routeName);
+              $href        = $routeExists ? route($routeName) : '#';
+              $isActive    = $routeExists && request()->routeIs(str_replace('.index', '.*', $routeName));
+            @endphp
+            <a href="{{ $href }}" class="db-nav-item {{ $isActive ? 'active' : '' }}">
+              <i class="fas {{ $icon }}"></i> {!! $label !!}
+            </a>
+          @endforeach
+        </div>
+      @endforeach
     </nav>
 
     <div class="db-side-foot">
