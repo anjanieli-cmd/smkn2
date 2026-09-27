@@ -1,13 +1,11 @@
 <?php
 
 use App\Http\Controllers\Admin\AlumniAdminController;
-use App\Http\Controllers\Admin\ChatbotKnowledgeAdminController;
 use App\Http\Controllers\Admin\EVoiceAdminController;
 use App\Http\Controllers\Admin\ExtracurricularAdminController;
 use App\Http\Controllers\Admin\FactCheckAdminController;
 use App\Http\Controllers\Admin\IndustryAdminController;
 use App\Http\Controllers\Admin\JobVacancyAdminController;
-use App\Http\Controllers\Admin\MajorAdminController;
 use App\Http\Controllers\Admin\NewsAdminController;
 use App\Http\Controllers\Admin\StudentWorkAdminController;
 use App\Http\Controllers\Admin\TeacherStaffAdminController;
@@ -92,19 +90,14 @@ Route::prefix('chatbot')->group(function () {
 */
 
 Route::prefix('admin')->group(function () {
-    Route::apiResource('news', NewsAdminController::class);
     Route::apiResource('extracurriculars', ExtracurricularAdminController::class);
-    Route::apiResource('majors', MajorAdminController::class);
     Route::apiResource('teacher-staff', TeacherStaffAdminController::class);
     Route::apiResource('teachers', TeacherStaffAdminController::class);
     Route::apiResource('industry', IndustryAdminController::class);
     Route::apiResource('industries', IndustryAdminController::class);
     Route::apiResource('job-vacancies', JobVacancyAdminController::class);
     Route::apiResource('student-works', StudentWorkAdminController::class);
-    Route::apiResource('alumni', AlumniAdminController::class);
     Route::apiResource('fact-check', FactCheckAdminController::class);
-    Route::apiResource('chatbot-knowledge', ChatbotKnowledgeAdminController::class);
-    Route::apiResource('chatbot/knowledge', ChatbotKnowledgeAdminController::class);
 
     Route::prefix('e-voice')->group(function () {
         Route::get('/', [EVoiceAdminController::class, 'index']);

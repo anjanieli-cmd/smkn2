@@ -8,7 +8,7 @@ class MockGeminiProvider implements AIProviderInterface
 {
     public function generateResponse(string $userPrompt, array $contextChunks): string
     {
-        $notFoundMessage = "Halo! 👋 Saya NARA SKANEDA (Sahabat & Asisten Digital SMKN 2 Kota Mojokerto). 🎓 Maaf, informasi tersebut belum tersedia dalam basis pengetahuan resmi SMKN 2 Kota Mojokerto. Silakan tanyakan informasi resmi seputar SMKN 2 Kota Mojokerto! 😊";
+        $notFoundMessage = "Halo! 👋 Saya NARA SKANEDA (SMKN 2 Kota Mojokerto Assistance & Resource Agent). Maaf, informasi tersebut belum tersedia dalam basis pengetahuan resmi SMKN 2 Kota Mojokerto.";
 
         if (empty($contextChunks)) {
             return $notFoundMessage;
@@ -48,6 +48,31 @@ class MockGeminiProvider implements AIProviderInterface
         if (str_contains($promptLower, 'lps') || str_contains($promptLower, 'perbankan syariah') || str_contains($promptLower, 'bank syariah')) {
             return "Halo! 👋 Konsentrasi Keahlian **Layanan Perbankan Syariah (LPS)** di SMKN 2 Kota Mojokerto membekali siswa dengan keahlian administrasi keuangan berbasis syariah, akuntansi perbankan, customer service, serta pengelolaan transaksi di Bank Mini Syariah.\n\n🏦 **Lokasi Pembelajaran**: Laboratorium Bank Mini Syariah BSI.\n💼 **Peluang Karir**: Teller Bank, Customer Service Syariah, Staf Keuangan, & Back Office Perbankan.\n🤝 **Mitra Industri**: Bank Syariah Indonesia (BSI), Bank Jatim, KPPN, BAZNAS. 😊";
         }
+
+        // Reject invalid / non-existent subjects explicitly
+        if (
+            str_contains($promptLower, 'otomotif') ||
+            str_contains($promptLower, 'mesin') ||
+            str_contains($promptLower, 'kasur') ||
+            str_contains($promptLower, 'fisika') ||
+            str_contains($promptLower, 'renang') ||
+            str_contains($promptLower, 'catur') ||
+            str_contains($promptLower, 'tkj') ||
+            str_contains($promptLower, 'tav') ||
+            str_contains($promptLower, 'farmasi') ||
+            str_contains($promptLower, 'keperawatan') ||
+            str_contains($promptLower, 'kecantikan') ||
+            str_contains($promptLower, 'panah') ||
+            str_contains($promptLower, 'drumband') ||
+            str_contains($promptLower, 'merek') ||
+            str_contains($promptLower, 'merk') ||
+            str_contains($promptLower, 'presiden') ||
+            str_contains($promptLower, 'makanan') ||
+            str_contains($promptLower, 'resep')
+        ) {
+            return $notFoundMessage;
+        }
+
         if (str_contains($promptLower, 'jurusan') || str_contains($promptLower, 'keahlian') || str_contains($promptLower, 'proli')) {
             return "Halo! 👋 Berikut adalah 5 Konsentrasi Keahlian / Jurusan Unggulan di SMK Negeri 2 Kota Mojokerto:\n\n1. 💻 **RPL (Rekayasa Perangkat Lunak / PPLG)** — Pemrograman Web, Mobile App & Software\n2. 🎨 **DKV (Desain Komunikasi Visual)** — Grafis, Videografi, Animasi & Fotografi\n3. 🌾 **APHP (Agribisnis Pengolahan Hasil Pertanian)** — Teknologi Pangan & Olahan Organik\n4. 🍳 **Tata Boga (Kuliner)** — Pastry, Bakery, International Cuisine & Restoran TEFA\n5. 🏦 **LPS (Layanan Perbankan Syariah)** — Keuangan Syariah, Teller & Bank Mini Syariah BSI\n\nKamu tertarik dengan jurusan yang mana? NARA bisa jelaskan lebih detail! 😊";
         }
@@ -184,9 +209,10 @@ class MockGeminiProvider implements AIProviderInterface
 
             $displayTitle = preg_replace('/^Detail\s+/i', '', $title);
 
-            $response = "Halo! 👋 Berdasarkan data resmi SMKN 2 Kota Mojokerto:\n\n📌 **{$displayTitle}**:\n{$cleanContent}\n\nAda hal lain yang ingin kamu tanyakan seputar SMKN 2 Kota Mojokerto? NARA siap membantu! 😊";
-            $response = str_replace('***', '', $response);
-            $response = (string) preg_replace('/\*{3,}/', '**', $response);
+            $response = "Halo! 👋 Berdasarkan data resmi SMKN 2 Kota Mojokerto:\n\n📌 {$displayTitle}:\n{$cleanContent}\n\nAda hal lain yang ingin kamu tanyakan seputar SMKN 2 Kota Mojokerto? NARA siap membantu! 😊";
+            $response = str_replace('*', '', $response);
+
+            return $response;
 
             return $response;
         }

@@ -198,8 +198,19 @@ class KnowledgeRetrieverService
             $fallbackContexts[] = "[PPDB] Informasi PPDB 2026: Pendaftaran PPDB SMKN 2 Mojokerto dilakukan secara online melalui portal resmi PPDB Jawa Timur (Jalur Prestasi, Afirmasi, Zonasi). Pendaftaran TIDAK DIPUNGUT BIAYA (GRATIS).";
         }
 
-        // Check Majors (Jurusan & Specific Major Sub-Keywords)
-        if (str_contains($normalizedMessage, 'jurusan') || str_contains($normalizedMessage, 'keahlian') || str_contains($normalizedMessage, 'proli') || str_contains($normalizedMessage, 'rpl') || str_contains($normalizedMessage, 'dkv') || str_contains($normalizedMessage, 'aphp') || str_contains($normalizedMessage, 'kuliner') || str_contains($normalizedMessage, 'boga') || str_contains($normalizedMessage, 'lps') || str_contains($normalizedMessage, 'perbankan')) {
+        // Check Majors (Requires specific valid major keyword or general list request)
+        $hasSpecificMajor = str_contains($normalizedMessage, 'rpl') || str_contains($normalizedMessage, 'rekayasa perangkat lunak') ||
+                            str_contains($normalizedMessage, 'dkv') || str_contains($normalizedMessage, 'desain komunikasi visual') ||
+                            str_contains($normalizedMessage, 'aphp') || str_contains($normalizedMessage, 'pengolahan hasil pertanian') ||
+                            str_contains($normalizedMessage, 'kuliner') || str_contains($normalizedMessage, 'tata boga') || str_contains($normalizedMessage, 'boga') ||
+                            str_contains($normalizedMessage, 'lps') || str_contains($normalizedMessage, 'perbankan syariah');
+
+        $isGeneralMajorQuery = (str_contains($normalizedMessage, 'jurusan') || str_contains($normalizedMessage, 'keahlian') || str_contains($normalizedMessage, 'proli')) &&
+                               !str_contains($normalizedMessage, 'otomotif') && !str_contains($normalizedMessage, 'mesin') &&
+                               !str_contains($normalizedMessage, 'kasur') && !str_contains($normalizedMessage, 'fisika') &&
+                               !str_contains($normalizedMessage, 'tkj') && !str_contains($normalizedMessage, 'tav');
+
+        if ($hasSpecificMajor || $isGeneralMajorQuery) {
             try {
                 $majors = Major::all(['code', 'name', 'description']);
                 if ($majors->isNotEmpty()) {
@@ -239,8 +250,22 @@ class KnowledgeRetrieverService
             $fallbackContexts[] = "[Tata Tertib] Jam Belajar dan Operasional Sekolah: Kegiatan Belajar Mengajar (KBM) di SMKN 2 Mojokerto berlangsung hari Senin hingga Jumat pukul 07.00 WIB - 15.30 WIB. Gerbang sekolah ditutup tepat pukul 07.00 WIB. Hari Sabtu dan Minggu libur.";
         }
 
-        // Check Extracurriculars (& Specific Ekskul Sub-Keywords)
-        if (str_contains($normalizedMessage, 'ekskul') || str_contains($normalizedMessage, 'ekstrakurikuler') || str_contains($normalizedMessage, 'banjari') || str_contains($normalizedMessage, 'basket') || str_contains($normalizedMessage, 'voli') || str_contains($normalizedMessage, 'btq') || str_contains($normalizedMessage, 'futsal') || str_contains($normalizedMessage, 'jurnalistik') || str_contains($normalizedMessage, 'paskib') || str_contains($normalizedMessage, 'pramuka') || str_contains($normalizedMessage, 'tari') || str_contains($normalizedMessage, 'pena') || str_contains($normalizedMessage, 'silat') || str_contains($normalizedMessage, 'pmr') || str_contains($normalizedMessage, 'pik-r') || str_contains($normalizedMessage, 'pikr') || str_contains($normalizedMessage, 'osis') || str_contains($normalizedMessage, 'lacurva') || str_contains($normalizedMessage, 'pasus')) {
+        // Check Extracurriculars (Requires specific valid ekskul keyword or general list request)
+        $hasSpecificEkskul = str_contains($normalizedMessage, 'banjari') || str_contains($normalizedMessage, 'basket') ||
+                             str_contains($normalizedMessage, 'voli') || str_contains($normalizedMessage, 'btq') ||
+                             str_contains($normalizedMessage, 'futsal') || str_contains($normalizedMessage, 'jurnalistik') ||
+                             str_contains($normalizedMessage, 'paskib') || str_contains($normalizedMessage, 'pramuka') ||
+                             str_contains($normalizedMessage, 'tari') || str_contains($normalizedMessage, 'pena') ||
+                             str_contains($normalizedMessage, 'silat') || str_contains($normalizedMessage, 'pmr') ||
+                             str_contains($normalizedMessage, 'pik-r') || str_contains($normalizedMessage, 'pikr') ||
+                             str_contains($normalizedMessage, 'osis') || str_contains($normalizedMessage, 'lacurva') ||
+                             str_contains($normalizedMessage, 'pasus');
+
+        $isGeneralEkskulQuery = (str_contains($normalizedMessage, 'ekskul') || str_contains($normalizedMessage, 'ekstrakurikuler')) &&
+                                !str_contains($normalizedMessage, 'renang') && !str_contains($normalizedMessage, 'catur') &&
+                                !str_contains($normalizedMessage, 'kasur') && !str_contains($normalizedMessage, 'panah');
+
+        if ($hasSpecificEkskul || $isGeneralEkskulQuery) {
             try {
                 $ekskuls = Extracurricular::all(['name', 'category', 'description']);
                 if ($ekskuls->isNotEmpty()) {

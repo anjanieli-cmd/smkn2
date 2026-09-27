@@ -44,15 +44,15 @@
         </thead>
         <tbody id="evoiceTableBody">
           @forelse($items as $item)
-            <tr data-ticket="{{ strtolower($item->ticket_code) }}" data-title="{{ strtolower($item->title) }}" data-status="{{ $item->status }}">
+            <tr data-ticket="{{ strtolower($item->ticket_code) }}" data-title="{{ strtolower($item->title) }}" data-status="{{ is_object($item->status) ? $item->status->value : $item->status }}">
               <td><strong style="color:var(--gold-light);font-family:monospace">{{ $item->ticket_code }}</strong></td>
               <td>
                 <strong>{{ $item->title }}</strong>
                 <p style="font-size:.75rem;color:var(--text-muted);margin-top:.2rem">{{ Str::limit($item->description, 70) }}</p>
               </td>
-              <td><span style="font-size:.75rem;color:var(--text-muted)">{{ $item->category ?? 'Aspirasi' }}</span></td>
+              <td><span style="font-size:.75rem;color:var(--text-muted)">{{ is_object($item->category) ? $item->category->value : ($item->category ?? 'Aspirasi') }}</span></td>
               <td><span style="font-weight:700;color:var(--gold)"><i class="fas fa-thumbs-up"></i> {{ $item->upvotes_count }}</span></td>
-              <td><span class="db-tag {{ $item->status }}">{{ $item->status }}</span></td>
+              <td><span class="db-tag {{ is_object($item->status) ? strtolower($item->status->value) : strtolower($item->status) }}">{{ is_object($item->status) ? $item->status->value : $item->status }}</span></td>
               <td style="text-align:right">
                 <button class="db-btn db-btn-ghost" style="padding:.35rem .65rem;font-size:.75rem" onclick="openEditModal({{ json_encode($item) }})"><i class="fas fa-pen-to-square"></i> Kelola / Balas</button>
                 <button class="db-btn db-btn-danger" style="padding:.35rem .65rem;font-size:.75rem" onclick="deleteEVoice('{{ $item->id }}')"><i class="fas fa-trash"></i> Hapus</button>
