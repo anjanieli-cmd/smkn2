@@ -237,7 +237,7 @@
     <div class="adm-stat-card" style="--adm-stat-bg:rgba(255,179,0,.14);--adm-stat-fg:#ffb300;--adm-stat-shadow:rgba(255,179,0,.18);--adm-stat-glow:rgba(255,179,0,.06)">
       <div class="adm-stat-top">
         <div class="adm-stat-icon"><i class="fas fa-futbol"></i></div>
-        <span class="adm-stat-badge info">16 total</span>
+        <span class="adm-stat-badge info">{{ $stats['total_extracurriculars'] ?? 0 }} total</span>
       </div>
       <div class="adm-stat-value">{{ $stats['total_extracurriculars'] ?? 0 }}</div>
       <div class="adm-stat-label">Ekskul &amp; Organisasi</div>
@@ -248,7 +248,7 @@
         <div class="adm-stat-icon"><i class="fas fa-briefcase"></i></div>
         <span class="adm-stat-badge ok">Dibuka</span>
       </div>
-      <div class="adm-stat-value">{{ $stats['total_job_vacancies_open'] ?? 0 }}</div>
+      <div class="adm-stat-value">{{ $stats['total_job_vacancies_open'] ?? $stats['total_jobs'] ?? 0 }}</div>
       <div class="adm-stat-label">Lowongan BKK Aktif</div>
     </div>
   </div>

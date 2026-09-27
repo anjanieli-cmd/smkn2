@@ -925,8 +925,9 @@ class DatabaseSeeder extends Seeder
             ['title' => 'Direct Sales Agent - Career Day', 'company_name' => 'XLSMART Career Day', 'location' => 'Aula SMKN 2 Mojokerto', 'description' => 'Posisi Direct Sales Agent di Aula SMKN 2 Mojokerto.'],
         ];
 
-        foreach ($jobsData as $job) {
-            JobVacancy::create(array_merge($job, ['status' => 'ACTIVE']));
+        foreach ($jobsData as $index => $job) {
+            $status = ($index < 3) ? 'OPEN' : (($index < 5) ? 'UPCOMING' : 'ARSIP');
+            JobVacancy::create(array_merge($job, ['status' => $status]));
         }
 
         // 7. Chatbot Knowledge Base (Comprehensive School Information)

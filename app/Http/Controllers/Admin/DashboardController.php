@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Enums\JobVacancyStatus;
 use App\Http\Controllers\Controller;
 use App\Models\EVoice;
 use App\Models\Extracurricular;
@@ -21,7 +22,8 @@ class DashboardController extends Controller
         $stats = [
             'total_teachers' => TeacherStaff::query()->where('is_active', true)->count(),
             'total_extracurriculars' => Extracurricular::query()->where('is_active', true)->count(),
-            'total_jobs' => JobVacancy::query()->where('status', 'OPEN')->count(),
+            'total_jobs' => JobVacancy::query()->where('status', JobVacancyStatus::OPEN)->count(),
+            'total_job_vacancies_open' => JobVacancy::query()->where('status', JobVacancyStatus::OPEN)->count(),
             'total_evoice' => EVoice::query()->count(),
             'total_evoice_unread' => EVoice::query()->where('status', 'SUBMITTED')->count(),
             'total_factchecks' => FactCheck::query()->count(),

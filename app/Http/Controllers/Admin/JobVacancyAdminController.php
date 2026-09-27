@@ -37,7 +37,7 @@ class JobVacancyAdminController extends Controller
             'description' => ['required', 'string'],
             'apply_url' => ['nullable', 'string', 'max:500'],
             'deadline' => ['nullable', 'date'],
-            'status' => ['nullable', 'string', 'in:OPEN,CLOSED'],
+            'status' => ['nullable', 'string', 'in:OPEN,UPCOMING,SELESAI,ARSIP'],
         ]);
 
         $validated['status'] = $validated['status'] ?? 'OPEN';
@@ -73,7 +73,7 @@ class JobVacancyAdminController extends Controller
             'description' => ['sometimes', 'required', 'string'],
             'apply_url' => ['nullable', 'string', 'max:500'],
             'deadline' => ['nullable', 'date'],
-            'status' => ['nullable', 'string', 'in:OPEN,CLOSED'],
+            'status' => ['nullable', 'string', 'in:OPEN,UPCOMING,SELESAI,ARSIP'],
         ]);
 
         $job->update($validated);

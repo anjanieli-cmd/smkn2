@@ -423,13 +423,12 @@
 }
 .sg-card.is-hidden{display:none}
 
-/* Tombol panah didorong lebih jauh ke luar supaya tidak menumpuk/menempel
-   di bingkai kartu paling pinggir. */
-.sg-arrow{position:absolute;top:44%;translate:0 -50%;width:54px;height:54px;border-radius:50%;
+/* Tombol panah navigasi slider (simetris di tengah secara vertikal) */
+.sg-arrow{position:absolute;top:50%;transform:translateY(-50%);width:54px;height:54px;border-radius:50%;
   background:#0d3a66;border:none;display:flex;align-items:center;justify-content:center;
-  color:#fff;font-size:1.1rem;cursor:pointer;z-index:6;box-shadow:0 12px 26px rgba(13,58,102,.4);
+  color:#fff;font-size:1.1rem;cursor:pointer;z-index:10;box-shadow:0 12px 26px rgba(13,58,102,.4);
   transition:background .25s ease,transform .25s ease,opacity .25s ease}
-.sg-arrow:hover{background:#ffb300;transform:translateY(-50%) scale(1.07)}
+.sg-arrow:hover{background:#ffb300;color:#0d3a66;transform:translateY(-50%) scale(1.08)}
 .sg-arrow.prev{left:-64px}
 .sg-arrow.next{right:-64px}
 .sg-arrow:disabled{opacity:.3;cursor:default;pointer-events:none}
@@ -457,7 +456,8 @@
   /* Di layar sempit, panah dipindah ke bawah grid (bukan menumpuk di samping
      kartu) supaya tidak menutupi konten kartu maupun kepotong tepi layar. */
   .sg-slider{padding-bottom:3.4rem}
-  .sg-arrow{top:auto;bottom:0;translate:0;width:44px;height:44px;font-size:.9rem}
+  .sg-arrow{top:auto;bottom:0;transform:none;width:44px;height:44px;font-size:.9rem}
+  .sg-arrow:hover{transform:scale(1.08)}
   .sg-arrow.prev{left:calc(50% - 58px)}
   .sg-arrow.next{right:calc(50% - 58px)}
 }
