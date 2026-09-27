@@ -486,9 +486,89 @@
     .nara-fab{width:58px;height:58px;padding:0;border:0;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;background:linear-gradient(135deg,#f9a825,#fbbf24);box-shadow:0 12px 30px rgba(249,168,37,.45),inset 0 1px 0 rgba(255,255,255,.45);transition:transform .2s ease,box-shadow .2s ease;position:relative}
     .nara-fab:hover{transform:translateY(-2px) scale(1.04);box-shadow:0 16px 38px rgba(249,168,37,.55)}
     .nara-fab i{font-size:26px;color:#fff;display:block}
+    .nara-fab .mascot-fab{width:34px;height:34px;display:block}
     .nara-fab .fab-tip{position:absolute;right:calc(100% + 12px);top:50%;transform:translateY(-50%) translateX(6px);background:#0d3a66;color:#fff;font-size:.68rem;font-weight:700;letter-spacing:.08em;padding:.4rem .7rem;border-radius:8px;white-space:nowrap;opacity:0;visibility:hidden;transition:all .2s ease;pointer-events:none;text-transform:uppercase}
     .nara-fab:hover .fab-tip{opacity:1;visibility:visible;transform:translateY(-50%) translateX(0)}
     .nara-fab .nara-status-dot{position:absolute;bottom:2px;right:2px;width:13px;height:13px;border-radius:50%;background:#22c55e;border:2px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.3)}
+
+    /* ============================================================
+       MASKOT NARA — SVG animasi (float pelan + sesekali melambai)
+       ============================================================ */
+    .skn-mascot{overflow:visible}
+    .skn-mascot{animation:mascotFloat 3.4s ease-in-out infinite;transform-origin:50% 90%}
+    .skn-mascot .mascot-arm{transform-box:fill-box;transform-origin:100% 55%;animation:mascotWave 5.5s ease-in-out infinite}
+    .skn-mascot .mascot-eye{transform-box:fill-box;transform-origin:center;animation:mascotBlink 4.6s ease-in-out infinite}
+    .skn-mascot .mascot-antenna-ball{transform-box:fill-box;transform-origin:center;animation:mascotPing 2.6s ease-in-out infinite}
+
+    @keyframes mascotFloat{
+      0%,100%{transform:translateY(0) rotate(-1.5deg)}
+      50%{transform:translateY(-5px) rotate(1.5deg)}
+    }
+    @keyframes mascotWave{
+      0%,72%,100%{transform:rotate(0deg)}
+      78%{transform:rotate(-22deg)}
+      84%{transform:rotate(14deg)}
+      90%{transform:rotate(-16deg)}
+      96%{transform:rotate(4deg)}
+    }
+    @keyframes mascotBlink{
+      0%,90%,100%{transform:scaleY(1)}
+      93%{transform:scaleY(.15)}
+      96%{transform:scaleY(1)}
+    }
+    @keyframes mascotPing{
+      0%,100%{opacity:1;filter:drop-shadow(0 0 0 rgba(249,168,37,.6))}
+      50%{opacity:.85;filter:drop-shadow(0 0 5px rgba(249,168,37,.8))}
+    }
+    @media(prefers-reduced-motion:reduce){
+      .skn-mascot,.skn-mascot .mascot-arm,.skn-mascot .mascot-eye,.skn-mascot .mascot-antenna-ball{animation:none!important}
+    }
+
+    /* ============================================================
+       BUBBLE SAPAAN OTOMATIS (gaya kartu "Hai! Aku..." TIVA)
+       ============================================================ */
+    .nara-greet-bubble{
+      position:absolute;right:0;bottom:calc(100% + 14px);width:238px;max-width:calc(100vw - 48px);
+      display:flex;gap:10px;align-items:flex-start;
+      background:#fff;border-radius:16px;border:1px solid rgba(29,111,184,.16);
+      box-shadow:0 18px 46px rgba(13,58,102,.22);padding:13px 30px 13px 13px;
+      opacity:0;visibility:hidden;transform:translateY(10px) scale(.96);transform-origin:bottom right;
+      transition:opacity .3s var(--ease),transform .3s var(--ease),visibility .3s;
+      pointer-events:none;z-index:40;
+    }
+    .nara-greet-bubble.show{opacity:1;visibility:visible;transform:none;pointer-events:auto}
+    .nara-greet-bubble::after{
+      content:"";position:absolute;bottom:-7px;right:26px;width:14px;height:14px;background:#fff;
+      border-right:1px solid rgba(29,111,184,.16);border-bottom:1px solid rgba(29,111,184,.16);transform:rotate(45deg);
+    }
+    .nara-greet-mascot{width:42px;height:42px;flex:0 0 42px}
+    .nara-greet-mascot .skn-mascot{width:100%;height:100%}
+    .nara-greet-text{font-size:.76rem;line-height:1.5;color:#33475c}
+    .nara-greet-text strong{display:block;color:#0d3a66;font-size:.8rem;margin-bottom:2px}
+    .nara-greet-close{
+      position:absolute;top:8px;right:8px;width:20px;height:20px;border:0;border-radius:50%;
+      background:#eef4fa;color:#7c8ea0;font-size:.8rem;line-height:1;cursor:pointer;
+      display:flex;align-items:center;justify-content:center;transition:all .2s;
+    }
+    .nara-greet-close:hover{background:#dce8f2;color:#33475c}
+    body.theme-dark .nara-greet-bubble{background:#102a45;border-color:#1d3a5c}
+    body.theme-dark .nara-greet-bubble::after{background:#102a45;border-color:#1d3a5c}
+    body.theme-dark .nara-greet-text{color:#c9d8e8}
+    body.theme-dark .nara-greet-text strong{color:#eaf2fb}
+    body.theme-dark .nara-greet-close{background:#0d2338;color:#8fa8c2}
+    @media(max-width:600px){
+      .nara-greet-bubble{right:-4px;bottom:calc(100% + 12px)}
+    }
+
+    /* Bubble chat masuk dengan sedikit animasi biar lebih hidup */
+    .nara-msg{animation:naraMsgIn .32s var(--ease) both}
+    @keyframes naraMsgIn{
+      from{opacity:0;transform:translateY(6px)}
+      to{opacity:1;transform:none}
+    }
+    @media(prefers-reduced-motion:reduce){
+      .nara-msg{animation:none!important}
+    }
 
     /* ---------- PANEL AKSESIBILITAS ---------- */
     .acc-panel{position:absolute;right:0;bottom:calc(100% + 12px);z-index:9999;width:min(312px,calc(100vw - 48px));max-width:calc(100vw - 32px);max-height:min(480px,calc(100vh - 160px));border-radius:16px;background:#fff;border:1px solid rgba(29,111,184,.18);box-shadow:0 24px 60px rgba(13,58,102,.26);overflow:hidden;display:flex;flex-direction:column;opacity:0;visibility:hidden;transform:translateX(10px) scale(.98);transform-origin:bottom right;pointer-events:none;transition:opacity .22s ease,transform .22s ease,visibility .22s}
@@ -542,38 +622,59 @@
     .acc-reset{width:100%;margin-top:10px;padding:7px;border:1px solid #dce8f2;border-radius:10px;background:#f5f9fd;color:#526273;font-size:.68rem;font-weight:700;cursor:pointer;transition:all .2s;font-family:inherit}
     .acc-reset:hover{border-color:#1d6fb8;color:#1d6fb8}
 
-    /* ---------- PANEL NARA ---------- */
-    .nara-window{position:absolute;right:0;bottom:calc(100% + 76px);width:min(360px,calc(100vw - 48px));max-width:calc(100vw - 32px);max-height:min(560px,calc(100vh - 160px));display:flex;flex-direction:column;border-radius:18px;background:#fff;border:1px solid rgba(29,111,184,.18);box-shadow:0 26px 64px rgba(13,58,102,.28);overflow:hidden;opacity:0;visibility:hidden;transform:translateX(10px) scale(.98);transform-origin:bottom right;pointer-events:none;transition:opacity .22s ease,transform .22s ease,visibility .22s}
+    /* ---------- PANEL NARA (gaya kartu ala TIVA, warna sekolah) ---------- */
+    .nara-window{position:absolute;right:0;bottom:calc(100% + 76px);width:min(360px,calc(100vw - 48px));max-width:calc(100vw - 32px);max-height:min(520px,calc(100vh - 160px));display:flex;flex-direction:column;border-radius:22px;background:linear-gradient(180deg,#eaf6fd,#dcedfa 55%,#eaf6fd);border:1px solid rgba(29,111,184,.14);box-shadow:0 26px 64px rgba(13,58,102,.28);overflow:hidden;opacity:0;visibility:hidden;transform:translateX(10px) scale(.98);transform-origin:bottom right;pointer-events:none;transition:opacity .22s ease,transform .22s ease,visibility .22s}
     .nara-window.open{opacity:1;visibility:visible;transform:none;pointer-events:auto}
-    .nara-window.edge-top{position:fixed;top:12px;right:24px;bottom:auto;transform-origin:top right}
-    .nara-header{display:flex;align-items:center;gap:11px;padding:14px 15px;color:#fff;background:linear-gradient(135deg,#0d3a66,#1d6fb8);position:relative;overflow:hidden}
-    .nara-header::after{content:"";position:absolute;width:110px;height:110px;border:1.4px dashed rgba(255,255,255,.18);border-radius:50%;top:-46px;right:-34px}
-    .nara-avatar{width:48px;height:48px;flex:0 0 48px;border-radius:14px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.15);box-shadow:inset 0 0 0 1px rgba(255,255,255,.2)}
-    .nara-avatar i{font-size:22px;color:#0d3a66;display:block}
-    .nara-name{font-size:.92rem;font-weight:800;letter-spacing:.02em;line-height:1.15}
-    .nara-name em{font-style:normal;color:#ffd54f}
-    .nara-sub{font-size:.64rem;color:#a8d8f5;margin-top:2px}
-    .nara-status{display:inline-flex;align-items:center;gap:.35rem;font-size:.6rem;font-weight:700;color:#bff0cf;background:rgba(34,197,94,.16);border:1px solid rgba(74,222,128,.28);border-radius:99px;padding:.14rem .5rem;margin-top:3px;width:fit-content}
-    .nara-status::before{content:"";width:7px;height:7px;border-radius:50%;background:#4ade80;box-shadow:0 0 8px #4ade80}
-    .nara-close{margin-left:auto;width:30px;height:30px;border:0;border-radius:10px;background:rgba(255,255,255,.13);color:#fff;cursor:pointer;font-size:.76rem;transition:all .2s;flex:0 0 30px}
-    .nara-close:hover{background:rgba(255,255,255,.28);transform:rotate(90deg)}
-    .nara-messages{height:250px;flex:1 1 auto;min-height:0;overflow-y:auto;padding:13px;display:flex;flex-direction:column;gap:10px;background:#f5f9fd}
-    .nara-msg{display:flex;gap:7px;max-width:88%}
+    .nara-window.edge-top{position:fixed;top:12px;right:24px;bottom:auto;max-height:calc(100vh - 24px);transform-origin:top right}
+
+    .nara-close-float{position:absolute;top:12px;right:12px;z-index:6;width:30px;height:30px;border:0;border-radius:50%;background:rgba(255,255,255,.85);color:#13518c;cursor:pointer;font-size:.78rem;box-shadow:0 6px 16px rgba(13,58,102,.2);transition:all .2s ease;display:flex;align-items:center;justify-content:center}
+    .nara-close-float:hover{background:#fff;transform:rotate(90deg)}
+
+    .nara-hero{position:relative;margin:16px 16px 14px;padding:20px 30px 20px 16px;border-radius:20px;background:#fff;box-shadow:0 16px 40px rgba(13,58,102,.16);display:flex;align-items:center;gap:14px}
+    .nara-hero-mascot{flex:0 0 62px;width:62px;height:62px}
+    .nara-hero-mascot .skn-mascot{width:100%;height:100%}
+    .nara-hero-text{min-width:0;display:flex;flex-direction:column}
+    .nara-hero-greet{font-size:.86rem;font-weight:800;color:#17324d;line-height:1.25}
+    .nara-hero-name{font-size:.86rem;font-weight:800;color:var(--teal,#1d6fb8);line-height:1.35;margin-top:1px}
+    .nara-hero-name span{font-weight:700;color:var(--teal,#1d6fb8);display:block;font-size:.78rem}
+    .nara-hero-by{display:flex;align-items:center;gap:.35rem;font-size:.64rem;color:#7c8ea0;margin-top:5px;flex-wrap:wrap}
+    .nara-hero-online{width:7px;height:7px;border-radius:50%;background:#22c55e;box-shadow:0 0 6px #22c55e;display:inline-block;animation:naraStatusPulse 1.8s ease-in-out infinite}
+    @keyframes naraStatusPulse{0%,100%{opacity:1;box-shadow:0 0 8px #4ade80}50%{opacity:.55;box-shadow:0 0 3px #4ade80}}
+    .nara-hero-spark{position:absolute;top:12px;right:14px;color:var(--gold,#f9a825);font-size:1rem;animation:naraSparkPulse 2.4s ease-in-out infinite}
+    @keyframes naraSparkPulse{0%,100%{transform:scale(1) rotate(0deg);opacity:.85}50%{transform:scale(1.18) rotate(8deg);opacity:1}}
+
+    .nara-messages{flex:1 1 auto;min-height:180px;overflow-y:auto;padding:10px 16px;display:flex;flex-direction:column;gap:14px;background:transparent;scrollbar-width:thin;scrollbar-color:#a9cbe6 transparent}
+    .nara-messages::-webkit-scrollbar{width:6px}
+    .nara-messages::-webkit-scrollbar-track{background:transparent}
+    .nara-messages::-webkit-scrollbar-thumb{background:#a9cbe6;border-radius:99px}
+    .nara-messages::-webkit-scrollbar-thumb:hover{background:#7fb3dd}
+
+    .nara-msg{display:flex;align-items:flex-end;gap:8px;max-width:86%}
     .nara-msg.user{margin-left:auto;flex-direction:row-reverse}
-    .nara-msg-avatar{flex-shrink:0;width:28px;height:28px;border-radius:9px;display:flex;align-items:center;justify-content:center;background:#eaf5fd;color:#1d6fb8}
-    .nara-msg.user .nara-msg-avatar{background:linear-gradient(135deg,#1d6fb8,#28a9e1);color:#fff}
-    .nara-bubble{padding:.62rem .9rem;border-radius:16px 16px 16px 4px;font-size:.8rem;background:#fff;border:1px solid #dce8f2;box-shadow:0 3px 10px rgba(29,111,184,.07);line-height:1.55;color:#33475c}
-    .nara-msg.user .nara-bubble{border-radius:16px 16px 4px 16px;background:linear-gradient(135deg,#1d6fb8,#28a9e1);color:#fff;border:0}
-    .nara-time{font-size:.6rem;color:#8a9aaa;margin-top:.22rem}
-    .nara-quick{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;padding:9px 12px;border-top:1px solid #e8eef4;background:#fff}
-    .nara-quick-btn{font-size:.62rem;font-weight:700;border:1px solid #dce8f2;background:#fff;color:#1d6fb8;border-radius:10px;padding:.42rem .3rem;transition:all .22s;cursor:pointer;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:.28rem;line-height:1.25;text-align:center;white-space:nowrap}
-    .nara-quick-btn i{color:#f9a825;font-size:.62rem;flex:0 0 auto}
-    .nara-quick-btn:hover{border-color:#1d6fb8;background:#f2f8fd;transform:translateY(-1px)}
-    .nara-input-row{display:flex;gap:6px;padding:10px 12px 12px;background:#fff;border-top:1px solid #e8eef4}
-    .nara-input{flex:1;min-width:0;border:1px solid #dce8f2;border-radius:11px;padding:.55rem .85rem;font-size:.78rem;font-family:inherit;outline:none;background:#f5f9fd;transition:border-color .22s}
-    .nara-input:focus{border-color:#1d6fb8}
-    .nara-send{width:38px;height:38px;flex:0 0 38px;border:0;border-radius:11px;background:linear-gradient(135deg,#f9a825,#fbbf24);color:#4a2c00;font-size:.85rem;cursor:pointer;transition:transform .2s ease,box-shadow .2s ease;display:flex;align-items:center;justify-content:center}
-    .nara-send:hover{transform:scale(1.07)}
+    .nara-bubble{padding:.68rem 1rem;border-radius:18px;font-size:.8rem;line-height:1.5;background:linear-gradient(135deg,var(--teal,#1d6fb8),var(--teal-light,#28a9e1));color:#fff;box-shadow:0 6px 16px rgba(29,111,184,.22);transition:box-shadow .2s ease}
+    .nara-msg:not(.user) .nara-bubble:hover{box-shadow:0 8px 20px rgba(29,111,184,.3)}
+    .nara-msg.user .nara-bubble{background:#fff;color:#20364d;box-shadow:0 4px 14px rgba(13,58,102,.12)}
+    .nara-time{font-size:.6rem;color:#6d84a0;white-space:nowrap;margin-bottom:2px}
+    .nara-msg.user .nara-time{color:#8a9aaa}
+    .nara-bubble .typing-dot{background:rgba(255,255,255,.85)}
+
+    .nara-quick{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:12px 16px 10px}
+    .nara-quick-btn{font-size:.62rem;font-weight:700;border:1px solid rgba(29,111,184,.14);background:#fff;color:#1d6fb8;border-radius:10px;padding:.42rem .3rem;transition:all .22s;cursor:pointer;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:.28rem;line-height:1.25;text-align:center;white-space:nowrap;box-shadow:0 3px 8px rgba(13,58,102,.08)}
+    .nara-quick-btn i{color:#f9a825;font-size:.62rem;flex:0 0 auto;transition:transform .25s var(--ease)}
+    .nara-quick-btn:hover{border-color:#1d6fb8;background:#f2f8fd;transform:translateY(-2px);box-shadow:0 6px 14px rgba(29,111,184,.18)}
+    .nara-quick-btn:hover i{transform:scale(1.2) rotate(-6deg)}
+    .nara-quick-btn:active{transform:translateY(0) scale(.97)}
+
+    .nara-input-pill{display:flex;align-items:center;gap:2px;margin:14px 16px 18px;padding:6px 6px 6px 16px;background:#fff;border-radius:999px;box-shadow:0 14px 30px rgba(13,58,102,.18)}
+    .nara-input{flex:1;min-width:0;border:0;outline:0;background:transparent;padding:.4rem 0;font-size:.8rem;font-family:inherit;color:#20364d}
+    .nara-input::placeholder{color:#9db4c8}
+    .nara-clear{width:32px;height:32px;flex:0 0 32px;border:0;border-radius:50%;background:transparent;color:#9db4c8;cursor:pointer;font-size:.8rem;display:flex;align-items:center;justify-content:center;transition:all .2s ease}
+    .nara-clear:hover{color:#e0554a;background:rgba(224,85,74,.1)}
+    .nara-send{width:40px;height:40px;flex:0 0 40px;border:0;border-radius:50%;background:linear-gradient(135deg,var(--gold,#f9a825),#fbbf24);color:#4a2c00;font-size:.9rem;cursor:pointer;transition:transform .2s ease,box-shadow .2s ease;display:flex;align-items:center;justify-content:center;animation:naraSendPulse 2.8s ease-in-out infinite}
+    .nara-send:hover{transform:scale(1.09);animation-play-state:paused;box-shadow:0 6px 16px rgba(249,168,37,.5)}
+    .nara-send:active{transform:scale(.94)}
+    @keyframes naraSendPulse{0%,100%{box-shadow:0 0 0 0 rgba(249,168,37,.35)}50%{box-shadow:0 0 0 6px rgba(249,168,37,0)}}
+    @media(prefers-reduced-motion:reduce){.nara-send{animation:none!important}.nara-hero-spark{animation:none!important}.nara-hero-online{animation:none!important}}
 
     /* ---------- CLASS AKSESIBILITAS ---------- */
     body.a11y-reduce-motion *,body.a11y-reduce-motion *::before,body.a11y-reduce-motion *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
@@ -587,14 +688,22 @@
     body.theme-dark{--bg:#0a1f33;--card:#102a45;--border:#1d3a5c;--ink:#eaf2fb;--text:#c9d8e8;--text-muted:#8fa8c2;--shadow:0 10px 40px rgba(0,0,0,.35);--shadow-lg:0 24px 70px rgba(0,0,0,.45)}
     body.theme-dark .section-title{color:#eaf2fb}
     body.theme-dark .footer-main{background:#081c30}
-    body.theme-dark .acc-panel,body.theme-dark .nara-window{background:#102a45;border-color:#1d3a5c}
-    body.theme-dark .acc-body,body.theme-dark .nara-messages{background:#0d2338}
+    body.theme-dark .acc-panel{background:#102a45;border-color:#1d3a5c}
+    body.theme-dark .nara-window{background:linear-gradient(180deg,#0d2338,#0a1f33 55%,#0d2338);border-color:#1d3a5c}
+    body.theme-dark .acc-body{background:#0d2338}
     body.theme-dark .acc-row-name,body.theme-dark .mode-card-name{color:#eaf2fb}
     body.theme-dark .mode-card{background:#102a45;border-color:#1d3a5c}
     body.theme-dark .acc-seg{background:#0d2338}
     body.theme-dark .acc-seg-btn{color:#c9d8e8}
-    body.theme-dark .nara-bubble{background:#15314f;border-color:#1d3a5c;color:#e3edf6}
-    body.theme-dark .nara-input{background:#0d2338;border-color:#1d3a5c;color:#e3edf6}
+    body.theme-dark .nara-hero{background:#15314f;box-shadow:0 16px 40px rgba(0,0,0,.35)}
+    body.theme-dark .nara-hero-greet{color:#eaf2fb}
+    body.theme-dark .nara-hero-by{color:#8fa8c2}
+    body.theme-dark .nara-msg.user .nara-bubble{background:#1d3a5c;color:#e3edf6}
+    body.theme-dark .nara-input-pill{background:#15314f;box-shadow:0 14px 30px rgba(0,0,0,.35)}
+    body.theme-dark .nara-input{color:#e3edf6}
+    body.theme-dark .nara-input::placeholder{color:#7c93ac}
+    body.theme-dark .nara-quick-btn{background:#15314f;border-color:#1d3a5c;color:#bcd8ef}
+    body.theme-dark .nara-close-float{background:rgba(21,49,79,.85);color:#eaf2fb}
     body.theme-dark .acc-reset{background:#0d2338;border-color:#1d3a5c;color:#c9d8e8}
 
     @media(max-width:600px){
@@ -609,7 +718,7 @@
       .nara-window{position:fixed;left:12px;right:12px;bottom:132px;width:auto;max-width:none;top:auto;max-height:calc(100vh - 160px);transform:translateY(8px) scale(.98)}
       .nara-window.open{transform:none}
       .acc-body{max-height:none}
-      .nara-messages{height:220px}
+      .nara-messages{height:280px}
       .nara-quick{grid-template-columns:repeat(3,1fr);gap:5px;padding:8px 10px}
       .nara-quick-btn{font-size:.6rem;padding:.4rem .2rem;white-space:nowrap}
       .fab-tip{display:none!important}
@@ -831,42 +940,106 @@
 
   <!-- ===== NARA SKANEDA ===== -->
   <div class="nara-wrap">
-    <div class="nara-window" id="naraWindow" role="dialog" aria-label="Nara Skaneda — Asisten Virtual">
-      <div class="nara-header">
-        <div class="nara-avatar">
-          <i class="fas fa-robot"></i>
-        </div>
-        <div>
-          <div class="nara-name">NARA <em>SKANEDA</em></div>
-          <div class="nara-sub">Asisten Virtual SMK Negeri 2 Mojokerto</div>
-          <div class="nara-status">Online</div>
-        </div>
-        <button type="button" class="nara-close" onclick="toggleNara()" aria-label="Tutup Nara Skaneda"><i class="fas fa-times"></i></button>
+
+    <!-- Bubble sapaan otomatis (gaya TIVA) -->
+    <div class="nara-greet-bubble" id="naraGreetBubble" role="status">
+      <button type="button" class="nara-greet-close" onclick="hideNaraGreet(event)" aria-label="Tutup sapaan">&times;</button>
+      <div class="nara-greet-mascot">
+        <svg class="skn-mascot mascot-greet" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs>
+            <linearGradient id="mascotGradGreet" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="var(--teal-light,#28a9e1)"/>
+              <stop offset="1" stop-color="var(--teal,#1d6fb8)"/>
+            </linearGradient>
+          </defs>
+          <line x1="50" y1="8" x2="50" y2="18" stroke="var(--teal-dark,#13518c)" stroke-width="3" stroke-linecap="round"/>
+          <circle class="mascot-antenna-ball" cx="50" cy="6" r="5" fill="var(--gold,#f9a825)"/>
+          <rect x="20" y="18" width="60" height="52" rx="18" fill="url(#mascotGradGreet)"/>
+          <rect x="28" y="30" width="44" height="28" rx="12" fill="#ffffff" opacity=".96"/>
+          <circle class="mascot-eye" cx="42" cy="44" r="5" fill="var(--teal-dark,#13518c)"/>
+          <circle class="mascot-eye" cx="58" cy="44" r="5" fill="var(--teal-dark,#13518c)"/>
+          <path d="M40 52 Q50 58 60 52" stroke="var(--teal-dark,#13518c)" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+          <rect x="10" y="46" width="10" height="6" rx="3" fill="var(--teal-light,#28a9e1)"/>
+          <g class="mascot-arm">
+            <rect x="80" y="42" width="10" height="6" rx="3" fill="var(--teal-light,#28a9e1)"/>
+          </g>
+          <rect x="30" y="70" width="40" height="18" rx="8" fill="var(--teal,#1d6fb8)"/>
+        </svg>
       </div>
+      <div class="nara-greet-text">
+        <strong>Hai! Aku NARA 👋</strong>
+        Asisten virtual SMK Negeri 2 Mojokerto. Ada yang bisa dibantu?
+      </div>
+    </div>
+
+    <div class="nara-window" id="naraWindow" role="dialog" aria-label="Nara Skaneda — Asisten Virtual">
+      <button type="button" class="nara-close-float" onclick="toggleNara()" aria-label="Tutup Nara Skaneda"><i class="fas fa-times"></i></button>
+
+      <div class="nara-hero">
+        <i class="fas fa-wand-magic-sparkles nara-hero-spark" aria-hidden="true"></i>
+        <div class="nara-hero-mascot">
+          <svg class="skn-mascot mascot-header" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs>
+              <linearGradient id="mascotGradHeader" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="var(--teal-light,#28a9e1)"/>
+                <stop offset="1" stop-color="var(--teal,#1d6fb8)"/>
+              </linearGradient>
+            </defs>
+            <line x1="50" y1="8" x2="50" y2="18" stroke="var(--teal-dark,#13518c)" stroke-width="3" stroke-linecap="round"/>
+            <circle class="mascot-antenna-ball" cx="50" cy="6" r="5" fill="var(--gold,#f9a825)"/>
+            <rect x="20" y="18" width="60" height="52" rx="18" fill="url(#mascotGradHeader)"/>
+            <rect x="28" y="30" width="44" height="28" rx="12" fill="#ffffff" opacity=".96"/>
+            <circle class="mascot-eye" cx="42" cy="44" r="5" fill="var(--teal-dark,#13518c)"/>
+            <circle class="mascot-eye" cx="58" cy="44" r="5" fill="var(--teal-dark,#13518c)"/>
+            <path d="M40 52 Q50 58 60 52" stroke="var(--teal-dark,#13518c)" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+            <rect x="10" y="46" width="10" height="6" rx="3" fill="var(--teal-light,#28a9e1)"/>
+            <g class="mascot-arm">
+              <rect x="80" y="42" width="10" height="6" rx="3" fill="var(--teal-light,#28a9e1)"/>
+            </g>
+            <rect x="30" y="70" width="40" height="18" rx="8" fill="var(--teal,#1d6fb8)"/>
+          </svg>
+        </div>
+        <div class="nara-hero-text">
+          <span class="nara-hero-greet">Hai! Aku Asisten</span>
+          <span class="nara-hero-name">NARA <span>(Navigator Akademik Ramah &amp; Andal)</span></span>
+          <span class="nara-hero-by"><i class="nara-hero-online" aria-hidden="true"></i> By SMK Negeri 2 Mojokerto</span>
+        </div>
+      </div>
+
       <div class="nara-messages" id="naraMessages">
         <div class="nara-msg">
-          <div class="nara-msg-avatar"><i class="fas fa-user-graduate"></i></div>
-          <div>
-            <div class="nara-bubble">Halo! Saya <strong>NARA SKANEDA</strong> 👋 Asisten virtual SMK Negeri 2 Mojokerto. Ada yang bisa saya bantu?</div>
-            <div class="nara-time">Sekarang</div>
-          </div>
+          <div class="nara-bubble">Halo! Saya <strong>NARA</strong> — <em>Navigator Akademik Ramah &amp; Andal</em> 👋 Ada yang bisa saya bantu?</div>
+          <div class="nara-time">Sekarang</div>
         </div>
       </div>
-      <div class="nara-quick">
-        <button type="button" class="nara-quick-btn" onclick="sendNaraQuick('Jurusan apa saja?')"><i class="fas fa-graduation-cap"></i> Jurusan</button>
-        <button type="button" class="nara-quick-btn" onclick="sendNaraQuick('Info PPDB')"><i class="fas fa-file-signature"></i> PPDB</button>
-        <button type="button" class="nara-quick-btn" onclick="sendNaraQuick('Ekskul apa saja?')"><i class="fas fa-people-group"></i> Ekskul</button>
-        <button type="button" class="nara-quick-btn" onclick="sendNaraQuick('Jadwal sekolah')"><i class="fas fa-calendar-days"></i> Jadwal</button>
-        <button type="button" class="nara-quick-btn" onclick="sendNaraQuick('Info PKL')"><i class="fas fa-building"></i> PKL</button>
-        <button type="button" class="nara-quick-btn" onclick="sendNaraQuick('Kontak sekolah')"><i class="fas fa-phone"></i> Kontak</button>
-      </div>
-      <div class="nara-input-row">
-        <input type="text" class="nara-input" id="naraInput" placeholder="Ketik pertanyaan..." aria-label="Ketik pertanyaan" onkeydown="if(event.key==='Enter')sendNaraMsg()">
+
+      <div class="nara-input-pill">
+        <input type="text" class="nara-input" id="naraInput" placeholder="Ketik pertanyaan kamu!" aria-label="Ketik pertanyaan" onkeydown="if(event.key==='Enter')sendNaraMsg()">
+        <button type="button" class="nara-clear" onclick="clearNaraChat()" aria-label="Hapus percakapan"><i class="fas fa-trash"></i></button>
         <button type="button" class="nara-send" onclick="sendNaraMsg()" aria-label="Kirim"><i class="fas fa-paper-plane"></i></button>
       </div>
     </div>
     <button type="button" class="nara-fab" id="naraFab" onclick="toggleNara()" aria-label="Buka Nara Skaneda" title="Nara Skaneda — Asisten Virtual">
-      <i class="fas fa-robot"></i>
+      <svg class="skn-mascot mascot-fab" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <linearGradient id="mascotGradFab" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#ffffff"/>
+            <stop offset="1" stop-color="#eaf5fd"/>
+          </linearGradient>
+        </defs>
+        <line x1="50" y1="8" x2="50" y2="18" stroke="rgba(255,255,255,.9)" stroke-width="3" stroke-linecap="round"/>
+        <circle class="mascot-antenna-ball" cx="50" cy="6" r="5" fill="#ffffff"/>
+        <rect x="20" y="18" width="60" height="52" rx="18" fill="url(#mascotGradFab)"/>
+        <rect x="28" y="30" width="44" height="28" rx="12" fill="var(--teal-dark,#13518c)" opacity=".95"/>
+        <circle class="mascot-eye" cx="42" cy="44" r="5" fill="#ffffff"/>
+        <circle class="mascot-eye" cx="58" cy="44" r="5" fill="#ffffff"/>
+        <path d="M40 52 Q50 58 60 52" stroke="#ffffff" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+        <rect x="10" y="46" width="10" height="6" rx="3" fill="rgba(255,255,255,.9)"/>
+        <g class="mascot-arm">
+          <rect x="80" y="42" width="10" height="6" rx="3" fill="rgba(255,255,255,.9)"/>
+        </g>
+        <rect x="30" y="70" width="40" height="18" rx="8" fill="rgba(255,255,255,.9)"/>
+      </svg>
       <span class="nara-status-dot"></span>
       <span class="fab-tip">Nara Skaneda</span>
     </button>
@@ -947,11 +1120,13 @@
     const w = document.getElementById('naraWindow');
     if(!w) return;
     const opening = !w.classList.contains('open');
-    if(opening) applyPanelEdgeSafe(w, 'nara');
     w.classList.toggle('open');
-    if(w.classList.contains('open')){
+    if(opening){
+      requestAnimationFrame(() => applyPanelEdgeSafe(w, 'nara'));
       const inp = document.getElementById('naraInput');
       if(inp) setTimeout(()=>inp.focus(), 250);
+      const greet = document.getElementById('naraGreetBubble');
+      if(greet) greet.classList.remove('show');
     }
   };
 
@@ -975,14 +1150,20 @@
   }
   window.applyPanelEdgeSafe = applyPanelEdgeSafe;
 
+  function naraNowLabel(){
+    const now = new Date();
+    const hh = String(now.getHours()).padStart(2,'0');
+    const mm = String(now.getMinutes()).padStart(2,'0');
+    return hh + '.' + mm;
+  }
+
   function naraAddMsg(text, isUser){
     const msgs = document.getElementById('naraMessages');
     if(!msgs) return;
     const div = document.createElement('div');
     div.className = 'nara-msg' + (isUser ? ' user' : '');
     const safe = String(text).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>');
-    const icon = isUser ? 'user' : 'robot';
-    div.innerHTML = '<div class="nara-msg-avatar"><i class="fas fa-' + icon + '"></i></div><div><div class="nara-bubble">' + safe + '</div><div class="nara-time">Sekarang</div></div>';
+    div.innerHTML = '<div class="nara-bubble">' + safe + '</div><div class="nara-time">' + naraNowLabel() + '</div>';
     msgs.appendChild(div);
     msgs.scrollTop = msgs.scrollHeight;
   }
@@ -993,7 +1174,7 @@
     const div = document.createElement('div');
     div.className = 'nara-msg';
     div.id = 'naraTyping';
-    div.innerHTML = '<div class="nara-msg-avatar"><i class="fas fa-robot"></i></div><div><div class="nara-bubble"><div class="typing-indicator"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div></div></div>';
+    div.innerHTML = '<div class="nara-bubble"><div class="typing-indicator"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div></div>';
     msgs.appendChild(div);
     msgs.scrollTop = msgs.scrollHeight;
   }
@@ -1002,6 +1183,12 @@
     const typing = document.getElementById('naraTyping');
     if(typing) typing.remove();
   }
+
+  window.clearNaraChat = function(){
+    const msgs = document.getElementById('naraMessages');
+    if(!msgs) return;
+    msgs.innerHTML = '<div class="nara-msg"><div class="nara-bubble">Halo lagi! Saya <strong>NARA</strong> 👋 Ada yang bisa saya bantu?</div><div class="nara-time">' + naraNowLabel() + '</div></div>';
+  };
 
   const smartLocalAnswers = {
     jurusan: "SMK Negeri 2 Mojokerto memiliki 5 Konsentrasi Keahlian unggulan:\n1. Rekayasa Perangkat Lunak (RPL) - Software & Pemrograman\n2. Desain Komunikasi Visual (DKV) - Multimedia, Grafis & Animasi\n3. Agribisnis Pengolahan Hasil Pertanian (APHP) - Pangan Modern\n4. Kuliner (Tata Boga) - Seni Olah Rasa & Restoran\n5. Layanan Perbankan Syariah (LPS) - Keuangan Syariah",
@@ -1067,6 +1254,43 @@
     naraAddMsg(text, true);
     callChatbotApi(text);
   };
+
+  /* ============================================================
+     BUBBLE SAPAAN OTOMATIS — gaya TIVA (muncul berkala, bisa ditutup)
+     ============================================================ */
+  (function(){
+    const bubble = document.getElementById('naraGreetBubble');
+    const fab = document.getElementById('naraFab');
+    const win = document.getElementById('naraWindow');
+    if(!bubble || !fab) return;
+    let hideTimer = null;
+    let showInterval = null;
+    let dismissed = false;
+
+    function showGreet(){
+      if(dismissed) return;
+      if(win && win.classList.contains('open')) return;
+      bubble.classList.add('show');
+      clearTimeout(hideTimer);
+      hideTimer = setTimeout(() => bubble.classList.remove('show'), 6500);
+    }
+
+    window.hideNaraGreet = function(e){
+      if(e) e.stopPropagation();
+      bubble.classList.remove('show');
+      dismissed = true;
+      clearTimeout(hideTimer);
+      clearInterval(showInterval);
+    };
+
+    fab.addEventListener('click', () => {
+      bubble.classList.remove('show');
+      clearTimeout(hideTimer);
+    });
+
+    setTimeout(showGreet, 1800);
+    showInterval = setInterval(showGreet, 18000);
+  })();
 
   /* ============================================================
      PENGATURAN TAMPILAN — Aksesibilitas & Mode
