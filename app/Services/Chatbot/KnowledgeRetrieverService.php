@@ -33,10 +33,10 @@ class KnowledgeRetrieverService
         );
 
         $stopWords = [
-            'smkn', 'smk', 'mojokerto', 'sekolah', 'kota', 'jurusan', 'ekskul', 'ekstrakurikuler',
+            'smkn', 'smk', 'mojokerto', 'sekolah', 'kota',
             'profil', 'info', 'informasi', 'dengan', 'untuk', 'yang', 'pada', 'atau', 'serta',
             'daftar', 'detail', 'tentang', 'mana', 'gimana', 'gmana', 'apa', 'aja', 'bisa', 'ada',
-            'mau', 'tanya', 'kalo', 'kalau', 'bagaimana', 'apakah', 'ini', 'itu', 'dan', 'di', 'ke',
+            'mau', 'tanya', 'nanya', 'nanya-nanya', 'kalo', 'kalau', 'bagaimana', 'apakah', 'ini', 'itu', 'dan', 'di', 'ke',
             'dari', 'aku', 'saya', 'kamu', 'anda', 'dia', 'mereka', 'kita', 'kami', 'sama', 'benci',
             'suka', 'sedih', 'senang', 'marah', 'lagi', 'sudah', 'telah', 'akan', 'jadi', 'juga',
             'tapi', 'tetapi', 'jika', 'karena', 'sebab', 'maka', 'ia', 'tersebut', 'banyak', 'punya',
@@ -46,7 +46,7 @@ class KnowledgeRetrieverService
         ];
 
         // 1. Query ChatbotKnowledge base
-        $cacheKey = 'chatbot.knowledge.published.v7';
+        $cacheKey = 'chatbot.knowledge.published.v8';
         $knowledges = [];
         try {
             $knowledges = Cache::remember($cacheKey, 3600, function () {
@@ -245,6 +245,16 @@ class KnowledgeRetrieverService
             }
         }
 
+        // Check Sejarah Sekolah
+        if (str_contains($normalizedMessage, 'sejarah') || str_contains($normalizedMessage, 'berdiri') || str_contains($normalizedMessage, 'pendirian') || str_contains($normalizedMessage, 'sejak')) {
+            $fallbackContexts[] = "[Sejarah Sekolah] SMK Negeri 2 Mojokerto didirikan untuk mencetak tenaga kerja terampil dan profesional di Kota Mojokerto dan sekitarnya. Berdiri di kawasan strategis Kranggan, sekolah ini berkembang pesat menjadi SMK Pusat Keunggulan (PK) dengan 5 konsentrasi keahlian unggulan berstandar nasional dan internasional.";
+        }
+
+        // Check Struktur Organisasi
+        if (str_contains($normalizedMessage, 'struktur') || str_contains($normalizedMessage, 'organisasi sekolah') || str_contains($normalizedMessage, 'bagan') || str_contains($normalizedMessage, 'komite')) {
+            $fallbackContexts[] = "[Struktur Organisasi] SMKN 2 Mojokerto dipimpin oleh Kepala Sekolah Drs. Iswahyudi, M.Pd., didampingi Komite Sekolah, Wakil Kepala Sekolah (Waka), Ketua Program Keahlian (Kaprog) 5 Jurusan, serta Dewan Guru & Staf Tata Usaha.";
+        }
+
         // Check Jam Belajar & Operasional
         if (str_contains($normalizedMessage, 'jam belajar') || str_contains($normalizedMessage, 'jadwal masuk') || str_contains($normalizedMessage, 'jam masuk') || str_contains($normalizedMessage, 'jam pulang')) {
             $fallbackContexts[] = "[Tata Tertib] Jam Belajar dan Operasional Sekolah: Kegiatan Belajar Mengajar (KBM) di SMKN 2 Mojokerto berlangsung hari Senin hingga Jumat pukul 07.00 WIB - 15.30 WIB. Gerbang sekolah ditutup tepat pukul 07.00 WIB. Hari Sabtu dan Minggu libur.";
@@ -280,8 +290,8 @@ class KnowledgeRetrieverService
         }
 
         // Check Greetings & Conversational Openers
-        $greetings = ['halo', 'haloo', 'hi', 'hai', 'p', 'ping', 'tes', 'test', 'selamat pagi', 'selamat siang', 'selamat sore', 'selamat malam', 'assalamualaikum', 'aku mau tanya', 'mau tanya', 'mau tanya dong', 'permisi', 'nara', 'halo nara', 'hai nara'];
-        if (in_array($normalizedMessage, $greetings) || str_contains($normalizedMessage, 'mau tanya') || str_contains($normalizedMessage, 'nara')) {
+        $greetings = ['halo', 'haloo', 'hi', 'hai', 'p', 'ping', 'tes', 'test', 'selamat pagi', 'selamat siang', 'selamat sore', 'selamat malam', 'assalamualaikum', 'aku mau tanya', 'mau tanya', 'mau tanya dong', 'nanya', 'nanya dong', 'mau nanya', 'aku mau nanya', 'nanya-nanya', 'permisi', 'nara', 'halo nara', 'hai nara'];
+        if (in_array($normalizedMessage, $greetings) || str_contains($normalizedMessage, 'mau tanya') || str_contains($normalizedMessage, 'nanya') || str_contains($normalizedMessage, 'nara')) {
             $fallbackContexts[] = "[Greeting] NARA Virtual Assistant SMKN 2 Kota Mojokerto: Halo! Saya NARA SKANEDA. Ada yang bisa NARA bantu seputar informasi SMKN 2 Kota Mojokerto?";
         }
 

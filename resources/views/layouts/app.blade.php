@@ -636,7 +636,7 @@
     .acc-reset:hover{border-color:#1d6fb8;color:#1d6fb8}
 
     /* ---------- PANEL NARA (gaya kartu ala TIVA, warna sekolah) ---------- */
-    .nara-window{position:absolute;right:0;bottom:calc(100% + 76px);width:min(360px,calc(100vw - 48px));max-width:calc(100vw - 32px);max-height:min(520px,calc(100vh - 160px));display:flex;flex-direction:column;border-radius:22px;background:linear-gradient(180deg,#eaf6fd,#dcedfa 55%,#eaf6fd);border:1px solid rgba(29,111,184,.14);box-shadow:0 26px 64px rgba(13,58,102,.28);overflow:hidden;opacity:0;visibility:hidden;transform:translateX(10px) scale(.98);transform-origin:bottom right;pointer-events:none;transition:opacity .22s ease,transform .22s ease,visibility .22s}
+    .nara-window{position:fixed;right:24px;bottom:156px;z-index:99999;width:min(380px,calc(100vw - 32px));max-height:min(540px,calc(100vh - 175px));display:flex;flex-direction:column;border-radius:22px;background:linear-gradient(180deg,#eaf6fd,#dcedfa 55%,#eaf6fd);border:1px solid rgba(29,111,184,.14);box-shadow:0 26px 64px rgba(13,58,102,.28);overflow:hidden;opacity:0;visibility:hidden;transform:translateY(10px) scale(.98);transform-origin:bottom right;pointer-events:none;transition:opacity .22s ease,transform .22s ease,visibility .22s}
     .nara-window.open{opacity:1;visibility:visible;transform:none;pointer-events:auto}
     .nara-window.edge-top{position:fixed;top:12px;right:24px;bottom:auto;max-height:calc(100vh - 24px);transform-origin:top right}
 
@@ -671,12 +671,16 @@
     .nara-msg.user .nara-time{color:#8a9aaa}
     .nara-bubble .typing-dot{background:rgba(255,255,255,.85)}
 
-    .nara-quick{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:12px 16px 10px}
-    .nara-quick-btn{font-size:.62rem;font-weight:700;border:1px solid rgba(29,111,184,.14);background:#fff;color:#1d6fb8;border-radius:10px;padding:.42rem .3rem;transition:all .22s;cursor:pointer;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:.28rem;line-height:1.25;text-align:center;white-space:nowrap;box-shadow:0 3px 8px rgba(13,58,102,.08)}
-    .nara-quick-btn i{color:#f9a825;font-size:.62rem;flex:0 0 auto;transition:transform .25s var(--ease)}
-    .nara-quick-btn:hover{border-color:#1d6fb8;background:#f2f8fd;transform:translateY(-2px);box-shadow:0 6px 14px rgba(29,111,184,.18)}
-    .nara-quick-btn:hover i{transform:scale(1.2) rotate(-6deg)}
-    .nara-quick-btn:active{transform:translateY(0) scale(.97)}
+    .nara-msg-content{display:flex;flex-direction:column;gap:8px;width:100%}
+    .nara-quick-inchat{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:4px;width:100%}
+    .nara-quick-card{display:flex;align-items:center;gap:8px;padding:8px 10px;background:#ffffff;border:1px solid #e2e8f0;border-radius:12px;cursor:pointer;transition:all .2s ease;text-align:left;box-shadow:0 2px 6px rgba(0,0,0,.03);font-family:inherit}
+    .nara-quick-card:hover{border-color:var(--teal,#1d6fb8);background:#f0f7ff;transform:translateY(-1.5px);box-shadow:0 4px 12px rgba(29,111,184,.14)}
+    .nara-quick-card:active{transform:translateY(0)}
+    .nara-qc-icon{width:26px;height:26px;border-radius:8px;background:rgba(29,111,184,.08);color:var(--teal,#1d6fb8);display:flex;align-items:center;justify-content:center;font-size:.72rem;flex:0 0 26px;transition:all .2s ease}
+    .nara-quick-card:hover .nara-qc-icon{background:var(--teal,#1d6fb8);color:#fff}
+    .nara-qc-text{font-size:.72rem;font-weight:700;color:#1e293b;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .nara-qc-arrow{font-size:.6rem;color:#cbd5e1;transition:transform .2s ease}
+    .nara-quick-card:hover .nara-qc-arrow{color:var(--teal,#1d6fb8);transform:translateX(2px)}
 
     .nara-input-pill{display:flex;align-items:center;gap:2px;margin:14px 16px 18px;padding:6px 6px 6px 16px;background:#fff;border-radius:999px;box-shadow:0 14px 30px rgba(13,58,102,.18)}
     .nara-input{flex:1;min-width:0;border:0;outline:0;background:transparent;padding:.4rem 0;font-size:.8rem;font-family:inherit;color:#20364d}
@@ -785,7 +789,7 @@
       .nara-fab i{font-size:24px}
       .acc-panel{position:fixed;left:12px;right:12px;bottom:132px;width:auto;max-width:none;top:auto;transform:translateY(8px) scale(.98)}
       .acc-panel.open{transform:none}
-      .nara-window{position:fixed;left:12px;right:12px;bottom:132px;width:auto;max-width:none;top:auto;max-height:calc(100vh - 160px);transform:translateY(8px) scale(.98)}
+      .nara-window{position:fixed;left:12px;right:12px;bottom:140px;width:auto;max-width:none;top:auto;max-height:calc(100vh - 155px);transform:translateY(8px) scale(.98)}
       .nara-window.open{transform:none}
       .acc-body{max-height:none}
       .nara-messages{height:280px}
@@ -1978,7 +1982,41 @@
 
       <div class="nara-messages" id="naraMessages">
         <div class="nara-msg">
-          <div class="nara-bubble">Halo! Saya <strong>NARA</strong> — <em>Navigator Akademik Ramah &amp; Andal</em> 👋 Ada yang bisa saya bantu?</div>
+          <div class="nara-msg-content">
+            <div class="nara-bubble">Halo! Saya <strong>NARA</strong> — <em>Navigator Akademik Ramah &amp; Andal</em>. Ada yang bisa saya bantu?</div>
+            <div class="nara-quick-inchat">
+              <button type="button" class="nara-quick-card" onclick="sendNaraQuick('Apa saja jurusan di SMKN 2?')">
+                <span class="nara-qc-icon"><i class="fas fa-graduation-cap"></i></span>
+                <span class="nara-qc-text">Info Jurusan</span>
+                <i class="fas fa-chevron-right nara-qc-arrow"></i>
+              </button>
+              <button type="button" class="nara-quick-card" onclick="sendNaraQuick('Bagaimana pendaftaran PPDB?')">
+                <span class="nara-qc-icon"><i class="fas fa-id-card"></i></span>
+                <span class="nara-qc-text">Info PPDB</span>
+                <i class="fas fa-chevron-right nara-qc-arrow"></i>
+              </button>
+              <button type="button" class="nara-quick-card" onclick="sendNaraQuick('Apa saja ekstrakurikuler sekolah?')">
+                <span class="nara-qc-icon"><i class="fas fa-users"></i></span>
+                <span class="nara-qc-text">Info Ekskul</span>
+                <i class="fas fa-chevron-right nara-qc-arrow"></i>
+              </button>
+              <button type="button" class="nara-quick-card" onclick="sendNaraQuick('Bagaimana jadwal jam belajar sekolah?')">
+                <span class="nara-qc-icon"><i class="fas fa-clock"></i></span>
+                <span class="nara-qc-text">Info Jadwal</span>
+                <i class="fas fa-chevron-right nara-qc-arrow"></i>
+              </button>
+              <button type="button" class="nara-quick-card" onclick="sendNaraQuick('Bagaimana info BKK &amp; PKL magang?')">
+                <span class="nara-qc-icon"><i class="fas fa-briefcase"></i></span>
+                <span class="nara-qc-text">Info PKL</span>
+                <i class="fas fa-chevron-right nara-qc-arrow"></i>
+              </button>
+              <button type="button" class="nara-quick-card" onclick="sendNaraQuick('Alamat dan kontak resmi sekolah?')">
+                <span class="nara-qc-icon"><i class="fas fa-location-dot"></i></span>
+                <span class="nara-qc-text">Info Kontak</span>
+                <i class="fas fa-chevron-right nara-qc-arrow"></i>
+              </button>
+            </div>
+          </div>
           <div class="nara-time">Sekarang</div>
         </div>
       </div>
@@ -2162,22 +2200,48 @@
   window.clearNaraChat = function(){
     const msgs = document.getElementById('naraMessages');
     if(!msgs) return;
-    msgs.innerHTML = '<div class="nara-msg"><div class="nara-bubble">Halo lagi! Saya <strong>NARA</strong> 👋 Ada yang bisa saya bantu?</div><div class="nara-time">' + naraNowLabel() + '</div></div>';
+    msgs.innerHTML = '<div class="nara-msg"><div class="nara-msg-content"><div class="nara-bubble">Halo lagi! Saya <strong>NARA</strong>. Ada yang bisa saya bantu?</div><div class="nara-quick-inchat"><button type="button" class="nara-quick-card" onclick="sendNaraQuick(\'Apa saja jurusan di SMKN 2?\')"><span class="nara-qc-icon"><i class="fas fa-graduation-cap"></i></span><span class="nara-qc-text">Info Jurusan</span><i class="fas fa-chevron-right nara-qc-arrow"></i></button><button type="button" class="nara-quick-card" onclick="sendNaraQuick(\'Bagaimana pendaftaran PPDB?\')"><span class="nara-qc-icon"><i class="fas fa-id-card"></i></span><span class="nara-qc-text">Info PPDB</span><i class="fas fa-chevron-right nara-qc-arrow"></i></button><button type="button" class="nara-quick-card" onclick="sendNaraQuick(\'Apa saja ekstrakurikuler sekolah?\')"><span class="nara-qc-icon"><i class="fas fa-users"></i></span><span class="nara-qc-text">Info Ekskul</span><i class="fas fa-chevron-right nara-qc-arrow"></i></button><button type="button" class="nara-quick-card" onclick="sendNaraQuick(\'Bagaimana jadwal jam belajar sekolah?\')"><span class="nara-qc-icon"><i class="fas fa-clock"></i></span><span class="nara-qc-text">Info Jadwal</span><i class="fas fa-chevron-right nara-qc-arrow"></i></button><button type="button" class="nara-quick-card" onclick="sendNaraQuick(\'Bagaimana info BKK & PKL magang?\')"><span class="nara-qc-icon"><i class="fas fa-briefcase"></i></span><span class="nara-qc-text">Info PKL</span><i class="fas fa-chevron-right nara-qc-arrow"></i></button><button type="button" class="nara-quick-card" onclick="sendNaraQuick(\'Alamat dan kontak resmi sekolah?\')"><span class="nara-qc-icon"><i class="fas fa-location-dot"></i></span><span class="nara-qc-text">Info Kontak</span><i class="fas fa-chevron-right nara-qc-arrow"></i></button></div></div><div class="nara-time">' + naraNowLabel() + '</div></div>';
   };
 
   const smartLocalAnswers = {
     jurusan: "SMK Negeri 2 Mojokerto memiliki 5 Konsentrasi Keahlian unggulan:\n1. Rekayasa Perangkat Lunak (RPL) - Software & Pemrograman\n2. Desain Komunikasi Visual (DKV) - Multimedia, Grafis & Animasi\n3. Agribisnis Pengolahan Hasil Pertanian (APHP) - Pangan Modern\n4. Kuliner (Tata Boga) - Seni Olah Rasa & Restoran\n5. Layanan Perbankan Syariah (LPS) - Keuangan Syariah",
+    fasilitas: "Fasilitas & Virtual Tour 360° SMKN 2 Mojokerto:\nSekolah kami dilengkapi fasilitas lengkap seperti Gerbang Utama, Lobi Utama, Lapangan Olahraga, Aula Serbaguna, Kantin Sekolah, Musholla, Area Parkir, Perpustakaan Digital, serta Laboratorium Praktik (Lab RPL, DKV, LPS, APHP, Dapur Kuliner). Seluruh lokasi ini dapat dikunjungi dan dilihat 360° di menu Virtual Tour (/profile/tour).",
     ppdb: "Informasi PPDB SMKN 2 Mojokerto:\nPendaftaran dilakukan secara online melalui portal resmi PPDB Jawa Timur (Jalur Prestasi, Afirmasi, dan Zonasi). Pendaftaran TIDAK DIPUNGUT BIAYA (GRATIS).",
     ekskul: "Ekstrakurikuler SMKN 2 Mojokerto:\nPramuka (Wajib), Paskibra, Robotik & Coding Club, PMR, Olahraga (Futsal, Basket, Voli), Seni Musik & Tari, serta Kerohanian Islam.",
     jadwal: "Jam Belajar SMKN 2 Mojokerto:\nKegiatan Belajar Mengajar (KBM) berlangsung Senin hingga Jumat pukul 07.00 WIB - 15.30 WIB. Gerbang sekolah ditutup tepat pukul 07.00 WIB. Hari Sabtu dan Minggu libur.",
     pkl: "BKK & Kemitraan Industri SMKN 2 Mojokerto:\nUnit BKK memfasilitasi Praktek Kerja Lapangan (PKL) dan penyaluran lulusan ke mitra industri seperti PT Telkom, PT Astra International, Bank Syariah Indonesia, dan industri perhotelan/pangan.",
     kontak: "Alamat dan Kontak Resmi SMKN 2 Mojokerto:\nAlamat: Jl. Raden Wijaya No. 1, Kranggan, Kota Mojokerto, Jawa Timur\nTelepon: (0321) 321555\nEmail: info@smkn2mojokerto.sch.id",
-    default: "Halo! 👋 Saya NARA SKANEDA (SMKN 2 Kota Mojokerto Assistance & Resource Agent). Maaf, informasi tersebut belum tersedia dalam basis pengetahuan resmi SMKN 2 Kota Mojokerto."
+    struktur: "Struktur Organisasi SMKN 2 Mojokerto:\n• Kepala Sekolah: Iswahyudi S.ST. M.Pd.\n• Waka Kurikulum: MELATI PUSPITA SARI, S.Pd.\n• Waka Kesiswaan: AINUR ROFIK, M. Pd, Si.\n• Waka Sarpras: M. WIRA HENDY HIMAWAN, M.Pd\n• Waka Humastri: ARIKAWWEKU CKRISNA, S.Pd.\n• Bendahara BOS: MEGA NOVINDA SARI, S.Pd.\n• Bendahara BPOPP: FAJAR DHILAMAYA, S.Pd.\n• Koordinator BKK: MULAT ADITYAWIRANTI, S.Pd.\n• Kaprog RPL: DANANG TEGUH SANTOSO, S.Kom\n• Kaprog DKV: NURFALAH SEPTAYOGA S.Kom.\n• Kaprog APHP: DESY ANDINI DILIAWATI, S.T.P.\n• Kaprog Kuliner: DHIYAH AMANATI KARTIKA SARI, S.Pd.\n• Kaprog LPS: METIY ARIANA, S.Pd, M.Pd.\nDetail lengkap dapat dilihat di menu Struktur Organisasi (/profile/structure).",
+    waka: "Wakil Kepala Sekolah (Waka) SMKN 2 Mojokerto:\n1. Waka Kurikulum: MELATI PUSPITA SARI, S.Pd.\n2. Waka Kesiswaan: AINUR ROFIK, M. Pd, Si.\n3. Waka Sarana & Prasarana: M. WIRA HENDY HIMAWAN, M.Pd\n4. Waka Humastri: ARIKAWWEKU CKRISNA, S.Pd.",
+    kaprog: "Ketua Program Keahlian (Kaprog/Kaprodi) SMKN 2 Mojokerto:\n• RPL (PPLG): DANANG TEGUH SANTOSO, S.Kom\n• DKV: NURFALAH SEPTAYOGA S.Kom.\n• APHP: DESY ANDINI DILIAWATI, S.T.P.\n• Kuliner: DHIYAH AMANATI KARTIKA SARI, S.Pd.\n• LPS: METIY ARIANA, S.Pd, M.Pd.",
+    bendahara: "Bendahara SMKN 2 Mojokerto:\n• Bendahara BOS: MEGA NOVINDA SARI, S.Pd.\n• Bendahara BPOPP: FAJAR DHILAMAYA, S.Pd.",
+    sejarah: "Sejarah SMKN 2 Mojokerto:\nBerdiri di kawasan Kranggan, Kota Mojokerto sebagai SMK Pusat Keunggulan (PK) dengan 5 konsentrasi keahlian berstandar nasional dan internasional. Selengkapnya di menu Sejarah Sekolah (/profile/history).",
+    visi: "Visi SMKN 2 Mojokerto:\nTerwujudnya lulusan yang berakhlak mulia, kompeten, berjiwa wirausaha, dan berdaya saing global.",
+    staf: "Tenaga Kependidikan / Staf SMKN 2 Mojokerto:\nSMK Negeri 2 Mojokerto memiliki 20+ Tenaga Kependidikan & Staf yang mengelola administrasi, keuangan, perpustakaan, dan layanan operasional sekolah:\n• Bendahara BOS: MEGA NOVINDA SARI, S.Pd.\n• Bendahara BPOPP: FAJAR DHILAMAYA, S.Pd.\n• Koordinator BKK: MULAT ADITYAWIRANTI, S.Pd.\n• Staf TU, Perpustakaan Digital, Teknisi Lab & Pengelola Sarana.\nDetail selengkapnya di menu Staff & Guru (/profile/staff-guru).",
+    guru: "Tenaga Pendidik / Guru SMKN 2 Mojokerto:\nSMK Negeri 2 Mojokerto didukung oleh 67+ Guru Profesional bersertifikasi di bidang produktif keahlian (RPL, DKV, APHP, Kuliner, LPS) maupun normatif-adaptif.\nDetail selengkapnya di menu Staff & Guru (/profile/staff-guru).",
+    karya: "Karya & Produk Inovatif Siswa SMKN 2 Kota Mojokerto:\n1. MultiMie & Sari Bunga Telang (Produk Olahan Pangan APHP & Kuliner)\n2. Aplikasi Tambal Ban Express (Mobile App Karya Siswa RPL)\n3. Nirmana 3D & Visual Branding (Desain Grafis & Fotografi Studio DKV)\n4. Pastry & Bakery TEFA (Roti & Cake Teaching Factory Kuliner)\n5. Maja Mojo & Bei Mie (Inovasi Pangan APHP)\n6. Layanan Mini Bank Syariah (Praktik Keuangan Syariah LPS)\nDetail selengkapnya di menu Karya Siswa (/siswa/karya).",
+    kegiatan: "Jurnal Kegiatan & Agenda SMKN 2 Kota Mojokerto:\n• Uji Kompetensi Keahlian (UKK) Bersama Penguji DUDIKA\n• Program Budaya Kawi Laras (Pelestarian Busana Tradisional)\n• PKL & Rekrutmen Bursa Kerja Khusus (BKK)\n• Pentas Seni (Pensi), TEFA Expo, & Pameran Karya Siswa\n• Gerakan Sekolah Sehat (GSS) & Imtaq Masjid Al-Ikhlas\nDetail selengkapnya di menu Kegiatan (/galeri/kegiatan).",
+    berita: "Berita & Kabar Terbaru SMKN 2 Kota Mojokerto:\n• Pelatihan Web Framework Laravel 2024\n• Pelaksanaan Uji Kompetensi Keahlian (UKK)\n• Edukasi & Literasi Keuangan Syariah bersama BSI\n• Program Budaya Kawi Laras\n• Program Gerakan Sekolah Sehat (GSS)\nDetail artikel lengkap di menu Berita (/berita).",
+    prestasi: "Prestasi Unggulan Siswa SMKN 2 Kota Mojokerto:\n• Juara FESTIKA Jatim 2025\n• Juara 1 Pencak Silat KONI Championship (Dhiva Alennia)\n• Juara 1 Web Development Polinema (Tim Penerbang Roket RPL)\n• Medali Perak LKS Nasional Bidang Kuliner\n• Juara 3 LKS Jawa Timur 2026\n• Finalis FIKSI Nasional 2025\nDetail selengkapnya di menu Prestasi Siswa (/siswa/prestasi).",
+    default: "Saya NARA SKANEDA (SMKN 2 Kota Mojokerto Assistance & Resource Agent). Maaf, informasi tersebut belum tersedia dalam basis pengetahuan resmi SMKN 2 Kota Mojokerto."
   };
 
   function getSmartLocalAnswer(text){
     const t = (text||'').toLowerCase();
+    if(t.includes('waka')||t.includes('wakil')) return smartLocalAnswers.waka;
+    if(t.includes('kaprog')||t.includes('kaprodi')||t.includes('ketua program')||t.includes('ketua jurusan')) return smartLocalAnswers.kaprog;
+    if(t.includes('bendahara')||t.includes('bos')||t.includes('bpopp')) return smartLocalAnswers.bendahara;
+    if(t.includes('struktur')||t.includes('organisasi')||t.includes('bagan')||t.includes('komite')) return smartLocalAnswers.struktur;
+    if(t.includes('sejarah')||t.includes('berdiri')) return smartLocalAnswers.sejarah;
+    if(t.includes('visi')||t.includes('misi')) return smartLocalAnswers.visi;
+    if(t.includes('staf')||t.includes('staff')||t.includes('kependidikan')||t.includes('tata usaha')||t.includes('tu')) return smartLocalAnswers.staf;
+    if(t.includes('guru')||t.includes('pendidik')||t.includes('pengajar')||t.includes('kepsek')||t.includes('iswahyudi')) return smartLocalAnswers.guru;
+    if(t.includes('karya')||t.includes('produk')) return smartLocalAnswers.karya;
+    if(t.includes('kegiatan')||t.includes('acara')||t.includes('agenda')) return smartLocalAnswers.kegiatan;
+    if(t.includes('berita')||t.includes('kabar')||t.includes('artikel')) return smartLocalAnswers.berita;
+    if(t.includes('prestasi')||t.includes('juara')||t.includes('lks')||t.includes('lomba')) return smartLocalAnswers.prestasi;
     if(t.includes('jurusan')||t.includes('proli')||t.includes('keahlian')||t.includes('rpl')||t.includes('dkv')||t.includes('aphp')||t.includes('kuliner')||t.includes('lps')) return smartLocalAnswers.jurusan;
+    if(t.includes('fasilitas')||t.includes('gerbang')||t.includes('kantin')||t.includes('musholla')||t.includes('masjid')||t.includes('lobi')||t.includes('aula')||t.includes('lapangan')||t.includes('parkir')||t.includes('tour')||t.includes('360')||t.includes('tempat')||t.includes('sarana')) return smartLocalAnswers.fasilitas;
     if(t.includes('ppdb')||t.includes('daftar')||t.includes('masuk')) return smartLocalAnswers.ppdb;
     if(t.includes('ekskul')||t.includes('ekstrakurikuler')||t.includes('ekstra')) return smartLocalAnswers.ekskul;
     if(t.includes('jadwal')||t.includes('jam')||t.includes('masuk')||t.includes('pulang')) return smartLocalAnswers.jadwal;
