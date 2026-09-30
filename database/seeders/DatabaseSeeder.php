@@ -1376,9 +1376,10 @@ class DatabaseSeeder extends Seeder
             'status' => EVoiceStatus::REVIEWING,
         ]);
 
-           $this->call([
-       AdminSeeder::class,
-       SchoolHistorySeeder::class,
+        $this->call([
+            AdminSeeder::class,
+            GallerySeeder::class,
+            SchoolHistorySeeder::class,
    ]);
     }
 }

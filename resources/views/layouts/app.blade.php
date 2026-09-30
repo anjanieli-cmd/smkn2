@@ -1700,6 +1700,79 @@
     body.theme-dark .ks-prestasi-year {
       color: #8fa8c2 !important;
     }
+
+    /* 12. Galeri Prestasi Sekolah Sub-page Dark Mode & White Titles */
+    body.theme-dark .psk-page,
+    body.theme-dark .psk-opening,
+    body.theme-dark .psk-gallery {
+      background: #061221 !important;
+      color: #eaf2fb !important;
+    }
+    body.theme-dark .psk-hero,
+    body.theme-dark .psk-featured,
+    body.theme-dark .psk-achv {
+      background: #09182b !important;
+      color: #eaf2fb !important;
+    }
+    body.theme-dark .psk-title .psk-white,
+    body.theme-dark .psk-section-title,
+    body.theme-dark .psk-opening-desc strong,
+    body.theme-dark .psk-om b,
+    body.theme-dark .psk-feat-info h3,
+    body.theme-dark .psk-achv-body h3,
+    body.theme-dark .psk-achv-card h3 {
+      color: #ffffff !important;
+    }
+    body.theme-dark .psk-subtitle,
+    body.theme-dark .psk-lead,
+    body.theme-dark .psk-opening-desc,
+    body.theme-dark .psk-feat-desc,
+    body.theme-dark .psk-achv-body p {
+      color: #c9d8e8 !important;
+    }
+    body.theme-dark .psk-achv-card {
+      background: #102744 !important;
+      border-color: rgba(255, 255, 255, 0.1) !important;
+      color: #eaf2fb !important;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4) !important;
+    }
+    body.theme-dark .psk-achv-tag,
+    body.theme-dark .psk-achv-link,
+    body.theme-dark .psk-feat-meta span {
+      color: #eaf2fb !important;
+    }
+    body.theme-dark .psk-achv-year {
+      background: #0d213a !important;
+      color: #8fa8c2 !important;
+    }
+    body.theme-dark .psk-fbtn,
+    body.theme-dark .psk-ybtn,
+    body.theme-dark .psk-pill,
+    body.theme-dark .psk-more-btn {
+      background: #0d213a !important;
+      color: #eaf2fb !important;
+      border-color: rgba(255, 255, 255, 0.1) !important;
+    }
+    body.theme-dark .psk-fbtn.active,
+    body.theme-dark .psk-ybtn.active {
+      background: #1d6fb8 !important;
+      color: #ffffff !important;
+      border-color: #28a9e1 !important;
+    }
+
+    /* 13. Datepicker Calendar Indicator Fix (Inverted White/Bright Icon in Dark Mode) */
+    body.theme-dark input[type="date"]::-webkit-calendar-picker-indicator,
+    body.theme-dark input[type="datetime-local"]::-webkit-calendar-picker-indicator,
+    body.theme-dark input[type="time"]::-webkit-calendar-picker-indicator {
+      filter: invert(1) brightness(2) !important;
+      cursor: pointer !important;
+      opacity: 1 !important;
+    }
+    body.theme-dark input[type="date"],
+    body.theme-dark input[type="datetime-local"],
+    body.theme-dark input[type="time"] {
+      color-scheme: dark !important;
+    }
   </style>
 </head>
 <body>

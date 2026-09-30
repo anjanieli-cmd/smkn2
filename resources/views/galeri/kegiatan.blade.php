@@ -302,6 +302,34 @@
   .kg-filters{flex-wrap:nowrap;overflow-x:auto;padding-bottom:.5rem;-webkit-overflow-scrolling:touch}
   .kg-fbtn{white-space:nowrap}
 }
+
+/* ---------- LIGHTBOX ALBUM MODAL ---------- */
+.kg-album-modal{position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;
+  background:rgba(7,22,42,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  opacity:0;visibility:hidden;transition:opacity .35s ease,visibility .35s ease;padding:1.5rem}
+.kg-album-modal.open{opacity:1;visibility:visible}
+.kg-album-dialog{position:relative;width:min(1100px,94vw);max-height:92vh;background:#102744;border:1px solid rgba(255,255,255,.15);
+  border-radius:24px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 30px 80px rgba(0,0,0,.6);color:#fff}
+.kg-album-header{display:flex;align-items:center;justify-content:space-between;padding:1.2rem 1.6rem;
+  background:#0d213a;border-bottom:1px solid rgba(255,255,255,.08)}
+.kg-album-title{font-family:var(--font-display);font-size:1.2rem;font-weight:900;margin:0;color:#fff}
+.kg-album-meta{display:flex;align-items:center;gap:.7rem;margin-top:.25rem;font-size:.72rem;color:#8fa8c2}
+.kg-album-close{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.1);border:0;color:#fff;
+  font-size:1.1rem;display:grid;place-items:center;cursor:pointer;transition:all .25s ease}
+.kg-album-close:hover{background:#ff7a00;color:#fff;transform:scale(1.08)}
+.kg-album-body{position:relative;flex:1;min-height:350px;max-height:60vh;display:flex;align-items:center;justify-content:center;
+  background:#061221;overflow:hidden}
+.kg-album-img{max-width:100%;max-height:60vh;object-fit:contain;transition:transform .3s ease}
+.kg-album-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:10;width:48px;height:48px;border-radius:50%;
+  background:rgba(13,33,58,.8);border:1px solid rgba(255,255,255,.2);color:#fff;font-size:1.1rem;
+  display:grid;place-items:center;cursor:pointer;transition:all .25s ease}
+.kg-album-arrow:hover{background:#ffb300;color:#0d3a66}
+.kg-album-arrow.prev{left:1.2rem}
+.kg-album-arrow.next{right:1.2rem}
+.kg-album-footer{padding:1rem 1.6rem;background:#0d213a;border-top:1px solid rgba(255,255,255,.08);
+  display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.kg-album-caption{font-size:.85rem;color:#c9d8e8;margin:0}
+.kg-album-counter{font-size:.78rem;font-weight:900;color:#ffd54a;letter-spacing:.1em}
 </style>
 @endpush
 
@@ -401,20 +429,61 @@
       <p class="kg-section-sub">Koleksi foto kegiatan siswa — dari ruang praktik hingga panggung penghargaan. Pilih kategori untuk menyaring momen favoritmu.</p>
     </div>
 
-    <div class="kg-filters" data-reveal>
-      <button class="kg-fbtn active" data-filter="semua"><i class="fas fa-th-large"></i> Semua</button>
-      <button class="kg-fbtn" data-filter="akademik"><i class="fas fa-book-open"></i> Akademik</button>
-      <button class="kg-fbtn" data-filter="ekstrakurikuler"><i class="fas fa-running"></i> Ekstrakurikuler</button>
-      <button class="kg-fbtn" data-filter="kesiswaan"><i class="fas fa-users"></i> Kesiswaan</button>
-      <button class="kg-fbtn" data-filter="upacara"><i class="fas fa-flag"></i> Upacara</button>
-      <button class="kg-fbtn" data-filter="kompetisi"><i class="fas fa-trophy"></i> Kompetisi</button>
-      <button class="kg-fbtn" data-filter="kegiatan-sekolah"><i class="fas fa-school"></i> Kegiatan Sekolah</button>
-      <button class="kg-fbtn" data-filter="kunjungan-industri"><i class="fas fa-industry"></i> Kunjungan/Industri</button>
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin:clamp(1.6rem,3vw,2.4rem) 0 0">
+      <div class="kg-filters" data-reveal style="margin:0">
+        <button class="kg-fbtn active" data-filter="semua"><i class="fas fa-th-large"></i> Semua</button>
+        <button class="kg-fbtn" data-filter="akademik"><i class="fas fa-book-open"></i> Akademik</button>
+        <button class="kg-fbtn" data-filter="ekstrakurikuler"><i class="fas fa-running"></i> Ekstrakurikuler</button>
+        <button class="kg-fbtn" data-filter="kesiswaan"><i class="fas fa-users"></i> Kesiswaan</button>
+        <button class="kg-fbtn" data-filter="upacara"><i class="fas fa-flag"></i> Upacara</button>
+        <button class="kg-fbtn" data-filter="kompetisi"><i class="fas fa-trophy"></i> Kompetisi</button>
+        <button class="kg-fbtn" data-filter="kegiatan-sekolah"><i class="fas fa-school"></i> Kegiatan Sekolah</button>
+        <button class="kg-fbtn" data-filter="kunjungan-industri"><i class="fas fa-industry"></i> Kunjungan/Industri</button>
+      </div>
+      <div style="position:relative;min-width:240px;max-width:320px;flex:1" data-reveal>
+        <i class="fas fa-search" style="position:absolute;left:14px;top:50%;transform:translateY(-50%);color:#2f6fa8;font-size:.85rem"></i>
+        <input type="text" id="kgSearchInput" value="{{ request('search') }}" placeholder="Cari judul kegiatan..." style="width:100%;padding:.55rem 1rem .55rem 2.4rem;border-radius:99px;border:1px solid rgba(13,58,102,.2);background:#fff;color:#0d3a66;font-size:.8rem;outline:none">
+      </div>
     </div>
 
     <div class="kg-masonry" id="kgMasonry">
-      <!-- AKADEMIK -->
-      <article class="kg-card kg-card--lg" data-cat="akademik" data-reveal>
+      @if(isset($albums) && count($albums) > 0)
+        @foreach($albums as $index => $album)
+          @php
+            $catSlug = Str::slug($album->category ?? 'kegiatan-sekolah');
+            $sizeClass = 'kg-card';
+            if ($index % 5 == 0) $sizeClass = 'kg-card kg-card--lg';
+            elseif ($index % 5 == 1) $sizeClass = 'kg-card kg-card--wide';
+            elseif ($index % 5 == 3) $sizeClass = 'kg-card kg-card--tall';
+            elseif ($index % 5 == 4) $sizeClass = 'kg-card kg-card--md';
+
+            $allPhotos = [];
+            if ($album->image_url) {
+                $allPhotos[] = asset($album->image_url);
+            }
+            if ($album->photos) {
+                foreach($album->photos as $p) {
+                    $allPhotos[] = asset($p->photo_url);
+                }
+            }
+          @endphp
+          <article class="{{ $sizeClass }}" data-cat="{{ $catSlug }}" data-reveal
+                   data-title="{{ $album->title }}"
+                   data-category="{{ $album->category }}"
+                   data-date="{{ $album->event_date ? \Carbon\Carbon::parse($album->event_date)->format('d M Y') : '2026' }}"
+                   data-photos="{{ json_encode($allPhotos) }}"
+                   data-desc="{{ $album->description ?? $album->title }}">
+            <img src="{{ asset($album->image_url) }}" alt="{{ $album->title }}" loading="lazy" onerror="this.src='{{ asset('images/logo_smkn2.png') }}'">
+            <div class="kg-card-info">
+              <span class="kg-card-cat">{{ $album->category }}</span>
+              <h4 class="kg-card-title">{{ $album->title }}</h4>
+              <span class="kg-card-date"><i class="fas fa-circle"></i> {{ $album->event_date ? \Carbon\Carbon::parse($album->event_date)->format('d M Y') : '2026' }}</span>
+            </div>
+          </article>
+        @endforeach
+      @else
+        <!-- AKADEMIK -->
+        <article class="kg-card kg-card--lg" data-cat="akademik" data-reveal>
         <img src="{{ asset('images/galeri/ukk.jpeg') }}" alt="Pelaksanaan Ujian Kompetensi Keahlian (UKK) siswa SMK Negeri 2 Mojokerto" loading="lazy" onerror="this.remove()">
         <div class="kg-card-info">
           <span class="kg-card-cat">Akademik</span>
@@ -602,6 +671,7 @@
           <span class="kg-card-date"><i class="fas fa-circle"></i> 2026</span>
         </div>
       </article>
+      @endif
     </div>
   </div>
 </section>
@@ -742,7 +812,31 @@
       <a href="{{ route('kontak') }}" class="kg-cta-btn">Hubungi Sekolah <i class="fas fa-arrow-right"></i></a>
     </div>
   </div>
-</section>
+<!-- ================= LIGHTBOX ALBUM MODAL ================= -->
+<div class="kg-album-modal" id="kgAlbumModal" aria-hidden="true">
+  <div class="kg-album-dialog" role="dialog" aria-modal="true">
+    <div class="kg-album-header">
+      <div>
+        <h3 class="kg-album-title" id="kgAlbumTitle">Album Kegiatan</h3>
+        <div class="kg-album-meta">
+          <span id="kgAlbumCat">Dokumentasi</span>
+          <span>•</span>
+          <span id="kgAlbumDate">SMK Negeri 2 Mojokerto</span>
+        </div>
+      </div>
+      <button type="button" class="kg-album-close" id="kgAlbumClose" aria-label="Tutup"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="kg-album-body">
+      <button type="button" class="kg-album-arrow prev" id="kgAlbumPrev" aria-label="Foto Sebelumnya"><i class="fas fa-chevron-left"></i></button>
+      <img src="" alt="" class="kg-album-img" id="kgAlbumImg">
+      <button type="button" class="kg-album-arrow next" id="kgAlbumNext" aria-label="Foto Berikutnya"><i class="fas fa-chevron-right"></i></button>
+    </div>
+    <div class="kg-album-footer">
+      <p class="kg-album-caption" id="kgAlbumCaption">Dokumentasi momen kegiatan sekolah.</p>
+      <span class="kg-album-counter" id="kgAlbumCounter">1 / 1</span>
+    </div>
+  </div>
+</div>
 
 @endsection
 
@@ -780,10 +874,19 @@
   var cards = document.querySelectorAll('.kg-masonry .kg-card');
   var activeFilter = 'semua';
 
+  var searchInput = document.getElementById('kgSearchInput');
+
   function applyFilter() {
+    var searchQuery = (searchInput ? searchInput.value : '').toLowerCase().trim();
+
     cards.forEach(function (card) {
       var cat = (card.getAttribute('data-cat') || 'semua').toLowerCase();
-      var show = (activeFilter === 'semua' || cat === activeFilter);
+      var title = (card.getAttribute('data-title') || card.querySelector('.kg-card-title, .kg-feat-title')?.textContent || '').toLowerCase();
+      
+      var matchesCat = (activeFilter === 'semua' || cat === activeFilter);
+      var matchesSearch = (!searchQuery || title.indexOf(searchQuery) !== -1);
+
+      var show = matchesCat && matchesSearch;
       card.style.display = show ? '' : 'none';
       if (show) {
         card.style.animation = 'none';
@@ -791,10 +894,14 @@
         card.style.animation = '';
       }
     });
-    /* Kategori "Semua" = masonry asli (ukuran variatif). Kategori spesifik = kartu seragam & berjajar rapi. */
+
     if (masonry) {
-      masonry.classList.toggle('is-filtered', activeFilter !== 'semua');
+      masonry.classList.toggle('is-filtered', activeFilter !== 'semua' || searchQuery !== '');
     }
+  }
+
+  if (searchInput) {
+    searchInput.addEventListener('input', applyFilter);
   }
 
   filterBtns.forEach(function (btn) {
@@ -806,10 +913,108 @@
     });
   });
 
-  /* ---------- HOVER ZOOM (CSS handles; JS hanya memastikan tidak ada konflik) ---------- */
-  document.querySelectorAll('.kg-card, .kg-pick-big, .kg-pick-small, .kg-feat').forEach(function (el) {
-    el.addEventListener('mouseenter', function () {});
+  /* ---------- LIGHTBOX ALBUM MODAL INTERACTIVITY ---------- */
+  var modal = document.getElementById('kgAlbumModal');
+  var closeBtn = document.getElementById('kgAlbumClose');
+  var titleEl = document.getElementById('kgAlbumTitle');
+  var catEl = document.getElementById('kgAlbumCat');
+  var dateEl = document.getElementById('kgAlbumDate');
+  var imgEl = document.getElementById('kgAlbumImg');
+  var captionEl = document.getElementById('kgAlbumCaption');
+  var counterEl = document.getElementById('kgAlbumCounter');
+  var prevBtn = document.getElementById('kgAlbumPrev');
+  var nextBtn = document.getElementById('kgAlbumNext');
+
+  var currentPhotos = [];
+  var currentIndex = 0;
+
+  function openAlbum(title, category, date, photos, caption) {
+    if (!modal) return;
+    currentPhotos = photos && photos.length ? photos : [];
+    currentIndex = 0;
+    titleEl.textContent = title || 'Dokumentasi Kegiatan';
+    catEl.textContent = category || 'Kegiatan';
+    dateEl.textContent = date || 'SMK Negeri 2 Mojokerto';
+    captionEl.textContent = caption || title || '';
+    updateModalImage();
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    if (!modal) return;
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  function updateModalImage() {
+    if (!currentPhotos.length) return;
+    imgEl.src = currentPhotos[currentIndex];
+    counterEl.textContent = (currentIndex + 1) + ' / ' + currentPhotos.length;
+  }
+
+  prevBtn && prevBtn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    if (!currentPhotos.length) return;
+    currentIndex = (currentIndex - 1 + currentPhotos.length) % currentPhotos.length;
+    updateModalImage();
   });
+
+  nextBtn && nextBtn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    if (!currentPhotos.length) return;
+    currentIndex = (currentIndex + 1) % currentPhotos.length;
+    updateModalImage();
+  });
+
+  closeBtn && closeBtn.addEventListener('click', closeModal);
+  modal && modal.addEventListener('click', function (e) {
+    if (e.target === modal) closeModal();
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (!modal || !modal.classList.contains('open')) return;
+    if (e.key === 'Escape') closeModal();
+    if (e.key === 'ArrowLeft') prevBtn.click();
+    if (e.key === 'ArrowRight') nextBtn.click();
+  });
+
+  /* Attach click event to all cards */
+  document.querySelectorAll('.kg-card, .kg-feat').forEach(function (card) {
+    card.addEventListener('click', function () {
+      var photosAttr = card.getAttribute('data-photos');
+      if (photosAttr) {
+        try {
+          var photos = JSON.parse(photosAttr);
+          var title = card.getAttribute('data-title') || 'Dokumentasi Kegiatan';
+          var cat = card.getAttribute('data-category') || 'Kegiatan';
+          var date = card.getAttribute('data-date') || '2026';
+          var desc = card.getAttribute('data-desc') || title;
+          if (photos && photos.length) {
+            openAlbum(title, cat, date, photos, desc);
+            return;
+          }
+        } catch(e) {}
+      }
+
+      var img = card.querySelector('img');
+      var title = card.querySelector('.kg-card-title, .kg-feat-title');
+      var cat = card.querySelector('.kg-card-cat, .kg-feat-tag');
+      var date = card.querySelector('.kg-card-date');
+      
+      var imgSrc = img ? img.src : '';
+      var titleText = title ? title.textContent : 'Dokumentasi Kegiatan';
+      var catText = cat ? cat.textContent : 'Kegiatan';
+      var dateText = date ? date.textContent : '2026';
+
+      if (imgSrc) {
+        openAlbum(titleText, catText, dateText, [imgSrc], titleText);
+      }
+    });
+  });
+
 })();
 </script>
 @endpush

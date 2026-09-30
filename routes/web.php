@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\SchoolHistoryController;
+use App\Http\Controllers\Admin\GalleryAdminController;
+use App\Http\Controllers\Admin\AchievementAdminController;
 use App\Http\Controllers\SejarahSekolahController;
 
 
@@ -68,7 +70,11 @@ Route::get('/siswa/karya-siswa', function () {
     return view('siswa.karya-siswa', compact('studentWorks'));
 })->name('karya-siswa');
 
-Route::view('/siswa/prestasi-siswa', 'siswa.prestasi-siswa')->name('prestasi-siswa');
+Route::get('/siswa/prestasi-siswa', function () {
+    \Database\Seeders\AchievementSeeder::seedIfEmpty();
+    $items = \App\Models\SchoolAchievement::orderBy('created_at', 'desc')->get();
+    return view('siswa.prestasi-siswa', compact('items'));
+})->name('prestasi-siswa');
 
 Route::get('/siswa/ekstrakurikuler', function () {
     $extracurriculars = \App\Models\Extracurricular::all();
@@ -94,8 +100,31 @@ Route::get('/berita/factcheck', function () {
     return view('berita.factcheck', compact('factChecks'));
 })->name('factcheck');
 
-Route::view('/galeri/kegiatan', 'galeri.kegiatan')->name('kegiatan');
-Route::view('/prestasi', 'siswa.prestasi-siswa')->name('prestasi');
+Route::get('/galeri/kegiatan', function (Illuminate\Http\Request $request) {
+    \Database\Seeders\GallerySeeder::seedIfEmpty();
+
+    $query = \App\Models\Gallery::with('photos');
+
+    if ($request->filled('search')) {
+        $search = $request->input('search');
+        $query->where(function ($q) use ($search) {
+            $q->where('title', 'like', "%{$search}%")
+              ->orWhere('description', 'like', "%{$search}%")
+              ->orWhere('category', 'like', "%{$search}%");
+        });
+    }
+
+    $albums = $query->orderBy('created_at', 'desc')
+        ->orderBy('event_date', 'desc')
+        ->get();
+
+    return view('galeri.kegiatan', compact('albums'));
+})->name('kegiatan');
+Route::get('/prestasi', function () {
+    \Database\Seeders\AchievementSeeder::seedIfEmpty();
+    $items = \App\Models\SchoolAchievement::orderBy('created_at', 'desc')->get();
+    return view('siswa.prestasi-siswa', compact('items'));
+})->name('prestasi');
 Route::redirect('/galeri/prestasi-sekolah', '/prestasi')->name('prestasi-sekolah');
 
 
@@ -245,5 +274,19 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         Route::put('/school-history', [SchoolHistoryController::class, 'update'])
             ->name('school-history.update');
+
+        // 8. Galeri Kegiatan Sekolah (Album & Foto)
+        Route::get('/gallery', [GalleryAdminController::class, 'index'])->name('gallery.index');
+        Route::post('/gallery', [GalleryAdminController::class, 'store'])->name('gallery.store');
+        Route::put('/gallery/{id}', [GalleryAdminController::class, 'update'])->name('gallery.update');
+        Route::delete('/gallery/{id}', [GalleryAdminController::class, 'destroy'])->name('gallery.destroy');
+        Route::post('/gallery/{id}/photos', [GalleryAdminController::class, 'uploadPhotos'])->name('gallery.photos.upload');
+        Route::delete('/gallery/photos/{photoId}', [GalleryAdminController::class, 'deletePhoto'])->name('gallery.photos.destroy');
+
+        // 9. Prestasi Sekolah (Trophy Cabinet & Dokumentasi)
+        Route::get('/achievements', [AchievementAdminController::class, 'index'])->name('achievements.index');
+        Route::post('/achievements', [AchievementAdminController::class, 'store'])->name('achievements.store');
+        Route::put('/achievements/{id}', [AchievementAdminController::class, 'update'])->name('achievements.update');
+        Route::delete('/achievements/{id}', [AchievementAdminController::class, 'destroy'])->name('achievements.destroy');
     });
 });
