@@ -445,15 +445,17 @@
     $guruCount = $totalTeachersCount - $staffCount;
   @endphp
 
-  <!-- HEADER -->
-  <div class="adm-tc-header">
+  <!-- HEADER MATCHING SCHOOL-HISTORY PATTERN -->
+  <div class="db-panel-head">
     <div>
-      <h1>Guru &amp; Tenaga Kependidikan</h1>
-      <p>Kelola profil pendidik, foto formal, NIP, dan jabatan yang tampil di kartu digital publik.</p>
+      <h2><i class="fas fa-chalkboard-user" style="color:var(--a-gold);margin-right:.5rem"></i> Guru &amp; Tenaga Kependidikan</h2>
+      <p style="font-size:.8rem;color:var(--a-muted);margin-top:.25rem">Kelola profil pendidik, foto formal, NIP, dan jabatan yang tampil di kartu digital publik.</p>
     </div>
-    <button class="db-btn db-btn-gold" onclick="openCreateModal()">
-      <i class="fas fa-plus"></i> Tambah Guru / Staf
-    </button>
+    <div class="db-panel-actions">
+      <a href="{{ route('admin.teachers.create') }}" class="db-btn db-btn-gold">
+        <i class="fas fa-plus"></i> Tambah Guru / Staf Baru
+      </a>
+    </div>
   </div>
 
   <!-- STAT CARDS -->
@@ -461,7 +463,7 @@
     <div class="adm-tc-stat-card" style="--stat-bg:rgba(76,201,141,.14);--stat-fg:#5ce0a3">
       <div class="adm-tc-stat-top">
         <div class="adm-tc-stat-icon"><i class="fas fa-chalkboard-user"></i></div>
-        <span class="db-tag active">Terdata</span>
+        <span class="db-tag active"><i class="fas fa-circle-check"></i> Terdata</span>
       </div>
       <div class="adm-tc-stat-val">{{ $totalTeachersCount }}</div>
       <div class="adm-tc-stat-lbl">Total Guru &amp; Staf</div>
@@ -470,7 +472,7 @@
     <div class="adm-tc-stat-card" style="--stat-bg:rgba(255,179,0,.14);--stat-fg:#ffb300">
       <div class="adm-tc-stat-top">
         <div class="adm-tc-stat-icon"><i class="fas fa-graduation-cap"></i></div>
-        <span class="db-tag PENDING">Pendidik</span>
+        <span class="db-tag PENDING"><i class="fas fa-user-graduate"></i> Pendidik</span>
       </div>
       <div class="adm-tc-stat-val">{{ $guruCount }}</div>
       <div class="adm-tc-stat-lbl">Guru Pendidik</div>
@@ -479,7 +481,7 @@
     <div class="adm-tc-stat-card" style="--stat-bg:rgba(79,195,247,.14);--stat-fg:#4fc3f7">
       <div class="adm-tc-stat-top">
         <div class="adm-tc-stat-icon"><i class="fas fa-users-gear"></i></div>
-        <span class="db-tag REVIEWING">Kependidikan</span>
+        <span class="db-tag REVIEWING"><i class="fas fa-building"></i> Kependidikan</span>
       </div>
       <div class="adm-tc-stat-val">{{ $staffCount }}</div>
       <div class="adm-tc-stat-lbl">Staf &amp; Tenaga Kependidikan</div>
@@ -526,16 +528,16 @@
         <div class="adm-tc-meta">
           <span class="adm-tc-type-badge">{{ $isStaff ? 'Tenaga Kependidikan' : 'Tenaga Pendidik' }}</span>
           <span class="db-tag {{ $item->is_active ? 'active' : 'inactive' }}">
-            {{ $item->is_active ? 'Aktif' : 'Non-Aktif' }}
+            <i class="fas {{ $item->is_active ? 'fa-circle-check' : 'fa-circle-xmark' }}"></i> {{ $item->is_active ? 'Aktif' : 'Non-Aktif' }}
           </span>
         </div>
 
         <div class="adm-tc-card-foot">
           <span style="font-size:.7rem;color:var(--a-muted)">ID: {{ substr($item->id, 0, 8) }}</span>
           <div style="display:flex;gap:.4rem">
-            <button class="db-btn db-btn-ghost" style="padding:.35rem .65rem;font-size:.74rem" onclick='openEditModal(@json($item))'>
+            <a href="{{ route('admin.teachers.edit', $item->id) }}" class="db-btn db-btn-ghost" style="padding:.35rem .65rem;font-size:.74rem">
               <i class="fas fa-pen-to-square"></i> Edit
-            </button>
+            </a>
             <button class="db-btn db-btn-danger" style="padding:.35rem .65rem;font-size:.74rem" onclick="deleteTeacher('{{ $item->id }}')">
               <i class="fas fa-trash"></i> Hapus
             </button>
@@ -550,85 +552,6 @@
     @endforelse
   </div>
 
-</div>
-
-<!-- MODAL CREATE / EDIT (PREMIUM REFINED UI) -->
-<div class="db-modal-overlay" id="teacherModal">
-  <div class="db-modal" style="max-width:640px">
-    <div class="db-modal-header-banner">
-      <div class="db-modal-header-icon"><i class="fas fa-user-graduate"></i></div>
-      <div style="flex:1">
-        <h3 id="modalTitle" style="font-family:var(--font-display);font-size:1.15rem;color:#fff;margin:0">Tambah Guru / Staf Baru</h3>
-        <p style="font-size:.76rem;color:var(--a-muted);margin:.15rem 0 0">Isi formulir data pendidik atau tenaga kependidikan SMKN 2 Mojokerto.</p>
-      </div>
-      <button class="db-modal-close" onclick="closeModal()">&times;</button>
-    </div>
-    <div class="db-modal-body">
-      <form id="teacherForm" onsubmit="saveTeacher(event)">
-        <input type="hidden" id="teacherId" name="id">
-        <input type="hidden" id="teacherPhoto">
-
-        <!-- PILIHAN JENIS PEGAWAI (GURU VS STAF) -->
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.1rem">
-          <div class="db-form-group">
-            <label><i class="fas fa-user-tag" style="color:var(--a-gold)"></i> Jenis Pegawai / Peran *</label>
-            <select id="teacherStaffType" class="db-form-control" onchange="updateRolePlaceholder(this.value)">
-              <option value="GURU">🎓 Guru Pendidik (Tenaga Pendidik)</option>
-              <option value="STAF">🏢 Staf / Tenaga Kependidikan</option>
-            </select>
-          </div>
-
-          <div class="db-form-group">
-            <label><i class="fas fa-id-card-clip" style="color:var(--a-gold)"></i> NIP (Nomor Induk Pegawai)</label>
-            <input type="text" id="teacherNip" class="db-form-control" placeholder="Contoh: 198503152010012011">
-          </div>
-        </div>
-
-        <div class="db-form-group" style="margin-top:.4rem">
-          <label><i class="fas fa-user" style="color:var(--a-gold)"></i> Nama Lengkap (dengan Gelar) *</label>
-          <input type="text" id="teacherName" class="db-form-control" placeholder="Contoh: Dra. Lugiati, M.Pd. / Ahmad Nuroso, S.Kom." required>
-        </div>
-
-        <div class="db-form-group" style="margin-top:.4rem">
-          <label><i class="fas fa-briefcase" style="color:var(--a-gold)"></i> Jabatan / Bidang Studi Spesifik *</label>
-          <input type="text" id="teacherRole" class="db-form-control" placeholder="Contoh: Guru Produktif Kuliner / Staf Tata Usaha" required>
-        </div>
-
-        <div class="db-form-group" style="margin-top:.4rem">
-          <label><i class="fas fa-camera" style="color:var(--a-gold)"></i> Upload Pasfoto Formal *</label>
-          <div class="adm-file-dropzone" onclick="document.getElementById('teacherPhotoFile').click()">
-            <div id="photoPreviewContainer" class="adm-file-thumb">
-              <img id="photoPreview" src="" alt="Preview" style="display:none">
-              <i id="photoPlaceholderIcon" class="fas fa-camera"></i>
-            </div>
-            <div class="adm-file-info">
-              <div class="adm-file-actions">
-                <button type="button" class="adm-file-btn">
-                  <i class="fas fa-cloud-arrow-up"></i> <span id="photoBtnLabel">Pilih Pasfoto Komputer</span>
-                </button>
-                <span id="photoFileName" class="adm-file-name" style="display:none"></span>
-              </div>
-              <small class="adm-file-hint">Klik di sini untuk mengunggah foto formal (Format: JPG, PNG, WEBP &bull; Maks: 5MB)</small>
-            </div>
-            <input type="file" id="teacherPhotoFile" accept="image/*" style="display:none" onchange="previewSelectedImage(this)">
-          </div>
-        </div>
-
-        <div class="db-form-group" style="margin-top:.4rem">
-          <label><i class="fas fa-toggle-on" style="color:var(--a-gold)"></i> Status Keaktifan</label>
-          <select id="teacherStatus" class="db-form-control">
-            <option value="1">🟢 Aktif (Tampil di Website Publik)</option>
-            <option value="0">🔴 Non-Aktif (Sembunyikan dari Publik)</option>
-          </select>
-        </div>
-
-        <div style="display:flex;justify-content:flex-end;gap:.75rem;margin-top:1.5rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,.08)">
-          <button type="button" class="db-btn db-btn-ghost" onclick="closeModal()">Batal</button>
-          <button type="submit" class="db-btn db-btn-gold"><i class="fas fa-floppy-disk"></i> Simpan Data</button>
-        </div>
-      </form>
-    </div>
-  </div>
 </div>
 @endsection
 
@@ -677,148 +600,8 @@
     });
   }
 
-  function previewSelectedImage(input) {
-    const preview = document.getElementById('photoPreview');
-    const icon = document.getElementById('photoPlaceholderIcon');
-    const fileNameBadge = document.getElementById('photoFileName');
-    const btnLabel = document.getElementById('photoBtnLabel');
-
-    if (input.files && input.files[0]) {
-      const file = input.files[0];
-      const reader = new FileReader();
-      reader.onload = function(e) {
-        preview.src = e.target.result;
-        preview.style.display = 'block';
-        if (icon) icon.style.display = 'none';
-      }
-      reader.readAsDataURL(file);
-
-      if (fileNameBadge) {
-        fileNameBadge.textContent = '📷 ' + file.name;
-        fileNameBadge.style.display = 'inline-flex';
-      }
-      if (btnLabel) btnLabel.textContent = 'Ganti Berkas Foto';
-    }
-  }
-
-  function openCreateModal() {
-    document.getElementById('modalTitle').textContent = 'Tambah Guru / Staf Baru';
-    document.getElementById('teacherId').value = '';
-    document.getElementById('teacherStaffType').value = 'GURU';
-    document.getElementById('teacherName').value = '';
-    document.getElementById('teacherNip').value = '';
-    document.getElementById('teacherRole').value = '';
-    document.getElementById('teacherPhoto').value = '';
-    document.getElementById('teacherPhotoFile').value = '';
-    document.getElementById('teacherStatus').value = '1';
-
-    const preview = document.getElementById('photoPreview');
-    const icon = document.getElementById('photoPlaceholderIcon');
-    const fileNameBadge = document.getElementById('photoFileName');
-    const btnLabel = document.getElementById('photoBtnLabel');
-
-    preview.style.display = 'none';
-    preview.src = '';
-    if (icon) icon.style.display = 'block';
-    if (fileNameBadge) { fileNameBadge.style.display = 'none'; fileNameBadge.textContent = ''; }
-    if (btnLabel) btnLabel.textContent = 'Pilih Pasfoto Komputer';
-
-    document.getElementById('teacherModal').classList.add('active');
-  }
-
-  function openEditModal(item) {
-    document.getElementById('modalTitle').textContent = 'Edit Data Guru / Staf';
-    document.getElementById('teacherId').value = item.id;
-    document.getElementById('teacherName').value = item.name;
-    document.getElementById('teacherNip').value = item.nip || '';
-    
-    const rolePos = item.role_position || '';
-    document.getElementById('teacherRole').value = rolePos;
-
-    const isStaff = strContains(rolePos.toLowerCase(), 'staf') || strContains(rolePos.toLowerCase(), 'staff');
-    document.getElementById('teacherStaffType').value = isStaff ? 'STAF' : 'GURU';
-
-    document.getElementById('teacherPhoto').value = item.photo_url || '';
-    document.getElementById('teacherPhotoFile').value = '';
-    document.getElementById('teacherStatus').value = item.is_active ? '1' : '0';
-
-    const preview = document.getElementById('photoPreview');
-    const icon = document.getElementById('photoPlaceholderIcon');
-    const fileNameBadge = document.getElementById('photoFileName');
-    const btnLabel = document.getElementById('photoBtnLabel');
-
-    if (fileNameBadge) { fileNameBadge.style.display = 'none'; fileNameBadge.textContent = ''; }
-
-    if (item.photo_url) {
-      preview.src = item.photo_url.startsWith('http') ? item.photo_url : '/' + item.photo_url;
-      preview.style.display = 'block';
-      if (icon) icon.style.display = 'none';
-      if (btnLabel) btnLabel.textContent = 'Ganti Pasfoto Komputer';
-    } else {
-      preview.style.display = 'none';
-      if (icon) icon.style.display = 'block';
-      if (btnLabel) btnLabel.textContent = 'Pilih Pasfoto Komputer';
-    }
-
-    document.getElementById('teacherModal').classList.add('active');
-  }
-
   function strContains(str, search) {
     return str.indexOf(search) !== -1;
-  }
-
-  function closeModal() {
-    document.getElementById('teacherModal').classList.remove('active');
-  }
-
-  async function saveTeacher(e) {
-    e.preventDefault();
-    const id = document.getElementById('teacherId').value;
-    const staffType = document.getElementById('teacherStaffType').value;
-    let rolePos = document.getElementById('teacherRole').value.trim();
-
-    // Pastikan jika staf dipilih, peran memuat kata 'Staf' untuk konsistensi sistem
-    if (staffType === 'STAF' && !strContains(rolePos.toLowerCase(), 'staf') && !strContains(rolePos.toLowerCase(), 'staff')) {
-      rolePos = 'Staf ' + rolePos;
-    }
-
-    const formData = new FormData();
-    formData.append('name', document.getElementById('teacherName').value);
-    formData.append('nip', document.getElementById('teacherNip').value);
-    formData.append('role_position', rolePos);
-    formData.append('photo_url', document.getElementById('teacherPhoto').value);
-    formData.append('is_active', document.getElementById('teacherStatus').value);
-
-    const fileInput = document.getElementById('teacherPhotoFile');
-    if (fileInput.files.length > 0) {
-      formData.append('photo_file', fileInput.files[0]);
-    }
-
-    const url = id ? `/api/admin/teachers/${id}` : '/api/admin/teachers';
-    if (id) {
-      formData.append('_method', 'PUT');
-    }
-
-    try {
-      const res = await fetch(url, {
-        method: 'POST',
-        headers: {
-          'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
-          'Accept': 'application/json'
-        },
-        body: formData
-      });
-      const data = await res.json();
-      if (res.ok && data.success) {
-        showToast(id ? 'Data Guru/Staf berhasil diperbarui!' : 'Guru/Staf baru berhasil ditambahkan!');
-        closeModal();
-        setTimeout(() => location.reload(), 800);
-      } else {
-        showToast(data.message || 'Gagal menyimpan data.', 'error');
-      }
-    } catch (err) {
-      showToast('Terjadi kesalahan koneksi server.', 'error');
-    }
   }
 
   async function deleteTeacher(id) {

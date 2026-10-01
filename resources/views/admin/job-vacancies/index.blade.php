@@ -177,7 +177,20 @@
     $arsipCount = $items->filter(fn($i) => ($i->status->value ?? $i->status) === 'ARSIP')->count();
   @endphp
 
-  <!-- STAT CARDS (SESUAI HALAMAN USER PUBLIC BKK) -->
+  <!-- HEADER MATCHING SCHOOL-HISTORY PATTERN -->
+  <div class="db-panel-head">
+    <div>
+      <h2><i class="fas fa-briefcase" style="color:var(--gold);margin-right:.5rem"></i> Bursa Kerja Khusus (BKK) &amp; Loker</h2>
+      <p style="font-size:.8rem;color:var(--text-muted);margin-top:.25rem">Publikasikan dan kelola informasi lowongan pekerjaan &amp; rekrutmen alumni SMKN 2 Mojokerto.</p>
+    </div>
+    <div class="db-panel-actions">
+      <a href="{{ route('admin.job-vacancies.create') }}" class="db-btn db-btn-gold">
+        <i class="fas fa-plus"></i> Tambah Lowongan Baru
+      </a>
+    </div>
+  </div>
+
+  <!-- STAT CARDS -->
   <div class="bkk-stat-grid">
     <div class="bkk-stat-card">
       <div class="bkk-stat-head">
@@ -195,7 +208,7 @@
         <div class="bkk-stat-icon" style="background:rgba(255,179,0,.14);color:#ffd54a">
           <i class="fas fa-business-time"></i>
         </div>
-        <span class="status-pill badge-upcoming">UPCOMING</span>
+        <span class="status-pill badge-upcoming"><i class="fas fa-clock"></i> UPCOMING</span>
       </div>
       <div class="bkk-stat-number">{{ $upcomingCount }}</div>
       <div class="bkk-stat-label">Rekrutmen Akan Datang</div>
@@ -206,7 +219,7 @@
         <div class="bkk-stat-icon" style="background:rgba(255,120,117,.14);color:#ff7875">
           <i class="fas fa-circle-check"></i>
         </div>
-        <span class="status-pill badge-selesai">SELESAI</span>
+        <span class="status-pill badge-selesai"><i class="fas fa-flag-checkered"></i> SELESAI</span>
       </div>
       <div class="bkk-stat-number">{{ $selesaiCount }}</div>
       <div class="bkk-stat-label">Pendaftaran Telah Berakhir</div>
@@ -217,7 +230,7 @@
         <div class="bkk-stat-icon" style="background:rgba(142,163,186,.14);color:#c4d4e4">
           <i class="fas fa-archive"></i>
         </div>
-        <span class="status-pill badge-arsip">ARSIP</span>
+        <span class="status-pill badge-arsip"><i class="fas fa-box-archive"></i> ARSIP</span>
       </div>
       <div class="bkk-stat-number">{{ $arsipCount }}</div>
       <div class="bkk-stat-label">Dokumentasi Rekrutmen BKK</div>
@@ -226,24 +239,14 @@
 
   <!-- MAIN PANEL TABLE -->
   <div class="db-panel">
-    <div class="db-panel-head">
-      <div>
-        <h2 style="font-family:var(--font-display);font-size:1.15rem;color:#fff"><i class="fas fa-briefcase" style="color:var(--gold);margin-right:.4rem"></i> Bursa Kerja Khusus (BKK) &amp; Loker</h2>
-        <p style="font-size:.78rem;color:var(--text-muted);margin-top:.2rem">Publikasikan dan kelola informasi lowongan pekerjaan &amp; rekrutmen alumni SMKN 2 Mojokerto.</p>
-      </div>
-      <div class="db-panel-actions">
-        <button class="db-btn db-btn-gold" onclick="openCreateModal()"><i class="fas fa-plus"></i> Tambah Lowongan Baru</button>
-      </div>
-    </div>
-
     <!-- FILTER BAR & SEARCH -->
     <div class="bkk-filter-bar">
       <div class="bkk-filter-tabs">
         <button class="bkk-filter-btn active" onclick="filterStatus('ALL', this)">Semua ({{ $totalJobs }})</button>
-        <button class="bkk-filter-btn" onclick="filterStatus('OPEN', this)">🟢 OPEN ({{ $openCount }})</button>
-        <button class="bkk-filter-btn" onclick="filterStatus('UPCOMING', this)">🟡 UPCOMING ({{ $upcomingCount }})</button>
-        <button class="bkk-filter-btn" onclick="filterStatus('SELESAI', this)">🔴 SELESAI ({{ $selesaiCount }})</button>
-        <button class="bkk-filter-btn" onclick="filterStatus('ARSIP', this)">📦 ARSIP ({{ $arsipCount }})</button>
+        <button class="bkk-filter-btn" onclick="filterStatus('OPEN', this)"><i class="fas fa-door-open" style="color:#2ecc71"></i> OPEN ({{ $openCount }})</button>
+        <button class="bkk-filter-btn" onclick="filterStatus('UPCOMING', this)"><i class="fas fa-clock" style="color:#f39c12"></i> UPCOMING ({{ $upcomingCount }})</button>
+        <button class="bkk-filter-btn" onclick="filterStatus('SELESAI', this)"><i class="fas fa-circle-xmark" style="color:#e74c3c"></i> SELESAI ({{ $selesaiCount }})</button>
+        <button class="bkk-filter-btn" onclick="filterStatus('ARSIP', this)"><i class="fas fa-box-archive" style="color:#95a5a6"></i> ARSIP ({{ $arsipCount }})</button>
       </div>
       <div class="bkk-search-box">
         <i class="fas fa-magnifying-glass"></i>
@@ -259,7 +262,6 @@
             <th>Posisi / Judul Loker</th>
             <th>Perusahaan Mitra</th>
             <th>Lokasi</th>
-            <th>Tipe Pekerjaan</th>
             <th>Status Pendaftaran</th>
             <th style="text-align:right">Aksi Management</th>
           </tr>
@@ -304,94 +306,25 @@
                 <span style="font-size:.78rem;color:var(--text-muted)"><i class="fas fa-location-dot" style="color:#ffb300;margin-right:.25rem"></i> {{ $item->location ?? 'Mojokerto' }}</span>
               </td>
               <td>
-                <span style="font-size:.75rem;padding:.2rem .5rem;border-radius:6px;background:rgba(255,255,255,.06);color:rgba(255,255,255,.8)">{{ $item->employment_type ?? 'Full-Time' }}</span>
-              </td>
-              <td>
                 <span class="status-pill {{ $badgeClass }}">
                   @if($st === 'OPEN') <span class="pulse-dot"></span> @endif
                   {{ $stLabel }}
                 </span>
               </td>
               <td style="text-align:right">
-                <button class="db-btn db-btn-ghost" style="padding:.35rem .65rem;font-size:.75rem" onclick="openEditModal({{ json_encode($item) }})"><i class="fas fa-pen-to-square"></i> Edit</button>
-                <button class="db-btn db-btn-danger" style="padding:.35rem .65rem;font-size:.75rem" onclick="deleteJob('{{ $item->id }}')"><i class="fas fa-trash"></i> Hapus</button>
+                <a href="{{ route('admin.job-vacancies.edit', $item->id) }}" class="db-btn db-btn-ghost" style="padding:.35rem .65rem;font-size:.75rem">
+                  <i class="fas fa-pen-to-square"></i> Edit
+                </a>
+                <button class="db-btn db-btn-danger" style="padding:.35rem .65rem;font-size:.75rem" onclick="deleteJob('{{ $item->id }}')">
+                  <i class="fas fa-trash"></i> Hapus
+                </button>
               </td>
             </tr>
           @empty
-            <tr><td colspan="6" style="text-align:center;color:var(--text-muted);padding:2.5rem">Belum ada lowongan pekerjaan BKK.</td></tr>
+            <tr><td colspan="5" style="text-align:center;color:var(--text-muted);padding:2.5rem">Belum ada lowongan pekerjaan BKK.</td></tr>
           @endforelse
         </tbody>
       </table>
-    </div>
-  </div>
-
-  <!-- MODAL CREATE / EDIT (PREMIUM REFINED UI) -->
-  <div class="db-modal-overlay" id="jobModal">
-    <div class="db-modal" style="max-width:680px">
-      <div style="display:flex;align-items:center;gap:.85rem;padding:1.25rem 1.5rem;background:linear-gradient(135deg,rgba(255,179,0,.18),rgba(12,40,70,.9));border-bottom:1px solid rgba(255,255,255,.1)">
-        <div style="width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,#ffd54a,#ffb300);color:#0c2846;display:flex;align-items:center;justify-content:center;font-size:1.15rem;box-shadow:0 6px 16px rgba(255,179,0,.3)">
-          <i class="fas fa-briefcase"></i>
-        </div>
-        <div style="flex:1">
-          <h3 id="modalTitle" style="font-family:var(--font-display);font-size:1.15rem;color:#fff;margin:0">Tambah Lowongan Kerja Baru</h3>
-          <p style="font-size:.76rem;color:var(--text-muted);margin:.15rem 0 0">Publikasikan informasi rekrutmen kerja BKK untuk alumni &amp; siswa.</p>
-        </div>
-        <button class="db-modal-close" onclick="closeModal()">&times;</button>
-      </div>
-      <div class="db-modal-body">
-        <form id="jobForm" onsubmit="saveJob(event)">
-          <input type="hidden" id="jobId">
-
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.1rem">
-            <div class="db-form-group">
-              <label><i class="fas fa-user-tie" style="color:var(--gold)"></i> Judul Lowongan / Posisi *</label>
-              <input type="text" id="jobTitle" class="db-form-control" placeholder="Contoh: Junior Web Developer / Staff Admin" required>
-            </div>
-
-            <div class="db-form-group">
-              <label><i class="fas fa-building" style="color:var(--gold)"></i> Perusahaan / Mitra BKK *</label>
-              <input type="text" id="jobCompany" class="db-form-control" placeholder="Contoh: PT Telkom Indonesia" required>
-            </div>
-          </div>
-
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.1rem;margin-top:.4rem">
-            <div class="db-form-group">
-              <label><i class="fas fa-location-dot" style="color:var(--gold)"></i> Lokasi Penempatan</label>
-              <input type="text" id="jobLocation" class="db-form-control" placeholder="Contoh: Mojokerto / Surabaya">
-            </div>
-
-            <div class="db-form-group">
-              <label><i class="fas fa-clock" style="color:var(--gold)"></i> Tipe Pekerjaan</label>
-              <select id="jobType" class="db-form-control">
-                <option value="Full-Time">Full-Time (Penuh Waktu)</option>
-                <option value="Part-Time">Part-Time (Paruh Waktu)</option>
-                <option value="Contract">Kontrak / Magang (PKL)</option>
-                <option value="Walk-in Interview">Walk-in Interview</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="db-form-group" style="margin-top:.4rem">
-            <label><i class="fas fa-toggle-on" style="color:var(--gold)"></i> Status Rekrutmen BKK *</label>
-            <select id="jobStatus" class="db-form-control">
-              <option value="OPEN">🟢 OPEN (Pendaftaran masih berlangsung)</option>
-              <option value="UPCOMING">🟡 UPCOMING (Rekrutmen akan datang)</option>
-              <option value="SELESAI">🔴 SELESAI (Pendaftaran telah berakhir)</option>
-              <option value="ARSIP">📦 ARSIP (Dokumentasi rekrutmen/kegiatan)</option>
-            </select>
-          </div>
-
-          <div class="db-form-group" style="margin-top:.4rem">
-            <label><i class="fas fa-file-lines" style="color:var(--gold)"></i> Deskripsi Kualifikasi &amp; Cara Melamar *</label>
-            <textarea id="jobDescription" class="db-form-control" rows="4" placeholder="Persyaratan kualifikasi, berkas lamaran, &amp; cara mendaftar..." required></textarea>
-          </div>
-
-          <div style="display:flex;justify-content:flex-end;gap:.75rem;margin-top:1.5rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,.08)">
-            <button type="button" class="db-btn db-btn-ghost" onclick="closeModal()">Batal</button>
-            <button type="submit" class="db-btn db-btn-gold"><i class="fas fa-floppy-disk"></i> Simpan Lowongan</button>
-          </div>
-        </form>
-      </div>
     </div>
   </div>
 @endsection
@@ -428,72 +361,6 @@
         row.style.display = 'none';
       }
     });
-  }
-
-  function openCreateModal() {
-    document.getElementById('modalTitle').textContent = 'Tambah Lowongan Kerja Baru';
-    document.getElementById('jobId').value = '';
-    document.getElementById('jobTitle').value = '';
-    document.getElementById('jobCompany').value = '';
-    document.getElementById('jobLocation').value = '';
-    document.getElementById('jobType').value = 'Full-Time';
-    document.getElementById('jobStatus').value = 'OPEN';
-    document.getElementById('jobDescription').value = '';
-    document.getElementById('jobModal').classList.add('active');
-  }
-
-  function openEditModal(item) {
-    document.getElementById('modalTitle').textContent = 'Edit Lowongan Kerja';
-    document.getElementById('jobId').value = item.id;
-    document.getElementById('jobTitle').value = item.title;
-    document.getElementById('jobCompany').value = item.company_name;
-    document.getElementById('jobLocation').value = item.location || '';
-    document.getElementById('jobType').value = item.employment_type || 'Full-Time';
-    document.getElementById('jobStatus').value = item.status.value || item.status;
-    document.getElementById('jobDescription').value = item.description || '';
-    document.getElementById('jobModal').classList.add('active');
-  }
-
-  function closeModal() {
-    document.getElementById('jobModal').classList.remove('active');
-  }
-
-  async function saveJob(e) {
-    e.preventDefault();
-    const id = document.getElementById('jobId').value;
-    const payload = {
-      title: document.getElementById('jobTitle').value,
-      company_name: document.getElementById('jobCompany').value,
-      location: document.getElementById('jobLocation').value,
-      employment_type: document.getElementById('jobType').value,
-      status: document.getElementById('jobStatus').value,
-      description: document.getElementById('jobDescription').value
-    };
-
-    const url = id ? `/api/admin/job-vacancies/${id}` : '/api/admin/job-vacancies';
-    const method = id ? 'PUT' : 'POST';
-
-    try {
-      const res = await fetch(url, {
-        method: method,
-        headers: {
-          'Content-Type': 'application/json',
-          'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify(payload)
-      });
-      const data = await res.json();
-      if (res.ok && data.success) {
-        showToast(id ? 'Loker berhasil diperbarui!' : 'Loker baru berhasil ditambahkan!');
-        closeModal();
-        setTimeout(() => location.reload(), 800);
-      } else {
-        showToast(data.message || 'Gagal menyimpan data.', 'error');
-      }
-    } catch (err) {
-      showToast('Terjadi kesalahan koneksi server.', 'error');
-    }
   }
 
   async function deleteJob(id) {

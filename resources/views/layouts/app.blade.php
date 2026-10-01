@@ -636,7 +636,7 @@
     .acc-reset:hover{border-color:#1d6fb8;color:#1d6fb8}
 
     /* ---------- PANEL NARA (gaya kartu ala TIVA, warna sekolah) ---------- */
-    .nara-window{position:absolute;right:0;bottom:calc(100% + 76px);width:min(360px,calc(100vw - 48px));max-width:calc(100vw - 32px);max-height:min(520px,calc(100vh - 160px));display:flex;flex-direction:column;border-radius:22px;background:linear-gradient(180deg,#eaf6fd,#dcedfa 55%,#eaf6fd);border:1px solid rgba(29,111,184,.14);box-shadow:0 26px 64px rgba(13,58,102,.28);overflow:hidden;opacity:0;visibility:hidden;transform:translateX(10px) scale(.98);transform-origin:bottom right;pointer-events:none;transition:opacity .22s ease,transform .22s ease,visibility .22s}
+    .nara-window{position:fixed;right:24px;bottom:156px;z-index:99999;width:min(380px,calc(100vw - 32px));max-height:min(540px,calc(100vh - 175px));display:flex;flex-direction:column;border-radius:22px;background:linear-gradient(180deg,#eaf6fd,#dcedfa 55%,#eaf6fd);border:1px solid rgba(29,111,184,.14);box-shadow:0 26px 64px rgba(13,58,102,.28);overflow:hidden;opacity:0;visibility:hidden;transform:translateY(10px) scale(.98);transform-origin:bottom right;pointer-events:none;transition:opacity .22s ease,transform .22s ease,visibility .22s}
     .nara-window.open{opacity:1;visibility:visible;transform:none;pointer-events:auto}
     .nara-window.edge-top{position:fixed;top:12px;right:24px;bottom:auto;max-height:calc(100vh - 24px);transform-origin:top right}
 
@@ -671,12 +671,16 @@
     .nara-msg.user .nara-time{color:#8a9aaa}
     .nara-bubble .typing-dot{background:rgba(255,255,255,.85)}
 
-    .nara-quick{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:12px 16px 10px}
-    .nara-quick-btn{font-size:.62rem;font-weight:700;border:1px solid rgba(29,111,184,.14);background:#fff;color:#1d6fb8;border-radius:10px;padding:.42rem .3rem;transition:all .22s;cursor:pointer;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:.28rem;line-height:1.25;text-align:center;white-space:nowrap;box-shadow:0 3px 8px rgba(13,58,102,.08)}
-    .nara-quick-btn i{color:#f9a825;font-size:.62rem;flex:0 0 auto;transition:transform .25s var(--ease)}
-    .nara-quick-btn:hover{border-color:#1d6fb8;background:#f2f8fd;transform:translateY(-2px);box-shadow:0 6px 14px rgba(29,111,184,.18)}
-    .nara-quick-btn:hover i{transform:scale(1.2) rotate(-6deg)}
-    .nara-quick-btn:active{transform:translateY(0) scale(.97)}
+    .nara-msg-content{display:flex;flex-direction:column;gap:8px;width:100%}
+    .nara-quick-inchat{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:4px;width:100%}
+    .nara-quick-card{display:flex;align-items:center;gap:8px;padding:8px 10px;background:#ffffff;border:1px solid #e2e8f0;border-radius:12px;cursor:pointer;transition:all .2s ease;text-align:left;box-shadow:0 2px 6px rgba(0,0,0,.03);font-family:inherit}
+    .nara-quick-card:hover{border-color:var(--teal,#1d6fb8);background:#f0f7ff;transform:translateY(-1.5px);box-shadow:0 4px 12px rgba(29,111,184,.14)}
+    .nara-quick-card:active{transform:translateY(0)}
+    .nara-qc-icon{width:26px;height:26px;border-radius:8px;background:rgba(29,111,184,.08);color:var(--teal,#1d6fb8);display:flex;align-items:center;justify-content:center;font-size:.72rem;flex:0 0 26px;transition:all .2s ease}
+    .nara-quick-card:hover .nara-qc-icon{background:var(--teal,#1d6fb8);color:#fff}
+    .nara-qc-text{font-size:.72rem;font-weight:700;color:#1e293b;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .nara-qc-arrow{font-size:.6rem;color:#cbd5e1;transition:transform .2s ease}
+    .nara-quick-card:hover .nara-qc-arrow{color:var(--teal,#1d6fb8);transform:translateX(2px)}
 
     .nara-input-pill{display:flex;align-items:center;gap:2px;margin:14px 16px 18px;padding:6px 6px 6px 16px;background:#fff;border-radius:999px;box-shadow:0 14px 30px rgba(13,58,102,.18)}
     .nara-input{flex:1;min-width:0;border:0;outline:0;background:transparent;padding:.4rem 0;font-size:.8rem;font-family:inherit;color:#20364d}
@@ -785,7 +789,7 @@
       .nara-fab i{font-size:24px}
       .acc-panel{position:fixed;left:12px;right:12px;bottom:132px;width:auto;max-width:none;top:auto;transform:translateY(8px) scale(.98)}
       .acc-panel.open{transform:none}
-      .nara-window{position:fixed;left:12px;right:12px;bottom:132px;width:auto;max-width:none;top:auto;max-height:calc(100vh - 160px);transform:translateY(8px) scale(.98)}
+      .nara-window{position:fixed;left:12px;right:12px;bottom:140px;width:auto;max-width:none;top:auto;max-height:calc(100vh - 155px);transform:translateY(8px) scale(.98)}
       .nara-window.open{transform:none}
       .acc-body{max-height:none}
       .nara-messages{height:280px}
@@ -1267,16 +1271,507 @@
       background: #0b1d33 !important;
     }
 
-    /* Modals & Dialogs */
-    body.theme-dark .modal-content,
-    body.theme-dark .dialog-content {
-      background-color: #102744 !important;
-      color: #eaf2fb !important;
-      border: 1px solid rgba(40, 169, 225, 0.3) !important;
+    /* -----------------------------------------------------------------
+       DARK MODE FIXES — WELCOME PAGE (Jurusan Cards, Alumni, PTN, Industry)
+       ----------------------------------------------------------------- */
+
+    /* 1. Jurusan Card Subtitle Fix (Text under RPL, KULINER, etc.) */
+    body.theme-dark .cc-full {
+      color: #f4f8fc !important;
     }
-    body.theme-dark .modal-header,
-    body.theme-dark .modal-footer {
-      border-color: rgba(255, 255, 255, 0.08) !important;
+
+    /* 2. Lulusan Terbaik / Featured Alumni Section Dark Mode */
+    body.theme-dark .out-alumni,
+    body.theme-dark .out-sec.out-alumni {
+      background: #061221 !important;
+      background-color: #061221 !important;
+      color: #eaf2fb !important;
+    }
+    body.theme-dark .out-alumni .out-copy::before {
+      color: rgba(255, 255, 255, 0.04) !important;
+    }
+    body.theme-dark .out-alumni .out-kicker {
+      color: #ffb300 !important;
+    }
+    body.theme-dark .out-alumni .out-title {
+      color: #f4f8fc !important;
+    }
+    body.theme-dark .out-alumni .out-desc {
+      color: #c9d8e8 !important;
+    }
+    body.theme-dark .out-alumni .out-route-node {
+      background: #0d213a !important;
+      color: #c9d8e8 !important;
+      border-color: rgba(255, 255, 255, 0.1) !important;
+    }
+    body.theme-dark .out-alumni .out-route-node.gold {
+      background: rgba(255, 179, 0, 0.18) !important;
+      color: #ffd54a !important;
+      border-color: rgba(255, 179, 0, 0.3) !important;
+    }
+    body.theme-dark .out-alumni .out-jurusan-label span {
+      color: #92a0ae !important;
+    }
+    body.theme-dark .out-alumni .out-jurusan-label small {
+      color: #8198b0 !important;
+    }
+    body.theme-dark .out-alumni .out-jurusan-pill {
+      background: #0d213a !important;
+      color: #c9d8e8 !important;
+      border-color: rgba(255, 255, 255, 0.1) !important;
+    }
+    body.theme-dark .out-alumni .out-jurusan-pill.active {
+      background: #1d6fb8 !important;
+      color: #ffffff !important;
+      border-color: #28a9e1 !important;
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.4) !important;
+    }
+    body.theme-dark .out-alumni .out-id-viewport {
+      background: linear-gradient(135deg, rgba(13, 58, 102, 0.5), rgba(29, 111, 184, 0.25)) !important;
+      box-shadow: 0 28px 75px rgba(0, 0, 0, 0.5) !important;
+    }
+    body.theme-dark .out-alumni .out-id-card {
+      background: linear-gradient(145deg, #102744 0%, #0d2338 100%) !important;
+      border-color: rgba(255, 255, 255, 0.12) !important;
+      color: #eaf2fb !important;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.45) !important;
+    }
+    body.theme-dark .out-alumni .out-id-photo {
+      background: #09182b !important;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1), 0 12px 28px rgba(0, 0, 0, 0.4) !important;
+    }
+    body.theme-dark .out-alumni .out-id-brand {
+      color: #f4f8fc !important;
+    }
+    body.theme-dark .out-alumni .out-id-code {
+      color: #8fa8c2 !important;
+    }
+    body.theme-dark .out-alumni .out-id-name {
+      color: #ffffff !important;
+    }
+    body.theme-dark .out-alumni .out-id-role {
+      color: #ffd54a !important;
+    }
+    body.theme-dark .out-alumni .out-id-meta div {
+      background: #0d213a !important;
+      border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    }
+    body.theme-dark .out-alumni .out-id-meta div small {
+      color: #8fa8c2 !important;
+    }
+    body.theme-dark .out-alumni .out-id-meta div b {
+      color: #ffffff !important;
+    }
+    body.theme-dark .out-alumni .out-id-chip {
+      background: #0d213a !important;
+      color: #ffd54a !important;
+      border-color: rgba(255, 213, 74, 0.3) !important;
+    }
+    body.theme-dark .out-alumni .out-arrow {
+      background: #102744 !important;
+      border-color: rgba(255, 255, 255, 0.15) !important;
+      color: #ffffff !important;
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.3) !important;
+    }
+    body.theme-dark .out-alumni .out-arrow:hover {
+      background: #1d6fb8 !important;
+      color: #ffffff !important;
+    }
+    body.theme-dark .out-alumni .out-dot {
+      background: rgba(255, 255, 255, 0.25) !important;
+    }
+    body.theme-dark .out-alumni .out-dot.active {
+      background: #ffb300 !important;
+    }
+
+    /* 3. Lulusan PTN Section Dark Mode */
+    body.theme-dark .out-ptn,
+    body.theme-dark .out-sec.out-ptn {
+      background: #061221 !important;
+      background-color: #061221 !important;
+      color: #eaf2fb !important;
+    }
+    body.theme-dark .out-ptn::before {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px), linear-gradient(45deg, rgba(255, 179, 0, 0.02) 1px, transparent 1px) !important;
+    }
+    body.theme-dark .out-ptn .out-copy::after {
+      color: rgba(255, 255, 255, 0.04) !important;
+    }
+    body.theme-dark .out-ptn .out-kicker {
+      color: #ffb300 !important;
+    }
+    body.theme-dark .out-ptn .out-title {
+      color: #f4f8fc !important;
+    }
+    body.theme-dark .out-ptn .out-desc {
+      color: #c9d8e8 !important;
+    }
+    body.theme-dark .out-ptn-route>span {
+      background: #0d213a !important;
+      color: #c9d8e8 !important;
+      border-color: rgba(255, 255, 255, 0.1) !important;
+    }
+    body.theme-dark .out-ptn-route>span.gold {
+      background: rgba(255, 179, 0, 0.18) !important;
+      color: #ffd54a !important;
+      border-color: rgba(255, 179, 0, 0.3) !important;
+    }
+    body.theme-dark .out-ptn-window {
+      background: linear-gradient(135deg, rgba(13, 58, 102, 0.4), rgba(255, 179, 0, 0.15)) !important;
+      box-shadow: 0 24px 64px rgba(0, 0, 0, 0.45) !important;
+      border-color: rgba(255, 255, 255, 0.1) !important;
+    }
+    body.theme-dark .out-ptn-window::after {
+      color: rgba(255, 255, 255, 0.1) !important;
+    }
+    body.theme-dark .out-ptn-destination-card {
+      background: linear-gradient(145deg, #102744 0%, #0d2338 100%) !important;
+      border-color: rgba(255, 255, 255, 0.12) !important;
+      box-shadow: 0 18px 46px rgba(0, 0, 0, 0.45) !important;
+    }
+    body.theme-dark .out-ptn-card-top {
+      border-bottom-color: rgba(255, 255, 255, 0.08) !important;
+    }
+    body.theme-dark .out-ptn-card-kicker {
+      color: #ffb300 !important;
+    }
+    body.theme-dark .out-ptn-card-mark {
+      background: #0d213a !important;
+      color: #5bb3ea !important;
+      border-color: rgba(255, 255, 255, 0.1) !important;
+    }
+    body.theme-dark .out-ptn-logo-panel {
+      border-right-color: rgba(255, 255, 255, 0.08) !important;
+      border-bottom-color: rgba(255, 255, 255, 0.08) !important;
+    }
+    body.theme-dark .out-ptn-logo-panel small {
+      color: #8fa8c2 !important;
+    }
+    body.theme-dark .out-ptn-logo {
+      background: #0d213a !important;
+      border-color: rgba(255, 255, 255, 0.12) !important;
+      box-shadow: 0 18px 36px rgba(0, 0, 0, 0.4), 0 0 0 9px rgba(255, 179, 0, 0.06) !important;
+    }
+    body.theme-dark .out-ptn-logo span {
+      color: #f4f8fc !important;
+    }
+    body.theme-dark .out-ptn-label {
+      color: #8fa8c2 !important;
+    }
+    body.theme-dark .out-ptn-card-info h3 {
+      color: #ffffff !important;
+    }
+    body.theme-dark .out-ptn-card-info p {
+      color: #c9d8e8 !important;
+    }
+    body.theme-dark .out-ptn-student {
+      background: #0d213a !important;
+      border-color: rgba(255, 179, 0, 0.25) !important;
+      color: #f4f8fc !important;
+      box-shadow: 0 7px 18px rgba(0, 0, 0, 0.3) !important;
+    }
+    body.theme-dark .ptn-student-slide .ptn-student-detail {
+      color: #94b3d4 !important;
+    }
+    body.theme-dark .out-ptn-card-bottom {
+      border-top-color: rgba(255, 255, 255, 0.08) !important;
+      color: #8fa8c2 !important;
+    }
+    body.theme-dark .out-ptn-card-bottom span:first-child {
+      color: #f4f8fc !important;
+    }
+    body.theme-dark .out-ptn .out-arrow {
+      background: #102744 !important;
+      border-color: rgba(255, 255, 255, 0.15) !important;
+      color: #ffffff !important;
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.3) !important;
+    }
+    body.theme-dark .out-ptn .out-arrow:hover {
+      background: #1d6fb8 !important;
+      color: #ffffff !important;
+    }
+    body.theme-dark .out-ptn .out-dot {
+      background: rgba(255, 255, 255, 0.25) !important;
+    }
+    body.theme-dark .out-ptn .out-dot.active {
+      background: #ffb300 !important;
+    }
+
+    /* 4. Kerja Sama Industri Dark Mode */
+    body.theme-dark .out-industry,
+    body.theme-dark .out-sec.out-industry {
+      background: #09182b !important;
+      background-color: #09182b !important;
+    }
+    body.theme-dark .out-industry .out-title {
+      color: #f4f8fc !important;
+    }
+    body.theme-dark .out-industry .out-desc {
+      color: #c9d8e8 !important;
+    }
+    body.theme-dark .out-logo-card {
+      background: #102744 !important;
+      border-color: rgba(255, 255, 255, 0.1) !important;
+    }
+    body.theme-dark .out-ind-pills span {
+      background: #0d213a !important;
+      color: #eaf2fb !important;
+      border-color: rgba(255, 255, 255, 0.1) !important;
+    }
+
+    /* 5. Marquee / Logo Window Side Fade Mask Overrides (Dark Mode) */
+    body.theme-dark .out-logo-window::before,
+    body.theme-dark .ic-marquee-wrap::before {
+      background: linear-gradient(90deg, #09182b, transparent) !important;
+    }
+    body.theme-dark .out-logo-window::after,
+    body.theme-dark .ic-marquee-wrap::after {
+      background: linear-gradient(270deg, #09182b, transparent) !important;
+    }
+
+    /* 6. Sejarah & Page Hero Title (.sejarah-white) White Text in Dark Mode */
+    body.theme-dark .history-title .sejarah-white,
+    body.theme-dark .sejarah-white {
+      color: #ffffff !important;
+    }
+
+    /* 7. Jurusan Card Text (White in Dark Mode, original in Light Mode) */
+    body.theme-dark .cc-full,
+    body.theme-dark .cc-abbr {
+      color: #ffffff !important;
+    }
+
+    /* 8. Navbar "Cari Ekskulmu" Button Text (White in Dark Mode) */
+    body.theme-dark .nav-ai-matchmaker,
+    body.theme-dark .nav-ai-matchmaker > span,
+    body.theme-dark .nav-ai-matchmaker span:not(.ai-nav-badge) {
+      color: #ffffff !important;
+    }
+
+    /* 9. Homepage "Prestasi Sekolah" Cards Dark Mode */
+    body.theme-dark .prestasi-section {
+      background: #061221 !important;
+      color: #eaf2fb !important;
+    }
+    body.theme-dark .prestasi-section .prestasi-title {
+      color: #f4f8fc !important;
+    }
+    body.theme-dark .prestasi-section .prestasi-desc {
+      color: #c9d8e8 !important;
+    }
+    body.theme-dark .prestasi-section .prestasi-feed {
+      background: #102744 !important;
+      border: 1px solid rgba(255, 255, 255, 0.1) !important;
+      color: #eaf2fb !important;
+      box-shadow: 0 24px 54px rgba(0, 0, 0, 0.45) !important;
+    }
+    body.theme-dark .prestasi-section .prestasi-feed-head {
+      background: #0d213a !important;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    }
+    body.theme-dark .prestasi-section .prestasi-feed-account strong {
+      color: #ffffff !important;
+    }
+    body.theme-dark .prestasi-section .prestasi-feed-account span,
+    body.theme-dark .prestasi-section .prestasi-feed-more,
+    body.theme-dark .prestasi-section .prestasi-feed-meta span {
+      color: #8fa8c2 !important;
+    }
+    body.theme-dark .prestasi-section .prestasi-feed-actions {
+      color: #eaf2fb !important;
+    }
+    body.theme-dark .prestasi-section .prestasi-feed-tag {
+      background: #0d213a !important;
+      color: #ffd54a !important;
+      border: 1px solid rgba(255, 213, 74, 0.3) !important;
+    }
+    body.theme-dark .prestasi-section .prestasi-feed-body h3 {
+      color: #ffffff !important;
+    }
+    body.theme-dark .prestasi-section .prestasi-feed-body p {
+      color: #c9d8e8 !important;
+    }
+    body.theme-dark .prestasi-section .prestasi-arrow {
+      background: #102744 !important;
+      border-color: rgba(255, 255, 255, 0.15) !important;
+      color: #ffffff !important;
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.4) !important;
+    }
+    body.theme-dark .prestasi-section .prestasi-arrow:hover {
+      background: #1d6fb8 !important;
+      color: #ffffff !important;
+    }
+
+    /* 10. Visi & Misi Page Dark Mode & White Titles */
+    body.theme-dark .visi-page,
+    body.theme-dark .visi-section,
+    body.theme-dark .nilai-section {
+      background: #061221 !important;
+      color: #eaf2fb !important;
+    }
+    body.theme-dark .visi-hero,
+    body.theme-dark .misi-section,
+    body.theme-dark .tujuan-section {
+      background: #09182b !important;
+      color: #eaf2fb !important;
+    }
+    body.theme-dark .misi-section::before,
+    body.theme-dark .misi-section::after {
+      opacity: 0.15 !important;
+    }
+    body.theme-dark .visi-card,
+    body.theme-dark .misi-card,
+    body.theme-dark .tujuan-card,
+    body.theme-dark .nilai-card {
+      background: #102744 !important;
+      border-color: rgba(255, 255, 255, 0.1) !important;
+      color: #eaf2fb !important;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45) !important;
+    }
+    body.theme-dark .visi-title .visi-white,
+    body.theme-dark .big-heading,
+    body.theme-dark .visi-statement,
+    body.theme-dark .misi-title,
+    body.theme-dark .nilai-title,
+    body.theme-dark .tujuan-title {
+      color: #ffffff !important;
+    }
+    body.theme-dark .eyebrow {
+      color: #5bb3ea !important;
+    }
+    body.theme-dark .eyebrow::before {
+      background: linear-gradient(90deg, #5bb3ea, #2f6fa8) !important;
+    }
+    body.theme-dark .visi-lead,
+    body.theme-dark .misi-desc,
+    body.theme-dark .misi-text,
+    body.theme-dark .nilai-text,
+    body.theme-dark .tujuan-text {
+      color: #c9d8e8 !important;
+    }
+    body.theme-dark .visi-tag {
+      background: #0d213a !important;
+      color: #ffffff !important;
+      border-color: rgba(255, 255, 255, 0.1) !important;
+    }
+    body.theme-dark .visi-kicker {
+      background: #0d213a !important;
+      color: #ffd54a !important;
+      border-color: rgba(255, 213, 74, 0.3) !important;
+    }
+    body.theme-dark .misi-num {
+      color: rgba(255, 255, 255, 0.08) !important;
+      -webkit-text-stroke: 1px rgba(255, 255, 255, 0.1) !important;
+    }
+    body.theme-dark .nilai-icon {
+      background: #0d213a !important;
+      color: #5bb3ea !important;
+      border-color: rgba(255, 255, 255, 0.1) !important;
+    }
+
+    /* 11. Karya Siswa Card Titles (White in Dark Mode) */
+    body.theme-dark .ks-hero,
+    body.theme-dark .ks-page,
+    body.theme-dark .ks-section {
+      background: #061221 !important;
+      color: #eaf2fb !important;
+    }
+    body.theme-dark .ks-title .ks-white {
+      color: #ffffff !important;
+    }
+    body.theme-dark .ks-prestasi-card,
+    body.theme-dark .karya-card,
+    body.theme-dark .work-card {
+      background: #102744 !important;
+      border-color: rgba(255, 255, 255, 0.1) !important;
+    }
+    body.theme-dark .ks-prestasi-body h3,
+    body.theme-dark .ks-prestasi-card h3,
+    body.theme-dark .karya-card h3,
+    body.theme-dark .work-card h3 {
+      color: #ffffff !important;
+    }
+    body.theme-dark .ks-prestasi-body p,
+    body.theme-dark .ks-prestasi-card p,
+    body.theme-dark .karya-card p,
+    body.theme-dark .work-card p {
+      color: #c9d8e8 !important;
+    }
+    body.theme-dark .ks-prestasi-year {
+      color: #8fa8c2 !important;
+    }
+
+    /* 12. Galeri Prestasi Sekolah Sub-page Dark Mode & White Titles */
+    body.theme-dark .psk-page,
+    body.theme-dark .psk-opening,
+    body.theme-dark .psk-gallery {
+      background: #061221 !important;
+      color: #eaf2fb !important;
+    }
+    body.theme-dark .psk-hero,
+    body.theme-dark .psk-featured,
+    body.theme-dark .psk-achv {
+      background: #09182b !important;
+      color: #eaf2fb !important;
+    }
+    body.theme-dark .psk-title .psk-white,
+    body.theme-dark .psk-section-title,
+    body.theme-dark .psk-opening-desc strong,
+    body.theme-dark .psk-om b,
+    body.theme-dark .psk-feat-info h3,
+    body.theme-dark .psk-achv-body h3,
+    body.theme-dark .psk-achv-card h3 {
+      color: #ffffff !important;
+    }
+    body.theme-dark .psk-subtitle,
+    body.theme-dark .psk-lead,
+    body.theme-dark .psk-opening-desc,
+    body.theme-dark .psk-feat-desc,
+    body.theme-dark .psk-achv-body p {
+      color: #c9d8e8 !important;
+    }
+    body.theme-dark .psk-achv-card {
+      background: #102744 !important;
+      border-color: rgba(255, 255, 255, 0.1) !important;
+      color: #eaf2fb !important;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4) !important;
+    }
+    body.theme-dark .psk-achv-tag,
+    body.theme-dark .psk-achv-link,
+    body.theme-dark .psk-feat-meta span {
+      color: #eaf2fb !important;
+    }
+    body.theme-dark .psk-achv-year {
+      background: #0d213a !important;
+      color: #8fa8c2 !important;
+    }
+    body.theme-dark .psk-fbtn,
+    body.theme-dark .psk-ybtn,
+    body.theme-dark .psk-pill,
+    body.theme-dark .psk-more-btn {
+      background: #0d213a !important;
+      color: #eaf2fb !important;
+      border-color: rgba(255, 255, 255, 0.1) !important;
+    }
+    body.theme-dark .psk-fbtn.active,
+    body.theme-dark .psk-ybtn.active {
+      background: #1d6fb8 !important;
+      color: #ffffff !important;
+      border-color: #28a9e1 !important;
+    }
+
+    /* 13. Datepicker Calendar Indicator Fix (Inverted White/Bright Icon in Dark Mode) */
+    body.theme-dark input[type="date"]::-webkit-calendar-picker-indicator,
+    body.theme-dark input[type="datetime-local"]::-webkit-calendar-picker-indicator,
+    body.theme-dark input[type="time"]::-webkit-calendar-picker-indicator {
+      filter: invert(1) brightness(2) !important;
+      cursor: pointer !important;
+      opacity: 1 !important;
+    }
+    body.theme-dark input[type="date"],
+    body.theme-dark input[type="datetime-local"],
+    body.theme-dark input[type="time"] {
+      color-scheme: dark !important;
     }
   </style>
 </head>
@@ -1560,7 +2055,41 @@
 
       <div class="nara-messages" id="naraMessages">
         <div class="nara-msg">
-          <div class="nara-bubble">Halo! Saya <strong>NARA</strong> — <em>Navigator Akademik Ramah &amp; Andal</em> 👋 Ada yang bisa saya bantu?</div>
+          <div class="nara-msg-content">
+            <div class="nara-bubble">Halo! Saya <strong>NARA</strong> — <em>Navigator Akademik Ramah &amp; Andal</em>. Ada yang bisa saya bantu?</div>
+            <div class="nara-quick-inchat">
+              <button type="button" class="nara-quick-card" onclick="sendNaraQuick('Apa saja jurusan di SMKN 2?')">
+                <span class="nara-qc-icon"><i class="fas fa-graduation-cap"></i></span>
+                <span class="nara-qc-text">Info Jurusan</span>
+                <i class="fas fa-chevron-right nara-qc-arrow"></i>
+              </button>
+              <button type="button" class="nara-quick-card" onclick="sendNaraQuick('Bagaimana pendaftaran PPDB?')">
+                <span class="nara-qc-icon"><i class="fas fa-id-card"></i></span>
+                <span class="nara-qc-text">Info PPDB</span>
+                <i class="fas fa-chevron-right nara-qc-arrow"></i>
+              </button>
+              <button type="button" class="nara-quick-card" onclick="sendNaraQuick('Apa saja ekstrakurikuler sekolah?')">
+                <span class="nara-qc-icon"><i class="fas fa-users"></i></span>
+                <span class="nara-qc-text">Info Ekskul</span>
+                <i class="fas fa-chevron-right nara-qc-arrow"></i>
+              </button>
+              <button type="button" class="nara-quick-card" onclick="sendNaraQuick('Bagaimana jadwal jam belajar sekolah?')">
+                <span class="nara-qc-icon"><i class="fas fa-clock"></i></span>
+                <span class="nara-qc-text">Info Jadwal</span>
+                <i class="fas fa-chevron-right nara-qc-arrow"></i>
+              </button>
+              <button type="button" class="nara-quick-card" onclick="sendNaraQuick('Bagaimana info BKK &amp; PKL magang?')">
+                <span class="nara-qc-icon"><i class="fas fa-briefcase"></i></span>
+                <span class="nara-qc-text">Info PKL</span>
+                <i class="fas fa-chevron-right nara-qc-arrow"></i>
+              </button>
+              <button type="button" class="nara-quick-card" onclick="sendNaraQuick('Alamat dan kontak resmi sekolah?')">
+                <span class="nara-qc-icon"><i class="fas fa-location-dot"></i></span>
+                <span class="nara-qc-text">Info Kontak</span>
+                <i class="fas fa-chevron-right nara-qc-arrow"></i>
+              </button>
+            </div>
+          </div>
           <div class="nara-time">Sekarang</div>
         </div>
       </div>
@@ -1744,22 +2273,48 @@
   window.clearNaraChat = function(){
     const msgs = document.getElementById('naraMessages');
     if(!msgs) return;
-    msgs.innerHTML = '<div class="nara-msg"><div class="nara-bubble">Halo lagi! Saya <strong>NARA</strong> 👋 Ada yang bisa saya bantu?</div><div class="nara-time">' + naraNowLabel() + '</div></div>';
+    msgs.innerHTML = '<div class="nara-msg"><div class="nara-msg-content"><div class="nara-bubble">Halo lagi! Saya <strong>NARA</strong>. Ada yang bisa saya bantu?</div><div class="nara-quick-inchat"><button type="button" class="nara-quick-card" onclick="sendNaraQuick(\'Apa saja jurusan di SMKN 2?\')"><span class="nara-qc-icon"><i class="fas fa-graduation-cap"></i></span><span class="nara-qc-text">Info Jurusan</span><i class="fas fa-chevron-right nara-qc-arrow"></i></button><button type="button" class="nara-quick-card" onclick="sendNaraQuick(\'Bagaimana pendaftaran PPDB?\')"><span class="nara-qc-icon"><i class="fas fa-id-card"></i></span><span class="nara-qc-text">Info PPDB</span><i class="fas fa-chevron-right nara-qc-arrow"></i></button><button type="button" class="nara-quick-card" onclick="sendNaraQuick(\'Apa saja ekstrakurikuler sekolah?\')"><span class="nara-qc-icon"><i class="fas fa-users"></i></span><span class="nara-qc-text">Info Ekskul</span><i class="fas fa-chevron-right nara-qc-arrow"></i></button><button type="button" class="nara-quick-card" onclick="sendNaraQuick(\'Bagaimana jadwal jam belajar sekolah?\')"><span class="nara-qc-icon"><i class="fas fa-clock"></i></span><span class="nara-qc-text">Info Jadwal</span><i class="fas fa-chevron-right nara-qc-arrow"></i></button><button type="button" class="nara-quick-card" onclick="sendNaraQuick(\'Bagaimana info BKK & PKL magang?\')"><span class="nara-qc-icon"><i class="fas fa-briefcase"></i></span><span class="nara-qc-text">Info PKL</span><i class="fas fa-chevron-right nara-qc-arrow"></i></button><button type="button" class="nara-quick-card" onclick="sendNaraQuick(\'Alamat dan kontak resmi sekolah?\')"><span class="nara-qc-icon"><i class="fas fa-location-dot"></i></span><span class="nara-qc-text">Info Kontak</span><i class="fas fa-chevron-right nara-qc-arrow"></i></button></div></div><div class="nara-time">' + naraNowLabel() + '</div></div>';
   };
 
   const smartLocalAnswers = {
     jurusan: "SMK Negeri 2 Mojokerto memiliki 5 Konsentrasi Keahlian unggulan:\n1. Rekayasa Perangkat Lunak (RPL) - Software & Pemrograman\n2. Desain Komunikasi Visual (DKV) - Multimedia, Grafis & Animasi\n3. Agribisnis Pengolahan Hasil Pertanian (APHP) - Pangan Modern\n4. Kuliner (Tata Boga) - Seni Olah Rasa & Restoran\n5. Layanan Perbankan Syariah (LPS) - Keuangan Syariah",
+    fasilitas: "Fasilitas & Virtual Tour 360° SMKN 2 Mojokerto:\nSekolah kami dilengkapi fasilitas lengkap seperti Gerbang Utama, Lobi Utama, Lapangan Olahraga, Aula Serbaguna, Kantin Sekolah, Musholla, Area Parkir, Perpustakaan Digital, serta Laboratorium Praktik (Lab RPL, DKV, LPS, APHP, Dapur Kuliner). Seluruh lokasi ini dapat dikunjungi dan dilihat 360° di menu Virtual Tour (/profile/tour).",
     ppdb: "Informasi PPDB SMKN 2 Mojokerto:\nPendaftaran dilakukan secara online melalui portal resmi PPDB Jawa Timur (Jalur Prestasi, Afirmasi, dan Zonasi). Pendaftaran TIDAK DIPUNGUT BIAYA (GRATIS).",
     ekskul: "Ekstrakurikuler SMKN 2 Mojokerto:\nPramuka (Wajib), Paskibra, Robotik & Coding Club, PMR, Olahraga (Futsal, Basket, Voli), Seni Musik & Tari, serta Kerohanian Islam.",
     jadwal: "Jam Belajar SMKN 2 Mojokerto:\nKegiatan Belajar Mengajar (KBM) berlangsung Senin hingga Jumat pukul 07.00 WIB - 15.30 WIB. Gerbang sekolah ditutup tepat pukul 07.00 WIB. Hari Sabtu dan Minggu libur.",
     pkl: "BKK & Kemitraan Industri SMKN 2 Mojokerto:\nUnit BKK memfasilitasi Praktek Kerja Lapangan (PKL) dan penyaluran lulusan ke mitra industri seperti PT Telkom, PT Astra International, Bank Syariah Indonesia, dan industri perhotelan/pangan.",
     kontak: "Alamat dan Kontak Resmi SMKN 2 Mojokerto:\nAlamat: Jl. Raden Wijaya No. 1, Kranggan, Kota Mojokerto, Jawa Timur\nTelepon: (0321) 321555\nEmail: info@smkn2mojokerto.sch.id",
-    default: "Halo! 👋 Saya NARA SKANEDA (SMKN 2 Kota Mojokerto Assistance & Resource Agent). Maaf, informasi tersebut belum tersedia dalam basis pengetahuan resmi SMKN 2 Kota Mojokerto."
+    struktur: "Struktur Organisasi SMKN 2 Mojokerto:\n• Kepala Sekolah: Iswahyudi S.ST. M.Pd.\n• Waka Kurikulum: MELATI PUSPITA SARI, S.Pd.\n• Waka Kesiswaan: AINUR ROFIK, M. Pd, Si.\n• Waka Sarpras: M. WIRA HENDY HIMAWAN, M.Pd\n• Waka Humastri: ARIKAWWEKU CKRISNA, S.Pd.\n• Bendahara BOS: MEGA NOVINDA SARI, S.Pd.\n• Bendahara BPOPP: FAJAR DHILAMAYA, S.Pd.\n• Koordinator BKK: MULAT ADITYAWIRANTI, S.Pd.\n• Kaprog RPL: DANANG TEGUH SANTOSO, S.Kom\n• Kaprog DKV: NURFALAH SEPTAYOGA S.Kom.\n• Kaprog APHP: DESY ANDINI DILIAWATI, S.T.P.\n• Kaprog Kuliner: DHIYAH AMANATI KARTIKA SARI, S.Pd.\n• Kaprog LPS: METIY ARIANA, S.Pd, M.Pd.\nDetail lengkap dapat dilihat di menu Struktur Organisasi (/profile/structure).",
+    waka: "Wakil Kepala Sekolah (Waka) SMKN 2 Mojokerto:\n1. Waka Kurikulum: MELATI PUSPITA SARI, S.Pd.\n2. Waka Kesiswaan: AINUR ROFIK, M. Pd, Si.\n3. Waka Sarana & Prasarana: M. WIRA HENDY HIMAWAN, M.Pd\n4. Waka Humastri: ARIKAWWEKU CKRISNA, S.Pd.",
+    kaprog: "Ketua Program Keahlian (Kaprog/Kaprodi) SMKN 2 Mojokerto:\n• RPL (PPLG): DANANG TEGUH SANTOSO, S.Kom\n• DKV: NURFALAH SEPTAYOGA S.Kom.\n• APHP: DESY ANDINI DILIAWATI, S.T.P.\n• Kuliner: DHIYAH AMANATI KARTIKA SARI, S.Pd.\n• LPS: METIY ARIANA, S.Pd, M.Pd.",
+    bendahara: "Bendahara SMKN 2 Mojokerto:\n• Bendahara BOS: MEGA NOVINDA SARI, S.Pd.\n• Bendahara BPOPP: FAJAR DHILAMAYA, S.Pd.",
+    sejarah: "Sejarah SMKN 2 Mojokerto:\nBerdiri di kawasan Kranggan, Kota Mojokerto sebagai SMK Pusat Keunggulan (PK) dengan 5 konsentrasi keahlian berstandar nasional dan internasional. Selengkapnya di menu Sejarah Sekolah (/profile/history).",
+    visi: "Visi SMKN 2 Mojokerto:\nTerwujudnya lulusan yang berakhlak mulia, kompeten, berjiwa wirausaha, dan berdaya saing global.",
+    staf: "Tenaga Kependidikan / Staf SMKN 2 Mojokerto:\nSMK Negeri 2 Mojokerto memiliki 20+ Tenaga Kependidikan & Staf yang mengelola administrasi, keuangan, perpustakaan, dan layanan operasional sekolah:\n• Bendahara BOS: MEGA NOVINDA SARI, S.Pd.\n• Bendahara BPOPP: FAJAR DHILAMAYA, S.Pd.\n• Koordinator BKK: MULAT ADITYAWIRANTI, S.Pd.\n• Staf TU, Perpustakaan Digital, Teknisi Lab & Pengelola Sarana.\nDetail selengkapnya di menu Staff & Guru (/profile/staff-guru).",
+    guru: "Tenaga Pendidik / Guru SMKN 2 Mojokerto:\nSMK Negeri 2 Mojokerto didukung oleh 67+ Guru Profesional bersertifikasi di bidang produktif keahlian (RPL, DKV, APHP, Kuliner, LPS) maupun normatif-adaptif.\nDetail selengkapnya di menu Staff & Guru (/profile/staff-guru).",
+    karya: "Karya & Produk Inovatif Siswa SMKN 2 Kota Mojokerto:\n1. MultiMie & Sari Bunga Telang (Produk Olahan Pangan APHP & Kuliner)\n2. Aplikasi Tambal Ban Express (Mobile App Karya Siswa RPL)\n3. Nirmana 3D & Visual Branding (Desain Grafis & Fotografi Studio DKV)\n4. Pastry & Bakery TEFA (Roti & Cake Teaching Factory Kuliner)\n5. Maja Mojo & Bei Mie (Inovasi Pangan APHP)\n6. Layanan Mini Bank Syariah (Praktik Keuangan Syariah LPS)\nDetail selengkapnya di menu Karya Siswa (/siswa/karya).",
+    kegiatan: "Jurnal Kegiatan & Agenda SMKN 2 Kota Mojokerto:\n• Uji Kompetensi Keahlian (UKK) Bersama Penguji DUDIKA\n• Program Budaya Kawi Laras (Pelestarian Busana Tradisional)\n• PKL & Rekrutmen Bursa Kerja Khusus (BKK)\n• Pentas Seni (Pensi), TEFA Expo, & Pameran Karya Siswa\n• Gerakan Sekolah Sehat (GSS) & Imtaq Masjid Al-Ikhlas\nDetail selengkapnya di menu Kegiatan (/galeri/kegiatan).",
+    berita: "Berita & Kabar Terbaru SMKN 2 Kota Mojokerto:\n• Pelatihan Web Framework Laravel 2024\n• Pelaksanaan Uji Kompetensi Keahlian (UKK)\n• Edukasi & Literasi Keuangan Syariah bersama BSI\n• Program Budaya Kawi Laras\n• Program Gerakan Sekolah Sehat (GSS)\nDetail artikel lengkap di menu Berita (/berita).",
+    prestasi: "Prestasi Unggulan Siswa SMKN 2 Kota Mojokerto:\n• Juara FESTIKA Jatim 2025\n• Juara 1 Pencak Silat KONI Championship (Dhiva Alennia)\n• Juara 1 Web Development Polinema (Tim Penerbang Roket RPL)\n• Medali Perak LKS Nasional Bidang Kuliner\n• Juara 3 LKS Jawa Timur 2026\n• Finalis FIKSI Nasional 2025\nDetail selengkapnya di menu Prestasi Siswa (/siswa/prestasi).",
+    default: "Saya NARA SKANEDA (SMKN 2 Kota Mojokerto Assistance & Resource Agent). Maaf, informasi tersebut belum tersedia dalam basis pengetahuan resmi SMKN 2 Kota Mojokerto."
   };
 
   function getSmartLocalAnswer(text){
     const t = (text||'').toLowerCase();
+    if(t.includes('waka')||t.includes('wakil')) return smartLocalAnswers.waka;
+    if(t.includes('kaprog')||t.includes('kaprodi')||t.includes('ketua program')||t.includes('ketua jurusan')) return smartLocalAnswers.kaprog;
+    if(t.includes('bendahara')||t.includes('bos')||t.includes('bpopp')) return smartLocalAnswers.bendahara;
+    if(t.includes('struktur')||t.includes('organisasi')||t.includes('bagan')||t.includes('komite')) return smartLocalAnswers.struktur;
+    if(t.includes('sejarah')||t.includes('berdiri')) return smartLocalAnswers.sejarah;
+    if(t.includes('visi')||t.includes('misi')) return smartLocalAnswers.visi;
+    if(t.includes('staf')||t.includes('staff')||t.includes('kependidikan')||t.includes('tata usaha')||t.includes('tu')) return smartLocalAnswers.staf;
+    if(t.includes('guru')||t.includes('pendidik')||t.includes('pengajar')||t.includes('kepsek')||t.includes('iswahyudi')) return smartLocalAnswers.guru;
+    if(t.includes('karya')||t.includes('produk')) return smartLocalAnswers.karya;
+    if(t.includes('kegiatan')||t.includes('acara')||t.includes('agenda')) return smartLocalAnswers.kegiatan;
+    if(t.includes('berita')||t.includes('kabar')||t.includes('artikel')) return smartLocalAnswers.berita;
+    if(t.includes('prestasi')||t.includes('juara')||t.includes('lks')||t.includes('lomba')) return smartLocalAnswers.prestasi;
     if(t.includes('jurusan')||t.includes('proli')||t.includes('keahlian')||t.includes('rpl')||t.includes('dkv')||t.includes('aphp')||t.includes('kuliner')||t.includes('lps')) return smartLocalAnswers.jurusan;
+    if(t.includes('fasilitas')||t.includes('gerbang')||t.includes('kantin')||t.includes('musholla')||t.includes('masjid')||t.includes('lobi')||t.includes('aula')||t.includes('lapangan')||t.includes('parkir')||t.includes('tour')||t.includes('360')||t.includes('tempat')||t.includes('sarana')) return smartLocalAnswers.fasilitas;
     if(t.includes('ppdb')||t.includes('daftar')||t.includes('masuk')) return smartLocalAnswers.ppdb;
     if(t.includes('ekskul')||t.includes('ekstrakurikuler')||t.includes('ekstra')) return smartLocalAnswers.ekskul;
     if(t.includes('jadwal')||t.includes('jam')||t.includes('masuk')||t.includes('pulang')) return smartLocalAnswers.jadwal;

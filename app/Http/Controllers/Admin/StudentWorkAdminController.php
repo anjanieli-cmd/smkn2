@@ -7,6 +7,7 @@ use App\Models\StudentWork;
 use App\Support\ApiResponse;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class StudentWorkAdminController extends Controller
 {
@@ -40,10 +41,22 @@ class StudentWorkAdminController extends Controller
             'major_id' => ['required', 'string', 'exists:majors,id'],
             'description' => ['required', 'string'],
             'media_url' => ['nullable', 'string', 'max:500'],
+            'image_url' => ['nullable', 'string', 'max:500'],
+            'image_file' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,webp,svg', 'max:5120'],
             'status' => ['nullable', 'string', 'max:50'],
         ]);
 
-        $validated['status'] = $validated['status'] ?? 'APPROVED';
+        if ($request->hasFile('image_file')) {
+            $file = $request->file('image_file');
+            $filename = time() . '_' . Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)) . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('images/karya'), $filename);
+            $validated['media_url'] = 'images/karya/' . $filename;
+        } elseif (!empty($validated['image_url'])) {
+            $validated['media_url'] = $validated['image_url'];
+        }
+
+        unset($validated['image_file'], $validated['image_url']);
+        $validated['status'] = $validated['status'] ?? 'PUBLISHED';
 
         $work = StudentWork::create($validated);
 
@@ -75,8 +88,21 @@ class StudentWorkAdminController extends Controller
             'major_id' => ['sometimes', 'required', 'string', 'exists:majors,id'],
             'description' => ['sometimes', 'required', 'string'],
             'media_url' => ['nullable', 'string', 'max:500'],
+            'image_url' => ['nullable', 'string', 'max:500'],
+            'image_file' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,webp,svg', 'max:5120'],
             'status' => ['nullable', 'string', 'max:50'],
         ]);
+
+        if ($request->hasFile('image_file')) {
+            $file = $request->file('image_file');
+            $filename = time() . '_' . Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)) . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('images/karya'), $filename);
+            $validated['media_url'] = 'images/karya/' . $filename;
+        } elseif (array_key_exists('image_url', $validated) && !empty($validated['image_url'])) {
+            $validated['media_url'] = $validated['image_url'];
+        }
+
+        unset($validated['image_file'], $validated['image_url']);
 
         $work->update($validated);
 

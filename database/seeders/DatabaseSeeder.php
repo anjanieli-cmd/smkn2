@@ -98,23 +98,24 @@ class DatabaseSeeder extends Seeder
         );
 
         // 3. Extracurriculars & Organizations (Exact from Website Frontend)
-        $pramuka = Extracurricular::updateOrCreate(['slug' => 'pramuka'], ['name' => 'Pramuka', 'category' => 'Kepanduan', 'description' => 'Membentuk kemandirian, kepemimpinan, kepedulian lingkungan, dan keterampilan melalui kegiatan kepanduan.']);
-        $paskibra = Extracurricular::updateOrCreate(['slug' => 'paskib'], ['name' => 'Paskib', 'category' => 'Kedisiplinan', 'description' => 'Membentuk kedisiplinan, keteguhan, tanggung jawab, dan kekompakan melalui latihan baris-berbaris.']);
-        $robotik = Extracurricular::updateOrCreate(['slug' => 'robotik-coding-club'], ['name' => 'Robotik & Coding Club', 'category' => 'Teknologi', 'description' => 'Pengembangan minat bakat di bidang mikrokontroler, IoT, perakitan robot, dan pemrograman.']);
-        $banjari = Extracurricular::updateOrCreate(['slug' => 'banjari'], ['name' => 'Banjari', 'category' => 'Keagamaan', 'description' => 'Mengembangkan seni musik Islami melalui lantunan shalawat, kekompakan, dan penampilan dalam kegiatan sekolah.']);
-        $basket = Extracurricular::updateOrCreate(['slug' => 'basket'], ['name' => 'Basket', 'category' => 'Olahraga', 'description' => 'Melatih teknik permainan, kebugaran, sportivitas, dan kerja sama tim melalui latihan serta pertandingan pelajar.']);
-        $voli = Extracurricular::updateOrCreate(['slug' => 'bola-voli'], ['name' => 'Bola Voli', 'category' => 'Olahraga', 'description' => 'Membangun kekompakan tim melalui latihan teknik dasar, strategi permainan, dan kompetisi antarpelajar.']);
-        $btq = Extracurricular::updateOrCreate(['slug' => 'btq'], ['name' => 'BTQ', 'category' => 'Keagamaan', 'description' => 'Meningkatkan kemampuan membaca Al-Qur’an dengan baik serta membangun kebiasaan belajar agama secara rutin.']);
-        $futsal = Extracurricular::updateOrCreate(['slug' => 'futsal'], ['name' => 'Futsal', 'category' => 'Olahraga', 'description' => 'Mengasah kecepatan, strategi, disiplin, dan kerja sama tim melalui latihan futsal dan pertandingan pelajar.']);
-        $jurnalistik = Extracurricular::updateOrCreate(['slug' => 'jurnalistik'], ['name' => 'Jurnalistik', 'category' => 'Media & Literasi', 'description' => 'Menjadi ruang bagi siswa untuk menulis, meliput kegiatan sekolah, mengolah informasi, dan menghasilkan karya media.']);
-        $tari = Extracurricular::updateOrCreate(['slug' => 'tari'], ['name' => 'Tari', 'category' => 'Seni & Budaya', 'description' => 'Melestarikan budaya melalui tari tradisional dan kreasi serta memberikan ruang untuk tampil dan berkarya.']);
-        $pena = Extracurricular::updateOrCreate(['slug' => 'pena'], ['name' => 'PENA', 'category' => 'Seni & Budaya', 'description' => 'Wadah mini teater untuk melatih ekspresi, kepercayaan diri, penulisan naskah, dan kemampuan tampil di depan publik.']);
-        $silat = Extracurricular::updateOrCreate(['slug' => 'silat'], ['name' => 'Silat', 'category' => 'Bela Diri', 'description' => 'Melatih bela diri, ketahanan fisik, kedisiplinan, dan sikap percaya diri melalui latihan pencak silat.']);
-        $pmr = Extracurricular::updateOrCreate(['slug' => 'pmr'], ['name' => 'PMR', 'category' => 'Kesehatan', 'description' => 'Membekali siswa dengan kepedulian kemanusiaan, pertolongan pertama, dan kesiapsiagaan dalam kegiatan sekolah.']);
-        $pikr = Extracurricular::updateOrCreate(['slug' => 'pik-r'], ['name' => 'PIK-R', 'category' => 'Kesehatan', 'description' => 'Menjadi ruang edukasi dan konseling sebaya untuk membangun remaja yang sehat, bertanggung jawab, dan berencana.']);
-        $osis = Extracurricular::updateOrCreate(['slug' => 'osis'], ['name' => 'OSIS', 'category' => 'Organisasi', 'description' => 'Wadah utama kepemimpinan siswa untuk merancang dan menjalankan berbagai program kegiatan sekolah.']);
-        $lacurva = Extracurricular::updateOrCreate(['slug' => 'lacurva'], ['name' => 'Lacurva', 'category' => 'Organisasi', 'description' => 'Komunitas suporter Skaneda yang membangun semangat, kreativitas, dan dukungan positif untuk kegiatan serta prestasi siswa.']);
-        $pasus = Extracurricular::updateOrCreate(['slug' => 'pasus'], ['name' => 'Pasus', 'category' => 'Organisasi', 'description' => 'Organisasi siswa yang menumbuhkan kedisiplinan, tanggung jawab, kekompakan, dan kesiapan membantu kegiatan sekolah.']);
+        // Digabung: updateOrCreate (aman dijalankan ulang) + image_url dari versi terbaru.
+        $pramuka = Extracurricular::updateOrCreate(['slug' => 'pramuka'], ['name' => 'Pramuka', 'category' => 'Kepanduan', 'image_url' => 'images/ekstra/pramuka.jpg', 'description' => 'Membentuk kemandirian, kepemimpinan, kepedulian lingkungan, dan keterampilan melalui kegiatan kepanduan.']);
+        $paskibra = Extracurricular::updateOrCreate(['slug' => 'paskib'], ['name' => 'Paskib', 'category' => 'Kedisiplinan', 'image_url' => 'images/ekstra/paskibra.jpeg', 'description' => 'Membentuk kedisiplinan, keteguhan, tanggung jawab, dan kekompakan melalui latihan baris-berbaris.']);
+        $robotik = Extracurricular::updateOrCreate(['slug' => 'robotik-coding-club'], ['name' => 'Robotik & Coding Club', 'category' => 'Teknologi', 'image_url' => 'images/ekstra/robotik.jpg', 'description' => 'Pengembangan minat bakat di bidang mikrokontroler, IoT, perakitan robot, dan pemrograman.']);
+        $banjari = Extracurricular::updateOrCreate(['slug' => 'banjari'], ['name' => 'Banjari', 'category' => 'Keagamaan', 'image_url' => 'images/ekstra/banjari.jpg', 'description' => 'Mengembangkan seni musik Islami melalui lantunan shalawat, kekompakan, dan penampilan dalam kegiatan sekolah.']);
+        $basket = Extracurricular::updateOrCreate(['slug' => 'basket'], ['name' => 'Basket', 'category' => 'Olahraga', 'image_url' => 'images/ekstra/basket.jpg', 'description' => 'Melatih teknik permainan, kebugaran, sportivitas, dan kerja sama tim melalui latihan serta pertandingan pelajar.']);
+        $voli = Extracurricular::updateOrCreate(['slug' => 'bola-voli'], ['name' => 'Bola Voli', 'category' => 'Olahraga', 'image_url' => 'images/ekstra/voly.jpg', 'description' => 'Membangun kekompakan tim melalui latihan teknik dasar, strategi permainan, dan kompetisi antarpelajar.']);
+        $btq = Extracurricular::updateOrCreate(['slug' => 'btq'], ['name' => 'BTQ', 'category' => 'Keagamaan', 'image_url' => 'images/ekstra/btq.jpg', 'description' => 'Meningkatkan kemampuan membaca Al-Qur’an dengan baik serta membangun kebiasaan belajar agama secara rutin.']);
+        $futsal = Extracurricular::updateOrCreate(['slug' => 'futsal'], ['name' => 'Futsal', 'category' => 'Olahraga', 'image_url' => 'images/ekstra/futsal.jpg', 'description' => 'Mengasah kecepatan, strategi, disiplin, dan kerja sama tim melalui latihan futsal dan pertandingan pelajar.']);
+        $jurnalistik = Extracurricular::updateOrCreate(['slug' => 'jurnalistik'], ['name' => 'Jurnalistik', 'category' => 'Media & Literasi', 'image_url' => 'images/ekstra/jurnalistik.jpg', 'description' => 'Menjadi ruang bagi siswa untuk menulis, meliput kegiatan sekolah, mengolah informasi, dan menghasilkan karya media.']);
+        $tari = Extracurricular::updateOrCreate(['slug' => 'tari'], ['name' => 'Tari', 'category' => 'Seni & Budaya', 'image_url' => 'images/ekstra/tari.jpg', 'description' => 'Melestarikan budaya melalui tari tradisional dan kreasi serta memberikan ruang untuk tampil dan berkarya.']);
+        $pena = Extracurricular::updateOrCreate(['slug' => 'pena'], ['name' => 'PENA', 'category' => 'Seni & Budaya', 'image_url' => 'images/ekstra/pena.jpg', 'description' => 'Wadah mini teater untuk melatih ekspresi, kepercayaan diri, penulisan naskah, dan kemampuan tampil di depan publik.']);
+        $silat = Extracurricular::updateOrCreate(['slug' => 'silat'], ['name' => 'Silat', 'category' => 'Bela Diri', 'image_url' => 'images/ekstra/silat.jpeg', 'description' => 'Melatih bela diri, ketahanan fisik, kedisiplinan, dan sikap percaya diri melalui latihan pencak silat.']);
+        $pmr = Extracurricular::updateOrCreate(['slug' => 'pmr'], ['name' => 'PMR', 'category' => 'Kesehatan', 'image_url' => 'images/ekstra/pmr.jpg', 'description' => 'Membekali siswa dengan kepedulian kemanusiaan, pertolongan pertama, dan kesiapsiagaan dalam kegiatan sekolah.']);
+        $pikr = Extracurricular::updateOrCreate(['slug' => 'pik-r'], ['name' => 'PIK-R', 'category' => 'Kesehatan', 'image_url' => 'images/ekstra/pik-r.jpg', 'description' => 'Menjadi ruang edukasi dan konseling sebaya untuk membangun remaja yang sehat, bertanggung jawab, dan berencana.']);
+        $osis = Extracurricular::updateOrCreate(['slug' => 'osis'], ['name' => 'OSIS', 'category' => 'Organisasi', 'image_url' => 'images/ekstra/osis.jpg', 'description' => 'Wadah utama kepemimpinan siswa untuk merancang dan menjalankan berbagai program kegiatan sekolah.']);
+        $lacurva = Extracurricular::updateOrCreate(['slug' => 'lacurva'], ['name' => 'Lacurva', 'category' => 'Organisasi', 'image_url' => 'images/ekstra/lacurva.jpg', 'description' => 'Komunitas suporter Skaneda yang membangun semangat, kreativitas, dan dukungan positif untuk kegiatan serta prestasi siswa.']);
+        $pasus = Extracurricular::updateOrCreate(['slug' => 'pasus'], ['name' => 'Pasus', 'category' => 'Organisasi', 'image_url' => 'images/ekstra/pasus.jpg', 'description' => 'Organisasi siswa yang menumbuhkan kedisiplinan, tanggung jawab, kekompakan, dan kesiapan membantu kegiatan sekolah.']);
 
         // 4. Extracurricular Matchmaker Quiz
         $q1 = ExtracurricularQuestion::firstOrCreate(
@@ -138,7 +139,7 @@ class DatabaseSeeder extends Seeder
 
         // 5. Teacher & Staff (All entries matching user page)
         $teachersData = array (
-  0 => 
+  0 =>
   array (
     'name' => 'Iswahyudi, S.ST.',
     'nip' => 'SKN-001-G',
@@ -146,7 +147,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/iswahyudi.png',
     'is_active' => true,
   ),
-  1 => 
+  1 =>
   array (
     'name' => 'Dra. Lugiati',
     'nip' => 'SKN-002-G',
@@ -154,7 +155,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/lugiati.png',
     'is_active' => true,
   ),
-  2 => 
+  2 =>
   array (
     'name' => 'Sri Mulyati, S.Pd.',
     'nip' => 'SKN-003-G',
@@ -162,7 +163,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/srimul.png',
     'is_active' => true,
   ),
-  3 => 
+  3 =>
   array (
     'name' => 'Harjo Santoso, S.Pd.',
     'nip' => 'SKN-004-G',
@@ -170,7 +171,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/harjo.png',
     'is_active' => true,
   ),
-  4 => 
+  4 =>
   array (
     'name' => 'Endah Trapsilawati Nawangsih, S.Pd.',
     'nip' => 'SKN-005-G',
@@ -178,7 +179,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/endah.png',
     'is_active' => true,
   ),
-  5 => 
+  5 =>
   array (
     'name' => 'Ainur Rofik, M.Pd.,Si.',
     'nip' => 'SKN-006-G',
@@ -186,7 +187,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/rofik.png',
     'is_active' => true,
   ),
-  6 => 
+  6 =>
   array (
     'name' => 'Liawanti Gestika Ardiyana, S.Pi.',
     'nip' => 'SKN-007-G',
@@ -194,7 +195,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/liawanti.png',
     'is_active' => true,
   ),
-  7 => 
+  7 =>
   array (
     'name' => 'Sri Andrijanti, S.Pd.',
     'nip' => 'SKN-008-G',
@@ -202,7 +203,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/andri.png',
     'is_active' => true,
   ),
-  8 => 
+  8 =>
   array (
     'name' => 'Nurul Hidayah, S.E.',
     'nip' => 'SKN-009-G',
@@ -210,7 +211,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/nurul.png',
     'is_active' => true,
   ),
-  9 => 
+  9 =>
   array (
     'name' => 'Rudik Sanjaya Sugiarto, SS.,MBA.',
     'nip' => 'SKN-010-G',
@@ -218,7 +219,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/rudik.png',
     'is_active' => true,
   ),
-  10 => 
+  10 =>
   array (
     'name' => 'Indira Kusumaning Fuadah, S.Pd.',
     'nip' => 'SKN-011-G',
@@ -226,7 +227,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/indira.png',
     'is_active' => true,
   ),
-  11 => 
+  11 =>
   array (
     'name' => 'Arikaweku Ckrisna, S. Pd., M.Pd.',
     'nip' => 'SKN-012-G',
@@ -234,7 +235,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/arikaweku.png',
     'is_active' => true,
   ),
-  12 => 
+  12 =>
   array (
     'name' => 'Leni Kristiana Dewi, S.T.',
     'nip' => 'SKN-013-G',
@@ -242,7 +243,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/leni.png',
     'is_active' => true,
   ),
-  13 => 
+  13 =>
   array (
     'name' => 'Supriati, S.Kom.',
     'nip' => 'SKN-014-G',
@@ -250,7 +251,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/supriati.png',
     'is_active' => true,
   ),
-  14 => 
+  14 =>
   array (
     'name' => 'Mochammad Arsori, S.Pd.',
     'nip' => 'SKN-015-G',
@@ -258,7 +259,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/asrori.png',
     'is_active' => true,
   ),
-  15 => 
+  15 =>
   array (
     'name' => 'Rahmat Efendi, S.Pd.',
     'nip' => 'SKN-016-G',
@@ -266,7 +267,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/efendi.png',
     'is_active' => true,
   ),
-  16 => 
+  16 =>
   array (
     'name' => 'Metiy Ardiana, S.Pd, M.Pd.',
     'nip' => 'SKN-017-G',
@@ -274,7 +275,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/metiy.png',
     'is_active' => true,
   ),
-  17 => 
+  17 =>
   array (
     'name' => 'M. Wira Hendy Himawan, M.Pd.',
     'nip' => 'SKN-018-G',
@@ -282,7 +283,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/wira.png',
     'is_active' => true,
   ),
-  18 => 
+  18 =>
   array (
     'name' => 'Danang Teguh Santoso, S.Kom.',
     'nip' => 'SKN-019-G',
@@ -290,7 +291,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/danang.png',
     'is_active' => true,
   ),
-  19 => 
+  19 =>
   array (
     'name' => 'Dhiyah Amanati Kartika Sari, S.Pd.',
     'nip' => 'SKN-020-G',
@@ -298,7 +299,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/dhiyah.png',
     'is_active' => true,
   ),
-  20 => 
+  20 =>
   array (
     'name' => 'Melati Puspita Sari, S.Pd.',
     'nip' => 'SKN-021-G',
@@ -306,7 +307,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/melati.png',
     'is_active' => true,
   ),
-  21 => 
+  21 =>
   array (
     'name' => 'Intan Switzerlistania Martha, S.Pi.',
     'nip' => 'SKN-022-G',
@@ -314,7 +315,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/martha.png',
     'is_active' => true,
   ),
-  22 => 
+  22 =>
   array (
     'name' => 'Eka Ardian Suharko, M.Pd.',
     'nip' => 'SKN-023-G',
@@ -322,7 +323,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/eka.png',
     'is_active' => true,
   ),
-  23 => 
+  23 =>
   array (
     'name' => 'Hafid Setiawan, S.Pd.',
     'nip' => 'SKN-024-G',
@@ -330,7 +331,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/hafid.png',
     'is_active' => true,
   ),
-  24 => 
+  24 =>
   array (
     'name' => 'Sri Astutik Ningsih, ST.',
     'nip' => 'SKN-025-G',
@@ -338,7 +339,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/ningsih.png',
     'is_active' => true,
   ),
-  25 => 
+  25 =>
   array (
     'name' => 'Anissa Diana Sugiyono, S.Pd.',
     'nip' => 'SKN-026-G',
@@ -346,7 +347,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/anissa.png',
     'is_active' => true,
   ),
-  26 => 
+  26 =>
   array (
     'name' => 'Lastiani Sundari, S.Pd.',
     'nip' => 'SKN-027-G',
@@ -354,7 +355,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/lastiani.png',
     'is_active' => true,
   ),
-  27 => 
+  27 =>
   array (
     'name' => 'Ika Noviyati, S.Pd.',
     'nip' => 'SKN-028-G',
@@ -362,7 +363,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/ika.png',
     'is_active' => true,
   ),
-  28 => 
+  28 =>
   array (
     'name' => 'Vebriyanti Dwi Anggraini, S.Pd., M.Pd.',
     'nip' => 'SKN-029-G',
@@ -370,7 +371,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/vebri.png',
     'is_active' => true,
   ),
-  29 => 
+  29 =>
   array (
     'name' => 'Lilik Emi Rahayu, S.Pd., M.Pd.',
     'nip' => 'SKN-030-G',
@@ -378,7 +379,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/lilik.png',
     'is_active' => true,
   ),
-  30 => 
+  30 =>
   array (
     'name' => 'Indah Tri Utami, S.Pd.',
     'nip' => 'SKN-031-G',
@@ -386,7 +387,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/indahtri.png',
     'is_active' => true,
   ),
-  31 => 
+  31 =>
   array (
     'name' => 'Arini Prasetyoningsyas, S.Pd.',
     'nip' => 'SKN-032-G',
@@ -394,7 +395,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/arini.png',
     'is_active' => true,
   ),
-  32 => 
+  32 =>
   array (
     'name' => 'Mulat Adityawiranti, S.Pd.',
     'nip' => 'SKN-033-G',
@@ -402,7 +403,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/mulat.png',
     'is_active' => true,
   ),
-  33 => 
+  33 =>
   array (
     'name' => 'Ahmad Rofi\'i Noprianto, S.Pd.I.',
     'nip' => 'SKN-034-G',
@@ -410,7 +411,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/rofii.png',
     'is_active' => true,
   ),
-  34 => 
+  34 =>
   array (
     'name' => 'Fajar Dhilamaya, S.Pd.',
     'nip' => 'SKN-035-G',
@@ -418,7 +419,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/maya.png',
     'is_active' => true,
   ),
-  35 => 
+  35 =>
   array (
     'name' => 'Yusuf Widhiarso, S.Pd.',
     'nip' => 'SKN-036-G',
@@ -426,7 +427,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/yusuf.png',
     'is_active' => true,
   ),
-  36 => 
+  36 =>
   array (
     'name' => 'Novaria Fajar Kurniawan, S.Sn.',
     'nip' => 'SKN-037-G',
@@ -434,7 +435,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/fajar.png',
     'is_active' => true,
   ),
-  37 => 
+  37 =>
   array (
     'name' => 'Ani Latifah, S.Pd.',
     'nip' => 'SKN-038-G',
@@ -442,7 +443,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/ani.png',
     'is_active' => true,
   ),
-  38 => 
+  38 =>
   array (
     'name' => 'Sutarjo Suparman Nurc., S.Pd.',
     'nip' => 'SKN-039-G',
@@ -450,7 +451,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/tj.png',
     'is_active' => true,
   ),
-  39 => 
+  39 =>
   array (
     'name' => 'Mega Novinda Sari, S.Pd.',
     'nip' => 'SKN-040-G',
@@ -458,7 +459,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/mega.png',
     'is_active' => true,
   ),
-  40 => 
+  40 =>
   array (
     'name' => 'Susi Suryani Rahayu, S.Sn.',
     'nip' => 'SKN-041-G',
@@ -466,7 +467,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/susi.png',
     'is_active' => true,
   ),
-  41 => 
+  41 =>
   array (
     'name' => 'Irsam Muhammad Fathoni, S.Pd.',
     'nip' => 'SKN-042-G',
@@ -474,7 +475,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/irsam.png',
     'is_active' => true,
   ),
-  42 => 
+  42 =>
   array (
     'name' => 'Nur Maulidah Hasanah, S.Pd.',
     'nip' => 'SKN-043-G',
@@ -482,7 +483,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/maulidah.png',
     'is_active' => true,
   ),
-  43 => 
+  43 =>
   array (
     'name' => 'Yeti Diah Retnowulan, S.Sos',
     'nip' => 'SKN-044-G',
@@ -490,7 +491,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/yeti.png',
     'is_active' => true,
   ),
-  44 => 
+  44 =>
   array (
     'name' => 'Erik Efendi, S.Pd.',
     'nip' => 'SKN-045-G',
@@ -498,7 +499,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/erik.png',
     'is_active' => true,
   ),
-  45 => 
+  45 =>
   array (
     'name' => 'Indah Chodijah, S.Pd.',
     'nip' => 'SKN-046-G',
@@ -506,7 +507,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/indah.png',
     'is_active' => true,
   ),
-  46 => 
+  46 =>
   array (
     'name' => 'Oktavia Catur Handini, S.Pd.',
     'nip' => 'SKN-047-G',
@@ -514,7 +515,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/okta.png',
     'is_active' => true,
   ),
-  47 => 
+  47 =>
   array (
     'name' => 'Tyas Wahyu Ningsih, S.Pd.',
     'nip' => 'SKN-048-G',
@@ -522,7 +523,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/tyas.png',
     'is_active' => true,
   ),
-  48 => 
+  48 =>
   array (
     'name' => 'Basukisna Setya Candra, S.Pd.',
     'nip' => 'SKN-049-G',
@@ -530,7 +531,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/candra.png',
     'is_active' => true,
   ),
-  49 => 
+  49 =>
   array (
     'name' => 'Rani Puspitasari, S.T.P.',
     'nip' => 'SKN-050-G',
@@ -538,7 +539,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/rani.png',
     'is_active' => true,
   ),
-  50 => 
+  50 =>
   array (
     'name' => 'Yusi Herawati, S. Pd.',
     'nip' => 'SKN-051-G',
@@ -546,7 +547,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/yusi.png',
     'is_active' => true,
   ),
-  51 => 
+  51 =>
   array (
     'name' => 'Jatmiko Tri Wijayanto, ST.',
     'nip' => 'SKN-052-G',
@@ -554,7 +555,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/miko.png',
     'is_active' => true,
   ),
-  52 => 
+  52 =>
   array (
     'name' => 'Cindy Endriana, S.Pd.',
     'nip' => 'SKN-053-G',
@@ -562,7 +563,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/cindy.png',
     'is_active' => true,
   ),
-  53 => 
+  53 =>
   array (
     'name' => 'Desy Andini Diliawati, S.TP.',
     'nip' => 'SKN-054-G',
@@ -570,7 +571,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/desy.png',
     'is_active' => true,
   ),
-  54 => 
+  54 =>
   array (
     'name' => 'Puji Indah Kurniawati, S.Pd.',
     'nip' => 'SKN-055-G',
@@ -578,7 +579,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/puji.png',
     'is_active' => true,
   ),
-  55 => 
+  55 =>
   array (
     'name' => 'Nurfalah Septyagoya, S.Kom.',
     'nip' => 'SKN-056-G',
@@ -586,7 +587,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/yoga.png',
     'is_active' => true,
   ),
-  56 => 
+  56 =>
   array (
     'name' => 'Elok Zakiyatul M., S.Si.',
     'nip' => 'SKN-057-G',
@@ -594,7 +595,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/elok.png',
     'is_active' => true,
   ),
-  57 => 
+  57 =>
   array (
     'name' => 'Alif Nursyah, S.Pd.',
     'nip' => 'SKN-058-G',
@@ -602,7 +603,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/alif.png',
     'is_active' => true,
   ),
-  58 => 
+  58 =>
   array (
     'name' => 'Nur Choiroh Bektiwiyati, S.Pd.',
     'nip' => 'SKN-059-G',
@@ -610,7 +611,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/choi.png',
     'is_active' => true,
   ),
-  59 => 
+  59 =>
   array (
     'name' => 'Gisik Giriantoko, S.Pd.',
     'nip' => 'SKN-060-G',
@@ -618,7 +619,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/gisik.png',
     'is_active' => true,
   ),
-  60 => 
+  60 =>
   array (
     'name' => 'Sri Wahyuni, S.Pd.',
     'nip' => 'SKN-061-G',
@@ -626,7 +627,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/sriwah.png',
     'is_active' => true,
   ),
-  61 => 
+  61 =>
   array (
     'name' => 'Intan Nur Fitri, S.Pd.',
     'nip' => 'SKN-062-G',
@@ -634,7 +635,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/intan.png',
     'is_active' => true,
   ),
-  62 => 
+  62 =>
   array (
     'name' => 'Brillian Wahyu Andrian, S.Pd.',
     'nip' => 'SKN-063-G',
@@ -642,7 +643,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/brillian.png',
     'is_active' => true,
   ),
-  63 => 
+  63 =>
   array (
     'name' => 'Ariqa Ayni Alfianti A.S., S.Psi.',
     'nip' => 'SKN-064-G',
@@ -650,7 +651,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/ariqa.png',
     'is_active' => true,
   ),
-  64 => 
+  64 =>
   array (
     'name' => 'Hafifah Ratna Damayanti, S.Pd',
     'nip' => 'SKN-065-G',
@@ -658,7 +659,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/hafifah.png',
     'is_active' => true,
   ),
-  65 => 
+  65 =>
   array (
     'name' => 'Ma\'ratus Sholihah W., S.Pd.',
     'nip' => 'SKN-066-G',
@@ -666,7 +667,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/maratus.png',
     'is_active' => true,
   ),
-  66 => 
+  66 =>
   array (
     'name' => 'Avif Sulaiman Nur, S.Ag.',
     'nip' => 'SKN-067-G',
@@ -674,7 +675,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/avif.png',
     'is_active' => true,
   ),
-  67 => 
+  67 =>
   array (
     'name' => 'Septa Yuda Pratama, S. Pd.',
     'nip' => 'SKN-067-G',
@@ -682,7 +683,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/yuda.png',
     'is_active' => true,
   ),
-  68 => 
+  68 =>
   array (
     'name' => 'Agastya Indra Permana',
     'nip' => 'SKN-001-S',
@@ -690,7 +691,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/agastya.png',
     'is_active' => true,
   ),
-  69 => 
+  69 =>
   array (
     'name' => 'Anang Hariyono',
     'nip' => 'SKN-002-S',
@@ -698,7 +699,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/anang.png',
     'is_active' => true,
   ),
-  70 => 
+  70 =>
   array (
     'name' => 'Anjarsari Ayuwangi',
     'nip' => 'SKN-003-S',
@@ -706,7 +707,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/anjarsari.png',
     'is_active' => true,
   ),
-  71 => 
+  71 =>
   array (
     'name' => 'Dwi Arif Hawibowo',
     'nip' => 'SKN-004-S',
@@ -714,7 +715,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/arif.png',
     'is_active' => true,
   ),
-  72 => 
+  72 =>
   array (
     'name' => 'Moch. Arifin',
     'nip' => 'SKN-005-S',
@@ -722,7 +723,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/arifin.png',
     'is_active' => true,
   ),
-  73 => 
+  73 =>
   array (
     'name' => 'Dhulit Cahyono',
     'nip' => 'SKN-006-S',
@@ -730,7 +731,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/dhulit.png',
     'is_active' => true,
   ),
-  74 => 
+  74 =>
   array (
     'name' => 'Eko Subagiyo',
     'nip' => 'SKN-007-S',
@@ -738,7 +739,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/eko.png',
     'is_active' => true,
   ),
-  75 => 
+  75 =>
   array (
     'name' => 'Fendik Novan',
     'nip' => 'SKN-008-S',
@@ -746,7 +747,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/fendik.png',
     'is_active' => true,
   ),
-  76 => 
+  76 =>
   array (
     'name' => 'Galih Purnama Aji',
     'nip' => 'SKN-009-S',
@@ -754,7 +755,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/galih.png',
     'is_active' => true,
   ),
-  77 => 
+  77 =>
   array (
     'name' => 'Ghea Averira Malohing',
     'nip' => 'SKN-010-S',
@@ -762,7 +763,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/ghea.png',
     'is_active' => true,
   ),
-  78 => 
+  78 =>
   array (
     'name' => 'Inggar Suriyani',
     'nip' => 'SKN-011-S',
@@ -770,7 +771,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/inggar.png',
     'is_active' => true,
   ),
-  79 => 
+  79 =>
   array (
     'name' => 'Junaipah Murjayani, S.M.',
     'nip' => 'SKN-012-S',
@@ -778,7 +779,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/jun.png',
     'is_active' => true,
   ),
-  80 => 
+  80 =>
   array (
     'name' => 'Lutfi Kustilawati',
     'nip' => 'SKN-013-S',
@@ -786,7 +787,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/lutfi.png',
     'is_active' => true,
   ),
-  81 => 
+  81 =>
   array (
     'name' => 'Masrukan Adi',
     'nip' => 'SKN-014-S',
@@ -794,7 +795,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/masrukan.png',
     'is_active' => true,
   ),
-  82 => 
+  82 =>
   array (
     'name' => 'Achmad Nuroso',
     'nip' => 'SKN-015-S',
@@ -802,7 +803,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/nuroso.png',
     'is_active' => true,
   ),
-  83 => 
+  83 =>
   array (
     'name' => 'Purwadi',
     'nip' => 'SKN-016-S',
@@ -810,7 +811,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/purwadi.png',
     'is_active' => true,
   ),
-  84 => 
+  84 =>
   array (
     'name' => 'Mohamad Rizky Novyanto',
     'nip' => 'SKN-017-S',
@@ -818,7 +819,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/rizky.png',
     'is_active' => true,
   ),
-  85 => 
+  85 =>
   array (
     'name' => 'Sumber Arum',
     'nip' => 'SKN-018-S',
@@ -826,7 +827,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/sumber.png',
     'is_active' => true,
   ),
-  86 => 
+  86 =>
   array (
     'name' => 'Suyanto',
     'nip' => 'SKN-019-S',
@@ -834,7 +835,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/suyanto.png',
     'is_active' => true,
   ),
-  87 => 
+  87 =>
   array (
     'name' => 'Tria Ayu Anggraini',
     'nip' => 'SKN-020-S',
@@ -1379,12 +1380,15 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
+        // Digabung: seeder punyamu (AdminSeeder, SchoolHistorySeeder, TourSceneSeeder, VisiMisiSeeder)
+        // + seeder dari remote (GallerySeeder). Kalau salah satu belum ada class-nya,
+        // boleh dihapus dari daftar ini sampai file seeder-nya dibuat.
         $this->call([
-    AdminSeeder::class,
-    SchoolHistorySeeder::class,
-    TourSceneSeeder::class,
-    VisiMisiSeeder::class,
-
-]);
+            AdminSeeder::class,
+            GallerySeeder::class,
+            SchoolHistorySeeder::class,
+            TourSceneSeeder::class,
+            VisiMisiSeeder::class,
+        ]);
     }
 }

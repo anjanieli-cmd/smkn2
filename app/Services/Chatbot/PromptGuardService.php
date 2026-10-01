@@ -94,7 +94,7 @@ class PromptGuardService
         'kawi laras', 'kawilaras', 'matchmaker', 'jadwal', 'jam belajar', 'kbm',
         'alamat', 'kontak', 'telepon', 'email', 'lokasi', 'tempat', 'fasilitas', 'perpus', 'perpustakaan', 'buku', 'literasi', 'baca',
         'lab', 'studio', 'masjid', 'musholla', 'kantin', 'gerbang', 'lobi', 'lapangan',
-        'aula', 'parkir', 'dapur', 'ruang', 'gedung', 'area', 'visi', 'misi', 'profil', 'sejarah', 'struktur', 'tanya', 'mau tanya', 'nara'
+        'aula', 'parkir', 'dapur', 'ruang', 'gedung', 'area', 'visi', 'misi', 'profil', 'sejarah', 'struktur', 'komite', 'berdiri', 'pendirian', 'kranggan', 'adiwiyata', 'pk', 'tefa', 'tanya', 'mau tanya', 'nanya', 'mau nanya', 'nanya dong', 'nanya-nanya', 'aku mau nanya', 'nara'
     ];
 
     /**
@@ -128,7 +128,7 @@ class PromptGuardService
         }
 
         // 2. If message contains greetings only, allow it to pass to retriever
-        if (in_array($normalized, ['halo', 'haloo', 'hi', 'hai', 'p', 'ping', 'tes', 'test', 'selamat pagi', 'selamat siang', 'selamat sore', 'selamat malam', 'assalamualaikum', 'aku mau tanya', 'mau tanya', 'mau tanya dong', 'permisi', 'nara', 'halo nara', 'hai nara'])) {
+        if (in_array($normalized, ['halo', 'haloo', 'hi', 'hai', 'p', 'ping', 'tes', 'test', 'selamat pagi', 'selamat siang', 'selamat sore', 'selamat malam', 'assalamualaikum', 'aku mau tanya', 'mau tanya', 'mau tanya dong', 'nanya', 'nanya dong', 'mau nanya', 'aku mau nanya', 'nanya-nanya', 'nanya2', 'permisi', 'nara', 'halo nara', 'hai nara'])) {
             return false;
         }
 

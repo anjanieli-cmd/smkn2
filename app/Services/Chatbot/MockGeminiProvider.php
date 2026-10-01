@@ -22,6 +22,10 @@ class MockGeminiProvider implements AIProviderInterface
                             str_contains($promptLower, 'perbankan') || str_contains($promptLower, 'jurusan') || str_contains($promptLower, 'keahlian') ||
                             str_contains($promptLower, 'proli') || str_contains($promptLower, 'ekskul') || str_contains($promptLower, 'ekstrakurikuler') ||
                             str_contains($promptLower, 'ppdb') || str_contains($promptLower, 'pendaftaran') || str_contains($promptLower, 'guru') ||
+                            str_contains($promptLower, 'staf') || str_contains($promptLower, 'staff') || str_contains($promptLower, 'pendidik') ||
+                            str_contains($promptLower, 'kependidikan') || str_contains($promptLower, 'tata usaha') || str_contains($promptLower, 'tu') ||
+                            str_contains($promptLower, 'karya') || str_contains($promptLower, 'produk') || str_contains($promptLower, 'kegiatan') ||
+                            str_contains($promptLower, 'acara') || str_contains($promptLower, 'agenda') || str_contains($promptLower, 'lomba') ||
                             str_contains($promptLower, 'kepsek') || str_contains($promptLower, 'iswahyudi') || str_contains($promptLower, 'kantin') ||
                             str_contains($promptLower, 'perpustakaan') || str_contains($promptLower, 'perpus') || str_contains($promptLower, 'musholla') ||
                             str_contains($promptLower, 'masjid') || str_contains($promptLower, 'gerbang') || str_contains($promptLower, 'lobi') ||
@@ -30,7 +34,14 @@ class MockGeminiProvider implements AIProviderInterface
                             str_contains($promptLower, 'fasilitas') || str_contains($promptLower, 'alamat') || str_contains($promptLower, 'kontak') ||
                             str_contains($promptLower, 'tour') || str_contains($promptLower, '360') || str_contains($promptLower, 'berita') ||
                             str_contains($promptLower, 'evoice') || str_contains($promptLower, 'factcheck') || str_contains($promptLower, 'prestasi') ||
-                            str_contains($promptLower, 'kawi laras');
+                            str_contains($promptLower, 'kawi laras') || str_contains($promptLower, 'sejarah') || str_contains($promptLower, 'struktur') ||
+                            str_contains($promptLower, 'organisasi') || str_contains($promptLower, 'waka') || str_contains($promptLower, 'wakil') ||
+                            str_contains($promptLower, 'kaprog') || str_contains($promptLower, 'kaprodi') || str_contains($promptLower, 'ketua program') ||
+                            str_contains($promptLower, 'bagan') || str_contains($promptLower, 'bendahara') || str_contains($promptLower, 'bos') ||
+                            str_contains($promptLower, 'bpopp') || str_contains($promptLower, 'koordinator') || str_contains($promptLower, 'humas') ||
+                            str_contains($promptLower, 'humastri') || str_contains($promptLower, 'sarpras') || str_contains($promptLower, 'kesiswaan') ||
+                            str_contains($promptLower, 'kurikulum') || str_contains($promptLower, 'visi') || str_contains($promptLower, 'misi') ||
+                            str_contains($promptLower, 'komite');
 
         $greetings = ['halo', 'haloo', 'hi', 'hai', 'p', 'ping', 'tes', 'test', 'selamat pagi', 'selamat siang', 'selamat sore', 'selamat malam', 'assalamualaikum', 'aku mau tanya', 'mau tanya', 'mau tanya dong', 'permisi', 'nara', 'halo nara', 'hai nara'];
 
@@ -38,7 +49,82 @@ class MockGeminiProvider implements AIProviderInterface
             return "Halo! 👋 Saya NARA SKANEDA (SMKN 2 Kota Mojokerto Assistance & Resource Agent). Ada yang bisa NARA bantu seputar informasi SMKN 2 Kota Mojokerto? 😊";
         }
 
-        // 0b. Perpustakaan & Literasi
+        // 0b. Sejarah Sekolah
+        if (str_contains($promptLower, 'sejarah') || str_contains($promptLower, 'berdiri') || str_contains($promptLower, 'pendirian') || str_contains($promptLower, 'sejak')) {
+            return "Halo! 👋 **Sejarah Singkat SMKN 2 Kota Mojokerto**:\n\nSMK Negeri 2 Mojokerto didirikan untuk mencetak tenaga kerja terampil dan profesional di Kota Mojokerto dan sekitarnya. Berdiri di kawasan strategis Kranggan, sekolah ini berkembang pesat menjadi SMK Pusat Keunggulan (PK) dengan 5 konsentrasi keahlian unggulan berstandar nasional dan internasional.\n\nKamu dapat membaca kronologi dan galeri sejarah lengkap di menu [Sejarah Sekolah](/profile/history). 😊";
+        }
+
+        // 0c1. Waka (Wakil Kepala Sekolah)
+        if (str_contains($promptLower, 'waka') || str_contains($promptLower, 'wakil')) {
+            if (str_contains($promptLower, 'kurikulum')) {
+                return "Halo! 👋 **Waka Kurikulum** SMKN 2 Kota Mojokerto adalah **MELATI PUSPITA SARI, S.Pd.** 📘\n\nBeliau mengelola kegiatan akademik, pembelajaran, dan Kurikulum Merdeka. 😊";
+            }
+            if (str_contains($promptLower, 'kesiswaan')) {
+                return "Halo! 👋 **Waka Kesiswaan** SMKN 2 Kota Mojokerto adalah **AINUR ROFIK, M. Pd, Si.** 👨‍🎓\n\nBeliau membina karakter, kedisiplinan, dan kegiatan ekstrakurikuler siswa. 😊";
+            }
+            if (str_contains($promptLower, 'sarpras') || str_contains($promptLower, 'sarana')) {
+                return "Halo! 👋 **Waka Sarana & Prasarana** SMKN 2 Kota Mojokerto adalah **M. WIRA HENDY HIMAWAN, M.Pd** 🏫\n\nBeliau mengelola fasilitas, laboratorium, dan gedung sekolah. 😊";
+            }
+            if (str_contains($promptLower, 'humas') || str_contains($promptLower, 'humastri') || str_contains($promptLower, 'hubungan industri')) {
+                return "Halo! 👋 **Waka Humastri (Humas & Hubungan Industri)** SMKN 2 Kota Mojokerto adalah **ARIKAWWEKU CKRISNA, S.Pd.** 🤝\n\nBeliau mengelola kemitraan industri (DUDIKA), PKL/Prakerin, dan Bursa Kerja Khusus (BKK). 😊";
+            }
+
+            return "Halo! 👋 **Jajaran Wakil Kepala Sekolah (Waka) SMKN 2 Kota Mojokerto**:\n\n1. 📘 **Waka Kurikulum**: MELATI PUSPITA SARI, S.Pd.\n2. 👨‍🎓 **Waka Kesiswaan**: AINUR ROFIK, M. Pd, Si.\n3. 🏫 **Waka Sarana & Prasarana**: M. WIRA HENDY HIMAWAN, M.Pd\n4. 🤝 **Waka Humastri**: ARIKAWWEKU CKRISNA, S.Pd.\n\nDetail lengkap dapat kamu lihat di menu [Struktur Organisasi](/profile/structure). 😊";
+        }
+
+        // 0c2. Kaprog / Kaprodi (Ketua Kompetensi Keahlian)
+        if (str_contains($promptLower, 'kaprog') || str_contains($promptLower, 'kaprodi') || str_contains($promptLower, 'ketua program') || str_contains($promptLower, 'ketua jurusan') || str_contains($promptLower, 'ketua kompetensi')) {
+            if (str_contains($promptLower, 'rpl') || str_contains($promptLower, 'pplg') || str_contains($promptLower, 'perangkat lunak')) {
+                return "Halo! 👋 **Ketua Kompetensi Keahlian (Kaprog/Kaprodi) RPL / PPLG** SMKN 2 Kota Mojokerto adalah **DANANG TEGUH SANTOSO, S.Kom** 💻.\n\nBeliau mengoordinasikan pembelajaran dan pengembangan kompetensi keahlian RPL. 😊";
+            }
+            if (str_contains($promptLower, 'dkv') || str_contains($promptLower, 'desain')) {
+                return "Halo! 👋 **Ketua Kompetensi Keahlian (Kaprog/Kaprodi) DKV** SMKN 2 Kota Mojokerto adalah **NURFALAH SEPTAYOGA S.Kom.** 🎨.\n\nBeliau mengoordinasikan pembelajaran dan pengembangan kompetensi keahlian Desain Komunikasi Visual. 😊";
+            }
+            if (str_contains($promptLower, 'aphp') || str_contains($promptLower, 'pertanian')) {
+                return "Halo! 👋 **Ketua Kompetensi Keahlian (Kaprog/Kaprodi) APHP** SMKN 2 Kota Mojokerto adalah **DESY ANDINI DILIAWATI, S.T.P.** 🌾.\n\nBeliau mengoordinasikan pembelajaran dan pengembangan kompetensi Agribisnis Pengolahan Hasil Pertanian. 😊";
+            }
+            if (str_contains($promptLower, 'kuliner') || str_contains($promptLower, 'boga') || str_contains($promptLower, 'tata boga')) {
+                return "Halo! 👋 **Ketua Kompetensi Keahlian (Kaprog/Kaprodi) Kuliner / Tata Boga** SMKN 2 Kota Mojokerto adalah **DHIYAH AMANATI KARTIKA SARI, S.Pd.** 🍳.\n\nBeliau mengoordinasikan pembelajaran dan pengembangan kompetensi keahlian Kuliner. 😊";
+            }
+            if (str_contains($promptLower, 'lps') || str_contains($promptLower, 'perbankan')) {
+                return "Halo! 👋 **Ketua Kompetensi Keahlian (Kaprog/Kaprodi) LPS** SMKN 2 Kota Mojokerto adalah **METIY ARIANA, S.Pd, M.Pd.** 🏦.\n\nBeliau mengoordinasikan pembelajaran dan pengembangan kompetensi Layanan Perbankan Syariah. 😊";
+            }
+
+            return "Halo! 👋 **Ketua Kompetensi Keahlian (Kaprog/Kaprodi) SMKN 2 Kota Mojokerto**:\n\n💻 **Kaprog RPL (PPLG)**: DANANG TEGUH SANTOSO, S.Kom\n🎨 **Kaprog DKV**: NURFALAH SEPTAYOGA S.Kom.\n🌾 **Kaprog APHP**: DESY ANDINI DILIAWATI, S.T.P.\n🍳 **Kaprog Kuliner**: DHIYAH AMANATI KARTIKA SARI, S.Pd.\n🏦 **Kaprog LPS**: METIY ARIANA, S.Pd, M.Pd.\n\nDetail lengkap dapat kamu lihat di menu [Struktur Organisasi](/profile/structure). 😊";
+        }
+
+        // 0c3. Bendahara (BOS & BPOPP)
+        if (str_contains($promptLower, 'bendahara') || str_contains($promptLower, 'bos') || str_contains($promptLower, 'bpopp')) {
+            if (str_contains($promptLower, 'bpopp')) {
+                return "Halo! 👋 **Bendahara BPOPP** SMKN 2 Kota Mojokerto adalah **FAJAR DHILAMAYA, S.Pd.** 💳.\n\nBeliau mengelola administrasi keuangan program BPOPP sekolah. 😊";
+            }
+            if (str_contains($promptLower, 'bos')) {
+                return "Halo! 👋 **Bendahara BOS** SMKN 2 Kota Mojokerto adalah **MEGA NOVINDA SARI, S.Pd.** 💰.\n\nBeliau mengelola administrasi dan pencatatan dana BOS sekolah. 😊";
+            }
+            return "Halo! 👋 **Bendahara SMKN 2 Kota Mojokerto**:\n\n💰 **Bendahara BOS**: MEGA NOVINDA SARI, S.Pd.\n💳 **Bendahara BPOPP**: FAJAR DHILAMAYA, S.Pd.\n\nDetail lengkap dapat kamu lihat di menu [Struktur Organisasi](/profile/structure). 😊";
+        }
+
+        // 0c4. Koordinator BKK
+        if (str_contains($promptLower, 'bkk') && (str_contains($promptLower, 'koordinator') || str_contains($promptLower, 'ketua') || str_contains($promptLower, 'siapa') || str_contains($promptLower, 'pimpinan'))) {
+            return "Halo! 👋 **Koordinator BKK (Bursa Kerja Khusus)** SMKN 2 Kota Mojokerto adalah **MULAT ADITYAWIRANTI, S.Pd.** 🤝\n\nBeliau mengoordinasikan Bursa Kerja Khusus, Prakerin/PKL, dan kemitraan penyaluran lulusan ke industri. 😊";
+        }
+
+        // 0c5. Komite Sekolah
+        if (str_contains($promptLower, 'komite')) {
+            return "Halo! 👋 **Komite Sekolah SMKN 2 Kota Mojokerto**:\n\nKomite Sekolah berperan aktif memberikan pertimbangan, masukan strategis, serta mengawal kualitas layanan dan fasilitas pendidikan bersama sekolah dan orang tua murid.\n\nInformasi kepengurusan dapat kamu lihat di menu [Struktur Organisasi](/profile/structure). 😊";
+        }
+
+        // 0c6. Struktur Organisasi & Bagan
+        if (str_contains($promptLower, 'struktur') || str_contains($promptLower, 'organisasi') || str_contains($promptLower, 'bagan') || str_contains($promptLower, 'susunan') || str_contains($promptLower, 'pengurus')) {
+            return "Halo! 👋 **Struktur Organisasi Resmi SMKN 2 Kota Mojokerto**:\n\n🏛️ **Kepala Sekolah**: Iswahyudi S.ST. M.Pd.\n\n👔 **Jajaran Waka**:\n• Waka Kurikulum: MELATI PUSPITA SARI, S.Pd.\n• Waka Kesiswaan: AINUR ROFIK, M. Pd, Si.\n• Waka Sarana & Prasarana: M. WIRA HENDY HIMAWAN, M.Pd\n• Waka Humastri: ARIKAWWEKU CKRISNA, S.Pd.\n\n💰 **Bendahara & Unit**:\n• Bendahara BOS: MEGA NOVINDA SARI, S.Pd.\n• Bendahara BPOPP: FAJAR DHILAMAYA, S.Pd.\n• Koordinator BKK: MULAT ADITYAWIRANTI, S.Pd.\n\n📚 **Kaprog / Kaprodi**:\n• RPL: DANANG TEGUH SANTOSO, S.Kom\n• DKV: NURFALAH SEPTAYOGA S.Kom.\n• APHP: DESY ANDINI DILIAWATI, S.T.P.\n• Kuliner: DHIYAH AMANATI KARTIKA SARI, S.Pd.\n• LPS: METIY ARIANA, S.Pd, M.Pd.\n\nStruktur bagan dan susunan organisasi lengkap dapat kamu lihat di menu [Struktur Organisasi](/profile/structure). 😊";
+        }
+
+        // 0d. Visi & Misi
+        if (str_contains($promptLower, 'visi') || str_contains($promptLower, 'misi')) {
+            return "Halo! 👋 **Visi & Misi SMKN 2 Kota Mojokerto**:\n\n🎯 **Visi**: Terwujudnya lulusan yang berakhlak mulia, kompeten, berjiwa wirausaha, dan berdaya saing global.\n\n📌 **Misi Utama**:\n1. Menyelenggarakan pendidikan kejuruan berbasis karakter dan religius.\n2. Mengembangkan kurikulum berstandar industri bersama mitra DUDIKA.\n3. Meningkatkan kualitas sarana laboratorium & Teaching Factory (TEFA).\n4. Membekali siswa dengan keterampilan digital, kewirausahaan, dan kesiapan kerja. 😊";
+        }
+
+        // 0e. Perpustakaan & Literasi
         if (str_contains($promptLower, 'perpustakaan') || str_contains($promptLower, 'perpus') || str_contains($promptLower, 'buku') || str_contains($promptLower, 'literasi')) {
             return "Halo! 👋 Ya, di SMKN 2 Kota Mojokerto terdapat **Perpustakaan Digital** 📚 yang menyediakan koleksi buku cetak, e-book, referensi pembelajaran, dan area baca yang tenang serta nyaman bagi seluruh siswa dan guru.\n\nAnda dapat melihat dan mengunjungi lokasi tempat ini secara langsung di halaman [Virtual Tour 360°](/profile/tour). 😊";
         }
@@ -53,8 +139,8 @@ class MockGeminiProvider implements AIProviderInterface
         }
 
         // 1. Kepala Sekolah / Kepsek
-        if (str_contains($promptLower, 'kepsek') || str_contains($promptLower, 'kepala sekolah') || str_contains($promptLower, 'iswahyudi')) {
-            return "Halo! 👋 Kepala Sekolah SMKN 2 Kota Mojokerto saat ini adalah **Bapak Drs. Iswahyudi, M.Pd.** 👨‍🏫.\n\nBeliau memimpin SMKN 2 Kota Mojokerto dalam mewujudkan sekolah kejuruan yang unggul, berkarakter, dan berdaya saing global. Ada hal lain yang ingin kamu tanyakan seputar kepemimpinan atau program sekolah kami? 😊";
+        if (str_contains($promptLower, 'kepsek') || str_contains($promptLower, 'kepala sekolah') || str_contains($promptLower, 'iswahyudi') || str_contains($promptLower, 'pimpinan')) {
+            return "Halo! 👋 Kepala Sekolah (Pimpinan) SMKN 2 Kota Mojokerto saat ini adalah **Bapak Iswahyudi S.ST. M.Pd.** 👨‍🏫.\n\nBeliau memimpin penyelenggaraan pendidikan di SMKN 2 Kota Mojokerto untuk mewujudkan sekolah kejuruan yang unggul, berkarakter, dan berdaya saing global. Ada hal lain yang ingin kamu tanyakan seputar kepemimpinan atau program sekolah kami? 😊";
         }
 
         // 2. Jurusan
@@ -165,12 +251,42 @@ class MockGeminiProvider implements AIProviderInterface
             return "Halo! 👋 Informasi Resmi Profil & Alamat SMKN 2 Kota Mojokerto:\n\n🏫 **Alamat**: Jl. Raden Wijaya No. 1, Kranggan, Kota Mojokerto, Jawa Timur.\n📞 **Telepon**: (0321) 321555 | ✉️ **Email**: info@smkn2mojokerto.sch.id\n⭐ **Akreditasi**: A (Unggul) | **Status**: SMK Pusat Keunggulan (PK)\n🎯 **Motto**: *Disiplin • Berakhlak • Berprestasi*. 😊";
         }
 
-        // 6. Guru & Staf
-        if (str_contains($promptLower, 'guru') || str_contains($promptLower, 'pengajar') || str_contains($promptLower, 'staf')) {
-            return "Halo! 👋 Tenaga Pendidik & Staf SMKN 2 Kota Mojokerto dipimpin oleh:\n\n👨‍🏫 **Kepala Sekolah**: Drs. Iswahyudi, M.Pd.\n👩‍💻 **Ketua Program RPL**: Rina Wijaya, S.Kom., M.T.\n🎨 **Ketua Program DKV**: Bambang Sugiarto, S.Sn.\n\nSeluruh dewan guru terverifikasi profesional dan bersertifikasi pendidik di bidangnya masing-masing. 😊";
+        // 6a. Staf (Tenaga Kependidikan) — Check staf FIRST so "staf" query gets staff specific answer
+        if (str_contains($promptLower, 'staf') || str_contains($promptLower, 'staff') || str_contains($promptLower, 'kependidikan') || str_contains($promptLower, 'tata usaha') || str_contains($promptLower, 'tu')) {
+            return "Halo! 👋 **Tenaga Kependidikan / Staf SMKN 2 Kota Mojokerto**:\n\nSMK Negeri 2 Mojokerto memiliki **20+ Tenaga Kependidikan & Staf** yang mengelola administrasi, keuangan, perpustakaan, dan layanan operasional sekolah:\n\n💰 **Bendahara BOS**: MEGA NOVINDA SARI, S.Pd.\n💳 **Bendahara BPOPP**: FAJAR DHILAMAYA, S.Pd.\n🤝 **Koordinator BKK**: MULAT ADITYAWIRANTI, S.Pd.\n🏫 **Staf Tata Usaha (TU), Perpustakaan Digital, Teknisi Lab, & Pengelola Sarana Sekolah**.\n\nDaftar staf kependidikan selengkapnya dapat kamu lihat di menu [Staff & Guru](/profile/staff-guru). 😊";
         }
 
-        // 7. Fasilitas
+        // 6b. Guru (Tenaga Pendidik)
+        if (str_contains($promptLower, 'guru') || str_contains($promptLower, 'pendidik') || str_contains($promptLower, 'pengajar')) {
+            return "Halo! 👋 **Tenaga Pendidik / Guru SMKN 2 Kota Mojokerto**:\n\nSMK Negeri 2 Mojokerto didukung oleh **67+ Guru Profesional & Bersertifikasi Pendidik** yang mengajar di bidang produktif keahlian (RPL, DKV, APHP, Kuliner, LPS) maupun kelompok mata pelajaran normatif-adaptif (Matematika, Bahasa Indonesia, Bahasa Inggris, Agama, IPAS, PJOK, dsb).\n\nProfil dewan guru selengkapnya dapat kamu lihat di menu [Staff & Guru](/profile/staff-guru). 😊";
+        }
+
+        // 6c. Karya Siswa / Produk Inovatif
+        if (str_contains($promptLower, 'karya') || str_contains($promptLower, 'produk siswa') || str_contains($promptLower, 'hasil karya')) {
+            return "Halo! 👋 **Karya & Produk Inovatif Siswa SMKN 2 Kota Mojokerto**:\n\n1. 🌾 **MultiMie & Sari Bunga Telang** — Produk olahan mi sehat & minuman herbal karya siswa APHP & Kuliner.\n2. 🚗 **Aplikasi Tambal Ban Express** — Aplikasi booking & pemesanan layanan tambal ban mobile karya siswa RPL.\n3. 🎨 **Nirmana 3D & Visual Branding** — Karya desain grafis, ilustrasi, animasi 3D, & fotografi studio karya siswa DKV.\n4. 🍳 **Pastry & Bakery TEFA** — Roti, cake, & pastry produk Teaching Factory karya siswa Kuliner.\n5. 🍹 **Maja Mojo & Bei Mie** — Olahan produk inovasi pangan karya siswa APHP.\n6. 🏦 **Layanan Mini Bank Syariah** — Operasional transaksi & administrasi keuangan karya siswa LPS.\n\nKamu dapat melihat galeri karya siswa selengkapnya di menu [Karya Siswa](/siswa/karya). 😊";
+        }
+
+        // 6d. Kegiatan Sekolah
+        if (str_contains($promptLower, 'kegiatan') || str_contains($promptLower, 'acara') || str_contains($promptLower, 'agenda')) {
+            return "Halo! 👋 **Jurnal Kegiatan & Agenda SMKN 2 Kota Mojokerto**:\n\n📌 **Uji Kompetensi Keahlian (UKK)** — Ujian kelulusan berstandar industri bersama penguji DUDIKA.\n📌 **Program Budaya Kawi Laras** — Pelestarian budaya Jawa mengenakan busana tradisional tiap bulan.\n📌 **Praktek Kerja Lapangan (PKL) & Rekrutmen BKK** — Pembekalan & rekrutmen bersama industri mitra.\n📌 **Pentas Seni (Pensi), TEFA Expo, & Pameran Karya Siswa**.\n📌 **Gerakan Sekolah Sehat (GSS) & Kegiatan Keagamaan** di Masjid Al-Ikhlas.\n\nKamu dapat melihat jurnal foto kegiatan di menu [Kegiatan Sekolah](/galeri/kegiatan) dan Berita di [Berita Sekolah](/berita). 😊";
+        }
+
+        // 7. Fasilitas & Tempat Spesifik
+        if (str_contains($promptLower, 'gerbang')) {
+            return "Halo! 👋 Ya, SMKN 2 Kota Mojokerto memiliki **Gerbang Utama** 🏫 yang megah dan aman di Jl. Raden Wijaya No. 1, Kranggan. Gerbang ditutup tepat pukul 07.00 WIB demi ketertiban siswa.\n\nKamu dapat melihat tampilan Gerbang Utama secara 360° di menu [Virtual Tour 360°](/profile/tour). 😊";
+        }
+        if (str_contains($promptLower, 'kantin')) {
+            return "Halo! 👋 Ya, di SMKN 2 Kota Mojokerto terdapat **Kantin Sekolah** 🍱 yang bersih, sehat, dan menyediakan aneka makanan serta minuman higienis untuk siswa.\n\nKamu bisa melihat lokasi Kantin Sekolah secara 360° di menu [Virtual Tour 360°](/profile/tour). 😊";
+        }
+        if (str_contains($promptLower, 'musholla') || str_contains($promptLower, 'masjid')) {
+            return "Halo! 👋 Ya, SMKN 2 Kota Mojokerto memiliki **Masjid Al-Ikhlas & Musholla** 🕌 yang bersih dan nyaman sebagai tempat ibadah, sholat berjamaah, serta kegiatan keagamaan siswa.\n\nKamu dapat melihat lokasinya secara 360° di menu [Virtual Tour 360°](/profile/tour). 😊";
+        }
+        if (str_contains($promptLower, 'aula')) {
+            return "Halo! 👋 Ya, SMKN 2 Kota Mojokerto memiliki **Aula Serbaguna** 🏛️ yang luas untuk kegiatan upacara indoor, seminar, pementasan seni, serta pertemuan resmi sekolah.\n\nKamu bisa menjelajahi lokasi Aula di menu [Virtual Tour 360°](/profile/tour). 😊";
+        }
+        if (str_contains($promptLower, 'lapangan')) {
+            return "Halo! 👋 Ya, SMKN 2 Kota Mojokerto memiliki **Lapangan Utama & Lapangan Basket Beratap** 🏀 untuk kegiatan upacara, olahraga, serta latihan futsal dan basket.\n\nKamu dapat melihat Lapangan Olahraga secara 360° di menu [Virtual Tour 360°](/profile/tour). 😊";
+        }
         if (str_contains($promptLower, 'fasilitas') || str_contains($promptLower, 'sarana')) {
             return "Halo! 👋 SMKN 2 Kota Mojokerto memiliki fasilitas pembelajaran modern & lengkap:\n\n💻 **Lab Komputer RPL High-Spec**\n🎨 **Studio DKV & Studio Fotografi**\n🌾 **Lab Pengolahan Pangan APHP**\n🍳 **Kitchen Lab & Restoran TEFA Kuliner**\n🏦 **Laboratorium Bank Mini Syariah LPS**\n📚 **Perpustakaan Digital & Free High-Speed WiFi**\n🕌 **Masjid Al-Ikhlas, UKS, & Lapangan Olahraga Outdoor** 😊";
         }
@@ -191,8 +307,8 @@ class MockGeminiProvider implements AIProviderInterface
         }
 
         // 11. Berita
-        if (str_contains($promptLower, 'berita') || str_contains($promptLower, 'kabar') || str_contains($promptLower, 'terbaru') || str_contains($promptLower, 'agenda')) {
-            return "Halo! 👋 Informasi Berita & Agenda Terbaru SMKN 2 Kota Mojokerto:\n\n📰 **1. Pelatihan Web Framework Laravel 2024** — Pembekalan siswa RPL bersama alumni profesional.\n📰 **2. Uji Kompetensi Keahlian (UKK)** — Pelaksanaan ujian kelulusan bekerja sama dengan penguji industri (PT Otak Kanan, Hotel Vasa, BPD Jatim, BSI).\n📰 **3. Literasi Keuangan Syariah** — Edukasi pembiayaan bersama FIF Group & Bakti BCA.\n📰 **4. Program Budaya Kawi Laras** — Pelestarian budaya Jawa setiap minggu kedua dalam bulan.\n📰 **5. Program Gerakan Sekolah Sehat** — Tes kebugaran fisik berkala bagi siswa.\n\nKamu bisa membaca artikel berita lengkap di menu Berita Website kami! 😊";
+        if (str_contains($promptLower, 'berita') || str_contains($promptLower, 'kabar') || str_contains($promptLower, 'terbaru') || str_contains($promptLower, 'artikel')) {
+            return "Halo! 👋 **Berita & Kabar Terbaru SMKN 2 Kota Mojokerto**:\n\n📰 **Pelatihan Web Framework Laravel 2024** — Pembekalan siswa RPL bersama alumni profesional.\n📰 **Pelaksanaan Uji Kompetensi Keahlian (UKK)** — Ujian bersama penguji industri mitra.\n📰 **Literasi Keuangan Syariah & Perbankan** — Edukasi pembiayaan bersama BSI & Bakti BCA.\n📰 **Program Budaya Kawi Laras** — Pelestarian budaya Jawa di lingkungan sekolah.\n📰 **Program Gerakan Sekolah Sehat (GSS)** — Pembinaan kebugaran fisik & kesehatan siswa.\n\nKamu bisa membaca artikel berita lengkap di menu [Berita Sekolah](/berita). 😊";
         }
 
         // 12. E-Voice & FactCheck
@@ -204,8 +320,8 @@ class MockGeminiProvider implements AIProviderInterface
         }
 
         // 13. Prestasi
-        if (str_contains($promptLower, 'prestasi') || str_contains($promptLower, 'juara') || str_contains($promptLower, 'lks')) {
-            return "Halo! 👋 SMKN 2 Kota Mojokerto kaya akan **Prestasi Siswa**:\n\n🏆 **Juara LKS Web Technologies & Graphic Design** tingkat Jawa Timur\n🏆 **Juara 3 & Juara Favorit Lomba Cerdas Cermat & Koperasi Syariah** tingkat Provinsi Jawa Timur\n🏆 **Status Sekolah Pusat Keunggulan (PK) & Sekolah Adiwiyata**\n\nKamu bisa melihat galeri karya dan rincian prestasi di menu Karya & Prestasi Siswa! 😊";
+        if (str_contains($promptLower, 'prestasi') || str_contains($promptLower, 'juara') || str_contains($promptLower, 'lks') || str_contains($promptLower, 'lomba')) {
+            return "Halo! 👋 **Prestasi Unggulan Siswa SMKN 2 Kota Mojokerto**:\n\n🏆 **Juara FESTIKA Jatim 2025** (Dua tim siswa Skaneda meraih juara).\n🏆 **Juara 1 Pencak Silat KONI Championship** (Dhiva Alennia).\n🏆 **Juara 1 Web Development Polinema** (Tim Penerbang Roket RPL).\n🏆 **Medali Perak LKS Nasional Bidang Kuliner** (Patisserie & Confectionery).\n🏆 **Juara 3 LKS Jawa Timur 2026** (Lomba Kompetensi Siswa Jatim).\n🏆 **Finalis FIKSI Nasional 2025** (Tim APHP, DKV, & RPL).\n🏆 **Juara Nasional Paskibraka 2024** & Juara 1 Futsal Mojokerto Raya.\n🏆 **Penghargaan Sekolah Adiwiyata Provinsi Jawa Timur**.\n🎓 **Alumni Beasiswa Huaqiao University, China**.\n\nKamu dapat melihat daftar prestasi lengkap di menu [Prestasi Siswa](/siswa/prestasi). 😊";
         }
 
         // 14. Kawi Laras
