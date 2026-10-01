@@ -1941,7 +1941,7 @@
       <div class="footer-social-row">
         <a href="https://www.instagram.com/smkn_2_mojokerto/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
         <a href="https://www.youtube.com/channel/UCqiKo-o2OjwsAdJP58TpiUw" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
-        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="https://www.facebook.com/smkn2mojokerto?locale=id_ID" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
       </div>
     </div>
 
