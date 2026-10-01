@@ -2,40 +2,29 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class TourHotspot extends Model
 {
-    use HasUuids;
-
-    protected $keyType = 'string';
-    public $incrementing = false;
-
     protected $fillable = [
-        'location_id',
-        'target_location_id',
-        'title',
-        'pitch',
-        'yaw',
+        'tour_scene_id', 'target_scene_id', 'pitch', 'yaw', 'label', 'icon', 'order',
     ];
 
-    protected function casts(): array
+    protected $casts = [
+        'pitch' => 'float',
+        'yaw'   => 'float',
+    ];
+
+    /** Scene tempat hotspot ini berada. */
+    public function scene(): BelongsTo
     {
-        return [
-            'pitch' => 'float',
-            'yaw' => 'float',
-        ];
+        return $this->belongsTo(TourScene::class, 'tour_scene_id');
     }
 
-    public function location(): BelongsTo
+    /** Scene tujuan saat hotspot diklik. */
+    public function target(): BelongsTo
     {
-        return $this->belongsTo(TourLocation::class, 'location_id');
-    }
-
-    public function targetLocation(): BelongsTo
-    {
-        return $this->belongsTo(TourLocation::class, 'target_location_id');
+        return $this->belongsTo(TourScene::class, 'target_scene_id');
     }
 }
