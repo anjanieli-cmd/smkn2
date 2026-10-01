@@ -7,6 +7,50 @@ use App\Http\Controllers\Admin\SchoolHistoryController;
 use App\Http\Controllers\Admin\GalleryAdminController;
 use App\Http\Controllers\Admin\AchievementAdminController;
 use App\Http\Controllers\SejarahSekolahController;
+use App\Http\Controllers\Admin\TourAdminController;
+use App\Http\Controllers\Api\TourApiController;
+use App\Http\Controllers\Admin\VisiMisiAdminController;
+
+Route::middleware(['auth'])            // <- samakan dengan grup admin kamu
+    ->prefix('admin/visi-misi')
+    ->name('admin.visi-misi.')
+    ->group(function () {
+        Route::get('/', [VisiMisiAdminController::class, 'index'])->name('index');
+
+        // teks tunggal per tab: hero | visi | misi | tujuan | nilai
+        Route::put('/settings/{tab}', [VisiMisiAdminController::class, 'updateSettings'])
+            ->whereIn('tab', ['hero', 'visi', 'misi', 'tujuan', 'nilai'])->name('settings.update');
+
+        // item kartu (misi / tujuan / nilai)
+        Route::post('/items', [VisiMisiAdminController::class, 'storeItem'])->name('items.store');
+        Route::put('/items/{item}', [VisiMisiAdminController::class, 'updateItem'])->name('items.update');
+        Route::delete('/items/{item}', [VisiMisiAdminController::class, 'destroyItem'])->name('items.destroy');
+        Route::post('/items/{item}/toggle', [VisiMisiAdminController::class, 'toggleItem'])->name('items.toggle');
+        Route::post('/items/{item}/move/{direction}', [VisiMisiAdminController::class, 'moveItem'])
+            ->whereIn('direction', ['up', 'down'])->name('items.move');
+    });
+
+
+// ---------- ADMIN ----------
+Route::middleware(['auth'])            // <- samakan dengan grup admin kamu
+    ->prefix('admin/tour')
+    ->name('admin.tour.')
+    ->group(function () {
+        Route::get('/', [TourAdminController::class, 'index'])->name('index');
+        Route::post('/scenes', [TourAdminController::class, 'store'])->name('store');
+        Route::put('/scenes/{scene}', [TourAdminController::class, 'update'])->name('update');
+        Route::delete('/scenes/{scene}', [TourAdminController::class, 'destroy'])->name('destroy');
+        Route::post('/scenes/{scene}/move/{direction}', [TourAdminController::class, 'move'])
+            ->whereIn('direction', ['up', 'down'])->name('move');
+
+        Route::post('/scenes/{scene}/hotspots', [TourAdminController::class, 'storeHotspot'])->name('hotspots.store');
+        Route::put('/hotspots/{hotspot}', [TourAdminController::class, 'updateHotspot'])->name('hotspots.update');
+        Route::delete('/hotspots/{hotspot}', [TourAdminController::class, 'destroyHotspot'])->name('hotspots.destroy');
+    });
+
+// ---------- API PUBLIK (dipakai profile/tour.blade.php) ----------
+// Kalau route /api/tour sudah ada, GANTI isinya ke controller ini (jangan dobel).
+Route::get('/api/tour', [TourApiController::class, 'index']);
 
 
 /*

@@ -298,11 +298,11 @@
     $adminMenu = [
       'Profil Sekolah' => [
         ['admin.school-history.index',  'fa-landmark',          'Sejarah Sekolah'],
-        ['admin.vision-mission.index',  'fa-bullseye',          'Visi &amp; Misi'],
+        ['admin.visi-misi.index',  'fa-bullseye',          'Visi &amp; Misi'],
         ['admin.org-structure.index',   'fa-sitemap',           'Struktur Organisasi'],
         ['admin.teachers.index',        'fa-chalkboard-user',   'Guru &amp; Staf'],
         ['admin.roadmap.index',         'fa-road',              'Roadmap Pengembangan'],
-        ['admin.virtual-tour.index',    'fa-street-view',       'Tour Virtual 360°'],
+        ['admin.tour.index',            'fa-street-view',       'Tour Virtual 360°'],
       ],
       'Program Keahlian' => [
         ['admin.majors.index',          'fa-graduation-cap',    'Jurusan / Program Keahlian'],
