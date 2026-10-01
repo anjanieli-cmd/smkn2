@@ -320,7 +320,8 @@
       'Pengaturan Situs' => [
         ['admin.announcement.index',    'fa-bullhorn',          'Announcement Bar'],
         ['admin.partners.index',        'fa-building',          'Logo Partner / Mitra'],
-        ['admin.users.index',           'fa-user-shield',       'Manajemen User &amp; Admin'],
+        ['admin.footer.index',  'fa-shoe-prints', 'Informasi Footer'],
+        ['admin.general.index', 'fa-globe',       'Konten Umum Website'],
       ],
     ];
   @endphp
