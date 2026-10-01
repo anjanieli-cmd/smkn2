@@ -1424,7 +1424,7 @@
           <span class="sejarah-white">DKV</span>
           <span class="skaneda-gold">SKANEDA</span>
         </h1>
-        <a class="history-vt-cta" href="#lab-tour">
+        <a class="history-vt-cta" href="{{ route('profil.tour') }}?scene=lab-dkv">
           <span class="history-vt-icon"><i class="fas fa-vector-square"></i></span>
           <span><strong>Lihat Studio Tour</strong><small>Jelajahi Studio DKV</small></span>
           <i class="fas fa-arrow-right history-vt-arrow"></i>
