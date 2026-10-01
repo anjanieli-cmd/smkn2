@@ -1380,15 +1380,12 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        // Digabung: seeder punyamu (AdminSeeder, SchoolHistorySeeder, TourSceneSeeder, VisiMisiSeeder)
-        // + seeder dari remote (GallerySeeder). Kalau salah satu belum ada class-nya,
-        // boleh dihapus dari daftar ini sampai file seeder-nya dibuat.
-        $this->call([
-            AdminSeeder::class,
-            GallerySeeder::class,
-            SchoolHistorySeeder::class,
-            TourSceneSeeder::class,
-            VisiMisiSeeder::class,
+           $this->call([
+       AdminSeeder::class,
+       SchoolHistorySeeder::class,
+       GallerySeeder::class,
+       TourSceneSeeder::class,
+       VisiMisiSeeder::class,
         ]);
     }
 }
