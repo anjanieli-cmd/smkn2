@@ -1603,9 +1603,10 @@
   background:#fff;border-bottom:1px solid rgba(13,58,102,.08);
 }
 .prestasi-section .prestasi-feed-avatar{
-  width:34px;height:34px;border-radius:50%;display:grid;place-items:center;flex:0 0 34px;
-  background:linear-gradient(135deg,#123b60,#1e5b92);color:#ffd54a;font-size:.72rem;
-  box-shadow:0 5px 14px rgba(13,58,102,.18);
+  width:34px;height:34px;display:grid;place-items:center;flex:0 0 34px;
+}
+.prestasi-section .prestasi-feed-avatar img{
+  width:100%;height:100%;object-fit:contain;display:block;
 }
 .prestasi-section .prestasi-feed-account{min-width:0;line-height:1.2}
 .prestasi-section .prestasi-feed-account strong{
@@ -2937,19 +2938,19 @@
       <div class="prestasi-feed-viewport">
         <div class="prestasi-feed-rail" id="prestasiFeedRail" aria-label="Feed prestasi siswa">
           <article class="prestasi-feed">
-            <div class="prestasi-feed-head"><div class="prestasi-feed-avatar"><i class="fa-solid fa-trophy"></i></div><div class="prestasi-feed-account"><strong>SKANEDA</strong><span>SMK Negeri 2 Mojokerto</span></div><div class="prestasi-feed-more" aria-hidden="true">•••</div></div>
+            <div class="prestasi-feed-head"><div class="prestasi-feed-avatar"><img src="{{ asset('images/logo_smkn2.png') }}" alt="SKANEDA"></div><div class="prestasi-feed-account"><strong>SKANEDA</strong><span>SMK Negeri 2 Mojokerto</span></div><div class="prestasi-feed-more" aria-hidden="true">•••</div></div>
             <div class="prestasi-feed-media"><img src="{{ asset('images/lks.jpeg') }}" alt="Lomba Kompetensi Siswa" loading="lazy"></div>
             <div class="prestasi-feed-body"><div class="prestasi-feed-actions" aria-hidden="true"><i class="fa-regular fa-heart"></i><i class="fa-regular fa-comment"></i><i class="fa-regular fa-paper-plane"></i><i class="fa-regular fa-bookmark save"></i></div><span class="prestasi-feed-tag">Medali Perak — Nasional</span><h3>LKS Nasional <span>Patisserie &amp; Confectionery</span></h3><p>SMK Negeri 2 Mojokerto meraih medali perak pada Lomba Kompetensi Siswa SMK bidang patisserie and confectionery tingkat nasional.</p><div class="prestasi-feed-meta"><span><i class="fa-solid fa-calendar"></i> 2024</span><span><i class="fa-solid fa-medal"></i> Tingkat Nasional</span></div></div>
           </article>
 
           <article class="prestasi-feed">
-            <div class="prestasi-feed-head"><div class="prestasi-feed-avatar"><i class="fa-solid fa-leaf"></i></div><div class="prestasi-feed-account"><strong>SKANEDA</strong><span>SMK Negeri 2 Mojokerto</span></div><div class="prestasi-feed-more" aria-hidden="true">•••</div></div>
+            <div class="prestasi-feed-head"><div class="prestasi-feed-avatar"><img src="{{ asset('images/logo_smkn2.png') }}" alt="SKANEDA"></div><div class="prestasi-feed-account"><strong>SKANEDA</strong><span>SMK Negeri 2 Mojokerto</span></div><div class="prestasi-feed-more" aria-hidden="true">•••</div></div>
             <div class="prestasi-feed-media"><img src="{{ asset('images/adiwiyata.jpeg') }}" alt="Sekolah Adiwiyata Provinsi" loading="lazy"></div>
             <div class="prestasi-feed-body"><div class="prestasi-feed-actions" aria-hidden="true"><i class="fa-regular fa-heart"></i><i class="fa-regular fa-comment"></i><i class="fa-regular fa-paper-plane"></i><i class="fa-regular fa-bookmark save"></i></div><span class="prestasi-feed-tag">Penghargaan — Jawa Timur</span><h3>SMKN 2 Mojokerto <span>Raih Adiwiyata Provinsi</span></h3><p>SMK Negeri 2 Mojokerto meraih penghargaan Sekolah Adiwiyata Provinsi Jawa Timur.</p><div class="prestasi-feed-meta"><span><i class="fa-solid fa-calendar"></i> 2025</span><span><i class="fa-solid fa-medal"></i> Lingkungan</span></div></div>
           </article>
 
           <article class="prestasi-feed">
-            <div class="prestasi-feed-head"><div class="prestasi-feed-avatar"><i class="fa-solid fa-trophy"></i></div><div class="prestasi-feed-account"><strong>SKANEDA</strong><span>SMK Negeri 2 Mojokerto</span></div><div class="prestasi-feed-more" aria-hidden="true">•••</div></div>
+            <div class="prestasi-feed-head"><div class="prestasi-feed-avatar"><img src="{{ asset('images/logo_smkn2.png') }}" alt="SKANEDA"></div><div class="prestasi-feed-account"><strong>SKANEDA</strong><span>SMK Negeri 2 Mojokerto</span></div><div class="prestasi-feed-more" aria-hidden="true">•••</div></div>
             <div class="prestasi-feed-media"><img src="{{ asset('images/klic.jpeg') }}" alt="Program KLIC" loading="lazy"></div>
             <div class="prestasi-feed-body"><div class="prestasi-feed-actions" aria-hidden="true"><i class="fa-regular fa-heart"></i><i class="fa-regular fa-comment"></i><i class="fa-regular fa-paper-plane"></i><i class="fa-regular fa-bookmark save"></i></div><span class="prestasi-feed-tag">Prestasi — KLIC</span><h3>Prestasi <span>Program KLIC</span></h3><p>SMK Negeri 2 Mojokerto kembali menorehkan prestasi melalui program Korea E-Learning Improvement Cooperation (KLIC).</p><div class="prestasi-feed-meta"><span><i class="fa-solid fa-calendar"></i> 2025</span><span><i class="fa-solid fa-medal"></i> E-Learning</span></div></div>
           </article>
