@@ -286,7 +286,13 @@
 [data-reveal].revealed{opacity:1;transform:none}
 [data-reveal]{transition-delay:calc(var(--d,0)*90ms)}
 
-/* ---------- RESPONSIVE ---------- */
+/* ---------- RESPONSIVE MOBILE POLISH ---------- */
+.pd-jadwal-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
 @media(max-width:1200px){
   .pd-track-grid{grid-template-columns:repeat(2,1fr)}
   .pd-jurusan-grid{grid-template-columns:repeat(2,1fr)}
@@ -294,28 +300,68 @@
   .pd-flow-track::before{display:none}
 }
 @media(max-width:950px){
-  .pd-intro-grid{grid-template-columns:1fr;gap:3rem}
+  .pd-intro-grid{grid-template-columns:1fr;gap:2.5rem}
   .pd-req-grid{grid-template-columns:1fr;gap:0 2.6rem}
 }
 @media(max-width:700px){
-  .pd-section,.pd-intro,.pd-track{padding:85px 0 90px}
-  .pd-req,.pd-jadwal,.pd-jurusan{padding:85px 0 90px}
-  .pd-flow{padding:85px 0 90px}
-  .pd-cta{padding:56px 5% 64px;margin-bottom:4.5rem;width:92%;margin-left:auto;margin-right:auto}
-  .pd-track-grid{grid-template-columns:1fr}
-  .pd-jurusan-grid{grid-template-columns:1fr}
-  .pd-flow-grid{grid-template-columns:1fr 1fr;gap:1.4rem .8rem}
-  .pd-req-card{padding:1.6rem 1.3rem}
-  .pd-jadwal-table th,.pd-jadwal-table td{padding:.8rem 1.2rem}
-  .pd-jadwal-head{flex-direction:column;align-items:flex-start;padding:1.3rem 1.2rem}
-  .pd-def-row{flex-direction:column;align-items:flex-start;gap:.8rem}
-  .home-orn .ho-chevron{width:220px;height:220px}
-  .home-orn .ho-dots{width:80px;height:80px;background-size:14px 14px}
-  .home-orn .ho-ring{width:110px;height:110px}
-  .home-orn .ho-line{width:190px}
-  .home-orn .ho-square{width:42px;height:42px}
-  .home-orn .ho-corner{width:70px;height:70px}
+  .pd-page { overflow-x: hidden !important; max-width: 100vw !important; }
+  .pd-hero { min-height: auto !important; padding: 2rem 0 2.5rem !important; }
+  .pd-hero-inner { width: 92% !important; padding: 2rem 0 2.5rem !important; }
+  .pd-title { font-size: clamp(2.3rem, 9vw, 3.6rem) !important; line-height: 1.05 !important; word-break: break-word !important; }
+  .pd-kicker { font-size: 0.68rem !important; margin-bottom: 0.8rem !important; padding: 0.45rem 0.75rem !important; }
+  .pd-lead { font-size: 0.92rem !important; margin-top: 1rem !important; }
+  
+  .pd-section,.pd-intro,.pd-track,.pd-req,.pd-jadwal,.pd-jurusan,.pd-flow,.pd-faq { padding: 48px 0 54px !important; }
+  .pd-cta { padding: 2.2rem 1.2rem !important; margin-bottom: 3.5rem !important; width: 92% !important; border-radius: 20px !important; }
+  .pd-cta h2 { font-size: clamp(1.5rem, 6.5vw, 2.2rem) !important; }
+  .pd-cta-btn { width: 100% !important; justify-content: center !important; margin-top: 0.5rem !important; }
+  
+  .pd-def-row { flex-direction: row !important; align-items: flex-start !important; gap: 0.9rem !important; padding: 0.95rem 1rem !important; border-radius: 14px !important; }
+  .pd-def-index { min-width: 44px !important; height: 44px !important; width: 44px !important; font-size: 1.15rem !important; border-radius: 12px !important; flex-shrink: 0 !important; }
+  .pd-def-text h3 { font-size: 0.95rem !important; }
+  .pd-def-text p { font-size: 0.8rem !important; margin-top: 0.15rem !important; }
+  
+  .pd-track-grid { grid-template-columns: 1fr !important; gap: 1rem !important; }
+  .pd-track-card { padding: 1.35rem 1.2rem !important; border-radius: 18px !important; }
+  .pd-track-no { font-size: 1.75rem !important; top: 0.9rem !important; right: 1rem !important; }
+  .pd-track-icon { width: 48px !important; height: 48px !important; font-size: 1.15rem !important; border-radius: 14px !important; }
+  
+  .pd-jurusan-grid { grid-template-columns: 1fr !important; gap: 1.1rem !important; }
+  .pd-jurusan-photo { height: 165px !important; }
+  .pd-jurusan-body { padding: 1.1rem 1.2rem !important; }
+  
+  .pd-flow-grid { grid-template-columns: 1fr 1fr !important; gap: 1.3rem 0.75rem !important; }
+  .pd-flow-dot { width: 52px !important; height: 52px !important; font-size: 1.1rem !important; }
+  .pd-flow-title { font-size: 0.85rem !important; margin-top: 0.65rem !important; }
+  .pd-flow-text { font-size: 0.72rem !important; max-width: 100% !important; }
+  
+  .pd-req-card { padding: 1.4rem 1.1rem !important; border-radius: 18px !important; }
+  .pd-req-grid { grid-template-columns: 1fr !important; gap: 0.4rem !important; }
+  .pd-req-item { padding: 0.75rem 0 !important; gap: 0.75rem !important; }
+  .pd-req-note { flex-direction: row !important; align-items: flex-start !important; padding: 0.85rem 1rem !important; font-size: 0.78rem !important; border-radius: 12px !important; }
+  
+  .pd-jadwal-card { border-radius: 18px !important; margin-top: 1.8rem !important; }
+  .pd-jadwal-head { flex-direction: column !important; align-items: flex-start !important; padding: 1.1rem 1.2rem !important; gap: 0.66rem !important; }
+  .pd-jadwal-head h3 { font-size: 1.05rem !important; }
+  .pd-jadwal-table th, .pd-jadwal-table td { padding: 0.75rem 1rem !important; white-space: nowrap !important; font-size: 0.8rem !important; }
+  .pd-jadwal-foot { padding: 0.85rem 1.2rem !important; font-size: 0.74rem !important; }
+  
+  .pd-faq-list { margin-top: 1.6rem !important; gap: 0.65rem !important; }
+  .pd-faq-q { padding: 0.95rem 1.1rem !important; font-size: 0.88rem !important; line-height: 1.4 !important; }
+  .pd-faq-a p { padding: 0 1.1rem 1rem !important; font-size: 0.82rem !important; }
+  
+  .home-orn .ho-chevron{width:180px;height:180px}
+  .home-orn .ho-dots{width:70px;height:70px;background-size:12px 12px}
+  .home-orn .ho-ring{width:95px;height:95px}
+  .home-orn .ho-line{width:140px}
+  .home-orn .ho-square{width:36px;height:36px}
+  .home-orn .ho-corner{width:50px;height:50px}
   [data-reveal]{opacity:1;transform:none}
+}
+
+@media(max-width:480px){
+  .pd-flow-grid { grid-template-columns: 1fr !important; gap: 1.2rem !important; }
+  .pd-title { font-size: clamp(2rem, 8.5vw, 2.8rem) !important; }
 }
 </style>
 @endpush
@@ -546,52 +592,54 @@
           <h3><i class="fas fa-calendar-check"></i> Jadwal PPDB SMK Negeri 2 Mojokerto</h3>
           <span class="pd-jadwal-badge"><i class="fas fa-clock"></i> Tahun Pelajaran 2026/2027</span>
         </div>
-        <table class="pd-jadwal-table">
-          <thead>
-            <tr>
-              <th>No</th>
-              <th>Kegiatan</th>
-              <th>Waktu</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td>Pengumuman &amp; sosialisasi PPDB</td>
-              <td>Maret – April 2026</td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>Pendaftaran akun &amp; pengambilan PIN</td>
-              <td>Mei 2026</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>Pendaftaran &amp; unggah berkas (semua jalur)</td>
-              <td>Juni 2026</td>
-            </tr>
-            <tr>
-              <td>4</td>
-              <td>Verifikasi &amp; pemeringkatan berkas</td>
-              <td>Juni 2026</td>
-            </tr>
-            <tr>
-              <td>5</td>
-              <td>Pengumuman hasil seleksi</td>
-              <td>Awal Juli 2026</td>
-            </tr>
-            <tr>
-              <td>6</td>
-              <td>Daftar ulang peserta didik diterima</td>
-              <td>Juli 2026</td>
-            </tr>
-            <tr>
-              <td>7</td>
-              <td>Masa Pengenalan Lingkungan Sekolah (MPLS)</td>
-              <td>Juli 2026</td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="pd-jadwal-table-wrap">
+          <table class="pd-jadwal-table">
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Kegiatan</th>
+                <th>Waktu</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Pengumuman &amp; sosialisasi PPDB</td>
+                <td>Maret – April 2026</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Pendaftaran akun &amp; pengambilan PIN</td>
+                <td>Mei 2026</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Pendaftaran &amp; unggah berkas (semua jalur)</td>
+                <td>Juni 2026</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>Verifikasi &amp; pemeringkatan berkas</td>
+                <td>Juni 2026</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>Pengumuman hasil seleksi</td>
+                <td>Awal Juli 2026</td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td>Daftar ulang peserta didik diterima</td>
+                <td>Juli 2026</td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td>Masa Pengenalan Lingkungan Sekolah (MPLS)</td>
+                <td>Juli 2026</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
         <div class="pd-jadwal-foot"><i class="fas fa-info-circle"></i> Jadwal dapat berubah mengikuti ketetapan resmi Dinas Pendidikan Provinsi Jawa Timur — pantau terus pengumuman sekolah.</div>
       </div>
     </div>

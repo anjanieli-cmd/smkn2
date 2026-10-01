@@ -75,13 +75,610 @@
     body.a11y-line-xwide p,body.a11y-line-xwide .section-desc,body.a11y-line-xwide .vm-text{line-height:2.3}
     body.a11y-dyslexic *{font-family:'Comic Sans MS','Trebuchet MS',sans-serif !important;letter-spacing:.03em}
     body.a11y-high-contrast{--bg:#000;--text:#fff;--text-muted:#ffd;--card:#111;--border:#444}
-    body.a11y-dark-mode{--bg:#0d3a66;--text:#d9f2ef;--text-muted:#8fb8b5;--card:#13518c;--border:#0d3a66}
+    body.a11y-dark-mode{--bg:#07162c;--text:#d9f2ef;--text-muted:#8fb8b5;--card:#0f2744;--border:#07162c}
     body.a11y-dark-mode .section-desc{color:#8fb8b5}
+
+    /* ============================================================
+       DARK MODE OVERRIDES — 14 FRONTPAGE SECTIONS & CARDS
+       ============================================================ */
+    body.theme-dark,
+    html.theme-dark,
+    body.a11y-dark-mode {
+      --bg: #07162c !important;
+      --card: #0f2744 !important;
+      --border: rgba(255, 255, 255, 0.12) !important;
+      --text: #e2e8f0 !important;
+      --text-muted: #94a3b8 !important;
+      background-color: #07162c !important;
+      color: #e2e8f0 !important;
+    }
+
+    /* Page Containers & Main Sections */
+    body.theme-dark .history-page,
+    body.theme-dark .so-page,
+    body.theme-dark .sg-page,
+    body.theme-dark .aphp-page,
+    body.theme-dark .dkv-page,
+    body.theme-dark .kuliner-page,
+    body.theme-dark .lps-page,
+    body.theme-dark .rpl-page,
+    body.theme-dark .pd-page,
+    body.theme-dark .ks-page,
+    body.theme-dark .ek-page,
+    body.theme-dark .ev-page,
+    body.theme-dark .br-page,
+    body.theme-dark .fc-page,
+    body.theme-dark .history-hero,
+    body.theme-dark .history-intro,
+    body.theme-dark .timeline-section,
+    body.theme-dark .mosaic-section,
+    body.theme-dark .principal-section,
+    body.theme-dark .vt-section,
+    body.theme-dark .so-chart-section,
+    body.theme-dark .sg-section,
+    body.theme-dark .sg-intro,
+    body.theme-dark .sg-catalog,
+    body.theme-dark .section-pad,
+    body.theme-dark .pd-intro,
+    body.theme-dark .pd-track,
+    body.theme-dark .pd-req,
+    body.theme-dark .pd-flow,
+    body.theme-dark .pd-jadwal,
+    body.theme-dark .pd-jurusan,
+    body.theme-dark .pd-faq,
+    body.theme-dark .ks-hero,
+    body.theme-dark .ks-intro,
+    body.theme-dark .ks-slider,
+    body.theme-dark .ks-kategori,
+    body.theme-dark .ks-prestasi,
+    body.theme-dark .ek-hero,
+    body.theme-dark .ek-intro,
+    body.theme-dark .ek-stats,
+    body.theme-dark .ek-explore,
+    body.theme-dark .br-hero,
+    body.theme-dark .br-sec,
+    body.theme-dark .br-main,
+    body.theme-dark .br-story,
+    body.theme-dark .fc-report,
+    body.theme-dark .fc-main,
+    body.theme-dark .fc-report-info,
+    body.theme-dark .fc-report-form {
+      background-color: #07162c !important;
+      color: #e2e8f0 !important;
+    }
+
+    /* Cards, Modals, Panels & Surfaces */
+    body.theme-dark .history-pill,
+    body.theme-dark .history-vt-cta,
+    body.theme-dark .stat-box,
+    body.theme-dark .timeline-card,
+    body.theme-dark .mosaic-card,
+    body.theme-dark .principal-post,
+    body.theme-dark .principal-post-head,
+    body.theme-dark .vt-chip,
+    body.theme-dark .vt-feat,
+    body.theme-dark .so-hero-pill,
+    body.theme-dark .so-vt-hero-cta,
+    body.theme-dark .so-nav-pill,
+    body.theme-dark .so-toolbar,
+    body.theme-dark .so-search,
+    body.theme-dark .so-fchip,
+    body.theme-dark .so-card,
+    body.theme-dark .so-role-card,
+    body.theme-dark .sg-brand-card,
+    body.theme-dark .sg-toolbar,
+    body.theme-dark .sg-search,
+    body.theme-dark .sg-fchip,
+    body.theme-dark .idcard-wrap,
+    body.theme-dark .idcard-front,
+    body.theme-dark .idcard-back,
+    body.theme-dark .pd-pill,
+    body.theme-dark .pd-def-row,
+    body.theme-dark .pd-track-card,
+    body.theme-dark .pd-req-card,
+    body.theme-dark .pd-jurusan-card,
+    body.theme-dark .pd-faq-item,
+    body.theme-dark .ks-pill,
+    body.theme-dark .ks-mini,
+    body.theme-dark .ks-chip,
+    body.theme-dark .ks-kat-card,
+    body.theme-dark .ks-prestasi-card,
+    body.theme-dark .ek-pill,
+    body.theme-dark .ek-mini,
+    body.theme-dark .ek-filter,
+    body.theme-dark .ek-card,
+    body.theme-dark .ek-card-head,
+    body.theme-dark .ek-stat,
+    body.theme-dark .ev-side-card,
+    body.theme-dark .ev-card,
+    body.theme-dark .ev-cat,
+    body.theme-dark .ev-switch-row,
+    body.theme-dark .ev-tabs,
+    body.theme-dark .ev-track-empty,
+    body.theme-dark .ev-result-desc,
+    body.theme-dark .br-pill,
+    body.theme-dark .br-featured,
+    body.theme-dark .br-side-item,
+    body.theme-dark .br-toolbar,
+    body.theme-dark .br-filter-btn,
+    body.theme-dark .br-search input,
+    body.theme-dark .br-item,
+    body.theme-dark .br-most,
+    body.theme-dark .br-story-card,
+    body.theme-dark .br-story-item,
+    body.theme-dark .fc-report,
+    body.theme-dark .fc-stat,
+    body.theme-dark .fc-side-card,
+    body.theme-dark .fc-search input,
+    body.theme-dark .fc-cat-btn,
+    body.theme-dark .fc-pill,
+    body.theme-dark .fc-card,
+    body.theme-dark .process-step,
+    body.theme-dark .competency-card,
+    body.theme-dark .product-card,
+    body.theme-dark .industry-card,
+    body.theme-dark .facility-card,
+    body.theme-dark .stat-card,
+    body.theme-dark .curriculum-card,
+    body.theme-dark .career-card,
+    body.theme-dark .hero-card,
+    body.theme-dark .feat-card,
+    body.theme-dark .tefa-card {
+      background-color: #0f2744 !important;
+      border-color: rgba(255, 255, 255, 0.12) !important;
+      color: #e2e8f0 !important;
+    }
+
+    /* Headings & High-Contrast Titles */
+    body.theme-dark h1,
+    body.theme-dark h2,
+    body.theme-dark h3,
+    body.theme-dark h4,
+    body.theme-dark h5,
+    body.theme-dark h6,
+    body.theme-dark .big-heading,
+    body.theme-dark .history-title .sejarah-white,
+    body.theme-dark .so-title .so-white,
+    body.theme-dark .pd-title .pd-white,
+    body.theme-dark .ks-title .ks-white,
+    body.theme-dark .ek-title .ek-white,
+    body.theme-dark .br-title .br-white,
+    body.theme-dark .timeline-year,
+    body.theme-dark .timeline-title,
+    body.theme-dark .stat-num,
+    body.theme-dark .principal-profile strong,
+    body.theme-dark .so-card-name,
+    body.theme-dark .so-role-card h4,
+    body.theme-dark .sg-brand-copy strong,
+    body.theme-dark .pd-def-text h3,
+    body.theme-dark .pd-track-name,
+    body.theme-dark .pd-req-item strong,
+    body.theme-dark .pd-flow-title,
+    body.theme-dark .pd-jurusan-name,
+    body.theme-dark .ks-mini b,
+    body.theme-dark .ks-kat-name,
+    body.theme-dark .ek-mini b,
+    body.theme-dark .ek-card-uname,
+    body.theme-dark .ev-card-head h2,
+    body.theme-dark .ev-label,
+    body.theme-dark .ev-steps-text strong,
+    body.theme-dark .br-sec-title,
+    body.theme-dark .br-featured h3,
+    body.theme-dark .br-side-body h4,
+    body.theme-dark .br-item-body h3,
+    body.theme-dark .fc-section-head h2,
+    body.theme-dark .fc-report-heading,
+    body.theme-dark .fc-field label,
+    body.theme-dark .fc-stat b,
+    body.theme-dark .fc-claim,
+    body.theme-dark .vt-title {
+      color: #ffffff !important;
+    }
+
+    /* Paragraphs & Muted Descriptions */
+    body.theme-dark p,
+    body.theme-dark .history-lead,
+    body.theme-dark .intro-copy,
+    body.theme-dark .timeline-text,
+    body.theme-dark .timeline-note,
+    body.theme-dark .principal-desc,
+    body.theme-dark .principal-caption,
+    body.theme-dark .stat-label,
+    body.theme-dark .vt-desc,
+    body.theme-dark .so-lead,
+    body.theme-dark .so-card-unit,
+    body.theme-dark .so-card-person,
+    body.theme-dark .so-role-card p,
+    body.theme-dark .so-legend,
+    body.theme-dark .sg-brand-copy small,
+    body.theme-dark .sg-sec-desc,
+    body.theme-dark .pd-lead,
+    body.theme-dark .pd-intro-note,
+    body.theme-dark .pd-def-text p,
+    body.theme-dark .pd-track-text,
+    body.theme-dark .pd-req-item span,
+    body.theme-dark .pd-flow-text,
+    body.theme-dark .pd-jurusan-text,
+    body.theme-dark .ks-lead,
+    body.theme-dark .ks-blurb,
+    body.theme-dark .ks-kat-text,
+    body.theme-dark .ek-lead,
+    body.theme-dark .ek-desc,
+    body.theme-dark .ek-intro-note,
+    body.theme-dark .ek-card-caption,
+    body.theme-dark .ek-card-sched,
+    body.theme-dark .ev-card-head p,
+    body.theme-dark .ev-steps-text span,
+    body.theme-dark .ev-trust-list li,
+    body.theme-dark .ev-switch-text span,
+    body.theme-dark .br-lead,
+    body.theme-dark .br-sec-sub,
+    body.theme-dark .br-featured-excerpt,
+    body.theme-dark .br-item-excerpt,
+    body.theme-dark .fc-report-lead,
+    body.theme-dark .fc-explain,
+    body.theme-dark .fc-section-head p {
+      color: #cbd5e1 !important;
+    }
+
+    /* Inputs, Textareas, Selects */
+    body.theme-dark input,
+    body.theme-dark textarea,
+    body.theme-dark select,
+    body.theme-dark .so-search input,
+    body.theme-dark .sg-search input,
+    body.theme-dark .ev-input,
+    body.theme-dark .ev-textarea,
+    body.theme-dark .fc-field input,
+    body.theme-dark .fc-field select,
+    body.theme-dark .fc-field textarea,
+    body.theme-dark .br-search input,
+    body.theme-dark .fc-search input {
+      background-color: #0b1d33 !important;
+      color: #ffffff !important;
+      border-color: rgba(255, 255, 255, 0.2) !important;
+    }
+    body.theme-dark input::placeholder,
+    body.theme-dark textarea::placeholder {
+      color: #64748b !important;
+    }
+
+    /* Un-active Pills, Chips, and Buttons */
+    body.theme-dark .so-fchip:not(.is-active),
+    body.theme-dark .sg-fchip:not(.is-active),
+    body.theme-dark .ks-chip,
+    body.theme-dark .ek-filter:not(.active),
+    body.theme-dark .br-filter-btn:not(.active),
+    body.theme-dark .fc-pill:not(.active),
+    body.theme-dark .fc-cat-btn:not(.active) {
+      background-color: #17375e !important;
+      color: #e2e8f0 !important;
+      border-color: rgba(255, 255, 255, 0.15) !important;
+    }
+
+    /* Tabs in E-Voice */
+    body.theme-dark .ev-tabs {
+      background-color: #17375e !important;
+    }
+    body.theme-dark .ev-tab:not(.active) {
+      color: #cbd5e1 !important;
+    }
+
+    /* SVGs & Decorative Overlays adjustments */
+    body.theme-dark .home-orn .ho-chevron,
+    body.theme-dark .home-orn .ho-ring,
+    body.theme-dark .home-orn .ho-square {
+      border-color: rgba(255, 255, 255, 0.08) !important;
+    }
+
+    /* ============================================================
+       PROGRAM KEAHLIAN (5 SUB-BAB) MOBILE RESPONSIVE FIXES
+       (RPL, DKV, Kuliner, APHP, LPS)
+       ============================================================ */
+    @media (max-width: 768px) {
+      /* Prevent horizontal page scroll overflow */
+      html, body, .aphp-page, .history-page, .history-hero, .history-shell {
+        overflow-x: hidden !important;
+        max-width: 100vw !important;
+      }
+
+      /* Hero Title & Spacing */
+      .history-hero {
+        min-height: auto !important;
+        padding-top: 1.8rem !important;
+        padding-bottom: 2.2rem !important;
+      }
+      .history-hero-inner {
+        padding: 1.8rem 1.25rem !important;
+        width: 100% !important;
+      }
+      .history-title {
+        font-size: clamp(2.1rem, 8.5vw, 3.2rem) !important;
+        line-height: 1.05 !important;
+        max-width: 100% !important;
+        word-break: break-word !important;
+        overflow-wrap: break-word !important;
+      }
+      .history-hero::after {
+        font-size: clamp(4.5rem, 18vw, 7.5rem) !important;
+        opacity: 0.25 !important;
+        left: 0 !important;
+      }
+      .history-lead {
+        font-size: 0.92rem !important;
+        margin-top: 1rem !important;
+      }
+      .history-vt-cta {
+        width: 100% !important;
+        margin-top: 1.2rem !important;
+      }
+
+      /* Section 1: Video Pengenalan */
+      .vid-section {
+        padding: 44px 0 52px !important;
+      }
+      .vid-wrap {
+        grid-template-columns: 1fr !important;
+        gap: 1.8rem !important;
+        width: 100% !important;
+        padding-left: 1.25rem !important;
+        padding-right: 1.25rem !important;
+      }
+      .vid-copy h2 {
+        font-size: clamp(1.8rem, 7vw, 2.5rem) !important;
+      }
+      .vid-cards {
+        grid-template-columns: 1fr !important;
+        gap: 0.65rem !important;
+      }
+      .vid-player {
+        aspect-ratio: 16/9 !important;
+        width: 100% !important;
+        border-radius: 16px !important;
+      }
+      .vid-play {
+        width: 58px !important;
+        height: 58px !important;
+        font-size: 1.2rem !important;
+      }
+
+      /* Section 2: Tentang Jurusan */
+      .tentang-section {
+        padding: 44px 0 52px !important;
+      }
+      .tentang-grid {
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
+        width: 100% !important;
+        padding-left: 1.25rem !important;
+        padding-right: 1.25rem !important;
+      }
+      .tentang-copy h2 {
+        font-size: clamp(1.9rem, 7.5vw, 2.8rem) !important;
+      }
+      .tentang-mini {
+        grid-template-columns: 1fr !important;
+        gap: 0.65rem !important;
+      }
+      .tentang-visual {
+        min-height: auto !important;
+        width: 100% !important;
+      }
+      .tv-panel {
+        width: 100% !important;
+        min-height: auto !important;
+        border-radius: 18px !important;
+      }
+      .tv-flow {
+        grid-template-columns: 1fr !important;
+        padding: 0.9rem !important;
+        gap: 0.65rem !important;
+      }
+
+      /* Section 3 & 4: Pembelajaran & Headings */
+      .belajar-section {
+        padding: 44px 0 52px !important;
+      }
+      .belajar-head, .praktik-head, .fasilitas-head, .kegiatan-head, .prospek-head {
+        width: 100% !important;
+        padding-left: 1.25rem !important;
+        padding-right: 1.25rem !important;
+        margin-bottom: 28px !important;
+      }
+      .belajar-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+        width: 100% !important;
+        padding-left: 1.25rem !important;
+        padding-right: 1.25rem !important;
+      }
+
+      /* Section 5: Praktik & Lab */
+      .praktik-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+        width: 100% !important;
+        padding-left: 1.25rem !important;
+        padding-right: 1.25rem !important;
+      }
+      .praktik-card {
+        min-height: 260px !important;
+      }
+
+      /* Section 6: Fasilitas */
+      .fasilitas-grid {
+        grid-template-columns: 1fr !important;
+        width: 100% !important;
+        padding-left: 1.25rem !important;
+        padding-right: 1.25rem !important;
+      }
+      .fasilitas-cta {
+        flex-direction: column !important;
+        text-align: center !important;
+        padding: 1.6rem 1.2rem !important;
+        gap: 1.2rem !important;
+        width: 100% !important;
+        border-radius: 18px !important;
+      }
+      .fasilitas-cta .fcta-btn {
+        width: 100% !important;
+        justify-content: center !important;
+      }
+
+      /* Section 7: Karya / Produk Unggulan */
+      .produk-head {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 0.75rem !important;
+        width: 100% !important;
+        padding-left: 1.25rem !important;
+        padding-right: 1.25rem !important;
+      }
+      .produk-note {
+        text-align: left !important;
+        max-width: 100% !important;
+      }
+      .produk-slider {
+        width: 100% !important;
+        padding-left: 1.25rem !important;
+        padding-right: 1.25rem !important;
+      }
+      .produk-track {
+        flex-direction: column !important;
+        display: flex !important;
+        gap: 1.2rem !important;
+      }
+      .produk-card {
+        flex-basis: 100% !important;
+        width: 100% !important;
+      }
+
+      /* Section 8: Kegiatan & Prestasi */
+      .kegiatan-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+        width: 100% !important;
+        padding-left: 1.25rem !important;
+        padding-right: 1.25rem !important;
+      }
+      .kegiatan-card.tall {
+        grid-row: auto !important;
+        min-height: 260px !important;
+      }
+
+      /* Section 9: Prospek Lulusan */
+      .prospek-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+        width: 100% !important;
+        padding-left: 1.25rem !important;
+        padding-right: 1.25rem !important;
+      }
+      .prospek-card {
+        min-height: auto !important;
+      }
+
+      /* Section 10: Industry Partners */
+      .industry-collab {
+        padding-top: 3.2rem !important;
+        padding-bottom: 2.2rem !important;
+      }
+      .industry-collab .ic-head .big-heading {
+        font-size: clamp(1.7rem, 6.5vw, 2.4rem) !important;
+      }
+      .industry-collab .ic-marquee-wrap::before,
+      .industry-collab .ic-marquee-wrap::after {
+        width: 35px !important;
+      }
+      .industry-collab .ic-logo {
+        width: 125px !important;
+        height: 76px !important;
+      }
+      .industry-collab .ic-logo-only {
+        width: 95px !important;
+        height: 55px !important;
+      }
+
+      /* Section 11: Virtual Tour / Lab Tour */
+      .aphp-page .vt-section {
+        padding: 48px 0 56px !important;
+      }
+      .aphp-page .vt-inner {
+        grid-template-columns: 1fr !important;
+        gap: 1.8rem !important;
+        width: 100% !important;
+        padding-left: 1.25rem !important;
+        padding-right: 1.25rem !important;
+      }
+      .aphp-page .vt-frame {
+        aspect-ratio: 16/10 !important;
+        border-radius: 16px !important;
+      }
+      .aphp-page .vt-play {
+        width: 58px !important;
+        height: 58px !important;
+        font-size: 1.1rem !important;
+      }
+      .aphp-page .vt-title {
+        font-size: clamp(1.9rem, 6.5vw, 2.6rem) !important;
+      }
+
+      /* Section 12: CTA Final */
+      .aphp-cta {
+        padding: 2rem 1.1rem !important;
+        margin: 16px auto 40px !important;
+        width: 100% !important;
+        border-radius: 18px !important;
+      }
+      .aphp-cta h2 {
+        font-size: clamp(1.5rem, 6vw, 2.2rem) !important;
+      }
+      .aphp-cta-actions {
+        flex-direction: column !important;
+        width: 100% !important;
+        gap: 0.75rem !important;
+      }
+      .aphp-cta-btn, .aphp-cta-ghost {
+        width: 100% !important;
+        justify-content: center !important;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .history-title {
+        font-size: clamp(1.75rem, 8vw, 2.4rem) !important;
+      }
+      .big-heading {
+        font-size: clamp(1.55rem, 7vw, 2.2rem) !important;
+      }
+      .vid-card {
+        padding: 0.75rem !important;
+      }
+      .tv-core {
+        width: 110px !important;
+        height: 110px !important;
+      }
+      .tv-core strong {
+        font-size: 1.35rem !important;
+      }
+    }
     ::selection{background:var(--teal);color:#fff}
     img{max-width:100%;display:block}
     a{text-decoration:none;color:inherit}
     button{font-family:inherit;cursor:pointer}
     .container{width:min(1180px,92%);margin:0 auto}
+    @media (max-width: 768px) {
+      .container {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding-left: 1.25rem !important;
+        padding-right: 1.25rem !important;
+        box-sizing: border-box !important;
+      }
+      .footer-main {
+        width: 100% !important;
+      }
+    }
     .section-py{padding:96px 0}
 
     #preloader{
@@ -342,7 +939,7 @@
     [data-reveal]{transition-delay:calc(var(--d,0)*90ms)}
 
     /* ============================================================
-       RESPONSIVE
+       RESPONSIVE & MOBILE NAVBAR FIXES (HP STAY + COMPACT SIZE)
        ============================================================ */
     @media(max-width:1024px){
       .announce-bar .container{padding:0 1.5rem}
@@ -350,12 +947,62 @@
       #navbar.scrolled .nav-inner{padding:.75rem 1.5rem}
     }
     @media(max-width:900px){
+      body {
+        padding-top: 48px !important;
+      }
+      .announce-bar {
+        position: relative;
+        z-index: 9998;
+      }
+      #navbar {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        z-index: 9999 !important;
+      }
       .section-py{padding:72px 0}
-      .nav-menu{position:fixed;top:0;right:-320px;width:300px;height:100vh;flex-direction:column;align-items:flex-start;gap:.3rem;background:rgba(13,58,102,.96);padding:4.6rem 1.4rem 2rem;box-shadow:-20px 0 60px rgba(0,0,0,.45);transition:right .45s var(--ease);overflow-y:auto;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+      .nav-inner {
+        padding: 0.4rem 0.85rem !important;
+        min-height: 48px !important;
+        border-radius: 0 !important;
+        background: linear-gradient(135deg, #0d3a66, #1d6fb8) !important;
+        box-shadow: 0 4px 18px rgba(13, 58, 102, 0.35) !important;
+      }
+      #navbar.scrolled .nav-inner {
+        padding: 0.35rem 0.85rem !important;
+        background: linear-gradient(135deg, #0a2f57, #13518c) !important;
+      }
+      .nav-brand {
+        gap: 0.45rem !important;
+      }
+      .nav-logo img {
+        width: 34px !important;
+        height: 34px !important;
+      }
+      .nav-brand-text strong {
+        font-size: 0.92rem !important;
+        line-height: 1.1 !important;
+      }
+      .nav-brand-text .brand-sub {
+        font-size: 0.58rem !important;
+        letter-spacing: 0.18em !important;
+        margin-top: 1px !important;
+      }
+      .nav-toggle {
+        display: flex !important;
+        padding: 0.3rem !important;
+        gap: 3.5px !important;
+      }
+      .nav-toggle span {
+        width: 20px !important;
+        height: 2px !important;
+      }
+      .nav-menu{position:fixed;top:0;right:-320px;width:280px;height:100vh;flex-direction:column;align-items:flex-start;gap:.3rem;background:rgba(13,58,102,.97);padding:4.2rem 1.3rem 2rem;box-shadow:-20px 0 60px rgba(0,0,0,.5);transition:right .45s var(--ease);overflow-y:auto;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);z-index:10000}
       .nav-menu.open{right:0}
-      .nav-toggle{display:flex}
       .nav-item{width:100%}
-      .nav-link{width:100%;justify-content:flex-start;font-size:1.05rem;padding:.7rem .8rem}
+      .nav-link{width:100%;justify-content:flex-start;font-size:1.02rem;padding:.65rem .8rem}
       /* Pada mobile, garis bawah di kiri */
       .nav-link::after{
         left:20px;
@@ -367,22 +1014,33 @@
         transform:scaleX(1);
       }
       .dropdown-menu{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;border:0;background:rgba(29,111,184,.05);margin-top:.3rem;display:none;min-width:0;padding:.3rem .5rem}
-      .dropdown-menu a{font-size:.9rem;padding:.5rem .7rem}
+      .dropdown-menu a{font-size:.88rem;padding:.5rem .7rem}
       .nav-item.dropdown-open .dropdown-menu{display:block}
       .announce-bar .container{padding:0 1rem}
-      .nav-inner{padding:.85rem 1rem;border-radius:0}
-      #navbar.scrolled .nav-inner{padding:.7rem 1rem}
-      .nav-cta{font-size:1.05rem;padding:.7rem 1rem !important}
-      .nav-ai-matchmaker{width:100%;padding:.7rem .8rem !important;border-radius:10px !important}
-      .ai-nav-badge{top:4px !important;right:10px !important;min-width:34px !important;height:27px !important;font-size:.9rem !important;}
+      .nav-cta{font-size:1.02rem;padding:.65rem 1rem !important}
+      .nav-ai-matchmaker{width:100%;padding:.65rem .8rem !important;border-radius:10px !important;height:44px !important}
+      .ai-nav-badge{top:2px !important;right:10px !important;min-width:32px !important;height:24px !important;font-size:.82rem !important;}
     }
     @media(max-width:600px){
+      body {
+        padding-top: 44px !important;
+      }
       .section-py{padding:60px 0}
       .announce-bar .container{padding:0 .8rem}
-      .nav-inner{padding:.75rem .8rem;border-radius:0}
-      #navbar.scrolled .nav-inner{padding:.65rem .8rem}
-      .nav-link{font-size:1rem;padding:.6rem .7rem}
-      .nav-cta{font-size:1rem;padding:.6rem .9rem !important}
+      .nav-inner{padding:.35rem .75rem !important;min-height:44px !important}
+      #navbar.scrolled .nav-inner{padding:.3rem .75rem !important}
+      .nav-logo img {
+        width: 30px !important;
+        height: 30px !important;
+      }
+      .nav-brand-text strong {
+        font-size: 0.85rem !important;
+      }
+      .nav-brand-text .brand-sub {
+        font-size: 0.52rem !important;
+      }
+      .nav-link{font-size:0.95rem;padding:.55rem .7rem}
+      .nav-cta{font-size:0.95rem;padding:.55rem .9rem !important}
     }
     @media(prefers-reduced-motion:reduce){
       *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
@@ -1772,6 +2430,13 @@
     body.theme-dark input[type="datetime-local"],
     body.theme-dark input[type="time"] {
       color-scheme: dark !important;
+    }
+    /* 14. Footer Main & Footer Bottom Dark Mode Seamless Background */
+    body.theme-dark .footer-main {
+      background: #061221 !important;
+    }
+    body.theme-dark .footer-bottom {
+      background: #040d18 !important;
     }
   </style>
 </head>

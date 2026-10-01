@@ -57,9 +57,9 @@
 @media(max-width:1050px){.kg-hero-inner{padding-right:1.25rem}.kg-ref-ornaments{opacity:.72}}
 @media(max-width:900px){.kg-title{font-size:clamp(3.2rem,10.5vw,6rem)}.kg-ref-ornament-image{opacity:.88}}
 @media(max-width:700px){.kg-hero{align-items:flex-start;min-height:0}
-  .kg-hero-inner{width:90%;padding:clamp(3rem,8vh,4.5rem) 5% 3.2rem}
+  .kg-hero-inner{width:100%;padding:clamp(2.8rem,7vh,4rem) 1.25rem 2.8rem}
   .kg-hero::after{font-size:clamp(3.2rem,20vw,5.4rem);opacity:.6;left:-2%}
-  .kg-title{font-size:clamp(2.6rem,12vw,3.8rem)}}
+  .kg-title{font-size:clamp(2.4rem,11vw,3.6rem)}}
 @media(max-width:560px){.kg-ref-ornament-image{opacity:.62}}
 
 /* ---------- HOME-ORN (ornamen geometris, IDENTIK referensi) ---------- */
@@ -286,54 +286,86 @@
   .kg-pick-big{min-height:440px}
 }
 @media (max-width:860px){
-  .kg-stats-row{grid-template-columns:repeat(2,1fr)}
+  .kg-sec{padding:clamp(3rem,6vw,4.5rem) clamp(1.2rem,4vw,3rem)}
+  .kg-stats-row{grid-template-columns:repeat(2,1fr);gap:.85rem}
   .kg-masonry{grid-template-columns:repeat(2,1fr);grid-auto-rows:110px}
   .kg-timeline{grid-template-columns:repeat(2,1fr)}
   .kg-pick-side{grid-template-columns:1fr 1fr}
 }
 @media (max-width:640px){
-  .kg-stats-row{grid-template-columns:1fr 1fr}
-  .kg-masonry{grid-template-columns:1fr 1fr;grid-auto-rows:120px;gap:.75rem}
-  .kg-card--wide{grid-column:span 2}
-  .kg-timeline{grid-template-columns:1fr}
-  .kg-pick-side{grid-template-columns:1fr;grid-template-rows:auto}
-  .kg-pick-small{min-height:220px}
-  .kg-feat-media{aspect-ratio:4/4.6}
-  .kg-filters{flex-wrap:nowrap;overflow-x:auto;padding-bottom:.5rem;-webkit-overflow-scrolling:touch}
-  .kg-fbtn{white-space:nowrap}
+  .kg-sec{padding:2.2rem 1rem}
+  .kg-stats-row{grid-template-columns:1fr 1fr;gap:.65rem}
+  .kg-stat{padding:.9rem .75rem;border-radius:14px}
+  .kg-stat-num{font-size:1.45rem}
+  .kg-stat-label{font-size:.6rem;letter-spacing:.08em;margin-top:.3rem}
+  .kg-feat-media{aspect-ratio:16/10}
+  .kg-feat-body{padding:1.2rem 1rem}
+  .kg-feat-title{font-size:clamp(1.3rem,5vw,1.75rem);line-height:1.2;margin:.5rem 0 0}
+  .kg-feat-desc{font-size:.85rem;line-height:1.65;margin:.4rem 0 0}
+  .kg-feat-btn{margin-top:.9rem;padding:.6rem 1.1rem;font-size:.74rem}
+  .kg-filters{flex-wrap:nowrap;overflow-x:auto;padding-bottom:.5rem;-webkit-overflow-scrolling:touch;margin:0 0 .5rem}
+  .kg-fbtn{white-space:nowrap;padding:.45rem .85rem;font-size:.68rem}
+  .kg-masonry{grid-template-columns:repeat(2,1fr);grid-auto-rows:auto;gap:.75rem}
+  .kg-card{grid-column:span 1!important;grid-row:auto!important;min-height:220px;aspect-ratio:4/3;border-radius:14px}
+  .kg-card--wide{grid-column:span 2!important}
+  .kg-card-info{transform:translateY(0);opacity:1;padding:.85rem .9rem}
+  .kg-card-title{font-size:.9rem;line-height:1.25}
+  .kg-timeline{grid-template-columns:1fr;gap:.75rem}
+  .kg-month{display:flex;align-items:flex-start;gap:.85rem;padding:1rem .9rem;border-radius:14px;border-left:3px solid #ffd54a}
+  .kg-month-no{margin-bottom:0;flex-shrink:0;width:32px;height:32px;font-size:.64rem}
+  .kg-month-name{font-size:.95rem}
+  .kg-month-evt{font-size:.76rem;margin-top:.2rem}
+  .kg-month-note{font-size:.64rem;margin-top:.2rem}
+  .kg-picks{gap:1rem}
+  .kg-pick-big{min-height:260px;aspect-ratio:16/10;border-radius:16px}
+  .kg-pick-caption{left:1rem;right:1rem;bottom:1rem}
+  .kg-pick-caption strong{font-size:1.05rem}
+  .kg-pick-side{grid-template-columns:1fr 1fr;gap:.75rem}
+  .kg-pick-small{min-height:140px;border-radius:14px}
+  .kg-pick-small span{left:.75rem;bottom:.75rem;font-size:.65rem}
+  .kg-cta{padding:2.2rem 1.1rem;border-radius:20px}
+  .kg-cta h3{font-size:1.45rem;line-height:1.15}
+  .kg-cta p{font-size:.88rem;line-height:1.65;margin-top:.75rem}
+  .kg-cta-btn{width:100%;justify-content:center;margin-top:1.2rem;padding:.75rem 1.2rem;font-size:.78rem}
+}
+@media (max-width:480px){
+  .kg-masonry{grid-template-columns:1fr;gap:.85rem}
+  .kg-card,.kg-card--wide{grid-column:span 1!important;min-height:210px;aspect-ratio:16/10}
+  .kg-pick-side{grid-template-columns:1fr 1fr}
 }
 
 /* ---------- LIGHTBOX ALBUM MODAL ---------- */
 .kg-album-modal{position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;
   background:rgba(7,22,42,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-  opacity:0;visibility:hidden;transition:opacity .35s ease,visibility .35s ease;padding:1.5rem}
+  opacity:0;visibility:hidden;transition:opacity .35s ease,visibility .35s ease;padding:.75rem}
 .kg-album-modal.open{opacity:1;visibility:visible}
 .kg-album-dialog{position:relative;width:min(1100px,94vw);max-height:92vh;background:#102744;border:1px solid rgba(255,255,255,.15);
-  border-radius:24px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 30px 80px rgba(0,0,0,.6);color:#fff}
-.kg-album-header{display:flex;align-items:center;justify-content:space-between;padding:1.2rem 1.6rem;
+  border-radius:20px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 30px 80px rgba(0,0,0,.6);color:#fff}
+.kg-album-header{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.2rem;
   background:#0d213a;border-bottom:1px solid rgba(255,255,255,.08)}
-.kg-album-title{font-family:var(--font-display);font-size:1.2rem;font-weight:900;margin:0;color:#fff}
-.kg-album-meta{display:flex;align-items:center;gap:.7rem;margin-top:.25rem;font-size:.72rem;color:#8fa8c2}
-.kg-album-close{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.1);border:0;color:#fff;
-  font-size:1.1rem;display:grid;place-items:center;cursor:pointer;transition:all .25s ease}
+.kg-album-title{font-family:var(--font-display);font-size:1.05rem;font-weight:900;margin:0;color:#fff}
+.kg-album-meta{display:flex;align-items:center;gap:.7rem;margin-top:.25rem;font-size:.7rem;color:#8fa8c2}
+.kg-album-close{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.1);border:0;color:#fff;
+  font-size:1rem;display:grid;place-items:center;cursor:pointer;transition:all .25s ease}
 .kg-album-close:hover{background:#ff7a00;color:#fff;transform:scale(1.08)}
-.kg-album-body{position:relative;flex:1;min-height:350px;max-height:60vh;display:flex;align-items:center;justify-content:center;
+.kg-album-body{position:relative;flex:1;min-height:280px;max-height:55vh;display:flex;align-items:center;justify-content:center;
   background:#061221;overflow:hidden}
-.kg-album-img{max-width:100%;max-height:60vh;object-fit:contain;transition:transform .3s ease}
-.kg-album-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:10;width:48px;height:48px;border-radius:50%;
-  background:rgba(13,33,58,.8);border:1px solid rgba(255,255,255,.2);color:#fff;font-size:1.1rem;
+.kg-album-img{max-width:100%;max-height:55vh;object-fit:contain;transition:transform .3s ease}
+.kg-album-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:10;width:40px;height:40px;border-radius:50%;
+  background:rgba(13,33,58,.8);border:1px solid rgba(255,255,255,.2);color:#fff;font-size:1rem;
   display:grid;place-items:center;cursor:pointer;transition:all .25s ease}
 .kg-album-arrow:hover{background:#ffb300;color:#0d3a66}
-.kg-album-arrow.prev{left:1.2rem}
-.kg-album-arrow.next{right:1.2rem}
-.kg-album-footer{padding:1rem 1.6rem;background:#0d213a;border-top:1px solid rgba(255,255,255,.08);
-  display:flex;align-items:center;justify-content:space-between;gap:1rem}
-.kg-album-caption{font-size:.85rem;color:#c9d8e8;margin:0}
-.kg-album-counter{font-size:.78rem;font-weight:900;color:#ffd54a;letter-spacing:.1em}
+.kg-album-arrow.prev{left:.6rem}
+.kg-album-arrow.next{right:.6rem}
+.kg-album-footer{padding:.8rem 1.2rem;background:#0d213a;border-top:1px solid rgba(255,255,255,.08);
+  display:flex;align-items:center;justify-content:space-between;gap:.75rem}
+.kg-album-caption{font-size:.8rem;color:#c9d8e8;margin:0}
+.kg-album-counter{font-size:.74rem;font-weight:900;color:#ffd54a;letter-spacing:.1em}
 </style>
 @endpush
 
 @section('content')
+<div class="kg-page">
 
 <!-- ================= HERO (identik 100% dengan hero Ekstrakurikuler) ================= -->
 <section class="kg-hero">
@@ -836,6 +868,8 @@
       <span class="kg-album-counter" id="kgAlbumCounter">1 / 1</span>
     </div>
   </div>
+</div>
+
 </div>
 
 @endsection

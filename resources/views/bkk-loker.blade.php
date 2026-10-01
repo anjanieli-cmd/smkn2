@@ -142,8 +142,49 @@
 
 @media(max-width:1000px){.bkk-intro{grid-template-columns:1fr}}
 @media(max-width:960px){.ind-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:720px){.bkk-job-grid{grid-template-columns:1fr}.bkk-photo-row{grid-template-columns:1fr}}
-@media(max-width:600px){.ind-grid{grid-template-columns:1fr}}
+@media(max-width:860px){
+  .bkk-section{padding:clamp(2.8rem,5vw,4rem) clamp(1.2rem,4vw,3rem)}
+  .bkk-head{flex-direction:column;align-items:flex-start;gap:.5rem;margin-bottom:1.8rem}
+  .bkk-num{display:none}
+}
+@media(max-width:720px){
+  .bkk-job-grid{grid-template-columns:1fr}
+  .bkk-photo-row{grid-template-columns:1fr;gap:.75rem}
+  .bkk-photo-row img{height:170px}
+}
+@media(max-width:640px){
+  .bkk-hero{min-height:0;align-items:flex-start}
+  .bkk-hero-inner{width:100%;padding:clamp(2.8rem,7vh,4rem) 1.25rem 2.8rem}
+  .bkk-hero::after{font-size:clamp(3.2rem,20vw,5.4rem);opacity:.6;left:-2%}
+  .bkk-title{font-size:clamp(2.4rem,11vw,3.6rem)}
+  .bkk-lead{font-size:.88rem;line-height:1.65;margin-top:1rem}
+  .bkk-pills{gap:.4rem;margin-top:1.2rem}
+  .bkk-pill{font-size:.7rem;padding:.4rem .75rem}
+  .bkk-strip-inner{padding:.75rem 1rem;flex-direction:column;align-items:flex-start;gap:.4rem}
+  .bkk-strip-text{white-space:normal;font-size:.76rem;line-height:1.5}
+  .bkk-section{padding:2.2rem 1rem}
+  .bkk-heading{font-size:clamp(1.6rem,6vw,2.2rem);line-height:1.15}
+  .bkk-sub{font-size:.86rem;line-height:1.65}
+  .bkk-card{padding:1.2rem 1.1rem;border-radius:16px}
+  .bkk-card h3{font-size:1.1rem}
+  .bkk-card p{font-size:.84rem;line-height:1.65}
+  .ind-grid{grid-template-columns:1fr;gap:.85rem}
+  .ind-card{padding:1.1rem;border-radius:16px}
+  .ind-card h4{font-size:.98rem}
+  .bkk-job{padding:1.1rem;border-radius:16px;gap:.6rem}
+  .bkk-job-top{flex-direction:column;align-items:flex-start;gap:.4rem}
+  .bkk-job h3{font-size:1.05rem}
+  .bkk-job p{font-size:.82rem;line-height:1.6}
+  .bkk-job-meta{margin-top:.4rem;gap:.4rem}
+  .bkk-tag{font-size:.68rem;padding:.35rem .65rem}
+  .bkk-notice{font-size:.75rem;padding:.85rem 1rem;border-radius:12px}
+  .bkk-status-key{gap:.4rem;margin-top:1rem}
+  .bkk-key{font-size:.64rem;padding:.35rem .65rem}
+  .bkk-cta{padding:0 1rem 2.2rem}
+  .bkk-cta-box{padding:2.2rem 1.1rem;border-radius:20px}
+  .bkk-cta-box h2{font-size:1.45rem;line-height:1.15}
+  .bkk-cta-box p{font-size:.86rem;line-height:1.65;margin-top:.75rem}
+}
 </style>
 @endpush
 
