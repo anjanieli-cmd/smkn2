@@ -23,7 +23,11 @@ class MockGeminiProvider implements AIProviderInterface
                             str_contains($promptLower, 'proli') || str_contains($promptLower, 'ekskul') || str_contains($promptLower, 'ekstrakurikuler') ||
                             str_contains($promptLower, 'ppdb') || str_contains($promptLower, 'pendaftaran') || str_contains($promptLower, 'guru') ||
                             str_contains($promptLower, 'staf') || str_contains($promptLower, 'staff') || str_contains($promptLower, 'pendidik') ||
-                            str_contains($promptLower, 'kependidikan') || str_contains($promptLower, 'tata usaha') || str_contains($promptLower, 'tu') ||
+                            str_contains($promptLower, 'kependidikan') || str_contains($promptLower, 'tata usaha') || preg_match('/\btu\b/u', $promptLower) ||
+                            str_contains($promptLower, 'ruangan') || str_contains($promptLower, 'ruang') || str_contains($promptLower, 'tempat') ||
+                            str_contains($promptLower, 'lokasi') || str_contains($promptLower, 'area') || str_contains($promptLower, 'gedung') ||
+                            str_contains($promptLower, 'lab') || str_contains($promptLower, 'studio') || str_contains($promptLower, 'bengkel') ||
+                            str_contains($promptLower, 'liat') || str_contains($promptLower, 'lihat') || str_contains($promptLower, 'tampil') ||
                             str_contains($promptLower, 'karya') || str_contains($promptLower, 'produk') || str_contains($promptLower, 'kegiatan') ||
                             str_contains($promptLower, 'acara') || str_contains($promptLower, 'agenda') || str_contains($promptLower, 'lomba') ||
                             str_contains($promptLower, 'kepsek') || str_contains($promptLower, 'iswahyudi') || str_contains($promptLower, 'kantin') ||
@@ -136,6 +140,38 @@ class MockGeminiProvider implements AIProviderInterface
             str_contains($promptLower, 'diperlukan')
         ) {
             return $notFoundMessage;
+        }
+
+        // 0f1. Specific Room / Lab Virtual Tour Requests (e.g. "ruangan lab rpl", "liat lab dkv", "virtual tour lab rpl")
+        $isLookOrRoom = str_contains($promptLower, 'ruangan') || str_contains($promptLower, 'ruang') ||
+                        str_contains($promptLower, 'tempat') || str_contains($promptLower, 'lokasi') ||
+                        str_contains($promptLower, 'area') || str_contains($promptLower, 'gedung') ||
+                        str_contains($promptLower, 'lab') || str_contains($promptLower, 'studio') ||
+                        str_contains($promptLower, 'bengkel') || str_contains($promptLower, 'liat') ||
+                        str_contains($promptLower, 'lihat') || str_contains($promptLower, 'tour') ||
+                        str_contains($promptLower, '360') || str_contains($promptLower, 'jelajah');
+
+        if ($isLookOrRoom) {
+            if (str_contains($promptLower, 'rpl') || str_contains($promptLower, 'pplg') || str_contains($promptLower, 'perangkat lunak')) {
+                return "Halo! 👋 **Laboratorium RPL (Rekayasa Perangkat Lunak)** SMKN 2 Kota Mojokerto:\n\n💻 Ruang praktik komputer RPL (Lab RPL 1 & Lab RPL 2 di Lantai 2 Gedung Utama) yang dilengkapi unit PC High-Spec untuk pemrograman web, mobile app development, dan software engineering.\n\nKamu dapat melihat dan menjelajahi ruangan ini secara 360° di menu [Virtual Tour 360° Lab RPL](/profile/tour?scene=lab-rpl). 😊";
+            }
+            if (str_contains($promptLower, 'dkv') || str_contains($promptLower, 'desain')) {
+                return "Halo! 👋 **Laboratorium & Studio DKV** SMKN 2 Kota Mojokerto:\n\n🎨 Ruang praktik Desain Komunikasi Visual yang dilengkapi PC grafis high-spec, Studio Fotografi, dan studio karya multimedia.\n\nKamu dapat melihat dan menjelajahi ruangan ini secara 360° di menu [Virtual Tour 360° Lab DKV](/profile/tour?scene=lab-dkv). 😊";
+            }
+            if (str_contains($promptLower, 'aphp') || str_contains($promptLower, 'pertanian')) {
+                return "Halo! 👋 **Laboratorium APHP** SMKN 2 Kota Mojokerto:\n\n🌾 Ruang praktik Agribisnis Pengolahan Hasil Pertanian (Lab APHP 1 & Lab APHP 2) untuk teknologi pengolahan pangan dan pengujian mikrobiologi.\n\nKamu dapat melihat dan menjelajahi ruangan ini secara 360° di menu [Virtual Tour 360° Lab APHP](/profile/tour?scene=lab-1-aphp). 😊";
+            }
+            if (str_contains($promptLower, 'kuliner') || str_contains($promptLower, 'boga') || str_contains($promptLower, 'pastry')) {
+                return "Halo! 👋 **Laboratorium Pastry & Tata Hidang (Kuliner)** SMKN 2 Kota Mojokerto:\n\n🍳 Dapur Kitchen Lab utama, Lab Pastry & Bakery, serta Restoran Simulasi TEFA untuk praktik memasak dan layanan tata hidang.\n\nKamu dapat melihat dan menjelajahi ruangan ini secara 360° di menu [Virtual Tour 360° Lab Pastry](/profile/tour?scene=lab-pastry). 😊";
+            }
+            if (str_contains($promptLower, 'lps') || str_contains($promptLower, 'perbankan')) {
+                return "Halo! 👋 **Laboratorium LPS (Bank Mini Syariah)** SMKN 2 Kota Mojokerto:\n\n🏦 Ruang praktik Layanan Perbankan Syariah yang dirancang layaknya kantor cabang Bank Mini Syariah BSI untuk simulasi teller & customer service.\n\nKamu dapat melihat dan menjelajahi ruangan ini secara 360° di menu [Virtual Tour 360° Lab LPS](/profile/tour?scene=lab-lps). 😊";
+            }
+        }
+
+        // 0f2. General Room / Location / Place List Requests (e.g. "ada tempat aja di skaneda", "di skaneda ada ruangan apa aja", "daftar ruangan")
+        if (str_contains($promptLower, 'ruangan') || (str_contains($promptLower, 'ruang') && !str_contains($promptLower, 'peluang')) || str_contains($promptLower, 'tempat') || str_contains($promptLower, 'lokasi') || str_contains($promptLower, 'area') || str_contains($promptLower, 'gedung') || str_contains($promptLower, 'ada lab') || str_contains($promptLower, 'daftar lab')) {
+            return "Halo! 👋 **Daftar Ruangan, Tempat & Fasilitas di SMKN 2 Kota Mojokerto**:\n\n💻 **Laboratorium Komputer & Praktik Keahlian**:\n• **Lab RPL 1 & 2**: Ruang komputer pemrograman & web development.\n• **Studio DKV & Studio Fotografi**: Ruang desain grafis & fotografi studio.\n• **Lab APHP 1 & 2**: Ruang pengolahan pangan & lab mikrobiologi.\n• **Kitchen Lab Pastry & Lab Tata Hidang**: Dapur praktik & restoran TEFA Kuliner.\n• **Lab Bank Mini Syariah (LPS)**: Ruang simulasi perbankan BSI.\n\n🏫 **Tempat & Fasilitas Pembelajaran Utama**:\n• **Gerbang Utama & Lobi Sekolah**\n• **Ruang Kelas Teori & Kelas Belakang**\n• **Perpustakaan Digital**\n• **Aula Serbaguna**\n• **Masjid Al-Ikhlas & Musholla**\n• **Kantin Sekolah, Lapangan Olahraga, & Area Parkir**\n\nKamu dapat melihat dan menjelajahi seluruh ruangan dan tempat tersebut secara 360° di menu [Virtual Tour 360°](/profile/tour). 😊";
         }
 
         // 1. Kepala Sekolah / Kepsek
@@ -252,7 +288,7 @@ class MockGeminiProvider implements AIProviderInterface
         }
 
         // 6a. Staf (Tenaga Kependidikan) — Check staf FIRST so "staf" query gets staff specific answer
-        if (str_contains($promptLower, 'staf') || str_contains($promptLower, 'staff') || str_contains($promptLower, 'kependidikan') || str_contains($promptLower, 'tata usaha') || str_contains($promptLower, 'tu')) {
+        if (str_contains($promptLower, 'staf') || str_contains($promptLower, 'staff') || str_contains($promptLower, 'kependidikan') || str_contains($promptLower, 'tata usaha') || preg_match('/\btu\b/u', $promptLower)) {
             return "Halo! 👋 **Tenaga Kependidikan / Staf SMKN 2 Kota Mojokerto**:\n\nSMK Negeri 2 Mojokerto memiliki **20+ Tenaga Kependidikan & Staf** yang mengelola administrasi, keuangan, perpustakaan, dan layanan operasional sekolah:\n\n💰 **Bendahara BOS**: MEGA NOVINDA SARI, S.Pd.\n💳 **Bendahara BPOPP**: FAJAR DHILAMAYA, S.Pd.\n🤝 **Koordinator BKK**: MULAT ADITYAWIRANTI, S.Pd.\n🏫 **Staf Tata Usaha (TU), Perpustakaan Digital, Teknisi Lab, & Pengelola Sarana Sekolah**.\n\nDaftar staf kependidikan selengkapnya dapat kamu lihat di menu [Staff & Guru](/profile/staff-guru). 😊";
         }
 

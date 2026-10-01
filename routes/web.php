@@ -4,7 +4,53 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\SchoolHistoryController;
+use App\Http\Controllers\Admin\GalleryAdminController;
+use App\Http\Controllers\Admin\AchievementAdminController;
 use App\Http\Controllers\SejarahSekolahController;
+use App\Http\Controllers\Admin\TourAdminController;
+use App\Http\Controllers\Api\TourApiController;
+use App\Http\Controllers\Admin\VisiMisiAdminController;
+
+Route::middleware(['auth'])            // <- samakan dengan grup admin kamu
+    ->prefix('admin/visi-misi')
+    ->name('admin.visi-misi.')
+    ->group(function () {
+        Route::get('/', [VisiMisiAdminController::class, 'index'])->name('index');
+
+        // teks tunggal per tab: hero | visi | misi | tujuan | nilai
+        Route::put('/settings/{tab}', [VisiMisiAdminController::class, 'updateSettings'])
+            ->whereIn('tab', ['hero', 'visi', 'misi', 'tujuan', 'nilai'])->name('settings.update');
+
+        // item kartu (misi / tujuan / nilai)
+        Route::post('/items', [VisiMisiAdminController::class, 'storeItem'])->name('items.store');
+        Route::put('/items/{item}', [VisiMisiAdminController::class, 'updateItem'])->name('items.update');
+        Route::delete('/items/{item}', [VisiMisiAdminController::class, 'destroyItem'])->name('items.destroy');
+        Route::post('/items/{item}/toggle', [VisiMisiAdminController::class, 'toggleItem'])->name('items.toggle');
+        Route::post('/items/{item}/move/{direction}', [VisiMisiAdminController::class, 'moveItem'])
+            ->whereIn('direction', ['up', 'down'])->name('items.move');
+    });
+
+
+// ---------- ADMIN ----------
+Route::middleware(['auth'])            // <- samakan dengan grup admin kamu
+    ->prefix('admin/tour')
+    ->name('admin.tour.')
+    ->group(function () {
+        Route::get('/', [TourAdminController::class, 'index'])->name('index');
+        Route::post('/scenes', [TourAdminController::class, 'store'])->name('store');
+        Route::put('/scenes/{scene}', [TourAdminController::class, 'update'])->name('update');
+        Route::delete('/scenes/{scene}', [TourAdminController::class, 'destroy'])->name('destroy');
+        Route::post('/scenes/{scene}/move/{direction}', [TourAdminController::class, 'move'])
+            ->whereIn('direction', ['up', 'down'])->name('move');
+
+        Route::post('/scenes/{scene}/hotspots', [TourAdminController::class, 'storeHotspot'])->name('hotspots.store');
+        Route::put('/hotspots/{hotspot}', [TourAdminController::class, 'updateHotspot'])->name('hotspots.update');
+        Route::delete('/hotspots/{hotspot}', [TourAdminController::class, 'destroyHotspot'])->name('hotspots.destroy');
+    });
+
+// ---------- API PUBLIK (dipakai profile/tour.blade.php) ----------
+// Kalau route /api/tour sudah ada, GANTI isinya ke controller ini (jangan dobel).
+Route::get('/api/tour', [TourApiController::class, 'index']);
 
 
 /*
@@ -68,7 +114,11 @@ Route::get('/siswa/karya-siswa', function () {
     return view('siswa.karya-siswa', compact('studentWorks'));
 })->name('karya-siswa');
 
-Route::view('/siswa/prestasi-siswa', 'siswa.prestasi-siswa')->name('prestasi-siswa');
+Route::get('/siswa/prestasi-siswa', function () {
+    \Database\Seeders\AchievementSeeder::seedIfEmpty();
+    $items = \App\Models\SchoolAchievement::orderBy('created_at', 'desc')->get();
+    return view('siswa.prestasi-siswa', compact('items'));
+})->name('prestasi-siswa');
 
 Route::get('/siswa/ekstrakurikuler', function () {
     $extracurriculars = \App\Models\Extracurricular::all();
@@ -94,8 +144,31 @@ Route::get('/berita/factcheck', function () {
     return view('berita.factcheck', compact('factChecks'));
 })->name('factcheck');
 
-Route::view('/galeri/kegiatan', 'galeri.kegiatan')->name('kegiatan');
-Route::view('/prestasi', 'siswa.prestasi-siswa')->name('prestasi');
+Route::get('/galeri/kegiatan', function (Illuminate\Http\Request $request) {
+    \Database\Seeders\GallerySeeder::seedIfEmpty();
+
+    $query = \App\Models\Gallery::with('photos');
+
+    if ($request->filled('search')) {
+        $search = $request->input('search');
+        $query->where(function ($q) use ($search) {
+            $q->where('title', 'like', "%{$search}%")
+              ->orWhere('description', 'like', "%{$search}%")
+              ->orWhere('category', 'like', "%{$search}%");
+        });
+    }
+
+    $albums = $query->orderBy('created_at', 'desc')
+        ->orderBy('event_date', 'desc')
+        ->get();
+
+    return view('galeri.kegiatan', compact('albums'));
+})->name('kegiatan');
+Route::get('/prestasi', function () {
+    \Database\Seeders\AchievementSeeder::seedIfEmpty();
+    $items = \App\Models\SchoolAchievement::orderBy('created_at', 'desc')->get();
+    return view('siswa.prestasi-siswa', compact('items'));
+})->name('prestasi');
 Route::redirect('/galeri/prestasi-sekolah', '/prestasi')->name('prestasi-sekolah');
 
 
@@ -247,5 +320,19 @@ Route::prefix('admin')->name('admin.')->group(function () {
             ->name('school-history.update');
 
         require __DIR__ . '/admin-pengaturan.php';
+        
+        // 8. Galeri Kegiatan Sekolah (Album & Foto)
+        Route::get('/gallery', [GalleryAdminController::class, 'index'])->name('gallery.index');
+        Route::post('/gallery', [GalleryAdminController::class, 'store'])->name('gallery.store');
+        Route::put('/gallery/{id}', [GalleryAdminController::class, 'update'])->name('gallery.update');
+        Route::delete('/gallery/{id}', [GalleryAdminController::class, 'destroy'])->name('gallery.destroy');
+        Route::post('/gallery/{id}/photos', [GalleryAdminController::class, 'uploadPhotos'])->name('gallery.photos.upload');
+        Route::delete('/gallery/photos/{photoId}', [GalleryAdminController::class, 'deletePhoto'])->name('gallery.photos.destroy');
+
+        // 9. Prestasi Sekolah (Trophy Cabinet & Dokumentasi)
+        Route::get('/achievements', [AchievementAdminController::class, 'index'])->name('achievements.index');
+        Route::post('/achievements', [AchievementAdminController::class, 'store'])->name('achievements.store');
+        Route::put('/achievements/{id}', [AchievementAdminController::class, 'update'])->name('achievements.update');
+        Route::delete('/achievements/{id}', [AchievementAdminController::class, 'destroy'])->name('achievements.destroy');
     });
 });

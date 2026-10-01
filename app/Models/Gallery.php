@@ -26,4 +26,9 @@ class Gallery extends Model
             'event_date' => 'date',
         ];
     }
+
+    public function photos()
+    {
+        return $this->hasMany(GalleryPhoto::class, 'gallery_id')->orderBy('created_at', 'asc');
+    }
 }

@@ -243,6 +243,20 @@
     select.db-form-control{background:#0a2036;color:#fff}
     select.db-form-control option{background:#0a2036;color:#fff}
 
+    /* Datepicker Calendar Indicator Fix (Bright White Icon for Dark Panel) */
+    input[type="date"]::-webkit-calendar-picker-indicator,
+    input[type="datetime-local"]::-webkit-calendar-picker-indicator,
+    input[type="time"]::-webkit-calendar-picker-indicator {
+      filter: invert(1) brightness(2) !important;
+      cursor: pointer !important;
+      opacity: 1 !important;
+    }
+    input[type="date"],
+    input[type="datetime-local"],
+    input[type="time"] {
+      color-scheme: dark !important;
+    }
+
     .db-toast{
       position:fixed;bottom:24px;right:24px;z-index:110;
       background:#0f2f52;border:1px solid var(--gold);color:#fff;
@@ -284,11 +298,11 @@
     $adminMenu = [
       'Profil Sekolah' => [
         ['admin.school-history.index',  'fa-landmark',          'Sejarah Sekolah'],
-        ['admin.vision-mission.index',  'fa-bullseye',          'Visi &amp; Misi'],
+        ['admin.visi-misi.index',  'fa-bullseye',          'Visi &amp; Misi'],
         ['admin.org-structure.index',   'fa-sitemap',           'Struktur Organisasi'],
         ['admin.teachers.index',        'fa-chalkboard-user',   'Guru &amp; Staf'],
         ['admin.roadmap.index',         'fa-road',              'Roadmap Pengembangan'],
-        ['admin.virtual-tour.index',    'fa-street-view',       'Tour Virtual 360°'],
+        ['admin.tour.index',            'fa-street-view',       'Tour Virtual 360°'],
       ],
       'Program Keahlian' => [
         ['admin.majors.index',          'fa-graduation-cap',    'Jurusan / Program Keahlian'],

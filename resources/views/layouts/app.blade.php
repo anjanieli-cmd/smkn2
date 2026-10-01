@@ -1700,6 +1700,79 @@
     body.theme-dark .ks-prestasi-year {
       color: #8fa8c2 !important;
     }
+
+    /* 12. Galeri Prestasi Sekolah Sub-page Dark Mode & White Titles */
+    body.theme-dark .psk-page,
+    body.theme-dark .psk-opening,
+    body.theme-dark .psk-gallery {
+      background: #061221 !important;
+      color: #eaf2fb !important;
+    }
+    body.theme-dark .psk-hero,
+    body.theme-dark .psk-featured,
+    body.theme-dark .psk-achv {
+      background: #09182b !important;
+      color: #eaf2fb !important;
+    }
+    body.theme-dark .psk-title .psk-white,
+    body.theme-dark .psk-section-title,
+    body.theme-dark .psk-opening-desc strong,
+    body.theme-dark .psk-om b,
+    body.theme-dark .psk-feat-info h3,
+    body.theme-dark .psk-achv-body h3,
+    body.theme-dark .psk-achv-card h3 {
+      color: #ffffff !important;
+    }
+    body.theme-dark .psk-subtitle,
+    body.theme-dark .psk-lead,
+    body.theme-dark .psk-opening-desc,
+    body.theme-dark .psk-feat-desc,
+    body.theme-dark .psk-achv-body p {
+      color: #c9d8e8 !important;
+    }
+    body.theme-dark .psk-achv-card {
+      background: #102744 !important;
+      border-color: rgba(255, 255, 255, 0.1) !important;
+      color: #eaf2fb !important;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4) !important;
+    }
+    body.theme-dark .psk-achv-tag,
+    body.theme-dark .psk-achv-link,
+    body.theme-dark .psk-feat-meta span {
+      color: #eaf2fb !important;
+    }
+    body.theme-dark .psk-achv-year {
+      background: #0d213a !important;
+      color: #8fa8c2 !important;
+    }
+    body.theme-dark .psk-fbtn,
+    body.theme-dark .psk-ybtn,
+    body.theme-dark .psk-pill,
+    body.theme-dark .psk-more-btn {
+      background: #0d213a !important;
+      color: #eaf2fb !important;
+      border-color: rgba(255, 255, 255, 0.1) !important;
+    }
+    body.theme-dark .psk-fbtn.active,
+    body.theme-dark .psk-ybtn.active {
+      background: #1d6fb8 !important;
+      color: #ffffff !important;
+      border-color: #28a9e1 !important;
+    }
+
+    /* 13. Datepicker Calendar Indicator Fix (Inverted White/Bright Icon in Dark Mode) */
+    body.theme-dark input[type="date"]::-webkit-calendar-picker-indicator,
+    body.theme-dark input[type="datetime-local"]::-webkit-calendar-picker-indicator,
+    body.theme-dark input[type="time"]::-webkit-calendar-picker-indicator {
+      filter: invert(1) brightness(2) !important;
+      cursor: pointer !important;
+      opacity: 1 !important;
+    }
+    body.theme-dark input[type="date"],
+    body.theme-dark input[type="datetime-local"],
+    body.theme-dark input[type="time"] {
+      color-scheme: dark !important;
+    }
   </style>
 </head>
 <body>
@@ -2204,6 +2277,12 @@
   };
 
   const smartLocalAnswers = {
+    ruangan: "Daftar Ruangan & Laboratorium SMKN 2 Mojokerto:\n• Lab RPL 1 & 2 (Komputer & Pemrograman)\n• Studio DKV & Studio Fotografi\n• Lab APHP 1 & 2 (Pengolahan Pangan & Mikrobiologi)\n• Kitchen Lab Pastry & Lab Tata Hidang (Kuliner)\n• Lab Bank Mini Syariah (LPS)\n• Gerbang Utama, Lobi, Ruang Kelas, Perpustakaan Digital, Aula, Musholla, Kantin, & Lapangan.\nSeluruh ruangan dapat dilihat secara 360° di menu Virtual Tour (/profile/tour).",
+    lab_rpl: "Laboratorium RPL SMKN 2 Mojokerto:\nRuang praktik komputer RPL (Lab RPL 1 & 2) dengan PC High-Spec untuk pemrograman web, mobile app, dan software. Tampilan 360° dapat dilihat di menu Virtual Tour (/profile/tour?scene=lab-rpl).",
+    lab_dkv: "Laboratorium & Studio DKV SMKN 2 Mojokerto:\nStudio desain grafis, animasi, dan studio fotografi DKV. Tampilan 360° dapat dilihat di menu Virtual Tour (/profile/tour?scene=lab-dkv).",
+    lab_aphp: "Laboratorium APHP SMKN 2 Mojokerto:\nLab pengolahan pangan dan mikrobiologi APHP. Tampilan 360° dapat dilihat di menu Virtual Tour (/profile/tour?scene=lab-1-aphp).",
+    lab_kuliner: "Kitchen Lab & Restoran TEFA Kuliner SMKN 2 Mojokerto:\nDapur pastry, bakery, dan lab tata hidang. Tampilan 360° dapat dilihat di menu Virtual Tour (/profile/tour?scene=lab-pastry).",
+    lab_lps: "Laboratorium LPS (Bank Mini Syariah) SMKN 2 Mojokerto:\nRuang simulasi perbankan syariah BSI. Tampilan 360° dapat dilihat di menu Virtual Tour (/profile/tour?scene=lab-lps).",
     jurusan: "SMK Negeri 2 Mojokerto memiliki 5 Konsentrasi Keahlian unggulan:\n1. Rekayasa Perangkat Lunak (RPL) - Software & Pemrograman\n2. Desain Komunikasi Visual (DKV) - Multimedia, Grafis & Animasi\n3. Agribisnis Pengolahan Hasil Pertanian (APHP) - Pangan Modern\n4. Kuliner (Tata Boga) - Seni Olah Rasa & Restoran\n5. Layanan Perbankan Syariah (LPS) - Keuangan Syariah",
     fasilitas: "Fasilitas & Virtual Tour 360° SMKN 2 Mojokerto:\nSekolah kami dilengkapi fasilitas lengkap seperti Gerbang Utama, Lobi Utama, Lapangan Olahraga, Aula Serbaguna, Kantin Sekolah, Musholla, Area Parkir, Perpustakaan Digital, serta Laboratorium Praktik (Lab RPL, DKV, LPS, APHP, Dapur Kuliner). Seluruh lokasi ini dapat dikunjungi dan dilihat 360° di menu Virtual Tour (/profile/tour).",
     ppdb: "Informasi PPDB SMKN 2 Mojokerto:\nPendaftaran dilakukan secara online melalui portal resmi PPDB Jawa Timur (Jalur Prestasi, Afirmasi, dan Zonasi). Pendaftaran TIDAK DIPUNGUT BIAYA (GRATIS).",
@@ -2228,19 +2307,30 @@
 
   function getSmartLocalAnswer(text){
     const t = (text||'').toLowerCase();
+    const isLookOrRoom = t.includes('ruang') || t.includes('lab') || t.includes('studio') || t.includes('bengkel') || t.includes('liat') || t.includes('lihat') || t.includes('tour') || t.includes('360');
+
+    if (isLookOrRoom) {
+      if (t.includes('rpl') || t.includes('pplg') || t.includes('perangkat lunak')) return smartLocalAnswers.lab_rpl;
+      if (t.includes('dkv') || t.includes('desain')) return smartLocalAnswers.lab_dkv;
+      if (t.includes('aphp') || t.includes('pertanian')) return smartLocalAnswers.lab_aphp;
+      if (t.includes('kuliner') || t.includes('boga') || t.includes('pastry')) return smartLocalAnswers.lab_kuliner;
+      if (t.includes('lps') || t.includes('perbankan')) return smartLocalAnswers.lab_lps;
+    }
+
+    if (t.includes('ruangan') || (t.includes('ruang') && !t.includes('peluang')) || t.includes('ada lab') || t.includes('daftar lab')) return smartLocalAnswers.ruangan;
     if(t.includes('waka')||t.includes('wakil')) return smartLocalAnswers.waka;
     if(t.includes('kaprog')||t.includes('kaprodi')||t.includes('ketua program')||t.includes('ketua jurusan')) return smartLocalAnswers.kaprog;
     if(t.includes('bendahara')||t.includes('bos')||t.includes('bpopp')) return smartLocalAnswers.bendahara;
     if(t.includes('struktur')||t.includes('organisasi')||t.includes('bagan')||t.includes('komite')) return smartLocalAnswers.struktur;
     if(t.includes('sejarah')||t.includes('berdiri')) return smartLocalAnswers.sejarah;
     if(t.includes('visi')||t.includes('misi')) return smartLocalAnswers.visi;
-    if(t.includes('staf')||t.includes('staff')||t.includes('kependidikan')||t.includes('tata usaha')||t.includes('tu')) return smartLocalAnswers.staf;
+    if(t.includes('staf')||t.includes('staff')||t.includes('kependidikan')||t.includes('tata usaha')||/\btu\b/.test(t)) return smartLocalAnswers.staf;
     if(t.includes('guru')||t.includes('pendidik')||t.includes('pengajar')||t.includes('kepsek')||t.includes('iswahyudi')) return smartLocalAnswers.guru;
     if(t.includes('karya')||t.includes('produk')) return smartLocalAnswers.karya;
     if(t.includes('kegiatan')||t.includes('acara')||t.includes('agenda')) return smartLocalAnswers.kegiatan;
     if(t.includes('berita')||t.includes('kabar')||t.includes('artikel')) return smartLocalAnswers.berita;
     if(t.includes('prestasi')||t.includes('juara')||t.includes('lks')||t.includes('lomba')) return smartLocalAnswers.prestasi;
-    if(t.includes('jurusan')||t.includes('proli')||t.includes('keahlian')||t.includes('rpl')||t.includes('dkv')||t.includes('aphp')||t.includes('kuliner')||t.includes('lps')) return smartLocalAnswers.jurusan;
+    if(t.includes('jurusan')||t.includes('proli')||t.includes('keahlian')) return smartLocalAnswers.jurusan;
     if(t.includes('fasilitas')||t.includes('gerbang')||t.includes('kantin')||t.includes('musholla')||t.includes('masjid')||t.includes('lobi')||t.includes('aula')||t.includes('lapangan')||t.includes('parkir')||t.includes('tour')||t.includes('360')||t.includes('tempat')||t.includes('sarana')) return smartLocalAnswers.fasilitas;
     if(t.includes('ppdb')||t.includes('daftar')||t.includes('masuk')) return smartLocalAnswers.ppdb;
     if(t.includes('ekskul')||t.includes('ekstrakurikuler')||t.includes('ekstra')) return smartLocalAnswers.ekskul;

@@ -489,7 +489,38 @@
        image      : nama file JPG di /public/images/prestasi/ (upload manual,
                     nama file bebas asal cocok dengan yang ditulis di sini)
        ========================================================= */
-    $prestasi = [
+    $dbPrestasi = [];
+    if (isset($items) && count($items) > 0) {
+        foreach ($items as $it) {
+            $lvl = strtolower($it->level ?? 'provinsi');
+            if (str_contains($lvl, 'kota') || str_contains($lvl, 'kabupaten')) {
+                $levelBucket = 'kota';
+            } elseif (str_contains($lvl, 'nasional')) {
+                $levelBucket = 'nasional';
+            } elseif (str_contains($lvl, 'internasional')) {
+                $levelBucket = 'internasional';
+            } else {
+                $levelBucket = 'provinsi';
+            }
+
+            $imgSrc = $it->image_url ? (str_starts_with($it->image_url, 'http') ? $it->image_url : asset($it->image_url)) : asset('images/prestasi/lks-web.jpg');
+
+            $dbPrestasi[] = [
+                'id'         => 'db_' . $it->id,
+                'date'       => $it->year ? 'Tahun ' . $it->year : '2026',
+                'year'       => (int) ($it->year ?? 2026),
+                'level'      => $levelBucket,
+                'levelLabel' => $it->level ?? 'Provinsi',
+                'tag'        => $it->winner_name ?? 'SKANEDA',
+                'rank'       => 'Prestasi',
+                'title'      => $it->title,
+                'desc'       => $it->description ?? $it->title,
+                'image'      => $imgSrc,
+            ];
+        }
+    }
+
+    $fallbackPrestasi = [
       ['id'=>'a1','date'=>'01 September 2022','year'=>2022,'level'=>'kota','levelLabel'=>'Kota Mojokerto','tag'=>'Perbankan Syariah','rank'=>'Duta Koperasi','title'=>'Siswi Perbankan Syariah Dinobatkan sebagai Duta Koperasi Bertalenta 2022','desc'=>'Cantika Putri Hapsari, siswi Perbankan Syariah SMKN 2 Mojokerto, berhasil meraih kategori Duta Koperasi Bertalenta Kota Mojokerto 2022. Prestasi ini menjadi bukti kemampuan dan kepeduliannya dalam mengembangkan literasi perkoperasian di kalangan generasi muda.','image'=>'a1.jpg'],
       ['id'=>'a2','date'=>'11 September 2022','year'=>2022,'level'=>'kota','levelLabel'=>'Kota Mojokerto & Jombang','tag'=>'Umum','rank'=>'Duta GenRe','title'=>'Siswa SMKN 2 Mojokerto Raih Prestasi di Ajang Duta GenRe 2022','desc'=>'Siswa SMKN 2 Mojokerto berhasil menorehkan prestasi dalam ajang Duta GenRe 2022. Riska Kurniaila meraih Duta GenRe Sosial Media Inspiratif Kabupaten Jombang, sementara Muhammad Zulkifli dan Siti Nur Kholifah menjadi finalis Duta GenRe Kota Mojokerto.','image'=>'a2.jpg'],
       ['id'=>'a3','date'=>'27 Juli 2024','year'=>2024,'level'=>'kota','levelLabel'=>'Kota Mojokerto','tag'=>'Perbankan Syariah','rank'=>'Juara 3','title'=>'Skaneda Raih Juara 3 Lomba Cerdas Cermat DISKOPUKMPERINDAG','desc'=>'Tim Layanan Perbankan Syariah SMKN 2 Mojokerto berhasil meraih Juara 3 Lomba Cerdas Cermat Tingkat SMA/SMK/MA se-Kota Mojokerto. Prestasi ini diraih berkat ketekunan, disiplin waktu, literasi yang luas, serta bimbingan dari para guru.','image'=>'a3.jpg'],
@@ -516,6 +547,8 @@
       ['id'=>'a25','date'=>'29 November 2024','year'=>2024,'level'=>'provinsi','levelLabel'=>'Malang (Regional)','tag'=>'RPL','rank'=>'Juara 1','title'=>'Tim Penerbang Roket Raih Juara 1 Web Development di Polinema','desc'=>'Tim Penerbang Roket SMKN 2 Mojokerto berhasil meraih Juara 1 Lomba Web Development yang diselenggarakan di Politeknik Negeri Malang. Prestasi ini menunjukkan kreativitas, kemampuan teknologi, kerja sama, serta semangat belajar siswa dalam bidang pengembangan web.','image'=>'a25.jpg'],
       ['id'=>'a26','date'=>'18 Oktober 2025','year'=>2025,'level'=>'nasional','levelLabel'=>'Nasional','tag'=>'APHP','rank'=>'Finalis','title'=>'Tim APHP Skaneda Melaju ke Babak Final FIKSI 2025','desc'=>'Tim APHP (Agribisnis Pengolahan Hasil Pertanian) SMKN 2 Mojokerto kembali menorehkan prestasi dengan berhasil lolos sebagai finalis dalam ajang Festival Inovasi dan Kewirausahaan Siswa Indonesia (FIKSI) 2025. Pencapaian ini menjadi bukti atas kreativitas, inovasi, dan kerja keras tim APHP Skaneda dalam mengembangkan ide kewirausahaan di bidang pengolahan hasil pertanian. Keberhasilan melaju ke tahap final menjadi kesempatan bagi Tim APHP Skaneda untuk terus menunjukkan potensi dan membawa nama SMKN 2 Mojokerto pada ajang bergengsi tersebut.','image'=>'a26.jpg'],
     ];
+
+    $prestasi = array_merge($dbPrestasi, $fallbackPrestasi);
     $prestasiByYear = collect($prestasi)->groupBy('year');
     // Hanya tahun yang benar-benar punya data prestasi yang ditampilkan di
     // timeline "Perjalanan Prestasi" — tahun kosong (mis. 2023) otomatis

@@ -33,98 +33,113 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // 1. School Profiles
-        SchoolProfile::create([
-            'key' => 'general',
-            'content' => [
-                'name' => 'SMK Negeri 2 Mojokerto',
-                'address' => 'Jl. Raden Wijaya No. 1, Kranggan, Kota Mojokerto, Jawa Timur',
-                'phone' => '(0321) 321555',
-                'email' => 'info@smkn2mojokerto.sch.id',
-                'vision' => 'Menjadi Sekolah Menengah Kejuruan yang Unggul, Berkarakter, dan Berdaya Saing Global.',
-                'mission' => [
-                    'Menyelenggarakan pendidikan kejuruan berkualitas berstandar industri.',
-                    'Membentuk karakter peserta didik yang beriman, bertaqwa, dan berakhlak mulia.',
-                    'Meningkatkan kemitraan strategis dengan Dunia Usaha dan Dunia Industri (DUDI).',
+        SchoolProfile::updateOrCreate(
+            ['key' => 'general'],
+            [
+                'content' => [
+                    'name' => 'SMK Negeri 2 Mojokerto',
+                    'address' => 'Jl. Raden Wijaya No. 1, Kranggan, Kota Mojokerto, Jawa Timur',
+                    'phone' => '(0321) 321555',
+                    'email' => 'info@smkn2mojokerto.sch.id',
+                    'vision' => 'Menjadi Sekolah Menengah Kejuruan yang Unggul, Berkarakter, dan Berdaya Saing Global.',
+                    'mission' => [
+                        'Menyelenggarakan pendidikan kejuruan berkualitas berstandar industri.',
+                        'Membentuk karakter peserta didik yang beriman, bertaqwa, dan berakhlak mulia.',
+                        'Meningkatkan kemitraan strategis dengan Dunia Usaha dan Dunia Industri (DUDI).',
+                    ],
                 ],
-            ],
-        ]);
+            ]
+        );
 
         // 2. Majors (APHP, DKV, KULINER, LPS, RPL)
-        $rpl = Major::create([
-            'code' => 'RPL',
-            'name' => 'Rekayasa Perangkat Lunak',
-            'slug' => 'rekayasa-perangkat-lunak',
-            'description' => 'Konsentrasi keahlian pemrograman web, mobile, dan pengembangan software.',
-        ]);
+        $rpl = Major::updateOrCreate(
+            ['code' => 'RPL'],
+            [
+                'name' => 'Rekayasa Perangkat Lunak',
+                'slug' => 'rekayasa-perangkat-lunak',
+                'description' => 'Konsentrasi keahlian pemrograman web, mobile, dan pengembangan software.',
+            ]
+        );
 
-        $dkv = Major::create([
-            'code' => 'DKV',
-            'name' => 'Desain Komunikasi Visual',
-            'slug' => 'desain-komunikasi-visual',
-            'description' => 'Fokus pada grafis, ilustrasi, animasi, videografi, dan desain kreatif.',
-        ]);
+        $dkv = Major::updateOrCreate(
+            ['code' => 'DKV'],
+            [
+                'name' => 'Desain Komunikasi Visual',
+                'slug' => 'desain-komunikasi-visual',
+                'description' => 'Fokus pada grafis, ilustrasi, animasi, videografi, dan desain kreatif.',
+            ]
+        );
 
-        $aphp = Major::create([
-            'code' => 'APHP',
-            'name' => 'Agribisnis Pengolahan Hasil Pertanian',
-            'slug' => 'agribisnis-pengolahan-hasil-pertanian',
-            'description' => 'Inovasi pengolahan hasil pertanian dan pangan modern.',
-        ]);
+        $aphp = Major::updateOrCreate(
+            ['code' => 'APHP'],
+            [
+                'name' => 'Agribisnis Pengolahan Hasil Pertanian',
+                'slug' => 'agribisnis-pengolahan-hasil-pertanian',
+                'description' => 'Inovasi pengolahan hasil pertanian dan pangan modern.',
+            ]
+        );
 
-        $kuliner = Major::create([
-            'code' => 'KULINER',
-            'name' => 'Kuliner',
-            'slug' => 'kuliner',
-            'description' => 'Seni tata boga, manajemen kuliner, dan tata hidang profesional.',
-        ]);
+        $kuliner = Major::updateOrCreate(
+            ['code' => 'KULINER'],
+            [
+                'name' => 'Kuliner',
+                'slug' => 'kuliner',
+                'description' => 'Seni tata boga, manajemen kuliner, dan tata hidang profesional.',
+            ]
+        );
 
-        $lps = Major::create([
-            'code' => 'LPS',
-            'name' => 'Layanan Perbankan Syariah',
-            'slug' => 'layanan-perbankan-syariah',
-            'description' => 'Manajemen keuangan syariah dan administrasi perbankan.',
-        ]);
+        $lps = Major::updateOrCreate(
+            ['code' => 'LPS'],
+            [
+                'name' => 'Layanan Perbankan Syariah',
+                'slug' => 'layanan-perbankan-syariah',
+                'description' => 'Manajemen keuangan syariah dan administrasi perbankan.',
+            ]
+        );
 
         // 3. Extracurriculars & Organizations (Exact from Website Frontend)
-        $pramuka = Extracurricular::create(['name' => 'Pramuka', 'slug' => 'pramuka', 'category' => 'Kepanduan', 'image_url' => 'images/ekstra/pramuka.jpg', 'description' => 'Membentuk kemandirian, kepemimpinan, kepedulian lingkungan, dan keterampilan melalui kegiatan kepanduan.']);
-        $paskibra = Extracurricular::create(['name' => 'Paskib', 'slug' => 'paskib', 'category' => 'Kedisiplinan', 'image_url' => 'images/ekstra/paskibra.jpeg', 'description' => 'Membentuk kedisiplinan, keteguhan, tanggung jawab, dan kekompakan melalui latihan baris-berbaris.']);
-        $robotik = Extracurricular::create(['name' => 'Robotik & Coding Club', 'slug' => 'robotik-coding-club', 'category' => 'Teknologi', 'image_url' => 'images/ekstra/robotik.jpg', 'description' => 'Pengembangan minat bakat di bidang mikrokontroler, IoT, perakitan robot, dan pemrograman.']);
-        $banjari = Extracurricular::create(['name' => 'Banjari', 'slug' => 'banjari', 'category' => 'Keagamaan', 'image_url' => 'images/ekstra/banjari.jpg', 'description' => 'Mengembangkan seni musik Islami melalui lantunan shalawat, kekompakan, dan penampilan dalam kegiatan sekolah.']);
-        $basket = Extracurricular::create(['name' => 'Basket', 'slug' => 'basket', 'category' => 'Olahraga', 'image_url' => 'images/ekstra/basket.jpg', 'description' => 'Melatih teknik permainan, kebugaran, sportivitas, dan kerja sama tim melalui latihan serta pertandingan pelajar.']);
-        $voli = Extracurricular::create(['name' => 'Bola Voli', 'slug' => 'bola-voli', 'category' => 'Olahraga', 'image_url' => 'images/ekstra/voly.jpg', 'description' => 'Membangun kekompakan tim melalui latihan teknik dasar, strategi permainan, dan kompetisi antarpelajar.']);
-        $btq = Extracurricular::create(['name' => 'BTQ', 'slug' => 'btq', 'category' => 'Keagamaan', 'image_url' => 'images/ekstra/btq.jpg', 'description' => 'Meningkatkan kemampuan membaca Al-Qur’an dengan baik serta membangun kebiasaan belajar agama secara rutin.']);
-        $futsal = Extracurricular::create(['name' => 'Futsal', 'slug' => 'futsal', 'category' => 'Olahraga', 'image_url' => 'images/ekstra/futsal.jpg', 'description' => 'Mengasah kecepatan, strategi, disiplin, dan kerja sama tim melalui latihan futsal dan pertandingan pelajar.']);
-        $jurnalistik = Extracurricular::create(['name' => 'Jurnalistik', 'slug' => 'jurnalistik', 'category' => 'Media & Literasi', 'image_url' => 'images/ekstra/jurnalistik.jpg', 'description' => 'Menjadi ruang bagi siswa untuk menulis, meliput kegiatan sekolah, mengolah informasi, dan menghasilkan karya media.']);
-        $tari = Extracurricular::create(['name' => 'Tari', 'slug' => 'tari', 'category' => 'Seni & Budaya', 'image_url' => 'images/ekstra/tari.jpg', 'description' => 'Melestarikan budaya melalui tari tradisional dan kreasi serta memberikan ruang untuk tampil dan berkarya.']);
-        $pena = Extracurricular::create(['name' => 'PENA', 'slug' => 'pena', 'category' => 'Seni & Budaya', 'image_url' => 'images/ekstra/pena.jpg', 'description' => 'Wadah mini teater untuk melatih ekspresi, kepercayaan diri, penulisan naskah, dan kemampuan tampil di depan publik.']);
-        $silat = Extracurricular::create(['name' => 'Silat', 'slug' => 'silat', 'category' => 'Bela Diri', 'image_url' => 'images/ekstra/silat.jpeg', 'description' => 'Melatih bela diri, ketahanan fisik, kedisiplinan, dan sikap percaya diri melalui latihan pencak silat.']);
-        $pmr = Extracurricular::create(['name' => 'PMR', 'slug' => 'pmr', 'category' => 'Kesehatan', 'image_url' => 'images/ekstra/pmr.jpg', 'description' => 'Membekali siswa dengan kepedulian kemanusiaan, pertolongan pertama, dan kesiapsiagaan dalam kegiatan sekolah.']);
-        $pikr = Extracurricular::create(['name' => 'PIK-R', 'slug' => 'pik-r', 'category' => 'Kesehatan', 'image_url' => 'images/ekstra/pik-r.jpg', 'description' => 'Menjadi ruang edukasi dan konseling sebaya untuk membangun remaja yang sehat, bertanggung jawab, dan berencana.']);
-        $osis = Extracurricular::create(['name' => 'OSIS', 'slug' => 'osis', 'category' => 'Organisasi', 'image_url' => 'images/ekstra/osis.jpg', 'description' => 'Wadah utama kepemimpinan siswa untuk merancang dan menjalankan berbagai program kegiatan sekolah.']);
-        $lacurva = Extracurricular::create(['name' => 'Lacurva', 'slug' => 'lacurva', 'category' => 'Organisasi', 'image_url' => 'images/ekstra/lacurva.jpg', 'description' => 'Komunitas suporter Skaneda yang membangun semangat, kreativitas, dan dukungan positif untuk kegiatan serta prestasi siswa.']);
-        $pasus = Extracurricular::create(['name' => 'Pasus', 'slug' => 'pasus', 'category' => 'Organisasi', 'image_url' => 'images/ekstra/pasus.jpg', 'description' => 'Organisasi siswa yang menumbuhkan kedisiplinan, tanggung jawab, kekompakan, dan kesiapan membantu kegiatan sekolah.']);
+        // Digabung: updateOrCreate (aman dijalankan ulang) + image_url dari versi terbaru.
+        $pramuka = Extracurricular::updateOrCreate(['slug' => 'pramuka'], ['name' => 'Pramuka', 'category' => 'Kepanduan', 'image_url' => 'images/ekstra/pramuka.jpg', 'description' => 'Membentuk kemandirian, kepemimpinan, kepedulian lingkungan, dan keterampilan melalui kegiatan kepanduan.']);
+        $paskibra = Extracurricular::updateOrCreate(['slug' => 'paskib'], ['name' => 'Paskib', 'category' => 'Kedisiplinan', 'image_url' => 'images/ekstra/paskibra.jpeg', 'description' => 'Membentuk kedisiplinan, keteguhan, tanggung jawab, dan kekompakan melalui latihan baris-berbaris.']);
+        $robotik = Extracurricular::updateOrCreate(['slug' => 'robotik-coding-club'], ['name' => 'Robotik & Coding Club', 'category' => 'Teknologi', 'image_url' => 'images/ekstra/robotik.jpg', 'description' => 'Pengembangan minat bakat di bidang mikrokontroler, IoT, perakitan robot, dan pemrograman.']);
+        $banjari = Extracurricular::updateOrCreate(['slug' => 'banjari'], ['name' => 'Banjari', 'category' => 'Keagamaan', 'image_url' => 'images/ekstra/banjari.jpg', 'description' => 'Mengembangkan seni musik Islami melalui lantunan shalawat, kekompakan, dan penampilan dalam kegiatan sekolah.']);
+        $basket = Extracurricular::updateOrCreate(['slug' => 'basket'], ['name' => 'Basket', 'category' => 'Olahraga', 'image_url' => 'images/ekstra/basket.jpg', 'description' => 'Melatih teknik permainan, kebugaran, sportivitas, dan kerja sama tim melalui latihan serta pertandingan pelajar.']);
+        $voli = Extracurricular::updateOrCreate(['slug' => 'bola-voli'], ['name' => 'Bola Voli', 'category' => 'Olahraga', 'image_url' => 'images/ekstra/voly.jpg', 'description' => 'Membangun kekompakan tim melalui latihan teknik dasar, strategi permainan, dan kompetisi antarpelajar.']);
+        $btq = Extracurricular::updateOrCreate(['slug' => 'btq'], ['name' => 'BTQ', 'category' => 'Keagamaan', 'image_url' => 'images/ekstra/btq.jpg', 'description' => 'Meningkatkan kemampuan membaca Al-Qur’an dengan baik serta membangun kebiasaan belajar agama secara rutin.']);
+        $futsal = Extracurricular::updateOrCreate(['slug' => 'futsal'], ['name' => 'Futsal', 'category' => 'Olahraga', 'image_url' => 'images/ekstra/futsal.jpg', 'description' => 'Mengasah kecepatan, strategi, disiplin, dan kerja sama tim melalui latihan futsal dan pertandingan pelajar.']);
+        $jurnalistik = Extracurricular::updateOrCreate(['slug' => 'jurnalistik'], ['name' => 'Jurnalistik', 'category' => 'Media & Literasi', 'image_url' => 'images/ekstra/jurnalistik.jpg', 'description' => 'Menjadi ruang bagi siswa untuk menulis, meliput kegiatan sekolah, mengolah informasi, dan menghasilkan karya media.']);
+        $tari = Extracurricular::updateOrCreate(['slug' => 'tari'], ['name' => 'Tari', 'category' => 'Seni & Budaya', 'image_url' => 'images/ekstra/tari.jpg', 'description' => 'Melestarikan budaya melalui tari tradisional dan kreasi serta memberikan ruang untuk tampil dan berkarya.']);
+        $pena = Extracurricular::updateOrCreate(['slug' => 'pena'], ['name' => 'PENA', 'category' => 'Seni & Budaya', 'image_url' => 'images/ekstra/pena.jpg', 'description' => 'Wadah mini teater untuk melatih ekspresi, kepercayaan diri, penulisan naskah, dan kemampuan tampil di depan publik.']);
+        $silat = Extracurricular::updateOrCreate(['slug' => 'silat'], ['name' => 'Silat', 'category' => 'Bela Diri', 'image_url' => 'images/ekstra/silat.jpeg', 'description' => 'Melatih bela diri, ketahanan fisik, kedisiplinan, dan sikap percaya diri melalui latihan pencak silat.']);
+        $pmr = Extracurricular::updateOrCreate(['slug' => 'pmr'], ['name' => 'PMR', 'category' => 'Kesehatan', 'image_url' => 'images/ekstra/pmr.jpg', 'description' => 'Membekali siswa dengan kepedulian kemanusiaan, pertolongan pertama, dan kesiapsiagaan dalam kegiatan sekolah.']);
+        $pikr = Extracurricular::updateOrCreate(['slug' => 'pik-r'], ['name' => 'PIK-R', 'category' => 'Kesehatan', 'image_url' => 'images/ekstra/pik-r.jpg', 'description' => 'Menjadi ruang edukasi dan konseling sebaya untuk membangun remaja yang sehat, bertanggung jawab, dan berencana.']);
+        $osis = Extracurricular::updateOrCreate(['slug' => 'osis'], ['name' => 'OSIS', 'category' => 'Organisasi', 'image_url' => 'images/ekstra/osis.jpg', 'description' => 'Wadah utama kepemimpinan siswa untuk merancang dan menjalankan berbagai program kegiatan sekolah.']);
+        $lacurva = Extracurricular::updateOrCreate(['slug' => 'lacurva'], ['name' => 'Lacurva', 'category' => 'Organisasi', 'image_url' => 'images/ekstra/lacurva.jpg', 'description' => 'Komunitas suporter Skaneda yang membangun semangat, kreativitas, dan dukungan positif untuk kegiatan serta prestasi siswa.']);
+        $pasus = Extracurricular::updateOrCreate(['slug' => 'pasus'], ['name' => 'Pasus', 'category' => 'Organisasi', 'image_url' => 'images/ekstra/pasus.jpg', 'description' => 'Organisasi siswa yang menumbuhkan kedisiplinan, tanggung jawab, kekompakan, dan kesiapan membantu kegiatan sekolah.']);
 
         // 4. Extracurricular Matchmaker Quiz
-        $q1 = ExtracurricularQuestion::create([
-            'question_text' => 'Apa kegiatan yang paling kamu sukai di waktu luang?',
-            'order' => 1,
-        ]);
+        $q1 = ExtracurricularQuestion::firstOrCreate(
+            ['question_text' => 'Apa kegiatan yang paling kamu sukai di waktu luang?'],
+            ['order' => 1]
+        );
 
-        ExtracurricularOption::create([
+        ExtracurricularOption::firstOrCreate([
             'question_id' => $q1->id,
             'option_text' => 'Merakit elektronik atau membuat program komputer',
+        ], [
             'extracurricular_scores' => ['Robotik & Coding Club' => 10, 'Pramuka' => 2],
         ]);
 
-        ExtracurricularOption::create([
+        ExtracurricularOption::firstOrCreate([
             'question_id' => $q1->id,
             'option_text' => 'Melatih kedisiplinan dan kegiatan fisik berbaris',
+        ], [
             'extracurricular_scores' => ['Paskib' => 10, 'Pramuka' => 5],
         ]);
 
         // 5. Teacher & Staff (All entries matching user page)
         $teachersData = array (
-  0 => 
+  0 =>
   array (
     'name' => 'Iswahyudi, S.ST.',
     'nip' => 'SKN-001-G',
@@ -132,7 +147,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/iswahyudi.png',
     'is_active' => true,
   ),
-  1 => 
+  1 =>
   array (
     'name' => 'Dra. Lugiati',
     'nip' => 'SKN-002-G',
@@ -140,7 +155,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/lugiati.png',
     'is_active' => true,
   ),
-  2 => 
+  2 =>
   array (
     'name' => 'Sri Mulyati, S.Pd.',
     'nip' => 'SKN-003-G',
@@ -148,7 +163,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/srimul.png',
     'is_active' => true,
   ),
-  3 => 
+  3 =>
   array (
     'name' => 'Harjo Santoso, S.Pd.',
     'nip' => 'SKN-004-G',
@@ -156,7 +171,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/harjo.png',
     'is_active' => true,
   ),
-  4 => 
+  4 =>
   array (
     'name' => 'Endah Trapsilawati Nawangsih, S.Pd.',
     'nip' => 'SKN-005-G',
@@ -164,7 +179,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/endah.png',
     'is_active' => true,
   ),
-  5 => 
+  5 =>
   array (
     'name' => 'Ainur Rofik, M.Pd.,Si.',
     'nip' => 'SKN-006-G',
@@ -172,7 +187,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/rofik.png',
     'is_active' => true,
   ),
-  6 => 
+  6 =>
   array (
     'name' => 'Liawanti Gestika Ardiyana, S.Pi.',
     'nip' => 'SKN-007-G',
@@ -180,7 +195,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/liawanti.png',
     'is_active' => true,
   ),
-  7 => 
+  7 =>
   array (
     'name' => 'Sri Andrijanti, S.Pd.',
     'nip' => 'SKN-008-G',
@@ -188,7 +203,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/andri.png',
     'is_active' => true,
   ),
-  8 => 
+  8 =>
   array (
     'name' => 'Nurul Hidayah, S.E.',
     'nip' => 'SKN-009-G',
@@ -196,7 +211,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/nurul.png',
     'is_active' => true,
   ),
-  9 => 
+  9 =>
   array (
     'name' => 'Rudik Sanjaya Sugiarto, SS.,MBA.',
     'nip' => 'SKN-010-G',
@@ -204,7 +219,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/rudik.png',
     'is_active' => true,
   ),
-  10 => 
+  10 =>
   array (
     'name' => 'Indira Kusumaning Fuadah, S.Pd.',
     'nip' => 'SKN-011-G',
@@ -212,7 +227,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/indira.png',
     'is_active' => true,
   ),
-  11 => 
+  11 =>
   array (
     'name' => 'Arikaweku Ckrisna, S. Pd., M.Pd.',
     'nip' => 'SKN-012-G',
@@ -220,7 +235,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/arikaweku.png',
     'is_active' => true,
   ),
-  12 => 
+  12 =>
   array (
     'name' => 'Leni Kristiana Dewi, S.T.',
     'nip' => 'SKN-013-G',
@@ -228,7 +243,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/leni.png',
     'is_active' => true,
   ),
-  13 => 
+  13 =>
   array (
     'name' => 'Supriati, S.Kom.',
     'nip' => 'SKN-014-G',
@@ -236,7 +251,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/supriati.png',
     'is_active' => true,
   ),
-  14 => 
+  14 =>
   array (
     'name' => 'Mochammad Arsori, S.Pd.',
     'nip' => 'SKN-015-G',
@@ -244,7 +259,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/asrori.png',
     'is_active' => true,
   ),
-  15 => 
+  15 =>
   array (
     'name' => 'Rahmat Efendi, S.Pd.',
     'nip' => 'SKN-016-G',
@@ -252,7 +267,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/efendi.png',
     'is_active' => true,
   ),
-  16 => 
+  16 =>
   array (
     'name' => 'Metiy Ardiana, S.Pd, M.Pd.',
     'nip' => 'SKN-017-G',
@@ -260,7 +275,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/metiy.png',
     'is_active' => true,
   ),
-  17 => 
+  17 =>
   array (
     'name' => 'M. Wira Hendy Himawan, M.Pd.',
     'nip' => 'SKN-018-G',
@@ -268,7 +283,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/wira.png',
     'is_active' => true,
   ),
-  18 => 
+  18 =>
   array (
     'name' => 'Danang Teguh Santoso, S.Kom.',
     'nip' => 'SKN-019-G',
@@ -276,7 +291,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/danang.png',
     'is_active' => true,
   ),
-  19 => 
+  19 =>
   array (
     'name' => 'Dhiyah Amanati Kartika Sari, S.Pd.',
     'nip' => 'SKN-020-G',
@@ -284,7 +299,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/dhiyah.png',
     'is_active' => true,
   ),
-  20 => 
+  20 =>
   array (
     'name' => 'Melati Puspita Sari, S.Pd.',
     'nip' => 'SKN-021-G',
@@ -292,7 +307,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/melati.png',
     'is_active' => true,
   ),
-  21 => 
+  21 =>
   array (
     'name' => 'Intan Switzerlistania Martha, S.Pi.',
     'nip' => 'SKN-022-G',
@@ -300,7 +315,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/martha.png',
     'is_active' => true,
   ),
-  22 => 
+  22 =>
   array (
     'name' => 'Eka Ardian Suharko, M.Pd.',
     'nip' => 'SKN-023-G',
@@ -308,7 +323,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/eka.png',
     'is_active' => true,
   ),
-  23 => 
+  23 =>
   array (
     'name' => 'Hafid Setiawan, S.Pd.',
     'nip' => 'SKN-024-G',
@@ -316,7 +331,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/hafid.png',
     'is_active' => true,
   ),
-  24 => 
+  24 =>
   array (
     'name' => 'Sri Astutik Ningsih, ST.',
     'nip' => 'SKN-025-G',
@@ -324,7 +339,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/ningsih.png',
     'is_active' => true,
   ),
-  25 => 
+  25 =>
   array (
     'name' => 'Anissa Diana Sugiyono, S.Pd.',
     'nip' => 'SKN-026-G',
@@ -332,7 +347,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/anissa.png',
     'is_active' => true,
   ),
-  26 => 
+  26 =>
   array (
     'name' => 'Lastiani Sundari, S.Pd.',
     'nip' => 'SKN-027-G',
@@ -340,7 +355,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/lastiani.png',
     'is_active' => true,
   ),
-  27 => 
+  27 =>
   array (
     'name' => 'Ika Noviyati, S.Pd.',
     'nip' => 'SKN-028-G',
@@ -348,7 +363,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/ika.png',
     'is_active' => true,
   ),
-  28 => 
+  28 =>
   array (
     'name' => 'Vebriyanti Dwi Anggraini, S.Pd., M.Pd.',
     'nip' => 'SKN-029-G',
@@ -356,7 +371,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/vebri.png',
     'is_active' => true,
   ),
-  29 => 
+  29 =>
   array (
     'name' => 'Lilik Emi Rahayu, S.Pd., M.Pd.',
     'nip' => 'SKN-030-G',
@@ -364,7 +379,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/lilik.png',
     'is_active' => true,
   ),
-  30 => 
+  30 =>
   array (
     'name' => 'Indah Tri Utami, S.Pd.',
     'nip' => 'SKN-031-G',
@@ -372,7 +387,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/indahtri.png',
     'is_active' => true,
   ),
-  31 => 
+  31 =>
   array (
     'name' => 'Arini Prasetyoningsyas, S.Pd.',
     'nip' => 'SKN-032-G',
@@ -380,7 +395,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/arini.png',
     'is_active' => true,
   ),
-  32 => 
+  32 =>
   array (
     'name' => 'Mulat Adityawiranti, S.Pd.',
     'nip' => 'SKN-033-G',
@@ -388,7 +403,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/mulat.png',
     'is_active' => true,
   ),
-  33 => 
+  33 =>
   array (
     'name' => 'Ahmad Rofi\'i Noprianto, S.Pd.I.',
     'nip' => 'SKN-034-G',
@@ -396,7 +411,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/rofii.png',
     'is_active' => true,
   ),
-  34 => 
+  34 =>
   array (
     'name' => 'Fajar Dhilamaya, S.Pd.',
     'nip' => 'SKN-035-G',
@@ -404,7 +419,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/maya.png',
     'is_active' => true,
   ),
-  35 => 
+  35 =>
   array (
     'name' => 'Yusuf Widhiarso, S.Pd.',
     'nip' => 'SKN-036-G',
@@ -412,7 +427,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/yusuf.png',
     'is_active' => true,
   ),
-  36 => 
+  36 =>
   array (
     'name' => 'Novaria Fajar Kurniawan, S.Sn.',
     'nip' => 'SKN-037-G',
@@ -420,7 +435,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/fajar.png',
     'is_active' => true,
   ),
-  37 => 
+  37 =>
   array (
     'name' => 'Ani Latifah, S.Pd.',
     'nip' => 'SKN-038-G',
@@ -428,7 +443,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/ani.png',
     'is_active' => true,
   ),
-  38 => 
+  38 =>
   array (
     'name' => 'Sutarjo Suparman Nurc., S.Pd.',
     'nip' => 'SKN-039-G',
@@ -436,7 +451,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/tj.png',
     'is_active' => true,
   ),
-  39 => 
+  39 =>
   array (
     'name' => 'Mega Novinda Sari, S.Pd.',
     'nip' => 'SKN-040-G',
@@ -444,7 +459,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/mega.png',
     'is_active' => true,
   ),
-  40 => 
+  40 =>
   array (
     'name' => 'Susi Suryani Rahayu, S.Sn.',
     'nip' => 'SKN-041-G',
@@ -452,7 +467,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/susi.png',
     'is_active' => true,
   ),
-  41 => 
+  41 =>
   array (
     'name' => 'Irsam Muhammad Fathoni, S.Pd.',
     'nip' => 'SKN-042-G',
@@ -460,7 +475,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/irsam.png',
     'is_active' => true,
   ),
-  42 => 
+  42 =>
   array (
     'name' => 'Nur Maulidah Hasanah, S.Pd.',
     'nip' => 'SKN-043-G',
@@ -468,7 +483,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/maulidah.png',
     'is_active' => true,
   ),
-  43 => 
+  43 =>
   array (
     'name' => 'Yeti Diah Retnowulan, S.Sos',
     'nip' => 'SKN-044-G',
@@ -476,7 +491,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/yeti.png',
     'is_active' => true,
   ),
-  44 => 
+  44 =>
   array (
     'name' => 'Erik Efendi, S.Pd.',
     'nip' => 'SKN-045-G',
@@ -484,7 +499,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/erik.png',
     'is_active' => true,
   ),
-  45 => 
+  45 =>
   array (
     'name' => 'Indah Chodijah, S.Pd.',
     'nip' => 'SKN-046-G',
@@ -492,7 +507,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/indah.png',
     'is_active' => true,
   ),
-  46 => 
+  46 =>
   array (
     'name' => 'Oktavia Catur Handini, S.Pd.',
     'nip' => 'SKN-047-G',
@@ -500,7 +515,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/okta.png',
     'is_active' => true,
   ),
-  47 => 
+  47 =>
   array (
     'name' => 'Tyas Wahyu Ningsih, S.Pd.',
     'nip' => 'SKN-048-G',
@@ -508,7 +523,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/tyas.png',
     'is_active' => true,
   ),
-  48 => 
+  48 =>
   array (
     'name' => 'Basukisna Setya Candra, S.Pd.',
     'nip' => 'SKN-049-G',
@@ -516,7 +531,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/candra.png',
     'is_active' => true,
   ),
-  49 => 
+  49 =>
   array (
     'name' => 'Rani Puspitasari, S.T.P.',
     'nip' => 'SKN-050-G',
@@ -524,7 +539,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/rani.png',
     'is_active' => true,
   ),
-  50 => 
+  50 =>
   array (
     'name' => 'Yusi Herawati, S. Pd.',
     'nip' => 'SKN-051-G',
@@ -532,7 +547,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/yusi.png',
     'is_active' => true,
   ),
-  51 => 
+  51 =>
   array (
     'name' => 'Jatmiko Tri Wijayanto, ST.',
     'nip' => 'SKN-052-G',
@@ -540,7 +555,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/miko.png',
     'is_active' => true,
   ),
-  52 => 
+  52 =>
   array (
     'name' => 'Cindy Endriana, S.Pd.',
     'nip' => 'SKN-053-G',
@@ -548,7 +563,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/cindy.png',
     'is_active' => true,
   ),
-  53 => 
+  53 =>
   array (
     'name' => 'Desy Andini Diliawati, S.TP.',
     'nip' => 'SKN-054-G',
@@ -556,7 +571,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/desy.png',
     'is_active' => true,
   ),
-  54 => 
+  54 =>
   array (
     'name' => 'Puji Indah Kurniawati, S.Pd.',
     'nip' => 'SKN-055-G',
@@ -564,7 +579,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/puji.png',
     'is_active' => true,
   ),
-  55 => 
+  55 =>
   array (
     'name' => 'Nurfalah Septyagoya, S.Kom.',
     'nip' => 'SKN-056-G',
@@ -572,7 +587,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/yoga.png',
     'is_active' => true,
   ),
-  56 => 
+  56 =>
   array (
     'name' => 'Elok Zakiyatul M., S.Si.',
     'nip' => 'SKN-057-G',
@@ -580,7 +595,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/elok.png',
     'is_active' => true,
   ),
-  57 => 
+  57 =>
   array (
     'name' => 'Alif Nursyah, S.Pd.',
     'nip' => 'SKN-058-G',
@@ -588,7 +603,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/alif.png',
     'is_active' => true,
   ),
-  58 => 
+  58 =>
   array (
     'name' => 'Nur Choiroh Bektiwiyati, S.Pd.',
     'nip' => 'SKN-059-G',
@@ -596,7 +611,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/choi.png',
     'is_active' => true,
   ),
-  59 => 
+  59 =>
   array (
     'name' => 'Gisik Giriantoko, S.Pd.',
     'nip' => 'SKN-060-G',
@@ -604,7 +619,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/gisik.png',
     'is_active' => true,
   ),
-  60 => 
+  60 =>
   array (
     'name' => 'Sri Wahyuni, S.Pd.',
     'nip' => 'SKN-061-G',
@@ -612,7 +627,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/sriwah.png',
     'is_active' => true,
   ),
-  61 => 
+  61 =>
   array (
     'name' => 'Intan Nur Fitri, S.Pd.',
     'nip' => 'SKN-062-G',
@@ -620,7 +635,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/intan.png',
     'is_active' => true,
   ),
-  62 => 
+  62 =>
   array (
     'name' => 'Brillian Wahyu Andrian, S.Pd.',
     'nip' => 'SKN-063-G',
@@ -628,7 +643,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/brillian.png',
     'is_active' => true,
   ),
-  63 => 
+  63 =>
   array (
     'name' => 'Ariqa Ayni Alfianti A.S., S.Psi.',
     'nip' => 'SKN-064-G',
@@ -636,7 +651,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/ariqa.png',
     'is_active' => true,
   ),
-  64 => 
+  64 =>
   array (
     'name' => 'Hafifah Ratna Damayanti, S.Pd',
     'nip' => 'SKN-065-G',
@@ -644,7 +659,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/hafifah.png',
     'is_active' => true,
   ),
-  65 => 
+  65 =>
   array (
     'name' => 'Ma\'ratus Sholihah W., S.Pd.',
     'nip' => 'SKN-066-G',
@@ -652,7 +667,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/maratus.png',
     'is_active' => true,
   ),
-  66 => 
+  66 =>
   array (
     'name' => 'Avif Sulaiman Nur, S.Ag.',
     'nip' => 'SKN-067-G',
@@ -660,7 +675,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/avif.png',
     'is_active' => true,
   ),
-  67 => 
+  67 =>
   array (
     'name' => 'Septa Yuda Pratama, S. Pd.',
     'nip' => 'SKN-067-G',
@@ -668,7 +683,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/yuda.png',
     'is_active' => true,
   ),
-  68 => 
+  68 =>
   array (
     'name' => 'Agastya Indra Permana',
     'nip' => 'SKN-001-S',
@@ -676,7 +691,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/agastya.png',
     'is_active' => true,
   ),
-  69 => 
+  69 =>
   array (
     'name' => 'Anang Hariyono',
     'nip' => 'SKN-002-S',
@@ -684,7 +699,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/anang.png',
     'is_active' => true,
   ),
-  70 => 
+  70 =>
   array (
     'name' => 'Anjarsari Ayuwangi',
     'nip' => 'SKN-003-S',
@@ -692,7 +707,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/anjarsari.png',
     'is_active' => true,
   ),
-  71 => 
+  71 =>
   array (
     'name' => 'Dwi Arif Hawibowo',
     'nip' => 'SKN-004-S',
@@ -700,7 +715,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/arif.png',
     'is_active' => true,
   ),
-  72 => 
+  72 =>
   array (
     'name' => 'Moch. Arifin',
     'nip' => 'SKN-005-S',
@@ -708,7 +723,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/arifin.png',
     'is_active' => true,
   ),
-  73 => 
+  73 =>
   array (
     'name' => 'Dhulit Cahyono',
     'nip' => 'SKN-006-S',
@@ -716,7 +731,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/dhulit.png',
     'is_active' => true,
   ),
-  74 => 
+  74 =>
   array (
     'name' => 'Eko Subagiyo',
     'nip' => 'SKN-007-S',
@@ -724,7 +739,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/eko.png',
     'is_active' => true,
   ),
-  75 => 
+  75 =>
   array (
     'name' => 'Fendik Novan',
     'nip' => 'SKN-008-S',
@@ -732,7 +747,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/fendik.png',
     'is_active' => true,
   ),
-  76 => 
+  76 =>
   array (
     'name' => 'Galih Purnama Aji',
     'nip' => 'SKN-009-S',
@@ -740,7 +755,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/galih.png',
     'is_active' => true,
   ),
-  77 => 
+  77 =>
   array (
     'name' => 'Ghea Averira Malohing',
     'nip' => 'SKN-010-S',
@@ -748,7 +763,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/ghea.png',
     'is_active' => true,
   ),
-  78 => 
+  78 =>
   array (
     'name' => 'Inggar Suriyani',
     'nip' => 'SKN-011-S',
@@ -756,7 +771,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/inggar.png',
     'is_active' => true,
   ),
-  79 => 
+  79 =>
   array (
     'name' => 'Junaipah Murjayani, S.M.',
     'nip' => 'SKN-012-S',
@@ -764,7 +779,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/jun.png',
     'is_active' => true,
   ),
-  80 => 
+  80 =>
   array (
     'name' => 'Lutfi Kustilawati',
     'nip' => 'SKN-013-S',
@@ -772,7 +787,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/lutfi.png',
     'is_active' => true,
   ),
-  81 => 
+  81 =>
   array (
     'name' => 'Masrukan Adi',
     'nip' => 'SKN-014-S',
@@ -780,7 +795,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/masrukan.png',
     'is_active' => true,
   ),
-  82 => 
+  82 =>
   array (
     'name' => 'Achmad Nuroso',
     'nip' => 'SKN-015-S',
@@ -788,7 +803,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/nuroso.png',
     'is_active' => true,
   ),
-  83 => 
+  83 =>
   array (
     'name' => 'Purwadi',
     'nip' => 'SKN-016-S',
@@ -796,7 +811,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/purwadi.png',
     'is_active' => true,
   ),
-  84 => 
+  84 =>
   array (
     'name' => 'Mohamad Rizky Novyanto',
     'nip' => 'SKN-017-S',
@@ -804,7 +819,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/rizky.png',
     'is_active' => true,
   ),
-  85 => 
+  85 =>
   array (
     'name' => 'Sumber Arum',
     'nip' => 'SKN-018-S',
@@ -812,7 +827,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/sumber.png',
     'is_active' => true,
   ),
-  86 => 
+  86 =>
   array (
     'name' => 'Suyanto',
     'nip' => 'SKN-019-S',
@@ -820,7 +835,7 @@ class DatabaseSeeder extends Seeder
     'photo_url' => 'images/guru/suyanto.png',
     'is_active' => true,
   ),
-  87 => 
+  87 =>
   array (
     'name' => 'Tria Ayu Anggraini',
     'nip' => 'SKN-020-S',
@@ -851,11 +866,16 @@ class DatabaseSeeder extends Seeder
         ];
 
         foreach ($newsArticles as $n) {
-            NewsArticle::create(array_merge($n, [
-                'author_name' => 'Tim Humas SKANEDA',
-                'status' => 'PUBLISHED',
-                'published_at' => now(),
-            ]));
+            $slug = $n['slug'];
+            unset($n['slug']);
+            NewsArticle::updateOrCreate(
+                ['slug' => $slug],
+                array_merge($n, [
+                    'author_name' => 'Tim Humas SKANEDA',
+                    'status' => 'PUBLISHED',
+                    'published_at' => now(),
+                ])
+            );
         }
 
         // 5c. Student Works (Matching User Karya Siswa Page)
@@ -871,44 +891,57 @@ class DatabaseSeeder extends Seeder
         ];
 
         foreach ($studentWorksData as $sw) {
-            StudentWork::create(array_merge($sw, ['status' => 'PUBLISHED']));
+            StudentWork::updateOrCreate(
+                ['title' => $sw['title'], 'major_id' => $sw['major_id']],
+                array_merge($sw, ['status' => 'PUBLISHED'])
+            );
         }
 
         // 6. Industry Partnerships & DUDI
-        IndustryPartnership::create([
-            'company_name' => 'PT Telkom Indonesia (Persero) Tbk',
-            'field_of_work' => 'Telekomunikasi & IT',
-            'partnership_scope' => 'Praktek Kerja Lapangan (PKL), Kelas Industri, Penyaluran Lulusan',
-            'is_active' => true,
-        ]);
+        IndustryPartnership::updateOrCreate(
+            ['company_name' => 'PT Telkom Indonesia (Persero) Tbk'],
+            [
+                'field_of_work' => 'Telekomunikasi & IT',
+                'partnership_scope' => 'Praktek Kerja Lapangan (PKL), Kelas Industri, Penyaluran Lulusan',
+                'is_active' => true,
+            ]
+        );
 
-        IndustryPartnership::create([
-            'company_name' => 'PT Astra International Tbk',
-            'field_of_work' => 'Otomotif & Manufaktur',
-            'partnership_scope' => 'Beasiswa & Rekrutmen Alumni',
-            'is_active' => true,
-        ]);
+        IndustryPartnership::updateOrCreate(
+            ['company_name' => 'PT Astra International Tbk'],
+            [
+                'field_of_work' => 'Otomotif & Manufaktur',
+                'partnership_scope' => 'Beasiswa & Rekrutmen Alumni',
+                'is_active' => true,
+            ]
+        );
 
-        IndustryPartnership::create([
-            'company_name' => 'Bank Syariah Indonesia (BSI)',
-            'field_of_work' => 'Perbankan Syariah',
-            'partnership_scope' => 'Laboratorium Bank Mini Syariah & Magang LPS',
-            'is_active' => true,
-        ]);
+        IndustryPartnership::updateOrCreate(
+            ['company_name' => 'Bank Syariah Indonesia (BSI)'],
+            [
+                'field_of_work' => 'Perbankan Syariah',
+                'partnership_scope' => 'Laboratorium Bank Mini Syariah & Magang LPS',
+                'is_active' => true,
+            ]
+        );
 
-        IndustryPartnership::create([
-            'company_name' => 'PT Surabaya Autocomp Indonesia (SAI)',
-            'field_of_work' => 'Manufaktur Kabel Otomotif',
-            'partnership_scope' => 'Rekrutmen Lulusan & PKL',
-            'is_active' => true,
-        ]);
+        IndustryPartnership::updateOrCreate(
+            ['company_name' => 'PT Surabaya Autocomp Indonesia (SAI)'],
+            [
+                'field_of_work' => 'Manufaktur Kabel Otomotif',
+                'partnership_scope' => 'Rekrutmen Lulusan & PKL',
+                'is_active' => true,
+            ]
+        );
 
-        IndustryPartnership::create([
-            'company_name' => 'PT Pesta Pora Abadi (Mie Gacoan)',
-            'field_of_work' => 'Food & Beverage',
-            'partnership_scope' => 'Rekrutmen Alumni Kuliner & Penyaluran Kerja',
-            'is_active' => true,
-        ]);
+        IndustryPartnership::updateOrCreate(
+            ['company_name' => 'PT Pesta Pora Abadi (Mie Gacoan)'],
+            [
+                'field_of_work' => 'Food & Beverage',
+                'partnership_scope' => 'Rekrutmen Alumni Kuliner & Penyaluran Kerja',
+                'is_active' => true,
+            ]
+        );
 
         // 6b. Job Vacancies (Matching BKK & Loker Page)
         $jobsData = [
@@ -927,12 +960,14 @@ class DatabaseSeeder extends Seeder
 
         foreach ($jobsData as $index => $job) {
             $status = ($index < 3) ? 'OPEN' : (($index < 5) ? 'UPCOMING' : 'ARSIP');
-            JobVacancy::create(array_merge($job, ['status' => $status]));
+            JobVacancy::updateOrCreate(
+                ['title' => $job['title'], 'company_name' => $job['company_name']],
+                array_merge($job, ['status' => $status])
+            );
         }
 
         // 7. Chatbot Knowledge Base (Comprehensive School Information)
-        ChatbotKnowledge::create([
-            'title' => 'Alamat dan Kontak Resmi Sekolah',
+        ChatbotKnowledge::updateOrCreate(['title' => 'Alamat dan Kontak Resmi Sekolah'], [
             'category' => 'Profil',
             'content' => 'SMK Negeri 2 Mojokerto beralamat di Jl. Raden Wijaya No. 1, Kranggan, Kota Mojokerto, Jawa Timur. Telepon: (0321) 321555, Email: info@smkn2mojokerto.sch.id, Website: https://smkn2mojokerto.sch.id.',
             'keywords' => ['alamat', 'lokasi', 'telepon', 'kontak', 'email', 'website', 'dimana', 'peta'],
@@ -942,8 +977,7 @@ class DatabaseSeeder extends Seeder
             'published_at' => now(),
         ]);
 
-        ChatbotKnowledge::create([
-            'title' => 'Visi dan Misi SMKN 2 Mojokerto',
+        ChatbotKnowledge::updateOrCreate(['title' => 'Visi dan Misi SMKN 2 Mojokerto'], [
             'category' => 'Profil',
             'content' => 'Visi: Menjadi Sekolah Menengah Kejuruan yang Unggul, Berkarakter, dan Berdaya Saing Global. Misi: 1. Menyelenggarakan pendidikan kejuruan berkualitas berstandar industri. 2. Membentuk karakter peserta didik beriman, bertaqwa, dan berakhlak mulia. 3. Meningkatkan kemitraan strategis dengan DUDI.',
             'keywords' => ['visi', 'misi', 'tujuan', 'motto', 'prinsip'],
@@ -953,8 +987,7 @@ class DatabaseSeeder extends Seeder
             'published_at' => now(),
         ]);
 
-        ChatbotKnowledge::create([
-            'title' => 'Kepala Sekolah dan Kepemimpinan SMKN 2 Mojokerto',
+        ChatbotKnowledge::updateOrCreate(['title' => 'Kepala Sekolah dan Kepemimpinan SMKN 2 Mojokerto'], [
             'category' => 'Profil',
             'content' => 'Kepala SMK Negeri 2 Mojokerto saat ini adalah Bapak Drs. Iswahyudi, M.Pd. Beliau memimpin SMKN 2 Mojokerto dalam mewujudkan sekolah kejuruan yang unggul, berkarakter, dan berdaya saing global.',
             'keywords' => ['kepsek', 'kepala sekolah', 'iswahyudi', 'pak iswahyudi', 'bapak iswahyudi', 'pemimpin', 'pimpinan'],
@@ -964,8 +997,7 @@ class DatabaseSeeder extends Seeder
             'published_at' => now(),
         ]);
 
-        ChatbotKnowledge::create([
-            'title' => 'Sejarah Singkat SMKN 2 Mojokerto',
+        ChatbotKnowledge::updateOrCreate(['title' => 'Sejarah Singkat SMKN 2 Mojokerto'], [
             'category' => 'Profil',
             'content' => 'SMK Negeri 2 Mojokerto didirikan untuk mencetak tenaga kerja terampil dan profesional di Kota Mojokerto dan sekitarnya. Berdiri di kawasan strategis Kranggan, sekolah ini berkembang pesat menjadi SMK Pusat Keunggulan (PK) dengan 5 konsentrasi keahlian berstandar nasional dan internasional.',
             'keywords' => ['sejarah', 'berdiri', 'pendirian', 'latar belakang', 'sejak'],
@@ -975,8 +1007,7 @@ class DatabaseSeeder extends Seeder
             'published_at' => now(),
         ]);
 
-        ChatbotKnowledge::create([
-            'title' => 'Daftar Jurusan dan Konsentrasi Keahlian',
+        ChatbotKnowledge::updateOrCreate(['title' => 'Daftar Jurusan dan Konsentrasi Keahlian'], [
             'category' => 'Jurusan',
             'content' => 'SMK Negeri 2 Mojokerto memiliki 5 konsentrasi keahlian unggulan: 1. Rekayasa Perangkat Lunak (RPL) - Pemrograman Web/Mobile & Software. 2. Desain Komunikasi Visual (DKV) - Grafis, Multimedia, Animasi & Fotografi. 3. Agribisnis Pengolahan Hasil Pertanian (APHP) - Pangan Modern. 4. Kuliner (Tata Boga) - Seni Olah Rasa & Manajemen Restoran. 5. Layanan Perbankan Syariah (LPS) - Keuangan Syariah & Bank Mini.',
             'keywords' => ['jurusan', 'keahlian', 'konsentrasi', 'kompetensi', 'proli', 'rpl', 'dkv', 'aphp', 'kuliner', 'lps', 'berapa', 'apa saja'],
@@ -986,8 +1017,7 @@ class DatabaseSeeder extends Seeder
             'published_at' => now(),
         ]);
 
-        ChatbotKnowledge::create([
-            'title' => 'Fasilitas dan Sarana Prasarana Sekolah',
+        ChatbotKnowledge::updateOrCreate(['title' => 'Fasilitas dan Sarana Prasarana Sekolah'], [
             'category' => 'Fasilitas',
             'content' => 'SMKN 2 Mojokerto dilengkapi fasilitas modern: Laboratorium Komputer RPL High-Spec, Studio DKV & Fotografi, Lab Pengolahan Pangan APHP, Commercial Kitchen & Restaurant Kuliner, Bank Mini Syariah LPS, Perpustakaan Digital, Musala, UKS, Lapangan Olahraga, dan Akses Free High-Speed WiFi di seluruh area sekolah.',
             'keywords' => ['fasilitas', 'sarana', 'prasarana', 'lab', 'laboratorium', 'studio', 'perpustakaan', 'wifi', 'musala', 'musholla', 'uks', 'lapangan'],
@@ -997,8 +1027,7 @@ class DatabaseSeeder extends Seeder
             'published_at' => now(),
         ]);
 
-        ChatbotKnowledge::create([
-            'title' => 'Jam Belajar dan Operational Sekolah',
+        ChatbotKnowledge::updateOrCreate(['title' => 'Jam Belajar dan Operational Sekolah'], [
             'category' => 'Tata Tertib',
             'content' => 'Kegiatan Belajar Mengajar (KBM) di SMKN 2 Mojokerto berlangsung hari Senin hingga Jumat pukul 07.00 WIB - 15.30 WIB. Gerbang sekolah ditutup tepat pukul 07.00 WIB. Hari Sabtu dan Minggu libur.',
             'keywords' => ['jam', 'waktu', 'jadwal', 'masuk', 'pulang', 'belajar', 'operasional'],
@@ -1008,8 +1037,7 @@ class DatabaseSeeder extends Seeder
             'published_at' => now(),
         ]);
 
-        ChatbotKnowledge::create([
-            'title' => 'Kegiatan Ekstrakurikuler dan Organisasi Siswa',
+        ChatbotKnowledge::updateOrCreate(['title' => 'Kegiatan Ekstrakurikuler dan Organisasi Siswa'], [
             'category' => 'Ekstrakurikuler',
             'content' => 'SMKN 2 Mojokerto memiliki 13 Ekstrakurikuler (Banjari, Basket, Bola Voli, BTQ, Futsal, Jurnalistik, Paskib, Pramuka, Tari, PENA, Silat, PMR, PIK-R) dan 3 Organisasi Siswa (OSIS, Lacurva, Pasus).',
             'keywords' => ['ekskul', 'ekstrakurikuler', 'kegiatan', 'organisasi', 'wadah'],
@@ -1019,8 +1047,7 @@ class DatabaseSeeder extends Seeder
             'published_at' => now(),
         ]);
 
-        ChatbotKnowledge::create([
-            'title' => 'Bursa Kerja Khusus (BKK) dan Kemitraan Industri',
+        ChatbotKnowledge::updateOrCreate(['title' => 'Bursa Kerja Khusus (BKK) dan Kemitraan Industri'], [
             'category' => 'Karir',
             'content' => 'Unit BKK SMKN 2 Mojokerto aktif memfasilitasi Praktek Kerja Lapangan (PKL) dan penyaluran kerja alumni ke perusahaan mitra seperti PT Telkom Indonesia, PT Astra International, Bank Syariah Indonesia, serta industri pangan & perhotelan ternama.',
             'keywords' => ['bkk', 'dudi', 'industri', 'kemitraan', 'magang', 'pkl', 'kerja', 'karir', 'lulusan', 'perusahaan', 'mitra'],
@@ -1030,8 +1057,7 @@ class DatabaseSeeder extends Seeder
             'published_at' => now(),
         ]);
 
-        ChatbotKnowledge::create([
-            'title' => 'Informasi PPDB 2026',
+        ChatbotKnowledge::updateOrCreate(['title' => 'Informasi PPDB 2026'], [
             'category' => 'PPDB',
             'content' => 'Pendaftaran PPDB SMKN 2 Mojokerto dilakukan secara online melalui portal resmi PPDB Jawa Timur. Jalur pendaftaran meliputi jalur prestasi, afirmasi, dan zonasi. Pendaftaran TIDAK DIPUNGUT BIAYA (GRATIS).',
             'keywords' => ['ppdb', 'daftar', 'pendaftaran', 'syarat', 'masuk', 'biaya', 'jalur'],
@@ -1041,8 +1067,7 @@ class DatabaseSeeder extends Seeder
             'published_at' => now(),
         ]);
 
-        ChatbotKnowledge::create([
-            'title' => 'Prestasi dan Keunggulan Sekolah',
+        ChatbotKnowledge::updateOrCreate(['title' => 'Prestasi dan Keunggulan Sekolah'], [
             'category' => 'Prestasi',
             'content' => 'SMKN 2 Mojokerto meraih berbagai prestasi: Juara LKS Web Technologies & Graphic Design tingkat Jawa Timur, Juara Inovasi Pangan, serta berstatus Sekolah Pusat Keunggulan (PK) dan Sekolah Adiwiyata.',
             'keywords' => ['prestasi', 'juara', 'lks', 'penghargaan', 'pencapaian', 'lomba', 'keunggulan'],
@@ -1053,8 +1078,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         // 7b. Detailed Majors Knowledge (RPL, DKV, APHP, Kuliner, LPS)
-        ChatbotKnowledge::create([
-            'title' => 'Detail Jurusan RPL (Rekayasa Perangkat Lunak)',
+        ChatbotKnowledge::updateOrCreate(['title' => 'Detail Jurusan RPL (Rekayasa Perangkat Lunak)'], [
             'category' => 'Jurusan',
             'content' => 'Konsentrasi keahlian RPL (Rekayasa Perangkat Lunak) berfokus pada pemrograman web, aplikasi mobile, pengembangan software, basis data, dan UI/UX design. Siswa RPL dibekali keterampilan teknologi terkini (PHP, Laravel, JavaScript, Python, Flutter) serta kesempatan magang di industri TI ternama seperti PT Telkom Indonesia.',
             'keywords' => ['rpl', 'rekayasa perangkat lunak', 'pemrograman', 'coding', 'web', 'mobile', 'software', 'aplikasi'],
@@ -1064,8 +1088,7 @@ class DatabaseSeeder extends Seeder
             'published_at' => now(),
         ]);
 
-        ChatbotKnowledge::create([
-            'title' => 'Detail Jurusan DKV (Desain Komunikasi Visual)',
+        ChatbotKnowledge::updateOrCreate(['title' => 'Detail Jurusan DKV (Desain Komunikasi Visual)'], [
             'category' => 'Jurusan',
             'content' => 'Konsentrasi keahlian DKV (Desain Komunikasi Visual) mengasah kreativitas visual siswa di bidang desain grafis, ilustrasi digital, animasi 2D/3D, videografi, fotografi studio, dan branding multimedia. Dilengkapi studio fotografi dan lab multimedia modern.',
             'keywords' => ['dkv', 'desain komunikasi visual', 'desain', 'grafis', 'ilustrasi', 'animasi', 'videografi', 'fotografi', 'gambar'],
@@ -1075,8 +1098,7 @@ class DatabaseSeeder extends Seeder
             'published_at' => now(),
         ]);
 
-        ChatbotKnowledge::create([
-            'title' => 'Detail Jurusan APHP (Agribisnis Pengolahan Hasil Pertanian)',
+        ChatbotKnowledge::updateOrCreate(['title' => 'Detail Jurusan APHP (Agribisnis Pengolahan Hasil Pertanian)'], [
             'category' => 'Jurusan',
             'content' => 'Konsentrasi keahlian APHP berfokus pada teknologi pengolahan hasil pertanian menjadi produk pangan higienis, pengawasan mutu pangan, pengemasan modern, serta kewirausahaan produk olahan pangan bernilai jual tinggi.',
             'keywords' => ['aphp', 'agribisnis', 'pengolahan hasil pertanian', 'pangan', 'olahan', 'pertanian', 'makanan'],
@@ -1086,8 +1108,7 @@ class DatabaseSeeder extends Seeder
             'published_at' => now(),
         ]);
 
-        ChatbotKnowledge::create([
-            'title' => 'Detail Jurusan Kuliner (Tata Boga)',
+        ChatbotKnowledge::updateOrCreate(['title' => 'Detail Jurusan Kuliner (Tata Boga)'], [
             'category' => 'Jurusan',
             'content' => 'Konsentrasi keahlian Kuliner (Tata Boga) mempelajari seni olah rasa masakan nusantara dan internasional, manajemen dapur profesional, bakery & pastry, tata hidang (table service), serta pengelolaan restoran dan katering standar hotel.',
             'keywords' => ['kuliner', 'tata boga', 'boga', 'masak', 'dapur', 'bakery', 'pastry', 'restoran', 'katering', 'chef'],
@@ -1097,8 +1118,7 @@ class DatabaseSeeder extends Seeder
             'published_at' => now(),
         ]);
 
-        ChatbotKnowledge::create([
-            'title' => 'Detail Jurusan LPS (Layanan Perbankan Syariah)',
+        ChatbotKnowledge::updateOrCreate(['title' => 'Detail Jurusan LPS (Layanan Perbankan Syariah)'], [
             'category' => 'Jurusan',
             'content' => 'Konsentrasi keahlian LPS (Layanan Perbankan Syariah) membekali siswa dengan keahlian administrasi keuangan berbasis syariah, akuntansi perbankan, customer service, serta pengelolaan transaksi di Laboratorium Bank Mini Syariah bekerja sama dengan Bank Syariah Indonesia (BSI).',
             'keywords' => ['lps', 'layanan perbankan syariah', 'perbankan', 'syariah', 'bank', 'keuangan', 'teller', 'customer service'],
@@ -1109,8 +1129,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         // 7c. Detailed Extracurriculars & Organizations Knowledge (Matching Website Frontend Exact Data)
-        ChatbotKnowledge::create([
-            'title' => 'Ekstrakurikuler Banjari',
+        ChatbotKnowledge::updateOrCreate(['title' => 'Ekstrakurikuler Banjari'], [
             'category' => 'Ekstrakurikuler',
             'content' => 'Banjari (Keagamaan): Mengembangkan seni musik Islami melalui lantunan shalawat, kekompakan, dan penampilan dalam kegiatan sekolah. Pembina: Pembina kegiatan keagamaan. Latihan: Jumat. Kegiatan: Latihan vokal, rebana, shalawat, dan penampilan sekolah.',
             'keywords' => ['banjari', 'rebana', 'shalawat', 'sholawat', 'hadrah', 'keagamaan'],
@@ -1120,8 +1139,7 @@ class DatabaseSeeder extends Seeder
             'published_at' => now(),
         ]);
 
-        ChatbotKnowledge::create([
-            'title' => 'Ekstrakurikuler Basket',
+        ChatbotKnowledge::updateOrCreate(['title' => 'Ekstrakurikuler Basket'], [
             'category' => 'Ekstrakurikuler',
             'content' => 'Basket (Olahraga): Melatih teknik permainan, kebugaran, sportivitas, dan kerja sama tim melalui latihan serta pertandingan pelajar. Pembina: Pembina olahraga sekolah. Latihan: Selasa & Jumat. Kegiatan: Latihan teknik, sparing, dan turnamen pelajar.',
             'keywords' => ['basket', 'bola basket', 'olahraga'],
@@ -1131,8 +1149,7 @@ class DatabaseSeeder extends Seeder
             'published_at' => now(),
         ]);
 
-        ChatbotKnowledge::create([
-            'title' => 'Ekstrakurikuler Bola Voli',
+        ChatbotKnowledge::updateOrCreate(['title' => 'Ekstrakurikuler Bola Voli'], [
             'category' => 'Ekstrakurikuler',
             'content' => 'Bola Voli (Olahraga): Membangun kekompakan tim melalui latihan teknik dasar, strategi permainan, dan kompetisi antarpelajar. Pembina: Pembina olahraga sekolah. Latihan: Kamis & Sabtu. Kegiatan: Passing, servis, smash, sparing, dan turnamen.',
             'keywords' => ['voli', 'bola voli', 'volley', 'olahraga'],
@@ -1142,8 +1159,7 @@ class DatabaseSeeder extends Seeder
             'published_at' => now(),
         ]);
 
-        ChatbotKnowledge::create([
-            'title' => 'Ekstrakurikuler BTQ',
+        ChatbotKnowledge::updateOrCreate(['title' => 'Ekstrakurikuler BTQ'], [
             'category' => 'Ekstrakurikuler',
             'content' => 'BTQ (Keagamaan): Meningkatkan kemampuan membaca Al-Qur’an dengan baik serta membangun kebiasaan belajar agama secara rutin. Pembina: Pembina kegiatan keagamaan. Latihan: Jumat. Kegiatan: Tilawah, tahsin, hafalan, dan pembinaan keagamaan.',
             'keywords' => ['btq', 'baca tulis al quran', 'baca tulis al-qur\'an', 'al-qur\'an', 'alquran', 'tahsin', 'tilawah', 'hafalan'],
@@ -1153,8 +1169,7 @@ class DatabaseSeeder extends Seeder
             'published_at' => now(),
         ]);
 
-        ChatbotKnowledge::create([
-            'title' => 'Ekstrakurikuler Futsal',
+        ChatbotKnowledge::updateOrCreate(['title' => 'Ekstrakurikuler Futsal'], [
             'category' => 'Ekstrakurikuler',
             'content' => 'Futsal (Olahraga): Mengasah kecepatan, strategi, disiplin, dan kerja sama tim melalui latihan futsal dan pertandingan pelajar. Pembina: Pembina olahraga sekolah. Latihan: Senin & Rabu. Kegiatan: Latihan teknik, sparing, dan turnamen antarsekolah.',
             'keywords' => ['futsal', 'sepak bola', 'bola', 'olahraga'],
@@ -1164,8 +1179,7 @@ class DatabaseSeeder extends Seeder
             'published_at' => now(),
         ]);
 
-        ChatbotKnowledge::create([
-            'title' => 'Ekstrakurikuler Jurnalistik',
+        ChatbotKnowledge::updateOrCreate(['title' => 'Ekstrakurikuler Jurnalistik'], [
             'category' => 'Ekstrakurikuler',
             'content' => 'Jurnalistik (Media & Literasi): Menjadi ruang bagi siswa untuk menulis, meliput kegiatan sekolah, mengolah informasi, dan menghasilkan karya media. Pembina: Pembina jurnalistik sekolah. Latihan: Rabu. Kegiatan: Menulis berita, wawancara, fotografi, dan publikasi sekolah.',
             'keywords' => ['jurnalistik', 'jurnal', 'pers', 'liputan', 'wawancara', 'media', 'berita'],
@@ -1175,8 +1189,7 @@ class DatabaseSeeder extends Seeder
             'published_at' => now(),
         ]);
 
-        ChatbotKnowledge::create([
-            'title' => 'Ekstrakurikuler Paskib',
+        ChatbotKnowledge::updateOrCreate(['title' => 'Ekstrakurikuler Paskib'], [
             'category' => 'Ekstrakurikuler',
             'content' => 'Paskib (Kedisiplinan): Membentuk kedisiplinan, keteguhan, tanggung jawab, dan kekompakan melalui latihan baris-berbaris. Pembina: Pembina Paskib sekolah. Latihan: Rabu & Sabtu. Kegiatan: PBB, formasi, upacara, dan kegiatan kebangsaan.',
             'keywords' => ['paskib', 'paskibra', 'baris berbaris', 'pbb', 'pengibar bendera', 'kedisiplinan'],
@@ -1186,8 +1199,7 @@ class DatabaseSeeder extends Seeder
             'published_at' => now(),
         ]);
 
-        ChatbotKnowledge::create([
-            'title' => 'Ekstrakurikuler Pramuka',
+        ChatbotKnowledge::updateOrCreate(['title' => 'Ekstrakurikuler Pramuka'], [
             'category' => 'Ekstrakurikuler',
             'content' => 'Pramuka (Kepanduan): Membentuk kemandirian, kepemimpinan, kepedulian lingkungan, dan keterampilan melalui kegiatan kepanduan. Pembina: Pembina Pramuka sekolah. Latihan: Jumat. Kegiatan: Latihan kepramukaan, kemah, keterampilan, dan kegiatan sosial.',
             'keywords' => ['pramuka', 'kepanduan', 'scout', 'kemah', 'gugus depan', 'skaneda'],
@@ -1197,8 +1209,7 @@ class DatabaseSeeder extends Seeder
             'published_at' => now(),
         ]);
 
-        ChatbotKnowledge::create([
-            'title' => 'Ekstrakurikuler Tari',
+        ChatbotKnowledge::updateOrCreate(['title' => 'Ekstrakurikuler Tari'], [
             'category' => 'Ekstrakurikuler',
             'content' => 'Tari (Seni & Budaya): Melestarikan budaya melalui tari tradisional dan kreasi serta memberikan ruang untuk tampil dan berkarya. Pembina: Pembina seni sekolah. Latihan: Rabu & Sabtu. Kegiatan: Latihan tari tradisional, tari kreasi, dan pentas seni.',
             'keywords' => ['tari', 'dance', 'seni tari', 'tari tradisional', 'tari kreasi', 'budaya'],
@@ -1208,8 +1219,7 @@ class DatabaseSeeder extends Seeder
             'published_at' => now(),
         ]);
 
-        ChatbotKnowledge::create([
-            'title' => 'Ekstrakurikuler PENA',
+        ChatbotKnowledge::updateOrCreate(['title' => 'Ekstrakurikuler PENA'], [
             'category' => 'Ekstrakurikuler',
             'content' => 'PENA (Seni & Budaya): Wadah mini teater untuk melatih ekspresi, kepercayaan diri, penulisan naskah, dan kemampuan tampil di depan publik. Pembina: Pembina seni dan teater sekolah. Latihan: Kamis. Kegiatan: Latihan akting, olah vokal, naskah, dan pementasan.',
             'keywords' => ['pena', 'teater', 'theater', 'drama', 'akting', 'naskah', 'seni'],
@@ -1219,8 +1229,7 @@ class DatabaseSeeder extends Seeder
             'published_at' => now(),
         ]);
 
-        ChatbotKnowledge::create([
-            'title' => 'Ekstrakurikuler Silat',
+        ChatbotKnowledge::updateOrCreate(['title' => 'Ekstrakurikuler Silat'], [
             'category' => 'Ekstrakurikuler',
             'content' => 'Silat (Bela Diri): Melatih bela diri, ketahanan fisik, kedisiplinan, dan sikap percaya diri melalui latihan pencak silat. Pembina: Pembina bela diri sekolah. Latihan: Selasa & Kamis. Kegiatan: Teknik dasar, jurus, sparing, dan kejuaraan.',
             'keywords' => ['silat', 'pencak silat', 'bela diri', 'beladiri'],
@@ -1230,8 +1239,7 @@ class DatabaseSeeder extends Seeder
             'published_at' => now(),
         ]);
 
-        ChatbotKnowledge::create([
-            'title' => 'Ekstrakurikuler PMR',
+        ChatbotKnowledge::updateOrCreate(['title' => 'Ekstrakurikuler PMR'], [
             'category' => 'Ekstrakurikuler',
             'content' => 'PMR (Kesehatan): Membekali siswa dengan kepedulian kemanusiaan, pertolongan pertama, dan kesiapsiagaan dalam kegiatan sekolah. Pembina: Pembina PMR sekolah. Latihan: Sabtu. Kegiatan: P3K, kesehatan remaja, kegiatan sosial, dan siaga bencana.',
             'keywords' => ['pmr', 'palang merah remaja', 'p3k', 'kesehatan', 'pertolongan pertama'],
@@ -1241,8 +1249,7 @@ class DatabaseSeeder extends Seeder
             'published_at' => now(),
         ]);
 
-        ChatbotKnowledge::create([
-            'title' => 'Ekstrakurikuler PIK-R',
+        ChatbotKnowledge::updateOrCreate(['title' => 'Ekstrakurikuler PIK-R'], [
             'category' => 'Ekstrakurikuler',
             'content' => 'PIK-R (Kesehatan): Menjadi ruang edukasi dan konseling sebaya untuk membangun remaja yang sehat, bertanggung jawab, dan berencana. Pembina: Pembina PIK-R sekolah. Latihan: Kamis. Kegiatan: Edukasi remaja, konseling sebaya, kampanye kesehatan, dan kegiatan sosial.',
             'keywords' => ['pik-r', 'pikr', 'pik r', 'konseling', 'konseling sebaya', 'kesehatan remaja'],
@@ -1252,8 +1259,7 @@ class DatabaseSeeder extends Seeder
             'published_at' => now(),
         ]);
 
-        ChatbotKnowledge::create([
-            'title' => 'Organisasi OSIS',
+        ChatbotKnowledge::updateOrCreate(['title' => 'Organisasi OSIS'], [
             'category' => 'Organisasi',
             'content' => 'OSIS (Organisasi): Wadah utama kepemimpinan siswa untuk merancang dan menjalankan berbagai program kegiatan sekolah. Pembina: Pembina OSIS sekolah. Latihan/Agenda: Sesuai program kerja. Kegiatan: Program kerja siswa, kegiatan sekolah, kepemimpinan, dan bakti sosial.',
             'keywords' => ['osis', 'organisasi siswa', 'pengurus osis', 'kepemimpinan'],
@@ -1263,8 +1269,7 @@ class DatabaseSeeder extends Seeder
             'published_at' => now(),
         ]);
 
-        ChatbotKnowledge::create([
-            'title' => 'Organisasi Lacurva',
+        ChatbotKnowledge::updateOrCreate(['title' => 'Organisasi Lacurva'], [
             'category' => 'Organisasi',
             'content' => 'Lacurva (Organisasi): Komunitas suporter Skaneda yang membangun semangat, kreativitas, dan dukungan positif untuk kegiatan serta prestasi siswa. Pembina: Pembina kegiatan siswa. Latihan/Agenda: Sesuai agenda pertandingan. Kegiatan: Dukungan pertandingan, koreografi, kreativitas suporter, dan solidaritas.',
             'keywords' => ['lacurva', 'la curva', 'suporter', 'supporter', 'ultras', 'skaneda suporter'],
@@ -1274,8 +1279,7 @@ class DatabaseSeeder extends Seeder
             'published_at' => now(),
         ]);
 
-        ChatbotKnowledge::create([
-            'title' => 'Organisasi Pasus',
+        ChatbotKnowledge::updateOrCreate(['title' => 'Organisasi Pasus'], [
             'category' => 'Organisasi',
             'content' => 'Pasus (Organisasi): Organisasi siswa yang menumbuhkan kedisiplinan, tanggung jawab, kekompakan, dan kesiapan membantu kegiatan sekolah. Pembina: Pembina Pasus sekolah. Latihan/Agenda: Sesuai agenda sekolah. Kegiatan: Pengamanan kegiatan, kedisiplinan, ketertiban, dan dukungan acara sekolah.',
             'keywords' => ['pasus', 'pasukan khusus', 'keamanan sekolah', 'ketertiban'],
@@ -1285,8 +1289,7 @@ class DatabaseSeeder extends Seeder
             'published_at' => now(),
         ]);
 
-        ChatbotKnowledge::create([
-            'title' => 'Ekstrakurikuler Olahraga dan Seni',
+        ChatbotKnowledge::updateOrCreate(['title' => 'Ekstrakurikuler Olahraga dan Seni'], [
             'category' => 'Ekstrakurikuler',
             'content' => 'SMKN 2 Mojokerto memfasilitasi ekskul Futsal, Basket, Voli, Seni Tari Tradisional/Modern, serta Band/Musik dengan lapangan olahraga standar dan pelatih profesional.',
             'keywords' => ['futsal', 'basket', 'voli', 'olahraga', 'seni', 'musik', 'tari', 'band'],
@@ -1296,8 +1299,7 @@ class DatabaseSeeder extends Seeder
             'published_at' => now(),
         ]);
 
-        ChatbotKnowledge::create([
-            'title' => 'Program Budaya Kawi Laras',
+        ChatbotKnowledge::updateOrCreate(['title' => 'Program Budaya Kawi Laras'], [
             'category' => 'Budaya',
             'content' => 'Kawi Laras (Kamis Wiwitan Laku Adab Lan Rasa Sayekti) adalah program pembiasaan budaya Jawa setiap Kamis minggu kedua dalam bulan. Seluruh siswa dan guru mengenakan pakaian tradisional Jawa (lurik & kebaya) untuk melestarikan nilai adab, sopan santun, dan rasa mulia.',
             'keywords' => ['kawi laras', 'kawilaras', 'budaya', 'lurik', 'kebaya', 'kamis wiwitan', 'adab', 'jawa'],
@@ -1307,8 +1309,7 @@ class DatabaseSeeder extends Seeder
             'published_at' => now(),
         ]);
 
-        ChatbotKnowledge::create([
-            'title' => 'Peta Sebaran Alumni SKANEDA',
+        ChatbotKnowledge::updateOrCreate(['title' => 'Peta Sebaran Alumni SKANEDA'], [
             'category' => 'Karir',
             'content' => 'Fitur Peta Sebaran Alumni menampilkan pemetaan lokasi kerja, wirausaha, dan perguruan tinggi tempat alumni SMKN 2 Mojokerto berkiprah di seluruh Indonesia dan internasional secara interaktif.',
             'keywords' => ['alumni', 'peta', 'sebaran', 'karir', 'kuliah', 'perusahaan', 'lokasi'],
@@ -1318,8 +1319,7 @@ class DatabaseSeeder extends Seeder
             'published_at' => now(),
         ]);
 
-        ChatbotKnowledge::create([
-            'title' => 'Ekstrakurikuler Matchmaker Quiz',
+        ChatbotKnowledge::updateOrCreate(['title' => 'Ekstrakurikuler Matchmaker Quiz'], [
             'category' => 'Ekstrakurikuler',
             'content' => 'Fitur Matchmaker Quiz membantu siswa baru memilih ekstrakurikuler yang paling sesuai dengan menjawab pertanyaan minat bakat secara otomatis.',
             'keywords' => ['quiz', 'matchmaker', 'cocok', 'pilih ekskul', 'rekomendasi ekskul'],
@@ -1330,55 +1330,62 @@ class DatabaseSeeder extends Seeder
         ]);
 
         // 8. Alumni & Map Aggregation Data
-        Alumni::create([
-            'name' => 'Budi Santoso',
-            'graduation_year' => 2023,
-            'major_id' => $rpl->id,
-            'status' => AlumniStatus::WORKING,
-            'company' => 'Tokopedia',
-            'job_title' => 'Software Engineer',
-            'city' => 'Jakarta',
-            'country' => 'Indonesia',
-            'latitude' => -6.2088,
-            'longitude' => 106.8456,
-            'publication_status' => PublicationStatus::PUBLISHED,
-        ]);
+        Alumni::updateOrCreate(
+            ['name' => 'Budi Santoso', 'graduation_year' => 2023, 'major_id' => $rpl->id],
+            [
+                'status' => AlumniStatus::WORKING,
+                'company' => 'Tokopedia',
+                'job_title' => 'Software Engineer',
+                'city' => 'Jakarta',
+                'country' => 'Indonesia',
+                'latitude' => -6.2088,
+                'longitude' => 106.8456,
+                'publication_status' => PublicationStatus::PUBLISHED,
+            ]
+        );
 
-        Alumni::create([
-            'name' => 'Siti Nurhaliza',
-            'graduation_year' => 2022,
-            'major_id' => $dkv->id,
-            'status' => AlumniStatus::STUDYING,
-            'university' => 'Institut Teknologi Sepuluh Nopember (ITS)',
-            'city' => 'Surabaya',
-            'country' => 'Indonesia',
-            'latitude' => -7.2575,
-            'longitude' => 112.7521,
-            'publication_status' => PublicationStatus::PUBLISHED,
-        ]);
+        Alumni::updateOrCreate(
+            ['name' => 'Siti Nurhaliza', 'graduation_year' => 2022, 'major_id' => $dkv->id],
+            [
+                'status' => AlumniStatus::STUDYING,
+                'university' => 'Institut Teknologi Sepuluh Nopember (ITS)',
+                'city' => 'Surabaya',
+                'country' => 'Indonesia',
+                'latitude' => -7.2575,
+                'longitude' => 112.7521,
+                'publication_status' => PublicationStatus::PUBLISHED,
+            ]
+        );
 
         // 9. FactCheck
-        FactCheck::create([
-            'title' => 'Klarifikasi Isu Biaya Pendaftaran PPDB',
-            'claim' => 'Beredar kabar pendaftaran PPDB SMKN 2 Mojokerto dipungut biaya Rp 500.000.',
-            'verdict_explanation' => 'HOAKS. Seluruh proses pendaftaran PPDB SMKN 2 Mojokerto TIDAK DIPUNGUT BIAYA (GRATIS).',
-            'status' => FactCheckStatus::FALSE,
-            'published_at' => now(),
-        ]);
+        FactCheck::updateOrCreate(
+            ['title' => 'Klarifikasi Isu Biaya Pendaftaran PPDB'],
+            [
+                'claim' => 'Beredar kabar pendaftaran PPDB SMKN 2 Mojokerto dipungut biaya Rp 500.000.',
+                'verdict_explanation' => 'HOAKS. Seluruh proses pendaftaran PPDB SMKN 2 Mojokerto TIDAK DIPUNGUT BIAYA (GRATIS).',
+                'status' => FactCheckStatus::FALSE,
+                'published_at' => now(),
+            ]
+        );
 
         // 10. E-Voice
-        EVoice::create([
-            'ticket_code' => 'EV-99A1-2026',
-            'title' => 'Penambahan Fasilitas WiFi di Area Perpustakaan',
-            'description' => 'Mohon diperkuat jaringan WiFi di lantai 2 perpustakaan agar mendukung riset siswa.',
-            'category' => EVoiceCategory::ASPIRASI->value,
-            'upvotes_count' => 15,
-            'status' => EVoiceStatus::REVIEWING,
-        ]);
+        EVoice::updateOrCreate(
+            ['ticket_code' => 'EV-99A1-2026'],
+            [
+                'title' => 'Penambahan Fasilitas WiFi di Area Perpustakaan',
+                'description' => 'Mohon diperkuat jaringan WiFi di lantai 2 perpustakaan agar mendukung riset siswa.',
+                'category' => EVoiceCategory::ASPIRASI->value,
+                'upvotes_count' => 15,
+                'status' => EVoiceStatus::REVIEWING,
+            ]
+        );
 
            $this->call([
        AdminSeeder::class,
        SchoolHistorySeeder::class,
-   ]);
+       GallerySeeder::class,
+       TourSceneSeeder::class,
+       VisiMisiSeeder::class,
+        ]);
     }
 }

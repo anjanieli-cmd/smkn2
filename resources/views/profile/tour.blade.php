@@ -3,70 +3,32 @@
 
   VIRTUAL TOUR 360° — SMK NEGERI 2 MOJOKERTO (FULLSCREEN, PANNELLUM)
   ============================================================
-  Versi ini PINDAH dari embed iframe Momento360 ke PANNELLUM
-  (viewer 360° yang jalan langsung di halamanmu, pakai file foto
-  equirectangular yang kamu upload/hosting sendiri).
+  VERSI DATABASE (28 September 2026)
 
-  KENAPA PINDAH:
-  Di versi Momento360, tombol "menuju lokasi lain" cuma bisa
-  ditaruh mengambang statis di atas iframe (karena iframe itu beda
-  origin, JS-mu nggak bisa baca arah pandang kamera di dalamnya).
-  Efeknya tombol itu diam di layar walau foto di baliknya diputar,
-  jadi lama-lama "nyasar" nggak nempel ke objek yang dimaksud.
+  Lokasi, foto panorama, dan hotspot sekarang DIBACA DARI DATABASE lewat
+  endpoint  GET /api/tour  (TourApiController). Semuanya dikelola dari
+  halaman admin Virtual Tour — tidak perlu lagi edit file ini untuk
+  menambah lokasi / memindah hotspot / ganti foto.
 
-  Dengan Pannellum, foto dirender LANGSUNG di halamanmu (bukan
-  iframe orang lain), jadi kita punya akses penuh ke sudut pandang
-  kamera. Hotspot sekarang dikasih koordinat pitch/yaw (bukan top/
-  left dalam %), dan Pannellum otomatis:
-  - nempelin hotspot ke titik itu di foto (ikut muter pas di-drag)
-  - nyembunyiin hotspot kalau titik itu lagi di belakang/luar pandangan
+  Yang berubah dibanding versi hardcoded:
+  - Objek `vtScenes` sekarang kosong di awal, diisi dari API.
+  - Lokasi awal tour = lokasi yang dicentang "Lokasi Awal" di admin
+    (kalau tidak ada, dipakai lokasi pertama).
+  - Kode lama menyimpan hasil API ke key `embed`, padahal viewer membaca
+    `panorama`, jadi lokasi dari API tidak pernah tampil. Sudah diperbaiki.
+  - Label hotspot di-escape supaya aman dari karakter HTML.
+  - Tombol "Mode Kalibrasi" pakai onclick (bukan addEventListener) supaya
+    tidak numpuk listener setiap pindah lokasi.
 
-  ============================================================
-  FIX (26 Agustus 2026): ICON HOTSPOT SEKARANG BENERAN NEMPEL
-  ============================================================
-  Sebelumnya class `.vt360-hotspot` punya:
-      transition: width .28s var(--ease), background .2s var(--ease), transform .2s var(--ease)
-  Elemen yang sama ini juga yang posisinya (transform: translate(...))
-  di-update TERUS-MENERUS oleh Pannellum tiap frame (~60fps) supaya
-  hotspot nempel ke titik pitch/yaw di foto pas kamera diputar.
+  Yang TIDAK berubah: seluruh CSS, tampilan, panel navigasi, hotspot
+  (ikon bulat -> klik mekar -> klik lagi pindah), dan info card.
 
-  Karena ada `transition: transform`, browser nganggep tiap perubahan
-  posisi itu harus di-ANIMASI pelan-pelan selama 200ms — padahal
-  perubahannya datang lagi tiap 16ms. Hasilnya transisi keputus-putus
-  terus dan icon jadi keliatan "nyangkut"/ nggak ngikutin muternya foto.
-
-  FIX: `transform` dibuang dari daftar transition hotspot. Transisi
-  yang tersisa cuma buat efek "mekar" pas expand (width) & warna hover.
-  Efek scale pas hover dipindah ke ikon di dalamnya (bukan ke elemen
-  pembungkus yang posisinya dikontrol Pannellum), biar dua transform
-  (posisi dari Pannellum vs scale dari hover) nggak tabrakan.
-
-  Koordinat hotspot "Menuju Lobi" juga sudah diupdate pakai hasil
-  Mode Kalibrasi terbaru: pitch: 6.27, yaw: -84.00 (pas di tulisan
-  "SMKN 2 KOTA MOJOKERTO").
-  ============================================================
-
-  CARA ISI FOTO:
-  1) Siapkan foto 360° equirectangular (rasio 2:1, mis. 6000x3000px)
-     per lokasi, format .jpg.
-  2) Taruh filenya di folder public, misal: public/tour/gerbang-utama.jpg
-  3) Isi field `panorama` pada scene yang sesuai di variabel vtScenes
-     (cari komentar "GANTI DI SINI"), pakai helper asset(), contoh:
-       panorama: '{{ asset("tour/gerbang-utama.jpg") }}'
-  4) Kalau `panorama` masih kosong (''), halaman otomatis nampilin
-     kondisi "Foto 360° belum tersedia".
-
-  CARA CARI KOORDINAT HOTSPOT (pitch/yaw) DI FOTO:
-  Waktu lagi buka scene yang fotonya sudah ada, tekan tombol
-  SHIFT lalu klik titik di foto yang kamu mau kasih hotspot
-  (misal pas di bangunan bertuliskan "SMKN 2"). Koordinat pitch &
-  yaw titik itu otomatis muncul di console browser (F12 → Console).
-  Copy angka itu ke field hotspots scene terkait. Atau pakai
-  Mode Kalibrasi (tombol merah di pojok kiri bawah) buat naruh pin
-  visual dan baca angkanya langsung di layar.
+  FIX (26 Agustus 2026) tetap berlaku: `.vt360-hotspot` TIDAK boleh punya
+  `transition: transform`, karena posisinya di-update Pannellum tiap frame.
 
   Route tetap sama, contoh di routes/web.php:
   Route::view('/profile/tour', 'profile.tour')->name('profil.tour');
+  Route::get('/api/tour', [TourApiController::class, 'index']);
   ============================================================
 --}}
 @extends('layouts.app')
@@ -262,7 +224,7 @@ body:has(.vt360-fullpage) .app-header{display:none !important}
     <i class="fas fa-xmark"></i>
   </a>
 
-  {{-- tombol mode kalibrasi hotspot (khusus buat proses setting titik, boleh dihapus nanti) --}}
+  {{-- tombol mode kalibrasi hotspot (sekarang ada juga di halaman admin, boleh dihapus dari sini) --}}
   <button class="vt360-calib-btn" id="vtCalibBtn"><i class="fas fa-crosshairs"></i> Mode Kalibrasi: OFF</button>
   <div class="vt360-calib-info" id="vtCalibInfo"></div>
 
@@ -275,7 +237,7 @@ body:has(.vt360-fullpage) .app-header{display:none !important}
   <div class="vt360-empty" id="vtEmpty">
     <i class="fas fa-camera-retro"></i>
     <h4 id="vtEmptyTitle">Foto 360° Belum Tersedia</h4>
-    <p>Lokasi ini akan segera diperbarui dengan foto panorama asli. Sementara itu, silakan jelajahi lokasi lain yang sudah tersedia.</p>
+    <p id="vtEmptyText">Lokasi ini akan segera diperbarui dengan foto panorama asli. Sementara itu, silakan jelajahi lokasi lain yang sudah tersedia.</p>
   </div>
 </div>
 @endsection
@@ -285,193 +247,22 @@ body:has(.vt360-fullpage) .app-header{display:none !important}
 <script>
 (function(){
   /* ============================================================
-     DATA LOKASI — sesuaikan/tambah bebas.
-     category  : 'area' | 'kelas' | 'fasilitas'
-     panorama  : URL foto equirectangular (pakai asset()). Kosongkan
-                 ('') kalau foto lokasi itu belum ada — halaman
-                 otomatis munculin kondisi "belum tersedia".
-     hotspots  : array tombol navigasi yang NEMPEL ke titik foto,
-                 { pitch, yaw, to, label, icon }. Cara cari angka
-                 pitch/yaw: buka scene ybs, tekan SHIFT + klik titik
-                 di foto, lihat console browser (F12), atau pakai
-                 Mode Kalibrasi (tombol merah kiri bawah).
-     ============================================================ */
-  var vtScenes = {
-    'gerbang-utama': {
-      title: 'Gerbang Utama', category: 'area', icon: 'fa-archway',
-      desc: 'Titik masuk utama SMK Negeri 2 Mojokerto, gerbang pertama yang menyambut siswa dan tamu setiap hari.',
-      panorama: '{{ asset("tour/gerbang-utama.jpg") }}?v={{ time() }}',
-      // Foto ini panorama SEBAGIAN (bukan bola 360 penuh), makanya perlu haov/vaov
-      // manual. Angka vaov ini dihitung dari rasio lebar:tinggi file aslinya
-      // (8000x2023px). Kalau kamu ganti foto lain nanti, hitung ulang:
-      // vaov = 360 * (tinggi_px / lebar_px)
-      haov: 360,
-      vaov: 91,
-      vOffset: 0,
-      // Posisi tombol "Menuju Lobi" — HASIL KALIBRASI TERBARU (Mode
-      // Kalibrasi, pin merah), pas nempel di tulisan
-      // "SMKN 2 KOTA MOJOKERTO" pada foto.
-      hotspots: [
-        { pitch: 6.27, yaw: -84.00, to: 'lobi-sekolah', label: 'Menuju Lobi', icon: 'fa-plus' }
-      ]
-    },
-    'lobi-sekolah': {
-      title: 'Lobi & Ruang Tunggu', category: 'area', icon: 'fa-door-open',
-      desc: 'Area penerima tamu sekolah, penghubung menuju gedung kelas dan ruang program keahlian.',
-      panorama: '{{ asset("tour/lobi-sekolah.jpg") }}?v={{ time() }}',
-      // Foto ini juga panorama sebagian (8000x2713px) — vaov dihitung sama
-      // seperti scene gerbang-utama di atas.
-      haov: 360,
-      vaov: 122,
-      vOffset: 0
-    },
-    'lapangan-utama': {
-      title: 'Lapangan Utama', category: 'area', icon: 'fa-flag',
-      desc: 'Lapangan terbuka utama sekolah, dipakai untuk upacara bendera dan kegiatan siswa.',
-      panorama: '{{ asset("tour/lapangan-utama.jpg") }}?v={{ time() }}',
-      // Ukuran asli 8000x2122px -> vaov = 360*2122/8000
-      haov: 360,
-      vaov: 95.49,
-      vOffset: 0
-    },
-    'lapangan-tengah': {
-      title: 'Lapangan Tengah', category: 'area', icon: 'fa-shapes',
-      desc: 'Halaman tengah sekolah yang menghubungkan beberapa gedung kelas.',
-      panorama: '{{ asset("tour/lapangan-tengah.jpg") }}?v={{ time() }}',
-      // Ukuran asli 7840x2720px -> vaov = 360*2720/7840
-      haov: 360,
-      vaov: 124.90,
-      vOffset: 0
-    },
-    'lapangan-basket': {
-      title: 'Lapangan Basket', category: 'fasilitas', icon: 'fa-basketball',
-      desc: 'Lapangan basket beratap yang juga dipakai untuk kegiatan olahraga dan futsal siswa.',
-      panorama: '{{ asset("tour/lapangan-basket.jpg") }}?v={{ time() }}',
-      // Ukuran asli 8000x2209px -> vaov = 360*2209/8000
-      haov: 360,
-      vaov: 99.41,
-      vOffset: 0
-    },
-    'parkiran': {
-      title: 'Area Parkir', category: 'fasilitas', icon: 'fa-square-parking',
-      desc: 'Area parkir kendaraan siswa dan tamu di lingkungan sekolah.',
-      panorama: '{{ asset("tour/parkiran.jpg") }}?v={{ time() }}',
-      // Ukuran asli 8000x2190px -> vaov = 360*2190/8000
-      haov: 360,
-      vaov: 98.55,
-      vOffset: 0
-    },
-    'aula': {
-      title: 'Aula Serbaguna', category: 'fasilitas', icon: 'fa-people-roof',
-      desc: 'Ruang besar untuk acara sekolah, seminar, dan pertemuan wali murid.',
-      panorama: '{{ asset("tour/aula.jpg") }}?v={{ time() }}',
-      // Ukuran asli 4160x1225px -> vaov = 360*1225/4160
-      haov: 360,
-      vaov: 106.01,
-      vOffset: 0
-    },
-    'kantin': {
-      title: 'Kantin Sekolah', category: 'fasilitas', icon: 'fa-utensils',
-      desc: 'Area kantin tempat siswa dan guru membeli serta menyantap makanan saat istirahat.',
-      panorama: '{{ asset("tour/kantin.jpg") }}?v={{ time() }}',
-      // Ukuran asli 8000x2105px -> vaov = 360*2105/8000
-      haov: 360,
-      vaov: 94.73,
-      vOffset: 0
-    },
-    'musholla': {
-      title: 'Musholla', category: 'fasilitas', icon: 'fa-mosque',
-      desc: 'Tempat ibadah untuk siswa dan warga sekolah menjalankan sholat.',
-      panorama: '{{ asset("tour/musholla.jpg") }}?v={{ time() }}',
-      // Ukuran asli 8000x2077px -> vaov = 360*2077/8000
-      haov: 360,
-      vaov: 93.47,
-      vOffset: 0
-    },
-    'ruang-kelas': {
-      title: 'Ruang Kelas', category: 'kelas', icon: 'fa-chalkboard-user',
-      desc: 'Ruang kelas teori tempat siswa mengikuti kegiatan belajar mengajar.',
-      panorama: '{{ asset("tour/ruang-kelas.jpg") }}?v={{ time() }}',
-      // Foto diganti (28 Agu 2026) — ukuran asli 1280x305px -> vaov = 360*305/1280
-      haov: 360,
-      vaov: 85.78,
-      vOffset: 0
-    },
-    'lab-lps': {
-      title: 'Laboratorium LPS', category: 'kelas', icon: 'fa-building-columns',
-      desc: 'Ruang praktik siswa Layanan Perbankan Syariah, dilengkapi unit komputer untuk simulasi layanan nasabah.',
-      panorama: '{{ asset("tour/lab-lps.jpg") }}?v={{ time() }}',
-      // Ukuran asli 1280x328px -> vaov = 360*328/1280
-      haov: 360,
-      vaov: 92.25,
-      vOffset: 0
-    },
-    'kelas-belakang': {
-      title: 'Kelas Bagian Belakang', category: 'kelas', icon: 'fa-chalkboard',
-      desc: 'Deretan ruang kelas di bagian belakang lingkungan sekolah.',
-      panorama: '{{ asset("tour/kelas-belakang.jpg") }}?v={{ time() }}',
-      // Ukuran asli 8000x2195px -> vaov = 360*2195/8000
-      haov: 360,
-      vaov: 98.78,
-      vOffset: 0
-    },
-    'lab-rpl': {
-      title: 'Laboratorium RPL', category: 'kelas', icon: 'fa-code',
-      desc: 'Ruang praktik siswa Rekayasa Perangkat Lunak, dilengkapi unit komputer untuk kegiatan pemrograman.',
-      panorama: '{{ asset("tour/lab-rpl.jpg") }}?v={{ time() }}',
-      // Ukuran asli 8000x2104px -> vaov = 360*2104/8000
-      haov: 360,
-      vaov: 94.68,
-      vOffset: 0
-    },
-    'lab-dkv': {
-      title: 'Laboratorium DKV', category: 'kelas', icon: 'fa-palette',
-      desc: 'Ruang praktik siswa Desain Komunikasi Visual, dilengkapi perangkat desain digital.',
-      panorama: '{{ asset("tour/lab-dkv.jpg") }}?v={{ time() }}',
-      // Ukuran asli 8000x2287px -> vaov = 360*2287/8000
-      haov: 360,
-      vaov: 102.92,
-      vOffset: 0
-    },
-    'lab-1-aphp': {
-      title: 'Laboratorium APHP 1', category: 'kelas', icon: 'fa-wheat-awn',
-      desc: 'Ruang praktik pertama siswa Agribisnis Pengolahan Hasil Pertanian.',
-      panorama: '{{ asset("tour/lab-1-aphp.jpg") }}?v={{ time() }}',
-      // Ukuran asli 4160x1222px -> vaov = 360*1222/4160
-      haov: 360,
-      vaov: 105.76,
-      vOffset: 0
-    },
-    'lab-2-aphp': {
-      title: 'Laboratorium APHP 2', category: 'kelas', icon: 'fa-flask',
-      desc: 'Ruang praktik kedua siswa Agribisnis Pengolahan Hasil Pertanian.',
-      panorama: '{{ asset("tour/lab-2-aphp.jpg") }}?v={{ time() }}',
-      // Ukuran asli 4160x1064px -> vaov = 360*1064/4160
-      haov: 360,
-      vaov: 92.08,
-      vOffset: 0
-    },
-    'lab-pastry': {
-      title: 'Laboratorium Pastry', category: 'kelas', icon: 'fa-bread-slice',
-      desc: 'Dapur praktik siswa Kuliner untuk produk pastry dan bakery.',
-      panorama: '{{ asset("tour/lab-pastry.jpg") }}?v={{ time() }}',
-      // Ukuran asli 4160x1632px -> vaov = 360*1632/4160
-      haov: 360,
-      vaov: 141.23,
-      vOffset: 0
-    },
-    'lab-tata-hidang': {
-      title: 'Laboratorium Tata Hidang', category: 'kelas', icon: 'fa-champagne-glasses',
-      desc: 'Ruang praktik siswa Kuliner untuk pelayanan dan penataan hidangan (table setting).',
-      panorama: '{{ asset("tour/lab-tata-hidang.jpg") }}?v={{ time() }}',
-      // Ukuran asli 1280x638px -> vaov = 360*638/1280
-      haov: 360,
-      vaov: 179.44,
-      vOffset: 0
-    }
-  };
+     DATA LOKASI — dimuat dari database lewat GET /api/tour.
+     Kelola lokasi, foto, dan hotspot di halaman admin Virtual Tour.
 
-  var HOME_SCENE = 'gerbang-utama';
+     Bentuk tiap item (key = slug):
+       title, category ('area'|'kelas'|'fasilitas'), icon, desc,
+       panorama (URL foto), haov, vaov, vOffset,
+       hotspots: [{ pitch, yaw, to (slug tujuan), label, icon }]
+     ============================================================ */
+  var vtScenes = {};
+  var HOME_SCENE = null;
+
+  function esc(str){
+    var d = document.createElement('div');
+    d.textContent = str == null ? '' : String(str);
+    return d.innerHTML;
+  }
 
   /* ---------- render daftar navigasi ---------- */
   var navListEl = document.getElementById('vtNavList');
@@ -484,7 +275,7 @@ body:has(.vt360-fullpage) .app-header{display:none !important}
       if (curCat !== 'all' && s.category !== curCat) return;
       var item = document.createElement('button');
       item.className = 'vt360-navitem' + (id === curScene ? ' active' : '');
-      item.innerHTML = '<i class="fas ' + s.icon + '"></i>' + s.title;
+      item.innerHTML = '<i class="fas ' + esc(s.icon) + '"></i>' + esc(s.title);
       item.addEventListener('click', function(){ goToScene(id); });
       navListEl.appendChild(item);
     });
@@ -520,6 +311,9 @@ body:has(.vt360-fullpage) .app-header{display:none !important}
   var infoDescEl = document.getElementById('vtInfoDesc');
   var emptyEl = document.getElementById('vtEmpty');
   var emptyTitleEl = document.getElementById('vtEmptyTitle');
+  var emptyTextEl = document.getElementById('vtEmptyText');
+
+  var EMPTY_TEXT_DEFAULT = emptyTextEl.textContent;
 
   function updateInfoCard(id){
     var s = vtScenes[id];
@@ -533,16 +327,28 @@ body:has(.vt360-fullpage) .app-header{display:none !important}
 
   function showEmptyState(id){
     emptyTitleEl.textContent = 'Foto 360° "' + (vtScenes[id] ? vtScenes[id].title : '') + '" Belum Tersedia';
+    emptyTextEl.textContent = EMPTY_TEXT_DEFAULT;
     emptyEl.classList.add('show');
+    loadingEl.classList.remove('show');
     destroyViewer();
+  }
+
+  // dipakai kalau database belum punya lokasi sama sekali / API gagal
+  function showNoScenes(){
+    infoTitleEl.textContent = '—';
+    infoDescEl.textContent = 'Belum ada lokasi.';
+    emptyTitleEl.textContent = 'Virtual Tour Belum Tersedia';
+    emptyTextEl.textContent = 'Lokasi virtual tour belum ditambahkan. Silakan kembali lagi nanti.';
+    emptyEl.classList.add('show');
+    loadingEl.classList.remove('show');
   }
 
   // render tombol hotspot custom (ikon bulat -> klik mekar -> klik lagi pindah)
   // dipanggil oleh Pannellum lewat opsi createTooltipFunc tiap hotspot dibuat.
   function createNavHotspot(hotSpotDiv, args){
     hotSpotDiv.classList.add('vt360-hotspot');
-    hotSpotDiv.innerHTML = '<i class="fas ' + (args.icon || 'fa-plus') + '"></i>' +
-      '<span class="vt360-hotspot-label">' + args.label + '</span>';
+    hotSpotDiv.innerHTML = '<i class="fas ' + esc(args.icon || 'fa-plus') + '"></i>' +
+      '<span class="vt360-hotspot-label">' + esc(args.label) + '</span>';
     hotSpotDiv.addEventListener('click', function(e){
       e.stopPropagation();
       if (!hotSpotDiv.classList.contains('expanded')) {
@@ -569,7 +375,10 @@ body:has(.vt360-fullpage) .app-header{display:none !important}
     loadingEl.classList.add('show');
     destroyViewer();
 
-    var hotSpots = (s.hotspots || []).map(function(h){
+    // hotspot yang menuju lokasi yang sudah tidak ada dilewati
+    var hotSpots = (s.hotspots || []).filter(function(h){
+      return vtScenes[h.to];
+    }).map(function(h){
       return {
         pitch: h.pitch, yaw: h.yaw, type: 'custom',
         cssClass: 'vt360-hotspot-wrap',
@@ -598,22 +407,26 @@ body:has(.vt360-fullpage) .app-header{display:none !important}
     });
 
     pannellumViewer.on('load', function(){ loadingEl.classList.remove('show'); });
+    pannellumViewer.on('error', function(){ showEmptyState(id); });
 
     // ---------- MODE KALIBRASI: klik di foto pas mode aktif -> naruh pin
     // MERAH beneran di titik itu (bukan cuma angka di console), biar
-    // kelihatan visual pas apa nggak sebelum angkanya di-commit ke kode.
+    // kelihatan visual pas apa nggak sebelum angkanya di-commit.
+    // (Sekarang ada juga di halaman admin — di sana angkanya langsung
+    // masuk form, tidak perlu disalin manual.)
     var calibActive = false;
     var calibBtn = document.getElementById('vtCalibBtn');
     var calibInfoEl = document.getElementById('vtCalibInfo');
     var CALIB_PIN_ID = 'calibPin';
+    var viewerRef = pannellumViewer;
 
     function calibCreateTooltip(div){
       div.classList.add('vt360-calib-pin');
     }
 
     function placeCalibPin(pitch, yaw){
-      try { pannellumViewer.removeHotSpot(CALIB_PIN_ID); } catch(e){}
-      pannellumViewer.addHotSpot({
+      try { viewerRef.removeHotSpot(CALIB_PIN_ID); } catch(e){}
+      viewerRef.addHotSpot({
         id: CALIB_PIN_ID,
         pitch: pitch, yaw: yaw, type: 'custom',
         createTooltipFunc: calibCreateTooltip
@@ -621,54 +434,63 @@ body:has(.vt360-fullpage) .app-header{display:none !important}
       calibInfoEl.classList.add('show');
       calibInfoEl.innerHTML = 'Pin merah = titik yang barusan diklik.<br>' +
         '<code>pitch: ' + pitch.toFixed(2) + ', yaw: ' + yaw.toFixed(2) + '</code><br>' +
-        'Kalau udah pas, kirim angka ini ke chat.';
+        'Masukkan angka ini di halaman admin Virtual Tour.';
     }
 
-    calibBtn.addEventListener('click', function(){
+    // onclick (bukan addEventListener) -> handler lama otomatis diganti tiap pindah scene
+    calibBtn.classList.remove('active');
+    calibBtn.innerHTML = '<i class="fas fa-crosshairs"></i> Mode Kalibrasi: OFF';
+    calibInfoEl.classList.remove('show');
+    calibBtn.onclick = function(){
       calibActive = !calibActive;
       calibBtn.classList.toggle('active', calibActive);
       calibBtn.innerHTML = '<i class="fas fa-crosshairs"></i> Mode Kalibrasi: ' + (calibActive ? 'ON' : 'OFF');
       if (!calibActive) {
         calibInfoEl.classList.remove('show');
-        try { pannellumViewer.removeHotSpot(CALIB_PIN_ID); } catch(e){}
+        try { viewerRef.removeHotSpot(CALIB_PIN_ID); } catch(e){}
       }
-    });
+    };
 
     pannellumViewer.on('mousedown', function(e){
       if (!calibActive) return;
-      var coords = pannellumViewer.mouseEventToCoords(e);
+      var coords = viewerRef.mouseEventToCoords(e);
       placeCalibPin(coords[0], coords[1]);
     });
   }
 
   /* ---------- init ---------- */
   function openInitialScene(){
+    var keys = Object.keys(vtScenes);
+    if (!keys.length) { showNoScenes(); return; }
+
     var params = new URLSearchParams(window.location.search);
     var targetScene = params.get('scene');
 
     if (targetScene && vtScenes[targetScene]) {
       goToScene(targetScene);
     } else {
-      goToScene(HOME_SCENE);
+      goToScene(HOME_SCENE && vtScenes[HOME_SCENE] ? HOME_SCENE : keys[0]);
     }
   }
 
-  fetch('/api/tour')
+  fetch('/api/tour', { headers: { 'Accept': 'application/json' } })
     .then(function(res){ return res.json(); })
     .then(function(json){
-      if (json && json.success && Array.isArray(json.data) && json.data.length > 0) {
-        var apiScenes = {};
+      if (json && json.success && Array.isArray(json.data)) {
         json.data.forEach(function(item){
-          var slug = item.slug || item.id;
-          apiScenes[slug] = {
-            title: item.name,
+          vtScenes[item.slug] = {
+            title: item.title,
             category: item.category || 'area',
             icon: item.icon || 'fa-archway',
             desc: item.description || '',
-            embed: item.embed_url || item.panorama_url || ''
+            panorama: item.panorama || '',
+            haov: item.haov || 360,
+            vaov: item.vaov || 180,
+            vOffset: item.vOffset || 0,
+            hotspots: item.hotspots || []
           };
+          if (item.is_home && !HOME_SCENE) HOME_SCENE = item.slug;
         });
-        vtScenes = Object.assign({}, vtScenes, apiScenes);
       }
       renderNavList();
       openInitialScene();
