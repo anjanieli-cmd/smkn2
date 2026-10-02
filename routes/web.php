@@ -10,6 +10,95 @@ use App\Http\Controllers\SejarahSekolahController;
 use App\Http\Controllers\Admin\TourAdminController;
 use App\Http\Controllers\Api\TourApiController;
 use App\Http\Controllers\Admin\VisiMisiAdminController;
+use App\Http\Controllers\Admin\StrukturAdminController;
+use App\Http\Controllers\Admin\PpdbAdminController;
+use App\Http\Controllers\Admin\BeritaAdminController;
+
+Route::middleware(['auth'])            // <- samakan dengan grup admin kamu
+    ->prefix('admin/berita')
+    ->name('admin.berita.')
+    ->group(function () {
+        Route::get('/', [BeritaAdminController::class, 'index'])->name('index');
+
+        // teks halaman (hero, strip, CTA)
+        Route::put('/settings', [BeritaAdminController::class, 'updateSettings'])->name('settings.update');
+
+        // artikel
+        Route::post('/articles', [BeritaAdminController::class, 'storeArticle'])->name('articles.store');
+        Route::put('/articles/{article}', [BeritaAdminController::class, 'updateArticle'])->name('articles.update');
+        Route::delete('/articles/{article}', [BeritaAdminController::class, 'destroyArticle'])->name('articles.destroy');
+        Route::post('/articles/{article}/toggle', [BeritaAdminController::class, 'toggleArticle'])->name('articles.toggle');
+        Route::post('/articles/{article}/move/{direction}', [BeritaAdminController::class, 'moveArticle'])
+            ->whereIn('direction', ['up', 'down'])->name('articles.move');
+
+        // penempatan (featured / side / most_read)
+        Route::put('/placements', [BeritaAdminController::class, 'updatePlacements'])->name('placements.update');
+
+        // cerita skaneda
+        Route::post('/stories', [BeritaAdminController::class, 'storeStory'])->name('stories.store');
+        Route::put('/stories/{story}', [BeritaAdminController::class, 'updateStory'])->name('stories.update');
+        Route::delete('/stories/{story}', [BeritaAdminController::class, 'destroyStory'])->name('stories.destroy');
+        Route::post('/stories/{story}/toggle', [BeritaAdminController::class, 'toggleStory'])->name('stories.toggle');
+        Route::post('/stories/{story}/move/{direction}', [BeritaAdminController::class, 'moveStory'])
+            ->whereIn('direction', ['up', 'down'])->name('stories.move');
+
+        // kategori
+        Route::post('/categories', [BeritaAdminController::class, 'storeCategory'])->name('categories.store');
+        Route::put('/categories/{category}', [BeritaAdminController::class, 'updateCategory'])->name('categories.update');
+        Route::delete('/categories/{category}', [BeritaAdminController::class, 'destroyCategory'])->name('categories.destroy');
+        Route::post('/categories/{category}/move/{direction}', [BeritaAdminController::class, 'moveCategory'])
+            ->whereIn('direction', ['up', 'down'])->name('categories.move');
+    });
+
+Route::middleware(['auth'])            // <- samakan dengan grup admin kamu
+    ->prefix('admin/ppdb')
+    ->name('admin.ppdb.')
+    ->group(function () {
+        Route::get('/', [PpdbAdminController::class, 'index'])->name('index');
+
+        // teks per tab: teks | definisi | jalur | syarat | alur | jadwal | jurusan | faq
+        Route::put('/settings/{tab}', [PpdbAdminController::class, 'updateSettings'])
+            ->whereIn('tab', ['teks', 'definisi', 'jalur', 'syarat', 'alur', 'jadwal', 'jurusan', 'faq'])
+            ->name('settings.update');
+
+        // daftar (kartu / baris) per section
+        Route::post('/items/{section}', [PpdbAdminController::class, 'storeItem'])
+            ->whereIn('section', ['definisi', 'jalur', 'syarat', 'alur', 'jadwal', 'jurusan', 'faq'])
+            ->name('items.store');
+        Route::put('/items/{item}', [PpdbAdminController::class, 'updateItem'])->name('items.update');
+        Route::delete('/items/{item}', [PpdbAdminController::class, 'destroyItem'])->name('items.destroy');
+        Route::post('/items/{item}/toggle', [PpdbAdminController::class, 'toggleItem'])->name('items.toggle');
+        Route::post('/items/{item}/move/{direction}', [PpdbAdminController::class, 'moveItem'])
+            ->whereIn('direction', ['up', 'down'])->name('items.move');
+    });
+
+
+Route::middleware(['auth'])            // <- samakan dengan grup admin kamu
+    ->prefix('admin/struktur')
+    ->name('admin.struktur.')
+    ->group(function () {
+        Route::get('/', [StrukturAdminController::class, 'index'])->name('index');
+
+        // teks tunggal per tab: hero | peran
+        Route::put('/settings/{tab}', [StrukturAdminController::class, 'updateSettings'])
+            ->whereIn('tab', ['hero', 'peran'])->name('settings.update');
+
+        // orang / jabatan di bagan
+        Route::post('/members', [StrukturAdminController::class, 'storeMember'])->name('members.store');
+        Route::put('/members/{member}', [StrukturAdminController::class, 'updateMember'])->name('members.update');
+        Route::delete('/members/{member}', [StrukturAdminController::class, 'destroyMember'])->name('members.destroy');
+        Route::post('/members/{member}/toggle', [StrukturAdminController::class, 'toggleMember'])->name('members.toggle');
+        Route::post('/members/{member}/move/{direction}', [StrukturAdminController::class, 'moveMember'])
+            ->whereIn('direction', ['up', 'down'])->name('members.move');
+
+        // kartu "Alur Kerja"
+        Route::post('/roles', [StrukturAdminController::class, 'storeRole'])->name('roles.store');
+        Route::put('/roles/{role}', [StrukturAdminController::class, 'updateRole'])->name('roles.update');
+        Route::delete('/roles/{role}', [StrukturAdminController::class, 'destroyRole'])->name('roles.destroy');
+        Route::post('/roles/{role}/toggle', [StrukturAdminController::class, 'toggleRole'])->name('roles.toggle');
+        Route::post('/roles/{role}/move/{direction}', [StrukturAdminController::class, 'moveRole'])
+            ->whereIn('direction', ['up', 'down'])->name('roles.move');
+    });
 
 Route::middleware(['auth'])            // <- samakan dengan grup admin kamu
     ->prefix('admin/visi-misi')

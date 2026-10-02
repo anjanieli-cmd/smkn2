@@ -299,7 +299,7 @@
       'Profil Sekolah' => [
         ['admin.school-history.index',  'fa-landmark',          'Sejarah Sekolah'],
         ['admin.visi-misi.index',  'fa-bullseye',          'Visi &amp; Misi'],
-        ['admin.org-structure.index',   'fa-sitemap',           'Struktur Organisasi'],
+        ['admin.struktur.index',   'fa-sitemap',           'Struktur Organisasi'],
         ['admin.teachers.index',        'fa-chalkboard-user',   'Guru &amp; Staf'],
         ['admin.roadmap.index',         'fa-road',              'Roadmap Pengembangan'],
         ['admin.tour.index',            'fa-street-view',       'Tour Virtual 360°'],
@@ -316,7 +316,7 @@
         ['admin.e-voices.index',        'fa-comments',          'E-Voice Aspirasi'],
       ],
       'Berita' => [
-        ['admin.news.index',            'fa-newspaper',         'Berita &amp; Artikel'],
+        ['admin.berita.index',            'fa-newspaper',         'Berita &amp; Artikel'],
         ['admin.fact-checks.index',     'fa-shield-halved',     'School Factcheck'],
       ],
       'Galeri' => [
