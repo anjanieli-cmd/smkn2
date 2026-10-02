@@ -1942,6 +1942,10 @@
   function goTo(i){var maxIndex=Math.max(0,Math.ceil(visible().length/pageSize())-1);index=Math.min(Math.max(i,0),maxIndex);update()}
   prevBtn.addEventListener('click',function(){goTo(index-1)});
   nextBtn.addEventListener('click',function(){goTo(index+1)});
+  var startX=0,currentX=0,isSwiping=false;
+  track.addEventListener('touchstart',function(e){if(e.touches&&e.touches.length){startX=e.touches[0].clientX;isSwiping=true;currentX=startX}},{passive:true});
+  track.addEventListener('touchmove',function(e){if(!isSwiping||!e.touches||!e.touches.length)return;currentX=e.touches[0].clientX},{passive:true});
+  track.addEventListener('touchend',function(){if(!isSwiping)return;var diffX=startX-currentX;if(Math.abs(diffX)>35){if(diffX>0)goTo(index+1);else goTo(index-1)}startX=0;currentX=0;isSwiping=false});
   filterBtns.forEach(function(btn){
     btn.addEventListener('click',function(){
       filterBtns.forEach(function(b){b.classList.remove('active')});btn.classList.add('active');

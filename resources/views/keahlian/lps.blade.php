@@ -1196,7 +1196,8 @@
 .produk-head{width:min(1320px,92%);margin:0 auto 48px;display:flex;justify-content:space-between;align-items:end;gap:2rem}
 .produk-note{max-width:320px;color:#718396;font-size:.78rem;line-height:1.7;text-align:right}
 .produk-slider{position:relative;width:min(1320px,94%);margin:auto}
-.produk-track{display:flex;flex-wrap:wrap;gap:1.2rem}
+.produk-viewport{overflow:hidden;border-radius:24px}
+.produk-track{display:flex;gap:1.2rem;transition:transform .5s cubic-bezier(.4,0,.2,1)}
 .produk-card{position:relative;flex:0 0 calc(33.333% - .8rem);background:#fff;border:1px solid rgba(7,27,51,.1);border-radius:22px;overflow:hidden;box-shadow:0 20px 44px rgba(7,27,51,.08);transition:transform .3s ease,box-shadow .3s ease}
 .produk-card:hover{transform:translateY(-8px);box-shadow:0 28px 60px rgba(7,27,51,.15)}
 .produk-photo{position:relative;aspect-ratio:4/3;overflow:hidden;background:linear-gradient(135deg,#0d3a66,#0B5FA5)}
@@ -1208,6 +1209,15 @@
 .produk-card .pc-body h3{font-family:var(--font-display);font-size:1.05rem;font-weight:800;color:#0d3a66;margin:0 0 .2rem}
 .produk-card .pc-body p{font-size:.75rem;line-height:1.65;color:#718396;margin:0 0 .5rem}
 .produk-card .pc-foot{display:flex;align-items:center;justify-content:space-between;font-size:.65rem;font-weight:800;color:#FF8A00;text-transform:uppercase;letter-spacing:.08em}
+.produk-arrow{position:absolute;top:50%;translate:0 -50%;width:48px;height:48px;border-radius:50%;background:#0d3a66;border:none;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1rem;cursor:pointer;z-index:6;box-shadow:0 10px 22px rgba(7,27,51,.35);transition:background .25s ease,transform .25s ease,opacity .25s ease}
+.produk-arrow:hover{background:#FFB300;transform:translateY(-50%) scale(1.08)}
+.produk-arrow.prev{left:-24px}
+.produk-arrow.next{right:-24px}
+.produk-arrow:disabled{opacity:.3;cursor:default;pointer-events:none}
+.produk-dots{display:flex;justify-content:center;gap:.45rem;margin-top:1.6rem}
+.produk-dots button{width:8px;height:8px;border-radius:50%;border:none;background:rgba(7,27,51,.18);cursor:pointer;padding:0;transition:background .25s ease,width .25s ease}
+.produk-dots button.active{background:#FFB300;width:24px;border-radius:5px}
+.produk-dots.hidden{display:none}
 @media(max-width:1050px){.produk-card{flex-basis:calc(50% - .6rem)}}
 @media(max-width:640px){.produk-card{flex-basis:100%}}
 
@@ -1730,7 +1740,9 @@
       <div class="produk-note">Dokumentasi praktik siswa LPS — dirancang melalui simulasi transaksi, pelayanan nasabah, dan praktik administrasi perbankan.</div>
     </div>
     <div class="produk-slider" data-reveal>
-      <div class="produk-track" id="produkTrack">
+      <button class="produk-arrow prev" id="produkPrev" aria-label="Sebelumnya"><i class="fas fa-chevron-left"></i></button>
+      <div class="produk-viewport">
+        <div class="produk-track" id="produkTrack">
           <article class="produk-card" data-cat="teller">
             <div class="produk-photo"><img src="{{ asset('images/lps/pengelolaan-keuangan.png') }}" alt="Praktik teller karya siswa LPS" loading="lazy"><span class="produk-badge">Teller</span></div>
             <div class="pc-body"><h3>Praktik Teller</h3><p>Simulasi menerima setoran, penarikan tunai, dan transfer sesuai prosedur bank syariah.</p><div class="pc-foot"><span>Bank Mini</span><span><i class="fas fa-arrow-right"></i></span></div></div>
@@ -1743,8 +1755,11 @@
             <div class="produk-photo"><img src="{{ asset('images/lps/vania-carla.jpeg') }}" alt="Praktik administrasi karya siswa LPS" loading="lazy"><span class="produk-badge">Duta</span></div>
             <div class="pc-body"><h3>Duta Koperasi Jawa Timur</h3><p>Mengenalkan nilai, peran, dan manfaat koperasi serta mengajak generasi muda memahami & berpartisipasi dalam kegiatan koperasi.</p><div class="pc-foot"><span>Koperasi</span><span><i class="fas fa-arrow-right"></i></span></div></div>
           </article>
+        </div>
       </div>
+      <button class="produk-arrow next" id="produkNext" aria-label="Selanjutnya"><i class="fas fa-chevron-right"></i></button>
     </div>
+    <div class="produk-dots" id="produkDots"></div>
   </section>
 
   <!-- ===== SECTION 8 — KEGIATAN & PRESTASI ===== -->
@@ -1880,4 +1895,41 @@
 })();
 </script>
 
+<script>
+/* ---- Produk Slider ---- */
+(function(){
+  var track=document.getElementById('produkTrack'),prevBtn=document.getElementById('produkPrev'),nextBtn=document.getElementById('produkNext'),dotsWrap=document.getElementById('produkDots');
+  if(!track)return;
+  var index=0;
+  function cards(){return Array.prototype.slice.call(track.children)}
+  function visible(){return cards().filter(function(c){return c.style.display!=='none'})}
+  function pageSize(){if(window.innerWidth<=760)return 1;if(window.innerWidth<=1050)return 2;return 3}
+  function buildDots(){
+    if(!dotsWrap)return;
+    dotsWrap.innerHTML='';var total=visible().length,pages=Math.max(1,Math.ceil(total/pageSize()));
+    if(total<=pageSize()){dotsWrap.classList.add('hidden');return}
+    dotsWrap.classList.remove('hidden');
+    for(var i=0;i<pages;i++){var b=document.createElement('button');if(i===index)b.classList.add('active');b.setAttribute('aria-label','Slide '+(i+1));(function(idx){b.addEventListener('click',function(){goTo(idx)})})(i);dotsWrap.appendChild(b)}
+  }
+  function update(){
+    var vis=visible(),per=pageSize(),maxIndex=Math.max(0,Math.ceil(vis.length/per)-1);
+    if(index>maxIndex)index=maxIndex;
+    var offset=0,visIdx=0,i=0;
+    for(;i<cards().length;i++){if(cards()[i].style.display==='none')continue;if(visIdx===index*per)break;offset+=cards()[i].offsetWidth+19;visIdx++}
+    track.style.transform='translateX(-'+offset+'px)';
+    if(prevBtn)prevBtn.disabled=index<=0;
+    if(nextBtn)nextBtn.disabled=index>=maxIndex;
+    if(dotsWrap)Array.prototype.forEach.call(dotsWrap.children,function(d,di){d.classList.toggle('active',di===index)})
+  }
+  function goTo(i){var maxIndex=Math.max(0,Math.ceil(visible().length/pageSize())-1);index=Math.min(Math.max(i,0),maxIndex);update()}
+  if(prevBtn)prevBtn.addEventListener('click',function(){goTo(index-1)});
+  if(nextBtn)nextBtn.addEventListener('click',function(){goTo(index+1)});
+  var startX=0,currentX=0,isSwiping=false;
+  track.addEventListener('touchstart',function(e){if(e.touches&&e.touches.length){startX=e.touches[0].clientX;isSwiping=true;currentX=startX}},{passive:true});
+  track.addEventListener('touchmove',function(e){if(!isSwiping||!e.touches||!e.touches.length)return;currentX=e.touches[0].clientX},{passive:true});
+  track.addEventListener('touchend',function(){if(!isSwiping)return;var diffX=startX-currentX;if(Math.abs(diffX)>35){if(diffX>0)goTo(index+1);else goTo(index-1)}startX=0;currentX=0;isSwiping=false});
+  window.addEventListener('resize',function(){buildDots();update()});
+  buildDots();update()
+})();
+</script>
 @endpush

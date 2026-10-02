@@ -539,18 +539,45 @@
         max-width: 100% !important;
       }
       .produk-slider {
+        position: relative !important;
         width: 100% !important;
-        padding-left: 1.25rem !important;
-        padding-right: 1.25rem !important;
+        padding-left: 0.5rem !important;
+        padding-right: 0.5rem !important;
+      }
+      .produk-viewport {
+        overflow: hidden !important;
+        width: 100% !important;
+        border-radius: 18px !important;
       }
       .produk-track {
-        flex-direction: column !important;
         display: flex !important;
-        gap: 1.2rem !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        gap: 1rem !important;
+        transition: transform .4s cubic-bezier(.4,0,.2,1) !important;
+        width: 100% !important;
       }
       .produk-card {
-        flex-basis: 100% !important;
+        flex: 0 0 100% !important;
         width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+      }
+      .produk-arrow {
+        display: flex !important;
+        width: 36px !important;
+        height: 36px !important;
+        font-size: 0.85rem !important;
+      }
+      .produk-arrow.prev {
+        left: 4px !important;
+      }
+      .produk-arrow.next {
+        right: 4px !important;
+      }
+      .produk-dots {
+        display: flex !important;
+        margin-top: 1.2rem !important;
       }
 
       /* Section 8: Kegiatan & Prestasi */
@@ -710,6 +737,23 @@
     }
     @media(pointer:fine){#cursorGlow{display:block}}
 
+    /* Site Header Container (Fixed Top with Announcement Bar + Navbar) */
+    .site-header {
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      width: 100% !important;
+      z-index: 9999 !important;
+      background: transparent;
+    }
+    .header-spacer {
+      height: 108px;
+      width: 100%;
+      display: block;
+      pointer-events: none;
+    }
+
     .announce-bar {
       background: linear-gradient(90deg, #0d3a66, #1d6fb8, #0d3a66);
       color: #fff;font-size: .8rem;position: relative;z-index: 60;overflow: hidden;
@@ -727,7 +771,7 @@
     /* ============================================================
        NAVBAR — SEMUA LINK BOLD & FONT SAMA DENGAN "DISIPLIN, BERPRESTASI"
        ============================================================ */
-    #navbar{position:sticky;top:0;left:0;z-index:100;width:100%;margin:0;padding:0;transition:all .4s var(--ease);background:transparent}
+    #navbar{position:relative;width:100%;margin:0;padding:0;transition:all .4s var(--ease);background:transparent}
     #navbar.scrolled{top:0}
     .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.95rem 2rem;border-radius:0;background:linear-gradient(135deg,#0d3a66,#1d6fb8);backdrop-filter:blur(18px) saturate(160%);-webkit-backdrop-filter:blur(18px) saturate(160%);border:0;border-bottom:1px solid rgba(255,255,255,.18);box-shadow:0 10px 34px rgba(13,58,102,.35),inset 0 1px 0 rgba(255,255,255,.25);transition:all .4s var(--ease);width:100%;max-width:100%;margin:0}
     #navbar.scrolled .nav-inner{background:linear-gradient(135deg,#0a2f57,#13518c);box-shadow:0 14px 44px rgba(13,58,102,.5);padding:.8rem 2rem;border-radius:0;border:0;border-bottom:1px solid rgba(255,255,255,.12)}
@@ -947,20 +991,40 @@
       #navbar.scrolled .nav-inner{padding:.75rem 1.5rem}
     }
     @media(max-width:900px){
-      body {
-        padding-top: 48px !important;
-      }
       .announce-bar {
         position: relative;
         z-index: 9998;
+        width: 100%;
+        overflow: hidden;
       }
-      #navbar {
+      .announce-bar .container {
+        padding: 0 1rem;
+        width: 100%;
+        max-width: 100%;
+      }
+      .announce-ticker {
+        display: flex;
+        gap: 2rem;
+        white-space: nowrap;
+        padding: .4rem 0;
+        animation: ticker 26s linear infinite;
+        width: max-content;
+      }
+      .site-header {
         position: fixed !important;
         top: 0 !important;
         left: 0 !important;
         right: 0 !important;
         width: 100% !important;
         z-index: 9999 !important;
+      }
+      #navbar {
+        position: relative !important;
+        top: auto !important;
+        width: 100% !important;
+      }
+      .header-spacer {
+        height: 78px !important;
       }
       .section-py{padding:72px 0}
       .nav-inner {
@@ -1016,15 +1080,11 @@
       .dropdown-menu{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;border:0;background:rgba(29,111,184,.05);margin-top:.3rem;display:none;min-width:0;padding:.3rem .5rem}
       .dropdown-menu a{font-size:.88rem;padding:.5rem .7rem}
       .nav-item.dropdown-open .dropdown-menu{display:block}
-      .announce-bar .container{padding:0 1rem}
       .nav-cta{font-size:1.02rem;padding:.65rem 1rem !important}
       .nav-ai-matchmaker{width:100%;padding:.65rem .8rem !important;border-radius:10px !important;height:44px !important}
       .ai-nav-badge{top:2px !important;right:10px !important;min-width:32px !important;height:24px !important;font-size:.82rem !important;}
     }
     @media(max-width:600px){
-      body {
-        padding-top: 44px !important;
-      }
       .section-py{padding:60px 0}
       .announce-bar .container{padding:0 .8rem}
       .nav-inner{padding:.35rem .75rem !important;min-height:44px !important}
@@ -2459,104 +2519,110 @@
   {{-- ================= CURSOR GLOW ================= --}}
   <div id="cursorGlow" aria-hidden="true"></div>
 
-  {{-- ================= ANNOUNCEMENT BAR (FULL WIDTH) ================= --}}
-  <div class="announce-bar">
-    <div class="container">
-      <div class="announce-ticker" id="announceTicker">
-        <div class="announce-item"><i class="fas fa-bullhorn"></i> PPDB 2025/2026 Dibuka — Daftar Sekarang!</div>
-        <div class="announce-item"><i class="fas fa-trophy"></i> Juara 1 LKS Provinsi Jawa Timur 2024 — Selamat!</div>
-        <div class="announce-item"><i class="fas fa-calendar"></i> Ujian Akhir Semester: 10–20 Juni 2025</div>
-        <div class="announce-item"><i class="fas fa-star"></i> Akreditasi A — SMK Negeri 2 Mojokerto</div>
-        <div class="announce-item"><i class="fas fa-bullhorn"></i> PPDB 2025/2026 Dibuka — Daftar Sekarang!</div>
-        <div class="announce-item"><i class="fas fa-trophy"></i> Juara 1 LKS Provinsi Jawa Timur 2024 — Selamat!</div>
-        <div class="announce-item"><i class="fas fa-calendar"></i> Ujian Akhir Semester: 10–20 Juni 2025</div>
-        <div class="announce-item"><i class="fas fa-star"></i> Akreditasi A — SMK Negeri 2 Mojokerto</div>
+  {{-- ================= SITE HEADER (FIXED TOP: TULISAN BERJALAN + NAVBAR) ================= --}}
+  <header class="site-header" id="siteHeader">
+    {{-- ANNOUNCEMENT BAR (FULL WIDTH AT VERY TOP) --}}
+    <div class="announce-bar">
+      <div class="container">
+        <div class="announce-ticker" id="announceTicker">
+          <div class="announce-item"><i class="fas fa-bullhorn"></i> PPDB 2025/2026 Dibuka — Daftar Sekarang!</div>
+          <div class="announce-item"><i class="fas fa-trophy"></i> Juara 1 LKS Provinsi Jawa Timur 2024 — Selamat!</div>
+          <div class="announce-item"><i class="fas fa-calendar"></i> Ujian Akhir Semester: 10–20 Juni 2025</div>
+          <div class="announce-item"><i class="fas fa-star"></i> Akreditasi A — SMK Negeri 2 Mojokerto</div>
+          <div class="announce-item"><i class="fas fa-bullhorn"></i> PPDB 2025/2026 Dibuka — Daftar Sekarang!</div>
+          <div class="announce-item"><i class="fas fa-trophy"></i> Juara 1 LKS Provinsi Jawa Timur 2024 — Selamat!</div>
+          <div class="announce-item"><i class="fas fa-calendar"></i> Ujian Akhir Semester: 10–20 Juni 2025</div>
+          <div class="announce-item"><i class="fas fa-star"></i> Akreditasi A — SMK Negeri 2 Mojokerto</div>
+        </div>
       </div>
     </div>
-  </div>
 
-  {{-- ================= NAVBAR (FULL WIDTH) ================= --}}
-  <nav id="navbar">
-    <div class="nav-inner">
-      <a href="{{ route('home') }}" class="nav-brand">
-        <div class="nav-logo"><img src="{{ asset('images/logo_smkn2.png') }}" alt="Logo SMK Negeri 2" /></div>
-        <div class="nav-brand-text">
-          <strong>SMK NEGERI <em class="num-2">2</em></strong>
-          <span class="brand-sub">MOJOKERTO</span>
-        </div>
-      </a>
-
-      <ul class="nav-menu" id="navMenu">
-        <li class="nav-item"><a href="{{ route('home') }}" class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}">Beranda</a></li>
-
-        <li class="nav-item">
-          <a href="#" class="nav-link dropdown-trigger">Profil <i class="fas fa-chevron-down"></i></a>
-          <div class="dropdown-menu">
-            <a href="{{ route('profil.sejarah-sekolah') }}"><i class="fas fa-history"></i> Sejarah Sekolah</a>
-            <a href="{{ route('profil.visi-misi') }}"><i class="fas fa-eye"></i> Visi &amp; Misi</a>
-            <a href="{{ route('profil.struktur-organisasi') }}"><i class="fas fa-sitemap"></i> Struktur Organisasi</a>
-            <a href="{{ route('profil.guru-staf') }}"><i class="fas fa-chalkboard-user"></i> Guru &amp; Staf</a>
-            <a href="{{ route('profil.roadmap-pengembangan') }}"><i class="fas fa-road"></i> Roadmap Pengembangan</a>
-            <a href="{{ route('profil.tour') }}"><i class="fas fa-street-view"></i> Tour Virtual 360°</a>
+    {{-- NAVBAR (FULL WIDTH BELOW ANNOUNCEMENT BAR) --}}
+    <nav id="navbar">
+      <div class="nav-inner">
+        <a href="{{ route('home') }}" class="nav-brand">
+          <div class="nav-logo"><img src="{{ asset('images/logo_smkn2.png') }}" alt="Logo SMK Negeri 2" /></div>
+          <div class="nav-brand-text">
+            <strong>SMK NEGERI <em class="num-2">2</em></strong>
+            <span class="brand-sub">MOJOKERTO</span>
           </div>
-        </li>
+        </a>
 
-        <li class="nav-item">
-          <a href="#" class="nav-link dropdown-trigger">Program Keahlian <i class="fas fa-chevron-down"></i></a>
-          <div class="dropdown-menu">
-            <a href="{{ route('aphp') }}"><i class="fas fa-wheat-awn"></i> Agribisnis Pengolahan Hasil Pertanian</a>
-            <a href="{{ route('dkv') }}"><i class="fas fa-palette"></i> Desain Komunikasi Visual</a>
-            <a href="{{ route('kuliner') }}"><i class="fas fa-utensils"></i> Kuliner</a>
-            <a href="{{ route('lps') }}"><i class="fas fa-calculator"></i> Layanan Perbankan Syariah</a>
-            <a href="{{ route('rpl') }}"><i class="fas fa-code"></i> Rekayasa Perangkat Lunak</a>
-          </div>
-        </li>
+        <ul class="nav-menu" id="navMenu">
+          <li class="nav-item"><a href="{{ route('home') }}" class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}">Beranda</a></li>
 
-        <li class="nav-item"><a href="{{ route('ppdb') }}" class="nav-link {{ request()->routeIs('ppdb') ? 'active' : '' }}">PPDB</a></li>
+          <li class="nav-item">
+            <a href="#" class="nav-link dropdown-trigger">Profil <i class="fas fa-chevron-down"></i></a>
+            <div class="dropdown-menu">
+              <a href="{{ route('profil.sejarah-sekolah') }}"><i class="fas fa-history"></i> Sejarah Sekolah</a>
+              <a href="{{ route('profil.visi-misi') }}"><i class="fas fa-eye"></i> Visi &amp; Misi</a>
+              <a href="{{ route('profil.struktur-organisasi') }}"><i class="fas fa-sitemap"></i> Struktur Organisasi</a>
+              <a href="{{ route('profil.guru-staf') }}"><i class="fas fa-chalkboard-user"></i> Guru &amp; Staf</a>
+              <a href="{{ route('profil.roadmap-pengembangan') }}"><i class="fas fa-road"></i> Roadmap Pengembangan</a>
+              <a href="{{ route('profil.tour') }}"><i class="fas fa-street-view"></i> Tour Virtual 360°</a>
+            </div>
+          </li>
 
-        <li class="nav-item">
-          <a href="#" class="nav-link dropdown-trigger">Siswa <i class="fas fa-chevron-down"></i></a>
-          <div class="dropdown-menu">
-            <a href="{{ url('/siswa/karya-siswa') }}"><i class="fas fa-lightbulb"></i> Karya Siswa</a>
-            <a href="{{ url('/siswa/ekstrakurikuler') }}"><i class="fas fa-people-group"></i> Ekstrakurikuler</a>
-            <a href="{{ url('/siswa/voice') }}"><i class="fas fa-comment-dots"></i> E-Voice</a>
-          </div>
-        </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link dropdown-trigger">Program Keahlian <i class="fas fa-chevron-down"></i></a>
+            <div class="dropdown-menu">
+              <a href="{{ route('aphp') }}"><i class="fas fa-wheat-awn"></i> Agribisnis Pengolahan Hasil Pertanian</a>
+              <a href="{{ route('dkv') }}"><i class="fas fa-palette"></i> Desain Komunikasi Visual</a>
+              <a href="{{ route('kuliner') }}"><i class="fas fa-utensils"></i> Kuliner</a>
+              <a href="{{ route('lps') }}"><i class="fas fa-calculator"></i> Layanan Perbankan Syariah</a>
+              <a href="{{ route('rpl') }}"><i class="fas fa-code"></i> Rekayasa Perangkat Lunak</a>
+            </div>
+          </li>
 
-        <li class="nav-item">
-          <a href="#" class="nav-link dropdown-trigger">Berita <i class="fas fa-chevron-down"></i></a>
-          <div class="dropdown-menu">
-            <a href="{{ url('/berita/index') }}"><i class="fas fa-newspaper"></i> Semua Berita</a>
-            <a href="{{ url('/berita/factcheck') }}"><i class="fas fa-shield-halved"></i> School FactCheck</a>
-          </div>
-        </li>
+          <li class="nav-item"><a href="{{ route('ppdb') }}" class="nav-link {{ request()->routeIs('ppdb') ? 'active' : '' }}">PPDB</a></li>
 
-        <li class="nav-item">
-          <a href="#" class="nav-link dropdown-trigger">Galeri <i class="fas fa-chevron-down"></i></a>
-          <div class="dropdown-menu">
-            <a href="{{ url('/galeri/kegiatan') }}"><i class="fas fa-school"></i> Kegiatan Sekolah</a>
-            <a href="{{ url('/galeri/prestasi-sekolah') }}"><i class="fas fa-medal"></i> Prestasi</a>
-          </div>
-        </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link dropdown-trigger">Siswa <i class="fas fa-chevron-down"></i></a>
+            <div class="dropdown-menu">
+              <a href="{{ url('/siswa/karya-siswa') }}"><i class="fas fa-lightbulb"></i> Karya Siswa</a>
+              <a href="{{ url('/siswa/ekstrakurikuler') }}"><i class="fas fa-people-group"></i> Ekstrakurikuler</a>
+              <a href="{{ url('/siswa/voice') }}"><i class="fas fa-comment-dots"></i> E-Voice</a>
+            </div>
+          </li>
 
-        <li class="nav-item"><a href="{{ url('/bkk-loker') }}" class="nav-link {{ request()->is('bkk-loker*') ? 'active' : '' }}">BKK &amp; Loker</a></li>
+          <li class="nav-item">
+            <a href="#" class="nav-link dropdown-trigger">Berita <i class="fas fa-chevron-down"></i></a>
+            <div class="dropdown-menu">
+              <a href="{{ url('/berita/index') }}"><i class="fas fa-newspaper"></i> Semua Berita</a>
+              <a href="{{ url('/berita/factcheck') }}"><i class="fas fa-shield-halved"></i> School FactCheck</a>
+            </div>
+          </li>
 
-        <li class="nav-item">
-          <a href="{{ url('/ai') }}"
-             class="nav-link nav-cta nav-ai-matchmaker {{ request()->is('ai*') ? 'active' : '' }}"
-             aria-label="Cari Ekskulmu">
-            <i class="fas fa-wand-magic-sparkles ai-icon"></i>
-            <span>Cari Ekskulmu</span>
-            <span class="ai-nav-badge">AI</span>
-          </a>
-        </li>
-      </ul>
+          <li class="nav-item">
+            <a href="#" class="nav-link dropdown-trigger">Galeri <i class="fas fa-chevron-down"></i></a>
+            <div class="dropdown-menu">
+              <a href="{{ url('/galeri/kegiatan') }}"><i class="fas fa-school"></i> Kegiatan Sekolah</a>
+              <a href="{{ url('/galeri/prestasi-sekolah') }}"><i class="fas fa-medal"></i> Prestasi</a>
+            </div>
+          </li>
 
-      <button class="nav-toggle" id="navToggle" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </nav>
+          <li class="nav-item"><a href="{{ url('/bkk-loker') }}" class="nav-link {{ request()->is('bkk-loker*') ? 'active' : '' }}">BKK &amp; Loker</a></li>
+
+          <li class="nav-item">
+            <a href="{{ url('/ai') }}"
+               class="nav-link nav-cta nav-ai-matchmaker {{ request()->is('ai*') ? 'active' : '' }}"
+               aria-label="Cari Ekskulmu">
+              <i class="fas fa-wand-magic-sparkles ai-icon"></i>
+              <span>Cari Ekskulmu</span>
+              <span class="ai-nav-badge">AI</span>
+            </a>
+          </li>
+        </ul>
+
+        <button class="nav-toggle" id="navToggle" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  {{-- ================= HEADER SPACER ================= --}}
+  <div class="header-spacer" aria-hidden="true"></div>
 
   {{-- ================= KONTEN PER HALAMAN ================= --}}
   @yield('content')

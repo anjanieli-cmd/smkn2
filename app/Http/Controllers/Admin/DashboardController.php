@@ -9,6 +9,7 @@ use App\Models\Extracurricular;
 use App\Models\FactCheck;
 use App\Models\IndustryPartnership;
 use App\Models\JobVacancy;
+use App\Models\Major;
 use App\Models\StudentWork;
 use App\Models\TeacherStaff;
 
@@ -29,6 +30,7 @@ class DashboardController extends Controller
             'total_factchecks' => FactCheck::query()->count(),
             'total_student_works' => StudentWork::query()->count(),
             'total_industry' => IndustryPartnership::query()->where('is_active', true)->count(),
+            'total_majors' => Major::query()->count(),
         ];
 
         $recentTeachers = TeacherStaff::query()
