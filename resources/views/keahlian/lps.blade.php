@@ -1410,7 +1410,7 @@
           <span class="sejarah-white">LPS</span>
           <span class="skaneda-gold">SKANEDA</span>
         </h1>
-        <a class="history-vt-cta" href="#lab-tour">
+        <a class="history-vt-cta" href="{{ route('profil.tour') }}?scene=lab-lps">
           <span class="history-vt-icon"><i class="fas fa-handshake"></i></span>
           <span><strong>Lihat LPS Tour</strong><small>Jelajahi Ruang Praktik Bank Mini Syariah</small></span>
           <i class="fas fa-arrow-right history-vt-arrow"></i>

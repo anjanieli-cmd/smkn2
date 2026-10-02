@@ -1389,8 +1389,10 @@ class DatabaseSeeder extends Seeder
             SchoolHistorySeeder::class,
             TourSceneSeeder::class,
             VisiMisiSeeder::class,
-            StrukturSeeder::class,
             BeritaSeeder::class,
+            PpdbSeeder::class,
+            SiteContentSeeder::class,
+            StrukturSeeder::class,
         ]);
     }
 }

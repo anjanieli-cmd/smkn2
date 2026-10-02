@@ -1421,7 +1421,7 @@
           <span class="sejarah-white">APHP</span>
           <span class="skaneda-gold">SKANEDA</span>
         </h1>
-        <a class="history-vt-cta" href="#lab-tour">
+        <a class="history-vt-cta" href="{{ route('profil.tour') }}?scene=lab-2-aphp">
           <span class="history-vt-icon"><i class="fas fa-flask"></i></span>
           <span><strong>Lihat Lab Tour</strong><small>Jelajahi Laboratorium APHP</small></span>
           <i class="fas fa-arrow-right history-vt-arrow"></i>

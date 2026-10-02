@@ -408,6 +408,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::put('/school-history', [SchoolHistoryController::class, 'update'])
             ->name('school-history.update');
 
+        require __DIR__ . '/admin-pengaturan.php';
+        
         // 8. Galeri Kegiatan Sekolah (Album & Foto)
         Route::get('/gallery', [GalleryAdminController::class, 'index'])->name('gallery.index');
         Route::post('/gallery', [GalleryAdminController::class, 'store'])->name('gallery.store');

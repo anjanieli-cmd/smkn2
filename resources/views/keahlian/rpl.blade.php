@@ -1409,7 +1409,7 @@
           <span class="sejarah-white">RPL</span>
           <span class="skaneda-gold">SKANEDA</span>
         </h1>
-        <a class="history-vt-cta" href="#lab-tour">
+        <a class="history-vt-cta" href="{{ route('profil.tour') }}?scene=lab-rpl">
           <span class="history-vt-icon"><i class="fas fa-laptop-code"></i></span>
           <span><strong>Lihat Coding Lab Tour</strong><small>Jelajahi Laboratorium Komputer Rekayasa Perangkat Lunak</small></span>
           <i class="fas fa-arrow-right history-vt-arrow"></i>

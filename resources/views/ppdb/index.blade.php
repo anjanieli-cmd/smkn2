@@ -286,7 +286,13 @@
 [data-reveal].revealed{opacity:1;transform:none}
 [data-reveal]{transition-delay:calc(var(--d,0)*90ms)}
 
-/* ---------- RESPONSIVE ---------- */
+/* ---------- RESPONSIVE MOBILE POLISH ---------- */
+.pd-jadwal-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
 @media(max-width:1200px){
   .pd-track-grid{grid-template-columns:repeat(2,1fr)}
   .pd-jurusan-grid{grid-template-columns:repeat(2,1fr)}
@@ -294,34 +300,503 @@
   .pd-flow-track::before{display:none}
 }
 @media(max-width:950px){
-  .pd-intro-grid{grid-template-columns:1fr;gap:3rem}
+  .pd-intro-grid{grid-template-columns:1fr;gap:2.5rem}
   .pd-req-grid{grid-template-columns:1fr;gap:0 2.6rem}
 }
 @media(max-width:700px){
-  .pd-section,.pd-intro,.pd-track{padding:85px 0 90px}
-  .pd-req,.pd-jadwal,.pd-jurusan{padding:85px 0 90px}
-  .pd-flow{padding:85px 0 90px}
-  .pd-cta{padding:56px 5% 64px;margin-bottom:4.5rem;width:92%;margin-left:auto;margin-right:auto}
-  .pd-track-grid{grid-template-columns:1fr}
-  .pd-jurusan-grid{grid-template-columns:1fr}
-  .pd-flow-grid{grid-template-columns:1fr 1fr;gap:1.4rem .8rem}
-  .pd-req-card{padding:1.6rem 1.3rem}
-  .pd-jadwal-table th,.pd-jadwal-table td{padding:.8rem 1.2rem}
-  .pd-jadwal-head{flex-direction:column;align-items:flex-start;padding:1.3rem 1.2rem}
-  .pd-def-row{flex-direction:column;align-items:flex-start;gap:.8rem}
-  .home-orn .ho-chevron{width:220px;height:220px}
-  .home-orn .ho-dots{width:80px;height:80px;background-size:14px 14px}
-  .home-orn .ho-ring{width:110px;height:110px}
-  .home-orn .ho-line{width:190px}
-  .home-orn .ho-square{width:42px;height:42px}
-  .home-orn .ho-corner{width:70px;height:70px}
+  .pd-page { overflow-x: hidden !important; max-width: 100vw !important; }
+  .pd-hero { min-height: auto !important; padding: 2rem 0 2.5rem !important; }
+  .pd-hero-inner { width: 92% !important; padding: 2rem 0 2.5rem !important; }
+  .pd-title { font-size: clamp(2.3rem, 9vw, 3.6rem) !important; line-height: 1.05 !important; word-break: break-word !important; }
+  .pd-kicker { font-size: 0.68rem !important; margin-bottom: 0.8rem !important; padding: 0.45rem 0.75rem !important; }
+  .pd-lead { font-size: 0.92rem !important; margin-top: 1rem !important; }
+  
+  .pd-section,.pd-intro,.pd-track,.pd-req,.pd-jadwal,.pd-jurusan,.pd-flow,.pd-faq { padding: 48px 0 54px !important; }
+  .pd-cta { padding: 2.2rem 1.2rem !important; margin-bottom: 3.5rem !important; width: 92% !important; border-radius: 20px !important; }
+  .pd-cta h2 { font-size: clamp(1.5rem, 6.5vw, 2.2rem) !important; }
+  .pd-cta-btn { width: 100% !important; justify-content: center !important; margin-top: 0.5rem !important; }
+  
+  .pd-def-row { flex-direction: row !important; align-items: flex-start !important; gap: 0.9rem !important; padding: 0.95rem 1rem !important; border-radius: 14px !important; }
+  .pd-def-index { min-width: 44px !important; height: 44px !important; width: 44px !important; font-size: 1.15rem !important; border-radius: 12px !important; flex-shrink: 0 !important; }
+  .pd-def-text h3 { font-size: 0.95rem !important; }
+  .pd-def-text p { font-size: 0.8rem !important; margin-top: 0.15rem !important; }
+  
+  .pd-track-grid { grid-template-columns: 1fr !important; gap: 1rem !important; }
+  .pd-track-card { padding: 1.35rem 1.2rem !important; border-radius: 18px !important; }
+  .pd-track-no { font-size: 1.75rem !important; top: 0.9rem !important; right: 1rem !important; }
+  .pd-track-icon { width: 48px !important; height: 48px !important; font-size: 1.15rem !important; border-radius: 14px !important; }
+  
+  .pd-jurusan-grid { grid-template-columns: 1fr !important; gap: 1.1rem !important; }
+  .pd-jurusan-photo { height: 165px !important; }
+  .pd-jurusan-body { padding: 1.1rem 1.2rem !important; }
+  
+  .pd-flow-grid { grid-template-columns: 1fr 1fr !important; gap: 1.3rem 0.75rem !important; }
+  .pd-flow-dot { width: 52px !important; height: 52px !important; font-size: 1.1rem !important; }
+  .pd-flow-title { font-size: 0.85rem !important; margin-top: 0.65rem !important; }
+  .pd-flow-text { font-size: 0.72rem !important; max-width: 100% !important; }
+  
+  .pd-req-card { padding: 1.4rem 1.1rem !important; border-radius: 18px !important; }
+  .pd-req-grid { grid-template-columns: 1fr !important; gap: 0.4rem !important; }
+  .pd-req-item { padding: 0.75rem 0 !important; gap: 0.75rem !important; }
+  .pd-req-note { flex-direction: row !important; align-items: flex-start !important; padding: 0.85rem 1rem !important; font-size: 0.78rem !important; border-radius: 12px !important; }
+  
+  .pd-jadwal-card { border-radius: 18px !important; margin-top: 1.8rem !important; }
+  .pd-jadwal-head { flex-direction: column !important; align-items: flex-start !important; padding: 1.1rem 1.2rem !important; gap: 0.66rem !important; }
+  .pd-jadwal-head h3 { font-size: 1.05rem !important; }
+  .pd-jadwal-table th, .pd-jadwal-table td { padding: 0.75rem 1rem !important; white-space: nowrap !important; font-size: 0.8rem !important; }
+  .pd-jadwal-foot { padding: 0.85rem 1.2rem !important; font-size: 0.74rem !important; }
+  
+  .pd-faq-list { margin-top: 1.6rem !important; gap: 0.65rem !important; }
+  .pd-faq-q { padding: 0.95rem 1.1rem !important; font-size: 0.88rem !important; line-height: 1.4 !important; }
+  .pd-faq-a p { padding: 0 1.1rem 1rem !important; font-size: 0.82rem !important; }
+  
+  .home-orn .ho-chevron{width:180px;height:180px}
+  .home-orn .ho-dots{width:70px;height:70px;background-size:12px 12px}
+  .home-orn .ho-ring{width:95px;height:95px}
+  .home-orn .ho-line{width:140px}
+  .home-orn .ho-square{width:36px;height:36px}
+  .home-orn .ho-corner{width:50px;height:50px}
   [data-reveal]{opacity:1;transform:none}
+}
+
+@media(max-width:480px){
+  .pd-flow-grid { grid-template-columns: 1fr !important; gap: 1.2rem !important; }
+  .pd-title { font-size: clamp(2rem, 8.5vw, 2.8rem) !important; }
 }
 </style>
 @endpush
 
 @section('content')
+<<<<<<< HEAD
 @include('profile.partials.ppdb-content')
+=======
+<div class="pd-page">
+
+  <!-- HERO (100% mirip halaman Sejarah Sekolah: watermark + ornamen foto + judul besar) -->
+  <section class="pd-hero">
+    <div class="pd-ref-ornaments" aria-hidden="true" style="background-image:url('{{ asset('images/wide_minimalist_abstract_technology_background_des.png') }}');background-size:cover;background-position:center center;">
+      <img
+        src="{{ asset('images/wide_minimalist_abstract_technology_background_des.png') }}"
+        alt=""
+        class="pd-ref-ornament-image"
+        aria-hidden="true"
+      >
+    </div>
+    <div class="pd-hero-inner">
+      <div>
+        <div class="pd-kicker">Penerimaan Peserta Didik Baru</div>
+        <h1 class="pd-title">
+          <span class="pd-white">PPDB</span>
+          <span class="pd-gold">SKANEDA</span>
+        </h1>
+      </div>
+    </div>
+  </section>
+
+  <!-- 1. PENGERTIAN PPDB (definition stack P-P-D-B + banner resmi) -->
+  <section class="pd-intro">
+    <div class="home-orn" aria-hidden="true">
+      <span class="ho-chevron"></span>
+      <span class="ho-line"></span>
+      <span class="ho-dots"></span>
+      <span class="ho-ring"></span>
+      <span class="ho-gold"></span>
+      <span class="ho-square"></span>
+      <span class="ho-corner"></span>
+    </div>
+
+    <div class="pd-section pd-intro-grid">
+      <div data-reveal="left">
+        <h2 class="big-heading">EMPAT KATA, SATU <span>MASA DEPAN.</span></h2>
+        <p class="pd-intro-note">PPDB adalah pintu masuk resmi bagi calon peserta didik untuk bergabung menjadi bagian dari keluarga besar Skaneda.</p>
+
+        <div class="pd-def-stack" style="margin-top:2rem">
+          <div class="pd-def-row" data-reveal>
+            <div class="pd-def-index">1</div>
+            <div class="pd-def-text">
+              <h3>Penerimaan</h3>
+              <p>Proses seleksi resmi yang diselenggarakan oleh sekolah untuk menjaring calon peserta didik baru setiap tahun ajaran.</p>
+            </div>
+          </div>
+          <div class="pd-def-row" data-reveal>
+            <div class="pd-def-index">2</div>
+            <div class="pd-def-text">
+              <h3>Peserta</h3>
+              <p>Lulusan SMP/MTs sederajat yang memenuhi persyaratan dan siap menempuh pendidikan menengah kejuruan.</p>
+            </div>
+          </div>
+          <div class="pd-def-row" data-reveal>
+            <div class="pd-def-index">3</div>
+            <div class="pd-def-text">
+              <h3>Didik</h3>
+              <p>Setiap peserta didik dibina menjadi pribadi berkarakter, kompeten, dan siap kerja maupun berwirausaha.</p>
+            </div>
+          </div>
+          <div class="pd-def-row" data-reveal>
+            <div class="pd-def-index">4</div>
+            <div class="pd-def-text">
+              <h3>Baru</h3>
+              <p>Generasi baru Skaneda yang siap menorehkan prestasi akademik maupun nonakademik di tingkat kota, provinsi, hingga nasional.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div data-reveal="right">
+        <div class="pd-banner">
+          <img src="{{ asset('images/jurusan.jpeg') }}" alt="Banner PPDB SMK Negeri 2 Mojokerto" loading="eager">
+          <div class="pd-banner-flag">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. JALUR PENDAFTARAN -->
+  <section class="pd-track">
+    <div class="home-orn" aria-hidden="true">
+      <span class="ho-chevron"></span>
+      <span class="ho-line"></span>
+      <span class="ho-dots"></span>
+      <span class="ho-ring"></span>
+      <span class="ho-gold"></span>
+      <span class="ho-square"></span>
+    </div>
+
+    <div class="pd-section">
+      <div class="pd-track-head" data-reveal>
+        <h2 class="big-heading">EMPAT JALUR MENUJU <span>SKANEDA.</span></h2>
+        <p class="pd-track-note">Setiap calon peserta didik dapat memilih jalur yang paling sesuai dengan kondisi dan potensinya.</p>
+      </div>
+
+      <div class="pd-track-grid">
+        <div class="pd-track-card" data-reveal>
+          <span class="pd-track-no">01</span>
+          <div class="pd-track-icon"><i class="fas fa-map-marked-alt"></i></div>
+          <h3 class="pd-track-name">Zonasi</h3>
+          <span class="pd-track-kuota">Kuota ± 50%</span>
+          <p class="pd-track-text">Bagi calon peserta didik yang berdomisili di dalam wilayah zonasi yang ditetapkan pemerintah daerah.</p>
+        </div>
+        <div class="pd-track-card" data-reveal style="--d:1">
+          <span class="pd-track-no">02</span>
+          <div class="pd-track-icon"><i class="fas fa-hand-holding-heart"></i></div>
+          <h3 class="pd-track-name">Afirmasi</h3>
+          <span class="pd-track-kuota">Kuota ± 15%</span>
+          <p class="pd-track-text">Bagi peserta didik dari keluarga ekonomi tidak mampu dan anak penyandang disabilitas.</p>
+        </div>
+        <div class="pd-track-card" data-reveal style="--d:2">
+          <span class="pd-track-no">03</span>
+          <div class="pd-track-icon"><i class="fas fa-trophy"></i></div>
+          <h3 class="pd-track-name">Prestasi</h3>
+          <span class="pd-track-kuota">Kuota ± 25%</span>
+          <p class="pd-track-text">Bagi peserta didik dengan prestasi akademik maupun nonakademik yang diakui pemerintah.</p>
+        </div>
+        <div class="pd-track-card" data-reveal style="--d:3">
+          <span class="pd-track-no">04</span>
+          <div class="pd-track-icon"><i class="fas fa-briefcase"></i></div>
+          <h3 class="pd-track-name">Perpindahan Tugas</h3>
+          <span class="pd-track-kuota">Kuota ± 5%</span>
+          <p class="pd-track-text">Bagi anak dari orang tua/wali yang berpindah tugas, dengan bukti surat penugasan resmi.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. PERSYARATAN PENDAFTARAN -->
+  <section class="pd-req">
+    <div class="pd-section">
+      <div class="pd-req-card" data-reveal>
+        <h2 class="big-heading">SIAPKAN <span>BERKASMU.</span></h2>
+        <div class="pd-req-grid">
+          <div class="pd-req-item">
+            <i class="fas fa-id-card"></i>
+            <div><strong>Kartu Keluarga (KK)</strong><span>Fotokopi KK terbaru yang masih berlaku.</span></div>
+          </div>
+          <div class="pd-req-item">
+            <i class="fas fa-calendar-alt"></i>
+            <div><strong>Akte Kelahiran</strong><span>Fotokopi akta kelahiran calon peserta didik.</span></div>
+          </div>
+          <div class="pd-req-item">
+            <i class="fas fa-file-alt"></i>
+            <div><strong>Ijazah / SKL</strong><span>Fotokopi ijazah SMP/MTs atau surat keterangan lulus.</span></div>
+          </div>
+          <div class="pd-req-item">
+            <i class="fas fa-user-graduate"></i>
+            <div><strong>Rapor Semester 1–5</strong><span>Fotokopi rapor untuk jalur prestasi nilai akademik.</span></div>
+          </div>
+          <div class="pd-req-item">
+            <i class="fas fa-image"></i>
+            <div><strong>Pas Foto 3×4</strong><span>Pas foto berwarna latar merah/biru, sebanyak 3 lembar.</span></div>
+          </div>
+          <div class="pd-req-item">
+            <i class="fas fa-trophy"></i>
+            <div><strong>Sertifikat Prestasi</strong><span>Untuk jalur prestasi: piagam/sertifikat lomba yang diakui.</span></div>
+          </div>
+        </div>
+        <div class="pd-req-note">
+          <i class="fas fa-info-circle"></i>
+          <span>Jalur afirmasi wajib melampirkan bukti keikutsertaan program penanganan keluarga tidak mampu (KIP/PKH/DTKS). Berkas difotokopi sesuai ketentuan panitia resmi.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. ALUR PENDAFTARAN (timeline) -->
+  <section class="pd-flow">
+    <div class="pd-section">
+      <div data-reveal>
+        <h2 class="big-heading">ENAM LANGKAH MENUJU <span>GERBANG SKANEDA.</span></h2>
+      </div>
+      <div class="pd-flow-track">
+        <div class="pd-flow-grid">
+          <div class="pd-flow-step" data-reveal>
+            <div class="pd-flow-dot">1</div>
+            <h3 class="pd-flow-title">Buat Akun</h3>
+            <p class="pd-flow-text">Daftar akun dan ambil PIN pada portal PPDB resmi.</p>
+          </div>
+          <div class="pd-flow-step" data-reveal style="--d:1">
+            <div class="pd-flow-dot">2</div>
+            <h3 class="pd-flow-title">Isi Formulir</h3>
+            <p class="pd-flow-text">Lengkapi data diri, pilih jalur, dan tentukan pilihan sekolah.</p>
+          </div>
+          <div class="pd-flow-step" data-reveal style="--d:2">
+            <div class="pd-flow-dot">3</div>
+            <h3 class="pd-flow-title">Unggah Berkas</h3>
+            <p class="pd-flow-text">Upload dokumen persyaratan sesuai jalur yang dipilih.</p>
+          </div>
+          <div class="pd-flow-step" data-reveal style="--d:3">
+            <div class="pd-flow-dot">4</div>
+            <h3 class="pd-flow-title">Verifikasi</h3>
+            <p class="pd-flow-text">Panitia memverifikasi dan memeringkatkan calon peserta didik.</p>
+          </div>
+          <div class="pd-flow-step" data-reveal style="--d:4">
+            <div class="pd-flow-dot">5</div>
+            <h3 class="pd-flow-title">Pengumuman</h3>
+            <p class="pd-flow-text">Hasil seleksi diumumkan melalui portal dan papan informasi sekolah.</p>
+          </div>
+          <div class="pd-flow-step" data-reveal style="--d:5">
+            <div class="pd-flow-dot">6</div>
+            <h3 class="pd-flow-title">Daftar Ulang</h3>
+            <p class="pd-flow-text">Calon yang diterima melakukan daftar ulang sesuai jadwal.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. JADWAL PENTING PPDB -->
+  <section class="pd-jadwal">
+    <div class="pd-section">
+      <div data-reveal>
+        <h2 class="big-heading">CATAT TANGGAL <span>PENTINGNYA.</span></h2>
+      </div>
+
+      <div class="pd-jadwal-card" data-reveal>
+        <div class="pd-jadwal-head">
+          <h3><i class="fas fa-calendar-check"></i> Jadwal PPDB SMK Negeri 2 Mojokerto</h3>
+          <span class="pd-jadwal-badge"><i class="fas fa-clock"></i> Tahun Pelajaran 2026/2027</span>
+        </div>
+        <div class="pd-jadwal-table-wrap">
+          <table class="pd-jadwal-table">
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Kegiatan</th>
+                <th>Waktu</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Pengumuman &amp; sosialisasi PPDB</td>
+                <td>Maret – April 2026</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Pendaftaran akun &amp; pengambilan PIN</td>
+                <td>Mei 2026</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Pendaftaran &amp; unggah berkas (semua jalur)</td>
+                <td>Juni 2026</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>Verifikasi &amp; pemeringkatan berkas</td>
+                <td>Juni 2026</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>Pengumuman hasil seleksi</td>
+                <td>Awal Juli 2026</td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td>Daftar ulang peserta didik diterima</td>
+                <td>Juli 2026</td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td>Masa Pengenalan Lingkungan Sekolah (MPLS)</td>
+                <td>Juli 2026</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="pd-jadwal-foot"><i class="fas fa-info-circle"></i> Jadwal dapat berubah mengikuti ketetapan resmi Dinas Pendidikan Provinsi Jawa Timur — pantau terus pengumuman sekolah.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. PROGRAM KEAHLIAN -->
+  <section class="pd-jurusan">
+    <div class="home-orn" aria-hidden="true">
+      <span class="ho-chevron"></span>
+      <span class="ho-line"></span>
+      <span class="ho-dots"></span>
+      <span class="ho-ring"></span>
+      <span class="ho-gold"></span>
+      <span class="ho-square"></span>
+    </div>
+
+    <div class="pd-section">
+      <div class="pd-track-head" data-reveal>
+        <h2 class="big-heading">PILIH KOPETENSI, RAIH <span>MASA DEPANMU.</span></h2>
+        <p class="pd-track-note">SMK Negeri 2 Mojokerto membuka 5 kompetensi keahlian yang selaras dengan kebutuhan dunia usaha dan dunia industri.</p>
+      </div>
+
+      <div class="pd-jurusan-grid">
+        <div class="pd-jurusan-card" data-reveal>
+          <div class="pd-jurusan-photo">
+            <img src="{{ asset('images/ppdb/rpl.jpg') }}" alt="Rekayasa Perangkat Lunak" loading="eager">
+          </div>
+          <div class="pd-jurusan-body">
+            <span class="pd-jurusan-tag">TEKNOLOGI INFORMASI</span>
+            <h3 class="pd-jurusan-name">Rekayasa Perangkat Lunak</h3>
+            <p class="pd-jurusan-text">Mempelajari pembuatan aplikasi, pemrograman web &amp; mobile, hingga pengujian dan manajemen proyek perangkat lunak.</p>
+            <span class="pd-jurusan-more">Selengkapnya <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </div>
+        <div class="pd-jurusan-card" data-reveal style="--d:1">
+          <div class="pd-jurusan-photo">
+            <img src="{{ asset('images/ppdb/kuliner.jpg') }}" alt="Kuliner" loading="eager">
+          </div>
+          <div class="pd-jurusan-body">
+            <span class="pd-jurusan-tag">PARIWISATA</span>
+            <h3 class="pd-jurusan-name">Kuliner</h3>
+            <p class="pd-jurusan-text">Menguasai seni memasak, pengolahan bahan makanan, tata hidang, hingga manajemen usaha kuliner dan pastry &amp; bakery.</p>
+            <span class="pd-jurusan-more">Selengkapnya <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </div>
+        <div class="pd-jurusan-card" data-reveal style="--d:2">
+          <div class="pd-jurusan-photo">
+            <img src="{{ asset('images/ppdb/aphp.jpg') }}" alt="Agribisnis Pengolahan Hasil Pertanian" loading="eager">
+          </div>
+          <div class="pd-jurusan-body">
+            <span class="pd-jurusan-tag">AGRIBISNIS &amp; AGROTEKNOLOGI</span>
+            <h3 class="pd-jurusan-name">Agribisnis Pengolahan Hasil Pertanian</h3>
+            <p class="pd-jurusan-text">Mengolah hasil pertanian &amp; perikanan menjadi produk bernilai tambah: roti, samosa, es krim, dan aneka produk wirausaha.</p>
+            <span class="pd-jurusan-more">Selengkapnya <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </div>
+        <div class="pd-jurusan-card" data-reveal style="--d:3">
+          <div class="pd-jurusan-photo">
+            <img src="{{ asset('images/ppdb/dkv.jpg') }}" alt="Desain Komunikasi Visual" loading="eager">
+          </div>
+          <div class="pd-jurusan-body">
+            <span class="pd-jurusan-tag">SENI &amp; EKONOMI KREATIF</span>
+            <h3 class="pd-jurusan-name">Desain Komunikasi Visual</h3>
+            <p class="pd-jurusan-text">Mengasah kreativitas desain grafis, ilustrasi, fotografi, videografi, dan branding untuk industri kreatif.</p>
+            <span class="pd-jurusan-more">Selengkapnya <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </div>
+        <div class="pd-jurusan-card" data-reveal style="--d:4">
+          <div class="pd-jurusan-photo">
+            <img src="{{ asset('images/ppdb/lps.jpg') }}" alt="Layanan Perbankan Syariah" loading="eager">
+          </div>
+          <div class="pd-jurusan-body">
+            <span class="pd-jurusan-tag">BISNIS &amp; MANAJEMEN</span>
+            <h3 class="pd-jurusan-name">Layanan Perbankan Syariah</h3>
+            <p class="pd-jurusan-text">Mendalami operasional lembaga keuangan syariah, layanan perbankan, administrasi transaksi, dan literasi keuangan.</p>
+            <span class="pd-jurusan-more">Selengkapnya <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </div>
+        <div class="pd-jurusan-card" data-reveal style="--d:5">
+          <div class="pd-jurusan-photo">
+            <img src="{{ asset('images/smkn-guru.jpg') }}" alt="Lingkungan Sekolah" loading="eager">
+          </div>
+          <div class="pd-jurusan-body">
+            <span class="pd-jurusan-tag">KARAKTER &amp; BUDAYA</span>
+            <h3 class="pd-jurusan-name">Skaneda, Satu Keluarga</h3>
+            <p class="pd-jurusan-text">Lingkungan kondusif, fasilitas lengkap, pengajar profesional, dan kemitraan luas bersama dunia usaha &amp; industri.</p>
+            <span class="pd-jurusan-more">Selengkapnya <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. FAQ -->
+  <section class="pd-faq">
+    <div class="home-orn" aria-hidden="true">
+      <span class="ho-chevron"></span>
+      <span class="ho-line"></span>
+      <span class="ho-dots"></span>
+      <span class="ho-ring"></span>
+      <span class="ho-gold"></span>
+      <span class="ho-square"></span>
+    </div>
+
+    <div class="pd-section">
+      <div class="pd-track-head" data-reveal>
+        <h2 class="big-heading">MASIH ADA <span>PERTANYAAN?</span></h2>
+        <p class="pd-track-note">Jawaban singkat untuk pertanyaan yang paling sering ditanyakan calon peserta didik dan orang tua.</p>
+      </div>
+
+      <div class="pd-faq-list" data-reveal>
+        <div class="pd-faq-item open">
+          <button class="pd-faq-q" type="button">Kapan PPDB SMK Negeri 2 Mojokerto dibuka? <i class="fas fa-chevron-down"></i></button>
+          <div class="pd-faq-a"><p>Pendaftaran biasanya dibuka pada bulan Mei–Juni setiap tahun ajaran baru. Jadwal resmi mengikuti ketetapan Dinas Pendidikan Provinsi Jawa Timur dan diumumkan melalui website serta media sosial sekolah.</p></div>
+        </div>
+        <div class="pd-faq-item">
+          <button class="pd-faq-q" type="button">Apakah pendaftaran dilakukan secara online? <i class="fas fa-chevron-down"></i></button>
+          <div class="pd-faq-a"><p>Ya. Pendaftaran dilakukan melalui portal PPDB resmi secara daring (online). Calon peserta didik membuat akun, mengambil PIN, mengisi formulir, dan mengunggah berkas persyaratan pada portal tersebut.</p></div>
+        </div>
+        <div class="pd-faq-item">
+          <button class="pd-faq-q" type="button">Berapa kuota daya tampung SMK Negeri 2 Mojokerto? <i class="fas fa-chevron-down"></i></button>
+          <div class="pd-faq-a"><p>Daya tampung disesuaikan dengan ketetapan resmi setiap tahun ajaran. Informasi kuota per kompetensi keahlian diumumkan panitia PPDB pada saat sosialisasi. Pantau terus pengumuman sekolah.</p></div>
+        </div>
+        <div class="pd-faq-item">
+          <button class="pd-faq-q" type="button">Bagaimana cara memilih jalur yang tepat? <i class="fas fa-chevron-down"></i></button>
+          <div class="pd-faq-a"><p>Sesuaikan dengan kondisi kamu: domisili (zonasi), kondisi ekonomi atau disabilitas (afirmasi), prestasi akademik/nonakademik (prestasi), atau perpindahan tugas orang tua. Konsultasikan dengan guru BK di sekolah asal.</p></div>
+        </div>
+        <div class="pd-faq-item">
+          <button class="pd-faq-q" type="button">Apakah ada biaya pendaftaran? <i class="fas fa-chevron-down"></i></button>
+          <div class="pd-faq-a"><p>Tidak ada. Pendaftaran PPDB di sekolah negeri GRATIS. Waspadai oknum yang meminta biaya pendaftaran dengan dalih apa pun dan laporkan ke panitia resmi sekolah.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="pd-cta">
+    <div class="home-orn" aria-hidden="true">
+      <span class="ho-chevron"></span>
+      <span class="ho-line"></span>
+      <span class="ho-dots"></span>
+      <span class="ho-ring"></span>
+      <span class="ho-gold"></span>
+      <span class="ho-square"></span>
+      <span class="ho-corner"></span>
+    </div>
+    <h2>Siap menjadi bagian dari <em>keluarga Skaneda?</em></h2>
+    <p>Jangan lewatkan kesempatanmu! Siapkan berkas, pilih kompetensi keahlian favoritmu, dan wujudkan masa depan yang lebih cerah bersama SMK Negeri 2 Mojokerto.</p>
+    <a href="{{ route('kontak') }}" class="pd-cta-btn"><i class="fas fa-paper-plane"></i> Hubungi Panitia PPDB</a>
+    <div class="pd-cta-note"><i class="fas fa-info-circle"></i> Informasi resmi: smkn2mojokerto.sch.id · #DisiplinBerprestasi</div>
+  </section>
+
+</div>
+>>>>>>> 2ef9c465d0c607b4fdb5cf4504e2ab0c83983dd2
 @endsection
 
 @push('scripts')

@@ -1410,7 +1410,7 @@
           <span class="sejarah-white">KULINER</span>
           <span class="skaneda-gold">SKANEDA</span>
         </h1>
-        <a class="history-vt-cta" href="#lab-tour">
+        <a class="history-vt-cta" href="{{ route('profil.tour') }}?scene=lab-pastry">
           <span class="history-vt-icon"><i class="fas fa-cookie-bite"></i></span>
           <span><strong>Lihat Kitchen Tour</strong><small>Jelajahi Dapur Praktik Kuliner</small></span>
           <i class="fas fa-arrow-right history-vt-arrow"></i>
