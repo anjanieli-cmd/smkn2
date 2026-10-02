@@ -268,17 +268,18 @@
   Data artikel untuk modal "Baca Kisahnya", dikirim sebagai JSON supaya
   script lama (filter/search/modal) tetap jalan tanpa perlu dirombak.
 --}}
+@php
+  $beritaData = \App\Models\BeritaArticle::active()->get()->mapWithKeys(function ($a) use ($catOf) {
+      $cat = $catOf($a->category_key);
+      return [
+          $a->id => [
+              'title'    => $a->title,
+              'category' => $cat ? ['label' => $cat->label, 'class' => 'br-cat-' . $cat->key, 'icon' => $cat->icon] : null,
+              'content'  => $a->content_paragraphs,
+          ],
+      ];
+  });
+@endphp
 <script>
-  window.BERITA_DATA = @json(
-      \App\Models\BeritaArticle::active()->get()->mapWithKeys(function ($a) use ($catOf) {
-          $cat = $catOf($a->category_key);
-          return [
-              $a->id => [
-                  'title'    => $a->title,
-                  'category' => $cat ? ['label' => $cat->label, 'class' => 'br-cat-' . $cat->key, 'icon' => $cat->icon] : null,
-                  'content'  => $a->content_paragraphs,
-              ],
-          ];
-      })
-  );
+  window.BERITA_DATA = @json($beritaData);
 </script>

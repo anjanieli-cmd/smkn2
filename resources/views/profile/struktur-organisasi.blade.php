@@ -1,3 +1,9 @@
+@extends('layouts.app')
+
+@section('title', 'Struktur Organisasi — SMK Negeri 2 Mojokerto')
+
+@include('profile.partials.struktur-styles')
+
 @section('content')
 <div class="so-page">
   <!-- HERO -->

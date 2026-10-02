@@ -367,9 +367,8 @@
 @endpush
 
 @section('content')
-<<<<<<< HEAD
+
 @include('profile.partials.ppdb-content')
-=======
 <div class="pd-page">
 
   <!-- HERO (100% mirip halaman Sejarah Sekolah: watermark + ornamen foto + judul besar) -->
@@ -796,7 +795,6 @@
   </section>
 
 </div>
->>>>>>> 2ef9c465d0c607b4fdb5cf4504e2ab0c83983dd2
 @endsection
 
 @push('scripts')
