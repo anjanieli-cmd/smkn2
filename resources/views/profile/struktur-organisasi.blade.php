@@ -14,20 +14,20 @@
 @keyframes hdFadeUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
 
 /* ---------- HERO ---------- */
-.history-hero{position:relative;display:flex;align-items:center;justify-content:center;min-height:500px;overflow:hidden;isolation:isolate;background:#fff;color:#0d3a66}
+.history-hero{position:relative;display:flex;align-items:center;justify-content:center;min-height:640px;overflow:hidden;isolation:isolate;background:#fff;color:#0d3a66}
 .history-hero::after{content:"STRUKTUR";position:absolute;z-index:0;left:2%;top:58%;transform:translateY(-50%);
-  font-family:var(--font-display);font-size:clamp(9rem,23vw,23rem);font-weight:900;line-height:.78;letter-spacing:.015em;
+  font-family:var(--font-display);font-size:clamp(10rem,25vw,25rem);font-weight:900;line-height:.78;letter-spacing:.015em;
   color:rgba(13,58,102,.035);-webkit-text-stroke:1px rgba(255,122,0,.09);pointer-events:none;white-space:nowrap;user-select:none}
 .history-ref-ornaments{position:absolute;inset:0;z-index:1;overflow:hidden;pointer-events:none}
 .history-ref-ornament-image{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover;object-position:center;max-width:none}
-.history-hero-inner{position:relative;z-index:4;width:100%;max-width:1400px;margin:0 auto;
-  padding:clamp(4rem,10vh,7rem) clamp(1.25rem,4.2vw,4.5rem) clamp(4rem,9vh,6rem);
+.history-hero-inner{position:relative;z-index:4;width:100%;max-width:1600px;margin:0 auto;
+  padding:clamp(5.5rem,12vh,8.5rem) clamp(1.5rem,5vw,5rem) clamp(5rem,10vh,7.5rem);
   display:flex;flex-direction:column;justify-content:center;align-items:flex-start}
 .history-kicker{position:relative;z-index:5;display:inline-flex;align-items:center;gap:.65rem;font-size:.72rem;font-weight:900;
   letter-spacing:.18em;text-transform:uppercase;color:#ff6f00;margin-bottom:1.2rem;padding:.55rem .85rem;
   border:1px solid rgba(255,111,0,.18);border-radius:999px;background:#fffaf5}
 .history-kicker::before{content:"";width:9px;height:9px;border-radius:50%;background:#ff6f00;box-shadow:0 0 0 6px rgba(255,111,0,.10)}
-.history-title{position:relative;z-index:5;font-family:var(--font-display);font-size:clamp(2.4rem,6.5vw,6rem);line-height:.94;
+.history-title{position:relative;z-index:5;font-family:var(--font-display);font-size:clamp(3rem,7.5vw,6.8rem);line-height:.94;
   letter-spacing:-.02em;margin:0;max-width:100%;text-transform:uppercase;word-break:normal;overflow-wrap:normal;
   animation:hdFadeUp .7s .1s var(--ease,ease) both}
 .history-title .sejarah-white{display:block;color:#0d3a66}
@@ -103,7 +103,7 @@
 .so-feed-account strong{font-family:var(--font-display);font-size:.76rem;font-weight:900;letter-spacing:.035em;color:#0d3a66}
 .so-feed-account span{margin-top:.2rem;font-size:.58rem;color:#8a9bad;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .so-feed-more{margin-left:auto;color:#718396;font-size:.82rem;padding:.2rem}
-.so-photo-wrap{position:relative;isolation:isolate;width:100%;height:185px;margin:0;padding:0;background:linear-gradient(180deg,#edf5fb,#dce9f4);border-top:1px solid rgba(13,58,102,.06);border-bottom:1px solid rgba(13,58,102,.08)}
+.so-photo-wrap{position:relative;isolation:isolate;width:100%;height:260px;margin:0;padding:0;background:linear-gradient(180deg,#edf5fb,#dce9f4);border-top:1px solid rgba(13,58,102,.06);border-bottom:1px solid rgba(13,58,102,.08)}
 .so-photo{position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:0;box-shadow:none;background:linear-gradient(180deg,#eef6fc 0%,#dbe9f5 100%);overflow:hidden}
 .so-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;transition:transform .55s ease,filter .35s ease}
 .so-card:hover .so-photo img{transform:scale(1.035);filter:saturate(1.04)}
@@ -1154,4 +1154,160 @@ html.theme-dark body .so-modal-avatar.has-photo{border-color:rgba(255,255,255,.2
   }, 450);
 })();
 </script>
+
+<style id="SO-RESPONSIVE-LARGE-DESKTOP-V26">
+/* =========================================================
+   STRUKTUR ORGANISASI — DESKTOP LARGE WEB & MOBILE RESPONSIVE
+   Semua Level (Pimpinan, Level 2, Level 3): Ukuran Kartu,
+   Foto (310px), dan Teks Dibuat Sama Sesuai Acuan Level Pimpinan.
+   ========================================================= */
+
+@media (min-width: 951px) {
+  /* Container utama diperluas agar section judul & kartu lebih lebar & gagah */
+  .so-wrap {
+    width: min(1600px, 95%) !important;
+  }
+  
+  /* Layout Grid 3-Kolom Besar & Lebar */
+  .so-level:not(.so-level-root) .so-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 2.4rem !important;
+  }
+  #level-3 .so-grid.cols-5 {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 2.4rem !important;
+  }
+  .so-grid.cols-4 {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 2.4rem !important;
+  }
+
+  /* Ukuran Kartu Organisasi Desktop SEMUA LEVEL (Sama dengan Level Pimpinan) */
+  .so-card {
+    border-radius: 28px !important;
+    box-shadow: 0 24px 60px rgba(13, 58, 102, 0.16) !important;
+  }
+  .so-feed-head {
+    min-height: 72px !important;
+    padding: 1rem 1.35rem !important;
+    gap: .85rem !important;
+  }
+  .so-feed-head img {
+    width: 46px !important;
+    height: 46px !important;
+    flex: 0 0 46px !important;
+  }
+  .so-feed-account strong {
+    font-size: .96rem !important;
+    letter-spacing: .03em !important;
+  }
+  .so-feed-account span {
+    font-size: .7rem !important;
+    margin-top: .15rem !important;
+  }
+
+  /* Foto guru/pejabat SEMUA LEVEL (Disamakan 310px dengan Level Pimpinan) */
+  .so-photo-wrap {
+    height: 310px !important;
+    aspect-ratio: auto !important;
+  }
+  .so-photo img {
+    object-fit: cover !important;
+    object-position: center top !important;
+  }
+
+  .so-card-name {
+    font-size: 1.45rem !important;
+    font-weight: 900 !important;
+    margin: .75rem 1.35rem .4rem !important;
+    line-height: 1.3 !important;
+  }
+  .so-card-person {
+    font-size: 1.18rem !important;
+    font-weight: 800 !important;
+    color: #2f6fa8 !important;
+    margin: 0 1.35rem .75rem !important;
+  }
+  .so-card-role {
+    font-size: .84rem !important;
+    padding: .38rem .92rem !important;
+    margin: .2rem 1.35rem .75rem !important;
+    border-radius: 999px !important;
+  }
+  .so-card-unit {
+    font-size: .95rem !important;
+    line-height: 1.6 !important;
+    margin: 0 1.35rem !important;
+    color: #5f7186 !important;
+  }
+  .so-feed-actions {
+    padding: .85rem 1.35rem .45rem !important;
+    font-size: 1.25rem !important;
+  }
+
+  /* Kartu Pimpinan (Kepala Sekolah) Desktop */
+  .so-level-root .so-grid {
+    display: flex !important;
+    justify-content: center !important;
+    max-width: 520px !important;
+    margin: 0 auto 3rem !important;
+  }
+  .so-level-root .so-card {
+    width: 100% !important;
+    max-width: 520px !important;
+    border: 1.5px solid rgba(255, 179, 0, 0.4) !important;
+  }
+}
+
+/* Mobile & Tablet Adjustments (<= 950px) */
+@media (max-width: 950px) {
+  .so-level:not(.so-level-root) .so-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 1rem !important;
+  }
+  .so-photo-wrap {
+    height: 210px !important;
+  }
+  .so-card-name {
+    font-size: 1.05rem !important;
+    margin: .35rem .85rem .25rem !important;
+  }
+  .so-card-person {
+    font-size: .88rem !important;
+    margin: 0 .85rem .45rem !important;
+  }
+  .so-card-role {
+    font-size: .68rem !important;
+    padding: .25rem .6rem !important;
+    margin: .18rem .85rem .5rem !important;
+  }
+  .so-card-unit {
+    font-size: .78rem !important;
+    line-height: 1.5 !important;
+    margin: 0 .85rem !important;
+  }
+  .so-level-root .so-grid {
+    max-width: 360px !important;
+  }
+  .so-level-root .so-photo-wrap {
+    height: 220px !important;
+  }
+}
+
+@media (max-width: 520px) {
+  .so-level:not(.so-level-root) .so-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: .75rem !important;
+  }
+  .so-photo-wrap {
+    height: 185px !important;
+  }
+  .so-level-root .so-grid {
+    max-width: 320px !important;
+  }
+  .so-level-root .so-photo-wrap {
+    height: 200px !important;
+  }
+}
+</style>
 @endpush
