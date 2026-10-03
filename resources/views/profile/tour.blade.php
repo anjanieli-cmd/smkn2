@@ -188,8 +188,11 @@ body:has(.vt360-fullpage) .app-header{display:none !important}
 
 /* ---------- responsive ---------- */
 @media(max-width:700px){
-  .vt360-info-card{max-width:calc(100% - 2.4rem);left:1.2rem;right:1.2rem;bottom:1.2rem}
-  .vt360-navpanel{width:min(280px,84vw)}
+  .vt360-info-card{max-width:calc(100% - 2rem);left:1rem;right:1rem;bottom:1rem;padding:.8rem 1rem}
+  .vt360-navpanel{width:min(280px,88vw);left:1rem;top:1rem;max-height:calc(100% - 2rem)}
+  .vt360-exit-btn{top:1rem;right:1rem;width:38px;height:38px;font-size:.9rem}
+  .vt360-navtoggle{top:1rem;left:1rem;padding:.55rem .95rem;font-size:.76rem}
+  .vt360-calib-btn{display:none !important}
 }
 </style>
 @endpush

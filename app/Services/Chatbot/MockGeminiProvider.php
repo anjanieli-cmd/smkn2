@@ -55,7 +55,7 @@ class MockGeminiProvider implements AIProviderInterface
 
         // 0b. Sejarah Sekolah
         if (str_contains($promptLower, 'sejarah') || str_contains($promptLower, 'berdiri') || str_contains($promptLower, 'pendirian') || str_contains($promptLower, 'sejak')) {
-            return "Halo! 👋 **Sejarah Singkat SMKN 2 Kota Mojokerto**:\n\nSMK Negeri 2 Mojokerto didirikan untuk mencetak tenaga kerja terampil dan profesional di Kota Mojokerto dan sekitarnya. Berdiri di kawasan strategis Kranggan, sekolah ini berkembang pesat menjadi SMK Pusat Keunggulan (PK) dengan 5 konsentrasi keahlian unggulan berstandar nasional dan internasional.\n\nKamu dapat membaca kronologi dan galeri sejarah lengkap di menu [Sejarah Sekolah](/profile/history). 😊";
+            return "Halo! 👋 **Sejarah Singkat SMKN 2 Kota Mojokerto**:\n\nSMK Negeri 2 Mojokerto didirikan untuk mencetak tenaga kerja terampil dan profesional di Kota Mojokerto dan sekitarnya. Berdiri di kawasan strategis Pulorejo, Prajurit Kulon, sekolah ini berkembang pesat menjadi SMK Pusat Keunggulan (PK) dengan 5 konsentrasi keahlian unggulan berstandar nasional dan internasional.\n\nKamu dapat membaca kronologi dan galeri sejarah lengkap di menu [Sejarah Sekolah](/profile/history). 😊";
         }
 
         // 0c1. Waka (Wakil Kepala Sekolah)
@@ -282,9 +282,14 @@ class MockGeminiProvider implements AIProviderInterface
             return "Halo! 👋 Informasi Pendaftaran PPDB SMKN 2 Kota Mojokerto:\n\n✨ **Biaya Pendaftaran**: **GRATIS (100% TIDAK DIPUNGUT BIAYA)**.\n📌 **4 Jalur Masuk**: 1. Jalur Afirmasi, 2. Jalur Prestasi (Rapor & Kejuaraan), 3. Jalur Zonasi, 4. Jalur Mutasi Orang Tua.\n📋 **Syarat Umum**: Lulusan SMP/MTs, Ijazah/SKL, usia maks 21 tahun, sehat jasmani & rohani. 😊";
         }
 
+        // 4b. Jam Belajar & Jam Operasional Sekolah
+        if (str_contains($promptLower, 'jam belajar') || str_contains($promptLower, 'jam operasional') || str_contains($promptLower, 'jadwal belajar') || str_contains($promptLower, 'jam masuk') || str_contains($promptLower, 'jam pulang') || str_contains($promptLower, 'operasional')) {
+            return "Halo! 👋 **Jam Belajar & Operasional Resmi SMKN 2 Kota Mojokerto**:\n\n⏰ **Jam Operasional / Belajar**: Senin – Jumat · 07.00 – 16.00 WIB\n🚪 **Pintu Gerbang**: Ditutup tepat pukul 07.00 WIB demi kedisiplinan & ketertiban siswa.\n🗓️ **Hari Libur**: Sabtu & Minggu Libur.\n\nInformasi ini sesuai dengan data resmi pada halaman kontak & informasi sekolah. 😊";
+        }
+
         // 5. Profil & Alamat
         if (str_contains($promptLower, 'alamat') || str_contains($promptLower, 'kontak') || str_contains($promptLower, 'lokasi sekolah') || str_contains($promptLower, 'dimana sekolah')) {
-            return "Halo! 👋 Informasi Resmi Profil & Alamat SMKN 2 Kota Mojokerto:\n\n🏫 **Alamat**: Jl. Raden Wijaya No. 1, Kranggan, Kota Mojokerto, Jawa Timur.\n📞 **Telepon**: (0321) 321555 | ✉️ **Email**: info@smkn2mojokerto.sch.id\n⭐ **Akreditasi**: A (Unggul) | **Status**: SMK Pusat Keunggulan (PK)\n🎯 **Motto**: *Disiplin • Berakhlak • Berprestasi*. 😊";
+            return "Halo! 👋 Informasi Resmi Profil & Alamat SMKN 2 Kota Mojokerto:\n\n🏫 **Alamat**: Jl. Raya Pulorejo, Kel. Pulorejo, Kec. Prajurit Kulon, Kota Mojokerto, Jawa Timur 61325.\n📞 **Telepon**: 0312 2292 9922 / (0321) 321555 | ✉️ **Email**: info@smkn2mojokerto.sch.id\n⏰ **Jam Operasional**: Senin–Jumat · 07.00–16.00 WIB (Sabtu & Minggu Libur)\n⭐ **Akreditasi**: A (Unggul) | **Status**: SMK Pusat Keunggulan (PK)\n🎯 **Motto**: *Disiplin • Berakhlak • Berprestasi*. 😊";
         }
 
         // 6a. Staf (Tenaga Kependidikan) — Check staf FIRST so "staf" query gets staff specific answer
@@ -309,7 +314,7 @@ class MockGeminiProvider implements AIProviderInterface
 
         // 7. Fasilitas & Tempat Spesifik
         if (str_contains($promptLower, 'gerbang')) {
-            return "Halo! 👋 Ya, SMKN 2 Kota Mojokerto memiliki **Gerbang Utama** 🏫 yang megah dan aman di Jl. Raden Wijaya No. 1, Kranggan. Gerbang ditutup tepat pukul 07.00 WIB demi ketertiban siswa.\n\nKamu dapat melihat tampilan Gerbang Utama secara 360° di menu [Virtual Tour 360°](/profile/tour). 😊";
+            return "Halo! 👋 Ya, SMKN 2 Kota Mojokerto memiliki **Gerbang Utama** 🏫 yang megah dan aman di Jl. Raya Pulorejo, Kel. Pulorejo, Kec. Prajurit Kulon, Kota Mojokerto 61325. Gerbang ditutup tepat pukul 07.00 WIB demi ketertiban siswa.\n\nKamu dapat melihat tampilan Gerbang Utama secara 360° di menu [Virtual Tour 360°](/profile/tour). 😊";
         }
         if (str_contains($promptLower, 'kantin')) {
             return "Halo! 👋 Ya, di SMKN 2 Kota Mojokerto terdapat **Kantin Sekolah** 🍱 yang bersih, sehat, dan menyediakan aneka makanan serta minuman higienis untuk siswa.\n\nKamu bisa melihat lokasi Kantin Sekolah secara 360° di menu [Virtual Tour 360°](/profile/tour). 😊";
@@ -370,30 +375,7 @@ class MockGeminiProvider implements AIProviderInterface
             return "Halo! 👋 **Fitur Ekskul Matchmaker Quiz** adalah kuiz interaktif di website SMKN 2 Kota Mojokerto untuk membantu siswa menemukan ekstrakurikuler yang paling sesuai dengan minat, bakat, dan hobi kamu!\n\n🎯 Kamu cukup menjawab beberapa pertanyaan sederhana, dan sistem akan merekomendasikan ekskul yang paling pas buat kamu! 😊";
         }
 
-        // Fallback for context chunks if topic is in context chunk title
-        if (!empty($contextChunks)) {
-            $targetChunk = $contextChunks[0];
-            $title = '';
-            $cleanContent = $targetChunk;
-
-            if (preg_match('/^\[([^\]]+)\]\s*([^:]+):\s*(.*)$/us', $targetChunk, $matches)) {
-                $title = trim($matches[2]);
-                $cleanContent = trim($matches[3]);
-            } else {
-                $cleanContent = preg_replace('/^\[[^\]]+\]\s*/u', '', $targetChunk);
-                $cleanContent = trim((string) $cleanContent);
-            }
-
-            $displayTitle = preg_replace('/^Detail\s+/i', '', $title);
-
-            $response = "Halo! 👋 Berdasarkan data resmi SMKN 2 Kota Mojokerto:\n\n📌 {$displayTitle}:\n{$cleanContent}\n\nAda hal lain yang ingin kamu tanyakan seputar SMKN 2 Kota Mojokerto? NARA siap membantu! 😊";
-            $response = str_replace('*', '', $response);
-
-            return $response;
-
-            return $response;
-        }
-
+        // If query is not recognized or available in knowledge base, explicitly reject instead of returning random data
         return $notFoundMessage;
     }
 }

@@ -37,8 +37,8 @@
   box-shadow:0 0 0 6px rgba(255,111,0,.10)}
 
 /* ---------- TITLE: BERITA navy, SKANEDA kuning-oranye ---------- */
-.br-title{position:relative;z-index:5;font-family:var(--font-display);font-size:clamp(3.6rem,9vw,8rem);
-  line-height:.86;letter-spacing:-.03em;margin:0;max-width:900px;text-transform:uppercase;
+.br-title{position:relative;z-index:5;font-family:var(--font-display);font-size:clamp(3.2rem,7.5vw,6.4rem);
+  line-height:.96;letter-spacing:-.02em;margin:0;max-width:900px;text-transform:uppercase;
   text-shadow:none;animation:hdFadeUp .7s .1s var(--ease, ease) both}
 .br-title .br-white{color:#0d3a66;display:block}
 .br-title .br-gold{display:block;
@@ -56,11 +56,11 @@
 
 @media(min-width:1050px){.br-hero-inner{padding-right:40%}}
 @media(max-width:1050px){.br-hero-inner{padding-right:1.25rem}.br-ref-ornaments{opacity:.72}}
-@media(max-width:900px){.br-title{font-size:clamp(3.2rem,10.5vw,6rem)}.br-ref-ornament-image{opacity:.88}}
+@media(max-width:900px){.br-title{font-size:clamp(2.8rem,9vw,5rem)}.br-ref-ornament-image{opacity:.88}}
 @media(max-width:700px){.br-hero{align-items:flex-start;min-height:0}
   .br-hero-inner{width:90%;padding:clamp(3rem,8vh,4.5rem) 5% 3.2rem}
   .br-hero::after{font-size:clamp(3.2rem,20vw,5.4rem);opacity:.6;left:-2%}
-  .br-title{font-size:clamp(2.6rem,12vw,3.8rem)}}
+  .br-title{font-size:clamp(2.5rem,10.5vw,4.2rem)}}
 @media(max-width:560px){.br-ref-ornament-image{opacity:.62}}
 
 /* ---------- HOME-ORN (ornamen geometris, IDENTIK referensi) ---------- */
@@ -202,22 +202,22 @@
 
 /* ---------- BERITA TERBARU: list kiri + most read kanan ---------- */
 .br-main{display:grid;grid-template-columns:minmax(0,1.9fr) minmax(300px,1fr);gap:2.4rem;align-items:start}
-.br-list{display:flex;flex-direction:column;gap:1.4rem}
-.br-item{display:flex;gap:1.3rem;background:#fff;border:1px solid rgba(13,58,102,.1);border-radius:18px;
-  padding:1rem;align-items:center;transition:transform .35s var(--ease,ease),box-shadow .35s var(--ease,ease),
+.br-list{display:flex;flex-direction:column;gap:1rem}
+.br-item{display:flex;gap:1rem;background:#fff;border:1px solid rgba(13,58,102,.1);border-radius:14px;
+  padding:.75rem .9rem;align-items:center;transition:transform .35s var(--ease,ease),box-shadow .35s var(--ease,ease),
   border-color .35s var(--ease,ease)}
-.br-item:hover{transform:translateY(-4px);box-shadow:0 18px 46px rgba(13,58,102,.14);border-color:rgba(255,193,7,.55)}
-.br-item-img{flex:0 0 158px;height:132px;border-radius:13px;overflow:hidden;position:relative}
+.br-item:hover{transform:translateY(-3px);box-shadow:0 14px 36px rgba(13,58,102,.12);border-color:rgba(255,193,7,.55)}
+.br-item-img{flex:0 0 120px;height:96px;border-radius:10px;overflow:hidden;position:relative}
 .br-item-img img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
-.br-item-body{min-width:0;display:flex;flex-direction:column;gap:.5rem}
-.br-item-top{display:flex;align-items:center;gap:.7rem;flex-wrap:wrap}
-.br-item-date{font-size:.7rem;color:#5b6472;display:inline-flex;align-items:center;gap:.4rem}
+.br-item-body{min-width:0;display:flex;flex-direction:column;gap:.35rem}
+.br-item-top{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap}
+.br-item-date{font-size:.68rem;color:#5b6472;display:inline-flex;align-items:center;gap:.35rem}
 .br-item-date i{color:#ffb300}
-.br-item-body h3{font-family:var(--font-display);font-size:1.06rem;font-weight:800;line-height:1.28;
+.br-item-body h3{font-family:var(--font-display);font-size:.94rem;font-weight:800;line-height:1.25;
   color:#0d3a66;margin:0}
 .br-item-body h3 a{color:inherit;text-decoration:none}
 .br-item-body h3 a:hover{color:#2f6fa8}
-.br-item-excerpt{font-size:.84rem;line-height:1.65;color:#4a6079;margin:0;
+.br-item-excerpt{font-size:.78rem;line-height:1.5;color:#4a6079;margin:0;
   display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .br-empty{display:none;text-align:center;padding:3.5rem 1rem;background:#fff;border:1px dashed rgba(13,58,102,.2);
   border-radius:18px;color:#5b6472;font-size:.9rem}
@@ -343,19 +343,32 @@ body.br-modal-open{overflow:hidden}
   .br-most{position:static;margin-top:1rem}
   .br-story-grid{grid-template-columns:repeat(2,1fr)}
 }
-@media (max-width:860px){
-  .br-sec-head{flex-direction:column;align-items:flex-start;gap:1rem}
-  .br-story-grid{grid-template-columns:1fr}
+@media (max-width:768px){
+  .br-hero{align-items:flex-start;min-height:0}
+  .br-hero-inner{width:min(92%,100%);margin:0 auto;padding:clamp(2.8rem,7vh,4rem) 0 2.8rem}
+  .br-hero::after, .home-orn{display:none!important}
+  .br-title{font-size:clamp(2.6rem,12vw,3.8rem)}
+  .br-sec{padding:36px 0 44px}
+  .br-container{width:min(92%,100%);margin:0 auto}
+  .br-strip-inner{flex-wrap:wrap;padding:.6rem 1rem}
+  .br-latest, .br-main, .br-story-grid{grid-template-columns:1fr!important}
+  .br-item{flex-direction:row;align-items:center;gap:.75rem;padding:.65rem .75rem;border-radius:14px}
+  .br-item-img{flex:0 0 92px;width:92px;height:78px;border-radius:10px}
+  .br-item-body h3{font-size:.88rem;line-height:1.25}
+  .br-item-excerpt{font-size:.74rem;line-height:1.45;-webkit-line-clamp:2}
+  .br-item-date{font-size:.65rem}
+  .br-side-item{flex-direction:row;align-items:center;gap:.75rem;padding:.65rem .75rem}
+  .br-side-thumb{flex:0 0 92px;width:92px;height:78px;border-radius:10px}
+  .br-featured-img{height:180px;border-radius:14px}
+  .br-most{padding:1.4rem 1.1rem;border-radius:18px}
   .br-toolbar{flex-direction:column;align-items:stretch}
   .br-search{min-width:0}
-}
-@media (max-width:640px){
-  .br-item{flex-direction:column;align-items:flex-start}
-  .br-item-img{flex:none;width:100%;height:190px}
-  .br-side-item{flex-direction:column;align-items:flex-start}
-  .br-side-thumb{flex:none;width:100%;height:170px}
-  .br-featured-img{height:300px}
-  .br-strip-inner{flex-wrap:wrap}
+  .br-cta{padding:0 0 2.8rem}
+  .br-cta-box{width:min(92%,100%);margin:0 auto;padding:28px 1.1rem 32px;border-radius:18px}
+  .br-cta-title{font-size:clamp(1.5rem,5vw,2.2rem)}
+  .br-cta p{font-size:.85rem;margin:.8rem auto 0}
+  .br-cta-btn{padding:.75rem 1.4rem;font-size:.82rem;margin-top:1.4rem}
+  [data-reveal]{opacity:1!important;transform:none!important}
 }
 
 /* ---------- TOMBOL BACA KISAHNYA ---------- */
