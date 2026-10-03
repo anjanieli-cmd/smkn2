@@ -554,6 +554,77 @@
   [data-reveal]{opacity:1;transform:none}
 }
 </style>
+<style id="visimisi-dark-mode">
+/* =========================================================
+   VISI & MISI — DARK MODE (CSS only)
+   Dasar #08131f · kartu #0f2236 · teks #e6eef7 · aksen #ffd54a
+   ========================================================= */
+:is([data-theme="dark"],[data-bs-theme="dark"],.dark,.dark-mode,.dark-theme,.theme-dark) .visi-page{background:#08131f;color:#e6eef7;color-scheme:dark}
+
+/* ---------- HERO ---------- */
+:is([data-theme="dark"],[data-bs-theme="dark"],.dark,.dark-mode,.dark-theme,.theme-dark) .visi-hero{background:linear-gradient(180deg,#0b1d31 0%,#08131f 100%)}
+:is([data-theme="dark"],[data-bs-theme="dark"],.dark,.dark-mode,.dark-theme,.theme-dark) .visi-hero::before{background:linear-gradient(90deg,#2f6fa8 0 62%,#ff7a00 62%)}
+:is([data-theme="dark"],[data-bs-theme="dark"],.dark,.dark-mode,.dark-theme,.theme-dark) .visi-hero::after{color:rgba(255,255,255,.035);-webkit-text-stroke:1px rgba(255,179,0,.14)}
+:is([data-theme="dark"],[data-bs-theme="dark"],.dark,.dark-mode,.dark-theme,.theme-dark) .visi-hero .hero-ornament img{filter:invert(1) hue-rotate(180deg);mix-blend-mode:screen;opacity:.6}
+:is([data-theme="dark"],[data-bs-theme="dark"],.dark,.dark-mode,.dark-theme,.theme-dark) .visi-kicker{background:rgba(255,179,0,.1);border-color:rgba(255,179,0,.3);color:#ffcf5a}
+:is([data-theme="dark"],[data-bs-theme="dark"],.dark,.dark-mode,.dark-theme,.theme-dark) .visi-title .visi-white{color:#fff}
+:is([data-theme="dark"],[data-bs-theme="dark"],.dark,.dark-mode,.dark-theme,.theme-dark) .visi-lead{color:#9fb2c6}
+:is([data-theme="dark"],[data-bs-theme="dark"],.dark,.dark-mode,.dark-theme,.theme-dark) .visi-pill{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);color:#e6eef7;box-shadow:0 14px 32px rgba(0,0,0,.35)}
+
+/* ---------- UMUM ---------- */
+:is([data-theme="dark"],[data-bs-theme="dark"],.dark,.dark-mode,.dark-theme,.theme-dark) .eyebrow{color:#cfe3f7}
+:is([data-theme="dark"],[data-bs-theme="dark"],.dark,.dark-mode,.dark-theme,.theme-dark) .eyebrow::before{background:linear-gradient(90deg,#ffd54a,#ff9800)}
+:is([data-theme="dark"],[data-bs-theme="dark"],.dark,.dark-mode,.dark-theme,.theme-dark) .big-heading{color:#fff;text-shadow:none}
+
+/* ---------- VISI ---------- */
+:is([data-theme="dark"],[data-bs-theme="dark"],.dark,.dark-mode,.dark-theme,.theme-dark) .visi-section{background:#0a1928}
+:is([data-theme="dark"],[data-bs-theme="dark"],.dark,.dark-mode,.dark-theme,.theme-dark) .visi-card{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.12);box-shadow:0 24px 60px rgba(0,0,0,.4)}
+:is([data-theme="dark"],[data-bs-theme="dark"],.dark,.dark-mode,.dark-theme,.theme-dark) .visi-card:hover{border-color:rgba(255,179,0,.45);box-shadow:0 34px 74px rgba(0,0,0,.55)}
+:is([data-theme="dark"],[data-bs-theme="dark"],.dark,.dark-mode,.dark-theme,.theme-dark) .visi-card::after{color:rgba(255,255,255,.04);-webkit-text-stroke:1px rgba(255,255,255,.06)}
+:is([data-theme="dark"],[data-bs-theme="dark"],.dark,.dark-mode,.dark-theme,.theme-dark) .visi-card-icon{background:linear-gradient(135deg,#1d4a75,#2f6fa8);box-shadow:0 16px 34px rgba(0,0,0,.45)}
+:is([data-theme="dark"],[data-bs-theme="dark"],.dark,.dark-mode,.dark-theme,.theme-dark) .visi-statement{color:#fff}
+:is([data-theme="dark"],[data-bs-theme="dark"],.dark,.dark-mode,.dark-theme,.theme-dark) .visi-tag{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.14);color:#dbe7f3}
+
+/* ---------- MISI ---------- */
+:is([data-theme="dark"],[data-bs-theme="dark"],.dark,.dark-mode,.dark-theme,.theme-dark) .misi-section{background:radial-gradient(circle at 8% 18%,rgba(143,189,235,.14) 0 2px,transparent 3px),radial-gradient(circle at 91% 27%,rgba(255,179,0,.16) 0 3px,transparent 4px),linear-gradient(180deg,#0b1b2d 0%,#091522 100%)}
+:is([data-theme="dark"],[data-bs-theme="dark"],.dark,.dark-mode,.dark-theme,.theme-dark) .misi-section::after{background-image:radial-gradient(circle,rgba(143,189,235,.4) 2.2px,transparent 3px)}
+:is([data-theme="dark"],[data-bs-theme="dark"],.dark,.dark-mode,.dark-theme,.theme-dark) .misi-section::before{background-image:radial-gradient(circle,rgba(255,179,0,.45) 2px,transparent 3px)}
+:is([data-theme="dark"],[data-bs-theme="dark"],.dark,.dark-mode,.dark-theme,.theme-dark) .misi-desc{color:#a9bbcd}
+:is([data-theme="dark"],[data-bs-theme="dark"],.dark,.dark-mode,.dark-theme,.theme-dark) .misi-card{background:#0f2236;border-color:rgba(255,255,255,.1);box-shadow:0 18px 42px rgba(0,0,0,.4)}
+:is([data-theme="dark"],[data-bs-theme="dark"],.dark,.dark-mode,.dark-theme,.theme-dark) .misi-card:hover{border-color:rgba(255,179,0,.45);box-shadow:0 30px 62px rgba(0,0,0,.55)}
+:is([data-theme="dark"],[data-bs-theme="dark"],.dark,.dark-mode,.dark-theme,.theme-dark) .misi-num{color:rgba(255,255,255,.06);-webkit-text-stroke:1px rgba(255,255,255,.08)}
+:is([data-theme="dark"],[data-bs-theme="dark"],.dark,.dark-mode,.dark-theme,.theme-dark) .misi-icon{background:linear-gradient(135deg,#1d4a75,#2f6fa8);box-shadow:0 12px 26px rgba(0,0,0,.4)}
+:is([data-theme="dark"],[data-bs-theme="dark"],.dark,.dark-mode,.dark-theme,.theme-dark) .misi-title{color:#fff}
+:is([data-theme="dark"],[data-bs-theme="dark"],.dark,.dark-mode,.dark-theme,.theme-dark) .misi-text{color:#a9bbcd}
+
+/* ---------- TUJUAN (sudah gelap, cuma diselaraskan) ---------- */
+:is([data-theme="dark"],[data-bs-theme="dark"],.dark,.dark-mode,.dark-theme,.theme-dark) .tujuan-section{background:linear-gradient(135deg,#0a2a48,#0c3256 50%,#0c3256)}
+
+/* ---------- NILAI ---------- */
+:is([data-theme="dark"],[data-bs-theme="dark"],.dark,.dark-mode,.dark-theme,.theme-dark) .nilai-section{background:#08131f}
+:is([data-theme="dark"],[data-bs-theme="dark"],.dark,.dark-mode,.dark-theme,.theme-dark) .nilai-section::before{border-color:rgba(143,189,235,.14)}
+:is([data-theme="dark"],[data-bs-theme="dark"],.dark,.dark-mode,.dark-theme,.theme-dark) .nilai-section::after{border-color:rgba(143,189,235,.12)}
+:is([data-theme="dark"],[data-bs-theme="dark"],.dark,.dark-mode,.dark-theme,.theme-dark) .nilai-card{background:#0f2236;border-color:rgba(255,255,255,.1);box-shadow:0 16px 38px rgba(0,0,0,.4)}
+:is([data-theme="dark"],[data-bs-theme="dark"],.dark,.dark-mode,.dark-theme,.theme-dark) .nilai-card:hover{border-color:rgba(255,179,0,.45);box-shadow:0 28px 58px rgba(0,0,0,.55)}
+:is([data-theme="dark"],[data-bs-theme="dark"],.dark,.dark-mode,.dark-theme,.theme-dark) .nilai-card::after{border-color:rgba(143,189,235,.18)}
+:is([data-theme="dark"],[data-bs-theme="dark"],.dark,.dark-mode,.dark-theme,.theme-dark) .nilai-icon{background:rgba(143,189,235,.1);border-color:rgba(143,189,235,.22);color:#ffd54a}
+:is([data-theme="dark"],[data-bs-theme="dark"],.dark,.dark-mode,.dark-theme,.theme-dark) .nilai-card:hover .nilai-icon{background:linear-gradient(135deg,#1d4a75,#2f6fa8);color:#ffd54a}
+:is([data-theme="dark"],[data-bs-theme="dark"],.dark,.dark-mode,.dark-theme,.theme-dark) .nilai-title{color:#fff}
+:is([data-theme="dark"],[data-bs-theme="dark"],.dark,.dark-mode,.dark-theme,.theme-dark) .nilai-text{color:#a9bbcd}
+
+/* ---------- CTA AKHIR ---------- */
+:is([data-theme="dark"],[data-bs-theme="dark"],.dark,.dark-mode,.dark-theme,.theme-dark) .visi-cta{background:#08131f}
+:is([data-theme="dark"],[data-bs-theme="dark"],.dark,.dark-mode,.dark-theme,.theme-dark) .visi-cta::before{background:radial-gradient(circle at 8% 45%,rgba(47,111,168,.16),transparent 24%),radial-gradient(circle at 92% 35%,rgba(255,179,0,.09),transparent 22%)}
+:is([data-theme="dark"],[data-bs-theme="dark"],.dark,.dark-mode,.dark-theme,.theme-dark) .visi-cta::after{color:rgba(255,255,255,.04);-webkit-text-stroke:1px rgba(255,255,255,.06)}
+:is([data-theme="dark"],[data-bs-theme="dark"],.dark,.dark-mode,.dark-theme,.theme-dark) .visi-cta-inner{background:linear-gradient(135deg,#12395f 0%,#0f3256 48%,#14406d 100%);border-color:rgba(255,255,255,.12);box-shadow:0 24px 55px rgba(0,0,0,.5)}
+
+/* ---------- ORNAMEN (home-orn) ---------- */
+:is([data-theme="dark"],[data-bs-theme="dark"],.dark,.dark-mode,.dark-theme,.theme-dark) .home-orn .ho-chevron{border-top-color:rgba(143,189,235,.14);border-right-color:rgba(143,189,235,.14)}
+:is([data-theme="dark"],[data-bs-theme="dark"],.dark,.dark-mode,.dark-theme,.theme-dark) .home-orn .ho-chevron::after{border-top-color:rgba(255,213,74,.08);border-right-color:rgba(255,213,74,.08)}
+:is([data-theme="dark"],[data-bs-theme="dark"],.dark,.dark-mode,.dark-theme,.theme-dark) .home-orn .ho-ring{border-color:rgba(143,189,235,.16);box-shadow:0 0 0 20px rgba(143,189,235,.03),0 0 0 42px rgba(255,213,74,.025)}
+:is([data-theme="dark"],[data-bs-theme="dark"],.dark,.dark-mode,.dark-theme,.theme-dark) .home-orn .ho-corner{border-left-color:rgba(143,189,235,.16);border-bottom-color:rgba(143,189,235,.16)}
+:is([data-theme="dark"],[data-bs-theme="dark"],.dark,.dark-mode,.dark-theme,.theme-dark) .home-orn .ho-square::before{border-color:rgba(143,189,235,.22)}
+</style>
 @endpush
 
 @section('content')

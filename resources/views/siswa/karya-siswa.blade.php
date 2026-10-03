@@ -7,25 +7,15 @@
 <style>
 /* =========================================================
    KARYA SISWA — GALERI KARYA PESERTA DIDIK
-   Visual language: SENADA PERSIS dengan Guru & Staf, Sejarah
-   Sekolah, Struktur Organisasi & Visi Misi — foto gedung +
-   overlay, watermark typography, ornamen geometris (home-orn),
-   glassmorphism, scroll-reveal. Header & footer dari
-   layouts.app (identik).
-   KONTEN UTAMA UNIK (tidak meniru layout file referensi):
-   carousel slider karya siswa (foto + judul + nama + jurusan
-   + tahun, panah prev/next + dot indicator), kategori karya,
-   strip prestasi, CTA.
    Warna: navy #0d3a66, biru #2f6fa8, putih, gold #ffd54a/#ffb300.
    ========================================================= */
 .ks-page{background:#f7f9fc;color:#0d3a66;overflow:hidden;position:relative}
 .ks-page *{box-sizing:border-box}
 
-/* ---------- HERO: 100% MIRIP HALAMAN PPDB (light theme + watermark + abstract ornamen) ---------- */
+/* ---------- HERO ---------- */
 .ks-hero{position:relative;min-height:clamp(620px,78vh,790px);display:flex;align-items:center;overflow:hidden;
   background:#fff;color:#0d3a66;isolation:isolate}
 .ks-hero::before{display:none}
-/* Watermark typography besar transparan */
 .ks-hero::after{content:"KARYA";position:absolute;z-index:0;left:2%;top:58%;transform:translateY(-50%);
   font-family:var(--font-display);font-size:clamp(9rem,23vw,23rem);font-weight:900;line-height:.78;
   letter-spacing:.015em;color:rgba(13,58,102,.035);-webkit-text-stroke:1px rgba(255,122,0,.09);
@@ -42,7 +32,6 @@
 .ks-kicker::before{content:"";width:9px;height:9px;border-radius:50%;background:#ff6f00;
   box-shadow:0 0 0 6px rgba(255,111,0,.10)}
 
-/* ---------- TITLE: bertumpuk besar, 100% senada PPDB ---------- */
 .ks-title{position:relative;z-index:5;font-family:var(--font-display);font-size:clamp(5.2rem,11.5vw,11rem);
   line-height:.82;letter-spacing:-.045em;margin:0;max-width:900px;text-transform:uppercase;
   text-shadow:none;animation:hdFadeUp .7s .1s var(--ease, ease) both}
@@ -66,7 +55,7 @@
 @media(max-width:700px){.ks-hero{align-items:flex-start}.ks-hero-inner{width:90%}.ks-title{font-size:clamp(3.4rem,16vw,5.6rem)}}
 @media(max-width:560px){.ks-ref-ornament-image{opacity:.62}}
 
-/* ---------- HOME-ORN (ornamen geometris, IDENTIK referensi) ---------- */
+/* ---------- HOME-ORN ---------- */
 .home-orn{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
 .home-orn .ho-chevron{position:absolute;width:360px;height:360px;
   border:1px solid rgba(13,58,102,.16);transform:rotate(45deg);border-radius:18px}
@@ -142,7 +131,7 @@
   -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
 .ks-intro-note{max-width:420px;color:#718396;font-size:.84rem;line-height:1.8;margin-top:1rem}
 
-/* ---------- 1. PENGANTAR (stats kilat + blurb) ---------- */
+/* ---------- 1. PENGANTAR ---------- */
 .ks-blurb{font-size:.92rem;line-height:1.9;color:#718396;margin:0}
 .ks-blurb strong{color:#0d3a66}
 .ks-mini-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2.2rem}
@@ -162,7 +151,7 @@
 .ks-chip i{color:#ffb300}
 .ks-chip:hover{border-color:rgba(255,179,0,.5);transform:translateY(-2px)}
 
-/* ---------- 2. CAROUSEL / SLIDER KARYA SISWA ---------- */
+/* ---------- 2. CAROUSEL ---------- */
 .ks-slider{position:relative;padding:96px 0 110px;
   background-image:radial-gradient(rgba(13,58,102,.055) 1.4px,transparent 1.5px);background-size:22px 22px}
 .ks-slider-head{display:flex;justify-content:space-between;align-items:end;gap:2rem;flex-wrap:wrap}
@@ -209,7 +198,7 @@
   font-family:var(--font-display);font-size:.82rem;font-weight:800;color:#718396;letter-spacing:.1em}
 .ks-counter b{color:#0d3a66}
 
-/* ---------- 3. KATEGORI KARYA ---------- */
+/* ---------- 3. KATEGORI ---------- */
 .ks-kategori{position:relative;padding:96px 0 110px;background:#fff}
 .ks-kat-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1.2rem;margin-top:3rem}
 .ks-kat-card{position:relative;background:#fff;border:1px solid #e3edf0;border-radius:22px;padding:1.7rem 1.3rem 1.5rem;
@@ -226,7 +215,7 @@
 .ks-kat-name{font-family:var(--font-display);font-size:1rem;font-weight:800;color:#0d3a66;margin:.95rem 0 .3rem}
 .ks-kat-text{font-size:.76rem;line-height:1.65;color:#718396;margin:0}
 
-/* ---------- 4. PRESTASI KARYA ---------- */
+/* ---------- 4. PRODUK KARYA ---------- */
 .ks-prestasi{position:relative;padding:100px 0 110px;
   background-image:radial-gradient(rgba(13,58,102,.055) 1.4px,transparent 1.5px);background-size:22px 22px;overflow:hidden}
 .ks-prestasi::before{content:"PRODUK";position:absolute;left:-1%;top:8%;transform:rotate(-90deg);
@@ -319,12 +308,112 @@
   [data-reveal]{opacity:1;transform:none}
 }
 </style>
+
+<style id="karya-dark-mode">
+/* =========================================================
+   KARYA SISWA — DARK MODE
+   Aktif saat <body> punya class "theme-dark".
+   ========================================================= */
+html body.theme-dark .ks-page{background:#08131f!important;color:#e6eef7;color-scheme:dark}
+
+/* ---------- Container tidak boleh punya kotak background sendiri ---------- */
+html body.theme-dark .ks-page .ks-section,
+html body.theme-dark .ks-page .ks-intro-grid,
+html body.theme-dark .ks-page .ks-slider-head,
+html body.theme-dark .ks-page .ks-prestasi-head,
+html body.theme-dark .ks-page .ks-carousel,
+html body.theme-dark .ks-page .ks-kat-grid,
+html body.theme-dark .ks-page .ks-prestasi-grid,
+html body.theme-dark .ks-page .ks-mini-stats,
+html body.theme-dark .ks-page .ks-cat-chips,
+html body.theme-dark .ks-page .ks-hero-inner{
+  background:transparent!important;
+  background-image:none!important;
+  box-shadow:none!important;
+  border:0!important;
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+}
+
+/* ---------- UMUM ---------- */
+html body.theme-dark .ks-page .big-heading{color:#fff}
+html body.theme-dark .ks-page .home-orn .ho-chevron{border-color:rgba(143,189,235,.16)}
+html body.theme-dark .ks-page .home-orn .ho-chevron::after{border-color:rgba(143,189,235,.12)}
+html body.theme-dark .ks-page .home-orn .ho-line{background:rgba(143,189,235,.14)}
+html body.theme-dark .ks-page .home-orn .ho-line::after{background:rgba(143,189,235,.12)}
+html body.theme-dark .ks-page .home-orn .ho-dots{background-image:radial-gradient(rgba(143,189,235,.5) 1.6px,transparent 1.7px);opacity:.3}
+html body.theme-dark .ks-page .home-orn .ho-ring{border-color:rgba(143,189,235,.16)}
+html body.theme-dark .ks-page .home-orn .ho-ring::before{border-color:rgba(143,189,235,.18)}
+html body.theme-dark .ks-page .home-orn .ho-square::before{border-color:rgba(143,189,235,.22)}
+html body.theme-dark .ks-page .home-orn .ho-corner::after{background:rgba(143,189,235,.2)}
+
+/* ---------- HERO ---------- */
+html body.theme-dark .ks-page .ks-hero{background:linear-gradient(180deg,#0b1d31 0%,#08131f 100%)!important;color:#e6eef7}
+html body.theme-dark .ks-page .ks-hero::after{color:rgba(255,255,255,.035)!important;-webkit-text-stroke:1px rgba(255,179,0,.14)!important}
+html body.theme-dark .ks-page .ks-ref-ornaments{
+  background-image:none!important;
+  mix-blend-mode:screen;
+  opacity:.6;
+}
+html body.theme-dark .ks-page .ks-ref-ornament-image{
+  filter:invert(1) hue-rotate(180deg);
+  mix-blend-mode:normal;
+  opacity:1;
+}
+html body.theme-dark .ks-page .ks-title .ks-white{color:#fff}
+html body.theme-dark .ks-page .ks-kicker{background:rgba(255,111,0,.1);border-color:rgba(255,179,0,.3);color:#ffb347}
+html body.theme-dark .ks-page .ks-lead{color:#a9bbcd}
+html body.theme-dark .ks-page .ks-pill{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.14);color:#e6eef7;box-shadow:0 8px 24px rgba(0,0,0,.35)}
+
+/* ---------- 1. PENGANTAR ---------- */
+html body.theme-dark .ks-page .ks-intro{background:#0a1928}
+html body.theme-dark .ks-page .ks-intro-note{color:#9fb2c6}
+html body.theme-dark .ks-page .ks-blurb{color:#a9bbcd}
+html body.theme-dark .ks-page .ks-blurb strong{color:#fff}
+html body.theme-dark .ks-page .ks-mini{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.1)}
+html body.theme-dark .ks-page .ks-mini:hover{box-shadow:0 16px 36px rgba(0,0,0,.45)}
+html body.theme-dark .ks-page .ks-mini b{color:#fff}
+html body.theme-dark .ks-page .ks-mini span{color:#9fb2c6}
+html body.theme-dark .ks-page .ks-cat-line{color:#8fbdeb}
+html body.theme-dark .ks-page .ks-chip{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.14);color:#e6eef7}
+html body.theme-dark .ks-page .ks-chip:hover{border-color:rgba(255,213,74,.5)}
+
+/* ---------- 2. CAROUSEL ---------- */
+html body.theme-dark .ks-page .ks-slider,
+html body.theme-dark .ks-page .ks-prestasi{background-color:#08131f;background-image:radial-gradient(rgba(143,189,235,.07) 1.4px,transparent 1.5px)}
+html body.theme-dark .ks-page .ks-slider-note{color:#9fb2c6}
+html body.theme-dark .ks-page .ks-viewport{box-shadow:0 34px 80px rgba(0,0,0,.6);border-color:rgba(255,255,255,.12)}
+html body.theme-dark .ks-page .ks-dot{background:rgba(255,255,255,.22)}
+html body.theme-dark .ks-page .ks-dot.active{background:linear-gradient(90deg,#ffd54a,#ffb300)}
+html body.theme-dark .ks-page .ks-counter{color:#8fa3b8}
+html body.theme-dark .ks-page .ks-counter b{color:#fff}
+
+/* ---------- 3. KATEGORI ---------- */
+html body.theme-dark .ks-page .ks-kategori{background:#0a1928}
+html body.theme-dark .ks-page .ks-kat-card{background:#0f2236;border-color:rgba(255,255,255,.1)}
+html body.theme-dark .ks-page .ks-kat-card:hover{border-color:rgba(255,213,74,.35);box-shadow:0 26px 55px rgba(0,0,0,.55)}
+html body.theme-dark .ks-page .ks-kat-name{color:#fff}
+html body.theme-dark .ks-page .ks-kat-text{color:#9fb2c6}
+
+/* ---------- 4. PRODUK KARYA ---------- */
+html body.theme-dark .ks-page .ks-prestasi::before{color:rgba(255,255,255,.04)}
+html body.theme-dark .ks-page .ks-prestasi-note{color:#9fb2c6}
+html body.theme-dark .ks-page .ks-prestasi-card{background:#0f2236;border-color:rgba(255,255,255,.1)}
+html body.theme-dark .ks-page .ks-prestasi-card:hover{box-shadow:0 22px 48px rgba(0,0,0,.55)}
+html body.theme-dark .ks-page .ks-prestasi-medal{border-color:#0f2236}
+html body.theme-dark .ks-page .ks-prestasi-body h3{color:#fff}
+html body.theme-dark .ks-page .ks-prestasi-body p{color:#9fb2c6}
+html body.theme-dark .ks-page .ks-prestasi-year{color:#ffd54a;background:rgba(255,213,74,.12);border-color:rgba(255,213,74,.35)}
+
+/* ---------- CTA ---------- */
+html body.theme-dark .ks-page .ks-cta{background:linear-gradient(135deg,#0a1a2c 0%,#0c2038 55%,#0e2542 100%);border:1px solid rgba(255,255,255,.08);box-shadow:0 34px 80px rgba(0,0,0,.6)}
+</style>
 @endpush
 
 @section('content')
 <div class="ks-page">
 
-  <!-- HERO (100% mirip halaman PPDB: watermark + ornamen abstrak + judul besar bertumpuk) -->
+  <!-- HERO -->
   <section class="ks-hero">
     <div class="ks-ref-ornaments" aria-hidden="true" style="background-image:url('{{ asset('images/wide_minimalist_abstract_technology_background_des.png') }}');background-size:cover;background-position:center center;">
       <img
@@ -512,7 +601,7 @@
                 <h3>Produk Olahan Hasil Pertanian</h3>
                 <p>Mengolah bahan pangan menjadi berbagai produk roti bernilai tambah — dari roti manis, roti isi, hingga kreasi roti inovatif.</p>
                 <div class="ks-slide-meta">
-                  <span><i class="fas fa-user"></i>APHP</span>
+                  <span><i class="fas fa-user"></i> APHP</span>
                   <span><i class="fas fa-seedling"></i> Agribisnis Pengolahan Hasil Pertanian</span>
                   <span><i class="fas fa-calendar-alt"></i> 2024</span>
                 </div>
@@ -686,11 +775,11 @@
           </div>
           <div class="ks-prestasi-card" data-reveal style="--d:5">
             <div class="ks-prestasi-media">
-              <img src="{{ asset('images/karya/dapur-produksi.png') }}" alt="Puding lapis rempah nusantara karya siswa Kuliner" loading="lazy">
+              <img src="{{ asset('images/karya/dapur-produksi.png') }}" alt="Bakery &amp; Pastry karya siswa Kuliner" loading="lazy">
               <div class="ks-prestasi-medal"><i class="fas fa-utensils"></i></div>
             </div>
             <div class="ks-prestasi-body">
-              <h3>Bakery & Pastry</h3>
+              <h3>Bakery &amp; Pastry</h3>
               <p>Kreasi dessert bercita rasa khas Indonesia, hasil inovasi menu siswa jurusan Kuliner.</p>
               <span class="ks-prestasi-year">Kuliner &middot; 2025</span>
             </div>
@@ -722,7 +811,7 @@
 
 @push('scripts')
 <script>
-  /* ---- Scroll Reveal (senada Sejarah Sekolah) ---- */
+  /* ---- Scroll Reveal ---- */
   (function () {
     var revealEls = document.querySelectorAll('[data-reveal]');
     if (!('IntersectionObserver' in window)) {
@@ -736,8 +825,6 @@
     }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
     revealEls.forEach(function (el) { obs.observe(el); });
 
-    /* Fallback: pastikan semua konten tampil walau observer tak pernah
-       terpicu (mis. halaman panjang tanpa scroll / screenshot full-page). */
     setTimeout(function () {
       revealEls.forEach(function (el) { el.classList.add('revealed'); });
     }, 1200);
@@ -775,13 +862,12 @@
 
     totalLabel.textContent = total;
 
-    /* build dots */
     for (var i = 0; i < total; i++) {
       var d = document.createElement('button');
       d.className = 'ks-dot' + (i === 0 ? ' active' : '');
       d.type = 'button';
       d.setAttribute('aria-label', 'Karya ke-' + (i + 1));
-      d.addEventListener('click', (function (idx) { return function () { go(idx); }; })(i));
+      d.addEventListener('click', (function (idx) { return function () { go(idx); restart(); }; })(i));
       dotsWrap.appendChild(d);
     }
     var dots = dotsWrap.children;
@@ -804,7 +890,6 @@
     }
     restart();
 
-    /* swipe untuk layar sentuh */
     var startX = null;
     var vp = track.parentElement;
     vp.addEventListener('touchstart', function (e) { startX = e.touches[0].clientX; }, { passive: true });
@@ -815,7 +900,6 @@
       startX = null;
     }, { passive: true });
 
-    /* gambar slider di-eager kan agar tidak placeholder saat autoplay */
     slides[0].querySelector('img').loading = 'eager';
   })();
 </script>

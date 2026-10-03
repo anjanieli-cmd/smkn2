@@ -8,21 +8,14 @@
 /* =========================================================
    PPDB — PENERIMAAN PESERTA DIDIK BARU
    Visual language: SENADA PERSIS dengan Guru & Staf, Sejarah
-   Sekolah, Struktur Organisasi & Visi Misi — foto gedung +
-   overlay, watermark typography, ornamen geometris (home-orn),
-   glassmorphism, scroll-reveal. Header & footer dari
-   layouts.app (identik).
-   KONTEN UTAMA UNIK (tidak meniru layout file referensi):
-   banner resmi PPDB, jalur cards, persyaratan checklist,
-   alur timeline, jadwal tabel, program keahlian cards,
-   FAQ accordion.
+   Sekolah, Struktur Organisasi & Visi Misi.
    Warna: navy #0d3a66, biru #2f6fa8, putih, gold #ffd54a/#ffb300.
    ========================================================= */
 .pd-page{background:#f7f9fc;color:#0d3a66;overflow:hidden;position:relative}
 .pd-page *{box-sizing:border-box}
 .pd-shell{width:100%}
 
-/* ---------- HERO: 100% MIRIP HALAMAN SEJARAH SEKOLAH ---------- */
+/* ---------- HERO ---------- */
 .pd-hero{position:relative;min-height:clamp(620px,78vh,790px);display:flex;align-items:center;overflow:hidden;background:#fff;color:#0d3a66;isolation:isolate}
 .pd-hero::before{display:none}
 .pd-hero::after{content:"PPDB";position:absolute;z-index:0;left:2%;top:58%;transform:translateY(-50%);font-family:var(--font-display);font-size:clamp(9rem,23vw,23rem);font-weight:900;line-height:.78;letter-spacing:.015em;color:rgba(13,58,102,.035);-webkit-text-stroke:1px rgba(255,122,0,.09);pointer-events:none;white-space:nowrap;user-select:none}
@@ -47,7 +40,7 @@
 @media(max-width:700px){.pd-hero{align-items:flex-start}.pd-hero-inner{width:90%}.pd-title{font-size:clamp(3rem,14vw,5rem)}}
 @media(max-width:560px){.pd-ref-ornament-image{opacity:.62}}
 
-/* ---------- HOME-ORN (ornamen geometris, IDENTIK referensi) ---------- */
+/* ---------- HOME-ORN ---------- */
 .home-orn{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
 .home-orn .ho-chevron{position:absolute;width:360px;height:360px;
   border:1px solid rgba(13,58,102,.16);transform:rotate(45deg);border-radius:18px}
@@ -116,7 +109,7 @@
   -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
 .pd-intro-note{max-width:420px;color:#718396;font-size:.84rem;line-height:1.8;margin-top:1rem}
 
-/* ---------- 1. PENGERTIAN PPDB (banner + definition stack) ---------- */
+/* ---------- 1. PENGERTIAN PPDB ---------- */
 .pd-def-stack{display:grid;gap:.8rem}
 .pd-def-row{display:flex;align-items:center;gap:1.2rem;background:#f3f7fb;border:1px solid #e3edf0;
   border-radius:18px;padding:1.1rem 1.3rem;transition:transform .35s var(--ease, ease),box-shadow .35s var(--ease, ease)}
@@ -182,7 +175,7 @@
 .pd-req-note{display:flex;align-items:center;gap:.8rem;margin-top:1.6rem;padding:1rem 1.2rem;border-radius:14px;
   background:rgba(255,213,74,.14);border:1px solid rgba(255,179,0,.35);font-size:.8rem;line-height:1.7;color:#7a4b07}
 
-/* ---------- 4. ALUR PENDAFTARAN (timeline) ---------- */
+/* ---------- 4. ALUR PENDAFTARAN ---------- */
 .pd-flow{position:relative;padding:96px 0 110px;
   background-image:radial-gradient(rgba(13,58,102,.055) 1.4px,transparent 1.5px);background-size:22px 22px}
 .pd-flow-track{position:relative;margin-top:3.2rem}
@@ -201,7 +194,7 @@
 .pd-flow-title{font-family:var(--font-display);font-size:.92rem;font-weight:800;color:#0d3a66;margin:.95rem 0 .25rem}
 .pd-flow-text{font-size:.74rem;line-height:1.6;color:#718396;margin:0;max-width:150px;margin-left:auto;margin-right:auto}
 
-/* ---------- 5. JADWAL PENTING (tabel) ---------- */
+/* ---------- 5. JADWAL PENTING ---------- */
 .pd-jadwal{position:relative;padding:100px 0 110px;background:#fff;overflow:hidden}
 .pd-jadwal-card{position:relative;border-radius:26px;overflow:hidden;margin-top:3rem;
   background:linear-gradient(135deg,#0b3558,#0d3a66 55%,#123f6e);color:#fff;box-shadow:0 30px 70px rgba(13,58,102,.35)}
@@ -278,6 +271,13 @@
 .pd-cta-note{margin-top:1.1rem;font-size:.76rem;color:rgba(235,245,253,.65)}
 .pd-cta-note i{color:#ffd54a;margin-right:.4rem}
 
+/* ---------- JUDUL SECTION DI TENGAH (kecuali intro "EMPAT KATA, SATU MASA DEPAN.") ---------- */
+.pd-track-head{flex-direction:column;align-items:center;text-align:center;gap:1rem}
+.pd-track-head .pd-track-note{margin-left:auto;margin-right:auto;max-width:520px}
+.pd-req-card>.big-heading{text-align:center}
+.pd-flow .pd-section>div:first-child,
+.pd-jadwal .pd-section>div:first-child{text-align:center}
+
 /* ---------- SCROLL REVEAL ---------- */
 [data-reveal]{opacity:0;transform:translateY(36px);
   transition:opacity .7s ease,transform .7s var(--ease, ease)}
@@ -287,11 +287,7 @@
 [data-reveal]{transition-delay:calc(var(--d,0)*90ms)}
 
 /* ---------- RESPONSIVE MOBILE POLISH ---------- */
-.pd-jadwal-table-wrap {
-  width: 100%;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-}
+.pd-jadwal-table-wrap{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
 
 @media(max-width:1200px){
   .pd-track-grid{grid-template-columns:repeat(2,1fr)}
@@ -304,52 +300,52 @@
   .pd-req-grid{grid-template-columns:1fr;gap:0 2.6rem}
 }
 @media(max-width:700px){
-  .pd-page { overflow-x: hidden !important; max-width: 100vw !important; }
-  .pd-hero { min-height: auto !important; padding: 2rem 0 2.5rem !important; }
-  .pd-hero-inner { width: 92% !important; padding: 2rem 0 2.5rem !important; }
-  .pd-title { font-size: clamp(2.3rem, 9vw, 3.6rem) !important; line-height: 1.05 !important; word-break: break-word !important; }
-  .pd-kicker { font-size: 0.68rem !important; margin-bottom: 0.8rem !important; padding: 0.45rem 0.75rem !important; }
-  .pd-lead { font-size: 0.92rem !important; margin-top: 1rem !important; }
-  
-  .pd-section,.pd-intro,.pd-track,.pd-req,.pd-jadwal,.pd-jurusan,.pd-flow,.pd-faq { padding: 48px 0 54px !important; }
-  .pd-cta { padding: 2.2rem 1.2rem !important; margin-bottom: 3.5rem !important; width: 92% !important; border-radius: 20px !important; }
-  .pd-cta h2 { font-size: clamp(1.5rem, 6.5vw, 2.2rem) !important; }
-  .pd-cta-btn { width: 100% !important; justify-content: center !important; margin-top: 0.5rem !important; }
-  
-  .pd-def-row { flex-direction: row !important; align-items: flex-start !important; gap: 0.9rem !important; padding: 0.95rem 1rem !important; border-radius: 14px !important; }
-  .pd-def-index { min-width: 44px !important; height: 44px !important; width: 44px !important; font-size: 1.15rem !important; border-radius: 12px !important; flex-shrink: 0 !important; }
-  .pd-def-text h3 { font-size: 0.95rem !important; }
-  .pd-def-text p { font-size: 0.8rem !important; margin-top: 0.15rem !important; }
-  
-  .pd-track-grid { grid-template-columns: 1fr !important; gap: 1rem !important; }
-  .pd-track-card { padding: 1.35rem 1.2rem !important; border-radius: 18px !important; }
-  .pd-track-no { font-size: 1.75rem !important; top: 0.9rem !important; right: 1rem !important; }
-  .pd-track-icon { width: 48px !important; height: 48px !important; font-size: 1.15rem !important; border-radius: 14px !important; }
-  
-  .pd-jurusan-grid { grid-template-columns: 1fr !important; gap: 1.1rem !important; }
-  .pd-jurusan-photo { height: 165px !important; }
-  .pd-jurusan-body { padding: 1.1rem 1.2rem !important; }
-  
-  .pd-flow-grid { grid-template-columns: 1fr 1fr !important; gap: 1.3rem 0.75rem !important; }
-  .pd-flow-dot { width: 52px !important; height: 52px !important; font-size: 1.1rem !important; }
-  .pd-flow-title { font-size: 0.85rem !important; margin-top: 0.65rem !important; }
-  .pd-flow-text { font-size: 0.72rem !important; max-width: 100% !important; }
-  
-  .pd-req-card { padding: 1.4rem 1.1rem !important; border-radius: 18px !important; }
-  .pd-req-grid { grid-template-columns: 1fr !important; gap: 0.4rem !important; }
-  .pd-req-item { padding: 0.75rem 0 !important; gap: 0.75rem !important; }
-  .pd-req-note { flex-direction: row !important; align-items: flex-start !important; padding: 0.85rem 1rem !important; font-size: 0.78rem !important; border-radius: 12px !important; }
-  
-  .pd-jadwal-card { border-radius: 18px !important; margin-top: 1.8rem !important; }
-  .pd-jadwal-head { flex-direction: column !important; align-items: flex-start !important; padding: 1.1rem 1.2rem !important; gap: 0.66rem !important; }
-  .pd-jadwal-head h3 { font-size: 1.05rem !important; }
-  .pd-jadwal-table th, .pd-jadwal-table td { padding: 0.75rem 1rem !important; white-space: nowrap !important; font-size: 0.8rem !important; }
-  .pd-jadwal-foot { padding: 0.85rem 1.2rem !important; font-size: 0.74rem !important; }
-  
-  .pd-faq-list { margin-top: 1.6rem !important; gap: 0.65rem !important; }
-  .pd-faq-q { padding: 0.95rem 1.1rem !important; font-size: 0.88rem !important; line-height: 1.4 !important; }
-  .pd-faq-a p { padding: 0 1.1rem 1rem !important; font-size: 0.82rem !important; }
-  
+  .pd-page{overflow-x:hidden!important;max-width:100vw!important}
+  .pd-hero{min-height:auto!important;padding:2rem 0 2.5rem!important}
+  .pd-hero-inner{width:92%!important;padding:2rem 0 2.5rem!important}
+  .pd-title{font-size:clamp(2.3rem,9vw,3.6rem)!important;line-height:1.05!important;word-break:break-word!important}
+  .pd-kicker{font-size:.68rem!important;margin-bottom:.8rem!important;padding:.45rem .75rem!important}
+  .pd-lead{font-size:.92rem!important;margin-top:1rem!important}
+
+  .pd-section,.pd-intro,.pd-track,.pd-req,.pd-jadwal,.pd-jurusan,.pd-flow,.pd-faq{padding:48px 0 54px!important}
+  .pd-cta{padding:2.2rem 1.2rem!important;margin-bottom:3.5rem!important;width:92%!important;border-radius:20px!important}
+  .pd-cta h2{font-size:clamp(1.5rem,6.5vw,2.2rem)!important}
+  .pd-cta-btn{width:100%!important;justify-content:center!important;margin-top:.5rem!important}
+
+  .pd-def-row{flex-direction:row!important;align-items:flex-start!important;gap:.9rem!important;padding:.95rem 1rem!important;border-radius:14px!important}
+  .pd-def-index{min-width:44px!important;height:44px!important;width:44px!important;font-size:1.15rem!important;border-radius:12px!important;flex-shrink:0!important}
+  .pd-def-text h3{font-size:.95rem!important}
+  .pd-def-text p{font-size:.8rem!important;margin-top:.15rem!important}
+
+  .pd-track-grid{grid-template-columns:1fr!important;gap:1rem!important}
+  .pd-track-card{padding:1.35rem 1.2rem!important;border-radius:18px!important}
+  .pd-track-no{font-size:1.75rem!important;top:.9rem!important;right:1rem!important}
+  .pd-track-icon{width:48px!important;height:48px!important;font-size:1.15rem!important;border-radius:14px!important}
+
+  .pd-jurusan-grid{grid-template-columns:1fr!important;gap:1.1rem!important}
+  .pd-jurusan-photo{height:165px!important}
+  .pd-jurusan-body{padding:1.1rem 1.2rem!important}
+
+  .pd-flow-grid{grid-template-columns:1fr 1fr!important;gap:1.3rem .75rem!important}
+  .pd-flow-dot{width:52px!important;height:52px!important;font-size:1.1rem!important}
+  .pd-flow-title{font-size:.85rem!important;margin-top:.65rem!important}
+  .pd-flow-text{font-size:.72rem!important;max-width:100%!important}
+
+  .pd-req-card{padding:1.4rem 1.1rem!important;border-radius:18px!important}
+  .pd-req-grid{grid-template-columns:1fr!important;gap:.4rem!important}
+  .pd-req-item{padding:.75rem 0!important;gap:.75rem!important}
+  .pd-req-note{flex-direction:row!important;align-items:flex-start!important;padding:.85rem 1rem!important;font-size:.78rem!important;border-radius:12px!important}
+
+  .pd-jadwal-card{border-radius:18px!important;margin-top:1.8rem!important}
+  .pd-jadwal-head{flex-direction:column!important;align-items:flex-start!important;padding:1.1rem 1.2rem!important;gap:.66rem!important}
+  .pd-jadwal-head h3{font-size:1.05rem!important}
+  .pd-jadwal-table th,.pd-jadwal-table td{padding:.75rem 1rem!important;white-space:nowrap!important;font-size:.8rem!important}
+  .pd-jadwal-foot{padding:.85rem 1.2rem!important;font-size:.74rem!important}
+
+  .pd-faq-list{margin-top:1.6rem!important;gap:.65rem!important}
+  .pd-faq-q{padding:.95rem 1.1rem!important;font-size:.88rem!important;line-height:1.4!important}
+  .pd-faq-a p{padding:0 1.1rem 1rem!important;font-size:.82rem!important}
+
   .home-orn .ho-chevron{width:180px;height:180px}
   .home-orn .ho-dots{width:70px;height:70px;background-size:12px 12px}
   .home-orn .ho-ring{width:95px;height:95px}
@@ -360,18 +356,104 @@
 }
 
 @media(max-width:480px){
-  .pd-flow-grid { grid-template-columns: 1fr !important; gap: 1.2rem !important; }
-  .pd-title { font-size: clamp(2rem, 8.5vw, 2.8rem) !important; }
+  .pd-flow-grid{grid-template-columns:1fr!important;gap:1.2rem!important}
+  .pd-title{font-size:clamp(2rem,8.5vw,2.8rem)!important}
 }
+</style>
+
+<style id="ppdb-dark-mode">
+/* =========================================================
+   PPDB — DARK MODE
+   Aktif saat <body> punya class "theme-dark".
+   ========================================================= */
+html body.theme-dark .pd-page{background:#08131f!important;color:#e6eef7;color-scheme:dark}
+
+/* ---------- UMUM ---------- */
+html body.theme-dark .pd-page .big-heading{color:#fff}
+html body.theme-dark .pd-page .home-orn .ho-chevron{border-color:rgba(143,189,235,.16)}
+html body.theme-dark .pd-page .home-orn .ho-chevron::after{border-color:rgba(143,189,235,.12)}
+html body.theme-dark .pd-page .home-orn .ho-line{background:rgba(143,189,235,.14)}
+html body.theme-dark .pd-page .home-orn .ho-line::after{background:rgba(143,189,235,.12)}
+html body.theme-dark .pd-page .home-orn .ho-dots{background-image:radial-gradient(rgba(143,189,235,.5) 1.6px,transparent 1.7px);opacity:.3}
+html body.theme-dark .pd-page .home-orn .ho-ring{border-color:rgba(143,189,235,.16)}
+html body.theme-dark .pd-page .home-orn .ho-ring::before{border-color:rgba(143,189,235,.18)}
+html body.theme-dark .pd-page .home-orn .ho-square::before{border-color:rgba(143,189,235,.22)}
+html body.theme-dark .pd-page .home-orn .ho-corner::after{background:rgba(143,189,235,.2)}
+
+/* ---------- HERO ---------- */
+html body.theme-dark .pd-page .pd-hero{background:linear-gradient(180deg,#0b1d31 0%,#08131f 100%)!important;color:#e6eef7}
+html body.theme-dark .pd-page .pd-hero::after{color:rgba(255,255,255,.035)!important;-webkit-text-stroke:1px rgba(255,179,0,.14)!important}
+html body.theme-dark .pd-page .pd-ref-ornament-image{filter:invert(1) hue-rotate(180deg);mix-blend-mode:screen;opacity:.6!important}
+html body.theme-dark .pd-page .pd-title .pd-white{color:#fff}
+html body.theme-dark .pd-page .pd-kicker{background:rgba(255,111,0,.1);border-color:rgba(255,179,0,.3);color:#ffb347}
+html body.theme-dark .pd-page .pd-lead{color:#a9bbcd}
+html body.theme-dark .pd-page .pd-pill{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.14);color:#e6eef7;box-shadow:0 8px 24px rgba(0,0,0,.35)}
+
+/* ---------- 1. PENGERTIAN ---------- */
+html body.theme-dark .pd-page .pd-intro{background:#0a1928}
+html body.theme-dark .pd-page .pd-intro-note{color:#9fb2c6}
+html body.theme-dark .pd-page .pd-def-row{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.1)}
+html body.theme-dark .pd-page .pd-def-row:hover{border-color:rgba(255,213,74,.35);box-shadow:0 14px 34px rgba(0,0,0,.45)}
+html body.theme-dark .pd-page .pd-def-text h3{color:#fff}
+html body.theme-dark .pd-page .pd-def-text p{color:#9fb2c6}
+html body.theme-dark .pd-page .pd-banner{box-shadow:0 30px 70px rgba(0,0,0,.55);border-color:rgba(255,255,255,.12)}
+
+/* ---------- 2. JALUR ---------- */
+html body.theme-dark .pd-page .pd-track,
+html body.theme-dark .pd-page .pd-flow,
+html body.theme-dark .pd-page .pd-jurusan{background-color:#08131f;background-image:radial-gradient(rgba(143,189,235,.07) 1.4px,transparent 1.5px)}
+html body.theme-dark .pd-page .pd-track-note{color:#9fb2c6}
+html body.theme-dark .pd-page .pd-track-card{background:#0f2236;border-color:rgba(255,255,255,.1)}
+html body.theme-dark .pd-page .pd-track-card:hover{border-color:rgba(255,213,74,.35);box-shadow:0 26px 55px rgba(0,0,0,.55)}
+html body.theme-dark .pd-page .pd-track-card::after{background-image:radial-gradient(rgba(143,189,235,.18) 1.6px,transparent 1.7px)}
+html body.theme-dark .pd-page .pd-track-no{color:rgba(255,255,255,.07)}
+html body.theme-dark .pd-page .pd-track-name{color:#fff}
+html body.theme-dark .pd-page .pd-track-kuota{color:#ffd54a;background:rgba(255,213,74,.12);border-color:rgba(255,213,74,.35)}
+html body.theme-dark .pd-page .pd-track-text{color:#9fb2c6}
+
+/* ---------- 3. PERSYARATAN ---------- */
+html body.theme-dark .pd-page .pd-req{background:#0a1928}
+html body.theme-dark .pd-page .pd-req::before{color:rgba(255,255,255,.04)}
+html body.theme-dark .pd-page .pd-req-card{background:#0f2236;border-color:rgba(255,255,255,.1);box-shadow:0 18px 46px rgba(0,0,0,.45)}
+html body.theme-dark .pd-page .pd-req-item{border-bottom-color:rgba(255,255,255,.12)}
+html body.theme-dark .pd-page .pd-req-item i{color:#8fbdeb}
+html body.theme-dark .pd-page .pd-req-item strong{color:#fff}
+html body.theme-dark .pd-page .pd-req-item span{color:#9fb2c6}
+html body.theme-dark .pd-page .pd-req-note{background:rgba(255,213,74,.1);border-color:rgba(255,213,74,.3);color:#f3d38a}
+
+/* ---------- 4. ALUR ---------- */
+html body.theme-dark .pd-page .pd-flow-title{color:#fff}
+html body.theme-dark .pd-page .pd-flow-text{color:#9fb2c6}
+html body.theme-dark .pd-page .pd-flow-dot{box-shadow:0 12px 28px rgba(0,0,0,.5)}
+
+/* ---------- 5. JADWAL ---------- */
+html body.theme-dark .pd-page .pd-jadwal{background:#08131f}
+html body.theme-dark .pd-page .pd-jadwal-card{background:linear-gradient(135deg,#0a1a2c 0%,#0c2038 55%,#0e2542 100%);border:1px solid rgba(255,255,255,.08);box-shadow:0 30px 70px rgba(0,0,0,.55)}
+
+/* ---------- 6. PROGRAM KEAHLIAN ---------- */
+html body.theme-dark .pd-page .pd-jurusan-card{background:#0f2236;border-color:rgba(255,255,255,.1)}
+html body.theme-dark .pd-page .pd-jurusan-card:hover{box-shadow:0 26px 55px rgba(0,0,0,.55)}
+html body.theme-dark .pd-page .pd-jurusan-tag{color:#9fc4e6;background:rgba(143,189,235,.12);border-color:rgba(143,189,235,.3)}
+html body.theme-dark .pd-page .pd-jurusan-name{color:#fff}
+html body.theme-dark .pd-page .pd-jurusan-text{color:#9fb2c6}
+html body.theme-dark .pd-page .pd-jurusan-more{color:#e6eef7}
+
+/* ---------- 7. FAQ ---------- */
+html body.theme-dark .pd-page .pd-faq{background:#0a1928}
+html body.theme-dark .pd-page .pd-faq-item{background:#0f2236;border-color:rgba(255,255,255,.1)}
+html body.theme-dark .pd-page .pd-faq-item.open{border-color:rgba(255,213,74,.4);box-shadow:0 14px 34px rgba(0,0,0,.45)}
+html body.theme-dark .pd-page .pd-faq-q{color:#fff}
+html body.theme-dark .pd-page .pd-faq-a p{color:#a9bbcd}
+
+/* ---------- CTA ---------- */
+html body.theme-dark .pd-page .pd-cta{background:linear-gradient(135deg,#0a1a2c 0%,#0c2038 55%,#0e2542 100%);border:1px solid rgba(255,255,255,.08);box-shadow:0 34px 80px rgba(0,0,0,.6)}
 </style>
 @endpush
 
 @section('content')
-
-@include('profile.partials.ppdb-content')
 <div class="pd-page">
 
-  <!-- HERO (100% mirip halaman Sejarah Sekolah: watermark + ornamen foto + judul besar) -->
+  <!-- HERO -->
   <section class="pd-hero">
     <div class="pd-ref-ornaments" aria-hidden="true" style="background-image:url('{{ asset('images/wide_minimalist_abstract_technology_background_des.png') }}');background-size:cover;background-position:center center;">
       <img
@@ -392,7 +474,7 @@
     </div>
   </section>
 
-  <!-- 1. PENGERTIAN PPDB (definition stack P-P-D-B + banner resmi) -->
+  <!-- 1. PENGERTIAN PPDB -->
   <section class="pd-intro">
     <div class="home-orn" aria-hidden="true">
       <span class="ho-chevron"></span>
@@ -445,6 +527,9 @@
         <div class="pd-banner">
           <img src="{{ asset('images/jurusan.jpeg') }}" alt="Banner PPDB SMK Negeri 2 Mojokerto" loading="eager">
           <div class="pd-banner-flag">
+            <strong>PPDB SMK Negeri 2 Mojokerto</strong>
+            <span>Tahun Pelajaran 2026/2027</span>
+          </div>
         </div>
       </div>
     </div>
@@ -539,7 +624,7 @@
     </div>
   </section>
 
-  <!-- 4. ALUR PENDAFTARAN (timeline) -->
+  <!-- 4. ALUR PENDAFTARAN -->
   <section class="pd-flow">
     <div class="pd-section">
       <div data-reveal>
@@ -604,41 +689,13 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>1</td>
-                <td>Pengumuman &amp; sosialisasi PPDB</td>
-                <td>Maret – April 2026</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Pendaftaran akun &amp; pengambilan PIN</td>
-                <td>Mei 2026</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>Pendaftaran &amp; unggah berkas (semua jalur)</td>
-                <td>Juni 2026</td>
-              </tr>
-              <tr>
-                <td>4</td>
-                <td>Verifikasi &amp; pemeringkatan berkas</td>
-                <td>Juni 2026</td>
-              </tr>
-              <tr>
-                <td>5</td>
-                <td>Pengumuman hasil seleksi</td>
-                <td>Awal Juli 2026</td>
-              </tr>
-              <tr>
-                <td>6</td>
-                <td>Daftar ulang peserta didik diterima</td>
-                <td>Juli 2026</td>
-              </tr>
-              <tr>
-                <td>7</td>
-                <td>Masa Pengenalan Lingkungan Sekolah (MPLS)</td>
-                <td>Juli 2026</td>
-              </tr>
+              <tr><td>1</td><td>Pengumuman &amp; sosialisasi PPDB</td><td>Maret – April 2026</td></tr>
+              <tr><td>2</td><td>Pendaftaran akun &amp; pengambilan PIN</td><td>Mei 2026</td></tr>
+              <tr><td>3</td><td>Pendaftaran &amp; unggah berkas (semua jalur)</td><td>Juni 2026</td></tr>
+              <tr><td>4</td><td>Verifikasi &amp; pemeringkatan berkas</td><td>Juni 2026</td></tr>
+              <tr><td>5</td><td>Pengumuman hasil seleksi</td><td>Awal Juli 2026</td></tr>
+              <tr><td>6</td><td>Daftar ulang peserta didik diterima</td><td>Juli 2026</td></tr>
+              <tr><td>7</td><td>Masa Pengenalan Lingkungan Sekolah (MPLS)</td><td>Juli 2026</td></tr>
             </tbody>
           </table>
         </div>
@@ -660,7 +717,7 @@
 
     <div class="pd-section">
       <div class="pd-track-head" data-reveal>
-        <h2 class="big-heading">PILIH KOPETENSI, RAIH <span>MASA DEPANMU.</span></h2>
+        <h2 class="big-heading">PILIH KOMPETENSI, RAIH <span>MASA DEPANMU.</span></h2>
         <p class="pd-track-note">SMK Negeri 2 Mojokerto membuka 5 kompetensi keahlian yang selaras dengan kebutuhan dunia usaha dan dunia industri.</p>
       </div>
 
@@ -799,7 +856,7 @@
 
 @push('scripts')
 <script>
-  /* ---- Scroll Reveal (senada Sejarah Sekolah) ---- */
+  /* ---- Scroll Reveal ---- */
   (function () {
     var revealEls = document.querySelectorAll('[data-reveal]');
     if (!('IntersectionObserver' in window)) {
@@ -813,8 +870,6 @@
     }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
     revealEls.forEach(function (el) { obs.observe(el); });
 
-    /* Fallback: pastikan semua konten tampil walau observer tak pernah
-       terpicu (mis. halaman panjang tanpa scroll / screenshot full-page). */
     setTimeout(function () {
       revealEls.forEach(function (el) { el.classList.add('revealed'); });
     }, 1200);
@@ -857,7 +912,6 @@
         }
       });
     });
-    /* buka item pertama secara default */
     var first = document.querySelector('.pd-faq-item.open .pd-faq-a');
     if (first) first.style.maxHeight = first.scrollHeight + 'px';
   })();

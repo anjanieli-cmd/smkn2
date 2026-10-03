@@ -1393,6 +1393,142 @@
 @media(max-width:600px){.aphp-page .vt-section{padding:85px 0 95px}.aphp-page .vt-inner{width:92%;gap:2rem}.aphp-page .vt-frame{aspect-ratio:4/3;border-radius:22px}.aphp-page .vt-play{width:64px;height:64px}.aphp-page .vt-caption{left:1rem;right:1rem;bottom:1rem}.aphp-page .vt-caption strong{font-size:1rem}.aphp-page .vt-caption span{font-size:.7rem}.aphp-page .vt-cam{display:none!important}.aphp-page .vt-title{font-size:clamp(2.35rem,12vw,3.3rem)}.aphp-page .vt-decor-ring{width:190px;height:190px;right:-80px}.aphp-page .vt-decor-dots{width:90px;height:90px;background-size:14px 14px}}
 
 </style>
+
+<style id="rpl-dark-mode">
+/* =========================================================
+   RPL — DARK MODE
+   Aktif saat <body> punya class "theme-dark".
+   ========================================================= */
+html body.theme-dark .aphp-page{background:#08131f;color:#e6eef7;color-scheme:dark}
+
+/* ---------- UMUM ---------- */
+html body.theme-dark .aphp-page .eyebrow{color:#cfe3f7}
+html body.theme-dark .aphp-page .eyebrow.gold{color:#ffb347}
+html body.theme-dark .aphp-page .big-heading{color:#fff}
+html body.theme-dark .aphp-page .orn .o-chevron{border-top-color:rgba(143,189,235,.14);border-right-color:rgba(143,189,235,.14)}
+html body.theme-dark .aphp-page .orn .o-chevron::after{border-top-color:rgba(255,213,74,.08);border-right-color:rgba(255,213,74,.08)}
+html body.theme-dark .aphp-page .orn .o-ring{border-color:rgba(143,189,235,.16);box-shadow:0 0 0 18px rgba(143,189,235,.03),0 0 0 38px rgba(255,213,74,.025)}
+html body.theme-dark .aphp-page .orn .o-dots{background-image:radial-gradient(circle,#8fbdeb 1.8px,transparent 2.5px);opacity:.22}
+html body.theme-dark .aphp-page .orn .o-corner{border-left-color:rgba(143,189,235,.16);border-bottom-color:rgba(143,189,235,.16)}
+html body.theme-dark .aphp-page .orn .o-square::before{border-color:rgba(143,189,235,.22)}
+html body.theme-dark .aphp-page .orn .o-hex{border-color:rgba(143,189,235,.18)}
+
+/* ---------- HERO ---------- */
+html body.theme-dark .aphp-page .history-hero{background:linear-gradient(180deg,#0b1d31 0%,#08131f 100%)!important;color:#e6eef7}
+html body.theme-dark .aphp-page .history-hero::after{color:rgba(255,255,255,.035)!important;-webkit-text-stroke:1px rgba(255,179,0,.14)!important}
+html body.theme-dark .aphp-page .history-ref-ornament-image{filter:invert(1) hue-rotate(180deg);mix-blend-mode:screen;opacity:.6!important}
+html body.theme-dark .aphp-page .history-title .sejarah-white{color:#fff!important}
+html body.theme-dark .aphp-page .history-kicker{background:rgba(255,111,0,.1);border-color:rgba(255,179,0,.3);color:#ffb347}
+html body.theme-dark .aphp-page .history-vt-cta{background:rgba(255,255,255,.06)!important;border-color:rgba(255,255,255,.14)!important;color:#fff!important;box-shadow:0 12px 30px rgba(0,0,0,.4)}
+html body.theme-dark .aphp-page .history-vt-cta:hover{background:rgba(255,179,0,.1)!important;border-color:rgba(255,179,0,.45)!important}
+html body.theme-dark .aphp-page .history-vt-cta strong{color:#fff!important}
+html body.theme-dark .aphp-page .history-vt-cta small{color:#9fb2c6}
+
+/* ---------- SECTION 1: VIDEO ---------- */
+html body.theme-dark .aphp-page .vid-section{background:linear-gradient(180deg,#0a1928 0%,#08131f 100%)}
+html body.theme-dark .aphp-page .vid-copy h2{color:#fff}
+html body.theme-dark .aphp-page .vid-copy .vc-label{color:#8fa3b8}
+html body.theme-dark .aphp-page .vid-copy .vc-desc{color:#a9bbcd}
+html body.theme-dark .aphp-page .vid-card{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.1)}
+html body.theme-dark .aphp-page .vid-card:hover{border-color:rgba(255,179,0,.4);box-shadow:0 14px 30px rgba(0,0,0,.4)}
+html body.theme-dark .aphp-page .vid-card b{color:#fff}
+html body.theme-dark .aphp-page .vid-card span:not(.vc-ic){color:#9fb2c6}
+html body.theme-dark .aphp-page .vid-side{color:rgba(255,255,255,.3)}
+html body.theme-dark .aphp-page .vid-player{box-shadow:0 30px 80px rgba(0,0,0,.55);border-color:rgba(255,255,255,.12)}
+
+/* ---------- SECTION 2: TENTANG ---------- */
+html body.theme-dark .aphp-page .tentang-section{background:linear-gradient(135deg,#0a1928 0%,#0b1d31 55%,#0a1726 100%)}
+html body.theme-dark .aphp-page .tentang-section::before{background-image:linear-gradient(rgba(143,189,235,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(143,189,235,.05) 1px,transparent 1px)}
+html body.theme-dark .aphp-page .tentang-section::after{color:rgba(255,255,255,.03)}
+html body.theme-dark .aphp-page .tentang-copy .tc-label{color:#8fa3b8}
+html body.theme-dark .aphp-page .tentang-copy .tc-lead{color:#b7c8d9}
+html body.theme-dark .aphp-page .tentang-copy .tc-lead strong{color:#fff}
+html body.theme-dark .aphp-page .tentang-copy .tc-sub{color:#9fb2c6}
+html body.theme-dark .aphp-page .tentang-mini-card{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.1);box-shadow:0 10px 25px rgba(0,0,0,.3)}
+html body.theme-dark .aphp-page .tentang-mini-card:hover{border-color:rgba(255,213,74,.3);box-shadow:0 18px 34px rgba(0,0,0,.45)}
+html body.theme-dark .aphp-page .tentang-mini-card span{color:#e6eef7}
+html body.theme-dark .aphp-page .tentang-mini-card .tm-ic{color:#fff}
+html body.theme-dark .aphp-page .tentang-mini-card .tm-ic.gold{color:#0d3a66}
+html body.theme-dark .aphp-page .tentang-visual::before{border-color:rgba(255,179,0,.22)}
+html body.theme-dark .aphp-page .tentang-visual::after{border-color:rgba(143,189,235,.18)}
+html body.theme-dark .aphp-page .tv-panel{box-shadow:0 30px 70px rgba(0,0,0,.55);border-color:rgba(255,255,255,.1)}
+
+/* ---------- SECTION 3: MITRA INDUSTRI ---------- */
+html body.theme-dark .aphp-page .industry-collab{background:linear-gradient(180deg,#08131f 0%,#0a1928 100%)}
+html body.theme-dark .aphp-page .industry-collab::before{opacity:.3}
+html body.theme-dark .aphp-page .industry-collab .ic-head .big-heading{color:#fff}
+html body.theme-dark .aphp-page .industry-collab .ic-head .big-heading span{color:#ffb300}
+html body.theme-dark .aphp-page .industry-collab .ic-head p{color:#a9bbcd}
+html body.theme-dark .aphp-page .industry-collab .ic-marquee-wrap::before{background:linear-gradient(90deg,#08131f,transparent)}
+html body.theme-dark .aphp-page .industry-collab .ic-marquee-wrap::after{background:linear-gradient(270deg,#08131f,transparent)}
+html body.theme-dark .aphp-page .industry-collab .ic-footer{color:#8fa3b8}
+
+/* ---------- SECTION 4: PEMBELAJARAN ---------- */
+html body.theme-dark .aphp-page .belajar-section{background:linear-gradient(180deg,#0a1928 0%,#08131f 100%)}
+html body.theme-dark .aphp-page .belajar-head p{color:#a9bbcd}
+html body.theme-dark .aphp-page .belajar-card{background:#0f2236;border-color:rgba(255,255,255,.1)}
+html body.theme-dark .aphp-page .belajar-card:hover{border-color:rgba(255,179,0,.4);box-shadow:0 24px 50px rgba(0,0,0,.5)}
+html body.theme-dark .aphp-page .belajar-card::after{color:rgba(255,255,255,.04)}
+html body.theme-dark .aphp-page .belajar-card h4{color:#fff}
+html body.theme-dark .aphp-page .belajar-card p{color:#9fb2c6}
+
+/* ---------- SECTION 5: PRAKTIK ---------- */
+html body.theme-dark .aphp-page .praktik-section{background:#08131f}
+html body.theme-dark .aphp-page .praktik-head p{color:#a9bbcd}
+html body.theme-dark .aphp-page .praktik-card:hover{box-shadow:0 30px 66px rgba(0,0,0,.6)}
+
+/* ---------- SECTION 6: FASILITAS ---------- */
+html body.theme-dark .aphp-page .fasilitas-section{background:linear-gradient(180deg,#08131f 0%,#0a1928 100%)}
+html body.theme-dark .aphp-page .fasilitas-head p{color:#a9bbcd}
+html body.theme-dark .aphp-page .fasilitas-card{background:#0f2236;border-color:rgba(255,255,255,.1)}
+html body.theme-dark .aphp-page .fasilitas-card:hover{border-color:rgba(255,213,74,.35);box-shadow:0 20px 44px rgba(0,0,0,.5)}
+html body.theme-dark .aphp-page .fasilitas-card h4{color:#fff}
+html body.theme-dark .aphp-page .fasilitas-card p{color:#9fb2c6}
+html body.theme-dark .aphp-page .fasilitas-cta{background:linear-gradient(135deg,#0a1a2c 0%,#0c2038 50%,#0e2542 100%);border:1px solid rgba(255,255,255,.08)}
+
+/* ---------- SECTION 7: KARYA SISWA ---------- */
+html body.theme-dark .aphp-page .produk-section{background:#08131f}
+html body.theme-dark .aphp-page .produk-note{color:#9fb2c6}
+html body.theme-dark .aphp-page .produk-card{background:#0f2236;border-color:rgba(255,255,255,.1);box-shadow:0 20px 44px rgba(0,0,0,.4)}
+html body.theme-dark .aphp-page .produk-card:hover{box-shadow:0 28px 60px rgba(0,0,0,.6)}
+html body.theme-dark .aphp-page .produk-card .pc-body h3{color:#fff}
+html body.theme-dark .aphp-page .produk-card .pc-body p{color:#9fb2c6}
+
+/* ---------- SECTION 8: KEGIATAN ---------- */
+html body.theme-dark .aphp-page .kegiatan-section{background:linear-gradient(180deg,#0a1928 0%,#08131f 100%)}
+html body.theme-dark .aphp-page .kegiatan-head p{color:#a9bbcd}
+html body.theme-dark .aphp-page .kegiatan-card:hover{box-shadow:0 24px 50px rgba(0,0,0,.55)}
+
+/* ---------- SECTION 9: PROSPEK ---------- */
+html body.theme-dark .aphp-page .prospek-section{background:#08131f}
+html body.theme-dark .aphp-page .prospek-head p{color:#a9bbcd}
+html body.theme-dark .aphp-page .prospek-card{background:#0f2236;border-color:rgba(255,255,255,.1)}
+html body.theme-dark .aphp-page .prospek-card:hover{box-shadow:0 30px 66px rgba(0,0,0,.55)}
+html body.theme-dark .aphp-page .prospek-card .ps-body h4{color:#fff}
+html body.theme-dark .aphp-page .prospek-card .ps-body p{color:#9fb2c6}
+html body.theme-dark .aphp-page .prospek-card .ps-body .ps-tags span{color:#cfe3f7;background:rgba(143,189,235,.14)}
+
+/* ---------- CODING LAB TOUR ---------- */
+html body.theme-dark .aphp-page .vt-section{background:linear-gradient(180deg,#0a1928 0%,#08131f 50%,#0a1726 100%)}
+html body.theme-dark .aphp-page .vt-section::before{background-image:radial-gradient(circle,rgba(143,189,235,.2) 1.5px,transparent 2px);opacity:.35}
+html body.theme-dark .aphp-page .vt-watermark{color:rgba(255,255,255,.04)}
+html body.theme-dark .aphp-page .vt-decor-ring{border-color:rgba(143,189,235,.16)}
+html body.theme-dark .aphp-page .vt-frame{box-shadow:0 30px 75px rgba(0,0,0,.55);border-color:rgba(255,255,255,.12)}
+html body.theme-dark .aphp-page .vt-chip{background:#0f2236;border-color:rgba(255,255,255,.1);box-shadow:0 12px 30px rgba(0,0,0,.4)}
+html body.theme-dark .aphp-page .vt-chip strong{color:#fff}
+html body.theme-dark .aphp-page .vt-chip span{color:#8fa3b8}
+html body.theme-dark .aphp-page .vt-kicker{color:#dbe7f3}
+html body.theme-dark .aphp-page .vt-title{color:#fff}
+html body.theme-dark .aphp-page .vt-sub{color:#9fc4e6}
+html body.theme-dark .aphp-page .vt-desc{color:#a9bbcd}
+html body.theme-dark .aphp-page .vt-feat{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.12);color:#cfe3f7}
+html body.theme-dark .aphp-page .vt-btn{background:linear-gradient(135deg,#ffd54a,#ff8a00);color:#0d3a66;box-shadow:0 14px 32px rgba(0,0,0,.4)}
+
+/* ---------- FINAL CTA ---------- */
+html body.theme-dark .aphp-page .aphp-cta{background:linear-gradient(135deg,#0a1a2c 0%,#0c2038 50%,#0e2542 100%);border:1px solid rgba(255,255,255,.08);box-shadow:0 24px 55px rgba(0,0,0,.55)}
+html body.theme-dark .aphp-page .aphp-cta::after{color:rgba(255,255,255,.03)}
+</style>
+
 @endpush
 
 @section('content')

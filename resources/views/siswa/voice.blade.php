@@ -383,6 +383,146 @@
   .ev-submit-row{flex-direction:column;align-items:stretch}
   .ev-btn{justify-content:center}
 }
+
+/* =========================================================
+   DARK MODE — E-VOICE
+   Pakai CSS nesting (Chrome/Edge 120+, Firefox 117+, Safari 17.2+)
+   ========================================================= */
+:is([data-theme="dark"], [data-bs-theme="dark"], .dark, .dark-mode, .dark-theme, .theme-dark){
+
+  /* ---- Halaman & dekorasi ---- */
+  & .ev-page{background:#081423;color:#e6eef8}
+  & .ev-blob-a{background:radial-gradient(circle,rgba(255,213,74,.14),rgba(255,213,74,0) 70%)}
+  & .ev-blob-b{background:radial-gradient(circle,rgba(47,111,168,.22),rgba(47,111,168,0) 70%)}
+  & .ev-blob-c{background:radial-gradient(circle,rgba(255,122,0,.10),rgba(255,122,0,0) 70%)}
+  & .ev-dotfield{background-image:radial-gradient(rgba(255,255,255,.07) 1.3px,transparent 1.4px)}
+
+  /* ---- Hero (sudah gelap, tinggal digelapkan sedikit) ---- */
+  & .ev-hero{background:linear-gradient(120deg,#050f1d 0%,#082846 50%,#071f38 100%);
+    box-shadow:0 30px 64px rgba(0,0,0,.55);border:1px solid rgba(255,255,255,.06)}
+  & .ev-hero-live{background:#12294a;color:#fff;box-shadow:0 16px 34px rgba(0,0,0,.45)}
+
+  /* ---- Sidebar ---- */
+  & .ev-side-card{background:#0f2340;border-color:rgba(255,255,255,.08);box-shadow:0 14px 34px rgba(0,0,0,.35)}
+  & .ev-side-card h3{color:#fff}
+  & .ev-steps-list li::before{background:rgba(255,255,255,.12)}
+  & .ev-steps-num{background:#17325a;color:#9db0c6}
+  & .ev-steps-text strong{color:#fff}
+  & .ev-steps-text span{color:#9db0c6}
+  & .ev-trust-list li{color:#c3d1e2}
+  & .ev-side-note{background:linear-gradient(135deg,#0b2a4d,#0e3157);border:1px solid rgba(255,255,255,.08);box-shadow:0 18px 40px rgba(0,0,0,.45)}
+
+  /* ---- Tab ---- */
+  & .ev-tabs{background:#0f2340;border:1px solid rgba(255,255,255,.06)}
+  & .ev-tab{color:#9db0c6}
+  & .ev-tab:hover:not(.active){color:#fff}
+  & .ev-tab.active{background:linear-gradient(135deg,#ffd54a,#ffb300);color:#0a2d52;box-shadow:0 10px 24px rgba(255,179,0,.25)}
+
+  /* ---- Card utama ---- */
+  & .ev-card{background:#0f2340;border-color:rgba(255,255,255,.08);box-shadow:0 18px 46px rgba(0,0,0,.4)}
+  & .ev-card-head h2{color:#fff}
+  & .ev-card-head p{color:#9db0c6}
+
+  /* ---- Form ---- */
+  & .ev-label{color:#e6eef8}
+  & .ev-label small,& .ev-hint,& .ev-counter{color:#7f93ab}
+  & .ev-input,& .ev-textarea{background:#0b1b2f;border-color:rgba(255,255,255,.12);color:#fff}
+  & .ev-input::placeholder,& .ev-textarea::placeholder{color:#6d819a}
+  & .ev-input:focus,& .ev-textarea:focus{border-color:#ffb300;box-shadow:0 0 0 4px rgba(255,179,0,.18)}
+  & .ev-error{color:#ff8a80}
+  & .ev-field.has-error .ev-input,& .ev-field.has-error .ev-textarea{border-color:#ff6b5f}
+  & .ev-warn{background:rgba(255,179,0,.10);border-color:rgba(255,179,0,.30);color:#ffd08a}
+
+  /* ---- Kategori ---- */
+  & .ev-cat{background:#0b1b2f;border-color:rgba(255,255,255,.10)}
+  & .ev-cat-icon{background:#17325a;color:#9db0c6}
+  & .ev-cat-label{color:#c3d1e2}
+  & .ev-cat:hover{border-color:rgba(255,213,74,.55)}
+  & .ev-cat.is-selected{background:rgba(255,179,0,.10);border-color:#ffb300;box-shadow:0 10px 22px rgba(255,179,0,.14)}
+  & .ev-cat.is-selected .ev-cat-icon{background:linear-gradient(135deg,#ffd54a,#ffb300);color:#0a2d52}
+  & .ev-cat.is-selected .ev-cat-label{color:#ffd54a}
+
+  /* ---- Switch anonim ---- */
+  & .ev-switch-row{background:#0b1b2f;border-color:rgba(255,255,255,.10)}
+  & .ev-switch-text strong{color:#fff}
+  & .ev-switch-text span{color:#9db0c6}
+  & .ev-switch{background:#33506f}
+  & .ev-switch.is-on{background:linear-gradient(135deg,#ffd54a,#ffb300)}
+  & .ev-privacy-note{color:#8fa3bb}
+
+  /* ---- Tombol ghost ---- */
+  & .ev-btn.ev-btn-ghost{background:transparent;border-color:rgba(255,255,255,.18);color:#e6eef8}
+  & .ev-btn.ev-btn-ghost:hover{border-color:#ffb300;color:#ffd54a}
+
+  /* ---- Sukses & Ticket ---- */
+  & .ev-success h2{color:#fff}
+  & .ev-success>p{color:#9db0c6}
+  & .ev-ticket-box{background:#061121;border:1px solid rgba(255,213,74,.25)}
+  & .ev-success-tip{background:rgba(255,179,0,.10);border-color:rgba(255,179,0,.28);color:#ffd08a}
+
+  /* ---- Lacak laporan ---- */
+  & .ev-track-empty{background:#0b1b2f;border-color:rgba(255,255,255,.12);color:#8fa3bb}
+  & .ev-track-empty i{color:#33506f}
+  & .ev-track-notfound{background:rgba(224,72,59,.12);color:#ff9a90}
+  & .ev-result-head{border-bottom-color:rgba(255,255,255,.10)}
+  & .ev-result-tag{background:#17325a;color:#e6eef8}
+  & .ev-result-head h3{color:#fff}
+  & .ev-result-meta{color:#8fa3bb}
+  & .ev-result-badge.anon{background:#17325a;color:#b8c8dc}
+  & .ev-result-badge.named{background:rgba(63,184,122,.15);color:#6fdca0}
+  & .ev-result-desc{background:#0b1b2f;border-color:rgba(255,255,255,.08);color:#c3d1e2}
+  & #evResultResponseBox{background:rgba(63,184,122,.10)!important;border-color:rgba(63,184,122,.30)!important;color:#c9f2da!important}
+  & #evResultResponseText{color:#8fe3b2!important}
+
+  /* stepper status */
+  & .ev-step-dot{background:#17325a;border-color:#17325a;color:#6d819a}
+  & .ev-step-line{background:#17325a}
+  & .ev-step-label{color:#6d819a}
+  & .ev-step.done .ev-step-dot{background:#1b4f85;border-color:#1b4f85;color:#ffd54a}
+  & .ev-step.done .ev-step-line,& .ev-step.current .ev-step-line{background:#1b4f85}
+  & .ev-step.done .ev-step-label,& .ev-step.current .ev-step-label{color:#fff}
+  & .ev-step.current .ev-step-dot{background:linear-gradient(135deg,#ffd54a,#ffb300);border-color:#ffb300;color:#0a2d52;
+    box-shadow:0 0 0 5px rgba(255,179,0,.18)}
+
+  /* ---- Saran & Kritik ---- */
+  & .ev-ulasan-sort{background:#0b1b2f}
+  & .ev-ulasan-sort-btn{color:#9db0c6}
+  & .ev-ulasan-sort-btn.active{background:linear-gradient(135deg,#ffd54a,#ffb300);color:#0a2d52;box-shadow:0 8px 18px rgba(255,179,0,.22)}
+  & .ev-ulasan-item{background:#0b1b2f;border-color:rgba(255,255,255,.08)}
+  & .ev-ulasan-item-meta strong{color:#fff}
+  & .ev-ulasan-item-meta span{color:#7f93ab}
+  & .ev-ulasan-item-text{color:#c3d1e2}
+  & .ev-ulasan-delete-btn{background:transparent;border-color:rgba(224,72,59,.40);color:#ff8a80}
+  & .ev-ulasan-delete-btn:hover{background:#e0483b;border-color:#e0483b;color:#fff}
+  & .ev-admin-toggle-btn{background:transparent;border-color:rgba(255,255,255,.15);color:#b8c8dc}
+  & .ev-admin-toggle-btn:hover{border-color:#ffd54a;color:#ffd54a}
+  & .ev-admin-toggle-btn.is-active{background:#ffb300;border-color:#ffb300;color:#0a2d52}
+  & .ev-admin-banner{background:rgba(255,179,0,.10);border-color:rgba(255,179,0,.30);color:#ffd08a}
+  & .ev-admin-banner button{background:#ffb300;color:#0a2d52}
+  & .ev-vote-btn{background:transparent;border-color:rgba(255,255,255,.15);color:#b8c8dc}
+  & .ev-vote-agree:hover{background:rgba(63,184,122,.12);border-color:#3fb87a;color:#6fdca0}
+  & .ev-vote-disagree:hover{background:rgba(224,72,59,.12);border-color:#e0483b;color:#ff9a90}
+  & .ev-vote-agree.is-selected{background:rgba(63,184,122,.15);border-color:#3fb87a;color:#6fdca0}
+  & .ev-vote-disagree.is-selected{background:rgba(224,72,59,.15);border-color:#e0483b;color:#ff9a90}
+  & .ev-ulasan-voted-note{color:#7f93ab}
+  & .ev-ulasan-empty{background:#0b1b2f;border-color:rgba(255,255,255,.12);color:#8fa3bb}
+  & .ev-ulasan-empty i{color:#33506f}
+
+  /* ---- Modal (konfirmasi hapus & PIN admin) ---- */
+  & .ev-modal-overlay{background:rgba(2,8,16,.72)}
+  & .ev-modal{background:#0f2340;border:1px solid rgba(255,255,255,.10);box-shadow:0 30px 70px rgba(0,0,0,.6)}
+  & .ev-modal-icon.is-admin{background:rgba(255,213,74,.12);color:#ffd54a}
+  & .ev-modal-title{color:#fff}
+  & .ev-modal-message{color:#9db0c6}
+  & .ev-modal-input{background:#0b1b2f;border-color:rgba(255,255,255,.14);color:#fff}
+  & .ev-modal-error{color:#ff8a80}
+  & .ev-modal-btn-ghost{background:#17325a;color:#c3d1e2}
+  & .ev-modal-btn-ghost:hover{background:#1d3d6b}
+}
+
+/* transisi halus saat ganti tema */
+.ev-page,.ev-card,.ev-side-card,.ev-input,.ev-textarea,.ev-cat,.ev-tab,.ev-tabs,.ev-ulasan-item,.ev-modal{
+  transition:background-color .35s ease,color .35s ease,border-color .35s ease}
 </style>
 @endpush
 

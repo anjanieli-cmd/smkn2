@@ -2438,6 +2438,25 @@
     body.theme-dark .footer-bottom {
       background: #040d18 !important;
     }
+
+    /* ===== VIRTUAL TOUR SECTION — latar gradient harus ditimpa lewat "background" (bukan background-color) ===== */
+html body.theme-dark .vt-section{
+  background:linear-gradient(180deg,#0a1928 0%,#08131f 50%,#0a1726 100%) !important;
+}
+html body.theme-dark .vt-section::before{
+  background-image:radial-gradient(circle,rgba(143,189,235,.2) 1.5px,transparent 2px) !important;
+  opacity:.35 !important;
+}
+html body.theme-dark .vt-watermark{color:rgba(255,255,255,.04) !important}
+html body.theme-dark .vt-decor-ring{border-color:rgba(143,189,235,.16) !important}
+html body.theme-dark .vt-kicker{color:#dbe7f3 !important}
+html body.theme-dark .vt-title{color:#fff !important}
+html body.theme-dark .vt-sub{color:#9fc4e6 !important}
+html body.theme-dark .vt-desc{color:#a9bbcd !important}
+html body.theme-dark .vt-feat{color:#cfe3f7 !important}
+html body.theme-dark .vt-chip strong{color:#fff !important}
+html body.theme-dark .vt-chip span{color:#8fa3b8 !important}
+html body.theme-dark .vt-btn{background:linear-gradient(135deg,#ffd54a,#ff8a00) !important;color:#0d3a66 !important}
   </style>
 </head>
 <body>
@@ -3152,5 +3171,6 @@
 </script>
 
   @stack('scripts')
+
 </body>
 </html>

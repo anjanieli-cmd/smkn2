@@ -165,7 +165,7 @@
           <button class="so-fchip" data-filter="humas">Humas &amp; Industri</button>
           <button class="so-fchip" data-filter="keuangan">Keuangan</button>
           <button class="so-fchip" data-filter="keahlian">Kompetensi Keahlian</button>
-                  </div>
+        </div>
       </div>
 
       <div class="so-empty" id="soEmpty">
@@ -497,8 +497,6 @@
     </div>
   </section>
 
-
-
   <!-- VIRTUAL TOUR 360 — SAMA PERSIS DENGAN HALAMAN SEJARAH -->
   <section class="vt-section" id="virtual-tour" aria-label="Virtual Tour 360 SMK Negeri 2 Mojokerto">
     <span class="vt-watermark" aria-hidden="true">360°</span>
@@ -603,12 +601,142 @@
 </div>
 @endsection
 
-{{-- CSS foto di modal. Tidak mengubah tampilan lain. --}}
+{{-- CSS foto di modal + DARK MODE --}}
 @push('styles')
 <style>
 .so-modal-avatar.has-photo{width:112px;height:112px;border-radius:50%;transform:none;overflow:hidden;
   border:4px solid rgba(255,255,255,.85);background:#dbe9f5}
 .so-modal-avatar.has-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
+</style>
+
+<style id="struktur-dark-mode">
+/* =========================================================
+   STRUKTUR ORGANISASI — DARK MODE
+   Class "theme-dark" dipasang ke <html> oleh layouts/app.blade.php
+   (tombol matahari/bulan). Prefix "html.theme-dark body" sengaja dipakai
+   supaya spesifisitasnya MENGALAHKAN blok dark mode global di layout
+   (yang memaksa search bar & chip jadi putih).
+   ========================================================= */
+html.theme-dark body .so-page{background:#08131f!important;color:#e6eef7;color-scheme:dark}
+
+/* ---------- HERO ---------- */
+html.theme-dark body .history-hero{background:linear-gradient(180deg,#0b1d31 0%,#08131f 100%)!important;color:#e6eef7}
+html.theme-dark body .history-hero::after{color:rgba(255,255,255,.035)!important;-webkit-text-stroke:1px rgba(255,179,0,.14)!important}
+html.theme-dark body .history-ref-ornament-image{filter:invert(1) hue-rotate(180deg);mix-blend-mode:screen;opacity:.6!important}
+html.theme-dark body .history-title .sejarah-white{color:#fff!important}
+html.theme-dark body .history-kicker{background:rgba(255,111,0,.1);border-color:rgba(255,179,0,.3);color:#ffb347}
+html.theme-dark body .history-vt-cta{background:rgba(255,255,255,.06)!important;border-color:rgba(255,255,255,.14)!important;color:#fff!important;box-shadow:0 12px 30px rgba(0,0,0,.4)}
+html.theme-dark body .history-vt-cta:hover{background:rgba(255,179,0,.1)!important;border-color:rgba(255,179,0,.45)!important}
+html.theme-dark body .history-vt-cta small{color:#9fb2c6}
+
+/* ---------- UMUM ---------- */
+html.theme-dark body .so-page .eyebrow{color:#cfe3f7!important}
+html.theme-dark body .so-page .eyebrow::before{background:linear-gradient(90deg,#ffd54a,#ff9800)!important}
+html.theme-dark body .so-page .big-heading{color:#fff!important;text-shadow:none}
+html.theme-dark body .so-sec-desc{color:#a9bbcd!important}
+
+/* ---------- SECTION BAGAN ---------- */
+html.theme-dark body .so-chart-section{background:linear-gradient(180deg,#0b1b2d 0%,#091522 100%)!important}
+
+/* ornamen SVG */
+html.theme-dark body .so-feed-orn .orn-ring{stroke:rgba(143,189,235,.22)}
+html.theme-dark body .so-feed-orn .orn-line{stroke:rgba(143,189,235,.3)}
+html.theme-dark body .so-feed-orn .orn-dash{stroke:rgba(143,189,235,.3)}
+html.theme-dark body .so-feed-orn .orn-dot-navy{fill:#8fbdeb}
+html.theme-dark body .so-feed-orn .orn-node{fill:#0b1b2d}
+html.theme-dark body .so-feed-orn .orn-node-navy{fill:#0b1b2d;stroke:#8fbdeb}
+html.theme-dark body .so-feed-orn .orn-solid-navy{fill:#2f6fa8}
+html.theme-dark body .so-feed-orn .orn-diamond-navy{stroke:rgba(143,189,235,.3)}
+html.theme-dark body .so-feed-orn .orn-grid-dot{fill:#8fbdeb}
+
+/* home-orn */
+html.theme-dark body .home-orn .ho-chevron{border-top-color:rgba(143,189,235,.14);border-right-color:rgba(143,189,235,.14)}
+html.theme-dark body .home-orn .ho-ring{border-color:rgba(143,189,235,.16);box-shadow:0 0 0 20px rgba(143,189,235,.03),0 0 0 42px rgba(255,213,74,.025)}
+html.theme-dark body .home-orn .ho-corner{border-left-color:rgba(143,189,235,.16);border-bottom-color:rgba(143,189,235,.16)}
+html.theme-dark body .home-orn .ho-square::before{border-color:rgba(143,189,235,.22)}
+
+/* ---------- TOOLBAR: SEARCH + FILTER (menimpa aturan "putih" di layout) ---------- */
+html.theme-dark body .so-toolbar{background:rgba(255,255,255,.05)!important;background-color:rgba(8,19,31,.85)!important;border:1px solid rgba(255,255,255,.12)!important;box-shadow:0 18px 44px rgba(0,0,0,.4)!important;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+html.theme-dark body .so-toolbar .so-search{background:rgba(255,255,255,.07)!important;background-color:rgba(255,255,255,.07)!important;border:1px solid rgba(255,255,255,.16)!important;box-shadow:none!important}
+html.theme-dark body .so-toolbar .so-search:focus-within{border-color:rgba(255,213,74,.55)!important;box-shadow:0 0 0 4px rgba(255,213,74,.12)!important}
+html.theme-dark body .so-toolbar .so-search input,
+html.theme-dark body .so-toolbar .so-search input#soSearchInput{background:transparent!important;background-color:transparent!important;color:#e6eef7!important;border:none!important;box-shadow:none!important;outline:none!important}
+html.theme-dark body .so-toolbar .so-search input::placeholder,
+html.theme-dark body .so-toolbar .so-search input#soSearchInput::placeholder{color:#7f93a8!important}
+html.theme-dark body .so-toolbar .so-search i{color:#ffd54a!important}
+html.theme-dark body .so-filter-label{color:#8fa3b8!important}
+html.theme-dark body .so-toolbar .so-fchip{background:rgba(255,255,255,.07)!important;background-color:rgba(255,255,255,.07)!important;border:1px solid rgba(255,255,255,.14)!important;color:#cfe3f7!important;box-shadow:none!important}
+html.theme-dark body .so-toolbar .so-fchip:hover{background:rgba(255,255,255,.13)!important;border-color:rgba(255,213,74,.45)!important;color:#fff!important}
+html.theme-dark body .so-toolbar .so-fchip.is-active{background:linear-gradient(135deg,#ffd54a,#ff8a00)!important;border-color:transparent!important;color:#0d3a66!important;box-shadow:0 8px 20px rgba(255,138,0,.3)!important}
+html.theme-dark body .so-empty{background:rgba(255,255,255,.05)!important;border-color:rgba(255,255,255,.14)!important;color:#a9bbcd}
+html.theme-dark body .so-empty strong{color:#fff!important}
+
+/* ---------- LEVEL ---------- */
+html.theme-dark body .so-level-badge{background:rgba(255,255,255,.07)!important;border:1px solid rgba(255,255,255,.14)!important;color:#e6eef7!important;box-shadow:none!important}
+html.theme-dark body .so-level-badge i{color:#ffd54a}
+html.theme-dark body .so-level-rule{background:linear-gradient(90deg,rgba(143,189,235,.3),transparent)}
+
+/* ---------- KARTU (gaya feed) ---------- */
+html.theme-dark body .so-card{background:#0f2236!important;background-color:#0f2236!important;border-color:rgba(255,255,255,.1)!important;box-shadow:0 18px 44px rgba(0,0,0,.4)!important}
+html.theme-dark body .so-card:hover,
+html.theme-dark body .so-card:focus-visible{border-color:rgba(255,179,0,.45)!important;box-shadow:0 30px 62px rgba(0,0,0,.55)!important}
+html.theme-dark body .so-feed-head{background:transparent;border-bottom-color:rgba(255,255,255,.08)}
+html.theme-dark body .so-feed-head>img{background:rgba(255,255,255,.95);border-radius:50%;padding:3px}
+html.theme-dark body .so-feed-account strong{color:#fff!important}
+html.theme-dark body .so-feed-account span{color:#8fa3b8}
+html.theme-dark body .so-feed-more{color:#8fa3b8}
+html.theme-dark body .so-photo-wrap{background:linear-gradient(160deg,#1a3752 0%,#12283f 58%,#0e2036 100%)}
+html.theme-dark body .so-photo{background:linear-gradient(160deg,#1a3752 0%,#12283f 58%,#0e2036 100%);border-color:rgba(255,255,255,.14)}
+html.theme-dark body .so-photo-ring{border-color:rgba(143,189,235,.25)}
+html.theme-dark body .so-feed-actions{color:#dbe7f3}
+html.theme-dark body .so-card-name{color:#fff!important}
+html.theme-dark body .so-card-person{color:#ffd54a!important}
+html.theme-dark body .so-card-role{background:rgba(255,179,0,.1);border-color:rgba(255,179,0,.3);color:#ffc233}
+html.theme-dark body .so-card-unit{color:#a9bbcd!important}
+
+/* ---------- VIRTUAL TOUR ---------- */
+html.theme-dark body .vt-section{background:linear-gradient(180deg,#0a1928 0%,#08131f 50%,#0a1726 100%)!important}
+html.theme-dark body .vt-section::before{background-image:radial-gradient(circle,rgba(143,189,235,.2) 1.5px,transparent 2px);opacity:.35}
+html.theme-dark body .vt-watermark{color:rgba(255,255,255,.04)}
+html.theme-dark body .vt-decor-ring{border-color:rgba(143,189,235,.16)}
+html.theme-dark body .vt-frame{box-shadow:0 30px 75px rgba(0,0,0,.55);border-color:rgba(255,255,255,.12)}
+html.theme-dark body .vt-chip{background:#0f2236!important;border-color:rgba(255,255,255,.1)!important;box-shadow:0 12px 30px rgba(0,0,0,.4)}
+html.theme-dark body .vt-chip strong{color:#fff!important}
+html.theme-dark body .vt-chip span{color:#8fa3b8}
+html.theme-dark body .vt-kicker{color:#dbe7f3}
+html.theme-dark body .vt-title{color:#fff!important}
+html.theme-dark body .vt-sub{color:#9fc4e6}
+html.theme-dark body .vt-desc{color:#a9bbcd!important}
+html.theme-dark body .vt-feat{background:rgba(255,255,255,.06)!important;border-color:rgba(255,255,255,.12)!important;color:#cfe3f7!important}
+html.theme-dark body .vt-btn{background:linear-gradient(135deg,#ffd54a,#ff8a00);color:#0d3a66;box-shadow:0 14px 32px rgba(0,0,0,.4)}
+
+/* ---------- PERAN & TUGAS ---------- */
+html.theme-dark body .so-role-card{background:#0f2236!important;border-color:rgba(255,255,255,.1)!important;box-shadow:0 18px 42px rgba(0,0,0,.4)!important}
+html.theme-dark body .so-role-card:hover{border-color:rgba(255,179,0,.45)!important;box-shadow:0 30px 62px rgba(0,0,0,.55)!important}
+html.theme-dark body .so-role-icon:not(.is-gold){background:linear-gradient(135deg,#1d4a75,#2f6fa8);color:#ffd54a}
+html.theme-dark body .so-role-card h4{color:#fff!important}
+html.theme-dark body .so-role-card p{color:#a9bbcd!important}
+
+/* ---------- CTA PENUTUP ---------- */
+html.theme-dark body .so-cta{background:#08131f}
+html.theme-dark body .so-cta::after{color:rgba(255,255,255,.04);-webkit-text-stroke:1px rgba(255,255,255,.06)}
+html.theme-dark body .so-cta-inner{background:linear-gradient(135deg,#12395f 0%,#0f3256 48%,#14406d 100%);border-color:rgba(255,255,255,.12);box-shadow:0 24px 55px rgba(0,0,0,.5)}
+
+/* ---------- MODAL DETAIL ---------- */
+html.theme-dark body .so-modal-overlay{background:rgba(2,8,16,.78)}
+html.theme-dark body .so-modal{background:#0f2236;border:1px solid rgba(255,255,255,.12);box-shadow:0 40px 90px rgba(0,0,0,.6);color:#e6eef7}
+html.theme-dark body .so-modal-close{background:rgba(255,255,255,.1);color:#fff}
+html.theme-dark body .so-modal-close:hover{background:#ffb300;color:#0d3a66}
+html.theme-dark body .so-modal-body{background:#0f2236}
+html.theme-dark body .so-modal-label{color:#cfe3f7}
+html.theme-dark body .so-modal-label i{color:#ffd54a}
+html.theme-dark body .so-tag{background:rgba(143,189,235,.1);border-color:rgba(143,189,235,.25);color:#cfe3f7}
+html.theme-dark body .so-tag.is-gold{background:rgba(255,179,0,.12);border-color:rgba(255,179,0,.35);color:#ffcf5a}
+html.theme-dark body .so-modal-tasks li{color:#a9bbcd;border-color:rgba(255,255,255,.08)}
+html.theme-dark body .so-modal-tasks li i{color:#ffd54a}
+html.theme-dark body .so-modal-note{background:rgba(255,255,255,.05);border-color:rgba(255,179,0,.3);color:#a9bbcd}
+html.theme-dark body .so-modal-note i{color:#ffd54a}
+html.theme-dark body .so-modal-avatar.has-photo{border-color:rgba(255,255,255,.2);background:#17324d}
 </style>
 @endpush
 
