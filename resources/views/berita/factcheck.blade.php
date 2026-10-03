@@ -468,6 +468,21 @@ body.fc-dark #fcSearchInput:-webkit-autofill{-webkit-box-shadow:0 0 0 40px #0f23
 .fc-page .fc-section-head::before,.fc-page .fc-section-head::after,
 .fc-page .fc-toolbar::before,.fc-page .fc-toolbar::after{content:none!important;display:none!important}
 
+/* ===== Level ID: mengalahkan CSS global apa pun yang memberi background pada kolom utama ===== */
+html body #fcMain,
+html body #fcSectionHead,
+html body #fcMain .fc-toolbar,
+html body #fcMain .fc-status-pills{background:none!important;background-color:transparent!important;background-image:none!important;
+  border:none!important;box-shadow:none!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;filter:none!important}
+html body #fcMain::before,html body #fcMain::after,
+html body #fcSectionHead::before,html body #fcSectionHead::after{content:none!important;display:none!important;background:none!important}
+
+/* ===== Search: buang garis putih (outline/border/wrapper) ===== */
+.fc-page .fc-search{background:none!important;border:none!important;box-shadow:none!important;padding:0!important}
+body.fc-dark #fcSearchInput{outline:none!important;outline-color:transparent!important;-webkit-appearance:none!important;appearance:none!important;
+  border-style:solid!important;border-width:1.5px!important;border-color:rgba(255,255,255,.14)!important}
+body.fc-dark #fcSearchInput:focus{outline:none!important;border-color:#ffb300!important}
+
 /* transisi halus */
 .fc-page,.fc-report,.fc-report-form,.fc-stat,.fc-side-card,.fc-card,.fc-cta,.fc-pill,.fc-field input,.fc-field select,.fc-field textarea{
   transition:background-color .35s ease,color .35s ease,border-color .35s ease}
@@ -590,9 +605,9 @@ body.fc-dark #fcSearchInput:-webkit-autofill{-webkit-box-shadow:0 0 0 40px #0f23
         </div>
       </aside>
 
-      <div class="fc-main">
+      <div class="fc-main" id="fcMain">
 
-        <div class="fc-section-head">
+        <div class="fc-section-head" id="fcSectionHead">
           <span class="tag"><i class="fas fa-list-check"></i> Daftar Klarifikasi</span>
           <h2>Sudah <span>Diverifikasi</span></h2>
           <p>Hasil penelusuran admin atas laporan dari warga sekolah maupun temuan tim FactCheck sendiri.</p>
@@ -689,9 +704,37 @@ body.fc-dark #fcSearchInput:-webkit-autofill{-webkit-box-shadow:0 0 0 40px #0f23
         if (dark) si.style.setProperty(p, props[p], 'important');
         else si.style.removeProperty(p);
       });
+      ['outline', '-webkit-appearance', 'appearance'].forEach(function (p) {
+        if (dark) si.style.setProperty(p, p === 'outline' ? 'none' : 'none', 'important');
+        else si.style.removeProperty(p);
+      });
+      var wrap = si.parentNode;
+      if (wrap) {
+        ['background', 'border', 'box-shadow', 'padding'].forEach(function (p) {
+          wrap.style.setProperty(p, p === 'padding' ? '0' : 'none', 'important');
+        });
+      }
+    }
+
+    function clearPanelBg() {
+      ['fcMain', 'fcSectionHead'].forEach(function (id) {
+        var el = document.getElementById(id);
+        if (!el) return;
+        el.style.setProperty('background', 'none', 'important');
+        el.style.setProperty('background-color', 'transparent', 'important');
+        el.style.setProperty('background-image', 'none', 'important');
+        el.style.setProperty('box-shadow', 'none', 'important');
+        el.style.setProperty('border', 'none', 'important');
+      });
+      var tb = document.querySelector('#fcMain .fc-toolbar');
+      if (tb) {
+        tb.style.setProperty('background', 'none', 'important');
+        tb.style.setProperty('box-shadow', 'none', 'important');
+      }
     }
 
     function apply() {
+      clearPanelBg();
       var dark = isSiteDark();
       if (dark) {
         if (!body.classList.contains('fc-dark')) { body.classList.add('fc-dark'); addedByUs = true; }

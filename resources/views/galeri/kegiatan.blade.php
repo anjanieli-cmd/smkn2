@@ -361,11 +361,107 @@
   display:flex;align-items:center;justify-content:space-between;gap:.75rem}
 .kg-album-caption{font-size:.8rem;color:#c9d8e8;margin:0}
 .kg-album-counter{font-size:.74rem;font-weight:900;color:#ffd54a;letter-spacing:.1em}
+
+/* =========================================================
+   DARK MODE — KEGIATAN (body.kg-dark)
+   Class kg-dark dipasang otomatis oleh JS setiap kali dark mode
+   situs aktif. Semua selector memakai ID #kgPage supaya specificity-nya
+   mengalahkan CSS dark mode global dan tidak tertimpa.
+   Palet: halaman #060f1d · kartu #0a1a2e · panel #0c1c33 · input #0f2340
+   ========================================================= */
+body.kg-dark #kgPage{background:#060f1d!important;color:#e6eef8!important;color-scheme:dark}
+
+/* ----- Hero ----- */
+/* Hero: disamakan persis dengan hero halaman Berita (dark) */
+body.kg-dark #kgPage .kg-hero{background:#08172a!important;color:#e6eef8!important}
+body.kg-dark #kgPage .kg-hero::before{content:none!important;display:none!important}
+body.kg-dark #kgPage .kg-hero::after{color:rgba(255,255,255,.04)!important;-webkit-text-stroke:1px rgba(255,179,0,.14)!important}
+body.kg-dark #kgPage .kg-ref-ornaments{opacity:.45!important;background-image:none!important;filter:none!important}
+body.kg-dark #kgPage .kg-ref-ornament-image{opacity:1!important;filter:invert(.92) hue-rotate(180deg) brightness(.9)!important}
+body.kg-dark #kgPage .kg-kicker{background:rgba(255,111,0,.10)!important;border-color:rgba(255,111,0,.35)!important;color:#ff9a3d!important}
+body.kg-dark #kgPage .kg-title .kg-white{color:#fff!important}
+body.kg-dark #kgPage .kg-lead{color:#9db0c6!important}
+body.kg-dark #kgPage .kg-pill{background:#0c1c33!important;border-color:rgba(255,255,255,.12)!important;color:#e6eef8!important;
+  box-shadow:0 8px 24px rgba(0,0,0,.35)!important}
+
+/* ----- Heading section ----- */
+body.kg-dark #kgPage .kg-eyebrow{color:#6fd3ee!important}
+body.kg-dark #kgPage .kg-eyebrow--gold{color:#ffd54a!important}
+body.kg-dark #kgPage .kg-section-title{color:#fff!important}
+body.kg-dark #kgPage .kg-section-sub{color:#9db0c6!important}
+
+/* ----- Ornamen ----- */
+body.kg-dark #kgPage .kg-orn .ko-circle{border-color:rgba(255,255,255,.12)!important}
+body.kg-dark #kgPage .kg-orn .ko-dots{background-image:radial-gradient(rgba(255,255,255,.32) 1.5px,transparent 1.6px)!important}
+body.kg-dark #kgPage .kg-orn .ko-line{background:rgba(255,255,255,.16)!important}
+body.kg-dark #kgPage .kg-orn .ko-grid{background-image:linear-gradient(rgba(255,255,255,.08) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(255,255,255,.08) 1px,transparent 1px)!important}
+body.kg-dark #kgPage .kg-orn .ko-stamp{background:rgba(255,255,255,.04)!important;border-color:rgba(255,255,255,.16)!important;color:rgba(255,255,255,.5)!important}
+
+/* ----- Statistik & kutipan pembuka ----- */
+body.kg-dark #kgPage .kg-stat{background:#0a1a2e!important;border-color:rgba(255,255,255,.08)!important;box-shadow:0 10px 26px rgba(0,0,0,.35)!important}
+body.kg-dark #kgPage .kg-stat:hover{border-color:rgba(255,179,0,.45)!important;box-shadow:0 16px 34px rgba(0,0,0,.5)!important}
+body.kg-dark #kgPage .kg-stat-num{color:#fff!important}
+body.kg-dark #kgPage .kg-stat-label{color:#9db0c6!important}
+body.kg-dark #kgPage .kg-intro-note blockquote p{color:#e6eef8!important}
+body.kg-dark #kgPage .kg-intro-note blockquote footer{color:#ffd54a!important}
+
+/* ----- Featured ----- */
+body.kg-dark #kgPage .kg-feat{background:#0a1a2e!important;box-shadow:0 30px 70px rgba(0,0,0,.55)!important;border:1px solid rgba(255,255,255,.06)}
+
+/* ----- Filter & search ----- */
+body.kg-dark #kgPage .kg-fbtn{background:#0c1c33!important;border-color:rgba(255,255,255,.14)!important;color:#c3d1e2!important}
+body.kg-dark #kgPage .kg-fbtn i{color:#ffd54a!important}
+body.kg-dark #kgPage .kg-fbtn:hover{border-color:#ffd54a!important;color:#fff!important}
+body.kg-dark #kgPage .kg-fbtn.active{background:linear-gradient(135deg,#ffd54a,#ffb300)!important;border-color:#ffb300!important;
+  color:#0a2d52!important;box-shadow:0 8px 22px rgba(255,179,0,.28)!important}
+body.kg-dark #kgPage .kg-fbtn.active i{color:#0a2d52!important}
+body.kg-dark #kgPage #kgSearchInput{background:#0f2340!important;background-color:#0f2340!important;
+  border:1.5px solid rgba(255,255,255,.14)!important;color:#fff!important;-webkit-text-fill-color:#fff!important;
+  outline:none!important;box-shadow:none!important;-webkit-appearance:none!important;appearance:none!important}
+body.kg-dark #kgPage #kgSearchInput::placeholder{color:#6d819a!important;-webkit-text-fill-color:#6d819a!important;opacity:1}
+body.kg-dark #kgPage #kgSearchInput:focus{background:#12294a!important;border-color:#ffb300!important;box-shadow:0 0 0 4px rgba(255,179,0,.18)!important}
+body.kg-dark #kgPage .kg-search-wrap i{color:#7f93ab!important}
+
+/* ----- Kartu galeri ----- */
+body.kg-dark #kgPage .kg-card{background:#0a1a2e!important;border:1px solid rgba(255,255,255,.07);box-shadow:0 10px 26px rgba(0,0,0,.45)!important}
+body.kg-dark #kgPage .kg-card:hover{box-shadow:0 22px 46px rgba(0,0,0,.65)!important}
+
+/* ----- Perjalanan satu tahun & CTA (sudah gelap, digelapkan sedikit) ----- */
+body.kg-dark #kgPage .kg-year{background:#0a1a2e!important;background-image:none!important;
+  border:1px solid rgba(255,255,255,.08)!important;box-shadow:0 24px 54px rgba(0,0,0,.45)!important}
+body.kg-dark #kgPage .kg-month{background:#0c1c33!important;border:1px solid rgba(255,255,255,.08)!important;
+  -webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+body.kg-dark #kgPage .kg-month:hover{background:#0f2340!important}
+body.kg-dark #kgPage .kg-month-evt{color:#dbe6f3!important}
+body.kg-dark #kgPage .kg-month-note{color:#8ea3bb!important}
+body.kg-dark #kgPage .kg-section-sub[style]{color:#9db0c6!important}
+body.kg-dark #kgPage .kg-cta{background:#0a1a2e!important;background-image:none!important;
+  border:1px solid rgba(255,255,255,.08)!important;box-shadow:0 24px 54px rgba(0,0,0,.45)!important}
+body.kg-dark #kgPage .kg-cta::before{opacity:.35!important}
+body.kg-dark #kgPage .kg-cta p{color:#9db0c6!important}
+
+/* ----- Search: pembungkus tanpa background putih, lebih panjang & besar ----- */
+body.kg-dark #kgPage .kg-search-wrap{background:none!important;background-color:transparent!important;border:none!important;
+  box-shadow:none!important;padding:0!important;outline:none!important}
+body.kg-dark #kgPage .kg-search-wrap::before,body.kg-dark #kgPage .kg-search-wrap::after{content:none!important;display:none!important}
+
+/* ----- Momen pilihan ----- */
+body.kg-dark #kgPage .kg-pick-big{box-shadow:0 24px 54px rgba(0,0,0,.55)!important;border:1px solid rgba(255,255,255,.06)}
+body.kg-dark #kgPage .kg-pick-small{box-shadow:0 14px 32px rgba(0,0,0,.5)!important;border:1px solid rgba(255,255,255,.06)}
+
+@media(max-width:640px){
+  .kg-search-wrap{min-width:100%!important;max-width:100%!important;flex:1 1 100%!important}
+  #kgSearchInput{height:48px!important;font-size:.92rem!important}
+}
+
+/* transisi halus */
+.kg-page,.kg-stat,.kg-fbtn,.kg-pill,.kg-card,.kg-kicker{transition:background-color .35s ease,color .35s ease,border-color .35s ease,transform .35s ease,box-shadow .35s ease}
 </style>
 @endpush
 
 @section('content')
-<div class="kg-page">
+<div class="kg-page" id="kgPage">
 
 <!-- ================= HERO (identik 100% dengan hero Ekstrakurikuler) ================= -->
 <section class="kg-hero">
@@ -472,9 +568,9 @@
         <button class="kg-fbtn" data-filter="kegiatan-sekolah"><i class="fas fa-school"></i> Kegiatan Sekolah</button>
         <button class="kg-fbtn" data-filter="kunjungan-industri"><i class="fas fa-industry"></i> Kunjungan/Industri</button>
       </div>
-      <div style="position:relative;min-width:240px;max-width:320px;flex:1" data-reveal>
-        <i class="fas fa-search" style="position:absolute;left:14px;top:50%;transform:translateY(-50%);color:#2f6fa8;font-size:.85rem"></i>
-        <input type="text" id="kgSearchInput" value="{{ request('search') }}" placeholder="Cari judul kegiatan..." style="width:100%;padding:.55rem 1rem .55rem 2.4rem;border-radius:99px;border:1px solid rgba(13,58,102,.2);background:#fff;color:#0d3a66;font-size:.8rem;outline:none">
+      <div class="kg-search-wrap" style="position:relative;min-width:320px;max-width:560px;flex:1 1 420px" data-reveal>
+        <i class="fas fa-search" style="position:absolute;left:20px;top:50%;transform:translateY(-50%);color:#2f6fa8;font-size:1rem;z-index:2"></i>
+        <input type="text" id="kgSearchInput" value="{{ request('search') }}" placeholder="Cari judul kegiatan..." style="width:100%;height:52px;padding:.85rem 1.4rem .85rem 3.2rem;border-radius:99px;border:1px solid rgba(13,58,102,.2);background:#fff;color:#0d3a66;font-size:.98rem;outline:none">
       </div>
     </div>
 
@@ -844,6 +940,8 @@
       <a href="{{ route('kontak') }}" class="kg-cta-btn">Hubungi Sekolah <i class="fas fa-arrow-right"></i></a>
     </div>
   </div>
+</section>
+
 <!-- ================= LIGHTBOX ALBUM MODAL ================= -->
 <div class="kg-album-modal" id="kgAlbumModal" aria-hidden="true">
   <div class="kg-album-dialog" role="dialog" aria-modal="true">
@@ -878,6 +976,99 @@
 <script>
 (function () {
   'use strict';
+
+  /* ---------- SINKRON DARK MODE SITUS -> body.kg-dark ----------
+     Dark mode layout situs punya class sendiri (bukan kg-dark). Fungsi ini
+     membaca status dark mode situs (class/atribut di <html> & <body>, atau
+     kecerahan background body sebagai cadangan) lalu memasang/melepas class
+     "kg-dark" di <body> secara otomatis, termasuk saat tombol toggle ditekan. */
+  (function syncDarkMode() {
+    var html = document.documentElement;
+    var body = document.body;
+    var addedByUs = false;
+    var ATTRS = ['data-theme', 'data-bs-theme', 'data-mode', 'data-color-scheme', 'data-color-mode'];
+
+    function hasDarkToken(el) {
+      var tokens = el.className && el.className.split ? el.className.split(/\s+/) : [];
+      for (var i = 0; i < tokens.length; i++) {
+        if (tokens[i] !== 'kg-dark' && tokens[i] !== 'fc-dark' && /dark|night/i.test(tokens[i])) return true;
+      }
+      for (var j = 0; j < ATTRS.length; j++) {
+        var v = el.getAttribute(ATTRS[j]);
+        if (v && /dark|night/i.test(v)) return true;
+      }
+      return false;
+    }
+
+    function bgIsDark(el) {
+      var c = window.getComputedStyle(el).backgroundColor || '';
+      var m = c.match(/rgba?\(\s*(\d+)[,\s]+(\d+)[,\s]+(\d+)(?:[,\s/]+([\d.]+))?/);
+      if (!m) return null;
+      var a = m[4] === undefined ? 1 : parseFloat(m[4]);
+      if (a < 0.5) return null;
+      var lum = (0.2126 * m[1] + 0.7152 * m[2] + 0.0722 * m[3]) / 255;
+      return lum < 0.3;
+    }
+
+    function isSiteDark() {
+      if (hasDarkToken(html) || hasDarkToken(body)) return true;
+      var b = bgIsDark(body);
+      if (b === null) b = bgIsDark(html);
+      return b === true;
+    }
+
+    /* cadangan inline !important untuk kolom search (inline style asli berwarna putih) */
+    function styleSearchInput(dark) {
+      var si = document.getElementById('kgSearchInput');
+      if (!si) return;
+      var props = {
+        'background': '#0f2340',
+        'background-color': '#0f2340',
+        'border': '1.5px solid rgba(255,255,255,.14)',
+        'color': '#ffffff',
+        '-webkit-text-fill-color': '#ffffff',
+        'outline': 'none'
+      };
+      Object.keys(props).forEach(function (p) {
+        if (dark) si.style.setProperty(p, props[p], 'important');
+        else si.style.removeProperty(p);
+      });
+      var wrap = si.parentNode;
+      if (wrap) {
+        ['background', 'border', 'box-shadow', 'padding'].forEach(function (p) {
+          if (dark) wrap.style.setProperty(p, p === 'padding' ? '0' : 'none', 'important');
+          else wrap.style.removeProperty(p);
+        });
+      }
+    }
+
+    function apply() {
+      var dark = isSiteDark();
+      if (dark) {
+        if (!body.classList.contains('kg-dark')) { body.classList.add('kg-dark'); addedByUs = true; }
+      } else if (addedByUs) {
+        body.classList.remove('kg-dark');
+        addedByUs = false;
+      }
+      styleSearchInput(body.classList.contains('kg-dark'));
+    }
+
+    function applySoon() {
+      apply();
+      setTimeout(apply, 80);
+      setTimeout(apply, 500);
+    }
+
+    try {
+      var mo = new MutationObserver(function () { applySoon(); });
+      var opts = { attributes: true, attributeFilter: ['class'].concat(ATTRS) };
+      mo.observe(html, opts);
+      mo.observe(body, opts);
+    } catch (e) {}
+    document.addEventListener('click', function () { setTimeout(apply, 120); setTimeout(apply, 520); });
+    window.addEventListener('storage', applySoon);
+    applySoon();
+  })();
 
   /* ---------- REVEAL ON SCROLL ---------- */
   var revealEls = document.querySelectorAll('[data-reveal]');
