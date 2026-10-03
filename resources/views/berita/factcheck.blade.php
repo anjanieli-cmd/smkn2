@@ -1076,6 +1076,19 @@ body.fc-dark #fcSearchInput:focus{outline:none!important;border-color:#ffb300!im
       return;
     }
 
+    var submitBtn = reportForm.querySelector('button[type="submit"]');
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mengirim Laporan...';
+    }
+
+    var resetSubmitBtn = function() {
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Laporkan Informasi Ini';
+      }
+    };
+
     fetch('/api/fact-check/report', {
       method: 'POST',
       headers: {
@@ -1085,6 +1098,7 @@ body.fc-dark #fcSearchInput:focus{outline:none!important;border-color:#ffb300!im
       body: JSON.stringify({ link: link, kategori: kategori, catatan: catatan })
     }).then(function(r) { return r.json(); })
     .then(function() {
+      resetSubmitBtn();
       FACTS.unshift({
         status: 'Belum Terkonfirmasi',
         kategori: kategori,
@@ -1100,6 +1114,7 @@ body.fc-dark #fcSearchInput:focus{outline:none!important;border-color:#ffb300!im
       reportForm.reset();
       render();
     }).catch(function() {
+      resetSubmitBtn();
       FACTS.unshift({
         status: 'Belum Terkonfirmasi',
         kategori: kategori,

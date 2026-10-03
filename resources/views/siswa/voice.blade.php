@@ -1165,11 +1165,24 @@
       return;
     }
 
+    var submitBtn = document.getElementById('evSubmitBtn');
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mengirim...';
+    }
+
     var isAnon = anonInput.checked;
     var payload = {
       title: judul.value.trim(),
       description: deskripsi.value.trim(),
       category: selectedCat ? selectedCat.value : 'Lainnya'
+    };
+
+    var resetBtnState = function () {
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Kirim Laporan';
+      }
     };
 
     fetch('/api/e-voice', {
@@ -1181,6 +1194,7 @@
       body: JSON.stringify(payload)
     }).then(function(r) { return r.json(); })
     .then(function(res) {
+      resetBtnState();
       var ticketId = (res && res.data && res.data.ticket_code) ? res.data.ticket_code : generateTicketId();
       var reports = loadReports();
       reports[ticketId] = {
@@ -1202,6 +1216,7 @@
       successCard.classList.add('is-shown');
       successCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }).catch(function() {
+      resetBtnState();
       var ticketId = generateTicketId();
       var reports = loadReports();
       reports[ticketId] = {
@@ -1679,6 +1694,12 @@
 
     errEl.classList.remove('is-shown');
 
+    var ulasanSubmitBtn = document.getElementById('evUlasanSubmitBtn');
+    if (ulasanSubmitBtn) {
+      ulasanSubmitBtn.disabled = true;
+      ulasanSubmitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mengirim...';
+    }
+
     var list = loadUlasan();
     var isAnon = ulasanAnonInput.checked;
     var newId = generateUlasanId();
@@ -1698,6 +1719,11 @@
     ulasanCountEl.textContent = '0';
     ulasanAnonInput.checked = true;
     syncUlasanAnon();
+
+    if (ulasanSubmitBtn) {
+      ulasanSubmitBtn.disabled = false;
+      ulasanSubmitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Kirim Ulasan';
+    }
 
     ulasanSortMode = 'terbaru';
     document.querySelectorAll('.ev-ulasan-sort-btn').forEach(function (b) {
