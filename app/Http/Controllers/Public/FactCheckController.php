@@ -68,6 +68,17 @@ class FactCheckController extends Controller
             'published_at' => now(),
         ]);
 
+        try {
+            $adminEmail = config('mail.from.address') ?: 'admin@smkn2mojokerto.sch.id';
+            $adminUser = \App\Models\User::first();
+            if ($adminUser && !empty($adminUser->email)) {
+                $adminEmail = $adminUser->email;
+            }
+            \Illuminate\Support\Facades\Mail::to($adminEmail)->send(new \App\Mail\AdminFactCheckNotificationMail($item));
+        } catch (\Throwable $e) {
+            \Illuminate\Support\Facades\Log::warning('Email notification failed for FactCheck: ' . $e->getMessage());
+        }
+
         return ApiResponse::success($item, 'Laporan dugaan hoaks berhasil dikirim dan menunggu verifikasi admin.', null, 201);
     }
 }

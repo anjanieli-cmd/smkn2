@@ -1213,8 +1213,8 @@ html.theme-dark body .so-modal-avatar.has-photo{border-color:rgba(255,255,255,.2
     aspect-ratio: 1 / 1 !important;
   }
   .so-photo img {
-    object-fit: contain !important;
-    object-position: center center !important;
+    object-fit: cover !important;
+    object-position: center top !important;
   }
 
   .so-card-name {
@@ -1272,8 +1272,8 @@ html.theme-dark body .so-modal-avatar.has-photo{border-color:rgba(255,255,255,.2
     aspect-ratio: 1 / 1 !important;
   }
   .so-photo img {
-    object-fit: contain !important;
-    object-position: center center !important;
+    object-fit: cover !important;
+    object-position: center top !important;
   }
   .so-card-name {
     font-size: 1.05rem !important;

@@ -327,9 +327,8 @@
         ['admin.job-vacancies.index',   'fa-briefcase',         'Lowongan Kerja'],
         ['admin.industries.index',      'fa-handshake',         'DUDI &amp; Mitra Industri'],
       ],
-      'AI &amp; Chatbot' => [
+      'AI Tools' => [
         ['admin.ai-matchmaker.index',   'fa-robot',             'AI Matchmaker Ekskul'],
-        ['admin.chatbot-nara.index',    'fa-message',           'Isi Jawaban Chatbot NARA'],
       ],
       'Pengaturan Situs' => [
         ['admin.announcement.index',    'fa-bullhorn',          'Announcement Bar'],
@@ -338,6 +337,10 @@
         ['admin.general.index', 'fa-globe',       'Konten Beranda'],
       ],
     ];
+
+    $unreadEVoices = \App\Models\EVoice::orderBy('created_at', 'desc')->take(5)->get();
+    $unreadFactChecks = \App\Models\FactCheck::orderBy('created_at', 'desc')->take(5)->get();
+    $hasNewNotif = $unreadEVoices->isNotEmpty() || $unreadFactChecks->isNotEmpty();
   @endphp
 
   <!-- ===================== SIDEBAR ===================== -->
@@ -398,59 +401,71 @@
       </div>
 
       <div class="db-top-right">
-        <!-- BELL NOTIFICATIONS DROPDOWN -->
-        <button class="db-icon-btn" id="dbBtnBell" title="Notifikasi" type="button">
+        <!-- BELL NOTIFICATIONS DROPDOWN (E-VOICE) -->
+        <button class="db-icon-btn" id="dbBtnBell" title="Notifikasi E-Voice Aspirasi" type="button">
           <i class="fas fa-bell"></i>
-          <span class="dot"></span>
+          @if($unreadEVoices->isNotEmpty())
+            <span class="dot"></span>
+          @endif
         </button>
         <div class="db-dropdown" id="dbDropBell">
           <div class="db-dropdown-head">
-            <h4>Notifikasi Terkini</h4>
-            <span style="font-size:.7rem;color:var(--gold-light)">Baru</span>
+            <h4>Notifikasi E-Voice Aspirasi</h4>
+            <span style="font-size:.7rem;color:var(--gold-light)">{{ $unreadEVoices->count() }} Terbaru</span>
           </div>
           <div class="db-dropdown-list">
-            <div class="db-dropdown-item">
-              <i class="fas fa-circle-exclamation"></i>
-              <div>
-                <strong>Pengaduan E-Voice Baru</strong>
-                <p style="font-size:.72rem;color:var(--text-muted)">Permintaan fasilitas WiFi di perpustakaan.</p>
+            @forelse($unreadEVoices as $ev)
+              <a href="{{ \Illuminate\Support\Facades\Route::has('admin.e-voices.index') ? route('admin.e-voices.index') : url('/admin/e-voices') }}" class="db-dropdown-item" style="text-decoration:none">
+                <i class="fas fa-comments"></i>
+                <div>
+                  <strong>[{{ $ev->ticket_code }}] {{ \Illuminate\Support\Str::limit($ev->title, 28) }}</strong>
+                  <p style="font-size:.72rem;color:var(--text-muted)">{{ \Illuminate\Support\Str::limit($ev->description, 45) }}</p>
+                  <span style="font-size:.65rem;color:var(--gold-light);display:block;margin-top:.2rem">{{ $ev->created_at ? $ev->created_at->diffForHumans() : 'Baru saja' }}</span>
+                </div>
+              </a>
+            @empty
+              <div class="db-dropdown-item">
+                <i class="fas fa-info-circle"></i>
+                <div>
+                  <strong>Belum Ada E-Voice Baru</strong>
+                  <p style="font-size:.72rem;color:var(--text-muted)">Aspirasi siswa akan muncul di sini.</p>
+                </div>
               </div>
-            </div>
-            <div class="db-dropdown-item">
-              <i class="fas fa-shield-halved"></i>
-              <div>
-                <strong>Laporan FactCheck</strong>
-                <p style="font-size:.72rem;color:var(--text-muted)">Klarifikasi isu PPDB 2026.</p>
-              </div>
-            </div>
+            @endforelse
           </div>
         </div>
 
-        <!-- ENVELOPE MESSAGES DROPDOWN -->
-        <button class="db-icon-btn" id="dbBtnMail" title="Pesan Masuk" type="button">
+        <!-- ENVELOPE MESSAGES DROPDOWN (FACTCHECK / HOAX) -->
+        <button class="db-icon-btn" id="dbBtnMail" title="Laporan Kabar Hoax FactCheck" type="button">
           <i class="fas fa-envelope"></i>
-          <span class="dot"></span>
+          @if($unreadFactChecks->isNotEmpty())
+            <span class="dot"></span>
+          @endif
         </button>
         <div class="db-dropdown" id="dbDropMail">
           <div class="db-dropdown-head">
-            <h4>Pesan &amp; Pertanyaan</h4>
-            <span style="font-size:.7rem;color:var(--gold-light)">2 Belum Dibaca</span>
+            <h4>Laporan FactCheck / Kabar Hoax</h4>
+            <span style="font-size:.7rem;color:var(--gold-light)">{{ $unreadFactChecks->count() }} Masuk</span>
           </div>
           <div class="db-dropdown-list">
-            <div class="db-dropdown-item">
-              <i class="fas fa-user"></i>
-              <div>
-                <strong>Orang Tua Siswa</strong>
-                <p style="font-size:.72rem;color:var(--text-muted)">Menanyakan jadwal PPDB Gelombang 2.</p>
+            @forelse($unreadFactChecks as $fc)
+              <a href="{{ \Illuminate\Support\Facades\Route::has('admin.fact-checks.index') ? route('admin.fact-checks.index') : url('/admin/fact-checks') }}" class="db-dropdown-item" style="text-decoration:none">
+                <i class="fas fa-shield-halved"></i>
+                <div>
+                  <strong>{{ \Illuminate\Support\Str::limit($fc->title ?: 'Laporan Klarifikasi Isu', 28) }}</strong>
+                  <p style="font-size:.72rem;color:var(--text-muted)">{{ \Illuminate\Support\Str::limit($fc->claim ?: $fc->source_url, 45) }}</p>
+                  <span style="font-size:.65rem;color:var(--gold-light);display:block;margin-top:.2rem">{{ $fc->created_at ? $fc->created_at->diffForHumans() : 'Baru saja' }}</span>
+                </div>
+              </a>
+            @empty
+              <div class="db-dropdown-item">
+                <i class="fas fa-info-circle"></i>
+                <div>
+                  <strong>Belum Ada Laporan FactCheck</strong>
+                  <p style="font-size:.72rem;color:var(--text-muted)">Laporan kabar hoax akan muncul di sini.</p>
+                </div>
               </div>
-            </div>
-            <div class="db-dropdown-item">
-              <i class="fas fa-handshake"></i>
-              <div>
-                <strong>PT Telkom Indonesia</strong>
-                <p style="font-size:.72rem;color:var(--text-muted)">Pengajuan kerja sama PKL jurusan RPL.</p>
-              </div>
-            </div>
+            @endforelse
           </div>
         </div>
 

@@ -15,12 +15,25 @@ class EVoiceService
     {
         $ticketCode = 'EVC-' . date('Ymd') . '-' . random_int(1000, 9999);
 
-        return EVoice::create([
+        $eVoice = EVoice::create([
             'ticket_code' => $ticketCode,
             'title' => $data['title'],
             'description' => $data['description'],
             'category' => $data['category'] ?? 'ASPIRASI',
         ]);
+
+        try {
+            $adminEmail = config('mail.from.address') ?: 'admin@smkn2mojokerto.sch.id';
+            $adminUser = \App\Models\User::first();
+            if ($adminUser && !empty($adminUser->email)) {
+                $adminEmail = $adminUser->email;
+            }
+            \Illuminate\Support\Facades\Mail::to($adminEmail)->send(new \App\Mail\AdminEVoiceNotificationMail($eVoice));
+        } catch (\Throwable $e) {
+            \Illuminate\Support\Facades\Log::warning('Email notification failed for E-Voice: ' . $e->getMessage());
+        }
+
+        return $eVoice;
     }
 
     /**
