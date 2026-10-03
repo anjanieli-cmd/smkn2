@@ -14,7 +14,7 @@
 .ek-page *{box-sizing:border-box}
 
 /* ---------- HERO ---------- */
-.ek-hero{position:relative;min-height:clamp(560px,72vh,740px);display:flex;align-items:center;overflow:hidden;
+.ek-hero{position:relative;min-height:640px;display:flex;align-items:center;overflow:hidden;
   background:#fff;color:#0d3a66;isolation:isolate}
 .ek-hero::after{content:"EKSTRAKURIKULER";position:absolute;z-index:0;left:2%;top:58%;transform:translateY(-50%);
   font-family:var(--font-display);font-size:clamp(3.4rem,11.5vw,11.5rem);font-weight:900;line-height:.78;
@@ -23,8 +23,8 @@
 .ek-ref-ornaments{position:absolute!important;inset:0;z-index:1;overflow:hidden;pointer-events:none;opacity:1}
 .ek-ref-ornament-image{position:absolute!important;inset:0;width:100%;height:100%;display:block;
   object-fit:cover;object-position:center center;max-width:none;opacity:1}
-.ek-hero-inner{position:relative;z-index:4;width:100%;max-width:1500px;margin:0 auto;
-  padding:clamp(3.6rem,9vh,6rem) clamp(1.25rem,4.2vw,4.5rem) clamp(3.2rem,7vh,5rem);display:block}
+.ek-hero-inner{position:relative;z-index:4;width:100%;max-width:1600px;margin:0 auto;
+  padding:clamp(5.5rem,12vh,8.5rem) clamp(1.5rem,4.2vw,4.5rem) clamp(5rem,10vh,7.5rem);display:block}
 
 .ek-kicker{position:relative;z-index:5;display:inline-flex;align-items:center;gap:.65rem;font-size:.72rem;
   font-weight:900;letter-spacing:.18em;text-transform:uppercase;color:#ff6f00;margin-bottom:1.2rem;
@@ -119,7 +119,7 @@
 }
 
 /* ---------- SECTION SHELL & HEADING ---------- */
-.ek-section{width:min(1180px,92%);margin:0 auto}
+.ek-section{width:min(1600px,94%);margin:0 auto}
 .ek-eyebrow{display:inline-flex;align-items:center;gap:.65rem;font-size:.74rem;font-weight:800;
   letter-spacing:.2em;text-transform:uppercase;color:#b98a12;margin-bottom:1rem}
 .ek-eyebrow::before{content:"";width:34px;height:3px;border-radius:99px;background:linear-gradient(90deg,#ffd54a,#ffb300)}
@@ -133,7 +133,7 @@
 .ek-stats .ek-desc{color:rgba(235,245,253,.75)}
 
 /* ---------- 1. INTRO ---------- */
-.ek-intro{position:relative;padding:96px 0 100px;background:#fff}
+.ek-intro{position:relative;padding:120px 0 130px;background:#fff}
 .ek-intro-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:4.5rem;align-items:center}
 .ek-intro-note{max-width:440px;color:#718396;font-size:.86rem;line-height:1.85;margin-top:1rem}
 .ek-mini-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2.2rem}
@@ -155,7 +155,7 @@
   letter-spacing:.1em;text-transform:uppercase;padding:.5rem .8rem;border-radius:999px;box-shadow:0 10px 24px rgba(255,179,0,.35)}
 
 /* ---------- 2. STATS ---------- */
-.ek-stats{background:#0d3a66;color:#fff;position:relative;padding:96px 0}
+.ek-stats{background:#0d3a66;color:#fff;position:relative;padding:120px 0}
 .ek-stats-head{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;flex-wrap:wrap;margin-bottom:3rem}
 .ek-stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4rem}
 .ek-stat{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:20px;
@@ -173,7 +173,7 @@
 .ek-stat>p{font-size:.82rem;line-height:1.6;color:rgba(235,245,253,.7);margin:.6rem 0 0}
 
 /* ---------- 3. EXPLORER ---------- */
-.ek-explore{position:relative;padding:100px 0 110px;
+.ek-explore{position:relative;padding:120px 0 140px;
   background-image:radial-gradient(rgba(13,58,102,.05) 1.4px,transparent 1.5px);background-size:22px 22px}
 .ek-explore-head{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap}
 
@@ -214,8 +214,8 @@
 .ek-card-menu{margin-left:auto;flex:0 0 auto;color:#b7c3d2;display:flex}
 .ek-card-menu svg{width:15px;height:15px}
 
-/* foto kegiatan 16:10 (compact feed, uniform aspect ratio) */
-.ek-card-media{position:relative;aspect-ratio:16/10;width:100%;flex:0 0 auto;overflow:hidden;background:#eef3f8}
+/* foto kegiatan 3:4 (portrait feed style) */
+.ek-card-media{position:relative;aspect-ratio:3/4;width:100%;flex:0 0 auto;overflow:hidden;background:#eef3f8}
 .ek-card-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;
   transition:transform .6s var(--ease,ease)}
 .ek-card-media::after{content:"";position:absolute;inset:0;background:rgba(7,22,42,.12);opacity:0;
@@ -274,9 +274,18 @@
 .ek-cta-note i{color:#ffd54a;margin-right:.4rem}
 
 /* ---------- RESPONSIVE ---------- */
+@media(min-width:951px){
+  .ek-section{width:min(1600px,94%)!important}
+  .ek-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:2.4rem!important}
+  .ek-card-media{width:100%!important;height:auto!important;aspect-ratio:4/5!important;margin:0!important;padding:0!important}
+  .ek-card-media img{width:100%!important;height:100%!important;object-fit:cover!important;object-position:center center!important}
+}
 @media(max-width:1200px){.ek-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:1.1rem}}
 @media(max-width:950px){.ek-intro-grid{grid-template-columns:1fr;gap:3rem}.ek-intro-visual img{height:320px}
-  .ek-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}}
+  .ek-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
+  .ek-card-media{width:100%!important;height:auto!important;aspect-ratio:4/5!important;margin:0!important;padding:0!important}
+  .ek-card-media img{width:100%!important;height:100%!important;object-fit:cover!important;object-position:center center!important}
+}
 @media(max-width:768px){
   .ek-hero{align-items:flex-start;min-height:0}
   .ek-hero-inner{width:min(92%,100%);margin:0 auto;padding:clamp(2.8rem,7vh,4rem) 0 2.8rem}
@@ -396,6 +405,87 @@
 /* transisi halus saat ganti tema */
 .ek-page,.ek-hero,.ek-intro,.ek-stats,.ek-explore,.ek-card,.ek-mini,.ek-filter,.ek-pill,.ek-cta-wrap{
   transition:background-color .35s ease,color .35s ease,border-color .35s ease}
+
+/* Desktop Web Large Card Fix (> 950px) */
+@media (min-width: 951px) {
+  .ek-section {
+    width: min(1440px, 94%) !important;
+  }
+  .ek-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 2rem !important;
+  }
+  .ek-card {
+    border-radius: 24px !important;
+    box-shadow: 0 16px 40px rgba(13, 58, 102, 0.11) !important;
+  }
+  .ek-card-head {
+    height: 66px !important;
+    padding: .85rem 1.2rem !important;
+    gap: .75rem !important;
+  }
+  .ek-card-avatar {
+    width: 44px !important;
+    height: 44px !important;
+    flex: 0 0 44px !important;
+  }
+  .ek-card-media {
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 4 / 5 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .ek-card-media img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+  }
+  .ek-card-uname {
+    font-size: 1.08rem !important;
+    font-weight: 900 !important;
+  }
+  .ek-card-usub {
+    font-size: .7rem !important;
+    margin-top: .15rem !important;
+  }
+  .ek-card-panel {
+    padding: .9rem 1.2rem 1.3rem !important;
+  }
+  .ek-card-caption {
+    font-size: .98rem !important;
+    line-height: 1.6 !important;
+    -webkit-line-clamp: 3 !important;
+  }
+  .ek-card-caption .ek-card-name {
+    font-size: 1.05rem !important;
+    font-weight: 900 !important;
+  }
+  .ek-card-actions {
+    padding: .7rem 1.2rem .35rem !important;
+    gap: 1rem !important;
+  }
+  .ek-card-actions svg {
+    width: 22px !important;
+    height: 22px !important;
+  }
+  .ek-card-tag {
+    font-size: .72rem !important;
+    padding: .32rem .75rem !important;
+  }
+  .ek-card-sched {
+    font-size: .8rem !important;
+  }
+  .ek-card-more {
+    font-size: .82rem !important;
+    margin-top: .75rem !important;
+  }
+  .ek-card-meta li {
+    font-size: .82rem !important;
+    line-height: 1.55 !important;
+  }
+}
 </style>
 @endpush
 
@@ -456,7 +546,7 @@
       <div data-reveal="right">
         <div class="ek-intro-visual">
           <span class="ek-intro-badge"><i class="fas fa-camera"></i> #SkanedaBerkarakter</span>
-          <img src="{{ asset('images/ekstra/paskib.png') }}" alt="Pasukan pengibar bendera SMK Negeri 2 Mojokerto" loading="eager">
+          <img src="{{ asset('images/ekstra/paskibra.jpg') }}" alt="Pasukan pengibar bendera SMK Negeri 2 Mojokerto" loading="eager">
           <div class="ek-intro-cap"><strong>Skaneda Berkarakter</strong><span>Latihan Paskibra — kedisiplinan baris-berbaris.</span></div>
         </div>
       </div>
