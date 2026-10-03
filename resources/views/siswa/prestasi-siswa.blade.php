@@ -405,17 +405,28 @@
   padding:1.2rem;background:rgba(4,14,28,.68);backdrop-filter:blur(8px);opacity:0;visibility:hidden;
   transition:opacity .3s ease,visibility .3s ease}
 .psk-article-modal.open{opacity:1;visibility:visible}
-.psk-article-dialog{position:relative;width:min(900px,94vw);max-height:min(82vh,820px);overflow:auto;
+.psk-article-dialog{position:relative;width:min(1000px,94vw);max-height:min(90vh,900px);overflow:auto;
   background:#fff;border-radius:26px;border:1px solid rgba(13,58,102,.12);box-shadow:0 35px 100px rgba(4,14,28,.35);
   padding:clamp(1.5rem,4vw,2.8rem)}
 .psk-article-close{position:sticky;float:right;top:0;width:42px;height:42px;border:0;border-radius:50%;
   background:#f1f5f9;color:#0d3a66;display:flex;align-items:center;justify-content:center;cursor:pointer;
-  transition:all .25s ease;z-index:2}
+  transition:all .25s ease;z-index:5;box-shadow:0 6px 18px rgba(0,0,0,.18)}
 .psk-article-close:hover{background:#ffb300;transform:rotate(90deg)}
+
+/* FOTO ARTIKEL — besar, tidak dipotong, latar blur dari foto yang sama */
+.psk-article-img{position:relative;width:100%;min-height:200px;overflow:hidden;background:#0d3a66;
+  display:flex;align-items:center;justify-content:center;border-radius:18px;margin:0 0 1.6rem;
+  box-shadow:0 14px 34px rgba(13,58,102,.18)}
+.psk-article-img[hidden]{display:none}
+.psk-article-img .psk-article-img-bg{position:absolute;inset:-30px;background-size:cover;background-position:center;
+  filter:blur(30px) brightness(.65) saturate(1.2);transform:scale(1.1)}
+.psk-article-img img{position:relative;z-index:1;display:block;width:100%;height:auto;
+  max-height:min(62vh,600px);object-fit:contain;object-position:center}
+
 .psk-article-date{display:inline-flex;align-items:center;gap:.45rem;color:#ffb300;font-size:.72rem;font-weight:900;
   letter-spacing:.12em;text-transform:uppercase;margin-bottom:.8rem}
 .psk-article-dialog h3{font-family:var(--font-display);font-size:clamp(1.55rem,3vw,2.35rem);line-height:1.12;
-  color:#0d3a66;margin:0 3rem 1.4rem 0}
+  color:#0d3a66;margin:0 0 1.4rem 0}
 .psk-article-body{font-size:.98rem;line-height:1.85;color:#44586f}
 .psk-article-body p{margin:0 0 1rem}
 .psk-article-body p:last-child{margin-bottom:0}
@@ -487,10 +498,12 @@
   .psk-cta-box h3{font-size:1.45rem;line-height:1.15}
   .psk-cta-box p{font-size:.88rem;line-height:1.65}
   .psk-cta-btn{width:100%;justify-content:center;margin-top:1.2rem;padding:.75rem 1.2rem;font-size:.78rem}
-  .psk-article-modal{padding:.75rem}
-  .psk-article-dialog{padding:1.4rem 1.1rem;border-radius:20px;max-height:88vh}
-  .psk-article-dialog h3{font-size:1.25rem;margin-right:2.2rem}
+  .psk-article-modal{padding:.5rem}
+  .psk-article-dialog{padding:1.1rem 1rem 1.4rem;border-radius:20px;max-height:94vh}
+  .psk-article-dialog h3{font-size:1.25rem}
   .psk-article-close{width:36px;height:36px}
+  .psk-article-img{min-height:160px;border-radius:14px;margin-bottom:1.2rem}
+  .psk-article-img img{max-height:50vh}
 }
 @media (max-width:440px){
   .psk-moment-grid{grid-template-columns:1fr;grid-auto-rows:auto}
@@ -600,6 +613,7 @@
 /* ---------- LIGHTBOX & MODAL ARTIKEL ---------- */
 :is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-article-modal{background:rgba(2,8,18,.78)}
 :is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-article-dialog{background:var(--psk-surf);border-color:var(--psk-line);box-shadow:0 35px 100px rgba(0,0,0,.6)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-article-img{background:var(--psk-surf2);box-shadow:0 14px 34px rgba(0,0,0,.5)}
 :is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-article-close{background:var(--psk-surf2);color:#fff}
 :is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-article-close:hover{background:#ffb300;color:#0d3a66}
 :is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-article-date{color:#ffd54a}
@@ -729,13 +743,22 @@
     // (bukan closure/fluent chain) supaya aman dipakai langsung di dalam
     // @json(...) satu baris — closure multi-baris di dalam @json() bisa
     // membuat parser Blade salah hitung tanda kurung/bracket.
+    //
+    // 'image' hanya diisi kalau berupa URL/path lengkap (data dari database).
+    // Untuk data fallback, nama file seperti "a1.jpg" bukan file asli, jadi
+    // dikosongkan — foto asli diambil dari <img> kartu di halaman lewat JS.
     $articleDataJs = [];
     foreach ($prestasi as $p) {
+        $imgFull = '';
+        if (!empty($p['image']) && (str_contains($p['image'], '/') || str_starts_with($p['image'], 'http'))) {
+            $imgFull = $p['image'];
+        }
         $articleDataJs[] = [
             'id' => $p['id'],
             'date' => $p['date'],
             'title' => $p['title'],
             'level' => $p['levelLabel'],
+            'image' => $imgFull,
             'body' => [$p['desc']],
         ];
     }
@@ -1451,6 +1474,7 @@
   <div class="psk-article-modal" id="pskArticleModal" aria-hidden="true">
     <div class="psk-article-dialog" role="dialog" aria-modal="true" aria-labelledby="pskArticleTitle">
       <button type="button" class="psk-article-close" id="pskArticleClose" aria-label="Tutup"><i class="fas fa-times"></i></button>
+      <div class="psk-article-img" id="pskArticleImg" hidden></div>
       <div class="psk-article-date" id="pskArticleDate"><i class="fas fa-calendar-alt"></i></div>
       <h3 id="pskArticleTitle"></h3>
       <div class="psk-article-body" id="pskArticleBody"></div>
@@ -1513,20 +1537,58 @@
   }
 
   /* ---------- Artikel: modal "Baca selengkapnya" ----------
-     Data diambil langsung dari array $prestasi (PHP) supaya tidak
-     ada duplikasi data antara section Pencapaian Prestasi, section
-     Perjalanan Prestasi, dan modal ini. Tambah/edit prestasi cukup
-     di satu tempat: array $prestasi pada bagian atas file. */
+     Data teks diambil dari array $prestasi (PHP) supaya tidak ada
+     duplikasi data. Foto diambil dari <img> kartu di halaman yang
+     punya data-article-id sama (jadi selalu foto asli yang tampil
+     di kartu), dengan cadangan dari field 'image' (data database). */
   var articleData = @json($articleDataJs);
   var articleModal = doc.getElementById('pskArticleModal');
   var articleClose = doc.getElementById('pskArticleClose');
+  var articleImg = doc.getElementById('pskArticleImg');
   var articleDate = doc.getElementById('pskArticleDate');
   var articleTitle = doc.getElementById('pskArticleTitle');
   var articleBody = doc.getElementById('pskArticleBody');
+  var articleDialog = articleModal.querySelector('.psk-article-dialog');
+
+  /* Cari URL foto terbaik (resolusi tertinggi) untuk sebuah artikel */
+  function findArticleImage(article) {
+    var imgEl = doc.querySelector('.psk-achv-card[data-article-id="' + article.id + '"] img');
+    if (imgEl) {
+      var ds = imgEl.dataset || {};
+      var src = ds.full || ds.large || ds.original || ds.hires || imgEl.getAttribute('src') || imgEl.currentSrc || '';
+      if (src) return imgEl.dataset.full || imgEl.dataset.large || imgEl.dataset.original || imgEl.dataset.hires ? src : (imgEl.currentSrc || imgEl.src || src);
+    }
+    return article.image || '';
+  }
+
+  /* Pasang foto ke popup (tanpa innerHTML supaya URL aman) */
+  function setArticleImage(src, alt) {
+    articleImg.innerHTML = '';
+    if (!src) {
+      articleImg.hidden = true;
+      return;
+    }
+    var bg = doc.createElement('div');
+    bg.className = 'psk-article-img-bg';
+    bg.style.backgroundImage = 'url("' + String(src).replace(/"/g, '%22') + '")';
+
+    var im = doc.createElement('img');
+    im.alt = alt || '';
+    im.decoding = 'async';
+    im.onerror = function () { articleImg.hidden = true; };
+    im.src = src;
+
+    articleImg.appendChild(bg);
+    articleImg.appendChild(im);
+    articleImg.hidden = false;
+  }
 
   function openArticle(id) {
     var article = articleData.find(function (item) { return item.id === id; });
     if (!article) return;
+
+    setArticleImage(findArticleImage(article), article.title);
+
     articleDate.innerHTML = '<i class="fas fa-calendar-alt"></i> ' + article.date + ' · ' + article.level;
     articleTitle.textContent = article.title;
     articleBody.innerHTML = '';
@@ -1538,6 +1600,7 @@
     articleModal.classList.add('open');
     articleModal.setAttribute('aria-hidden', 'false');
     doc.body.style.overflow = 'hidden';
+    if (articleDialog) articleDialog.scrollTop = 0;
   }
 
   function closeArticle() {

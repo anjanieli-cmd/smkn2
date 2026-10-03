@@ -224,8 +224,10 @@
   background-image:radial-gradient(rgba(13,58,102,.055) 1.4px,transparent 1.5px);background-size:22px 22px}
 .pd-jurusan-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem;margin-top:3rem}
 .pd-jurusan-card{position:relative;background:#fff;border:1px solid #e3edf0;border-radius:22px;overflow:hidden;
+  text-decoration:none;color:inherit;display:block;
   transition:transform .35s var(--ease, ease),box-shadow .35s var(--ease, ease)}
-.pd-jurusan-card:hover{transform:translateY(-8px);box-shadow:0 26px 55px rgba(13,58,102,.14)}
+.pd-jurusan-card:hover{transform:translateY(-8px);box-shadow:0 26px 55px rgba(13,58,102,.14);text-decoration:none;color:inherit}
+.pd-jurusan-card:visited{color:inherit}
 .pd-jurusan-photo{position:relative;height:185px;overflow:hidden}
 .pd-jurusan-photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s var(--ease, ease)}
 .pd-jurusan-card:hover .pd-jurusan-photo img{transform:scale(1.07)}
@@ -271,7 +273,7 @@
 .pd-cta-note{margin-top:1.1rem;font-size:.76rem;color:rgba(235,245,253,.65)}
 .pd-cta-note i{color:#ffd54a;margin-right:.4rem}
 
-/* ---------- JUDUL SECTION DI TENGAH (kecuali intro "EMPAT KATA, SATU MASA DEPAN.") ---------- */
+/* ---------- JUDUL SECTION DI TENGAH ---------- */
 .pd-track-head{flex-direction:column;align-items:center;text-align:center;gap:1rem}
 .pd-track-head .pd-track-note{margin-left:auto;margin-right:auto;max-width:520px}
 .pd-req-card>.big-heading{text-align:center}
@@ -364,11 +366,9 @@
 <style id="ppdb-dark-mode">
 /* =========================================================
    PPDB — DARK MODE
-   Aktif saat <body> punya class "theme-dark".
    ========================================================= */
 html body.theme-dark .pd-page{background:#08131f!important;color:#e6eef7;color-scheme:dark}
 
-/* ---------- UMUM ---------- */
 html body.theme-dark .pd-page .big-heading{color:#fff}
 html body.theme-dark .pd-page .home-orn .ho-chevron{border-color:rgba(143,189,235,.16)}
 html body.theme-dark .pd-page .home-orn .ho-chevron::after{border-color:rgba(143,189,235,.12)}
@@ -380,7 +380,6 @@ html body.theme-dark .pd-page .home-orn .ho-ring::before{border-color:rgba(143,1
 html body.theme-dark .pd-page .home-orn .ho-square::before{border-color:rgba(143,189,235,.22)}
 html body.theme-dark .pd-page .home-orn .ho-corner::after{background:rgba(143,189,235,.2)}
 
-/* ---------- HERO ---------- */
 html body.theme-dark .pd-page .pd-hero{background:linear-gradient(180deg,#0b1d31 0%,#08131f 100%)!important;color:#e6eef7}
 html body.theme-dark .pd-page .pd-hero::after{color:rgba(255,255,255,.035)!important;-webkit-text-stroke:1px rgba(255,179,0,.14)!important}
 html body.theme-dark .pd-page .pd-ref-ornament-image{filter:invert(1) hue-rotate(180deg);mix-blend-mode:screen;opacity:.6!important}
@@ -389,7 +388,6 @@ html body.theme-dark .pd-page .pd-kicker{background:rgba(255,111,0,.1);border-co
 html body.theme-dark .pd-page .pd-lead{color:#a9bbcd}
 html body.theme-dark .pd-page .pd-pill{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.14);color:#e6eef7;box-shadow:0 8px 24px rgba(0,0,0,.35)}
 
-/* ---------- 1. PENGERTIAN ---------- */
 html body.theme-dark .pd-page .pd-intro{background:#0a1928}
 html body.theme-dark .pd-page .pd-intro-note{color:#9fb2c6}
 html body.theme-dark .pd-page .pd-def-row{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.1)}
@@ -398,7 +396,6 @@ html body.theme-dark .pd-page .pd-def-text h3{color:#fff}
 html body.theme-dark .pd-page .pd-def-text p{color:#9fb2c6}
 html body.theme-dark .pd-page .pd-banner{box-shadow:0 30px 70px rgba(0,0,0,.55);border-color:rgba(255,255,255,.12)}
 
-/* ---------- 2. JALUR ---------- */
 html body.theme-dark .pd-page .pd-track,
 html body.theme-dark .pd-page .pd-flow,
 html body.theme-dark .pd-page .pd-jurusan{background-color:#08131f;background-image:radial-gradient(rgba(143,189,235,.07) 1.4px,transparent 1.5px)}
@@ -411,7 +408,6 @@ html body.theme-dark .pd-page .pd-track-name{color:#fff}
 html body.theme-dark .pd-page .pd-track-kuota{color:#ffd54a;background:rgba(255,213,74,.12);border-color:rgba(255,213,74,.35)}
 html body.theme-dark .pd-page .pd-track-text{color:#9fb2c6}
 
-/* ---------- 3. PERSYARATAN ---------- */
 html body.theme-dark .pd-page .pd-req{background:#0a1928}
 html body.theme-dark .pd-page .pd-req::before{color:rgba(255,255,255,.04)}
 html body.theme-dark .pd-page .pd-req-card{background:#0f2236;border-color:rgba(255,255,255,.1);box-shadow:0 18px 46px rgba(0,0,0,.45)}
@@ -421,16 +417,13 @@ html body.theme-dark .pd-page .pd-req-item strong{color:#fff}
 html body.theme-dark .pd-page .pd-req-item span{color:#9fb2c6}
 html body.theme-dark .pd-page .pd-req-note{background:rgba(255,213,74,.1);border-color:rgba(255,213,74,.3);color:#f3d38a}
 
-/* ---------- 4. ALUR ---------- */
 html body.theme-dark .pd-page .pd-flow-title{color:#fff}
 html body.theme-dark .pd-page .pd-flow-text{color:#9fb2c6}
 html body.theme-dark .pd-page .pd-flow-dot{box-shadow:0 12px 28px rgba(0,0,0,.5)}
 
-/* ---------- 5. JADWAL ---------- */
 html body.theme-dark .pd-page .pd-jadwal{background:#08131f}
 html body.theme-dark .pd-page .pd-jadwal-card{background:linear-gradient(135deg,#0a1a2c 0%,#0c2038 55%,#0e2542 100%);border:1px solid rgba(255,255,255,.08);box-shadow:0 30px 70px rgba(0,0,0,.55)}
 
-/* ---------- 6. PROGRAM KEAHLIAN ---------- */
 html body.theme-dark .pd-page .pd-jurusan-card{background:#0f2236;border-color:rgba(255,255,255,.1)}
 html body.theme-dark .pd-page .pd-jurusan-card:hover{box-shadow:0 26px 55px rgba(0,0,0,.55)}
 html body.theme-dark .pd-page .pd-jurusan-tag{color:#9fc4e6;background:rgba(143,189,235,.12);border-color:rgba(143,189,235,.3)}
@@ -438,14 +431,12 @@ html body.theme-dark .pd-page .pd-jurusan-name{color:#fff}
 html body.theme-dark .pd-page .pd-jurusan-text{color:#9fb2c6}
 html body.theme-dark .pd-page .pd-jurusan-more{color:#e6eef7}
 
-/* ---------- 7. FAQ ---------- */
 html body.theme-dark .pd-page .pd-faq{background:#0a1928}
 html body.theme-dark .pd-page .pd-faq-item{background:#0f2236;border-color:rgba(255,255,255,.1)}
 html body.theme-dark .pd-page .pd-faq-item.open{border-color:rgba(255,213,74,.4);box-shadow:0 14px 34px rgba(0,0,0,.45)}
 html body.theme-dark .pd-page .pd-faq-q{color:#fff}
 html body.theme-dark .pd-page .pd-faq-a p{color:#a9bbcd}
 
-/* ---------- CTA ---------- */
 html body.theme-dark .pd-page .pd-cta{background:linear-gradient(135deg,#0a1a2c 0%,#0c2038 55%,#0e2542 100%);border:1px solid rgba(255,255,255,.08);box-shadow:0 34px 80px rgba(0,0,0,.6)}
 </style>
 @endpush
@@ -722,7 +713,8 @@ html body.theme-dark .pd-page .pd-cta{background:linear-gradient(135deg,#0a1a2c 
       </div>
 
       <div class="pd-jurusan-grid">
-        <div class="pd-jurusan-card" data-reveal>
+        {{-- 1. RPL --}}
+        <a href="{{ url('/keahlian/rpl') }}" class="pd-jurusan-card" data-reveal>
           <div class="pd-jurusan-photo">
             <img src="{{ asset('images/ppdb/rpl.jpg') }}" alt="Rekayasa Perangkat Lunak" loading="eager">
           </div>
@@ -732,8 +724,10 @@ html body.theme-dark .pd-page .pd-cta{background:linear-gradient(135deg,#0a1a2c 
             <p class="pd-jurusan-text">Mempelajari pembuatan aplikasi, pemrograman web &amp; mobile, hingga pengujian dan manajemen proyek perangkat lunak.</p>
             <span class="pd-jurusan-more">Selengkapnya <i class="fas fa-arrow-right"></i></span>
           </div>
-        </div>
-        <div class="pd-jurusan-card" data-reveal style="--d:1">
+        </a>
+
+        {{-- 2. Kuliner --}}
+        <a href="{{ url('/keahlian/kuliner') }}" class="pd-jurusan-card" data-reveal style="--d:1">
           <div class="pd-jurusan-photo">
             <img src="{{ asset('images/ppdb/kuliner.jpg') }}" alt="Kuliner" loading="eager">
           </div>
@@ -743,8 +737,10 @@ html body.theme-dark .pd-page .pd-cta{background:linear-gradient(135deg,#0a1a2c 
             <p class="pd-jurusan-text">Menguasai seni memasak, pengolahan bahan makanan, tata hidang, hingga manajemen usaha kuliner dan pastry &amp; bakery.</p>
             <span class="pd-jurusan-more">Selengkapnya <i class="fas fa-arrow-right"></i></span>
           </div>
-        </div>
-        <div class="pd-jurusan-card" data-reveal style="--d:2">
+        </a>
+
+        {{-- 3. APHP --}}
+        <a href="{{ url('/keahlian/aphp') }}" class="pd-jurusan-card" data-reveal style="--d:2">
           <div class="pd-jurusan-photo">
             <img src="{{ asset('images/ppdb/aphp.jpg') }}" alt="Agribisnis Pengolahan Hasil Pertanian" loading="eager">
           </div>
@@ -754,8 +750,10 @@ html body.theme-dark .pd-page .pd-cta{background:linear-gradient(135deg,#0a1a2c 
             <p class="pd-jurusan-text">Mengolah hasil pertanian &amp; perikanan menjadi produk bernilai tambah: roti, samosa, es krim, dan aneka produk wirausaha.</p>
             <span class="pd-jurusan-more">Selengkapnya <i class="fas fa-arrow-right"></i></span>
           </div>
-        </div>
-        <div class="pd-jurusan-card" data-reveal style="--d:3">
+        </a>
+
+        {{-- 4. DKV --}}
+        <a href="{{ url('/keahlian/dkv') }}" class="pd-jurusan-card" data-reveal style="--d:3">
           <div class="pd-jurusan-photo">
             <img src="{{ asset('images/ppdb/dkv.jpg') }}" alt="Desain Komunikasi Visual" loading="eager">
           </div>
@@ -765,8 +763,10 @@ html body.theme-dark .pd-page .pd-cta{background:linear-gradient(135deg,#0a1a2c 
             <p class="pd-jurusan-text">Mengasah kreativitas desain grafis, ilustrasi, fotografi, videografi, dan branding untuk industri kreatif.</p>
             <span class="pd-jurusan-more">Selengkapnya <i class="fas fa-arrow-right"></i></span>
           </div>
-        </div>
-        <div class="pd-jurusan-card" data-reveal style="--d:4">
+        </a>
+
+        {{-- 5. LPS --}}
+        <a href="{{ url('/keahlian/lps') }}" class="pd-jurusan-card" data-reveal style="--d:4">
           <div class="pd-jurusan-photo">
             <img src="{{ asset('images/ppdb/lps.jpg') }}" alt="Layanan Perbankan Syariah" loading="eager">
           </div>
@@ -776,8 +776,10 @@ html body.theme-dark .pd-page .pd-cta{background:linear-gradient(135deg,#0a1a2c 
             <p class="pd-jurusan-text">Mendalami operasional lembaga keuangan syariah, layanan perbankan, administrasi transaksi, dan literasi keuangan.</p>
             <span class="pd-jurusan-more">Selengkapnya <i class="fas fa-arrow-right"></i></span>
           </div>
-        </div>
-        <div class="pd-jurusan-card" data-reveal style="--d:5">
+        </a>
+
+        {{-- 6. Kartu Skaneda --}}
+        <a href="{{ url('/profile/sejarah-sekolah') }}" class="pd-jurusan-card" data-reveal style="--d:5">
           <div class="pd-jurusan-photo">
             <img src="{{ asset('images/smkn-guru.jpg') }}" alt="Lingkungan Sekolah" loading="eager">
           </div>
@@ -787,7 +789,7 @@ html body.theme-dark .pd-page .pd-cta{background:linear-gradient(135deg,#0a1a2c 
             <p class="pd-jurusan-text">Lingkungan kondusif, fasilitas lengkap, pengajar profesional, dan kemitraan luas bersama dunia usaha &amp; industri.</p>
             <span class="pd-jurusan-more">Selengkapnya <i class="fas fa-arrow-right"></i></span>
           </div>
-        </div>
+        </a>
       </div>
     </div>
   </section>
@@ -847,7 +849,7 @@ html body.theme-dark .pd-page .pd-cta{background:linear-gradient(135deg,#0a1a2c 
     </div>
     <h2>Siap menjadi bagian dari <em>keluarga Skaneda?</em></h2>
     <p>Jangan lewatkan kesempatanmu! Siapkan berkas, pilih kompetensi keahlian favoritmu, dan wujudkan masa depan yang lebih cerah bersama SMK Negeri 2 Mojokerto.</p>
-    <a href="{{ route('kontak') }}" class="pd-cta-btn"><i class="fas fa-paper-plane"></i> Hubungi Panitia PPDB</a>
+    <a href="{{ url('/#kontak') }}" class="pd-cta-btn"><i class="fas fa-paper-plane"></i> Hubungi Panitia PPDB</a>
     <div class="pd-cta-note"><i class="fas fa-info-circle"></i> Informasi resmi: smkn2mojokerto.sch.id · #DisiplinBerprestasi</div>
   </section>
 

@@ -5,275 +5,267 @@
 
 @push('styles')
 <style>
-.bkk-page{background:#f7f9fc;color:#0d3a66;overflow:hidden;position:relative}.bkk-page *{box-sizing:border-box}
-.bkk-hero{position:relative;min-height:clamp(480px,65vh,680px);display:flex;align-items:center;overflow:hidden;background:#fff;color:#0d3a66;isolation:isolate}
-.bkk-hero:after{content:"BKK";position:absolute;z-index:0;left:2%;top:58%;transform:translateY(-50%);font-family:var(--font-display);font-size:clamp(3.4rem,11.5vw,11.5rem);font-weight:900;line-height:.78;letter-spacing:.01em;color:rgba(13,58,102,.035);-webkit-text-stroke:1px rgba(255,122,0,.09);pointer-events:none;white-space:nowrap;user-select:none}
-.bkk-orn{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:1}
-.bkk-ring{position:absolute;width:330px;height:330px;border:1px solid rgba(13,58,102,.12);border-radius:50%;right:-80px;top:-100px}
-.bkk-ring:before{content:"";position:absolute;inset:32px;border:1px dashed rgba(255,179,0,.28);border-radius:50%}
-.bkk-dots{position:absolute;width:100px;height:100px;right:12%;bottom:12%;opacity:.45;background-image:radial-gradient(rgba(13,58,102,.35) 1.5px,transparent 1.6px);background-size:15px 15px}
-.bkk-hero-inner{position:relative;z-index:4;width:100%;max-width:1400px;margin:0 auto;padding:clamp(3.2rem,8vh,5rem) clamp(1.25rem,4vw,4rem);display:block}
-.bkk-kicker,.bkk-pill{display:inline-flex;align-items:center;gap:.5rem}
-.bkk-kicker{position:relative;z-index:5;gap:.65rem;font-size:.72rem;font-weight:900;letter-spacing:.18em;text-transform:uppercase;color:#ff6f00;margin-bottom:1.2rem;padding:.55rem .85rem;border:1px solid rgba(255,111,0,.18);border-radius:999px;background:#fffaf5}
-.bkk-kicker:before{content:"";width:9px;height:9px;border-radius:50%;background:#ff6f00;box-shadow:0 0 0 6px rgba(255,111,0,.10)}
-.bkk-title{position:relative;z-index:5;font-family:var(--font-display);font-size:clamp(3.2rem,8vw,6.5rem);line-height:.9;letter-spacing:-.03em;margin:0;max-width:900px;text-transform:uppercase}
-.bkk-ref-ornaments{position:absolute!important;inset:0;z-index:1;overflow:hidden;pointer-events:none;opacity:1}
-.bkk-ref-ornament-image{position:absolute!important;inset:0;width:100%;height:100%;display:block;object-fit:cover;object-position:center center;max-width:none;opacity:1}
-.bkk-title .navy{display:block;color:#0d3a66}
-.bkk-title .gold{display:block;color:transparent;background:linear-gradient(135deg,#ffd54a 0%,#ffb300 48%,#ff7a00 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.bkk-lead{position:relative;z-index:5;max-width:640px;margin:1.4rem 0 0;color:#52657a;font-size:1rem;line-height:1.8}
-.bkk-pills{position:relative;z-index:5;display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.6rem}
-.bkk-pill{padding:.55rem .85rem;border-radius:999px;background:#fff;border:1px solid rgba(13,58,102,.12);box-shadow:0 8px 24px rgba(13,58,102,.06);font-size:.72rem;font-weight:800;color:#0d3a66}
-.bkk-pill i{color:#ff7a00}
+/* =========================================================
+   TOKEN — semua warna lewat variabel supaya dark mode
+   cukup mengganti nilai variabel di bagian paling bawah
+   ========================================================= */
+.bkk-page{
+  --navy:#0d3a66;--navy-2:#0a2d52;--navy-3:#071a31;
+  --gold:#ffb300;--gold-2:#ffd54a;--orange:#ff6f00;
+  --bg:#f6f8fb;--bg-alt:#edf2f8;--surf:#fff;--surf-2:#f4f7fb;
+  --head:#0d3a66;--text:#52657a;--link:#2f6fa8;
+  --line:rgba(13,58,102,.11);--line-2:rgba(13,58,102,.24);
+  --shadow:0 18px 44px rgba(13,58,102,.09);
+  --hl:rgba(255,213,74,.62);
+  --ok:#1e9e55;--soon:#e0a100;--end:#d93025;--arc:#8393a6;
+  background:var(--bg);color:var(--head);position:relative;overflow:hidden
+}
+.bkk-page *,.bkk-page *::before,.bkk-page *::after{box-sizing:border-box}
+.bkk-page a:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:999px}
 
-.bkk-strip{background:#0d3a66;color:#fff;border-bottom:3px solid #ffc107;overflow:hidden}
-.bkk-strip-inner{display:flex;align-items:center;gap:1rem;padding:.8rem clamp(1.25rem,5vw,5.5rem)}
-.bkk-strip-label{padding:.42rem .8rem;border-radius:999px;background:linear-gradient(135deg,#ffd54a,#ffb300);color:#0d3a66;font-size:.67rem;font-weight:900;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap}
-.bkk-strip-text{font-size:.8rem;color:rgba(255,255,255,.86);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+/* =========================================================
+   HERO
+   ========================================================= */
+.bkk-hero{position:relative;isolation:isolate;display:flex;align-items:center;overflow:hidden;min-height:clamp(520px,72vh,720px);background:#fff;color:var(--head)}
+.bkk-hero::after{content:"BKK";position:absolute;z-index:0;left:1.5%;bottom:-6%;font-family:var(--font-display);font-size:clamp(5rem,22vw,20rem);font-weight:900;line-height:.75;letter-spacing:-.02em;color:rgba(13,58,102,.035);-webkit-text-stroke:1px rgba(255,122,0,.10);white-space:nowrap;pointer-events:none;user-select:none}
+.bkk-ref-ornaments{position:absolute!important;inset:0;z-index:1;overflow:hidden;pointer-events:none;-webkit-mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.35) 38%,#000 75%);mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.35) 38%,#000 75%)}
+.bkk-ref-ornament-image{position:absolute!important;inset:0;width:100%;height:100%;display:block;object-fit:cover;object-position:center;max-width:none}
+.bkk-orn{position:absolute;inset:0;z-index:2;pointer-events:none;overflow:hidden}
+.bkk-ring{position:absolute;width:380px;height:380px;right:-110px;top:-130px;border:1px solid rgba(13,58,102,.13);border-radius:50%}
+.bkk-ring::before{content:"";position:absolute;inset:36px;border:1px dashed rgba(255,179,0,.38);border-radius:50%}
+.bkk-dots{position:absolute;width:120px;height:120px;left:44%;bottom:8%;opacity:.4;background-image:radial-gradient(rgba(13,58,102,.4) 1.5px,transparent 1.6px);background-size:16px 16px}
 
-.bkk-section{position:relative;padding:clamp(3.5rem,6vw,5.5rem) clamp(1.25rem,5vw,5.5rem)}
-.bkk-container{max-width:1240px;margin:0 auto;position:relative;z-index:2}
-.bkk-head{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;margin-bottom:2.4rem}
-.bkk-eyebrow{display:inline-flex;align-items:center;gap:.55rem;font-size:.7rem;font-weight:900;letter-spacing:.19em;text-transform:uppercase;color:#2f6fa8;margin-bottom:.65rem}
-.bkk-eyebrow:before{content:"";width:26px;height:2px;background:linear-gradient(90deg,#ffd54a,#ffb300)}
-.bkk-heading{font-family:var(--font-display);font-size:clamp(2rem,4vw,3.2rem);line-height:1;letter-spacing:-.025em;margin:0;color:#0d3a66}
-.bkk-heading em{font-style:normal;color:transparent;background:linear-gradient(135deg,#ffd54a,#ff8a00);-webkit-background-clip:text;background-clip:text}
-.bkk-sub{max-width:600px;margin:.85rem 0 0;color:#52657a;font-size:.92rem;line-height:1.75}
-.bkk-num{font-family:var(--font-display);font-weight:900;font-size:clamp(3.5rem,6vw,5.5rem);line-height:1;color:rgba(13,58,102,.06);user-select:none}
+.bkk-hero-inner{position:relative;z-index:4;width:100%;max-width:1360px;margin:0 auto;padding:clamp(3.5rem,9vh,6rem) clamp(1.25rem,4vw,4rem);display:grid;grid-template-columns:minmax(0,1.5fr) minmax(280px,.62fr);gap:clamp(2rem,5vw,4.5rem);align-items:center}
+.bkk-kicker{display:inline-flex;align-items:center;gap:.65rem;margin-bottom:1.3rem;padding:.5rem .95rem .5rem .8rem;border:1px solid rgba(255,111,0,.22);border-radius:999px;background:#fff8f0;color:#d85f00;font-size:.82rem;font-weight:800}
+.bkk-kicker::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--orange);box-shadow:0 0 0 5px rgba(255,111,0,.13)}
+.bkk-title{margin:0;max-width:880px;font-family:var(--font-display);font-size:clamp(3.4rem,9vw,7.6rem);line-height:.88;letter-spacing:-.035em;text-transform:uppercase}
+.bkk-title .navy{display:block;color:var(--head)}
+.bkk-title .gold{display:block;position:relative;width:fit-content;color:transparent;background:linear-gradient(135deg,#ffd54a 0%,#ffb300 48%,#ff7a00 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.bkk-title .gold::after{content:"";position:absolute;left:.03em;right:0;bottom:-.1em;height:.085em;border-radius:99px;background:linear-gradient(90deg,#ffb300,rgba(255,179,0,0));-webkit-text-fill-color:initial}
+.bkk-lead{max-width:600px;margin:2rem 0 0;color:var(--text);font-size:1.04rem;line-height:1.85}
 
-.bkk-intro{display:grid;grid-template-columns:1.25fr .75fr;gap:1.4rem}
-.bkk-card{background:#fff;border:1px solid rgba(13,58,102,.1);border-radius:22px;box-shadow:0 14px 40px rgba(13,58,102,.07);padding:1.7rem}
-.bkk-card h3{font-family:var(--font-display);font-size:1.25rem;margin:0 0 .65rem;color:#0d3a66}
-.bkk-card p{font-size:.86rem;line-height:1.8;color:#52657a;margin:0}
-.bkk-vision{background:#0d3a66;color:#fff}
-.bkk-vision h3{color:#fff}
-.bkk-vision p{color:rgba(235,245,253,.82)}
-.bkk-quote{margin-top:1.1rem;padding:1rem 1.1rem;border-left:3px solid #ffc107;background:rgba(255,255,255,.06);font-size:.86rem;line-height:1.7;color:#fff;font-weight:700}
+/* pills -> panel samping */
+.bkk-pills{position:relative;display:flex;flex-direction:column;border-radius:22px;background:rgba(255,255,255,.88);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border:1px solid var(--line);box-shadow:0 26px 60px rgba(13,58,102,.14);overflow:hidden}
+.bkk-pills::before{content:"";height:5px;background:linear-gradient(90deg,#ffd54a,#ffb300,#ff7a00)}
+.bkk-pill{display:flex;align-items:center;gap:.95rem;padding:1.1rem 1.4rem;font-size:.92rem;font-weight:800;color:var(--head)}
+.bkk-pill + .bkk-pill{border-top:1px dashed var(--line-2)}
+.bkk-pill i{flex:none;width:42px;height:42px;display:grid;place-items:center;border-radius:13px 13px 13px 4px;background:var(--navy);color:var(--gold-2);font-size:1rem}
 
-/* DUDI MITRA INDUSTRI GRID */
-.ind-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.2rem;
-}
-.ind-card {
-  background: #fff;
-  border: 1px solid rgba(13,58,102,.1);
-  border-radius: 20px;
-  padding: 1.5rem;
-  box-shadow: 0 10px 28px rgba(13,58,102,.06);
-  transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
-  display: flex;
-  flex-direction: column;
-}
-.ind-card:hover {
-  transform: translateY(-5px);
-  border-color: rgba(255,179,0,.4);
-  box-shadow: 0 18px 42px rgba(13,58,102,.14);
-}
-.ind-icon {
-  width: 46px;
-  height: 46px;
-  border-radius: 14px;
-  display: grid;
-  place-items: center;
-  background: linear-gradient(135deg, rgba(255,213,74,.22), rgba(255,179,0,.12));
-  color: #0d3a66;
-  font-size: 1.1rem;
-  margin-bottom: 1rem;
-  border: 1px solid rgba(255,179,0,.3);
-}
-.ind-card h4 {
-  font-family: var(--font-display);
-  font-size: 1.05rem;
-  margin: 0 0 .4rem;
-  color: #0d3a66;
-  line-height: 1.3;
-}
-.ind-field {
-  font-size: .76rem;
-  color: #ff6f00;
-  font-weight: 800;
-  margin-bottom: .4rem;
-  display: inline-flex;
-  align-items: center;
-  gap: .3rem;
-}
-.ind-scope {
-  font-size: .8rem;
-  line-height: 1.6;
-  color: #65788d;
-  margin: 0;
-}
+/* satu momen animasi saat halaman dibuka */
+@keyframes bkk-rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+.bkk-title .navy,.bkk-title .gold{animation:bkk-rise .8s cubic-bezier(.2,.7,.2,1) both}
+.bkk-title .gold{animation-delay:.12s}
 
-/* DYNAMIC JOB CARDS */
-.bkk-jobs{background:#f1f5f9}
-.bkk-job-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem}
-.bkk-job{background:#fff;border:1px solid rgba(13,58,102,.1);border-radius:20px;padding:1.5rem;box-shadow:0 10px 28px rgba(13,58,102,.06);display:flex;flex-direction:column;gap:.75rem;transition:transform .2s ease, box-shadow .2s ease}
-.bkk-job:hover{transform:translateY(-3px);box-shadow:0 16px 36px rgba(13,58,102,.12)}
+/* =========================================================
+   STRIP
+   ========================================================= */
+.bkk-strip{background:var(--navy);color:#fff;border-bottom:3px solid var(--gold-2)}
+.bkk-strip-inner{max-width:1360px;margin:0 auto;display:flex;align-items:center;gap:1rem;padding:.9rem clamp(1.25rem,4vw,4rem)}
+.bkk-strip-label{flex:none;display:inline-flex;align-items:center;gap:.4rem;padding:.42rem .85rem;border-radius:999px;background:linear-gradient(135deg,#ffd54a,#ffb300);color:var(--navy);font-size:.74rem;font-weight:900;white-space:nowrap}
+.bkk-strip-text{min-width:0;font-size:.84rem;color:rgba(255,255,255,.88);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* =========================================================
+   SECTION UMUM
+   ========================================================= */
+.bkk-section{position:relative;padding:clamp(3.5rem,7vw,6rem) clamp(1.25rem,5vw,5.5rem)}
+.bkk-container{position:relative;z-index:2;max-width:1240px;margin:0 auto}
+.bkk-head{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;margin-bottom:2.6rem}
+.bkk-eyebrow{display:inline-flex;align-items:center;gap:.6rem;margin-bottom:.8rem;color:var(--link);font-size:.86rem;font-weight:800}
+.bkk-eyebrow::before{content:"";width:28px;height:3px;border-radius:9px;background:linear-gradient(90deg,#ffd54a,#ffb300)}
+.bkk-heading{margin:0;font-family:var(--font-display);font-size:clamp(2.1rem,4.4vw,3.5rem);line-height:1.04;letter-spacing:-.028em;color:var(--head)}
+.bkk-heading em{font-style:normal;color:inherit;padding:0 .12em;margin:0 -.12em;background:linear-gradient(transparent 60%,var(--hl) 60%,var(--hl) 92%,transparent 92%);-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.bkk-sub{max-width:580px;margin:1rem 0 0;color:var(--text);font-size:.96rem;line-height:1.8}
+.bkk-num{display:none}
+
+/* =========================================================
+   TENTANG BKK
+   ========================================================= */
+.bkk-intro{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:1.25rem}
+.bkk-card{grid-column:span 7;background:var(--surf);border:1px solid var(--line);border-radius:26px;box-shadow:var(--shadow);padding:clamp(1.6rem,3vw,2.4rem)}
+.bkk-card h3{margin:0 0 1rem;font-family:var(--font-display);font-size:clamp(1.3rem,2.2vw,1.7rem);line-height:1.2;letter-spacing:-.015em;color:var(--head)}
+.bkk-card p{margin:0;max-width:62ch;color:var(--text);font-size:.92rem;line-height:1.9}
+.bkk-vision{grid-column:span 5;position:relative;overflow:hidden;background:var(--navy);border-color:transparent;color:#fff}
+.bkk-vision::before{content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;border-radius:50%;border:1px dashed rgba(255,213,74,.4)}
+.bkk-vision::after{content:"";position:absolute;left:1.4rem;bottom:1.2rem;width:90px;height:60px;opacity:.35;background-image:radial-gradient(rgba(255,255,255,.7) 1.4px,transparent 1.5px);background-size:14px 14px}
+.bkk-vision h3{color:#fff;position:relative}
+.bkk-vision p{color:rgba(235,245,253,.84);position:relative}
+.bkk-quote{position:relative;margin-top:1.3rem;margin-bottom:2.2rem;padding:1.1rem 1.2rem;border-left:4px solid var(--gold-2);border-radius:0 14px 14px 0;background:rgba(255,255,255,.07);color:#fff;font-size:1rem;line-height:1.7;font-weight:700}
+
+.bkk-photo-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.1rem;margin-top:1.4rem;align-items:start}
+.bkk-photo-row img{display:block;width:100%;height:230px;object-fit:cover;border-radius:24px 24px 24px 6px;box-shadow:0 16px 38px rgba(13,58,102,.14)}
+.bkk-photo-row img:nth-child(2){margin-top:2rem;border-radius:24px}
+.bkk-photo-row img:nth-child(3){border-radius:6px 24px 24px 24px}
+
+/* =========================================================
+   MITRA INDUSTRI
+   ========================================================= */
+.bkk-partners{padding-top:1rem}
+.ind-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.2rem}
+.ind-card{display:flex;flex-direction:column;gap:.55rem;padding:1.5rem;background:var(--surf);border:1px solid var(--line);border-radius:22px;transition:border-color .2s ease,box-shadow .2s ease}
+.ind-card:hover{border-color:var(--gold);box-shadow:var(--shadow)}
+.ind-icon{width:54px;height:54px;display:grid;place-items:center;margin-bottom:.7rem;border-radius:17px 17px 17px 4px;background:var(--navy);color:var(--gold-2);font-family:var(--font-display);font-size:1.45rem;font-weight:900;line-height:1}
+.ind-card h4{margin:0;font-family:var(--font-display);font-size:1.1rem;line-height:1.3;color:var(--head)}
+.ind-field{align-self:flex-start;display:inline-flex;align-items:center;gap:.4rem;padding:.3rem .65rem;border-radius:999px;background:rgba(255,111,0,.09);color:#c85500;font-size:.76rem;font-weight:800}
+.ind-scope{margin:auto 0 0;padding-top:.95rem;border-top:1px dashed var(--line-2);color:var(--text);font-size:.84rem;line-height:1.65}
+.ind-card h4 + .ind-field + .ind-scope{margin-top:.6rem}
+
+/* =========================================================
+   LOWONGAN — kartu bergaya tiket
+   ========================================================= */
+.bkk-jobs{--jobs-bg:var(--bg-alt);background:var(--jobs-bg)}
+.bkk-jobs::before{content:"";position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:44px 44px;opacity:.55;-webkit-mask-image:linear-gradient(180deg,#000,transparent 70%);mask-image:linear-gradient(180deg,#000,transparent 70%)}
+.bkk-job-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.3rem}
+.bkk-job{--st:var(--ok);position:relative;display:flex;flex-direction:column;gap:.8rem;padding:1.5rem 1.5rem 1.4rem 1.85rem;background:var(--surf);border:1px solid var(--line);border-radius:20px;box-shadow:0 10px 30px rgba(13,58,102,.06);overflow:hidden;transition:box-shadow .2s ease,border-color .2s ease}
+.bkk-job::before{content:"";position:absolute;left:0;top:0;bottom:0;width:6px;background:var(--st)}
+.bkk-job:hover{box-shadow:var(--shadow);border-color:var(--line-2)}
+.bkk-job.is-open{--st:var(--ok)}
+.bkk-job.is-upcoming{--st:var(--soon)}
+.bkk-job.is-selesai{--st:var(--end)}
+.bkk-job.is-archive{--st:var(--arc)}
 .bkk-job-top{display:flex;align-items:center;justify-content:space-between;gap:.7rem;flex-wrap:wrap}
-
-.bkk-status{display:inline-flex;align-items:center;gap:.4rem;border-radius:999px;padding:.36rem .75rem;font-size:.65rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase}
+.bkk-status{display:inline-flex;align-items:center;gap:.45rem;padding:.38rem .8rem;border-radius:999px;font-size:.68rem;font-weight:900;letter-spacing:.03em}
 .bkk-status.open{background:#e6f4ea;color:#1e7e43;border:1px solid #b7e1cd}
-.bkk-status.upcoming{background:#fff8e1;color:#b78103;border:1px solid #ffe082}
+.bkk-status.upcoming{background:#fff6dc;color:#9a6b00;border:1px solid #ffe082}
 .bkk-status.selesai{background:#fce8e6;color:#c5221f;border:1px solid #f6aea9}
 .bkk-status.archive{background:#eef1f4;color:#64778b;border:1px solid #cbd5e1}
+.bkk-date{display:inline-flex;align-items:center;gap:.35rem;color:var(--text);font-size:.76rem;font-weight:700}
+.bkk-job h3{margin:.15rem 0 0;font-family:var(--font-display);font-size:1.3rem;line-height:1.25;letter-spacing:-.01em;color:var(--head)}
+.bkk-job-co{color:var(--link);font-size:.88rem;font-weight:700;line-height:1.6}
+.bkk-job-co i{margin-right:.25rem;color:var(--orange)}
+.bkk-job p{margin:0;color:var(--text);font-size:.86rem;line-height:1.75}
 
-.bkk-date{font-size:.72rem;color:#65788d;font-weight:700}
-.bkk-job h3{font-family:var(--font-display);font-size:1.15rem;line-height:1.3;margin:0;color:#0d3a66}
-.bkk-job p{font-size:.82rem;line-height:1.7;color:#596e83;margin:0}
-.bkk-job-co{font-size:.84rem;font-weight:700;color:#2f6fa8;margin-top:-.2rem}
-.bkk-job-co i{color:#ff7a00;margin-right:.25rem}
-.bkk-job-meta{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:auto;padding-top:.5rem}
-.bkk-tag{padding:.4rem .7rem;border-radius:999px;background:#f7f9fc;border:1px solid rgba(13,58,102,.09);font-size:.66rem;color:#0d3a66;font-weight:700;display:inline-flex;align-items:center;gap:.35rem}
-.bkk-tag.bkk-tag-apply{background:#0d3a66;color:#fff;text-decoration:none}
-.bkk-empty{grid-column:1/-1;text-align:center;padding:3rem;background:#fff;border-radius:20px;border:1px dashed rgba(13,58,102,.2)}
-.bkk-empty p{color:#52657a;font-size:.9rem;margin:0}
+/* sobekan tiket */
+.bkk-job-meta{position:relative;display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;margin-top:auto;padding-top:1.05rem;border-top:2px dashed var(--line-2)}
+.bkk-job-meta::before,.bkk-job-meta::after{content:"";position:absolute;top:-9px;width:16px;height:16px;border-radius:50%;background:var(--jobs-bg);border:1px solid var(--line)}
+.bkk-job-meta::before{left:calc(-1.85rem - 8px)}
+.bkk-job-meta::after{right:calc(-1.5rem - 8px)}
+.bkk-tag{display:inline-flex;align-items:center;gap:.4rem;padding:.45rem .8rem;border-radius:999px;background:var(--surf-2);border:1px solid var(--line);color:var(--head);font-size:.72rem;font-weight:700}
+.bkk-tag.bkk-tag-apply{margin-left:auto;padding:.55rem 1.05rem;background:var(--navy);border-color:var(--navy);color:#fff;font-size:.78rem;font-weight:800;text-decoration:none;transition:background-color .2s ease,color .2s ease,border-color .2s ease}
+.bkk-tag.bkk-tag-apply:hover{background:var(--gold);border-color:var(--gold);color:var(--navy)}
 
-.bkk-notice{margin-top:1.4rem;padding:1rem 1.2rem;border-radius:15px;background:#fffaf0;border:1px solid rgba(255,179,0,.3);color:#765d24;font-size:.78rem;line-height:1.65}
-.bkk-notice i{color:#ffb300;margin-right:.35rem}
-.bkk-status-key{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.3rem}
-.bkk-key{display:inline-flex;align-items:center;gap:.45rem;padding:.48rem .75rem;border-radius:999px;background:#fff;border:1px solid rgba(13,58,102,.1);font-size:.68rem;font-weight:800;color:#5c7085}
-.bkk-key b{color:#0d3a66}
+.bkk-empty{grid-column:1/-1;text-align:center;padding:3.2rem 1.5rem;background:var(--surf);border:2px dashed var(--line-2);border-radius:22px}
+.bkk-empty p{margin:0;color:var(--text);font-size:.95rem}
 
-.bkk-photo-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.6rem}
-.bkk-photo-row img{width:100%;height:190px;object-fit:cover;border-radius:18px;box-shadow:0 12px 30px rgba(13,58,102,.1)}
+.bkk-notice{position:relative;z-index:2;margin-top:1.6rem;padding:1.1rem 1.3rem;border-radius:0 16px 16px 0;background:#fffaf0;border:1px solid rgba(255,179,0,.3);border-left:5px solid var(--gold);color:#765d24;font-size:.84rem;line-height:1.7}
+.bkk-notice i{margin-right:.4rem;color:var(--gold)}
+.bkk-status-key{position:relative;z-index:2;display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.2rem}
+.bkk-key{--c:var(--ok);display:inline-flex;align-items:center;gap:.5rem;padding:.5rem .85rem;border-radius:999px;background:var(--surf);border:1px solid var(--line);color:var(--text);font-size:.74rem;font-weight:700}
+.bkk-key::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--c)}
+.bkk-key:nth-child(2){--c:var(--soon)}
+.bkk-key:nth-child(3){--c:var(--end)}
+.bkk-key:nth-child(4){--c:var(--arc)}
+.bkk-key b{color:var(--head)}
 
-.bkk-cta{padding:0 clamp(1.25rem,5vw,5.5rem) clamp(3.5rem,7vw,5rem)}
-.bkk-cta-box{max-width:1180px;margin:0 auto;background:#0d3a66;border-radius:27px;padding:clamp(2.5rem,5vw,4rem);color:#fff;text-align:center;box-shadow:0 28px 65px rgba(13,58,102,.22)}
-.bkk-cta-box h2{font-family:var(--font-display);font-size:clamp(2rem,4vw,3.2rem);line-height:1.05;margin:0}
-.bkk-cta-box h2 em{font-style:normal;color:#ffd54a}
-.bkk-cta-box p{max-width:650px;margin:1rem auto 0;font-size:.88rem;line-height:1.8;color:rgba(235,245,253,.78)}
+/* =========================================================
+   CTA
+   ========================================================= */
+.bkk-cta{padding:0 clamp(1.25rem,5vw,5.5rem) clamp(3.5rem,7vw,5.5rem)}
+.bkk-cta-box{position:relative;isolation:isolate;overflow:hidden;max-width:1180px;margin:0 auto;padding:clamp(2.8rem,6vw,5rem) clamp(1.5rem,5vw,4rem);border-radius:30px;text-align:center;color:#fff;background:radial-gradient(circle at 85% 0%,rgba(255,179,0,.22),transparent 45%),linear-gradient(135deg,#0a2d52 0%,#0d3a66 60%,#12497f 100%);box-shadow:0 30px 70px rgba(13,58,102,.25)}
+.bkk-cta-box::before{content:"";position:absolute;z-index:-1;width:420px;height:420px;left:-140px;bottom:-220px;border-radius:50%;border:1px solid rgba(255,255,255,.14)}
+.bkk-cta-box::after{content:"";position:absolute;z-index:-1;width:260px;height:260px;right:-70px;top:-90px;border-radius:50%;border:1px dashed rgba(255,213,74,.35)}
+.bkk-cta-box h2{margin:0 auto;max-width:760px;font-family:var(--font-display);font-size:clamp(2rem,4.4vw,3.4rem);line-height:1.08;letter-spacing:-.025em}
+.bkk-cta-box h2 em{font-style:normal;color:var(--gold-2)}
+.bkk-cta-box p{max-width:640px;margin:1.2rem auto 0;color:rgba(235,245,253,.8);font-size:.95rem;line-height:1.85}
 
-@media(max-width:1000px){.bkk-intro{grid-template-columns:1fr}}
-@media(max-width:960px){.ind-grid{grid-template-columns:repeat(2,1fr)}}
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+@media(max-width:1000px){
+  .bkk-hero-inner{grid-template-columns:1fr}
+  .bkk-pills{max-width:460px}
+  .bkk-card,.bkk-vision{grid-column:1/-1}
+}
+@media(max-width:960px){.ind-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:860px){
-  .bkk-section{padding:clamp(2.8rem,5vw,4rem) clamp(1.2rem,4vw,3rem)}
-  .bkk-head{flex-direction:column;align-items:flex-start;gap:.5rem;margin-bottom:1.8rem}
-  .bkk-num{display:none}
+  .bkk-head{flex-direction:column;align-items:flex-start;gap:.5rem;margin-bottom:1.9rem}
+  .bkk-ref-ornaments{-webkit-mask-image:linear-gradient(180deg,transparent 0%,rgba(0,0,0,.4) 45%,#000 100%);mask-image:linear-gradient(180deg,transparent 0%,rgba(0,0,0,.4) 45%,#000 100%)}
 }
 @media(max-width:720px){
   .bkk-job-grid{grid-template-columns:1fr}
-  .bkk-photo-row{grid-template-columns:1fr;gap:.75rem}
-  .bkk-photo-row img{height:170px}
+  .bkk-photo-row{grid-template-columns:1fr;gap:.8rem}
+  .bkk-photo-row img,.bkk-photo-row img:nth-child(2){height:190px;margin-top:0;border-radius:20px}
 }
 @media(max-width:640px){
   .bkk-hero{min-height:0;align-items:flex-start}
-  .bkk-hero-inner{width:100%;padding:clamp(2.8rem,7vh,4rem) 1.25rem 2.8rem}
-  .bkk-hero::after{font-size:clamp(3.2rem,20vw,5.4rem);opacity:.6;left:-2%}
-  .bkk-title{font-size:clamp(2.4rem,11vw,3.6rem)}
-  .bkk-lead{font-size:.88rem;line-height:1.65;margin-top:1rem}
-  .bkk-pills{gap:.4rem;margin-top:1.2rem}
-  .bkk-pill{font-size:.7rem;padding:.4rem .75rem}
-  .bkk-strip-inner{padding:.75rem 1rem;flex-direction:column;align-items:flex-start;gap:.4rem}
-  .bkk-strip-text{white-space:normal;font-size:.76rem;line-height:1.5}
-  .bkk-section{padding:2.2rem 1rem}
-  .bkk-heading{font-size:clamp(1.6rem,6vw,2.2rem);line-height:1.15}
-  .bkk-sub{font-size:.86rem;line-height:1.65}
-  .bkk-card{padding:1.2rem 1.1rem;border-radius:16px}
-  .bkk-card h3{font-size:1.1rem}
-  .bkk-card p{font-size:.84rem;line-height:1.65}
-  .ind-grid{grid-template-columns:1fr;gap:.85rem}
-  .ind-card{padding:1.1rem;border-radius:16px}
-  .ind-card h4{font-size:.98rem}
-  .bkk-job{padding:1.1rem;border-radius:16px;gap:.6rem}
-  .bkk-job-top{flex-direction:column;align-items:flex-start;gap:.4rem}
-  .bkk-job h3{font-size:1.05rem}
-  .bkk-job p{font-size:.82rem;line-height:1.6}
-  .bkk-job-meta{margin-top:.4rem;gap:.4rem}
-  .bkk-tag{font-size:.68rem;padding:.35rem .65rem}
-  .bkk-notice{font-size:.75rem;padding:.85rem 1rem;border-radius:12px}
-  .bkk-status-key{gap:.4rem;margin-top:1rem}
-  .bkk-key{font-size:.64rem;padding:.35rem .65rem}
-  .bkk-cta{padding:0 1rem 2.2rem}
-  .bkk-cta-box{padding:2.2rem 1.1rem;border-radius:20px}
-  .bkk-cta-box h2{font-size:1.45rem;line-height:1.15}
-  .bkk-cta-box p{font-size:.86rem;line-height:1.65;margin-top:.75rem}
+  .bkk-hero-inner{padding:2.8rem 1.25rem 2.6rem;gap:1.8rem}
+  .bkk-hero::after{font-size:clamp(4rem,30vw,7rem);left:-2%}
+  .bkk-title{font-size:clamp(2.7rem,14vw,4rem)}
+  .bkk-lead{font-size:.92rem;line-height:1.75;margin-top:1.5rem}
+  .bkk-pills{max-width:none}
+  .bkk-pill{padding:.9rem 1.1rem;font-size:.86rem}
+  .bkk-strip-inner{flex-direction:column;align-items:flex-start;gap:.5rem;padding:.8rem 1rem}
+  .bkk-strip-text{white-space:normal;font-size:.8rem;line-height:1.55}
+  .bkk-section{padding:2.6rem 1rem}
+  .bkk-partners{padding-top:.5rem}
+  .bkk-heading{font-size:clamp(1.8rem,8vw,2.4rem)}
+  .bkk-sub{font-size:.88rem;line-height:1.7}
+  .bkk-card{padding:1.4rem 1.2rem;border-radius:20px}
+  .bkk-card p{font-size:.88rem;line-height:1.8}
+  .ind-grid{grid-template-columns:1fr;gap:.9rem}
+  .ind-card{padding:1.2rem;border-radius:18px}
+  .bkk-job{padding:1.2rem 1.1rem 1.2rem 1.5rem;border-radius:18px;gap:.65rem}
+  .bkk-job-top{flex-direction:column;align-items:flex-start;gap:.45rem}
+  .bkk-job h3{font-size:1.15rem}
+  .bkk-job-meta::before{left:calc(-1.5rem - 8px)}
+  .bkk-job-meta::after{right:calc(-1.1rem - 8px)}
+  .bkk-tag.bkk-tag-apply{margin-left:0;width:100%;justify-content:center}
+  .bkk-notice{font-size:.8rem;padding:.9rem 1rem}
+  .bkk-key{font-size:.7rem;padding:.4rem .7rem}
+  .bkk-cta{padding:0 1rem 2.4rem}
+  .bkk-cta-box{border-radius:22px;padding:2.4rem 1.2rem}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .bkk-title .navy,.bkk-title .gold{animation:none}
+  .bkk-page *{transition:none!important}
 }
 
 /* =========================================================
-   DARK MODE — aktif jika <html> / <body> punya data-theme="dark"
+   DARK MODE — aktif jika <html>/<body> punya data-theme="dark"
    atau class: dark | dark-mode | theme-dark
-   Palet biru SAMA PERSIS dengan halaman Prestasi Sekolah.
+   Palet biru sama dengan halaman Prestasi Sekolah.
    ========================================================= */
 :is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-page{
-  --d-bg:#081423;
-  --d-bg2:#0b1b2f;
-  --d-surf:#0f2340;
-  --d-surf2:#12294a;
-  --d-text:#e6eef8;
-  --d-muted:#9db0c6;
-  --d-line:rgba(255,255,255,.09);
-  background:var(--d-bg);color:var(--d-text);color-scheme:dark;
+  --bg:#081423;--bg-alt:#0b1b2f;--surf:#0f2340;--surf-2:#12294a;
+  --head:#fff;--text:#9db0c6;--link:#8fb8e6;
+  --line:rgba(255,255,255,.09);--line-2:rgba(255,255,255,.2);
+  --shadow:0 18px 44px rgba(0,0,0,.5);
+  --hl:rgba(255,179,0,.34);
+  color-scheme:dark
 }
-
-/* Hero */
 :is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-hero{background:#0a1a2e;color:#e6eef8}
 :is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-hero::after{color:rgba(255,255,255,.04);-webkit-text-stroke:1px rgba(255,179,0,.14)}
 :is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-ref-ornaments{opacity:.45;filter:invert(.92) hue-rotate(180deg) brightness(.9)}
-:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-ring{border-color:rgba(255,255,255,.10)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-ring{border-color:rgba(255,255,255,.1)}
 :is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-ring::before{border-color:rgba(255,213,74,.25)}
 :is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-dots{background-image:radial-gradient(rgba(255,255,255,.35) 1.5px,transparent 1.6px);opacity:.3}
-:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-kicker{background:rgba(255,111,0,.10);border-color:rgba(255,111,0,.35);color:#ff9a3d}
-:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-title .navy{color:#fff}
-:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-lead{color:var(--d-muted)}
-:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-pill{background:var(--d-surf2);border-color:rgba(255,255,255,.12);color:#e6eef8;box-shadow:none}
-:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-pill i{color:#ffd54a}
-
-/* Strip */
-:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-strip{background:#071a31}
-
-/* Heading section */
-:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-eyebrow{color:#ffd54a}
-:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-heading{color:#fff}
-:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-sub{color:var(--d-muted)}
-:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-num{color:rgba(255,255,255,.06)}
-
-/* Kartu tentang BKK */
-:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-card{background:var(--d-surf);border-color:var(--d-line);box-shadow:0 14px 40px rgba(0,0,0,.35)}
-:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-card h3{color:#fff}
-:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-card p{color:var(--d-muted)}
-:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-vision{background:var(--d-surf2);border-color:rgba(255,213,74,.2)}
-:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-vision p{color:var(--d-muted)}
-:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-quote{background:rgba(255,255,255,.05)}
-:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-photo-row img{box-shadow:0 12px 30px rgba(0,0,0,.45)}
-
-/* Mitra industri */
-:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .ind-card{background:var(--d-surf);border-color:var(--d-line);box-shadow:0 10px 28px rgba(0,0,0,.35)}
-:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .ind-card:hover{border-color:rgba(255,213,74,.5);box-shadow:0 18px 42px rgba(0,0,0,.55)}
-:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .ind-icon{color:#ffd54a;border-color:rgba(255,213,74,.3)}
-:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .ind-card h4{color:#fff}
-:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .ind-field{color:#ff9a3d}
-:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .ind-scope{color:var(--d-muted)}
-
-/* Lowongan */
-:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-jobs{background:var(--d-bg2)}
-:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-job{background:var(--d-surf);border-color:var(--d-line);box-shadow:0 10px 28px rgba(0,0,0,.35)}
-:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-job:hover{box-shadow:0 16px 36px rgba(0,0,0,.55)}
-:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-job h3{color:#fff}
-:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-job p{color:var(--d-muted)}
-:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-job-co{color:#8fb8e6}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-kicker{background:rgba(255,111,0,.1);border-color:rgba(255,111,0,.35);color:#ff9a3d}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-pills{background:rgba(18,41,74,.82);border-color:rgba(255,255,255,.12);box-shadow:0 26px 60px rgba(0,0,0,.5)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-pill{color:#e6eef8}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-pill i,
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .ind-icon{background:var(--gold-2);color:var(--navy-2)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-strip{background:var(--navy-3)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-eyebrow{color:var(--gold-2)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-vision{background:var(--surf-2);border-color:rgba(255,213,74,.2)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-photo-row img{box-shadow:0 16px 38px rgba(0,0,0,.5)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .ind-card:hover{border-color:rgba(255,213,74,.5)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .ind-field{background:rgba(255,154,61,.12);color:#ff9a3d}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-job{box-shadow:0 10px 30px rgba(0,0,0,.35)}
 :is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-job-co i{color:#ff9a3d}
-:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-date{color:var(--d-muted)}
 :is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-status.open{background:rgba(52,168,83,.16);color:#7fdca0;border-color:rgba(127,220,160,.3)}
 :is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-status.upcoming{background:rgba(255,213,74,.14);color:#ffd54a;border-color:rgba(255,213,74,.35)}
 :is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-status.selesai{background:rgba(234,67,53,.16);color:#f59a93;border-color:rgba(245,154,147,.3)}
-:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-status.archive{background:rgba(255,255,255,.07);color:var(--d-muted);border-color:rgba(255,255,255,.14)}
-:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-tag{background:var(--d-surf2);border-color:rgba(255,255,255,.10);color:#e6eef8}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-status.archive{background:rgba(255,255,255,.07);color:var(--text);border-color:rgba(255,255,255,.14)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-tag{color:#e6eef8;border-color:rgba(255,255,255,.1)}
 :is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-tag.bkk-tag-apply{background:linear-gradient(135deg,#ffd54a,#ffb300);border-color:transparent;color:#0a2d52}
-:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-empty{background:var(--d-surf);border-color:rgba(255,255,255,.18)}
-:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-empty p{color:var(--d-muted)}
-:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-notice{background:rgba(255,179,0,.08);border-color:rgba(255,213,74,.28);color:#e8d28f}
-:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-key{background:var(--d-surf);border-color:rgba(255,255,255,.10);color:var(--d-muted)}
-:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-key b{color:#fff}
-
-/* CTA */
-:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-cta{background:var(--d-bg2)}
-:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-cta-box{background:linear-gradient(135deg,#040c18 0%,#071a31 55%,#0a2340 100%);border:1px solid rgba(255,213,74,.16);box-shadow:0 34px 80px rgba(0,0,0,.6)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-tag.bkk-tag-apply:hover{background:#fff;color:#0a2d52}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-notice{background:rgba(255,179,0,.08);border-color:rgba(255,213,74,.28);border-left-color:var(--gold);color:#e8d28f}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-cta{background:var(--bg-alt)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-cta-box{background:radial-gradient(circle at 85% 0%,rgba(255,179,0,.14),transparent 45%),linear-gradient(135deg,#040c18 0%,#071a31 55%,#0a2340 100%);border:1px solid rgba(255,213,74,.16);box-shadow:0 34px 80px rgba(0,0,0,.6)}
 :is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-cta-box p{color:#a9bbd0}
 
 /* transisi halus saat ganti tema */
-.bkk-page,.bkk-hero,.bkk-jobs,.bkk-cta,.bkk-card,.ind-card,.bkk-job,.bkk-pill,.bkk-tag,.bkk-key{transition:background-color .35s ease,color .35s ease,border-color .35s ease}
+.bkk-page,.bkk-hero,.bkk-jobs,.bkk-cta,.bkk-card,.ind-card,.bkk-job,.bkk-pills,.bkk-tag,.bkk-key{transition:background-color .35s ease,color .35s ease,border-color .35s ease,box-shadow .2s ease}
 </style>
 @endpush
 
@@ -281,7 +273,7 @@
 <div class="bkk-page">
   <!-- HERO SECTION -->
   <section class="bkk-hero">
-    <div class="bkk-ref-ornaments" aria-hidden="true" style="background-image:url('{{ asset('images/wide_minimalist_abstract_technology_background_des.png') }}');background-size:cover;background-position:center center;">
+    <div class="bkk-ref-ornaments" aria-hidden="true">
       <img src="{{ asset('images/wide_minimalist_abstract_technology_background_des.png') }}" alt="" class="bkk-ref-ornament-image" aria-hidden="true">
     </div>
     <div class="bkk-orn" aria-hidden="true"><span class="bkk-ring"></span><span class="bkk-dots"></span></div>
@@ -290,11 +282,11 @@
         <div class="bkk-kicker">Pusat Informasi Karier Skaneda</div>
         <h1 class="bkk-title"><span class="navy">BKK &amp;</span><span class="gold">Loker</span></h1>
         <p class="bkk-lead">Bursa Kerja Khusus SMK Negeri 2 Mojokerto — membantu siswa dan alumni menuju dunia kerja lewat informasi karier, rekrutmen industri, persiapan kerja, dan jejaring dengan dunia usaha.</p>
-        <div class="bkk-pills">
-          <span class="bkk-pill"><i class="fas fa-briefcase"></i> Informasi Karier</span>
-          <span class="bkk-pill"><i class="fas fa-building"></i> Rekrutmen Industri</span>
-          <span class="bkk-pill"><i class="fas fa-user-graduate"></i> Siswa &amp; Alumni</span>
-        </div>
+      </div>
+      <div class="bkk-pills">
+        <span class="bkk-pill"><i class="fas fa-briefcase"></i> Informasi Karier</span>
+        <span class="bkk-pill"><i class="fas fa-building"></i> Rekrutmen Industri</span>
+        <span class="bkk-pill"><i class="fas fa-user-graduate"></i> Siswa &amp; Alumni</span>
       </div>
     </div>
   </section>
@@ -306,7 +298,7 @@
     </div>
   </div>
 
-  <!-- SECTION 01: TENTANG BKK -->
+  <!-- SECTION: TENTANG BKK -->
   <section class="bkk-section">
     <div class="bkk-container">
       <div class="bkk-head">
@@ -330,15 +322,15 @@
         </article>
       </div>
       <div class="bkk-photo-row">
-        <img src="{{ asset('images/bkk/rekruitment-tongtji.png') }}" alt="Dokumentasi kegiatan BKK 1">
-        <img src="{{ asset('images/bkk/rekruitment-deabakery.png') }}" alt="Dokumentasi kegiatan BKK 2">
-        <img src="{{ asset('images/bkk/rekruitment-btpn.png') }}" alt="Dokumentasi kegiatan BKK 3">
+        <img src="{{ asset('images/bkk/rekruitment-tongtji.png') }}" alt="Dokumentasi kegiatan BKK 1" loading="lazy">
+        <img src="{{ asset('images/bkk/rekruitment-deabakery.png') }}" alt="Dokumentasi kegiatan BKK 2" loading="lazy">
+        <img src="{{ asset('images/bkk/rekruitment-btpn.png') }}" alt="Dokumentasi kegiatan BKK 3" loading="lazy">
       </div>
     </div>
   </section>
 
-  <!-- SECTION 02: DYNAMIC DUDI & MITRA INDUSTRI -->
-  <section class="bkk-section" style="padding-top:1rem">
+  <!-- SECTION: DYNAMIC DUDI & MITRA INDUSTRI -->
+  <section class="bkk-section bkk-partners">
     <div class="bkk-container">
       <div class="bkk-head">
         <div>
@@ -352,23 +344,23 @@
       <div class="ind-grid">
         @forelse($industries as $ind)
           <article class="ind-card">
-            <div class="ind-icon"><i class="fas fa-building"></i></div>
+            <div class="ind-icon" aria-hidden="true">{{ \Illuminate\Support\Str::upper(\Illuminate\Support\Str::substr(preg_replace('/^(PT|CV|UD)\.?\s+/i', '', $ind->company_name), 0, 1)) }}</div>
             <h4>{{ $ind->company_name }}</h4>
             <span class="ind-field"><i class="fas fa-layer-group"></i> {{ $ind->field_of_work ?? 'Industri Umum' }}</span>
             <p class="ind-scope">{{ $ind->partnership_scope ?? 'PKL & Rekrutmen Lulusan' }}</p>
           </article>
         @empty
-          <article class="ind-card"><div class="ind-icon"><i class="fas fa-building"></i></div><h4>PT Telkom Indonesia (Persero) Tbk</h4><span class="ind-field"><i class="fas fa-layer-group"></i> IT &amp; Telekomunikasi</span><p class="ind-scope">PKL, Kelas Industri &amp; Rekrutmen Lulusan</p></article>
-          <article class="ind-card"><div class="ind-icon"><i class="fas fa-building"></i></div><h4>Bank Syariah Indonesia (BSI)</h4><span class="ind-field"><i class="fas fa-layer-group"></i> Keuangan &amp; Perbankan</span><p class="ind-scope">Magang Industri &amp; Rekrutmen Alumni</p></article>
-          <article class="ind-card"><div class="ind-icon"><i class="fas fa-building"></i></div><h4>Hotel Vasa Surabaya</h4><span class="ind-field"><i class="fas fa-layer-group"></i> Hospitality &amp; Kuliner</span><p class="ind-scope">Praktik Kerja Lapangan Kuliner</p></article>
-          <article class="ind-card"><div class="ind-icon"><i class="fas fa-building"></i></div><h4>PT Cheil Jedang Indonesia</h4><span class="ind-field"><i class="fas fa-layer-group"></i> Manufaktur &amp; Olahan Pangan</span><p class="ind-scope">Kemitraan Rekrutmen &amp; Kunjungan Industri</p></article>
-          <article class="ind-card"><div class="ind-icon"><i class="fas fa-building"></i></div><h4>PT Perhutani Anugerah Kimia</h4><span class="ind-field"><i class="fas fa-layer-group"></i> Industri Hasil Hutan &amp; Kimia</span><p class="ind-scope">Kerja Sama Penyerapan Lulusan Vokasi</p></article>
+          <article class="ind-card"><div class="ind-icon" aria-hidden="true">T</div><h4>PT Telkom Indonesia (Persero) Tbk</h4><span class="ind-field"><i class="fas fa-layer-group"></i> IT &amp; Telekomunikasi</span><p class="ind-scope">PKL, Kelas Industri &amp; Rekrutmen Lulusan</p></article>
+          <article class="ind-card"><div class="ind-icon" aria-hidden="true">B</div><h4>Bank Syariah Indonesia (BSI)</h4><span class="ind-field"><i class="fas fa-layer-group"></i> Keuangan &amp; Perbankan</span><p class="ind-scope">Magang Industri &amp; Rekrutmen Alumni</p></article>
+          <article class="ind-card"><div class="ind-icon" aria-hidden="true">H</div><h4>Hotel Vasa Surabaya</h4><span class="ind-field"><i class="fas fa-layer-group"></i> Hospitality &amp; Kuliner</span><p class="ind-scope">Praktik Kerja Lapangan Kuliner</p></article>
+          <article class="ind-card"><div class="ind-icon" aria-hidden="true">C</div><h4>PT Cheil Jedang Indonesia</h4><span class="ind-field"><i class="fas fa-layer-group"></i> Manufaktur &amp; Olahan Pangan</span><p class="ind-scope">Kemitraan Rekrutmen &amp; Kunjungan Industri</p></article>
+          <article class="ind-card"><div class="ind-icon" aria-hidden="true">P</div><h4>PT Perhutani Anugerah Kimia</h4><span class="ind-field"><i class="fas fa-layer-group"></i> Industri Hasil Hutan &amp; Kimia</span><p class="ind-scope">Kerja Sama Penyerapan Lulusan Vokasi</p></article>
         @endforelse
       </div>
     </div>
   </section>
 
-  <!-- SECTION 03: DYNAMIC LOWONGAN KERJA -->
+  <!-- SECTION: DYNAMIC LOWONGAN KERJA -->
   <section class="bkk-section bkk-jobs">
     <div class="bkk-container">
       <div class="bkk-head">
@@ -406,7 +398,7 @@
               default => $st
             };
           @endphp
-          <article class="bkk-job">
+          <article class="bkk-job is-{{ $statusClass }}">
             <div class="bkk-job-top">
               <span class="bkk-status {{ $statusClass }}">
                 <i class="fas {{ $statusIcon }}"></i> {{ $statusLabel }}
@@ -426,7 +418,7 @@
             <div class="bkk-job-meta">
               <span class="bkk-tag"><i class="fas fa-user-clock"></i> {{ $job->employment_type ?? 'Full-Time' }}</span>
               @if($job->apply_url)
-                <a href="{{ $job->apply_url }}" target="_blank" class="bkk-tag bkk-tag-apply">
+                <a href="{{ $job->apply_url }}" target="_blank" rel="noopener" class="bkk-tag bkk-tag-apply">
                   Lamar Sekarang <i class="fas fa-arrow-up-right-from-square"></i>
                 </a>
               @endif
