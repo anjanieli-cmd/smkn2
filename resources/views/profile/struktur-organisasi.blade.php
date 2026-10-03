@@ -103,9 +103,9 @@
 .so-feed-account strong{font-family:var(--font-display);font-size:.76rem;font-weight:900;letter-spacing:.035em;color:#0d3a66}
 .so-feed-account span{margin-top:.2rem;font-size:.58rem;color:#8a9bad;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .so-feed-more{margin-left:auto;color:#718396;font-size:.82rem;padding:.2rem}
-.so-photo-wrap{position:relative;isolation:isolate;width:100%;height:260px;margin:0;padding:0;background:linear-gradient(180deg,#edf5fb,#dce9f4);border-top:1px solid rgba(13,58,102,.06);border-bottom:1px solid rgba(13,58,102,.08)}
+.so-photo-wrap{position:relative;isolation:isolate;width:100%;height:auto;aspect-ratio:1/1;margin:0;padding:0;background:linear-gradient(180deg,#edf5fb,#dce9f4);border-top:1px solid rgba(13,58,102,.06);border-bottom:1px solid rgba(13,58,102,.08)}
 .so-photo{position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:0;box-shadow:none;background:linear-gradient(180deg,#eef6fc 0%,#dbe9f5 100%);overflow:hidden}
-.so-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;transition:transform .55s ease,filter .35s ease}
+.so-photo img{width:100%;height:100%;object-fit:contain;object-position:center center;display:block;transition:transform .55s ease,filter .35s ease}
 .so-card:hover .so-photo img{transform:scale(1.035);filter:saturate(1.04)}
 .so-photo-ring{position:absolute;inset:10px;border-radius:14px;border:1px solid rgba(255,255,255,.45);border-top-color:rgba(255,213,74,.8);z-index:2;pointer-events:none;transition:transform .55s ease}
 .so-card:hover .so-photo-ring{transform:rotate(5deg)}
@@ -1206,14 +1206,15 @@ html.theme-dark body .so-modal-avatar.has-photo{border-color:rgba(255,255,255,.2
     margin-top: .15rem !important;
   }
 
-  /* Foto guru/pejabat SEMUA LEVEL (Disamakan 310px dengan Level Pimpinan) */
+  /* Foto guru/pejabat SEMUA LEVEL (Sesuai Ukuran Asli 1:1 Square, 100% Full Masuk) */
   .so-photo-wrap {
-    height: 310px !important;
-    aspect-ratio: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 1 / 1 !important;
   }
   .so-photo img {
-    object-fit: cover !important;
-    object-position: center top !important;
+    object-fit: contain !important;
+    object-position: center center !important;
   }
 
   .so-card-name {
@@ -1266,7 +1267,13 @@ html.theme-dark body .so-modal-avatar.has-photo{border-color:rgba(255,255,255,.2
     gap: 1rem !important;
   }
   .so-photo-wrap {
-    height: 210px !important;
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 1 / 1 !important;
+  }
+  .so-photo img {
+    object-fit: contain !important;
+    object-position: center center !important;
   }
   .so-card-name {
     font-size: 1.05rem !important;
@@ -1290,7 +1297,9 @@ html.theme-dark body .so-modal-avatar.has-photo{border-color:rgba(255,255,255,.2
     max-width: 360px !important;
   }
   .so-level-root .so-photo-wrap {
-    height: 220px !important;
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 1 / 1 !important;
   }
 }
 
@@ -1300,13 +1309,17 @@ html.theme-dark body .so-modal-avatar.has-photo{border-color:rgba(255,255,255,.2
     gap: .75rem !important;
   }
   .so-photo-wrap {
-    height: 185px !important;
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 1 / 1 !important;
   }
   .so-level-root .so-grid {
     max-width: 320px !important;
   }
   .so-level-root .so-photo-wrap {
-    height: 200px !important;
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 1 / 1 !important;
   }
 }
 </style>
