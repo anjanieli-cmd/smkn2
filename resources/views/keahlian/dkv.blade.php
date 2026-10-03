@@ -10,7 +10,9 @@
    Mini website premium khusus DKV di dalam website sekolah.
    Konsep: IDEA → DESIGN → VISUAL → CREATIVE INDUSTRY → FUTURE
    Palet: navy #0d3a66, blue #0B5FA5, bright blue #28A9E1,
-          gold #FFD54A, orange #FF8A00, purple DKV #7C4DFF, white #F8FBFF
+          gold #FFD54A, orange #FF8A00, white #F8FBFF
+   Catatan: nama class .aphp-page / .aphp-wide / .aphp-cta sengaja dipertahankan
+   karena dipakai juga oleh partial dkv-content.blade.php.
    ========================================================= */
 .aphp-page{background:#f8fbff;color:#0d3a66;overflow:hidden;font-family:var(--font-body,system-ui,-apple-system,sans-serif)}
 .aphp-page *{box-sizing:border-box}
@@ -39,939 +41,71 @@
 .orn .o-square::before{content:"";position:absolute;inset:8px;border:1px solid rgba(7,27,51,.15)}
 .orn .o-corner{position:absolute;width:100px;height:100px;border-left:3px solid rgba(7,27,51,.1);border-bottom:3px solid rgba(7,27,51,.1)}
 .orn .o-corner::after{content:"";position:absolute;left:16px;bottom:16px;width:40px;height:3px;background:#FFD54A;border-radius:99px}
-.orn .o-wheat{position:absolute;font-size:clamp(4rem,12vw,10rem);color:rgba(111,175,69,.08);line-height:1;user-select:none;pointer-events:none}
+/* ikon dekoratif besar (class o-wheat dipertahankan; warnanya diganti biru brand DKV, bukan hijau APHP) */
+.orn .o-wheat{position:absolute;font-size:clamp(4rem,12vw,10rem);color:rgba(11,95,165,.07);line-height:1;user-select:none;pointer-events:none}
 .orn .o-hex{position:absolute;width:80px;height:80px;border:1.5px solid rgba(11,95,165,.12);clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%)}
 .orn .o-hex::after{content:"";position:absolute;inset:10px;border:1px solid rgba(255,213,74,.15);clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%)}
 
-/* ===== HERO — DISALIN 1:1 DARI HALAMAN SEJARAH, judul tetap DKV ===== */
-.history-page{background:#f7f9fc;color:#0d3a66;overflow:hidden}
-
-.history-page *{box-sizing:border-box}
-
-.history-shell{width:100%}
-
-.history-hero{position:relative;min-height:78vh;display:flex;align-items:center;overflow:hidden;
-  background:#fff;color:#0d3a66}
-
+/* ===== HERO ===== */
+.history-hero{position:relative;display:flex;align-items:center;overflow:hidden;color:#0d3a66;isolation:isolate;
+  min-height:clamp(620px,78vh,790px)!important;background:#fff!important}
 .history-hero::before{display:none}
+.history-hero::after{content:"DKV"!important;position:absolute;left:2%!important;top:58%!important;transform:translateY(-50%);
+  font-family:var(--font-display);font-size:clamp(9rem,23vw,23rem)!important;font-weight:900;line-height:.78;letter-spacing:.015em;
+  color:rgba(13,58,102,.035)!important;-webkit-text-stroke:1px rgba(255,122,0,.09)!important;
+  pointer-events:none;white-space:nowrap;user-select:none;z-index:0!important}
 
-.history-hero::after{content:"SEJARAH";position:absolute;z-index:0;left:-2%;top:50%;transform:translateY(-50%);
-  font-family:var(--font-display);font-size:clamp(8rem,24vw,24rem);font-weight:900;line-height:.78;
-  letter-spacing:.015em;color:rgba(13,58,102,.035);
-  -webkit-text-stroke:1px rgba(255,122,0,.12);
-  pointer-events:none;white-space:nowrap;user-select:none}
+.history-ref-ornaments{position:absolute!important;inset:0!important;z-index:1!important;overflow:hidden!important;pointer-events:none!important;opacity:1!important}
+.history-ref-ornament-image{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;display:block!important;
+  object-fit:cover!important;object-position:center center!important;max-width:none!important;opacity:1!important}
 
-.history-hero-geometry{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
-
-.history-hero-geometry svg{position:absolute;width:100%;height:100%;inset:0;display:block}
-
-.history-hero-geometry .geo-line{fill:none;stroke:#ff7a00;stroke-width:1.8;vector-effect:non-scaling-stroke;opacity:.42}
-
-.history-hero-geometry .geo-line-navy{fill:none;stroke:#0d3a66;stroke-width:1.5;vector-effect:non-scaling-stroke;opacity:.24}
-
-.history-hero-geometry .geo-node{fill:#fff;stroke:#ff7a00;stroke-width:2;vector-effect:non-scaling-stroke}
-
-.history-hero-geometry .geo-node-navy{fill:#fff;stroke:#0d3a66;stroke-width:2;vector-effect:non-scaling-stroke}
-
-.history-hero-geometry .geo-ring{fill:none;stroke:#0d3a66;stroke-width:1.2;opacity:.16}
-
-.history-hero-geometry .geo-ring-orange{fill:none;stroke:#ff7a00;stroke-width:1.5;opacity:.28}
-
-.history-hero-geometry .geo-diamond{fill:none;stroke:#ff7a00;stroke-width:1.4;opacity:.30}
-
-.history-hero-geometry .geo-dot{fill:#ff7a00;opacity:.52}
-
-.history-hero-geometry .geo-square{fill:#ff7a00;opacity:.9}
-
-.history-hero-geometry .geo-square-navy{fill:#0d3a66;opacity:.9}
-
-.history-hero-geometry .geo-soft{fill:#ff7a00;opacity:.055}
-
-.history-hero-geometry .geo-cluster-left{position:absolute;left:-70px;top:-58px;width:330px;height:250px}
-
-.history-hero-geometry .geo-cluster-right{position:absolute;right:-55px;top:18px;width:360px;height:270px}
-
-.history-hero-geometry .geo-network-left{position:absolute;left:-35px;bottom:12px;width:500px;height:220px}
-
-.history-hero-geometry .geo-modules{position:absolute;right:-25px;bottom:-8px;width:430px;height:210px;transform:rotate(-2deg)}
-
-.history-hero::after{z-index:0}
-
-.history-hero-inner{position:relative;z-index:3;width:100%;max-width:1500px;margin:0 auto;
-  padding:clamp(4rem,10vh,7rem) clamp(1.25rem,4vw,4.5rem) clamp(4rem,9vh,6rem);
-  display:block}
+.history-hero-inner{position:relative!important;z-index:4!important;width:100%;max-width:1500px!important;margin:0 auto;display:block;
+  padding:clamp(4rem,10vh,7rem) clamp(1.25rem,4.2vw,4.5rem) clamp(4rem,9vh,6rem)!important;padding-right:44%!important}
 
 .history-kicker{display:inline-flex;align-items:center;gap:.65rem;font-size:.72rem;font-weight:900;
-  letter-spacing:.18em;text-transform:uppercase;color:#ff6f00;margin-bottom:1.05rem;
-  padding:.55rem .85rem;border:1px solid rgba(255,111,0,.18);border-radius:999px;
-  background:#fffaf5}
+  letter-spacing:.18em;text-transform:uppercase;color:#ff6f00;margin-bottom:1.2rem!important;
+  padding:.55rem .85rem;border:1px solid rgba(255,111,0,.18);border-radius:999px;background:#fffaf5;
+  position:relative!important;z-index:5!important}
+.history-kicker::before{content:"";width:9px;height:9px;border-radius:50%;background:#ff6f00;box-shadow:0 0 0 6px rgba(255,111,0,.10)}
 
-.history-kicker::before{content:"";width:9px;height:9px;border-radius:50%;
-  background:#ff6f00;box-shadow:0 0 0 6px rgba(255,111,0,.10)}
-
-.history-title{font-family:var(--font-display);font-size:clamp(4rem,10vw,9.2rem);line-height:.84;
-  letter-spacing:-.035em;margin:0;max-width:1250px;text-transform:uppercase;
-  text-shadow:none;animation:hdFadeUp .7s .1s var(--ease, ease) both}
-
-.history-title .sejarah-white{color:#0d3a66;display:block}
-
-.history-title .skaneda-gold{display:block;
-  background:linear-gradient(135deg,#ff7a00 0%,#ff6a00 55%,#f4511e 100%);
-  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#ff6f00;
-  text-shadow:none;letter-spacing:-.025em}
-
-.history-lead{font-size:1rem;line-height:1.75;color:#52657a;max-width:720px;
-  margin:1.7rem 0 0;animation:hdFadeUp .7s .26s var(--ease, ease) both}
-
-.history-hero-meta{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.6rem;animation:hdFadeUp .7s .4s var(--ease, ease) both}
-
-.history-pill{display:inline-flex;align-items:center;gap:.5rem;padding:.55rem .85rem;
-  border:1px solid rgba(13,58,102,.12);background:#fff;border-radius:999px;color:#0d3a66;
-  font-size:.72rem;font-weight:800;box-shadow:0 8px 24px rgba(13,58,102,.06)}
-
-.history-pill i{color:#ff7a00}
-
-.hero-photo{display:none}
-
-.hero-photo::before,.hero-photo img,.hero-photo-caption{display:none}
+.history-title{font-family:var(--font-display);font-size:clamp(4.4rem,9.8vw,9.3rem)!important;line-height:.82!important;
+  letter-spacing:-.045em!important;margin:0;max-width:900px!important;text-transform:uppercase;text-shadow:none;
+  position:relative!important;z-index:5!important;animation:hdFadeUp .7s .1s var(--ease, ease) both}
+.history-title .sejarah-white{color:#0d3a66!important;display:block}
+.history-title .skaneda-gold{display:block;letter-spacing:-.025em;text-shadow:none;
+  background:linear-gradient(135deg,#ffd54a 0%,#ffb300 48%,#ff7a00 100%)!important;
+  -webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent!important;color:transparent!important}
 
 @keyframes hdFadeUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
 
-.history-vt-cta{
-    display:inline-flex;align-items:center;gap:.8rem;margin-top:1.7rem;
-    padding:.8rem 1rem;border-radius:16px;text-decoration:none;color:#0d3a66;
-    background:#fff;border:1px solid rgba(13,58,102,.12);
-    box-shadow:0 12px 30px rgba(13,58,102,.08);
-    transition:transform .3s ease,background .3s ease,border-color .3s ease,box-shadow .3s ease
-  }
-
-.history-vt-cta:hover{
-    transform:translateY(-4px);background:#fffaf5;
-    border-color:rgba(255,122,0,.28);box-shadow:0 18px 38px rgba(13,58,102,.12)
-  }
-
-.history-vt-icon{
-    width:46px;height:46px;border-radius:14px;display:grid;place-items:center;
-    background:linear-gradient(135deg,#ffd54a,#ff7a00);color:#0d3a66;font-size:.9rem
-  }
-
+.history-vt-cta{display:inline-flex;align-items:center;gap:.8rem;margin-top:2rem!important;
+  padding:.8rem 1rem;border-radius:16px;text-decoration:none;color:#0d3a66;
+  background:#fff;border:1px solid rgba(13,58,102,.12);box-shadow:0 12px 30px rgba(13,58,102,.08);
+  position:relative!important;z-index:5!important;
+  transition:transform .3s ease,background .3s ease,border-color .3s ease,box-shadow .3s ease}
+.history-vt-cta:hover{transform:translateY(-4px);background:#fffaf5;border-color:rgba(255,122,0,.28);box-shadow:0 18px 38px rgba(13,58,102,.12)}
+.history-vt-icon{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,#ffd54a,#ff7a00);color:#0d3a66;font-size:.9rem}
 .history-vt-cta strong{display:block;font-size:1rem;line-height:1.15;font-weight:900;letter-spacing:.01em}
-
 .history-vt-cta small{display:block;margin-top:.25rem;color:#718096;font-size:.72rem;font-weight:600}
-
 .history-vt-arrow{margin-left:.3rem;color:#ffd54a;font-size:1rem}
 
-.history-wide{width:min(1380px,92%);margin:auto}
-
-.history-intro{position:relative;padding:96px 0 110px;background:#fff}
-
-.history-hero-inner{width:100%;max-width:1500px}
-
-.history-title{max-width:1250px}
-
-@media(max-width:700px) {
-.history-hero{min-height:70vh}
-.history-hero-inner{padding-top:3.5rem;padding-bottom:4rem}
-.history-title{font-size:clamp(3.5rem,16vw,6rem);line-height:.88}
-.history-hero::after{font-size:clamp(7rem,32vw,12rem);left:-8%}
+@media(max-width:1050px){.history-hero-inner{padding-right:1.25rem!important}}
+@media(max-width:900px){
+  .history-ref-ornament-image{opacity:.88!important}
+  .history-title{font-size:clamp(4rem,11vw,7rem)!important}
+}
+@media(max-width:700px){
+  .history-hero{align-items:flex-start}
+  .history-hero::after{opacity:.6}
+  .history-hero-inner{width:90%}
+  .history-title{font-size:clamp(3rem,14vw,5rem)!important}
+  .history-vt-cta{width:min(100%,340px)}
+  .history-vt-cta .history-vt-arrow{margin-left:auto}
+}
+@media(max-width:560px){
+  .history-hero::after{opacity:.8}
+  .history-ref-ornament-image{opacity:.62!important}
 }
-
-.history-page{position:relative}
-
-.history-page::before{content:"";position:fixed;right:-110px;top:18%;width:230px;height:230px;border:2px solid rgba(13,58,102,.14);transform:rotate(45deg);z-index:0;pointer-events:none}
-
-.history-page::after{content:"";position:fixed;left:-95px;bottom:10%;width:190px;height:190px;border:2px solid rgba(47,111,168,.14);border-radius:28px;transform:rotate(25deg);z-index:0;pointer-events:none}
-
-.history-hero,.history-intro,.timeline-section,.story-band,.mosaic-section,.future{position:relative;z-index:1}
-
-.history-hero-inner::before{content:"";position:absolute;left:-28px;top:18%;width:12px;height:180px;border-left:3px solid #ffd54a;border-top:3px solid #ffd54a;opacity:.9}
-
-.history-hero-inner::after{content:"";position:absolute;right:44%;top:8%;width:72px;height:72px;border:2px solid rgba(255,213,74,.55);transform:rotate(45deg);pointer-events:none}
-
-.history-page .history-kicker,
-.history-page .history-pill,
-.history-page .eyebrow,
-.history-page .stat-box,
-.history-page .timeline-card,
-.history-page .timeline-marker,
-.history-page .story-chip,
-.history-page .mosaic-card,
-.history-page .future-point,
-.history-page .hero-photo,
-.history-page .big-heading,
-.history-page .history-title{
-  transition:transform .35s ease,box-shadow .35s ease,filter .35s ease,border-color .35s ease,background .35s ease;
-}
-
-.history-page .history-pill:hover{transform:translateY(-4px);background:rgba(13,58,102,.55);border-color:rgba(255,213,74,.5)}
-
-.history-page .history-kicker:hover{transform:translateX(7px);filter:drop-shadow(0 5px 12px rgba(255,213,74,.2))}
-
-.history-page .eyebrow:hover{transform:translateX(6px)}
-
-.history-page .stat-box:hover{transform:translateY(-9px) rotate(-.5deg);border-color:rgba(13,58,102,.32);box-shadow:0 28px 58px rgba(13,58,102,.18)}
-
-.history-page .timeline-card:hover{transform:translateY(-9px) scale(1.015);border-color:rgba(13,58,102,.22);box-shadow:0 30px 65px rgba(13,58,102,.2)}
-
-.history-page .timeline-card:hover::before{width:8px}
-
-.history-page .timeline-marker:hover{transform:rotate(45deg) scale(1.1);box-shadow:0 16px 35px rgba(13,58,102,.38)}
-
-.history-page .hero-photo:hover{transform:translateY(-42px) rotate(0deg) scale(1.015);box-shadow:0 45px 95px rgba(13,58,102,.35),0 18px 35px rgba(0,0,0,.22)}
-
-.history-page .hero-photo:hover img{transform:scale(1.07)}
-
-.history-page .story-chip:hover{transform:translateY(-5px);border-color:rgba(255,213,74,.4);background:rgba(255,255,255,.11)}
-
-.history-page .mosaic-card:hover{transform:translateY(-7px);box-shadow:0 28px 58px rgba(13,58,102,.22)}
-
-.history-page .future-point:hover{transform:translateY(-5px) scale(1.02);box-shadow:0 10px 24px rgba(13,58,102,.12)}
-
-.history-page .big-heading:hover{transform:translateX(4px)}
-
-@media(max-width:700px) {
-.history-hero-inner::before{left:0;top:14%;height:110px}
-.history-hero-inner::after{right:5%;top:4%;width:48px;height:48px}
-.history-page::before,.history-page::after{opacity:.45}
-}
-
-.history-page{overflow:hidden}
-
-.history-intro .home-orn .ho-chevron{right:-130px;top:70px}
-
-.history-intro .home-orn .ho-line{left:-55px;bottom:75px}
-
-.history-intro .home-orn .ho-dots{right:18%;bottom:55px}
-
-.history-intro .home-orn .ho-ring{left:-80px;top:35%}
-
-.history-intro .home-orn .ho-gold{right:12%;top:26%}
-
-.history-intro .home-orn .ho-square{left:13%;bottom:18%}
-
-.history-intro>*:not(.home-orn),
-.timeline-section>*:not(.home-orn),
-.story-band>*:not(.home-orn),
-.mosaic-section>*:not(.home-orn),
-.future>*:not(.home-orn){position:relative;z-index:2}
-
-@media(max-width:950px) {
-.history-hero-inner{grid-template-columns:1fr;gap:2rem}
-.hero-photo{height:360px}
-}
-
-@media(max-width:700px) {
-.history-hero{min-height:0;align-items:flex-start}
-.history-hero-inner{padding:clamp(3rem,8vh,4.5rem) 0 3.6rem;width:90%}
-.history-hero::after{font-size:clamp(4.5rem,26vw,7rem);opacity:.6}
-.history-title{font-size:clamp(2.5rem,12vw,4rem);margin-top:0}
-.hero-photo{height:300px}
-}
-
-.history-hero-inner::before{display:none!important;content:none!important}
-
-.history-vt-cta{position:relative;z-index:4}
-
-@media(max-width:950px) {
-.history-hero-inner{grid-template-columns:1fr;gap:2rem}
-.history-hero-inner>div:first-child{max-width:900px}
-}
-
-@media(max-width:700px) {
-.history-vt-cta{width:min(100%,340px)}
-.history-vt-cta .history-vt-arrow{margin-left:auto}
-}
-
-@media (max-width: 900px) {
-.history-hero-geometry .hhg-path-a{width:240px;left:-70px;top:22%}
-.history-hero-geometry .hhg-path-b{width:280px;right:-110px;top:72%}
-.history-hero-geometry .hhg-path-c{left:10%;width:210px}
-.history-hero-geometry .hhg-diamond{width:52px;height:52px;right:8%;top:24%}
-.history-hero-geometry .hhg-corner{right:3%;top:8%;width:66px;height:66px}
-.history-hero-geometry .hhg-orbit{width:150px;height:66px;left:-48px;bottom:8%}
-}
-
-@media (max-width: 560px) {
-.history-hero-geometry .hhg-node{width:9px;height:9px}
-.history-hero-geometry .hhg-node-a{left:8%;top:20%}
-.history-hero-geometry .hhg-node-b{left:18%;bottom:10%}
-.history-hero-geometry .hhg-node-c{right:11%;top:18%}
-.history-hero-geometry .hhg-node-d{right:5%;bottom:18%}
-.history-hero-geometry .hhg-diamond{right:5%;top:31%;width:38px;height:38px}
-.history-hero-geometry .hhg-dashes{left:4%;top:11%;width:60px;height:42px;background-size:10px 10px}
-.history-hero-geometry .hhg-corner{display:none}
-.history-hero-geometry .hhg-path-b{right:-145px}
-}
-
-.history-hero > .home-orn{display:none}
-
-.history-hero-inner::before,.history-hero-inner::after{display:none!important}
-
-.history-hero-geometry{z-index:1;opacity:1}
-
-.history-hero-geometry::before{
-  content:"";position:absolute;left:-70px;top:-35px;width:300px;height:300px;border-radius:50%;
-  background-image:radial-gradient(circle,rgba(13,58,102,.16) 1.5px,transparent 1.7px);
-  background-size:18px 18px;opacity:.62;
-  -webkit-mask-image:radial-gradient(circle at 52% 52%,#000 0 48%,transparent 72%);mask-image:radial-gradient(circle at 52% 52%,#000 0 48%,transparent 72%);
-}
-
-.history-hero-geometry::after{
-  content:"";position:absolute;right:-30px;bottom:-40px;width:420px;height:190px;
-  background:
-    linear-gradient(135deg,transparent 47%,rgba(255,122,0,.62) 48%,rgba(255,122,0,.62) 49%,transparent 50%),
-    linear-gradient(35deg,transparent 48%,rgba(13,58,102,.22) 49%,rgba(13,58,102,.22) 50%,transparent 51%);
-  opacity:.75;transform:rotate(-5deg);
-}
-
-.history-hero-geometry .hhg-path{height:1.5px;opacity:.55;box-shadow:none}
-
-.history-hero-geometry .hhg-path-a{width:430px;left:-95px;top:48%;background:#ff7a00;transform:rotate(30deg);opacity:.38}
-
-.history-hero-geometry .hhg-path-b{width:470px;right:-150px;top:38%;background:#0d3a66;transform:rotate(-36deg);opacity:.22}
-
-.history-hero-geometry .hhg-path-c{width:310px;left:auto;right:3%;bottom:15%;background:#ff7a00;transform:rotate(-13deg);opacity:.42}
-
-.history-hero-geometry .hhg-node{width:11px;height:11px;border:2px solid #ff7a00;background:#fff;box-shadow:0 0 0 5px rgba(255,122,0,.08)}
-
-.history-hero-geometry .hhg-node-a{left:8%;top:18%}
-
-.history-hero-geometry .hhg-node-b{left:31%;bottom:12%}
-
-.history-hero-geometry .hhg-node-c{right:22%;top:23%;border-color:#0d3a66;box-shadow:0 0 0 5px rgba(13,58,102,.06)}
-
-.history-hero-geometry .hhg-node-d{right:8%;bottom:18%}
-
-.history-hero-geometry .hhg-diamond{width:58px;height:58px;right:21%;top:18%;border:1px solid rgba(255,122,0,.34);background:transparent;box-shadow:none}
-
-.history-hero-geometry .hhg-orbit{width:230px;height:100px;left:-75px;bottom:5%;border:1px solid rgba(13,58,102,.18);background:transparent;transform:rotate(-16deg)}
-
-.history-hero-geometry .hhg-orbit::after{width:7px;height:7px;right:22px;top:9px;background:#ff7a00}
-
-.history-hero-geometry .hhg-corner{right:2.5%;top:12%;width:110px;height:110px;border-top:1px solid rgba(255,122,0,.28);border-right:1px solid rgba(13,58,102,.18);border-radius:0 26px 0 0}
-
-.history-hero-geometry .hhg-corner::after{width:45px;height:1.5px;right:-2px;top:46px;background:#ff7a00}
-
-.history-hero-geometry .hhg-dashes{left:7%;top:11%;width:82px;height:54px;background-image:radial-gradient(circle,rgba(255,122,0,.32) 1.2px,transparent 1.4px);background-size:12px 12px;opacity:.75}
-
-.history-hero-geometry .hhg-node-a::after,.history-hero-geometry .hhg-node-b::after,.history-hero-geometry .hhg-node-c::after,.history-hero-geometry .hhg-node-d::after{content:"";position:absolute;width:72px;height:1px;background:rgba(255,122,0,.25);left:9px;top:5px;transform-origin:left center}
-
-.history-hero-geometry .hhg-node-a::after{transform:rotate(28deg);width:95px}
-
-.history-hero-geometry .hhg-node-b::after{transform:rotate(-18deg);width:110px}
-
-.history-hero-geometry .hhg-node-c::after{transform:rotate(24deg);background:rgba(13,58,102,.20);width:90px}
-
-.history-hero-geometry .hhg-node-d::after{transform:rotate(-34deg);width:70px}
-
-@media(max-width:900px) {
-.history-hero-geometry .hhg-path-a{width:250px;left:-90px;top:45%}
-.history-hero-geometry .hhg-path-b{width:300px;right:-150px;top:34%}
-.history-hero-geometry .hhg-diamond{right:8%;top:18%;width:42px;height:42px}
-.history-hero-geometry .hhg-corner{right:0;top:10%;width:75px;height:75px}
-.history-hero-geometry .hhg-orbit{width:160px;height:72px;left:-70px}
-}
-
-@media(max-width:560px) {
-.history-hero-geometry::before{width:210px;height:210px;left:-70px;top:-25px;background-size:14px 14px}
-.history-hero-geometry::after{width:250px;height:120px;right:-80px;bottom:-20px}
-.history-hero-geometry .hhg-node-a{left:7%;top:16%}
-.history-hero-geometry .hhg-node-b{left:18%;bottom:10%}
-.history-hero-geometry .hhg-node-c{right:18%;top:20%}
-.history-hero-geometry .hhg-node-d{right:5%;bottom:15%}
-.history-hero-geometry .hhg-node::after{display:none}
-.history-hero-geometry .hhg-corner{display:none}
-}
-
-.history-hero-geometry{
-  z-index:1;
-  pointer-events:none;
-}
-
-.history-hero-geometry .geo-cluster-left,
-.history-hero-geometry .geo-network-left{
-  display:none !important;
-}
-
-.history-hero-geometry .geo-cluster-right{
-  display:block;
-  left:auto;
-  right:1.5%;
-  top:7%;
-  width:min(430px,38vw);
-  height:min(320px,34vh);
-  transform:none;
-  opacity:.92;
-}
-
-.history-hero-geometry .geo-modules{
-  display:block;
-  left:auto;
-  right:-1%;
-  bottom:5%;
-  width:min(420px,36vw);
-  height:min(220px,24vh);
-  transform:rotate(-2deg);
-  opacity:.82;
-}
-
-.history-hero-geometry::before{
-  left:auto;
-  right:3%;
-  top:31%;
-  width:min(300px,25vw);
-  height:min(300px,30vh);
-  border-radius:50%;
-  background-image:
-    radial-gradient(circle,rgba(13,58,102,.18) 1.4px,transparent 1.7px);
-  background-size:17px 17px;
-  opacity:.42;
-  -webkit-mask-image:radial-gradient(circle at 50% 50%,#000 0 43%,transparent 72%);
-  mask-image:radial-gradient(circle at 50% 50%,#000 0 43%,transparent 72%);
-}
-
-.history-hero-geometry::after{
-  right:-25px;
-  left:auto;
-  bottom:4%;
-  width:min(520px,44vw);
-  height:180px;
-  background:
-    linear-gradient(135deg,transparent 47.5%,rgba(255,122,0,.52) 48%,rgba(255,122,0,.52) 48.7%,transparent 49.2%),
-    linear-gradient(25deg,transparent 49%,rgba(13,58,102,.20) 49.5%,rgba(13,58,102,.20) 50.2%,transparent 50.7%);
-  opacity:.62;
-  transform:none;
-}
-
-.history-hero-inner{
-  z-index:4;
-}
-
-.history-title,
-.history-kicker,
-.history-vt-cta{
-  position:relative;
-  z-index:5;
-}
-
-@media (min-width:1100px) {
-.history-hero-inner{
-    padding-right:42%;
-  }
-.history-title{
-    max-width:820px;
-  }
-}
-
-@media (max-width:900px) {
-.history-hero-inner{
-    padding-right:1.25rem;
-  }
-.history-hero-geometry .geo-cluster-right{
-    right:-45px;
-    top:8%;
-    width:330px;
-    height:260px;
-    opacity:.58;
-  }
-.history-hero-geometry .geo-modules{
-    right:-55px;
-    bottom:2%;
-    width:330px;
-    height:180px;
-    opacity:.58;
-  }
-.history-hero-geometry::before{
-    right:-35px;
-    top:34%;
-    width:240px;
-    height:240px;
-  }
-}
-
-@media (max-width:560px) {
-.history-hero-geometry .geo-cluster-right{
-    right:-115px;
-    top:10%;
-    width:270px;
-    height:220px;
-    opacity:.34;
-  }
-.history-hero-geometry .geo-modules{
-    right:-120px;
-    bottom:0;
-    width:280px;
-    height:150px;
-    opacity:.30;
-  }
-.history-hero-geometry::before{
-    right:-90px;
-    top:38%;
-    width:210px;
-    height:210px;
-    opacity:.24;
-  }
-.history-hero-geometry::after{
-    right:-120px;
-    width:300px;
-    height:130px;
-    opacity:.28;
-  }
-}
-
-@media (max-width:900px) {
-.history-hero-geometry .geo-cluster-left{left:-105px;top:-42px;transform:scale(.82);transform-origin:top left}
-.history-hero-geometry .geo-cluster-right{right:-130px;top:20px;transform:scale(.78);transform-origin:top right}
-.history-hero-geometry .geo-network-left{left:-120px;bottom:8px;transform:scale(.72);transform-origin:bottom left}
-.history-hero-geometry .geo-modules{right:-135px;bottom:-8px;transform:scale(.68) rotate(-2deg);transform-origin:bottom right}
-}
-
-@media (max-width:560px) {
-.history-hero-geometry .geo-cluster-left{left:-150px;top:-38px;transform:scale(.62);opacity:.72}
-.history-hero-geometry .geo-cluster-right{right:-180px;top:14px;transform:scale(.58);opacity:.68}
-.history-hero-geometry .geo-network-left{left:-180px;bottom:4px;transform:scale(.52);opacity:.65}
-.history-hero-geometry .geo-modules{right:-205px;bottom:-12px;transform:scale(.50) rotate(-2deg);opacity:.72}
-.history-hero::after{font-size:clamp(7rem,31vw,11rem);opacity:.8}
-}
-
-.history-jurusan-industry-decor{
-  position:absolute;
-  inset:0;
-  z-index:1;
-  pointer-events:none;
-  overflow:hidden;
-}
-
-.history-jurusan-industry-decor svg{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  display:block;
-}
-
-.history-jurusan-industry-decor .jd-grid{
-  stroke:#0d3a66;
-  stroke-width:1.5px;
-  opacity:.15;
-}
-
-.history-jurusan-industry-decor .jd-diag{
-  fill:none;
-  stroke:#ff9f00;
-  stroke-width:3px;
-  stroke-linecap:round;
-  opacity:.48;
-}
-
-.history-jurusan-industry-decor .jd-diag-soft{
-  fill:none;
-  stroke:#0d3a66;
-  stroke-width:1.9px;
-  stroke-linecap:round;
-  opacity:.24;
-}
-
-.history-jurusan-industry-decor .jd-square{
-  fill:none;
-  stroke:#ff9f00;
-  stroke-width:2.8px;
-  opacity:.68;
-}
-
-.history-jurusan-industry-decor .jd-square-fill{
-  fill:#ffb300;
-  opacity:.22;
-}
-
-.history-jurusan-industry-decor .jd-hex{
-  fill:none;
-  stroke:#0d3a66;
-  stroke-width:2.8px;
-  opacity:.34;
-}
-
-.history-jurusan-industry-decor .jd-node{
-  fill:#ff9f00;
-  opacity:.82;
-}
-
-.history-jurusan-industry-decor .jd-plus{
-  stroke:#0d3a66;
-  stroke-width:2.8px;
-  stroke-linecap:round;
-  opacity:.42;
-}
-
-.history-jurusan-industry-decor .jd-corner{
-  fill:none;
-  stroke:#ff9f00;
-  stroke-width:4px;
-  stroke-linecap:square;
-  opacity:.52;
-}
-
-@media (min-width:1100px) {
-.history-jurusan-industry-decor{
-    left:28%;
-  }
-}
-
-@media (max-width:1099px) {
-.history-jurusan-industry-decor{
-    left:18%;
-    opacity:.82;
-  }
-}
-
-@media (max-width:640px) {
-.history-jurusan-industry-decor{
-    left:5%;
-    opacity:.68;
-  }
-}
-
-.history-hero{
-  min-height:clamp(620px,78vh,790px)!important;
-  background:#fff!important;
-  position:relative;
-  isolation:isolate;
-}
-
-.history-hero>.home-orn,
-.history-hero>.history-hero-geometry{
-  display:none!important;
-}
-
-.history-ref-ornaments{
-  position:absolute;
-  inset:0;
-  z-index:1;
-  pointer-events:none;
-  overflow:hidden;
-}
-
-.history-ref-ornaments svg{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  display:block;
-}
-
-.history-ref-ornaments path{
-  fill:none;
-  stroke:#0d3a66;
-  stroke-width:1.8;
-  vector-effect:non-scaling-stroke;
-  opacity:.20;
-}
-
-.history-ref-ornaments .ref-soft path{
-  stroke:#ff7a00;
-  opacity:.28;
-}
-
-.history-ref-ornaments .ref-soft-bottom path{
-  stroke:#0d3a66;
-  opacity:.18;
-}
-
-.history-ref-ornaments .ref-left path{
-  stroke:#0d3a66;
-  opacity:.18;
-}
-
-.history-ref-ornaments .ref-right path,
-.history-ref-ornaments .ref-bottom path{
-  stroke:#0d3a66;
-  opacity:.23;
-}
-
-.history-ref-ornaments .ref-diamond-orange{
-  fill:none;
-  stroke:#ff7a00;
-  stroke-width:2;
-  opacity:.52;
-}
-
-.history-ref-ornaments .ref-hex{
-  fill:none;
-  stroke:#0d3a66;
-  stroke-width:2;
-  opacity:.30;
-}
-
-.history-ref-ornaments .ref-fill-orange{
-  fill:#ff7a00;
-  opacity:.95;
-}
-
-.history-ref-ornaments .ref-fill-navy{
-  fill:#0d3a66;
-  opacity:.95;
-}
-
-.history-ref-ornaments .ref-node-orange{
-  fill:#fff;
-  stroke:#ff7a00;
-  stroke-width:2;
-}
-
-.history-ref-ornaments .ref-node-navy{
-  fill:#fff;
-  stroke:#0d3a66;
-  stroke-width:2;
-}
-
-.history-ref-ornaments .ref-orbit{
-  fill:none;
-  stroke:#0d3a66;
-  stroke-width:1.6;
-  opacity:.22;
-}
-
-.history-ref-ornaments .ref-orbit-orange{
-  fill:none;
-  stroke:#ff7a00;
-  stroke-width:1.6;
-  opacity:.30;
-}
-
-.history-ref-ornaments .ref-orbit-core{
-  fill:none;
-  stroke:#0d3a66;
-  stroke-width:2.2;
-  opacity:.50;
-}
-
-.history-ref-ornaments .ref-heavy-orange{
-  fill:none;
-  stroke:#ff7a00;
-  stroke-width:7;
-  opacity:.90;
-}
-
-.history-ref-ornaments .ref-heavy-navy{
-  fill:none;
-  stroke:#0d3a66;
-  stroke-width:7;
-  opacity:.90;
-}
-
-.history-ref-ornaments .ref-dots circle{
-  fill:#0d3a66;
-  opacity:.20;
-}
-
-.history-ref-ornaments .ref-soft rect,
-.history-ref-ornaments .ref-soft-bottom rect{
-  fill:none;
-  stroke:#ff7a00;
-  stroke-width:2;
-  opacity:.45;
-}
-
-.history-hero::after{
-  content:"SEJARAH"!important;
-  left:2%!important;
-  top:58%!important;
-  font-size:clamp(9rem,23vw,23rem)!important;
-  color:rgba(13,58,102,.035)!important;
-  -webkit-text-stroke:1px rgba(255,122,0,.09)!important;
-  z-index:0!important;
-}
-
-.history-hero-inner{
-  z-index:4!important;
-  max-width:1500px!important;
-  padding:clamp(4rem,10vh,7rem) clamp(1.25rem,4.2vw,4.5rem) clamp(4rem,9vh,6rem)!important;
-}
-
-.history-title{
-  font-size:clamp(4.4rem,9.8vw,9.3rem)!important;
-  line-height:.82!important;
-  max-width:900px!important;
-  letter-spacing:-.045em!important;
-}
-
-.history-title .sejarah-white{
-  color:#0d3a66!important;
-}
-
-.history-title .skaneda-gold{
-  background:linear-gradient(135deg,#ffd54a 0%,#ffb300 48%,#ff7a00 100%)!important;
-  -webkit-background-clip:text!important;
-  background-clip:text!important;
-  -webkit-text-fill-color:transparent!important;
-  color:transparent!important;
-}
-
-.history-kicker{
-  margin-bottom:1.2rem!important;
-}
-
-.history-vt-cta{
-  margin-top:2rem!important;
-}
-
-@media(min-width:1050px) {
-.history-hero-inner{
-    padding-right:44%!important;
-  }
-}
-
-@media(max-width:900px) {
-.history-ref-ornaments{
-    opacity:.72;
-  }
-.history-title{
-    font-size:clamp(4rem,11vw,7rem)!important;
-  }
-}
-
-@media(max-width:560px) {
-.history-ref-ornaments{
-    opacity:.40;
-  }
-.history-hero-inner{
-    padding-right:1.25rem!important;
-  }
-.history-title{
-    font-size:clamp(3.3rem,16vw,5.5rem)!important;
-  }
-}
-
-.history-hero{
-  background:#fff!important;
-  overflow:hidden!important;
-}
-
-.history-hero>.history-ref-ornaments{
-  display:block!important;
-  position:absolute!important;
-  inset:0!important;
-  z-index:1!important;
-  pointer-events:none!important;
-}
-
-.history-hero>.history-ref-ornaments svg{
-  width:100%!important;
-  height:100%!important;
-}
-
-.history-hero-inner{
-  position:relative!important;
-  z-index:4!important;
-  padding-right:44%!important;
-}
-
-.history-title{
-  position:relative!important;
-  z-index:5!important;
-  max-width:900px!important;
-}
-
-.history-kicker,.history-vt-cta{
-  position:relative!important;
-  z-index:5!important;
-}
-
-.history-ref-ornaments .ref-right path,
-.history-ref-ornaments .ref-bottom path{
-  opacity:.34!important;
-}
-
-.history-ref-ornaments .ref-diamond-orange{
-  stroke-width:2.4!important;
-  opacity:.72!important;
-}
-
-.history-ref-ornaments .ref-fill-orange,
-.history-ref-ornaments .ref-fill-navy{
-  opacity:.96!important;
-}
-
-.history-ref-ornaments .ref-hex{
-  stroke-width:2.4!important;
-  opacity:.48!important;
-}
-
-.history-ref-ornaments .ref-orbit{
-  stroke-width:1.8!important;
-  opacity:.30!important;
-}
-
-.history-ref-ornaments .ref-orbit-orange{
-  stroke-width:1.8!important;
-  opacity:.42!important;
-}
-
-.history-ref-ornaments .ref-heavy-orange,
-.history-ref-ornaments .ref-heavy-navy{
-  stroke-width:6!important;
-  opacity:.72!important;
-}
-
-.history-ref-ornaments .ref-node-orange,
-.history-ref-ornaments .ref-node-navy{
-  stroke-width:2.2!important;
-}
-
-@media(max-width:1050px) {
-.history-hero-inner{padding-right:1.25rem!important}
-.history-ref-ornaments{opacity:.72!important}
-}
-
-@media(max-width:700px) {
-.history-hero-inner{padding-right:1.25rem!important}
-.history-ref-ornaments{opacity:.45!important}
-.history-title{font-size:clamp(3rem,14vw,5rem)!important}
-}
-
-.history-hero > .history-ref-ornaments{
-  position:absolute!important;
-  inset:0!important;
-  z-index:1!important;
-  overflow:hidden!important;
-  pointer-events:none!important;
-  opacity:1!important;
-}
-
-.history-ref-ornament-image{
-  position:absolute!important;
-  inset:0!important;
-  width:100%!important;
-  height:100%!important;
-  display:block!important;
-  object-fit:cover!important;
-  object-position:center center!important;
-  max-width:none!important;
-  opacity:1!important;
-}
-
-.history-hero-inner{
-  position:relative!important;
-  z-index:4!important;
-}
-
-.history-title,.history-kicker,.history-vt-cta{
-  position:relative!important;
-  z-index:5!important;
-}
-
-@media(max-width:900px) {
-.history-ref-ornament-image{object-position:center center!important;opacity:.88!important}
-}
-
-@media(max-width:560px) {
-.history-ref-ornament-image{object-position:center center!important;opacity:.62!important}
-}
-/* Override khusus: watermark judul besar di background hero -> DKV (bukan SEJARAH) */
-.aphp-page .history-hero::after{
-  content:"DKV"!important;
-}
-
 
 /* ===== SECTION 1 — VIDEO PENGENALAN (HERO MINI) ===== */
 .vid-section{position:relative;padding:80px 0 90px;isolation:isolate;background:linear-gradient(180deg,#F8FBFF 0%,#EEF5FB 100%);overflow:hidden}
@@ -980,7 +114,7 @@
 .vid-section .orn .o-line{right:2%;top:18%;opacity:.5}
 .vid-section .orn .o-ring{left:-40px;bottom:-30px;border-color:rgba(11,95,165,.14)}
 .vid-section .orn .o-hex{right:6%;bottom:10%;border-color:rgba(255,179,0,.2)}
-.vid-section .orn .o-wheat{left:2%;bottom:4%;font-size:clamp(4rem,10vw,8rem);color:rgba(111,175,69,.07);transform:rotate(-12deg)}
+.vid-section .orn .o-wheat{left:2%;bottom:4%;font-size:clamp(4rem,10vw,8rem);transform:rotate(-12deg)}
 .vid-section .orn .o-flask{position:absolute;right:3%;top:8%;font-size:clamp(3rem,7vw,5.5rem);color:rgba(11,95,165,.06)}
 .vid-section .orn .o-gold{left:38%;top:6%;width:34px;height:5px;opacity:.8}
 .vid-wrap{width:min(1240px,92%);margin:auto;position:relative;z-index:2;display:grid;grid-template-columns:2fr 3fr;gap:clamp(2rem,4.5vw,4rem);align-items:center}
@@ -1008,7 +142,7 @@
 .vid-side{position:absolute;right:-34px;top:50%;transform:translateY(-50%);writing-mode:vertical-rl;font-size:.6rem;font-weight:800;letter-spacing:.32em;text-transform:uppercase;color:rgba(7,27,51,.35);z-index:3;pointer-events:none}
 .vid-player{position:relative;border-radius:28px;overflow:hidden;box-shadow:0 30px 80px rgba(7,27,51,.2);background:linear-gradient(135deg,#0d3a66,#0B5FA5);aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;cursor:pointer;border:1px solid rgba(255,255,255,.15);transition:transform .35s ease,box-shadow .35s ease}
 .vid-player:hover{transform:translateY(-6px);box-shadow:0 40px 90px rgba(7,27,51,.28)}
-.vid-bg{position:absolute;inset:0;background:radial-gradient(circle at 78% 22%,rgba(40,169,225,.28) 0%,transparent 42%),radial-gradient(circle at 20% 82%,rgba(111,175,69,.16) 0%,transparent 40%),linear-gradient(135deg,#0d3a66 0%,#0a2a4e 55%,#0B5FA5 100%)}
+.vid-bg{position:absolute;inset:0;background:radial-gradient(circle at 78% 22%,rgba(40,169,225,.28) 0%,transparent 42%),radial-gradient(circle at 20% 82%,rgba(255,213,74,.14) 0%,transparent 40%),linear-gradient(135deg,#0d3a66 0%,#0a2a4e 55%,#0B5FA5 100%)}
 .vid-bg::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:34px 34px;opacity:.55}
 .vid-bg::after{content:"";position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,213,74,.14) 1.5px,transparent 2px);background-size:26px 26px;opacity:.5}
 .vid-ring{position:absolute;right:-30px;top:-30px;width:150px;height:150px;border:1px solid rgba(255,213,74,.18);border-radius:50%;z-index:1}
@@ -1019,23 +153,10 @@
 .vid-diag{position:absolute;right:12%;bottom:14%;width:120px;height:1px;background:linear-gradient(90deg,transparent,rgba(255,213,74,.5));transform:rotate(-24deg);z-index:1}
 
 /* ===== VIDEO PREVIEW FIX ===== */
-.vid-player .vid-preview{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  object-position:center center;
-  z-index:0;
-  background:#071b33;
-}
+.vid-player .vid-preview{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;z-index:0;background:#071b33}
 .vid-player .vid-preview::-webkit-media-controls{display:none!important}
-.vid-player .vid-bg{
-  z-index:0;
-  opacity:.08;
-}
+.vid-player .vid-bg{z-index:0;opacity:.08}
 .vid-player .vid-preview + .vid-bg{pointer-events:none}
-
 .vid-player::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(7,27,51,.72));z-index:1}
 .vid-play{position:relative;z-index:2;width:82px;height:82px;border-radius:50%;background:linear-gradient(135deg,#FFD54A,#FFB300 50%,#FF8A00);display:flex;align-items:center;justify-content:center;font-size:1.7rem;color:#0d3a66;box-shadow:0 15px 40px rgba(255,138,0,.35),inset 0 0 0 6px rgba(7,27,51,.08);transition:transform .35s ease,box-shadow .35s ease}
 .vid-player:hover .vid-play{transform:scale(1.08);box-shadow:0 20px 46px rgba(255,138,0,.45)}
@@ -1043,13 +164,10 @@
 .vid-player .vid-brand{position:absolute;top:12px;right:14px;z-index:2;text-align:right;line-height:1.15}
 .vid-player .vid-brand b{display:block;font-family:var(--font-display);font-size:.78rem;font-weight:900;letter-spacing:.1em;color:#FFD54A}
 .vid-player .vid-brand span{font-size:.5rem;font-weight:800;letter-spacing:.22em;color:rgba(248,251,255,.65);text-transform:uppercase}
-/* icon helpers (emoji-free) */
-.dkv-kicker i{font-size:.8rem;color:#6FAF45}
-.fcta-copy h3 i{color:#FFD54A;margin-right:.4rem;font-size:1.1em;vertical-align:-2px}
 @media(max-width:1050px){.vid-wrap{grid-template-columns:1fr;gap:2.6rem}.vid-cards{grid-template-columns:repeat(3,1fr)}.vid-side{display:none}.vid-stage::before,.vid-stage::after{display:none}}
 @media(max-width:760px){.vid-cards{grid-template-columns:1fr}.vid-copy h2{font-size:clamp(1.9rem,7vw,2.6rem)}.vid-play{width:66px;height:66px;font-size:1.35rem}.vid-ring{width:110px;height:110px;right:-18px;top:-18px}.vid-section{padding:64px 0 72px}}
 
-/* ===== SECTION 2 — TENTANG DKV / FROM FARM TO PRODUCT ===== */
+/* ===== SECTION 2 — TENTANG DKV ===== */
 .tentang-section{position:relative;overflow:hidden;background:linear-gradient(135deg,#f8fbff 0%,#eef5fb 55%,#e7f1f8 100%);padding-top:88px;padding-bottom:100px}
 .tentang-section::before{content:"";position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(11,95,165,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(11,95,165,.035) 1px,transparent 1px);background-size:54px 54px;mask-image:linear-gradient(90deg,black,transparent 82%)}
 .tentang-section::after{content:"DKV";position:absolute;right:-5%;bottom:-10%;font-family:var(--font-display);font-size:clamp(10rem,25vw,22rem);font-weight:900;line-height:.8;letter-spacing:-.04em;color:rgba(7,27,51,.025);pointer-events:none}
@@ -1082,7 +200,6 @@
 .tentang-mini-card .tm-ic.gold{background:linear-gradient(135deg,#FFD54A,#FF8A00);color:#0d3a66}
 .tentang-mini-card span{font-size:.7rem;font-weight:750;color:#102941;line-height:1.35}
 
-/* visual: no external image dependency, no broken thumbnails */
 .tentang-visual{position:relative;min-height:500px;display:flex;align-items:center;justify-content:center;z-index:3}
 .tentang-visual::before{content:"";position:absolute;width:88%;height:88%;right:-3%;top:6%;border:1px solid rgba(255,179,0,.2);border-radius:30px;transform:rotate(2deg);pointer-events:none}
 .tentang-visual::after{content:"";position:absolute;width:82%;height:82%;right:3%;top:9%;border:1px dashed rgba(11,95,165,.16);border-radius:30px;transform:rotate(-2deg);pointer-events:none}
@@ -1119,7 +236,7 @@
 .tv-status i{font-size:.45rem;color:#6FAF45}
 @media(max-width:1050px){.tentang-grid{grid-template-columns:1fr;gap:2.8rem}.tentang-copy{max-width:760px}.tentang-visual{min-height:460px}.tv-panel{width:min(100%,680px)}}
 @media(max-width:760px){.tentang-section{padding-top:72px;padding-bottom:80px}.tentang-copy .tc-top{margin-bottom:.9rem}.tentang-copy h2{font-size:clamp(2.25rem,10vw,3.2rem)}.tentang-copy .tc-lead{font-size:.94rem}.tentang-mini{grid-template-columns:1fr}.tentang-visual{min-height:430px}.tentang-visual::before,.tentang-visual::after{display:none}.tv-panel{min-height:420px;border-radius:24px}.tv-core{width:130px;height:130px}.tv-core strong{font-size:1.55rem}.tv-flow{grid-template-columns:1fr;padding:1rem}.tv-step{min-height:58px}.tv-bottom{left:1rem;right:1rem}.tv-top{padding:1rem}.tentang-section::after{font-size:8rem;right:-8%;bottom:0}}
-/* ===== SECTION 4 — PEMBELAJARAN 6 KARTU ===== */
+/* ===== SECTION 4 — PEMBELAJARAN ===== */
 .belajar-section{background:linear-gradient(180deg,#eef5fb 0%,#f8fbff 100%)}
 .belajar-head{width:min(860px,92%);margin:0 auto 56px;text-align:center}
 .belajar-head .eyebrow{justify-content:center}
@@ -1137,9 +254,6 @@
 .belajar-card .bc-ic.blue{background:linear-gradient(135deg,#0B5FA5,#28A9E1)}
 .belajar-card h4{font-family:var(--font-display);font-size:1rem;font-weight:800;color:#0d3a66;margin:0 0 .35rem}
 .belajar-card p{font-size:.78rem;line-height:1.7;color:#718396;margin:0}
-.belajar-card .bc-arrow{display:inline-flex;align-items:center;gap:.35rem;margin-top:.7rem;font-size:.7rem;font-weight:800;color:#FF8A00;text-transform:uppercase;letter-spacing:.08em}
-.belajar-card .bc-arrow i{transition:transform .25s ease}
-.belajar-card:hover .bc-arrow i{transform:translateX(5px)}
 @media(max-width:1050px){.belajar-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:640px){.belajar-grid{grid-template-columns:1fr}}
 
@@ -1179,16 +293,6 @@
 .fasilitas-card .fc-ic.gold{background:linear-gradient(135deg,#FFD54A,#FF8A00);color:#0d3a66}
 .fasilitas-card h4{font-family:var(--font-display);font-size:.95rem;font-weight:800;color:#0d3a66;margin:0 0 .25rem}
 .fasilitas-card p{font-size:.75rem;line-height:1.65;color:#718396;margin:0}
-.fasilitas-cta{width:min(1200px,94%);margin:0 auto;border-radius:24px;overflow:hidden;background:linear-gradient(135deg,#0d3a66 0%,#0B5FA5 100%);padding:2.4rem 2.8rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;transition:transform .35s ease,box-shadow .35s ease}
-.fasilitas-cta:hover{transform:translateY(-5px);box-shadow:0 30px 66px rgba(7,27,51,.3)}
-.fasilitas-cta .fcta-copy h3{font-family:var(--font-display);font-size:clamp(1.2rem,2.4vw,1.8rem);font-weight:800;color:#fff;margin:0 0 .3rem}
-.fasilitas-cta .fcta-copy h3 span{color:#FFD54A}
-.fasilitas-cta .fcta-copy p{color:rgba(248,251,255,.75);font-size:.85rem;margin:0;line-height:1.7}
-.fasilitas-cta .fcta-btn{display:inline-flex;align-items:center;gap:.55rem;padding:.85rem 1.6rem;border-radius:999px;background:linear-gradient(135deg,#FFD54A,#FFB300,#FF8A00);color:#0d3a66;font-weight:800;font-size:.85rem;text-decoration:none;white-space:nowrap;box-shadow:0 16px 34px rgba(255,138,0,.35);transition:transform .3s ease,box-shadow .3s ease}
-.fasilitas-cta .fcta-btn:hover{transform:translateY(-4px);box-shadow:0 20px 40px rgba(255,138,0,.5)}
-.fasilitas-cta .fcta-btn i{transition:transform .3s ease}
-.fasilitas-cta .fcta-btn:hover i{transform:translateX(5px)}
-@media(max-width:1050px){.fasilitas-cta{flex-direction:column;text-align:center;padding:2rem}}
 @media(max-width:640px){.fasilitas-grid{grid-template-columns:1fr}}
 
 /* ===== SECTION 7 — KARYA SISWA ===== */
@@ -1214,7 +318,8 @@
 .produk-card .pc-body p{font-size:.75rem;line-height:1.65;color:#718396;margin:0 0 .5rem}
 .produk-card .pc-foot{display:flex;align-items:center;justify-content:space-between;font-size:.65rem;font-weight:800;color:#FF8A00;text-transform:uppercase;letter-spacing:.08em}
 .produk-arrow{position:absolute;top:50%;translate:0 -50%;width:48px;height:48px;border-radius:50%;background:#0d3a66;border:none;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1rem;cursor:pointer;z-index:6;box-shadow:0 10px 22px rgba(7,27,51,.35);transition:background .25s ease,transform .25s ease,opacity .25s ease}
-.produk-arrow:hover{background:#FFB300;transform:translateY(-50%) scale(1.08)}
+/* FIX: posisi tengah sudah dipegang properti "translate"; hover cukup scale (sebelumnya ditambah translateY(-50%) lagi sehingga tombol meloncat ke atas) */
+.produk-arrow:hover{background:#FFB300;transform:scale(1.08)}
 .produk-arrow.prev{left:-24px}
 .produk-arrow.next{right:-24px}
 .produk-arrow:disabled{opacity:.3;cursor:default;pointer-events:none}
@@ -1274,8 +379,7 @@
 @media(max-width:1050px){.prospek-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:640px){.prospek-grid{grid-template-columns:1fr}}
 
-
-/* ===== SECTION 11 — FINAL CTA ===== */
+/* ===== SECTION 10 — FINAL CTA ===== */
 .aphp-cta{position:relative;width:min(1180px,94%);margin:20px auto 80px;padding:58px 2.5rem 62px;border-radius:28px;overflow:hidden;text-align:center;isolation:isolate;background:linear-gradient(135deg,#0d3a66 0%,#0a2a4e 50%,#0B5FA5 100%);box-shadow:0 30px 70px rgba(7,27,51,.28)}
 .aphp-cta .cta-bg{position:absolute;inset:0;z-index:0;opacity:.12}
 .aphp-cta .cta-bg img{width:100%;height:100%;object-fit:cover;display:block}
@@ -1290,14 +394,12 @@
 .aphp-cta-btn:hover{transform:translateY(-4px);box-shadow:0 20px 42px rgba(255,138,0,.46)}
 .aphp-cta-btn i{transition:transform .3s ease}
 .aphp-cta-btn:hover i{transform:translateX(5px)}
-.aphp-cta-ghost{display:inline-flex;align-items:center;gap:.55rem;padding:.9rem 1.7rem;border-radius:999px;background:rgba(255,255,255,.06);border:1.5px solid rgba(255,255,255,.28);color:#fff;font-weight:800;font-size:.85rem;text-decoration:none;cursor:pointer;transition:background .3s ease,border-color .3s ease,transform .3s ease}
-.aphp-cta-ghost:hover{background:rgba(255,255,255,.12);border-color:#FFD54A;transform:translateY(-3px)}
 .aphp-cta .orn .o-chevron{left:-100px;bottom:-60px;border-color:rgba(255,255,255,.08)}
 .aphp-cta .orn .o-chevron::after{border-color:rgba(255,213,74,.06)}
 .aphp-cta .orn .o-dots{left:6%;top:25%;opacity:.18}
 .aphp-cta .orn .o-ring{right:-60px;top:18%;border-color:rgba(255,255,255,.08)}
 .aphp-cta .orn .o-gold{left:18%;bottom:22%}
-.aphp-cta .orn .o-wheat{left:4%;bottom:8%;color:rgba(111,175,69,.08);transform:rotate(10deg)}
+.aphp-cta .orn .o-wheat{left:4%;bottom:8%;color:rgba(255,213,74,.08);transform:rotate(10deg)}
 
 /* ===== SCROLL REVEAL ===== */
 [data-reveal]{opacity:0;transform:translateY(32px);transition:opacity .7s cubic-bezier(.22,.61,.36,1),transform .7s cubic-bezier(.22,.61,.36,1)}
@@ -1307,14 +409,7 @@
 [data-reveal]{transition-delay:calc(var(--d,0)*80ms)}
 
 /* ===== RESPONSIVE ===== */
-@media(max-width:1050px){
-  .tentang-grid{grid-template-columns:1fr;gap:2.4rem}
-  .tentang-visual{min-height:380px}
-}
 @media(max-width:760px){
-  .tentang-mini{grid-template-columns:1fr}
-  .tentang-visual{min-height:340px}
-  .tentang-visual .tv-step{width:100%}
   .orn .o-chevron{width:200px;height:200px}
   .orn .o-dots{width:70px;height:70px;background-size:12px 12px}
   .orn .o-ring{width:100px;height:100px}
@@ -1325,23 +420,8 @@
 }
 
 /* ===== DKV INDUSTRY PARTNERS — CLEAN LOGO MARQUEE ===== */
-.industry-collab{
-  position:relative;
-  overflow:hidden;
-  isolation:isolate;
-  background:linear-gradient(180deg,#ffffff 0%,#f8fbff 100%);
-  padding-top:5.5rem;
-  padding-bottom:4.2rem;
-}
-.industry-collab::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  pointer-events:none;
-  opacity:.55;
-  background-image:radial-gradient(circle at 15% 20%,rgba(11,95,165,.08) 0 2px,transparent 2.5px),linear-gradient(90deg,transparent 49.8%,rgba(11,95,165,.035) 50%,transparent 50.2%);
-  background-size:22px 22px,90px 90px;
-}
+.industry-collab{position:relative;overflow:hidden;isolation:isolate;background:linear-gradient(180deg,#ffffff 0%,#f8fbff 100%);padding-top:5.5rem;padding-bottom:4.2rem}
+.industry-collab::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.55;background-image:radial-gradient(circle at 15% 20%,rgba(11,95,165,.08) 0 2px,transparent 2.5px),linear-gradient(90deg,transparent 49.8%,rgba(11,95,165,.035) 50%,transparent 50.2%);background-size:22px 22px,90px 90px}
 .industry-collab .orn{z-index:0;opacity:.55}
 .industry-collab .ic-head,.industry-collab .ic-marquee-wrap,.industry-collab .ic-footer{position:relative;z-index:2}
 .industry-collab .ic-head{text-align:center;max-width:940px;margin:0 auto}
@@ -1350,13 +430,7 @@
 .industry-collab .ic-head .big-heading{margin:.8rem 0 .65rem;color:#0d3a66;font-size:clamp(2.25rem,4.5vw,4.25rem);line-height:1.02;font-weight:950;letter-spacing:-.045em}
 .industry-collab .ic-head .big-heading span{color:#ff9f00}
 .industry-collab .ic-head p{max-width:760px;margin:0 auto;color:#687d95;font-size:.98rem;line-height:1.8}
-.industry-collab .ic-marquee-wrap{
-  position:relative;
-  width:100%;
-  overflow:hidden;
-  margin-top:3.1rem;
-  padding:1rem 0;
-}
+.industry-collab .ic-marquee-wrap{position:relative;width:100%;overflow:hidden;margin-top:3.1rem;padding:1rem 0}
 .industry-collab .ic-marquee-wrap::before,.industry-collab .ic-marquee-wrap::after{content:"";position:absolute;z-index:3;top:0;bottom:0;width:120px;pointer-events:none}
 .industry-collab .ic-marquee-wrap::before{left:0;background:linear-gradient(90deg,#fff,transparent)}
 .industry-collab .ic-marquee-wrap::after{right:0;background:linear-gradient(270deg,#fff,transparent)}
@@ -1379,8 +453,7 @@
 }
 
 /* =========================================================
-   LAB TOUR — SAMA PERSIS DENGAN VIRTUAL TOUR DI HALAMAN SEJARAH
-   Hanya konten, gambar, label, dan anchor yang disesuaikan untuk DKV.
+   STUDIO TOUR — tampilan sama dengan Virtual Tour di halaman Sejarah
    ========================================================= */
 .aphp-page .vt-section{position:relative;overflow:hidden;isolation:isolate;padding:120px 0 130px;background:linear-gradient(180deg,#eef5fb 0%,#ffffff 48%,#f3f7fb 100%);scroll-margin-top:90px}
 .aphp-page .vt-section::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.42;background-image:radial-gradient(circle,rgba(13,58,102,.18) 1.5px,transparent 2px);background-size:22px 22px;mask-image:linear-gradient(90deg,transparent 0%,#000 15%,#000 85%,transparent 100%)}
@@ -1499,7 +572,6 @@ html body.theme-dark .aphp-page .fasilitas-card{background:#0f2236;border-color:
 html body.theme-dark .aphp-page .fasilitas-card:hover{border-color:rgba(255,213,74,.35);box-shadow:0 20px 44px rgba(0,0,0,.5)}
 html body.theme-dark .aphp-page .fasilitas-card h4{color:#fff}
 html body.theme-dark .aphp-page .fasilitas-card p{color:#9fb2c6}
-html body.theme-dark .aphp-page .fasilitas-cta{background:linear-gradient(135deg,#0a1a2c 0%,#0c2038 50%,#0e2542 100%);border:1px solid rgba(255,255,255,.08)}
 
 /* ---------- SECTION 7: KARYA SISWA ---------- */
 html body.theme-dark .aphp-page .produk-section{background:#08131f}
@@ -1550,555 +622,12 @@ html body.theme-dark .aphp-page .vt-btn{background:linear-gradient(135deg,#ffd54
 html body.theme-dark .aphp-page .aphp-cta{background:linear-gradient(135deg,#0a1a2c 0%,#0c2038 50%,#0e2542 100%);border:1px solid rgba(255,255,255,.08);box-shadow:0 24px 55px rgba(0,0,0,.55)}
 html body.theme-dark .aphp-page .aphp-cta::after{color:rgba(255,255,255,.03)}
 </style>
-
 @endpush
 
 @section('content')
-<div class="aphp-page">
-  <!-- ===== HERO — sama persis dengan hero halaman Sejarah, judul DKV ===== -->
-  <section class="history-hero">
-    <div class="history-ref-ornaments" aria-hidden="true">
-      <img src="{{ asset('images/wide_minimalist_abstract_technology_background_des.png') }}" alt="" class="history-ref-ornament-image" aria-hidden="true">
-    </div>
-    <div class="history-hero-inner">
-      <div>
-        <div class="history-kicker"><i class="fas fa-pen-nib"></i> PROGRAM KEAHLIAN DKV</div>
-        <h1 class="history-title">
-          <span class="sejarah-white">DKV</span>
-          <span class="skaneda-gold">SKANEDA</span>
-        </h1>
-        <a class="history-vt-cta" href="{{ route('profil.tour') }}?scene=lab-dkv">
-          <span class="history-vt-icon"><i class="fas fa-vector-square"></i></span>
-          <span><strong>Lihat Studio Tour</strong><small>Jelajahi Studio DKV</small></span>
-          <i class="fas fa-arrow-right history-vt-arrow"></i>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== SECTION 1 — VIDEO PENGENALAN (HERO MINI) ===== -->
-  <section class="vid-section" id="video-aphp">
-    <div class="orn" aria-hidden="true">
-      <span class="o-dots"></span><span class="o-line"></span>
-      <span class="o-ring"></span><span class="o-hex"></span>
-      <span class="o-gold"></span><i class="fas fa-palette o-wheat"></i>
-      <i class="fas fa-vector-square o-flask"></i>
-    </div>
-    <div class="vid-wrap">
-      <div class="vid-copy" data-reveal="left">
-        <div class="vc-eyebrow">
-          <span class="vc-num">01</span>
-          <span class="vc-line"></span>
-          <span class="vc-label">Pengenalan Kompetensi Keahlian</span>
-        </div>
-        <h2><span class="sejarah-white">MENGENAL LEBIH DEKAT</span><span class="t-gold"> DKV</span></h2>
-        <p class="vc-desc">Kenali Program Keahlian Desain Komunikasi Visual, mulai dari pembelajaran, kegiatan praktik, fasilitas, hingga berbagai pengalaman yang akan kamu dapatkan selama belajar di DKV.</p>
-        <div class="vid-cards">
-          <div class="vid-card">
-            <span class="vc-ic green"><i class="fas fa-palette"></i></span>
-            <b>Ide & Konsep</b>
-            <span>Mengembangkan ide dan konsep visual</span>
-          </div>
-          <div class="vid-card">
-            <span class="vc-ic"><i class="fas fa-vector-square"></i></span>
-            <b>Desain Grafis</b>
-            <span>Mempelajari prinsip desain dan komposisi visual</span>
-          </div>
-          <div class="vid-card">
-            <span class="vc-ic gold"><i class="fas fa-object-group"></i></span>
-            <b>Karya Visual</b>
-            <span>Menghasilkan karya visual yang komunikatif</span>
-          </div>
-        </div>
-      </div>
-      <div class="vid-stage" data-reveal="right">
-        <span class="vid-side">DKV • SKANEDA</span>
-        <div class="vid-player" role="button" tabindex="0" aria-label="Putar video pengenalan DKV" onclick="document.getElementById('videoDkvModal').style.display='flex'; document.getElementById('videoDkvPlayer').play();">
-          <video class="vid-preview" muted playsinline preload="auto" aria-hidden="true">
-            <source src="{{ asset('images/videos/video-dkv.mp4') }}" type="video/mp4">
-          </video>
-          <div class="vid-bg" aria-hidden="true"></div>
-          <span class="vid-ring" aria-hidden="true"></span>
-          <span class="vid-hex" aria-hidden="true"></span>
-          <span class="vid-diag" aria-hidden="true"></span>
-          <span class="vid-play"><i class="fas fa-circle-play"></i></span>
-          <span class="vid-brand"><b>DKV</b><span>Program Keahlian</span></span>
-          <span class="vid-label"><i class="fas fa-play"></i> Video Pengenalan</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== POPUP VIDEO DKV ===== -->
-  <div id="videoDkvModal" style="display:none;position:fixed;inset:0;z-index:99999;background:rgba(7,27,51,.88);align-items:center;justify-content:center;padding:20px;"
-       onclick="if(event.target===this){document.getElementById('videoDkvPlayer').pause();document.getElementById('videoDkvPlayer').currentTime=0;this.style.display='none';}">
-    <div style="position:relative;width:min(430px,92vw);max-height:92vh;background:#0d3a66;border-radius:20px;padding:10px;box-shadow:0 30px 80px rgba(0,0,0,.35);display:flex;align-items:center;justify-content:center;">
-      <button type="button" aria-label="Tutup video"
-        onclick="document.getElementById('videoDkvPlayer').pause();document.getElementById('videoDkvPlayer').currentTime=0;document.getElementById('videoDkvModal').style.display='none';"
-        style="position:absolute;right:-10px;top:-10px;width:38px;height:38px;border:0;border-radius:50%;background:#FFD54A;color:#0d3a66;font-size:22px;font-weight:900;line-height:1;cursor:pointer;z-index:2;">&times;</button>
-      <video id="videoDkvPlayer" controls playsinline preload="metadata"
-        style="display:block;width:auto;max-width:100%;height:auto;max-height:88vh;border-radius:14px;background:#06192e;object-fit:contain;">
-        <source src="{{ asset('images/videos/video-dkv.mp4') }}" type="video/mp4">
-        Browser kamu tidak mendukung pemutaran video.
-      </video>
-    </div>
-  </div>
-
-  <!-- ===== SECTION 2 — TENTANG DKV ===== -->
-  <section class="tentang-section section-pad" id="tentang-aphp">
-    <div class="orn" aria-hidden="true">
-      <span class="o-chevron"></span><span class="o-line"></span><span class="o-dots"></span>
-      <span class="o-ring"></span><span class="o-gold"></span><span class="o-square"></span>
-    </div>
-
-    <div class="aphp-wide tentang-grid">
-      <div class="tentang-copy" data-reveal="left">
-        <div class="tc-top">
-          <span class="tc-num">02</span>
-          <span class="tc-line"></span>
-          <span class="tc-label">Tentang Kompetensi Keahlian</span>
-        </div>
-
-        <div class="eyebrow gold">Apa Itu DKV?</div>
-        <h2 class="big-heading">DARI IDE <span>MENJADI KARYA</span> VISUAL</h2>
-
-        <p class="tc-lead">Program Keahlian <strong>Desain Komunikasi Visual (DKV)</strong> membekali peserta didik dengan keterampilan merancang pesan visual melalui desain grafis, ilustrasi, fotografi, videografi, branding, dan media digital.</p>
-        <p class="tc-sub">Pembelajaran mencakup desain grafis, ilustrasi digital, fotografi, videografi, tipografi, branding, layout, serta media digital. Melalui proyek kreatif dan praktik studio, siswa belajar menghasilkan karya yang komunikatif sekaligus mengembangkan jiwa kewirausahaan.</p>
-
-        <div class="tentang-mini">
-          <div class="tentang-mini-card">
-            <span class="tm-ic"><i class="fas fa-palette"></i></span>
-            <span>Desain Komunikasi Visual — Mengenal elemen &amp; prinsip visual</span>
-          </div>
-          <div class="tentang-mini-card">
-            <span class="tm-ic green"><i class="fas fa-vector-square"></i></span>
-            <span>Ilustrasi — Menciptakan visual yang ekspresif</span>
-          </div>
-          <div class="tentang-mini-card">
-            <span class="tm-ic gold"><i class="fas fa-camera"></i></span>
-            <span>Karya Kreatif — Menghasilkan produk nyata</span>
-          </div>
-          <div class="tentang-mini-card">
-            <span class="tm-ic"><i class="fas fa-lightbulb"></i></span>
-            <span>Branding — Membangun identitas visual yang kuat</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="tentang-visual" data-reveal="right">
-        <div class="tv-panel">
-          <div class="tv-top">
-            <div class="tv-top-label"><i class="fas fa-layer-group"></i> Alur DKV</div>
-            <div class="tv-top-code">02 / DKV</div>
-          </div>
-
-          <div class="tv-center">
-            <div class="tv-core">
-              <i class="fas fa-pen-nib"></i>
-              <strong>DKV</strong>
-              <small>Idea to Future</small>
-            </div>
-          </div>
-
-          <div class="tv-flow">
-            <div class="tv-step">
-              <span class="ts-ic"><i class="fas fa-palette"></i></span>
-              <span class="ts-copy"><strong>Ide & Konsep</strong><small>Menggali ide &amp; referensi visual</small></span>
-              <i class="fas fa-arrow-right tv-arrow"></i>
-            </div>
-            <div class="tv-step">
-              <span class="ts-ic green"><i class="fas fa-vector-square"></i></span>
-              <span class="ts-copy"><strong>Desain</strong><small>Proses membentuk karya</small></span>
-              <i class="fas fa-arrow-right tv-arrow"></i>
-            </div>
-            <div class="tv-step">
-              <span class="ts-ic blue"><i class="fas fa-magnifying-glass"></i></span>
-              <span class="ts-copy"><strong>Review &amp; Revisi</strong><small>Evaluasi konsep &amp; tampilan</small></span>
-              <i class="fas fa-arrow-right tv-arrow"></i>
-            </div>
-            <div class="tv-step">
-              <span class="ts-ic gold"><i class="fas fa-object-group"></i></span>
-              <span class="ts-copy"><strong>Karya Visual</strong><small>Siap dikembangkan</small></span>
-              <i class="fas fa-arrow-right tv-arrow"></i>
-            </div>
-          </div>
-
-          <div class="tv-bottom">
-            <span>DESAIN • VISUAL • KREATIF</span>
-            <span class="tv-status"><i class="fas fa-circle"></i> Program Keahlian</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-      <!-- ===== SECTION 3 — INDUSTRY COLLABORATION MARQUEE ===== -->
-    <section class="industry-collab section-pad" id="industri-aphp">
-      <div class="orn" aria-hidden="true">
-        <span class="o-chevron"></span><span class="o-dots"></span>
-        <span class="o-ring"></span><span class="o-gold"></span>
-        <span class="o-hex"></span>
-      </div>
-      <div class="ic-head" data-reveal>
-        <div class="eyebrow">Kerja Sama &amp; Industri Kreatif</div>
-        <h2 class="big-heading">BERKOLABORASI DENGAN <span>INDUSTRI KREATIF</span></h2>
-      </div>
-      <div class="ic-marquee-wrap" data-reveal aria-label="Mitra industri DKV">
-        <div class="ic-marquee">
-          <div class="ic-logo-group">
-            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/dkv/casalamia.png') }}" alt="Logo Casalamia Photo Studio" loading="lazy"></div>
-            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/dkv/ilham-camera.png') }}" alt="Logo Ilham Camera" loading="lazy"></div>
-            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/dkv/ourastudio.png') }}" alt="Logo OURASTUDIO" loading="lazy"></div>
-            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/dkv/matahari-adver.png') }}" alt="Logo Matahari Advertising" loading="lazy"></div>
-            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/dkv/sensatype.png') }}" alt="Logo Sensatype Studio" loading="lazy"></div>
-            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/dkv/utero.png') }}" alt="Logo Utero Mojokerto" loading="lazy"></div>
-            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/dkv/zavision.png') }}" alt="Logo Zavision Digital Workshop" loading="lazy"></div>
-            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/dkv/difams.png') }}" alt="Logo Difams" loading="lazy"></div>
-            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/dkv/rumah-kemasan.png') }}" alt="Logo Rumah Kemasan" loading="lazy"></div>
-            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/dkv/teknos.png') }}" alt="Logo Teknos" loading="lazy"></div>
-            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/dkv/ziebest.png') }}" alt="Logo Ziebest" loading="lazy"></div>
-            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/dkv/MPJ.png') }}" alt="Logo MPJ" loading="lazy"></div>
-          </div>
-          <div class="ic-logo-group" aria-hidden="true">
-            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/dkv/casalamia.png') }}" alt="" loading="lazy"></div>
-            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/dkv/ilham-camera.png') }}" alt="" loading="lazy"></div>
-            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/dkv/ourastudio.png') }}" alt="" loading="lazy"></div>
-            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/dkv/matahari-adver.png') }}" alt="" loading="lazy"></div>
-            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/dkv/sensatype.png') }}" alt="" loading="lazy"></div>
-            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/dkv/utero.png') }}" alt="" loading="lazy"></div>
-            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/dkv/zavision.png') }}" alt="" loading="lazy"></div>
-            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/dkv/difams.png') }}" alt="" loading="lazy"></div>
-            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/dkv/rumah-kemasan.png') }}" alt="" loading="lazy"></div>
-            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/dkv/teknos.png') }}" alt="" loading="lazy"></div>
-            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/dkv/ziebest.png') }}" alt="" loading="lazy"></div>
-            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/dkv/MPJ.png') }}" alt="" loading="lazy"></div>
-          </div>
-        </div>
-      </div>
-      <div class="ic-footer" data-reveal><span>Belajar &bull; Praktik &bull; Berkolaborasi &bull; Siap Berkarya</span></div>
-    </section>
-
-<!-- ===== SECTION 4 — PEMBELAJARAN ===== -->
-  <section class="belajar-section section-pad" id="pembelajaran">
-    <div class="orn" aria-hidden="true">
-      <span class="o-chevron"></span><span class="o-dots"></span>
-      <span class="o-ring"></span><span class="o-gold"></span><span class="o-corner"></span>
-    </div>
-    <div class="belajar-head" data-reveal>
-      <div class="eyebrow gold">APA YANG KAMU PELAJARI?</div>
-      <h2 class="big-heading">APA YANG AKAN <span>KAMU PELAJARI?</span></h2>
-    </div>
-    <div class="belajar-grid">
-      <div class="belajar-card" data-num="01" data-reveal>
-        <div class="bc-ic"><i class="fas fa-vector-square"></i></div>
-        <h4>Desain Grafis</h4>
-        <p>Mempelajari prinsip desain grafis, komposisi, warna, tipografi, dan tata letak untuk menghasilkan visual yang komunikatif.</p>
-        <span class="bc-arrow">Pelajari <i class="fas fa-arrow-right"></i></span>
-      </div>
-      <div class="belajar-card" data-num="02" data-reveal style="--d:1">
-        <div class="bc-ic green"><i class="fas fa-palette"></i></div>
-        <h4>Konsep Visual</h4>
-        <p>Mengembangkan konsep, moodboard, referensi, dan gaya visual sesuai kebutuhan proyek.</p>
-        <span class="bc-arrow">Pelajari <i class="fas fa-arrow-right"></i></span>
-      </div>
-      <div class="belajar-card" data-num="03" data-reveal style="--d:2">
-        <div class="bc-ic blue"><i class="fas fa-magnifying-glass"></i></div>
-        <h4>Analisis &amp; Mutu</h4>
-        <p>Mempelajari proses review karya, konsistensi visual, keterbacaan, dan kesesuaian desain dengan target audiens.</p>
-        <span class="bc-arrow">Pelajari <i class="fas fa-arrow-right"></i></span>
-      </div>
-      <div class="belajar-card" data-num="04" data-reveal style="--d:3">
-        <div class="bc-ic gold"><i class="fas fa-circle-check"></i></div>
-        <h4>Fotografi &amp; Videografi</h4>
-        <p>Membuat foto dan video untuk kebutuhan dokumentasi, promosi, storytelling, dan konten digital.</p>
-        <span class="bc-arrow">Pelajari <i class="fas fa-arrow-right"></i></span>
-      </div>
-      <div class="belajar-card" data-num="05" data-reveal style="--d:4">
-        <div class="bc-ic"><i class="fas fa-object-group"></i></div>
-        <h4>Branding &amp; Identitas Visual</h4>
-        <p>Merancang logo, warna, tipografi, dan elemen identitas visual yang konsisten untuk sebuah brand.</p>
-        <span class="bc-arrow">Pelajari <i class="fas fa-arrow-right"></i></span>
-      </div>
-      <div class="belajar-card" data-num="06" data-reveal style="--d:5">
-        <div class="bc-ic gold"><i class="fas fa-lightbulb"></i></div>
-        <h4>Kewirausahaan</h4>
-        <p>Mengembangkan jiwa usaha: menghitung kelayakan, memasarkan, dan membangun bisnis mandiri.</p>
-        <span class="bc-arrow">Pelajari <i class="fas fa-arrow-right"></i></span>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== SECTION 5 — PRAKTIK ===== -->
-  <section class="praktik-section section-pad" id="praktik-aphp">
-    <div class="praktik-head" data-reveal>
-      <div class="eyebrow gold">BELAJAR LEWAT PROYEK KREATIF</div>
-      <h2 class="big-heading">BELAJAR BUKAN <span>HANYA DI KELAS</span></h2>
-    </div>
-    <div class="praktik-grid">
-      <div class="praktik-card" data-reveal>
-        <img src="{{ asset('images/dkv/dkv-photo.jpg') }}" alt="Praktik eksperimen dan desain" loading="lazy">
-        <span class="pc-badge"><i class="fas fa-vector-square"></i> Praktik</span>
-        <div class="pc-body">
-          <h4>Praktik Studio</h4>
-          <p>Mengerjakan proyek desain dan produksi media visual di studio DKV yang mendukung proses kreatif.</p>
-        </div>
-      </div>
-      <div class="praktik-card" data-reveal style="--d:1">
-        <img src="{{ asset('images/dkv/dkv-labjurusan.jpg') }}" alt="Produksi produk nyata" loading="lazy">
-        <span class="pc-badge"><i class="fas fa-film"></i> Produksi</span>
-        <div class="pc-body">
-          <h4>Studio Produksi</h4>
-          <p>Menghasilkan karya nyata seperti poster, identitas merek, ilustrasi, konten media sosial, dan video kreatif.</p>
-        </div>
-      </div>
-      <div class="praktik-card" data-reveal style="--d:2">
-        <img src="{{ asset('images/dkv/photography.jpg') }}" alt="Praktik" loading="lazy">
-        <span class="pc-badge"><i class="fas fa-circle-check"></i> Praktik</span>
-        <div class="pc-body">
-          <h4>Fotografi</h4>
-          <p>Menghasilkan karya visual melalui teknik pengambilan gambar, pencahayaan, komposisi, dan pengaturan objek.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== SECTION 6 — FASILITAS ===== -->
-  <section class="fasilitas-section section-pad" id="fasilitas-aphp">
-    <div class="orn" aria-hidden="true">
-      <span class="o-chevron"></span><span class="o-line"></span><span class="o-dots"></span>
-      <span class="o-ring"></span><span class="o-gold"></span>
-    </div>
-    <div class="fasilitas-head" data-reveal>
-      <div class="eyebrow gold">Bebas Bereksperimen</div>
-      <h2 class="big-heading">RUANG UNTUK <span>BEREKSPERIMEN</span></h2>
-    </div>
-    <div class="fasilitas-grid">
-      <div class="fasilitas-card" data-reveal><div class="fc-ic"><i class="fas fa-vector-square"></i></div><h4>Laboratorium DKV</h4><p>Studio desain lengkap dengan perangkat modern untuk praktik dan eksperimen visual.</p></div>
-      <div class="fasilitas-card" data-reveal style="--d:1"><div class="fc-ic gold"><i class="fas fa-film"></i></div><h4>Studio Foto &amp; Video</h4><p>Ruang produksi untuk fotografi, videografi, lighting, dan pembuatan konten visual.</p></div>
-    </div>
-  </section>
-
-  <!-- ===== SECTION 7 — KARYA SISWA ===== -->
-  <section class="produk-section section-pad" id="produk-aphp">
-    <div class="orn" aria-hidden="true">
-      <span class="o-chevron"></span><span class="o-line"></span><span class="o-dots"></span>
-      <span class="o-ring"></span><span class="o-gold"></span><span class="o-square"></span>
-    </div>
-    <div class="produk-head" data-reveal>
-      <div>
-        <div class="eyebrow">Karya Siswa</div>
-        <h2 class="big-heading">DARI IDE <span>MENJADI KARYA</span></h2>
-      </div>
-      <div class="produk-note">Kumpulan karya siswa DKV — dirancang melalui proses kreatif, revisi, presentasi, dan produksi media visual.</div>
-    </div>
-    <div class="produk-filters" data-reveal>
-      <button class="pf-btn active" data-f="all">SEMUA</button>
-      <button class="pf-btn" data-f="desain">DESAIN GRAFIS</button>
-      <button class="pf-btn" data-f="foto">FOTOGRAFI</button>
-      <button class="pf-btn" data-f="branding">PRODUK KREATIF</button>
-    </div>
-    <div class="produk-slider" data-reveal>
-      <button class="produk-arrow prev" id="produkPrev" aria-label="Sebelumnya"><i class="fas fa-chevron-left"></i></button>
-      <div class="produk-viewport">
-        <div class="produk-track" id="produkTrack">
-          <article class="produk-card" data-cat="desain">
-            <div class="produk-photo"><img src="{{ asset('images/dkv/tambalbanexpres.jpeg') }}" alt="Desain Aplikasi" loading="lazy"><span class="produk-badge">Desain Grafis</span></div>
-            <div class="pc-body"><h3>Desain Aplikasi</h3><p>Merancang tampilan untuk pengguna melalui eksplorasi layout, warna, tipografi, dan elemen visual yang fungsional dan menarik.</p><div class="pc-foot"><span>Studio Produksi</span><span><i class="fas fa-arrow-right"></i></span></div></div>
-          </article>
-          <article class="produk-card" data-cat="foto">
-            <div class="produk-photo"><img src="{{ asset('images/dkv/multimie.jpeg') }}" alt="Fotografi produk" loading="lazy"><span class="produk-badge">Fotografi</span></div>
-            <div class="pc-body"><h3>Fotografi Produk</h3><p>Eksplorasi komposisi, pencahayaan, dan sudut pengambilan untuk menghasilkan visual yang menarik.</p><div class="pc-foot"><span>Studio Produksi</span><span><i class="fas fa-arrow-right"></i></span></div></div>
-          </article>
-          <article class="produk-card" data-cat="branding">
-            <div class="produk-photo"><img src="{{ asset('images/dkv/nirmana.jpeg') }}" alt="Produk Kreatif" loading="lazy"><span class="produk-badge">Produk Kreatif</span></div>
-            <div class="pc-body"><h3>NIRMANA 3D</h3><p>Mengeksplorasi bentuk, ruang, tekstur, dan komposisi untuk menghasilkan karya tiga dimensi yang harmonis dan menarik.</p><div class="pc-foot"><span>Studio Produksi</span><span><i class="fas fa-arrow-right"></i></span></div></div>
-          </article>
-          <article class="produk-card" data-cat="branding">
-            <div class="produk-photo"><img src="{{ asset('images/dkv/patung.jpeg') }}" alt="Figur Karakter" loading="lazy"><span class="produk-badge">Produk Kreatif</span></div>
-            <div class="pc-body"><h3>Figur Karakter</h3><p>Merancang karakter visual dengan bentuk, warna, dan identitas yang unik.</p><div class="pc-foot"><span>Studio Produksi</span><span><i class="fas fa-arrow-right"></i></span></div></div>
-          </article>
-        </div>
-      </div>
-      <button class="produk-arrow next" id="produkNext" aria-label="Selanjutnya"><i class="fas fa-chevron-right"></i></button>
-    </div>
-    <div class="produk-dots" id="produkDots"></div>
-  </section>
-
-  <!-- ===== SECTION 8 — KEGIATAN & PRESTASI ===== -->
-  <section class="kegiatan-section section-pad" id="kegiatan-aphp">
-    <div class="orn" aria-hidden="true">
-      <span class="o-chevron"></span><span class="o-dots"></span>
-      <span class="o-ring"></span><span class="o-gold"></span><span class="o-corner"></span>
-    </div>
-    <div class="kegiatan-head" data-reveal>
-      <div class="eyebrow gold">BERKARYA & BERPRESTASI</div>
-      <h2 class="big-heading">AKTIF BERKARYA, <span>BERANI BERPRESTASI</span></h2>
-    </div>
-    <div class="kegiatan-grid">
-      <div class="kegiatan-card tall" data-reveal>
-        <img src="{{ asset('images/dkv/dkv-fiksi.jpg') }}" alt="Prestasi siswa DKV" loading="lazy">
-        <span class="kg-badge"><i class="fas fa-trophy"></i> Prestasi</span>
-        <div class="kg-body"><h4>Prestasi Siswa DKV</h4><span>Prestasi lomba desain, ilustrasi, fotografi, dan multimedia tingkat kota hingga nasional</span></div>
-      </div>
-      <div class="kegiatan-card" data-reveal style="--d:1">
-        <img src="{{ asset('images/dkv/patung.jpeg') }}" alt="Praktik produksi DKV" loading="lazy">
-        <span class="kg-badge"><i class="fas fa-vector-square"></i> Praktik</span>
-        <div class="kg-body"><h4>Produksi Kreatif</h4><span>Kegiatan praktik rutin di studio DKV untuk menghasilkan karya kreatif</span></div>
-      </div>
-      <div class="kegiatan-card" data-reveal style="--d:2">
-        <img src="{{ asset('images/dkv/ki-dkv.jpeg') }}" alt="Kunjungan industri DKV" loading="lazy">
-        <span class="kg-badge"><i class="fas fa-building"></i> Industri</span>
-        <div class="kg-body"><h4>Kunjungan Industri Kreatif</h4><span>Belajar langsung dari agensi, studio, percetakan, dan industri kreatif</span></div>
-      </div>
-      <div class="kegiatan-card" data-reveal>
-        <img src="{{ asset('images/dkv/pameran-dkv.jpeg') }}" alt="Pameran produk DKV" loading="lazy">
-        <span class="kg-badge"><i class="fas fa-object-group"></i> Pameran</span>
-        <div class="kg-body"><h4>Pameran Karya</h4><span>Memamerkan karya unggulan di berbagai pameran dan ajang kreatif</span></div>
-      </div>
-      <div class="kegiatan-card" data-reveal style="--d:1">
-        <img src="{{ asset('images/dkv/pkl-dkv.jpeg') }}" alt="PKL siswa DKV" loading="lazy">
-        <span class="kg-badge"><i class="fas fa-briefcase"></i> PKL</span>
-        <div class="kg-body"><h4>PKL & Magang</h4><span>Pengalaman kerja langsung di studio, agensi, percetakan, dan perusahaan kreatif</span></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== SECTION 9 — PROSPEK LULUSAN ===== -->
-  <section class="prospek-section section-pad" id="prospek-aphp">
-    <div class="prospek-head" data-reveal>
-      <div class="eyebrow gold">Mau ke Mana ya?</div>
-      <h2 class="big-heading">SETELAH LULUS, <span>MAU KEMANA?</span></h2>
-    </div>
-    <div class="prospek-grid">
-      <div class="prospek-card" data-reveal>
-        <div class="ps-photo"><span class="ps-num">01</span><img src="{{ asset('images/dkv/kerja-dkv.jpg') }}" alt="Bekerja di industri kreatif" loading="lazy"><i class="fas fa-briefcase blue"></i></div>
-        <div class="ps-body"><h4>KERJA</h4><p>Graphic Designer, Illustrator, Photographer, Videographer, Content Creator, UI Designer — siap berkarya di industri kreatif.</p><div class="ps-tags"><span>Agensi Kreatif</span><span>Studio Desain</span><span>Production House</span><span>Branding</span></div></div>
-      </div>
-      <div class="prospek-card" data-reveal style="--d:1">
-        <div class="ps-photo"><span class="ps-num">02</span><img src="{{ asset('images/dkv/kuliah.jpeg') }}" alt="Melanjutkan kuliah di bidang media kreatif" loading="lazy"><i class="fas fa-graduation-cap"></i></div>
-        <div class="ps-body"><h4>KULIAH</h4><p>Desain Komunikasi Visual, Desain Grafis, Fotografi, Animasi, Multimedia, atau bidang kreatif terkait — bekal DKV jadi modal kuat di perguruan tinggi.</p><div class="ps-tags"><span>Desain Grafis</span><span>Fotografi</span><span>Multimedia</span></div></div>
-      </div>
-      <div class="prospek-card" data-reveal style="--d:2">
-        <div class="ps-photo"><span class="ps-num">03</span><img src="{{ asset('images/dkv/usaha-dkv.jpg') }}" alt="Membangun studio atau usaha kreatif sendiri" loading="lazy"><i class="fas fa-briefcase green"></i></div>
-        <div class="ps-body"><h4>USAHA KREATIF</h4><p>Jasa desain, studio kreatif, content production, branding, dan bisnis visual mandiri — bangun usaha kreatif dengan karya dan identitasmu.</p><div class="ps-tags"><span>Karya Kreatif</span><span>Studio Produksi</span><span>Bisnis</span></div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== LAB TOUR — VISUAL IDENTIK DENGAN VIRTUAL TOUR SEJARAH ===== -->
-  <section class="vt-section" id="lab-tour" aria-label="Studio Tour DKV SMK Negeri 2 Mojokerto">
-    <span class="vt-watermark" aria-hidden="true">DKV</span>
-    <div class="vt-decor-ring" aria-hidden="true"></div>
-    <div class="vt-decor-dots" aria-hidden="true"></div>
-    <div class="vt-inner">
-      <div class="vt-media" data-reveal="left">
-        <div class="vt-frame">
-          <img src="{{ asset('tour/lab-dkv.jpg') }}" alt="Studio DKV SMK Negeri 2 Mojokerto — Studio Tour" loading="lazy">
-          <span class="vt-badge"><i class="fa-solid fa-vector-square"></i> Studio Tour</span>
-          <button class="vt-play" type="button" aria-label="Mulai Studio Tour DKV" onclick="document.getElementById('labTourLink')?.click()"><i class="fa-solid fa-play"></i></button>
-          <div class="vt-caption">
-            <div><strong>Jelajahi Studio DKV</strong><span>Fasilitas praktik Desain Komunikasi Visual</span></div>
-            <span class="vt-cam"><i class="fa-solid fa-camera"></i> LAB</span>
-          </div>
-        </div>
-        <div class="vt-chip"><i class="fa-solid fa-compass"></i><div><strong>Studio Tour DKV</strong><span>Explore DKV Creative Studio</span></div></div>
-      </div>
-      <div class="vt-copy">
-        <div class="vt-kicker" data-reveal>Creative Studio Experience</div>
-        <h2 class="vt-title" data-reveal>Jelajahi <span class="vt-gold">Studio DKV</span><span class="vt-sub">Lihat Studio Tour DKV</span></h2>
-        <p class="vt-desc" data-reveal>Kenali lebih dekat studio DKV sebagai ruang belajar dan praktik untuk merancang karya visual, mengembangkan konsep, serta memproduksi media kreatif.</p>
-        <div class="vt-feats" data-reveal><span class="vt-feat"><i class="fa-solid fa-check"></i> Fasilitas Studio</span><span class="vt-feat"><i class="fa-solid fa-check"></i> Desain Grafis</span><span class="vt-feat"><i class="fa-solid fa-check"></i> Presentasi Karya</span></div>
-        <a href="{{ route('profil.tour') }}?scene=lab-dkv" id="labTourLink" class="vt-btn" data-reveal>Mulai Studio Tour <i class="fa-solid fa-arrow-right"></i></a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== SECTION 11 — FINAL CTA ===== -->
-  <section class="aphp-cta">
-    <div class="cta-bg" aria-hidden="true"><img src="{{ asset('images/aphp-upacara.jpg') }}" alt="" loading="lazy"></div>
-    <div class="orn" aria-hidden="true">
-      <span class="o-chevron"></span><span class="o-dots"></span>
-      <span class="o-ring"></span><span class="o-gold"></span>
-      <i class="fas fa-palette o-wheat"></i>
-    </div>
-    <div class="aphp-cta-inner" data-reveal>
-      <h2>Siap Menjadi Bagian dari <span>DKV?</span></h2>
-      <p>Kenali potensimu, temukan pengalaman belajar yang sesuai, dan mulai perjalananmu bersama DKV — dari ide menuju karya dan masa depan kreatif.</p>
-      <div class="aphp-cta-actions">
-        <a href="{{ route('ppdb') }}" class="aphp-cta-btn"><i class="fas fa-pen"></i> Daftar PPDB</a>
-      </div>
-    </div>
-  </section>
-</div>
+@include('keahlian.partials.dkv-content')
 @endsection
 
 @push('scripts')
-<script>
-/* ---- Scroll Reveal ---- */
-(function(){
-  var els=document.querySelectorAll('[data-reveal]');
-  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('revealed')});return}
-  var obs=new IntersectionObserver(function(entries){
-    entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('revealed');obs.unobserve(e.target)}})
-  },{threshold:0.1,rootMargin:'0px 0px -50px 0px'});
-  els.forEach(function(e){obs.observe(e)});
-  var pending=Array.prototype.slice.call(els),checks=0;
-  var iv=setInterval(function(){
-    checks++;var vh=window.innerHeight;
-    pending=pending.filter(function(el){
-      if(el.classList.contains('revealed'))return false;
-      var r=el.getBoundingClientRect();
-      if(r.top<vh+200&&r.bottom>-30){el.classList.add('revealed');return false}
-      return true
-    });
-    if(checks>=8){pending.forEach(function(el){el.classList.add('revealed')});clearInterval(iv)}
-    else if(pending.length===0)clearInterval(iv)
-  },400)
-})();
-</script>
-
-<script>
-/* ---- Produk Slider + Filter ---- */
-(function(){
-  var track=document.getElementById('produkTrack'),prevBtn=document.getElementById('produkPrev'),nextBtn=document.getElementById('produkNext'),dotsWrap=document.getElementById('produkDots');
-  var filterBtns=Array.prototype.slice.call(document.querySelectorAll('.pf-btn'));
-  if(!track)return;
-  var index=0;
-  function cards(){return Array.prototype.slice.call(track.children)}
-  function visible(){return cards().filter(function(c){return c.style.display!=='none'})}
-  function pageSize(){if(window.innerWidth<=760)return 1;if(window.innerWidth<=1050)return 2;return 3}
-  function buildDots(){
-    dotsWrap.innerHTML='';var total=visible().length,pages=Math.max(1,Math.ceil(total/pageSize()));
-    if(total<=pageSize()){dotsWrap.classList.add('hidden');return}
-    dotsWrap.classList.remove('hidden');
-    for(var i=0;i<pages;i++){var b=document.createElement('button');if(i===index)b.classList.add('active');b.setAttribute('aria-label','Slide '+(i+1));(function(idx){b.addEventListener('click',function(){goTo(idx)})})(i);dotsWrap.appendChild(b)}
-  }
-  function update(){
-    var vis=visible(),per=pageSize(),maxIndex=Math.max(0,Math.ceil(vis.length/per)-1);
-    if(index>maxIndex)index=maxIndex;
-    var offset=0,visIdx=0,i=0;
-    for(;i<cards().length;i++){if(cards()[i].style.display==='none')continue;if(visIdx===index*per)break;offset+=cards()[i].offsetWidth+19;visIdx++}
-    track.style.transform='translateX(-'+offset+'px)';
-    prevBtn.disabled=index<=0;nextBtn.disabled=index>=maxIndex;
-    Array.prototype.forEach.call(dotsWrap.children,function(d,di){d.classList.toggle('active',di===index)})
-  }
-  function goTo(i){var maxIndex=Math.max(0,Math.ceil(visible().length/pageSize())-1);index=Math.min(Math.max(i,0),maxIndex);update()}
-  prevBtn.addEventListener('click',function(){goTo(index-1)});
-  nextBtn.addEventListener('click',function(){goTo(index+1)});
-  var startX=0,currentX=0,isSwiping=false;
-  track.addEventListener('touchstart',function(e){if(e.touches&&e.touches.length){startX=e.touches[0].clientX;isSwiping=true;currentX=startX}},{passive:true});
-  track.addEventListener('touchmove',function(e){if(!isSwiping||!e.touches||!e.touches.length)return;currentX=e.touches[0].clientX},{passive:true});
-  track.addEventListener('touchend',function(){if(!isSwiping)return;var diffX=startX-currentX;if(Math.abs(diffX)>35){if(diffX>0)goTo(index+1);else goTo(index-1)}startX=0;currentX=0;isSwiping=false});
-  filterBtns.forEach(function(btn){
-    btn.addEventListener('click',function(){
-      filterBtns.forEach(function(b){b.classList.remove('active')});btn.classList.add('active');
-      var f=btn.getAttribute('data-f');
-      cards().forEach(function(c){c.style.display=(f==='all'||c.getAttribute('data-cat')===f)?'':'none'});
-      index=0;buildDots();update()
-    })
-  });
-  window.addEventListener('resize',function(){buildDots();update()});
-  buildDots();update()
-})();
-</script>
+@include('keahlian.partials.dkv-scripts')
 @endpush

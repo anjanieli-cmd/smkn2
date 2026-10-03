@@ -15,6 +15,54 @@ use App\Http\Controllers\Admin\PpdbAdminController;
 use App\Http\Controllers\Admin\BeritaAdminController;
 use App\Http\Controllers\Admin\MajorAdminController;
 use App\Http\Controllers\MajorPublicController;
+use App\Http\Controllers\Admin\AphpAdminController;
+use App\Http\Controllers\Admin\DkvAdminController;
+use App\Http\Controllers\Admin\KulinerAdminController;
+use App\Http\Controllers\Admin\LpsAdminController;
+use App\Http\Controllers\Admin\RplAdminController;
+
+Route::middleware(['auth'])            // <- samakan dengan grup admin kamu
+    ->prefix('admin/rpl')
+    ->name('admin.rpl.')
+    ->group(function () {
+        Route::get('/', [RplAdminController::class, 'index'])->name('index');
+        Route::put('/section/{section}', [RplAdminController::class, 'updateSection'])->name('section.update');
+    });
+
+Route::middleware(['auth'])            // <- samakan dengan grup admin kamu
+    ->prefix('admin/lps')
+    ->name('admin.lps.')
+    ->group(function () {
+        Route::get('/', [LpsAdminController::class, 'index'])->name('index');
+        Route::put('/section/{section}', [LpsAdminController::class, 'updateSection'])->name('section.update');
+    });
+
+
+Route::middleware(['auth'])            // <- samakan dengan grup admin kamu
+    ->prefix('admin/kuliner')
+    ->name('admin.kuliner.')
+    ->group(function () {
+        Route::get('/', [KulinerAdminController::class, 'index'])->name('index');
+        Route::put('/section/{section}', [KulinerAdminController::class, 'updateSection'])->name('section.update');
+    });
+
+
+Route::middleware(['auth'])            // <- samakan dengan grup admin kamu
+    ->prefix('admin/dkv')
+    ->name('admin.dkv.')
+    ->group(function () {
+        Route::get('/', [DkvAdminController::class, 'index'])->name('index');
+        Route::put('/section/{section}', [DkvAdminController::class, 'updateSection'])->name('section.update');
+    });
+
+Route::middleware(['auth'])            // <- samakan dengan grup admin kamu
+    ->prefix('admin/aphp')
+    ->name('admin.aphp.')
+    ->group(function () {
+        Route::get('/', [AphpAdminController::class, 'index'])->name('index');
+        Route::put('/section/{section}', [AphpAdminController::class, 'updateSection'])->name('section.update');
+    });
+
 
 Route::middleware(['auth'])
     ->prefix('admin/berita')

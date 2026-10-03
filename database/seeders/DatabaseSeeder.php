@@ -1393,6 +1393,11 @@ class DatabaseSeeder extends Seeder
             PpdbSeeder::class,
             SiteContentSeeder::class,
             StrukturSeeder::class,
+            AphpContentSeeder::class,
+            DkvContentSeeder::class,
+            KulinerContentSeeder::class,
+            LpsContentSeeder::class,
+            RplContentSeeder::class,
         ]);
     }
 }
