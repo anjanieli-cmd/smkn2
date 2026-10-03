@@ -7,17 +7,13 @@
 <style>
 /* =========================================================
    BERITA SKANEDA — DIGITAL SCHOOL NEWSPAPER
-   Halaman baru. Hero, header (layouts.app) & footer TIDAK
-   diubah — identik dengan halaman referensi lain.
-   Visual language: navy #0d3a66, biru #2f6fa8, gold
-   #ffd54a/#ffb300, Sora display. Konsep: editorial news
-   portal / digital newspaper — layout asimetris, featured
-   news besar, most-read bernomor, ornamen editorial tipis.
+   Header (layouts.app) & footer TIDAK diubah.
+   Warna: navy #0d3a66, biru #2f6fa8, gold #ffd54a/#ffb300.
    ========================================================= */
 .br-page{background:#f7f9fc;color:#0d3a66;overflow:hidden;position:relative}
 .br-page *{box-sizing:border-box}
 
-/* ---------- HERO: senada 100% dengan hero Ekstrakurikuler (light theme, watermark) ---------- */
+/* ---------- HERO ---------- */
 .br-hero{position:relative;min-height:clamp(560px,72vh,740px);display:flex;align-items:center;overflow:hidden;
   background:#fff;color:#0d3a66;isolation:isolate}
 .br-hero::after{content:"BERITA";position:absolute;z-index:0;left:2%;top:58%;transform:translateY(-50%);
@@ -37,8 +33,8 @@
   box-shadow:0 0 0 6px rgba(255,111,0,.10)}
 
 /* ---------- TITLE: BERITA navy, SKANEDA kuning-oranye ---------- */
-.br-title{position:relative;z-index:5;font-family:var(--font-display);font-size:clamp(3.6rem,9vw,8rem);
-  line-height:.86;letter-spacing:-.03em;margin:0;max-width:900px;text-transform:uppercase;
+.br-title{position:relative;z-index:5;font-family:var(--font-display);font-size:clamp(3.2rem,7.5vw,6.4rem);
+  line-height:.96;letter-spacing:-.02em;margin:0;max-width:900px;text-transform:uppercase;
   text-shadow:none;animation:hdFadeUp .7s .1s var(--ease, ease) both}
 .br-title .br-white{color:#0d3a66;display:block}
 .br-title .br-gold{display:block;
@@ -56,14 +52,14 @@
 
 @media(min-width:1050px){.br-hero-inner{padding-right:40%}}
 @media(max-width:1050px){.br-hero-inner{padding-right:1.25rem}.br-ref-ornaments{opacity:.72}}
-@media(max-width:900px){.br-title{font-size:clamp(3.2rem,10.5vw,6rem)}.br-ref-ornament-image{opacity:.88}}
+@media(max-width:900px){.br-title{font-size:clamp(2.8rem,9vw,5rem)}.br-ref-ornament-image{opacity:.88}}
 @media(max-width:700px){.br-hero{align-items:flex-start;min-height:0}
   .br-hero-inner{width:90%;padding:clamp(3rem,8vh,4.5rem) 5% 3.2rem}
   .br-hero::after{font-size:clamp(3.2rem,20vw,5.4rem);opacity:.6;left:-2%}
-  .br-title{font-size:clamp(2.6rem,12vw,3.8rem)}}
+  .br-title{font-size:clamp(2.5rem,10.5vw,4.2rem)}}
 @media(max-width:560px){.br-ref-ornament-image{opacity:.62}}
 
-/* ---------- HOME-ORN (ornamen geometris, IDENTIK referensi) ---------- */
+/* ---------- HOME-ORN ---------- */
 .home-orn{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
 .home-orn .ho-chevron{position:absolute;width:360px;height:360px;
   border:1px solid rgba(13,58,102,.16);transform:rotate(45deg);border-radius:18px}
@@ -83,7 +79,8 @@
   border-top:2px solid rgba(13,58,102,.22);border-left:2px solid rgba(13,58,102,.22)}
 .home-orn .ho-corner::after{content:"";position:absolute;left:18px;bottom:18px;width:46px;height:3px;
   background:rgba(255,179,0,.4)}
-/* ---------- STRIP EDISI (editorial ticker) ---------- */
+
+/* ---------- STRIP EDISI ---------- */
 .br-strip{background:#0d3a66;color:#fff;position:relative;overflow:hidden;border-bottom:3px solid #ffc107}
 .br-strip-inner{display:flex;align-items:center;gap:1.1rem;padding:.8rem clamp(1.5rem,5vw,5.5rem)}
 .br-strip-label{display:inline-flex;align-items:center;gap:.5rem;background:linear-gradient(135deg,#ffd54a,#ffb300);
@@ -109,7 +106,6 @@
 .br-rule{height:3px;width:74px;border-radius:99px;background:linear-gradient(90deg,#ffd54a,#ffb300);margin:1rem 0 0}
 .br-rule--dark{background:linear-gradient(90deg,#ffd54a,#ff8a00)}
 
-/* Ornamen editorial: numbering, thin lines, gold block, dots, subtle grid */
 .br-num{font-family:var(--font-display);font-weight:800;font-size:clamp(4rem,8vw,7rem);line-height:1;
   color:rgba(13,58,102,.07);letter-spacing:-.03em;user-select:none;pointer-events:none}
 .br-block{position:absolute;width:9px;height:9px;background:#ffc107;opacity:.5}
@@ -131,7 +127,7 @@
 .br-cat-ekstrakurikuler{background:#fff0ec;color:#c2491b;border:1px solid rgba(194,73,27,.2)}
 .br-cat-humas{background:#f1f1f5;color:#5b6472;border:1px solid rgba(91,100,114,.22)}
 
-/* ---------- BERITA TERKINI: featured besar + side stack ---------- */
+/* ---------- BERITA TERKINI ---------- */
 .br-latest{display:grid;grid-template-columns:minmax(0,1.85fr) minmax(300px,1fr);gap:2.2rem;align-items:stretch}
 .br-featured{position:relative;border-radius:22px;overflow:hidden;display:flex;flex-direction:column;
   background:#fff;border:1px solid rgba(13,58,102,.1);box-shadow:0 18px 50px rgba(13,58,102,.12);
@@ -162,7 +158,6 @@
   border-bottom:2px solid #ffc107;padding-bottom:.25rem;transition:gap .3s var(--ease,ease),color .3s}
 .br-readmore:hover{gap:.85rem;color:#b8860b}
 
-/* side stack berita kecil */
 .br-side{display:flex;flex-direction:column;gap:1.1rem}
 .br-side-item{display:flex;gap:1rem;background:#fff;border:1px solid rgba(13,58,102,.1);
   border-radius:16px;padding:.85rem;align-items:center;transition:transform .35s var(--ease,ease),box-shadow .35s var(--ease,ease)}
@@ -178,7 +173,7 @@
 .br-side-date{font-size:.7rem;color:#5b6472;display:inline-flex;align-items:center;gap:.4rem}
 .br-side-date i{color:#ffb300}
 
-/* ---------- TOOLBAR: filter + search ---------- */
+/* ---------- TOOLBAR ---------- */
 .br-toolbar{display:flex;align-items:center;justify-content:space-between;gap:1.2rem;flex-wrap:wrap;
   background:#fff;border:1px solid rgba(13,58,102,.1);border-left:4px solid #ffc107;
   border-radius:16px;padding:1rem 1.3rem;margin-bottom:2.2rem;
@@ -200,31 +195,30 @@
 .br-search input::placeholder{color:#8ba0b4}
 .br-search input:focus{border-color:#ffc107;box-shadow:0 0 0 3px rgba(255,193,7,.18);background:#fff}
 
-/* ---------- BERITA TERBARU: list kiri + most read kanan ---------- */
+/* ---------- LIST + MOST READ ---------- */
 .br-main{display:grid;grid-template-columns:minmax(0,1.9fr) minmax(300px,1fr);gap:2.4rem;align-items:start}
-.br-list{display:flex;flex-direction:column;gap:1.4rem}
-.br-item{display:flex;gap:1.3rem;background:#fff;border:1px solid rgba(13,58,102,.1);border-radius:18px;
-  padding:1rem;align-items:center;transition:transform .35s var(--ease,ease),box-shadow .35s var(--ease,ease),
+.br-list{display:flex;flex-direction:column;gap:1rem}
+.br-item{display:flex;gap:1rem;background:#fff;border:1px solid rgba(13,58,102,.1);border-radius:14px;
+  padding:.75rem .9rem;align-items:center;transition:transform .35s var(--ease,ease),box-shadow .35s var(--ease,ease),
   border-color .35s var(--ease,ease)}
-.br-item:hover{transform:translateY(-4px);box-shadow:0 18px 46px rgba(13,58,102,.14);border-color:rgba(255,193,7,.55)}
-.br-item-img{flex:0 0 158px;height:132px;border-radius:13px;overflow:hidden;position:relative}
+.br-item:hover{transform:translateY(-3px);box-shadow:0 14px 36px rgba(13,58,102,.12);border-color:rgba(255,193,7,.55)}
+.br-item-img{flex:0 0 120px;height:96px;border-radius:10px;overflow:hidden;position:relative}
 .br-item-img img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
-.br-item-body{min-width:0;display:flex;flex-direction:column;gap:.5rem}
-.br-item-top{display:flex;align-items:center;gap:.7rem;flex-wrap:wrap}
-.br-item-date{font-size:.7rem;color:#5b6472;display:inline-flex;align-items:center;gap:.4rem}
+.br-item-body{min-width:0;display:flex;flex-direction:column;gap:.35rem}
+.br-item-top{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap}
+.br-item-date{font-size:.68rem;color:#5b6472;display:inline-flex;align-items:center;gap:.35rem}
 .br-item-date i{color:#ffb300}
-.br-item-body h3{font-family:var(--font-display);font-size:1.06rem;font-weight:800;line-height:1.28;
+.br-item-body h3{font-family:var(--font-display);font-size:.94rem;font-weight:800;line-height:1.25;
   color:#0d3a66;margin:0}
 .br-item-body h3 a{color:inherit;text-decoration:none}
 .br-item-body h3 a:hover{color:#2f6fa8}
-.br-item-excerpt{font-size:.84rem;line-height:1.65;color:#4a6079;margin:0;
+.br-item-excerpt{font-size:.78rem;line-height:1.5;color:#4a6079;margin:0;
   display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .br-empty{display:none;text-align:center;padding:3.5rem 1rem;background:#fff;border:1px dashed rgba(13,58,102,.2);
   border-radius:18px;color:#5b6472;font-size:.9rem}
 .br-empty.show{display:block}
 .br-empty i{display:block;font-size:2rem;color:#ffc107;margin-bottom:.8rem}
 
-/* panel most read */
 .br-most{position:sticky;top:110px;background:#0d3a66;color:#fff;border-radius:22px;overflow:hidden;
   padding:2rem 1.7rem;box-shadow:0 24px 60px rgba(13,58,102,.3)}
 .br-most-head{display:flex;align-items:center;gap:.7rem;margin-bottom:1.5rem}
@@ -245,7 +239,7 @@
 .br-most-body span{font-size:.68rem;color:rgba(235,245,253,.65);display:inline-flex;align-items:center;gap:.4rem}
 .br-most-body span i{color:#ffd54a;font-size:.62rem}
 
-/* ---------- CERITA SKANEDA (tanpa background biru, senada light theme) ---------- */
+/* ---------- CERITA SKANEDA ---------- */
 .br-story{position:relative;overflow:hidden;margin-top:clamp(2rem,4vw,3rem)}
 .br-story-inner{position:relative;z-index:2;max-width:1240px;margin:0 auto;
   padding:clamp(4.5rem,9vw,7rem) clamp(1.5rem,5vw,5.5rem)}
@@ -262,7 +256,7 @@
   text-decoration:none;border-bottom:2px solid rgba(255,193,7,.4);padding-bottom:.2rem;transition:gap .3s var(--ease,ease)}
 .br-story-link:hover{gap:.8rem;border-color:#ffc107}
 
-/* ---------- CTA (card, tidak mentok tepi, jarak ke footer) ---------- */
+/* ---------- CTA ---------- */
 .br-cta{padding:0 clamp(1.5rem,5vw,5.5rem) clamp(3.5rem,7vw,5rem);margin-top:clamp(1.5rem,3vw,2.5rem)}
 .br-cta-box{background:#0d3a66;color:#fff;text-align:center;position:relative;overflow:hidden;
   max-width:1180px;margin:0 auto;border-radius:28px;
@@ -288,8 +282,7 @@
 .br-cta-note{display:inline-flex;align-items:center;gap:.5rem;margin-top:1.2rem;font-size:.78rem;color:rgba(235,245,253,.6)}
 .br-cta-note i{color:#ffd54a}
 
-
-/* ---------- LIHAT SEMUA BERITA ---------- */
+/* ---------- LIHAT SEMUA ---------- */
 .br-more-wrap{display:flex;justify-content:center;margin-top:2rem}
 .br-more-btn{appearance:none;border:0;cursor:pointer;display:inline-flex;align-items:center;gap:.6rem;
   padding:.85rem 1.5rem;border-radius:999px;background:#0d3a66;color:#fff;font-family:inherit;
@@ -298,7 +291,6 @@
 .br-more-btn:hover{transform:translateY(-3px);box-shadow:0 18px 36px rgba(13,58,102,.25);background:#2f6fa8}
 .br-more-btn i{color:#ffd54a}
 
-/* ---------- BERITA TERSEMBUNYI ---------- */
 .br-item.br-extra{display:none}
 .br-item.br-extra.br-show{display:flex}
 
@@ -343,19 +335,32 @@ body.br-modal-open{overflow:hidden}
   .br-most{position:static;margin-top:1rem}
   .br-story-grid{grid-template-columns:repeat(2,1fr)}
 }
-@media (max-width:860px){
-  .br-sec-head{flex-direction:column;align-items:flex-start;gap:1rem}
-  .br-story-grid{grid-template-columns:1fr}
+@media (max-width:768px){
+  .br-hero{align-items:flex-start;min-height:0}
+  .br-hero-inner{width:min(92%,100%);margin:0 auto;padding:clamp(2.8rem,7vh,4rem) 0 2.8rem}
+  .br-hero::after, .home-orn{display:none!important}
+  .br-title{font-size:clamp(2.6rem,12vw,3.8rem)}
+  .br-sec{padding:36px 0 44px}
+  .br-container{width:min(92%,100%);margin:0 auto}
+  .br-strip-inner{flex-wrap:wrap;padding:.6rem 1rem}
+  .br-latest, .br-main, .br-story-grid{grid-template-columns:1fr!important}
+  .br-item{flex-direction:row;align-items:center;gap:.75rem;padding:.65rem .75rem;border-radius:14px}
+  .br-item-img{flex:0 0 92px;width:92px;height:78px;border-radius:10px}
+  .br-item-body h3{font-size:.88rem;line-height:1.25}
+  .br-item-excerpt{font-size:.74rem;line-height:1.45;-webkit-line-clamp:2}
+  .br-item-date{font-size:.65rem}
+  .br-side-item{flex-direction:row;align-items:center;gap:.75rem;padding:.65rem .75rem}
+  .br-side-thumb{flex:0 0 92px;width:92px;height:78px;border-radius:10px}
+  .br-featured-img{height:180px;border-radius:14px}
+  .br-most{padding:1.4rem 1.1rem;border-radius:18px}
   .br-toolbar{flex-direction:column;align-items:stretch}
   .br-search{min-width:0}
-}
-@media (max-width:640px){
-  .br-item{flex-direction:column;align-items:flex-start}
-  .br-item-img{flex:none;width:100%;height:190px}
-  .br-side-item{flex-direction:column;align-items:flex-start}
-  .br-side-thumb{flex:none;width:100%;height:170px}
-  .br-featured-img{height:300px}
-  .br-strip-inner{flex-wrap:wrap}
+  .br-cta{padding:0 0 2.8rem}
+  .br-cta-box{width:min(92%,100%);margin:0 auto;padding:28px 1.1rem 32px;border-radius:18px}
+  .br-cta-title{font-size:clamp(1.5rem,5vw,2.2rem)}
+  .br-cta p{font-size:.85rem;margin:.8rem auto 0}
+  .br-cta-btn{padding:.75rem 1.4rem;font-size:.82rem;margin-top:1.4rem}
+  [data-reveal]{opacity:1!important;transform:none!important}
 }
 
 /* ---------- TOMBOL BACA KISAHNYA ---------- */
@@ -369,9 +374,7 @@ body.br-modal-open{overflow:hidden}
   cursor:pointer;
 }
 .br-side-readmore,
-.br-item-readmore{
-  margin-top:.45rem;
-}
+.br-item-readmore{margin-top:.45rem}
 .br-readmore:focus-visible,
 .br-story-link:focus-visible{
   outline:3px solid rgba(255,193,7,.35);
@@ -381,70 +384,31 @@ body.br-modal-open{overflow:hidden}
 
 /* ---------- MODAL DETAIL BERITA ---------- */
 .br-news-modal{
-  position:fixed;
-  inset:0;
-  z-index:10000;
-  display:none;
-  align-items:center;
-  justify-content:center;
-  padding:1rem;
-  background:rgba(7,22,42,.76);
-  backdrop-filter:blur(7px);
+  position:fixed;inset:0;z-index:10000;display:none;align-items:center;justify-content:center;
+  padding:1rem;background:rgba(7,22,42,.76);backdrop-filter:blur(7px);
 }
 .br-news-modal.show{display:flex}
 .br-news-modal-box{
-  position:relative;
-  width:min(900px,100%);
-  max-height:88vh;
-  overflow:auto;
-  background:#fff;
-  border-radius:24px;
-  padding:clamp(1.5rem,4vw,2.8rem);
-  box-shadow:0 30px 90px rgba(0,0,0,.32);
-  animation:newsModalIn .3s ease;
+  position:relative;width:min(900px,100%);max-height:88vh;overflow:auto;background:#fff;
+  border-radius:24px;padding:clamp(1.5rem,4vw,2.8rem);
+  box-shadow:0 30px 90px rgba(0,0,0,.32);animation:newsModalIn .3s ease;
 }
 .br-news-modal-close{
-  position:absolute;
-  right:1rem;
-  top:1rem;
-  width:40px;
-  height:40px;
-  border:0;
-  border-radius:50%;
-  background:#f0f3f7;
-  color:#0d3a66;
-  cursor:pointer;
-  font-size:1rem;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  transition:.25s;
+  position:absolute;right:1rem;top:1rem;width:40px;height:40px;border:0;border-radius:50%;
+  background:#f0f3f7;color:#0d3a66;cursor:pointer;font-size:1rem;
+  display:flex;align-items:center;justify-content:center;transition:.25s;
 }
 .br-news-modal-close:hover{background:#0d3a66;color:#fff}
 .br-news-modal-category{margin-bottom:.9rem}
 .br-news-modal-title{
-  font-family:var(--font-display);
-  font-size:clamp(1.6rem,3vw,2.6rem);
-  line-height:1.12;
-  color:#0d3a66;
-  margin:0 3rem 1.2rem 0;
+  font-family:var(--font-display);font-size:clamp(1.6rem,3vw,2.6rem);
+  line-height:1.12;color:#0d3a66;margin:0 3rem 1.2rem 0;
 }
-.br-news-modal-content{
-  font-size:.95rem;
-  line-height:1.85;
-  color:#4a6079;
-}
+.br-news-modal-content{font-size:.95rem;line-height:1.85;color:#4a6079}
 .br-news-modal-content p{margin:0 0 1rem}
 .br-news-modal-source{
-  display:flex;
-  align-items:center;
-  gap:.5rem;
-  margin-top:1.4rem;
-  padding-top:1rem;
-  border-top:1px solid rgba(13,58,102,.1);
-  color:#7b8da0;
-  font-size:.72rem;
-  font-weight:700;
+  display:flex;align-items:center;gap:.5rem;margin-top:1.4rem;padding-top:1rem;
+  border-top:1px solid rgba(13,58,102,.1);color:#7b8da0;font-size:.72rem;font-weight:700;
 }
 @keyframes newsModalIn{
   from{opacity:0;transform:translateY(18px) scale(.98)}
@@ -455,6 +419,134 @@ body.br-modal-open{overflow:hidden}
   .br-news-modal-box{border-radius:18px;padding:1.3rem}
 }
 
+/* =========================================================
+   DARK MODE — BERITA
+   Aktif lewat class body.br-dark yang dipasang otomatis oleh
+   script deteksi di bawah (tidak bergantung selector layout).
+   !important dipakai supaya menang dari style layout.
+   ========================================================= */
+body.br-dark .br-page{background:#060f1d!important;color:#e6eef8!important}
+
+/* Hero */
+body.br-dark .br-hero{background:#08172a!important}
+body.br-dark .br-hero::after{color:rgba(255,255,255,.04)!important;-webkit-text-stroke:1px rgba(255,179,0,.14)!important}
+body.br-dark .br-ref-ornaments{opacity:.45!important}
+body.br-dark .br-ref-ornament-image{filter:invert(.92) hue-rotate(180deg) brightness(.9)}
+body.br-dark .br-kicker{background:rgba(255,111,0,.10)!important;border-color:rgba(255,111,0,.35)!important;color:#ff9a3d!important}
+body.br-dark .br-title .br-white{color:#fff!important}
+body.br-dark .br-lead{color:#9db0c6!important}
+body.br-dark .br-pill{background:#0c1c33!important;border-color:rgba(255,255,255,.12)!important;color:#e6eef8!important;box-shadow:none!important}
+
+/* Ornamen */
+body.br-dark .home-orn .ho-chevron{border-color:rgba(255,255,255,.12)}
+body.br-dark .home-orn .ho-chevron::after{border-color:rgba(120,170,220,.16)}
+body.br-dark .home-orn .ho-line{background:rgba(255,255,255,.10)}
+body.br-dark .home-orn .ho-line::after{background:rgba(120,170,220,.18)}
+body.br-dark .home-orn .ho-dots{background-image:radial-gradient(rgba(255,255,255,.35) 1.6px,transparent 1.7px);opacity:.3}
+body.br-dark .home-orn .ho-ring{border-color:rgba(255,255,255,.10)}
+body.br-dark .home-orn .ho-ring::before{border-color:rgba(120,170,220,.2)}
+body.br-dark .home-orn .ho-square::before{border-color:rgba(255,255,255,.15)}
+body.br-dark .home-orn .ho-corner{border-top-color:rgba(255,255,255,.22);border-left-color:rgba(255,255,255,.22)}
+body.br-dark .br-dots{background-image:radial-gradient(rgba(255,255,255,.3) 1.5px,transparent 1.6px);opacity:.3}
+body.br-dark .br-gridbg{background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px)}
+body.br-dark .br-num{color:rgba(255,255,255,.06)!important}
+
+/* Heading section */
+body.br-dark .br-eyebrow{color:#7fb2e5!important}
+body.br-dark .br-eyebrow--gold{color:#ffd54a!important}
+body.br-dark .br-sec-title{color:#fff!important}
+body.br-dark .br-sec-sub{color:#9db0c6!important}
+
+/* ===== TOOLBAR (filter + search) ===== */
+body.br-dark .br-toolbar{background:#0a1a2e!important;border:1px solid rgba(255,255,255,.08)!important;
+  border-left:4px solid #ffc107!important;box-shadow:0 10px 30px rgba(0,0,0,.4)!important}
+body.br-dark .br-filter-btn{background:#0f2340!important;border:1px solid rgba(255,255,255,.12)!important;
+  color:#c3d1e2!important;box-shadow:none!important}
+body.br-dark .br-filter-btn i{color:#9db0c6!important;opacity:1!important}
+body.br-dark .br-filter-btn:hover{border-color:#ffd54a!important;color:#ffd54a!important}
+body.br-dark .br-filter-btn.active{background:linear-gradient(135deg,#ffd54a,#ffb300)!important;
+  border-color:#ffb300!important;color:#0a2d52!important;box-shadow:0 8px 20px rgba(255,179,0,.25)!important}
+body.br-dark .br-filter-btn.active i{color:#0a2d52!important}
+
+/* ===== SEARCH ===== */
+body.br-dark .br-search i{color:#7f93ab!important}
+body.br-dark .br-search input{background:#0f2340!important;border:1px solid rgba(255,255,255,.14)!important;
+  color:#fff!important;-webkit-text-fill-color:#fff!important}
+body.br-dark .br-search input::placeholder{color:#6d819a!important;-webkit-text-fill-color:#6d819a!important}
+body.br-dark .br-search input:focus{background:#12294a!important;border-color:#ffc107!important;
+  box-shadow:0 0 0 3px rgba(255,193,7,.20)!important}
+
+/* ===== BOX / KARTU ===== */
+body.br-dark .br-featured,
+body.br-dark .br-side-item,
+body.br-dark .br-item,
+body.br-dark .br-story-card,
+body.br-dark .br-empty{background:#0a1a2e!important;border:1px solid rgba(255,255,255,.08)!important;
+  box-shadow:0 14px 34px rgba(0,0,0,.4)!important}
+body.br-dark .br-item:hover,
+body.br-dark .br-story-card:hover{border-color:rgba(255,193,7,.45)!important}
+body.br-dark .br-side-thumb::after{border-color:rgba(255,255,255,.08)!important}
+
+body.br-dark .br-featured-date,
+body.br-dark .br-item-date,
+body.br-dark .br-side-date{color:#9db0c6!important}
+body.br-dark .br-featured h3,
+body.br-dark .br-item-body h3,
+body.br-dark .br-side-body h4,
+body.br-dark .br-story-card h4{color:#fff!important}
+body.br-dark .br-featured h3 a:hover,
+body.br-dark .br-item-body h3 a:hover,
+body.br-dark .br-side-body h4 a:hover{color:#ffd54a!important}
+body.br-dark .br-featured-excerpt,
+body.br-dark .br-item-excerpt,
+body.br-dark .br-story-card p{color:#b8c8dc!important}
+body.br-dark .br-featured-meta{border-top-color:rgba(255,255,255,.12)!important;color:#9db0c6!important}
+body.br-dark .br-readmore,
+body.br-dark .br-story-link{color:#ffd54a!important;border-bottom-color:#ffb300!important}
+
+/* Panel paling banyak dibaca */
+body.br-dark .br-most{background:#0a1a2e!important;border:1px solid rgba(255,255,255,.08)!important;
+  box-shadow:0 24px 60px rgba(0,0,0,.5)!important}
+body.br-dark .br-most-item{border-bottom-color:rgba(255,255,255,.10)!important}
+
+/* Strip & tombol */
+body.br-dark .br-strip{background:#050e1b!important}
+body.br-dark .br-more-btn{background:#0f2340!important;border:1px solid rgba(255,255,255,.12)!important}
+body.br-dark .br-more-btn:hover{background:#1b4f85!important}
+
+/* Pill kategori */
+body.br-dark .br-cat-sekolah{background:rgba(127,178,229,.14)!important;color:#a9cdf2!important;border-color:rgba(127,178,229,.30)!important}
+body.br-dark .br-cat-siswa{background:rgba(63,184,122,.14)!important;color:#6fdca0!important;border-color:rgba(63,184,122,.30)!important}
+body.br-dark .br-cat-prestasi{background:rgba(255,193,7,.14)!important;color:#ffd54a!important;border-color:rgba(255,193,7,.35)!important}
+body.br-dark .br-cat-kegiatan{background:rgba(155,130,235,.16)!important;color:#c3b3f5!important;border-color:rgba(155,130,235,.32)!important}
+body.br-dark .br-cat-akademik{background:rgba(56,189,225,.14)!important;color:#6fd3ee!important;border-color:rgba(56,189,225,.30)!important}
+body.br-dark .br-cat-ekstrakurikuler{background:rgba(255,122,60,.14)!important;color:#ff9a70!important;border-color:rgba(255,122,60,.32)!important}
+body.br-dark .br-cat-humas{background:rgba(255,255,255,.08)!important;color:#b8c8dc!important;border-color:rgba(255,255,255,.18)!important}
+
+/* CTA */
+body.br-dark .br-cta-box{background:linear-gradient(135deg,#040c18,#071a31 55%,#0a2340)!important;
+  border:1px solid rgba(255,213,74,.16)!important;box-shadow:0 30px 70px rgba(0,0,0,.6)!important}
+
+/* Modal */
+body.br-dark .br-story-modal,
+body.br-dark .br-news-modal{background:rgba(2,8,16,.78)!important}
+body.br-dark .br-story-modal-box,
+body.br-dark .br-news-modal-box{background:#0a1a2e!important;border:1px solid rgba(255,255,255,.10)!important}
+body.br-dark .br-story-modal-close,
+body.br-dark .br-news-modal-close{background:#17325a!important;color:#e6eef8!important}
+body.br-dark .br-story-modal-close:hover,
+body.br-dark .br-news-modal-close:hover{background:#ffb300!important;color:#0a2d52!important}
+body.br-dark .br-story-modal-title,
+body.br-dark .br-news-modal-title{color:#fff!important}
+body.br-dark .br-story-modal-content,
+body.br-dark .br-news-modal-content{color:#c3d1e2!important}
+body.br-dark .br-news-modal-source{border-top-color:rgba(255,255,255,.12)!important;color:#8fa3bb!important}
+
+/* transisi halus saat ganti tema */
+.br-page,.br-hero,.br-featured,.br-side-item,.br-item,.br-toolbar,.br-filter-btn,.br-search input,
+.br-story-card,.br-cta-box,.br-pill,.br-cat,.br-most{
+  transition:background-color .35s ease,color .35s ease,border-color .35s ease}
 </style>
 @endpush
 
@@ -549,8 +641,6 @@ body.br-modal-open{overflow:hidden}
 
   /* =========================================================
      10 BERITA AWAL + LIHAT SEMUA + FILTER + SEARCH
-     (logika sama seperti sebelumnya; hanya sumber datanya yang
-     sekarang dirender oleh partial dari database)
      ========================================================= */
   var list = document.getElementById('brList');
   var moreBtn = document.getElementById('brMoreBtn');
@@ -637,7 +727,7 @@ body.br-modal-open{overflow:hidden}
   }
 
   /* =========================================================
-     MODAL CERITA SKANEDA — tidak berubah, masih per-ID dinamis
+     MODAL CERITA SKANEDA
      ========================================================= */
   var storyButtons = document.querySelectorAll('[data-story]');
   var storyModals = document.querySelectorAll('.br-story-modal');
@@ -672,6 +762,62 @@ body.br-modal-open{overflow:hidden}
   });
 
   applyFilter();
+})();
+
+/* =========================================================
+   DETEKSI DARK MODE OTOMATIS
+   Memasang class "br-dark" di <body> kalau layout sedang dark,
+   apa pun cara layout menandainya (class, atribut, atau hanya
+   mengubah warna background).
+   ========================================================= */
+(function () {
+  function lum(c) {
+    var m = String(c).match(/[\d.]+/g);
+    if (!m || m.length < 3) return null;
+    var a = m.length > 3 ? parseFloat(m[3]) : 1;
+    if (a === 0) return null;
+    return (0.299 * m[0] + 0.587 * m[1] + 0.114 * m[2]) / 255;
+  }
+  function hasDarkMarker() {
+    var h = document.documentElement, b = document.body;
+    var s = [h.className, b.className, h.getAttribute('data-theme'), b.getAttribute('data-theme'),
+             h.getAttribute('data-bs-theme'), b.getAttribute('data-bs-theme')].join(' ').toLowerCase();
+    return /(^|[\s_-])dark/.test(s) && !/light/.test(s.replace(/br-dark/g, ''));
+  }
+  function isDark() {
+    if (hasDarkMarker()) return true;
+    var l = lum(getComputedStyle(document.body).backgroundColor);
+    if (l === null) l = lum(getComputedStyle(document.documentElement).backgroundColor);
+    return l !== null && l < 0.4;
+  }
+  function sync() { document.body.classList.toggle('br-dark', isDark()); }
+
+  function syncSoon() { sync(); setTimeout(sync, 450); }
+
+  syncSoon();
+  var opts = { attributes: true, attributeFilter: ['class', 'data-theme', 'data-bs-theme', 'style'] };
+  new MutationObserver(function (muts) {
+    for (var i = 0; i < muts.length; i++) {
+      if (muts[i].target === document.body && muts[i].attributeName === 'class') {
+        var cl = document.body.className;
+        // hindari loop tak berujung akibat class br-dark kita sendiri
+        if (muts[i].oldValue !== null && muts[i].oldValue !== undefined) {
+          var oldHasDark = /(^|\s)br-dark(\s|$)/.test(muts[i].oldValue);
+          var newHasDark = /(^|\s)br-dark(\s|$)/.test(cl);
+          if (oldHasDark !== newHasDark) continue;
+        }
+      }
+      syncSoon();
+      return;
+    }
+  }).observe(document.documentElement, opts);
+  new MutationObserver(function () { syncSoon(); })
+    .observe(document.body, { attributes: true, attributeFilter: ['data-theme', 'data-bs-theme', 'style'] });
+  document.addEventListener('click', function () { setTimeout(sync, 500); });
+  if (window.matchMedia) {
+    var mq = window.matchMedia('(prefers-color-scheme: dark)');
+    if (mq.addEventListener) mq.addEventListener('change', syncSoon);
+  }
 })();
 </script>
 @endpush

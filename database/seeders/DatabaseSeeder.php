@@ -38,8 +38,8 @@ class DatabaseSeeder extends Seeder
             [
                 'content' => [
                     'name' => 'SMK Negeri 2 Mojokerto',
-                    'address' => 'Jl. Raden Wijaya No. 1, Kranggan, Kota Mojokerto, Jawa Timur',
-                    'phone' => '(0321) 321555',
+                    'address' => 'Jl. Raya Pulorejo, Kel. Pulorejo, Kec. Prajurit Kulon, Kota Mojokerto, Jawa Timur 61325',
+                    'phone' => '0312 2292 9922 / (0321) 321555',
                     'email' => 'info@smkn2mojokerto.sch.id',
                     'vision' => 'Menjadi Sekolah Menengah Kejuruan yang Unggul, Berkarakter, dan Berdaya Saing Global.',
                     'mission' => [
@@ -969,7 +969,7 @@ class DatabaseSeeder extends Seeder
         // 7. Chatbot Knowledge Base (Comprehensive School Information)
         ChatbotKnowledge::updateOrCreate(['title' => 'Alamat dan Kontak Resmi Sekolah'], [
             'category' => 'Profil',
-            'content' => 'SMK Negeri 2 Mojokerto beralamat di Jl. Raden Wijaya No. 1, Kranggan, Kota Mojokerto, Jawa Timur. Telepon: (0321) 321555, Email: info@smkn2mojokerto.sch.id, Website: https://smkn2mojokerto.sch.id.',
+            'content' => 'SMK Negeri 2 Mojokerto beralamat di Jl. Raya Pulorejo, Kel. Pulorejo, Kec. Prajurit Kulon, Kota Mojokerto, Jawa Timur 61325. Telepon: 0312 2292 9922 / (0321) 321555, Email: info@smkn2mojokerto.sch.id, Website: https://smkn2mojokerto.sch.id.',
             'keywords' => ['alamat', 'lokasi', 'telepon', 'kontak', 'email', 'website', 'dimana', 'peta'],
             'status' => ChatbotKnowledgeStatus::PUBLISHED,
             'is_ai_allowed' => true,
@@ -999,7 +999,7 @@ class DatabaseSeeder extends Seeder
 
         ChatbotKnowledge::updateOrCreate(['title' => 'Sejarah Singkat SMKN 2 Mojokerto'], [
             'category' => 'Profil',
-            'content' => 'SMK Negeri 2 Mojokerto didirikan untuk mencetak tenaga kerja terampil dan profesional di Kota Mojokerto dan sekitarnya. Berdiri di kawasan strategis Kranggan, sekolah ini berkembang pesat menjadi SMK Pusat Keunggulan (PK) dengan 5 konsentrasi keahlian berstandar nasional dan internasional.',
+            'content' => 'SMK Negeri 2 Mojokerto didirikan untuk mencetak tenaga kerja terampil dan profesional di Kota Mojokerto dan sekitarnya. Berdiri di kawasan strategis Pulorejo, Prajurit Kulon, sekolah ini berkembang pesat menjadi SMK Pusat Keunggulan (PK) dengan 5 konsentrasi keahlian berstandar nasional dan internasional.',
             'keywords' => ['sejarah', 'berdiri', 'pendirian', 'latar belakang', 'sejak'],
             'status' => ChatbotKnowledgeStatus::PUBLISHED,
             'is_ai_allowed' => true,
@@ -1029,7 +1029,7 @@ class DatabaseSeeder extends Seeder
 
         ChatbotKnowledge::updateOrCreate(['title' => 'Jam Belajar dan Operational Sekolah'], [
             'category' => 'Tata Tertib',
-            'content' => 'Kegiatan Belajar Mengajar (KBM) di SMKN 2 Mojokerto berlangsung hari Senin hingga Jumat pukul 07.00 WIB - 15.30 WIB. Gerbang sekolah ditutup tepat pukul 07.00 WIB. Hari Sabtu dan Minggu libur.',
+            'content' => 'Kegiatan Belajar Mengajar (KBM) dan jam operasional sekolah di SMKN 2 Mojokerto berlangsung hari Senin hingga Jumat pukul 07.00 WIB - 16.00 WIB. Gerbang sekolah ditutup tepat pukul 07.00 WIB. Hari Sabtu dan Minggu libur.',
             'keywords' => ['jam', 'waktu', 'jadwal', 'masuk', 'pulang', 'belajar', 'operasional'],
             'status' => ChatbotKnowledgeStatus::PUBLISHED,
             'is_ai_allowed' => true,

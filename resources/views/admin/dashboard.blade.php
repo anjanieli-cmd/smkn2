@@ -191,10 +191,16 @@
   // Gabungkan beberapa sumber jadi satu feed aktivitas terbaru (opsional, aman kalau kosong)
   $feedItems = collect();
   foreach (($recentTeachers ?? []) as $t) {
-      $feedItems->push(['type' => 'teacher', 'title' => $t->name, 'desc' => 'ditambahkan sebagai '.($t->role_position ?? 'staf'), 'time' => $t->created_at ?? null]);
+      $tName = is_object($t) ? $t->name : ($t['name'] ?? '');
+      $tPos  = is_object($t) ? ($t->role_position ?? 'staf') : ($t['role_position'] ?? 'staf');
+      $tTime = is_object($t) ? ($t->created_at ?? null) : ($t['created_at'] ?? null);
+      $feedItems->push(['type' => 'teacher', 'title' => $tName, 'desc' => 'ditambahkan sebagai '.$tPos, 'time' => $tTime]);
   }
   foreach (($recentEVoices ?? []) as $e) {
-      $feedItems->push(['type' => 'evoice', 'title' => $e->ticket_code, 'desc' => Str::limit($e->title, 40), 'time' => $e->created_at ?? null]);
+      $eCode  = is_object($e) ? $e->ticket_code : ($e['ticket_code'] ?? '');
+      $eTitle = is_object($e) ? ($e->title ?? '') : ($e['title'] ?? '');
+      $eTime  = is_object($e) ? ($e->created_at ?? null) : ($e['created_at'] ?? null);
+      $feedItems->push(['type' => 'evoice', 'title' => $eCode, 'desc' => Str::limit($eTitle, 40), 'time' => $eTime]);
   }
   $feedItems = $feedItems->sortByDesc('time')->take(5);
 @endphp
@@ -309,6 +315,15 @@
         </div>
         <span class="adm-module-cta">Buka Halaman <i class="fas fa-arrow-right"></i></span>
       </a>
+
+      <a href="{{ route('admin.majors.index') }}" class="adm-module-card">
+        <div class="adm-module-icon"><i class="fas fa-graduation-cap"></i></div>
+        <div>
+          <h3>Program Keahlian</h3>
+          <p>Kelola 5 Jurusan, deskripsi &amp; ikon.</p>
+        </div>
+        <span class="adm-module-cta">Buka Halaman <i class="fas fa-arrow-right"></i></span>
+      </a>
     </div>
   </div>
 
@@ -332,17 +347,23 @@
           </thead>
           <tbody>
             @forelse($recentTeachers ?? [] as $item)
+              @php
+                $itemPhoto = is_object($item) ? $item->photo_url : ($item['photo_url'] ?? null);
+                $itemName  = is_object($item) ? $item->name : ($item['name'] ?? '');
+                $itemRole  = is_object($item) ? ($item->role_position ?? '') : ($item['role_position'] ?? '');
+                $itemNip   = is_object($item) ? ($item->nip ?? 'Staf') : ($item['nip'] ?? 'Staf');
+              @endphp
               <tr>
                 <td style="width:54px">
-                  @if($item->photo_url)
-                    <img src="{{ asset($item->photo_url) }}" alt="{{ $item->name }}" class="adm-avatar-photo">
+                  @if($itemPhoto)
+                    <img src="{{ asset($itemPhoto) }}" alt="{{ $itemName }}" class="adm-avatar-photo">
                   @else
-                    <div class="adm-avatar-fallback">{{ substr($item->name, 0, 1) }}</div>
+                    <div class="adm-avatar-fallback">{{ substr($itemName, 0, 1) }}</div>
                   @endif
                 </td>
-                <td><span class="adm-name">{{ $item->name }}</span></td>
-                <td><span class="adm-sub">{{ $item->role_position }}</span></td>
-                <td><span class="adm-tag active">{{ $item->nip ?? 'Staf' }}</span></td>
+                <td><span class="adm-name">{{ $itemName }}</span></td>
+                <td><span class="adm-sub">{{ $itemRole }}</span></td>
+                <td><span class="adm-tag active">{{ $itemNip }}</span></td>
               </tr>
             @empty
               <tr>

@@ -238,16 +238,16 @@ class KnowledgeRetrieverService
                     $mission = is_array($c['mission'] ?? null) ? implode('; ', $c['mission']) : ($c['mission'] ?? '');
                     $fallbackContexts[] = "[Profil Sekolah] {$name}, Alamat: {$address}, Telp: {$phone}, Email: {$email}, Visi: {$vision}, Misi: {$mission}";
                 } else {
-                    $fallbackContexts[] = "[Profil Sekolah] SMK Negeri 2 Mojokerto beralamat di Jl. Raden Wijaya No. 1, Kranggan, Kota Mojokerto, Jawa Timur. Telepon: (0321) 321555, Email: info@smkn2mojokerto.sch.id.";
+                    $fallbackContexts[] = "[Profil Sekolah] SMK Negeri 2 Mojokerto beralamat di Jl. Raya Pulorejo, Kel. Pulorejo, Kec. Prajurit Kulon, Kota Mojokerto, Jawa Timur 61325. Telepon: 0312 2292 9922 / (0321) 321555, Email: info@smkn2mojokerto.sch.id.";
                 }
             } catch (\Throwable $e) {
-                $fallbackContexts[] = "[Profil Sekolah] SMK Negeri 2 Mojokerto beralamat di Jl. Raden Wijaya No. 1, Kranggan, Kota Mojokerto, Jawa Timur. Telepon: (0321) 321555, Email: info@smkn2mojokerto.sch.id.";
+                $fallbackContexts[] = "[Profil Sekolah] SMK Negeri 2 Mojokerto beralamat di Jl. Raya Pulorejo, Kel. Pulorejo, Kec. Prajurit Kulon, Kota Mojokerto, Jawa Timur 61325. Telepon: 0312 2292 9922 / (0321) 321555, Email: info@smkn2mojokerto.sch.id.";
             }
         }
 
         // Check Sejarah Sekolah
         if (str_contains($normalizedMessage, 'sejarah') || str_contains($normalizedMessage, 'berdiri') || str_contains($normalizedMessage, 'pendirian') || str_contains($normalizedMessage, 'sejak')) {
-            $fallbackContexts[] = "[Sejarah Sekolah] SMK Negeri 2 Mojokerto didirikan untuk mencetak tenaga kerja terampil dan profesional di Kota Mojokerto dan sekitarnya. Berdiri di kawasan strategis Kranggan, sekolah ini berkembang pesat menjadi SMK Pusat Keunggulan (PK) dengan 5 konsentrasi keahlian unggulan berstandar nasional dan internasional.";
+            $fallbackContexts[] = "[Sejarah Sekolah] SMK Negeri 2 Mojokerto didirikan untuk mencetak tenaga kerja terampil dan profesional di Kota Mojokerto dan sekitarnya. Berdiri di kawasan strategis Pulorejo, Prajurit Kulon, sekolah ini berkembang pesat menjadi SMK Pusat Keunggulan (PK) dengan 5 konsentrasi keahlian unggulan berstandar nasional dan internasional.";
         }
 
         // Check Struktur Organisasi
@@ -256,8 +256,8 @@ class KnowledgeRetrieverService
         }
 
         // Check Jam Belajar & Operasional
-        if (str_contains($normalizedMessage, 'jam belajar') || str_contains($normalizedMessage, 'jadwal masuk') || str_contains($normalizedMessage, 'jam masuk') || str_contains($normalizedMessage, 'jam pulang')) {
-            $fallbackContexts[] = "[Tata Tertib] Jam Belajar dan Operasional Sekolah: Kegiatan Belajar Mengajar (KBM) di SMKN 2 Mojokerto berlangsung hari Senin hingga Jumat pukul 07.00 WIB - 15.30 WIB. Gerbang sekolah ditutup tepat pukul 07.00 WIB. Hari Sabtu dan Minggu libur.";
+        if (str_contains($normalizedMessage, 'jam belajar') || str_contains($normalizedMessage, 'jadwal masuk') || str_contains($normalizedMessage, 'jam masuk') || str_contains($normalizedMessage, 'jam pulang') || str_contains($normalizedMessage, 'operasional')) {
+            $fallbackContexts[] = "[Tata Tertib] Jam Belajar dan Operasional Sekolah: Kegiatan Belajar Mengajar (KBM) dan operasional sekolah di SMKN 2 Mojokerto berlangsung hari Senin hingga Jumat pukul 07.00 WIB - 16.00 WIB. Gerbang sekolah ditutup tepat pukul 07.00 WIB. Hari Sabtu dan Minggu libur.";
         }
 
         // Check Extracurriculars (Requires specific valid ekskul keyword or general list request)

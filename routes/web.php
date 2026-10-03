@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\VisiMisiAdminController;
 use App\Http\Controllers\Admin\StrukturAdminController;
 use App\Http\Controllers\Admin\PpdbAdminController;
 use App\Http\Controllers\Admin\BeritaAdminController;
+use App\Http\Controllers\Admin\MajorAdminController;
 
 Route::middleware(['auth'])            // <- samakan dengan grup admin kamu
     ->prefix('admin/berita')
@@ -423,5 +424,12 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('/achievements', [AchievementAdminController::class, 'store'])->name('achievements.store');
         Route::put('/achievements/{id}', [AchievementAdminController::class, 'update'])->name('achievements.update');
         Route::delete('/achievements/{id}', [AchievementAdminController::class, 'destroy'])->name('achievements.destroy');
+
+        // 10. Program Keahlian / Jurusan
+        Route::get('/majors', [MajorAdminController::class, 'index'])->name('majors.index');
+        Route::post('/majors', [MajorAdminController::class, 'store'])->name('majors.store');
+        Route::put('/majors/{id}', [MajorAdminController::class, 'update'])->name('majors.update');
+        Route::post('/majors/{id}/toggle', [MajorAdminController::class, 'toggle'])->name('majors.toggle');
+        Route::delete('/majors/{id}', [MajorAdminController::class, 'destroy'])->name('majors.destroy');
     });
 });

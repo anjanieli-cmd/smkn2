@@ -1,39 +1,4 @@
-<style id="staff-guru-card-back-text-final">
-/* Ukuran teks belakang kartu diperbesar agar terbaca jelas saat kartu dibalik */
-.idcard-h .idback-head .id-school{
-  font-size:clamp(.82rem,1.15vw,.98rem) !important;
-  letter-spacing:.045em !important;
-}
-.idcard-h .idback-head .id-school-sub{
-  font-size:clamp(.56rem,.78vw,.68rem) !important;
-  letter-spacing:.12em !important;
-}
-.idcard-h .idback-label{
-  font-size:clamp(.62rem,.82vw,.72rem) !important;
-}
-.idcard-h .idback-bio{
-  font-size:clamp(.72rem,1vw,.84rem) !important;
-  line-height:1.5 !important;
-}
-.idcard-h .idback-quote p{
-  font-size:clamp(.68rem,.92vw,.78rem) !important;
-  line-height:1.5 !important;
-}
-.idcard-h .idback-foot span{
-  font-size:clamp(.54rem,.72vw,.64rem) !important;
-}
-</style>
 
-<style id="staff-guru-gold-final">
-.history-title .skaneda-gold{
-  background:linear-gradient(135deg,#ffd54a 0%,#ffb300 45%,#ff7a00 100%) !important;
-  -webkit-background-clip:text !important;
-  background-clip:text !important;
-  -webkit-text-fill-color:transparent !important;
-  color:#ffc107 !important;
-  text-shadow:none !important;
-}
-</style>
 @extends('layouts.app')
 
 @section('title', 'Staff & Guru — SMK Negeri 2 Mojokerto')
@@ -446,23 +411,39 @@
   .sg-page-block{grid-template-columns:repeat(3,1fr)}
 }
 @media (max-width:950px){
-  .sg-page-block{grid-template-columns:repeat(2,1fr);gap:1.5rem}
+  .sg-page-block{grid-template-columns:repeat(2,1fr);gap:1.5rem;flex:0 0 92vw;width:92vw;max-width:92vw}
   .sg-arrow{width:46px;height:46px;font-size:1rem}
   .sg-arrow.prev{left:-22px}
   .sg-arrow.next{right:-22px}
 }
 @media (max-width:700px){
-  .sg-page-block{grid-template-columns:1fr;gap:1.1rem}
-  /* Di layar sempit, panah dipindah ke bawah grid (bukan menumpuk di samping
-     kartu) supaya tidak menutupi konten kartu maupun kepotong tepi layar. */
+  .sg-toolbar{flex-direction:column;align-items:stretch}
+  .sg-search{width:100%}
+  .sg-filters{overflow-x:auto;white-space:nowrap;flex-wrap:nowrap;padding-bottom:.3rem}
+  .sg-grid-viewport{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;scroll-snap-type:x mandatory}
+  .sg-page-block{
+    display:flex !important;
+    flex-direction:row !important;
+    flex-wrap:nowrap !important;
+    overflow-x:auto !important;
+    scroll-snap-type:x mandatory !important;
+    gap:1.1rem !important;
+    flex:0 0 100% !important;
+    width:100% !important;
+    max-width:100% !important;
+    padding:0 0.5rem 0.5rem !important;
+  }
+  .sg-card{
+    flex:0 0 calc(100vw - 44px) !important;
+    width:calc(100vw - 44px) !important;
+    max-width:340px !important;
+    scroll-snap-align:center !important;
+  }
   .sg-slider{padding-bottom:3.4rem}
   .sg-arrow{top:auto;bottom:0;transform:none;width:44px;height:44px;font-size:.9rem}
   .sg-arrow:hover{transform:scale(1.08)}
   .sg-arrow.prev{left:calc(50% - 58px)}
   .sg-arrow.next{right:calc(50% - 58px)}
-}
-@media (max-width:420px){
-  .sg-page-block{grid-template-columns:1fr}
 }
 
 /* =========================================================
@@ -867,6 +848,169 @@
     .history-vt-cta .history-vt-arrow{margin-left:auto}
   }
 </style>
+<style id="staff-guru-dark-mode">
+/* =========================================================
+   STAFF & GURU — DARK MODE
+   Aktif saat <body> punya class "theme-dark" (tombol matahari/bulan di layout).
+   Prefix "html body.theme-dark" mengalahkan blok dark mode global di layout.
+   ========================================================= */
+html body.theme-dark .sg-page{background:#08131f!important;color:#e6eef7;color-scheme:dark}
+html body.theme-dark .sg-page::before{border-color:rgba(143,189,235,.14)}
+html body.theme-dark .sg-page::after{border-color:rgba(143,189,235,.12)}
+
+/* ---------- HERO ---------- */
+html body.theme-dark .sg-page .history-hero{background:linear-gradient(180deg,#0b1d31 0%,#08131f 100%)!important;color:#e6eef7}
+html body.theme-dark .sg-page .history-hero::after{color:rgba(255,255,255,.035)!important;-webkit-text-stroke:1px rgba(255,179,0,.14)!important}
+html body.theme-dark .sg-page .history-ref-ornament-image{filter:invert(1) hue-rotate(180deg);mix-blend-mode:screen;opacity:.6!important}
+html body.theme-dark .sg-page .history-title .sejarah-white{color:#fff!important}
+html body.theme-dark .sg-page .history-kicker{background:rgba(255,111,0,.1);border-color:rgba(255,179,0,.3);color:#ffb347}
+html body.theme-dark .sg-page .history-vt-cta{background:rgba(255,255,255,.06)!important;border-color:rgba(255,255,255,.14)!important;color:#fff!important;box-shadow:0 12px 30px rgba(0,0,0,.4)}
+html body.theme-dark .sg-page .history-vt-cta:hover{background:rgba(255,179,0,.1)!important;border-color:rgba(255,179,0,.45)!important}
+html body.theme-dark .sg-page .history-vt-cta strong{color:#fff!important}
+html body.theme-dark .sg-page .history-vt-cta small{color:#9fb2c6}
+
+/* ---------- UMUM ---------- */
+html body.theme-dark .sg-page .eyebrow{color:#cfe3f7!important}
+html body.theme-dark .sg-page .eyebrow::before{background:linear-gradient(90deg,#ffd54a,#ff9800)!important}
+html body.theme-dark .sg-page .big-heading{color:#fff!important;text-shadow:none}
+html body.theme-dark .sg-page .sg-sec-desc{color:#a9bbcd!important}
+
+/* ---------- INTRO + STAT ---------- */
+html body.theme-dark .sg-page .sg-intro{background:#0a1928!important}
+html body.theme-dark .sg-page .intro-copy{color:#a9bbcd!important}
+html body.theme-dark .sg-page .stat-box{background:rgba(255,255,255,.05)!important;border-color:rgba(255,255,255,.12)!important;box-shadow:0 18px 44px rgba(0,0,0,.35)!important}
+html body.theme-dark .sg-page .stat-box::after{border-color:rgba(255,179,0,.22)}
+html body.theme-dark .sg-page .stat-num{background:linear-gradient(135deg,#fff,#9fc4e6);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#fff}
+html body.theme-dark .sg-page .stat-label{color:#9fb2c6!important}
+html body.theme-dark .sg-page .stat-label i{color:#ffd54a}
+
+/* ---------- KATALOG ---------- */
+html body.theme-dark .sg-page .sg-catalog{background:linear-gradient(180deg,#0b1b2d 0%,#091522 100%)!important}
+html body.theme-dark .sg-page .home-orn .ho-chevron{border-top-color:rgba(143,189,235,.14);border-right-color:rgba(143,189,235,.14)}
+html body.theme-dark .sg-page .home-orn .ho-chevron::after{border-top-color:rgba(255,213,74,.08);border-right-color:rgba(255,213,74,.08)}
+html body.theme-dark .sg-page .home-orn .ho-ring{border-color:rgba(143,189,235,.16);box-shadow:0 0 0 20px rgba(143,189,235,.03),0 0 0 42px rgba(255,213,74,.025)}
+html body.theme-dark .sg-page .home-orn .ho-dots{background-image:radial-gradient(circle,#8fbdeb 2px,transparent 2.8px);opacity:.25}
+html body.theme-dark .sg-page .home-orn .ho-corner{border-left-color:rgba(143,189,235,.16);border-bottom-color:rgba(143,189,235,.16)}
+html body.theme-dark .sg-page .home-orn .ho-square::before{border-color:rgba(143,189,235,.22)}
+
+/* ---------- TOOLBAR: SEARCH + FILTER (menimpa aturan "putih" di layout) ---------- */
+html body.theme-dark .sg-page .sg-toolbar{background:rgba(8,19,31,.85)!important;border:1px solid rgba(255,255,255,.12)!important;box-shadow:0 18px 44px rgba(0,0,0,.4)!important}
+html body.theme-dark .sg-page .sg-toolbar .sg-search{background:rgba(255,255,255,.07)!important;border:1px solid rgba(255,255,255,.16)!important;box-shadow:none!important}
+html body.theme-dark .sg-page .sg-toolbar .sg-search:focus-within{border-color:rgba(255,213,74,.55)!important;box-shadow:0 0 0 4px rgba(255,213,74,.12)!important}
+html body.theme-dark .sg-page .sg-toolbar .sg-search input,
+html body.theme-dark .sg-page .sg-toolbar .sg-search input#sgSearchInput{background:transparent!important;color:#e6eef7!important;border:none!important;box-shadow:none!important;outline:none!important}
+html body.theme-dark .sg-page .sg-toolbar .sg-search input::placeholder,
+html body.theme-dark .sg-page .sg-toolbar .sg-search input#sgSearchInput::placeholder{color:#7f93a8!important}
+html body.theme-dark .sg-page .sg-toolbar .sg-search i{color:#ffd54a!important}
+html body.theme-dark .sg-page .sg-filter-label{color:#8fa3b8!important}
+html body.theme-dark .sg-page .sg-toolbar .sg-fchip{background:rgba(255,255,255,.07)!important;border:1px solid rgba(255,255,255,.14)!important;color:#cfe3f7!important;box-shadow:none!important}
+html body.theme-dark .sg-page .sg-toolbar .sg-fchip i{color:#8fbdeb}
+html body.theme-dark .sg-page .sg-toolbar .sg-fchip:hover{background:rgba(255,255,255,.13)!important;border-color:rgba(255,213,74,.45)!important;color:#fff!important}
+html body.theme-dark .sg-page .sg-toolbar .sg-fchip.is-active{background:linear-gradient(135deg,#ffd54a,#ff8a00)!important;border-color:transparent!important;color:#0d3a66!important;box-shadow:0 8px 20px rgba(255,138,0,.3)!important}
+html body.theme-dark .sg-page .sg-toolbar .sg-fchip.is-active i{color:#0d3a66}
+html body.theme-dark .sg-page .sg-empty{color:#a9bbcd}
+html body.theme-dark .sg-page .sg-empty i{color:#3b5671}
+html body.theme-dark .sg-page .sg-empty strong{color:#fff!important}
+
+/* ---------- PANAH, DOTS, HINT ---------- */
+html body.theme-dark .sg-page .sg-arrow{background:linear-gradient(135deg,#1d4a75,#245a8f);box-shadow:0 12px 28px rgba(0,0,0,.45)}
+html body.theme-dark .sg-page .sg-arrow:hover{background:linear-gradient(135deg,#ffb300,#ff8a00);color:#0d3a66}
+html body.theme-dark .sg-page .sg-page-dots button{background:rgba(255,255,255,.22)}
+html body.theme-dark .sg-page .sg-page-dots button.active{background:#ffb300}
+html body.theme-dark .sg-page .sg-scroll-hint{color:#8fa3b8}
+
+/* ---------- KARTU ID: DEPAN ---------- */
+html body.theme-dark .sg-page .idface{border-color:rgba(255,255,255,.12);box-shadow:0 18px 44px rgba(0,0,0,.45),0 2px 8px rgba(0,0,0,.3)}
+html body.theme-dark .sg-page .idfront{background:#0f2236!important}
+html body.theme-dark .sg-page .idcard:hover .idface{border-color:rgba(255,179,0,.45);box-shadow:0 28px 62px rgba(0,0,0,.6)}
+html body.theme-dark .sg-page .idcard-h .idfront::before{color:rgba(255,255,255,.04);-webkit-text-stroke:1px rgba(255,255,255,.06)}
+html body.theme-dark .sg-page .idcard-h .idfront::after{border-color:rgba(255,179,0,.25)}
+html body.theme-dark .sg-page .idh-head{background:linear-gradient(135deg,#0a2a48,#0c3256 55%,#12406b)}
+html body.theme-dark .sg-page .idh-school{color:#fff!important}
+html body.theme-dark .sg-page .idh-photo{border-color:rgba(255,255,255,.85);background:linear-gradient(135deg,#1a3752,#12283f);box-shadow:0 10px 22px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.12)}
+html body.theme-dark .sg-page .idh-serial{color:#8fa3b8}
+html body.theme-dark .sg-page .idh-barcode div{background:#cfe3f7}
+html body.theme-dark .sg-page .idh-cat{color:#ffcf5a;background:rgba(255,179,0,.12);border-color:rgba(255,179,0,.3)}
+html body.theme-dark .sg-page .idh-name{color:#fff!important}
+html body.theme-dark .sg-page .idh-lbl{color:#7f93a8}
+html body.theme-dark .sg-page .idh-val{color:#e6eef7}
+html body.theme-dark .sg-page .idh-meta{color:#8fbdeb}
+html body.theme-dark .sg-page .idh-foot{border-top-color:rgba(255,255,255,.16)}
+html body.theme-dark .sg-page .idh-id{color:#9fb2c6}
+html body.theme-dark .sg-page .idh-flip{color:#ffb300}
+
+/* ---------- KARTU ID: BELAKANG (teks ditegaskan karena layout memaksa <p> redup) ---------- */
+html body.theme-dark .sg-page .idback{background:linear-gradient(160deg,#0a2a48,#0c3256 58%,#10406b)!important}
+html body.theme-dark .sg-page .idcard-h .idback-bio{color:rgba(235,245,253,.92)!important}
+html body.theme-dark .sg-page .idcard-h .idback-quote p{color:#f3e9d6!important}
+html body.theme-dark .sg-page .idback-quote{background:rgba(255,255,255,.07);border-color:rgba(255,213,74,.25)}
+
+/* ---------- VIRTUAL TOUR ---------- */
+html body.theme-dark .sg-page .vt-section{background:linear-gradient(180deg,#0a1928 0%,#08131f 50%,#0a1726 100%)!important}
+html body.theme-dark .sg-page .vt-section::before{background-image:radial-gradient(circle,rgba(143,189,235,.2) 1.5px,transparent 2px);opacity:.35}
+html body.theme-dark .sg-page .vt-watermark{color:rgba(255,255,255,.04)}
+html body.theme-dark .sg-page .vt-decor-ring{border-color:rgba(143,189,235,.16)}
+html body.theme-dark .sg-page .vt-frame{box-shadow:0 30px 75px rgba(0,0,0,.55);border-color:rgba(255,255,255,.12)}
+html body.theme-dark .sg-page .vt-chip{background:#0f2236!important;border-color:rgba(255,255,255,.1)!important;box-shadow:0 12px 30px rgba(0,0,0,.4)}
+html body.theme-dark .sg-page .vt-chip strong{color:#fff!important}
+html body.theme-dark .sg-page .vt-chip span{color:#8fa3b8}
+html body.theme-dark .sg-page .vt-kicker{color:#dbe7f3}
+html body.theme-dark .sg-page .vt-title{color:#fff!important}
+html body.theme-dark .sg-page .vt-sub{color:#9fc4e6}
+html body.theme-dark .sg-page .vt-desc{color:#a9bbcd!important}
+html body.theme-dark .sg-page .vt-feat{background:rgba(255,255,255,.06)!important;border-color:rgba(255,255,255,.12)!important;color:#cfe3f7!important}
+html body.theme-dark .sg-page .vt-btn{background:linear-gradient(135deg,#ffd54a,#ff8a00);color:#0d3a66;box-shadow:0 14px 32px rgba(0,0,0,.4)}
+
+/* ---------- CTA PENUTUP ---------- */
+html body.theme-dark .sg-page .sg-cta{background:linear-gradient(135deg,#12395f 0%,#0f3256 48%,#14406d 100%)!important;border:1px solid rgba(255,255,255,.12);box-shadow:0 24px 55px rgba(0,0,0,.5)}
+html body.theme-dark .sg-page .sg-cta h3{color:#fff!important}
+html body.theme-dark .sg-page .sg-cta p{color:rgba(235,245,253,.82)!important}
+
+/* ---------- CTA "Ingin bergabung...": kartu dibuat gelap ---------- */
+html body.theme-dark .sg-page .sg-cta{
+  background:linear-gradient(135deg,#0a1a2c 0%,#0c2038 50%,#0e2542 100%) !important;
+  border:1px solid rgba(255,255,255,.08) !important;
+  box-shadow:0 24px 55px rgba(0,0,0,.55) !important;
+}
+html body.theme-dark .sg-page .sg-cta::after{color:rgba(255,255,255,.035) !important}
+html body.theme-dark .sg-page .sg-cta .home-orn .ho-line{display:none}
+</style>
+<style id="staff-guru-card-back-text-final">
+/* Ukuran teks belakang kartu diperbesar agar terbaca jelas saat kartu dibalik */
+.idcard-h .idback-head .id-school{
+  font-size:clamp(.82rem,1.15vw,.98rem) !important;
+  letter-spacing:.045em !important;
+}
+.idcard-h .idback-head .id-school-sub{
+  font-size:clamp(.56rem,.78vw,.68rem) !important;
+  letter-spacing:.12em !important;
+}
+.idcard-h .idback-label{
+  font-size:clamp(.62rem,.82vw,.72rem) !important;
+}
+.idcard-h .idback-bio{
+  font-size:clamp(.72rem,1vw,.84rem) !important;
+  line-height:1.5 !important;
+}
+.idcard-h .idback-quote p{
+  font-size:clamp(.68rem,.92vw,.78rem) !important;
+  line-height:1.5 !important;
+}
+.idcard-h .idback-foot span{
+  font-size:clamp(.54rem,.72vw,.64rem) !important;
+}
+</style>
+
+<style id="staff-guru-gold-final">
+.history-title .skaneda-gold{
+  background:linear-gradient(135deg,#ffd54a 0%,#ffb300 45%,#ff7a00 100%) !important;
+  -webkit-background-clip:text !important;
+  background-clip:text !important;
+  -webkit-text-fill-color:transparent !important;
+  color:#ffc107 !important;
+  text-shadow:none !important;
+}
+</style>
 
 @endpush
 
@@ -1056,7 +1200,7 @@
                 </div>
               @endforeach
             @endif
-          </div></div>
+            </div>
         </div>
 
         <button class="sg-arrow next" id="sgNext" type="button" aria-label="Selanjutnya">

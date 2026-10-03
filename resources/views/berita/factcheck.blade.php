@@ -52,8 +52,8 @@
   border:1px solid rgba(139,233,242,.35);background:rgba(139,233,242,.1)}
 .fc-badge-ai i{font-size:.75rem;animation:fcPulseIcon 2.4s ease-in-out infinite}
 @keyframes fcPulseIcon{0%,100%{opacity:1}50%{opacity:.4}}
-.fc-hero h1{font-family:var(--font-display);font-weight:900;font-size:clamp(2.1rem,4.6vw,3.6rem);line-height:1.08;
-  margin:0;color:#fff;letter-spacing:-.015em;text-align:left}
+.fc-hero h1{font-family:var(--font-display);font-weight:900;font-size:clamp(2.9rem,6.5vw,5.5rem);line-height:1.02;
+  margin:0;color:#fff;letter-spacing:-.015em;text-align:left;text-transform:uppercase}
 .fc-hero h1 .fc-title-line{display:block}
 .fc-hero h1 .fc-title-gold{color:#ffd54a}
 .fc-hero p{margin:1.3rem 0 0;font-size:.87rem;color:rgba(230,242,253,.82);line-height:1.85;max-width:520px;text-align:left}
@@ -74,7 +74,7 @@
 .fc-hero-live i{color:#ffb300}
 @media(max-width:640px){
   .fc-hero-live{position:static;display:inline-flex;margin-top:1.2rem}
-  .fc-hero h1{font-size:clamp(1.8rem,8vw,2.5rem)}
+  .fc-hero h1{font-size:clamp(2.3rem,9.5vw,3.8rem)}
   .fc-hero-cta{width:100%}
 }
 
@@ -287,31 +287,212 @@
 .fc-cta-btn:hover{transform:translateY(-2px);box-shadow:0 18px 38px rgba(255,179,0,.4)}
 .fc-cta-btn i{font-size:.72rem}
 
-/* responsive */
 @media(max-width:1180px){
   .fc-layout{grid-template-columns:260px minmax(0,1fr);gap:1.4rem}
 }
-@media(max-width:980px){
-  .fc-layout{grid-template-columns:1fr}
-  .fc-side{position:static;flex-direction:row;flex-wrap:wrap}
-  .fc-side-card,.fc-side-note{flex:1 1 260px}
-  .fc-stats{grid-template-columns:repeat(2,1fr)}
-}
-@media(max-width:700px){
-  .fc-wrap{padding:32px 0 70px}
-  .fc-hero{padding:1.5rem 1.1rem;border-radius:20px}
-  .fc-side{flex-direction:column}
-  .fc-grid{grid-template-columns:1fr}
+@media(max-width:768px){
+  .fc-blob, .fc-hero-glow-a, .fc-hero-glow-b, .fc-report-info::after{display:none!important}
+  .fc-wrap{width:min(92%,100%);margin:0 auto;padding:20px 0 60px}
+  .fc-hero{padding:1.2rem 1rem;border-radius:18px;margin-bottom:1.4rem}
+  .fc-hero h1{font-size:clamp(1.8rem,7.5vw,2.7rem);line-height:1.1}
+  .fc-hero p{font-size:.8rem;line-height:1.6;margin-top:.8rem}
+  .fc-hero-cta{margin-top:1.1rem;padding:.65rem .85rem;border-radius:14px}
+  .fc-hero-cta-icon{width:38px;height:38px;flex:0 0 38px;font-size:.8rem}
+  .fc-hero-cta strong{font-size:.82rem}
+  .fc-hero-cta small{font-size:.68rem}
+  .fc-layout{grid-template-columns:1fr;gap:1.2rem}
+  .fc-side{position:static;flex-direction:column;gap:.9rem}
+  .fc-side-card{padding:1.1rem 1rem;border-radius:16px}
+  .fc-stats{grid-template-columns:1fr 1fr;gap:.65rem;margin-bottom:1.4rem}
+  .fc-stat{padding:1rem .75rem;border-radius:14px}
+  .fc-stat b{font-size:1.5rem}
+  .fc-grid{grid-template-columns:1fr;gap:1rem}
+  .fc-card{padding:1.1rem;border-radius:16px}
   .fc-toolbar{align-items:flex-start}
-  .fc-cta{flex-direction:column;align-items:stretch;text-align:center}
-  .fc-cta-btn{justify-content:center}
-  .fc-report{padding:1.4rem 1.1rem;border-radius:22px}
-  .fc-report-info{padding:1.5rem 1.3rem}
-  .fc-report-form{padding:1.3rem}
+  .fc-cta{flex-direction:column;align-items:stretch;text-align:center;padding:1.4rem 1.1rem;border-radius:18px;margin-top:1.8rem}
+  .fc-cta-btn{justify-content:center;padding:.75rem 1.4rem}
+  .fc-report{padding:1.2rem 1rem;border-radius:18px;margin-bottom:1.6rem}
+  .fc-report-grid{grid-template-columns:1fr;gap:1.2rem}
+  .fc-report-info{padding:1.3rem 1.1rem;border-radius:16px}
+  .fc-report-form{padding:1.1rem;border-radius:16px}
 }
 @media(max-width:480px){
-  .fc-stats{grid-template-columns:1fr 1fr}
+  .fc-stats{grid-template-columns:1fr 1fr;gap:.5rem}
 }
+
+/* =========================================================
+   DARK MODE — SCHOOL FACTCHECK (body.fc-dark)
+   Class fc-dark dipasang otomatis oleh JS di bawah setiap kali
+   dark mode situs aktif (apa pun nama class dark mode layout-nya).
+   Semua selector diawali "body.fc-dark .fc-page" supaya specificity-nya
+   lebih tinggi dari CSS dark mode global dan tidak tertimpa lagi.
+   Palet: halaman #060f1d · kartu #0a1a2e · panel dalam #0c1c33 · input #0f2340
+   ========================================================= */
+body.fc-dark .fc-page{background:#060f1d!important;color:#e6eef8!important;color-scheme:dark}
+body.fc-dark .fc-page .fc-blob-a{background:radial-gradient(circle,rgba(255,213,74,.12),rgba(255,213,74,0) 70%)}
+body.fc-dark .fc-page .fc-blob-b{background:radial-gradient(circle,rgba(47,111,168,.22),rgba(47,111,168,0) 70%)}
+body.fc-dark .fc-page .fc-blob-c{background:radial-gradient(circle,rgba(31,138,76,.14),rgba(31,138,76,0) 70%)}
+body.fc-dark .fc-page .fc-dotfield{background-image:radial-gradient(rgba(255,255,255,.07) 1.3px,transparent 1.4px)}
+
+/* Hero (sudah gelap, digelapkan sedikit) */
+body.fc-dark .fc-page .fc-hero{background:linear-gradient(120deg,#050f1d 0%,#082846 50%,#071f38 100%)!important;
+  box-shadow:0 30px 64px rgba(0,0,0,.55)!important;border:1px solid rgba(255,255,255,.06)}
+body.fc-dark .fc-page .fc-hero-live{background:#12294a!important;color:#fff!important;box-shadow:0 16px 34px rgba(0,0,0,.45)!important}
+
+/* Heading section */
+body.fc-dark .fc-page .fc-section-head span.tag{color:#6fd3ee!important}
+body.fc-dark .fc-page .fc-section-head h2{color:#fff!important}
+body.fc-dark .fc-page .fc-section-head p{color:#9db0c6!important}
+
+/* ===== Box laporan ===== */
+body.fc-dark .fc-page .fc-report{background:#0a1a2e!important;border-color:rgba(255,255,255,.08)!important;
+  box-shadow:0 24px 56px rgba(0,0,0,.45)!important}
+body.fc-dark .fc-page .fc-report-info{background:linear-gradient(160deg,rgba(14,165,183,.10),rgba(255,179,0,.06)),#0c1c33!important;
+  border-color:rgba(14,165,183,.25)!important}
+body.fc-dark .fc-page .fc-report-info::after{color:rgba(255,255,255,.05)!important}
+body.fc-dark .fc-page .fc-report-tag{color:#6fd3ee!important}
+body.fc-dark .fc-page .fc-report-heading{color:#fff!important}
+body.fc-dark .fc-page .fc-report-lead{color:#c3d1e2!important}
+body.fc-dark .fc-page .fc-report-info ul{color:#dbe6f3!important}
+body.fc-dark .fc-page .fc-report-info li{color:#dbe6f3!important;-webkit-text-fill-color:#dbe6f3!important}
+body.fc-dark .fc-page .fc-report-info li i{box-shadow:0 8px 16px rgba(0,0,0,.35)!important;-webkit-text-fill-color:currentColor!important}
+body.fc-dark .fc-page .fc-report-info li:nth-child(1) i{color:#fff!important}
+body.fc-dark .fc-page .fc-report-info li:nth-child(2) i{color:#0d3a66!important}
+body.fc-dark .fc-page .fc-report-info li:nth-child(3) i{color:#fff!important}
+body.fc-dark .fc-page .fc-report-form{background:#0c1c33!important;border-color:rgba(255,255,255,.08)!important}
+body.fc-dark .fc-page .fc-field label{color:#e6eef8!important}
+body.fc-dark .fc-page .fc-field input,
+body.fc-dark .fc-page .fc-field select,
+body.fc-dark .fc-page .fc-field textarea{background:#0f2340!important;border-color:rgba(255,255,255,.14)!important;
+  color:#fff!important;-webkit-text-fill-color:#fff!important}
+body.fc-dark .fc-page .fc-field input::placeholder,
+body.fc-dark .fc-page .fc-field textarea::placeholder{color:#6d819a!important;-webkit-text-fill-color:#6d819a!important}
+body.fc-dark .fc-page .fc-field select option{background:#0f2340;color:#fff}
+body.fc-dark .fc-page .fc-field input:focus,
+body.fc-dark .fc-page .fc-field select:focus,
+body.fc-dark .fc-page .fc-field textarea:focus{background:#12294a!important;border-color:#ffb300!important;
+  box-shadow:0 0 0 4px rgba(255,179,0,.18)!important}
+body.fc-dark .fc-page .fc-field-hint{color:#8ea3bb!important}
+body.fc-dark .fc-page .fc-field-icon > i,
+body.fc-dark .fc-page .fc-field-select::after{color:#7f93ab!important}
+body.fc-dark .fc-page .fc-report-status{background:rgba(63,184,122,.12)!important;color:#6fdca0!important;border-color:rgba(63,184,122,.30)!important}
+body.fc-dark .fc-page .fc-report-status.is-error{background:rgba(224,72,59,.12)!important;color:#ff9a90!important;border-color:rgba(224,72,59,.30)!important}
+
+/* ===== Statistik ===== */
+body.fc-dark .fc-page .fc-stat{background:#0a1a2e!important;border-color:rgba(255,255,255,.08)!important;box-shadow:0 10px 26px rgba(0,0,0,.35)!important}
+body.fc-dark .fc-page .fc-stat:hover{box-shadow:0 16px 34px rgba(0,0,0,.5)!important}
+body.fc-dark .fc-page .fc-stat b{color:#fff!important}
+body.fc-dark .fc-page .fc-stat span{color:#9db0c6!important}
+body.fc-dark .fc-page .fc-stat.verified b{color:#6fdca0!important}
+body.fc-dark .fc-page .fc-stat.false b{color:#ff8a80!important}
+body.fc-dark .fc-page .fc-stat.pending b{color:#ffd54a!important}
+
+/* ===== Sidebar ===== */
+body.fc-dark .fc-page .fc-side-card{background:#0a1a2e!important;border-color:rgba(255,255,255,.08)!important;box-shadow:0 14px 34px rgba(0,0,0,.4)!important}
+body.fc-dark .fc-page .fc-side-card h3{color:#fff!important}
+body.fc-dark .fc-page .fc-search input{background:#0f2340!important;border-color:rgba(255,255,255,.14)!important;
+  color:#fff!important;-webkit-text-fill-color:#fff!important}
+body.fc-dark .fc-page .fc-search input::placeholder{color:#6d819a!important;-webkit-text-fill-color:#6d819a!important}
+body.fc-dark .fc-page .fc-search input:focus{background:#12294a!important;border-color:#ffb300!important;box-shadow:0 0 0 4px rgba(255,179,0,.18)!important}
+body.fc-dark .fc-page .fc-search i{color:#7f93ab!important}
+
+body.fc-dark .fc-page .fc-cat-btn{background:transparent!important;color:#b8c8dc!important}
+body.fc-dark .fc-page .fc-cat-btn i{color:#7f93ab!important}
+body.fc-dark .fc-page .fc-cat-btn .fc-cat-count{background:rgba(255,255,255,.08)!important;color:#9db0c6!important}
+body.fc-dark .fc-page .fc-cat-btn:hover{background:rgba(255,255,255,.06)!important;color:#fff!important}
+body.fc-dark .fc-page .fc-cat-btn.active{background:linear-gradient(135deg,#ffd54a,#ffb300)!important;color:#0a2d52!important}
+body.fc-dark .fc-page .fc-cat-btn.active i{color:#0a2d52!important}
+body.fc-dark .fc-page .fc-cat-btn.active .fc-cat-count{background:rgba(10,45,82,.15)!important;color:#0a2d52!important}
+
+body.fc-dark .fc-page .fc-legend li{color:#c3d1e2!important}
+body.fc-dark .fc-page .fc-legend b{color:#fff!important}
+body.fc-dark .fc-page .fc-legend-dot.verified{background:rgba(63,184,122,.15)!important;color:#6fdca0!important}
+body.fc-dark .fc-page .fc-legend-dot.false{background:rgba(224,72,59,.15)!important;color:#ff9a90!important}
+body.fc-dark .fc-page .fc-legend-dot.pending{background:rgba(255,193,7,.15)!important;color:#ffd54a!important}
+
+body.fc-dark .fc-page .fc-side-note{background:linear-gradient(135deg,#0b2a4d,#071a31)!important;
+  border:1px solid rgba(255,255,255,.08)!important;box-shadow:0 18px 40px rgba(0,0,0,.45)!important}
+body.fc-dark .fc-page .fc-side-note h3{color:#fff!important}
+body.fc-dark .fc-page .fc-side-note p{color:rgba(235,245,253,.82)!important}
+
+/* ===== Toolbar & pill status ===== */
+body.fc-dark .fc-page .fc-pill{background:#0c1c33!important;border-color:rgba(255,255,255,.12)!important;color:#c3d1e2!important}
+body.fc-dark .fc-page .fc-pill:hover{border-color:#ffd54a!important}
+body.fc-dark .fc-page .fc-pill[data-status="semua"].active{background:linear-gradient(135deg,#ffd54a,#ffb300)!important;border-color:#ffb300!important;color:#0a2d52!important}
+body.fc-dark .fc-page .fc-pill[data-status="Terverifikasi"].active{background:#1f8a4c!important;border-color:#1f8a4c!important;color:#fff!important}
+body.fc-dark .fc-page .fc-pill[data-status="Tidak Benar"].active{background:#e0483b!important;border-color:#e0483b!important;color:#fff!important}
+body.fc-dark .fc-page .fc-pill[data-status="Belum Terkonfirmasi"].active{background:#b98a12!important;border-color:#b98a12!important;color:#fff!important}
+body.fc-dark .fc-page .fc-result-count{color:#9db0c6!important}
+body.fc-dark .fc-page .fc-result-count b{color:#ffd54a!important}
+
+/* ===== Kartu klarifikasi ===== */
+body.fc-dark .fc-page .fc-card{background:#0a1a2e!important;border-color:rgba(255,255,255,.08)!important;box-shadow:0 12px 30px rgba(0,0,0,.4)!important}
+body.fc-dark .fc-page .fc-card:hover{box-shadow:0 20px 42px rgba(0,0,0,.55)!important}
+body.fc-dark .fc-page .fc-badge.status-verified{background:rgba(63,184,122,.15)!important;color:#6fdca0!important}
+body.fc-dark .fc-page .fc-badge.status-false{background:rgba(224,72,59,.15)!important;color:#ff9a90!important}
+body.fc-dark .fc-page .fc-badge.status-pending{background:rgba(255,193,7,.15)!important;color:#ffd54a!important}
+body.fc-dark .fc-page .fc-cat-tag{background:rgba(255,255,255,.08)!important;color:#b8c8dc!important}
+body.fc-dark .fc-page .fc-claim{color:#fff!important}
+body.fc-dark .fc-page .fc-claim i{color:#33506f!important}
+body.fc-dark .fc-page .fc-explain{color:#b8c8dc!important}
+body.fc-dark .fc-page .fc-more{background:none!important;color:#ffd54a!important}
+body.fc-dark .fc-page .fc-more:hover{color:#ff9a3d!important}
+body.fc-dark .fc-page .fc-card-foot{border-top-color:rgba(255,255,255,.10)!important}
+body.fc-dark .fc-page .fc-source{color:#7fb2e5!important}
+body.fc-dark .fc-page .fc-source:hover{color:#ffd54a!important}
+body.fc-dark .fc-page .fc-source.is-empty{color:#6d819a!important}
+body.fc-dark .fc-page .fc-date{color:#7f93ab!important}
+body.fc-dark .fc-page .fc-report-link-row{background:#0c1c33!important;border-color:rgba(255,255,255,.08)!important}
+body.fc-dark .fc-page .fc-report-link-row a{color:#e6eef8!important}
+body.fc-dark .fc-page .fc-report-link-row span.lbl{color:#7f93ab!important}
+
+/* ===== Empty state & CTA ===== */
+body.fc-dark .fc-page .fc-empty{background:#0a1a2e!important;border-color:rgba(255,255,255,.15)!important}
+body.fc-dark .fc-page .fc-empty i{color:#33506f!important}
+body.fc-dark .fc-page .fc-empty p{color:#b8c8dc!important}
+body.fc-dark .fc-page .fc-empty span{color:#7f93ab!important}
+body.fc-dark .fc-page .fc-cta{background:#0a1a2e!important;border-color:rgba(255,255,255,.08)!important;box-shadow:0 16px 38px rgba(0,0,0,.4)!important}
+body.fc-dark .fc-page .fc-cta-text h3{color:#fff!important}
+body.fc-dark .fc-page .fc-cta-text p{color:#9db0c6!important}
+
+/* ===== Search input: pakai ID supaya tidak bisa ditimpa CSS global ===== */
+body.fc-dark #fcSearchInput{background:#0f2340!important;background-color:#0f2340!important;border:1.5px solid rgba(255,255,255,.14)!important;
+  color:#fff!important;-webkit-text-fill-color:#fff!important;box-shadow:none!important}
+body.fc-dark #fcSearchInput::placeholder{color:#6d819a!important;-webkit-text-fill-color:#6d819a!important;opacity:1}
+body.fc-dark #fcSearchInput:focus{background:#12294a!important;background-color:#12294a!important;border-color:#ffb300!important;
+  box-shadow:0 0 0 4px rgba(255,179,0,.18)!important}
+body.fc-dark #fcSearchInput:-webkit-autofill{-webkit-box-shadow:0 0 0 40px #0f2340 inset!important;-webkit-text-fill-color:#fff!important}
+
+/* ===== Hilangkan background transparan di belakang "Sudah Diverifikasi" =====
+   (kolom utama, heading, toolbar & pill status dibiarkan polos mengikuti background halaman) */
+.fc-page .fc-layout,
+.fc-page .fc-main,
+.fc-page .fc-section-head,
+.fc-page .fc-toolbar,
+.fc-page .fc-status-pills{background:none!important;background-color:transparent!important;
+  border:none!important;box-shadow:none!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+.fc-page .fc-main::before,.fc-page .fc-main::after,
+.fc-page .fc-section-head::before,.fc-page .fc-section-head::after,
+.fc-page .fc-toolbar::before,.fc-page .fc-toolbar::after{content:none!important;display:none!important}
+
+/* ===== Level ID: mengalahkan CSS global apa pun yang memberi background pada kolom utama ===== */
+html body #fcMain,
+html body #fcSectionHead,
+html body #fcMain .fc-toolbar,
+html body #fcMain .fc-status-pills{background:none!important;background-color:transparent!important;background-image:none!important;
+  border:none!important;box-shadow:none!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;filter:none!important}
+html body #fcMain::before,html body #fcMain::after,
+html body #fcSectionHead::before,html body #fcSectionHead::after{content:none!important;display:none!important;background:none!important}
+
+/* ===== Search: buang garis putih (outline/border/wrapper) ===== */
+.fc-page .fc-search{background:none!important;border:none!important;box-shadow:none!important;padding:0!important}
+body.fc-dark #fcSearchInput{outline:none!important;outline-color:transparent!important;-webkit-appearance:none!important;appearance:none!important;
+  border-style:solid!important;border-width:1.5px!important;border-color:rgba(255,255,255,.14)!important}
+body.fc-dark #fcSearchInput:focus{outline:none!important;border-color:#ffb300!important}
+
+/* transisi halus */
+.fc-page,.fc-report,.fc-report-form,.fc-stat,.fc-side-card,.fc-card,.fc-cta,.fc-pill,.fc-field input,.fc-field select,.fc-field textarea{
+  transition:background-color .35s ease,color .35s ease,border-color .35s ease}
 </style>
 @endpush
 
@@ -431,9 +612,9 @@
         </div>
       </aside>
 
-      <div class="fc-main">
+      <div class="fc-main" id="fcMain">
 
-        <div class="fc-section-head">
+        <div class="fc-section-head" id="fcSectionHead">
           <span class="tag"><i class="fas fa-list-check"></i> Daftar Klarifikasi</span>
           <h2>Sudah <span>Diverifikasi</span></h2>
           <p>Hasil penelusuran admin atas laporan dari warga sekolah maupun temuan tim FactCheck sendiri.</p>
@@ -475,6 +656,119 @@
 @push('scripts')
 <script>
 (function () {
+  /* ---------------- sinkron dark mode situs -> body.fc-dark ----------------
+     Dark mode layout situs punya class sendiri (bukan fc-dark), jadi style
+     dark halaman ini tidak pernah aktif. Fungsi ini membaca status dark mode
+     situs (class/atribut di <html> & <body>, atau kecerahan background body
+     sebagai cadangan) lalu memasang/melepas class "fc-dark" di <body>
+     secara otomatis, termasuk saat tombol toggle bulan/matahari ditekan. */
+  (function syncDarkMode() {
+    var html = document.documentElement;
+    var body = document.body;
+    var addedByUs = false;
+    var ATTRS = ['data-theme', 'data-bs-theme', 'data-mode', 'data-color-scheme', 'data-color-mode'];
+
+    function hasDarkToken(el) {
+      var tokens = el.className && el.className.split ? el.className.split(/\s+/) : [];
+      for (var i = 0; i < tokens.length; i++) {
+        if (tokens[i] !== 'fc-dark' && /dark|night/i.test(tokens[i])) return true;
+      }
+      for (var j = 0; j < ATTRS.length; j++) {
+        var v = el.getAttribute(ATTRS[j]);
+        if (v && /dark|night/i.test(v)) return true;
+      }
+      return false;
+    }
+
+    function bgIsDark(el) {
+      var c = window.getComputedStyle(el).backgroundColor || '';
+      var m = c.match(/rgba?\(\s*(\d+)[,\s]+(\d+)[,\s]+(\d+)(?:[,\s/]+([\d.]+))?/);
+      if (!m) return null;
+      var a = m[4] === undefined ? 1 : parseFloat(m[4]);
+      if (a < 0.5) return null;
+      var lum = (0.2126 * m[1] + 0.7152 * m[2] + 0.0722 * m[3]) / 255;
+      return lum < 0.3;
+    }
+
+    function isSiteDark() {
+      if (hasDarkToken(html) || hasDarkToken(body)) return true;
+      var b = bgIsDark(body);
+      if (b === null) b = bgIsDark(html);
+      return b === true;
+    }
+
+    function styleSearchInput(dark) {
+      var si = document.getElementById('fcSearchInput');
+      if (!si) return;
+      var props = {
+        'background': '#0f2340',
+        'background-color': '#0f2340',
+        'border-color': 'rgba(255,255,255,.14)',
+        'color': '#ffffff',
+        '-webkit-text-fill-color': '#ffffff'
+      };
+      Object.keys(props).forEach(function (p) {
+        if (dark) si.style.setProperty(p, props[p], 'important');
+        else si.style.removeProperty(p);
+      });
+      ['outline', '-webkit-appearance', 'appearance'].forEach(function (p) {
+        if (dark) si.style.setProperty(p, p === 'outline' ? 'none' : 'none', 'important');
+        else si.style.removeProperty(p);
+      });
+      var wrap = si.parentNode;
+      if (wrap) {
+        ['background', 'border', 'box-shadow', 'padding'].forEach(function (p) {
+          wrap.style.setProperty(p, p === 'padding' ? '0' : 'none', 'important');
+        });
+      }
+    }
+
+    function clearPanelBg() {
+      ['fcMain', 'fcSectionHead'].forEach(function (id) {
+        var el = document.getElementById(id);
+        if (!el) return;
+        el.style.setProperty('background', 'none', 'important');
+        el.style.setProperty('background-color', 'transparent', 'important');
+        el.style.setProperty('background-image', 'none', 'important');
+        el.style.setProperty('box-shadow', 'none', 'important');
+        el.style.setProperty('border', 'none', 'important');
+      });
+      var tb = document.querySelector('#fcMain .fc-toolbar');
+      if (tb) {
+        tb.style.setProperty('background', 'none', 'important');
+        tb.style.setProperty('box-shadow', 'none', 'important');
+      }
+    }
+
+    function apply() {
+      clearPanelBg();
+      var dark = isSiteDark();
+      if (dark) {
+        if (!body.classList.contains('fc-dark')) { body.classList.add('fc-dark'); addedByUs = true; }
+      } else if (addedByUs) {
+        body.classList.remove('fc-dark');
+        addedByUs = false;
+      }
+      styleSearchInput(body.classList.contains('fc-dark'));
+    }
+
+    function applySoon() {
+      apply();
+      setTimeout(apply, 80);
+      setTimeout(apply, 500);
+    }
+
+    try {
+      var mo = new MutationObserver(function () { applySoon(); });
+      var opts = { attributes: true, attributeFilter: ['class'].concat(ATTRS) };
+      mo.observe(html, opts);
+      mo.observe(body, opts);
+    } catch (e) {}
+    document.addEventListener('click', function () { setTimeout(apply, 120); setTimeout(apply, 520); });
+    window.addEventListener('storage', applySoon);
+    applySoon();
+  })();
+
   /* ---------------- data klarifikasi ----------------
      Frontend-only: mudah diganti menjadi hasil fetch API
      saat backend/CMS sudah tersedia. Nantinya tiap item ini

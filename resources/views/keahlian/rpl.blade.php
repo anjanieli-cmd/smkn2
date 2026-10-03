@@ -1195,7 +1195,8 @@
 .produk-head{width:min(1320px,92%);margin:0 auto 48px;display:flex;justify-content:space-between;align-items:end;gap:2rem}
 .produk-note{max-width:320px;color:#718396;font-size:.78rem;line-height:1.7;text-align:right}
 .produk-slider{position:relative;width:min(1320px,94%);margin:auto}
-.produk-track{display:flex;flex-wrap:wrap;gap:1.2rem}
+.produk-viewport{overflow:hidden;border-radius:24px}
+.produk-track{display:flex;gap:1.2rem;transition:transform .5s cubic-bezier(.4,0,.2,1)}
 .produk-card{position:relative;flex:0 0 calc(33.333% - .8rem);background:#fff;border:1px solid rgba(7,27,51,.1);border-radius:22px;overflow:hidden;box-shadow:0 20px 44px rgba(7,27,51,.08);transition:transform .3s ease,box-shadow .3s ease}
 .produk-card:hover{transform:translateY(-8px);box-shadow:0 28px 60px rgba(7,27,51,.15)}
 .produk-photo{position:relative;aspect-ratio:4/3;overflow:hidden;background:linear-gradient(135deg,#0d3a66,#0B5FA5)}
@@ -1207,6 +1208,15 @@
 .produk-card .pc-body h3{font-family:var(--font-display);font-size:1.05rem;font-weight:800;color:#0d3a66;margin:0 0 .2rem}
 .produk-card .pc-body p{font-size:.75rem;line-height:1.65;color:#718396;margin:0 0 .5rem}
 .produk-card .pc-foot{display:flex;align-items:center;justify-content:space-between;font-size:.65rem;font-weight:800;color:#FF8A00;text-transform:uppercase;letter-spacing:.08em}
+.produk-arrow{position:absolute;top:50%;translate:0 -50%;width:48px;height:48px;border-radius:50%;background:#0d3a66;border:none;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1rem;cursor:pointer;z-index:6;box-shadow:0 10px 22px rgba(7,27,51,.35);transition:background .25s ease,transform .25s ease,opacity .25s ease}
+.produk-arrow:hover{background:#FFB300;transform:translateY(-50%) scale(1.08)}
+.produk-arrow.prev{left:-24px}
+.produk-arrow.next{right:-24px}
+.produk-arrow:disabled{opacity:.3;cursor:default;pointer-events:none}
+.produk-dots{display:flex;justify-content:center;gap:.45rem;margin-top:1.6rem}
+.produk-dots button{width:8px;height:8px;border-radius:50%;border:none;background:rgba(7,27,51,.18);cursor:pointer;padding:0;transition:background .25s ease,width .25s ease}
+.produk-dots button.active{background:#FFB300;width:24px;border-radius:5px}
+.produk-dots.hidden{display:none}
 @media(max-width:1050px){.produk-card{flex-basis:calc(50% - .6rem)}}
 @media(max-width:640px){.produk-card{flex-basis:100%}}
 
@@ -1393,6 +1403,142 @@
 @media(max-width:600px){.aphp-page .vt-section{padding:85px 0 95px}.aphp-page .vt-inner{width:92%;gap:2rem}.aphp-page .vt-frame{aspect-ratio:4/3;border-radius:22px}.aphp-page .vt-play{width:64px;height:64px}.aphp-page .vt-caption{left:1rem;right:1rem;bottom:1rem}.aphp-page .vt-caption strong{font-size:1rem}.aphp-page .vt-caption span{font-size:.7rem}.aphp-page .vt-cam{display:none!important}.aphp-page .vt-title{font-size:clamp(2.35rem,12vw,3.3rem)}.aphp-page .vt-decor-ring{width:190px;height:190px;right:-80px}.aphp-page .vt-decor-dots{width:90px;height:90px;background-size:14px 14px}}
 
 </style>
+
+<style id="rpl-dark-mode">
+/* =========================================================
+   RPL — DARK MODE
+   Aktif saat <body> punya class "theme-dark".
+   ========================================================= */
+html body.theme-dark .aphp-page{background:#08131f;color:#e6eef7;color-scheme:dark}
+
+/* ---------- UMUM ---------- */
+html body.theme-dark .aphp-page .eyebrow{color:#cfe3f7}
+html body.theme-dark .aphp-page .eyebrow.gold{color:#ffb347}
+html body.theme-dark .aphp-page .big-heading{color:#fff}
+html body.theme-dark .aphp-page .orn .o-chevron{border-top-color:rgba(143,189,235,.14);border-right-color:rgba(143,189,235,.14)}
+html body.theme-dark .aphp-page .orn .o-chevron::after{border-top-color:rgba(255,213,74,.08);border-right-color:rgba(255,213,74,.08)}
+html body.theme-dark .aphp-page .orn .o-ring{border-color:rgba(143,189,235,.16);box-shadow:0 0 0 18px rgba(143,189,235,.03),0 0 0 38px rgba(255,213,74,.025)}
+html body.theme-dark .aphp-page .orn .o-dots{background-image:radial-gradient(circle,#8fbdeb 1.8px,transparent 2.5px);opacity:.22}
+html body.theme-dark .aphp-page .orn .o-corner{border-left-color:rgba(143,189,235,.16);border-bottom-color:rgba(143,189,235,.16)}
+html body.theme-dark .aphp-page .orn .o-square::before{border-color:rgba(143,189,235,.22)}
+html body.theme-dark .aphp-page .orn .o-hex{border-color:rgba(143,189,235,.18)}
+
+/* ---------- HERO ---------- */
+html body.theme-dark .aphp-page .history-hero{background:linear-gradient(180deg,#0b1d31 0%,#08131f 100%)!important;color:#e6eef7}
+html body.theme-dark .aphp-page .history-hero::after{color:rgba(255,255,255,.035)!important;-webkit-text-stroke:1px rgba(255,179,0,.14)!important}
+html body.theme-dark .aphp-page .history-ref-ornament-image{filter:invert(1) hue-rotate(180deg);mix-blend-mode:screen;opacity:.6!important}
+html body.theme-dark .aphp-page .history-title .sejarah-white{color:#fff!important}
+html body.theme-dark .aphp-page .history-kicker{background:rgba(255,111,0,.1);border-color:rgba(255,179,0,.3);color:#ffb347}
+html body.theme-dark .aphp-page .history-vt-cta{background:rgba(255,255,255,.06)!important;border-color:rgba(255,255,255,.14)!important;color:#fff!important;box-shadow:0 12px 30px rgba(0,0,0,.4)}
+html body.theme-dark .aphp-page .history-vt-cta:hover{background:rgba(255,179,0,.1)!important;border-color:rgba(255,179,0,.45)!important}
+html body.theme-dark .aphp-page .history-vt-cta strong{color:#fff!important}
+html body.theme-dark .aphp-page .history-vt-cta small{color:#9fb2c6}
+
+/* ---------- SECTION 1: VIDEO ---------- */
+html body.theme-dark .aphp-page .vid-section{background:linear-gradient(180deg,#0a1928 0%,#08131f 100%)}
+html body.theme-dark .aphp-page .vid-copy h2{color:#fff}
+html body.theme-dark .aphp-page .vid-copy .vc-label{color:#8fa3b8}
+html body.theme-dark .aphp-page .vid-copy .vc-desc{color:#a9bbcd}
+html body.theme-dark .aphp-page .vid-card{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.1)}
+html body.theme-dark .aphp-page .vid-card:hover{border-color:rgba(255,179,0,.4);box-shadow:0 14px 30px rgba(0,0,0,.4)}
+html body.theme-dark .aphp-page .vid-card b{color:#fff}
+html body.theme-dark .aphp-page .vid-card span:not(.vc-ic){color:#9fb2c6}
+html body.theme-dark .aphp-page .vid-side{color:rgba(255,255,255,.3)}
+html body.theme-dark .aphp-page .vid-player{box-shadow:0 30px 80px rgba(0,0,0,.55);border-color:rgba(255,255,255,.12)}
+
+/* ---------- SECTION 2: TENTANG ---------- */
+html body.theme-dark .aphp-page .tentang-section{background:linear-gradient(135deg,#0a1928 0%,#0b1d31 55%,#0a1726 100%)}
+html body.theme-dark .aphp-page .tentang-section::before{background-image:linear-gradient(rgba(143,189,235,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(143,189,235,.05) 1px,transparent 1px)}
+html body.theme-dark .aphp-page .tentang-section::after{color:rgba(255,255,255,.03)}
+html body.theme-dark .aphp-page .tentang-copy .tc-label{color:#8fa3b8}
+html body.theme-dark .aphp-page .tentang-copy .tc-lead{color:#b7c8d9}
+html body.theme-dark .aphp-page .tentang-copy .tc-lead strong{color:#fff}
+html body.theme-dark .aphp-page .tentang-copy .tc-sub{color:#9fb2c6}
+html body.theme-dark .aphp-page .tentang-mini-card{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.1);box-shadow:0 10px 25px rgba(0,0,0,.3)}
+html body.theme-dark .aphp-page .tentang-mini-card:hover{border-color:rgba(255,213,74,.3);box-shadow:0 18px 34px rgba(0,0,0,.45)}
+html body.theme-dark .aphp-page .tentang-mini-card span{color:#e6eef7}
+html body.theme-dark .aphp-page .tentang-mini-card .tm-ic{color:#fff}
+html body.theme-dark .aphp-page .tentang-mini-card .tm-ic.gold{color:#0d3a66}
+html body.theme-dark .aphp-page .tentang-visual::before{border-color:rgba(255,179,0,.22)}
+html body.theme-dark .aphp-page .tentang-visual::after{border-color:rgba(143,189,235,.18)}
+html body.theme-dark .aphp-page .tv-panel{box-shadow:0 30px 70px rgba(0,0,0,.55);border-color:rgba(255,255,255,.1)}
+
+/* ---------- SECTION 3: MITRA INDUSTRI ---------- */
+html body.theme-dark .aphp-page .industry-collab{background:linear-gradient(180deg,#08131f 0%,#0a1928 100%)}
+html body.theme-dark .aphp-page .industry-collab::before{opacity:.3}
+html body.theme-dark .aphp-page .industry-collab .ic-head .big-heading{color:#fff}
+html body.theme-dark .aphp-page .industry-collab .ic-head .big-heading span{color:#ffb300}
+html body.theme-dark .aphp-page .industry-collab .ic-head p{color:#a9bbcd}
+html body.theme-dark .aphp-page .industry-collab .ic-marquee-wrap::before{background:linear-gradient(90deg,#08131f,transparent)}
+html body.theme-dark .aphp-page .industry-collab .ic-marquee-wrap::after{background:linear-gradient(270deg,#08131f,transparent)}
+html body.theme-dark .aphp-page .industry-collab .ic-footer{color:#8fa3b8}
+
+/* ---------- SECTION 4: PEMBELAJARAN ---------- */
+html body.theme-dark .aphp-page .belajar-section{background:linear-gradient(180deg,#0a1928 0%,#08131f 100%)}
+html body.theme-dark .aphp-page .belajar-head p{color:#a9bbcd}
+html body.theme-dark .aphp-page .belajar-card{background:#0f2236;border-color:rgba(255,255,255,.1)}
+html body.theme-dark .aphp-page .belajar-card:hover{border-color:rgba(255,179,0,.4);box-shadow:0 24px 50px rgba(0,0,0,.5)}
+html body.theme-dark .aphp-page .belajar-card::after{color:rgba(255,255,255,.04)}
+html body.theme-dark .aphp-page .belajar-card h4{color:#fff}
+html body.theme-dark .aphp-page .belajar-card p{color:#9fb2c6}
+
+/* ---------- SECTION 5: PRAKTIK ---------- */
+html body.theme-dark .aphp-page .praktik-section{background:#08131f}
+html body.theme-dark .aphp-page .praktik-head p{color:#a9bbcd}
+html body.theme-dark .aphp-page .praktik-card:hover{box-shadow:0 30px 66px rgba(0,0,0,.6)}
+
+/* ---------- SECTION 6: FASILITAS ---------- */
+html body.theme-dark .aphp-page .fasilitas-section{background:linear-gradient(180deg,#08131f 0%,#0a1928 100%)}
+html body.theme-dark .aphp-page .fasilitas-head p{color:#a9bbcd}
+html body.theme-dark .aphp-page .fasilitas-card{background:#0f2236;border-color:rgba(255,255,255,.1)}
+html body.theme-dark .aphp-page .fasilitas-card:hover{border-color:rgba(255,213,74,.35);box-shadow:0 20px 44px rgba(0,0,0,.5)}
+html body.theme-dark .aphp-page .fasilitas-card h4{color:#fff}
+html body.theme-dark .aphp-page .fasilitas-card p{color:#9fb2c6}
+html body.theme-dark .aphp-page .fasilitas-cta{background:linear-gradient(135deg,#0a1a2c 0%,#0c2038 50%,#0e2542 100%);border:1px solid rgba(255,255,255,.08)}
+
+/* ---------- SECTION 7: KARYA SISWA ---------- */
+html body.theme-dark .aphp-page .produk-section{background:#08131f}
+html body.theme-dark .aphp-page .produk-note{color:#9fb2c6}
+html body.theme-dark .aphp-page .produk-card{background:#0f2236;border-color:rgba(255,255,255,.1);box-shadow:0 20px 44px rgba(0,0,0,.4)}
+html body.theme-dark .aphp-page .produk-card:hover{box-shadow:0 28px 60px rgba(0,0,0,.6)}
+html body.theme-dark .aphp-page .produk-card .pc-body h3{color:#fff}
+html body.theme-dark .aphp-page .produk-card .pc-body p{color:#9fb2c6}
+
+/* ---------- SECTION 8: KEGIATAN ---------- */
+html body.theme-dark .aphp-page .kegiatan-section{background:linear-gradient(180deg,#0a1928 0%,#08131f 100%)}
+html body.theme-dark .aphp-page .kegiatan-head p{color:#a9bbcd}
+html body.theme-dark .aphp-page .kegiatan-card:hover{box-shadow:0 24px 50px rgba(0,0,0,.55)}
+
+/* ---------- SECTION 9: PROSPEK ---------- */
+html body.theme-dark .aphp-page .prospek-section{background:#08131f}
+html body.theme-dark .aphp-page .prospek-head p{color:#a9bbcd}
+html body.theme-dark .aphp-page .prospek-card{background:#0f2236;border-color:rgba(255,255,255,.1)}
+html body.theme-dark .aphp-page .prospek-card:hover{box-shadow:0 30px 66px rgba(0,0,0,.55)}
+html body.theme-dark .aphp-page .prospek-card .ps-body h4{color:#fff}
+html body.theme-dark .aphp-page .prospek-card .ps-body p{color:#9fb2c6}
+html body.theme-dark .aphp-page .prospek-card .ps-body .ps-tags span{color:#cfe3f7;background:rgba(143,189,235,.14)}
+
+/* ---------- CODING LAB TOUR ---------- */
+html body.theme-dark .aphp-page .vt-section{background:linear-gradient(180deg,#0a1928 0%,#08131f 50%,#0a1726 100%)}
+html body.theme-dark .aphp-page .vt-section::before{background-image:radial-gradient(circle,rgba(143,189,235,.2) 1.5px,transparent 2px);opacity:.35}
+html body.theme-dark .aphp-page .vt-watermark{color:rgba(255,255,255,.04)}
+html body.theme-dark .aphp-page .vt-decor-ring{border-color:rgba(143,189,235,.16)}
+html body.theme-dark .aphp-page .vt-frame{box-shadow:0 30px 75px rgba(0,0,0,.55);border-color:rgba(255,255,255,.12)}
+html body.theme-dark .aphp-page .vt-chip{background:#0f2236;border-color:rgba(255,255,255,.1);box-shadow:0 12px 30px rgba(0,0,0,.4)}
+html body.theme-dark .aphp-page .vt-chip strong{color:#fff}
+html body.theme-dark .aphp-page .vt-chip span{color:#8fa3b8}
+html body.theme-dark .aphp-page .vt-kicker{color:#dbe7f3}
+html body.theme-dark .aphp-page .vt-title{color:#fff}
+html body.theme-dark .aphp-page .vt-sub{color:#9fc4e6}
+html body.theme-dark .aphp-page .vt-desc{color:#a9bbcd}
+html body.theme-dark .aphp-page .vt-feat{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.12);color:#cfe3f7}
+html body.theme-dark .aphp-page .vt-btn{background:linear-gradient(135deg,#ffd54a,#ff8a00);color:#0d3a66;box-shadow:0 14px 32px rgba(0,0,0,.4)}
+
+/* ---------- FINAL CTA ---------- */
+html body.theme-dark .aphp-page .aphp-cta{background:linear-gradient(135deg,#0a1a2c 0%,#0c2038 50%,#0e2542 100%);border:1px solid rgba(255,255,255,.08);box-shadow:0 24px 55px rgba(0,0,0,.55)}
+html body.theme-dark .aphp-page .aphp-cta::after{color:rgba(255,255,255,.03)}
+</style>
+
 @endpush
 
 @section('content')
@@ -1733,7 +1879,9 @@
       <div class="produk-note">Kumpulan proyek siswa RPL — dirancang melalui proses analisis, coding, pengujian, dan presentasi aplikasi.</div>
     </div>
     <div class="produk-slider" data-reveal>
-      <div class="produk-track" id="produkTrack">
+      <button class="produk-arrow prev" id="produkPrev" aria-label="Sebelumnya"><i class="fas fa-chevron-left"></i></button>
+      <div class="produk-viewport">
+        <div class="produk-track" id="produkTrack">
           <article class="produk-card" data-cat="web">
             <div class="produk-photo"><img src="{{ asset('images/rpl/tambalbanexpres.jpeg') }}" alt="Aplikasi Tambal Ban Express" loading="lazy"><span class="produk-badge">Pemrograman Web</span></div>
             <div class="pc-body"><h3>Aplikasi Tambal Ban Express</h3><p>Aplikasi layanan tambal ban berbasis web yang memudahkan pengguna memesan layanan tambal ban secara cepat dan praktis.</p><div class="pc-foot"><span>Lab Komputer</span><span><i class="fas fa-arrow-right"></i></span></div></div>
@@ -1746,8 +1894,11 @@
             <div class="produk-photo"><img src="{{ asset('images/rpl/festika-produk.jpeg') }}" alt="Website Berbasis Python" loading="lazy"><span class="produk-badge">UI/UX Design</span></div>
             <div class="pc-body"><h3>Website Berbasis Python</h3><p>Meraih prestasi melalui pengembangan website berbasis Python dalam ajang FESTIKA 2025.</p><div class="pc-foot"><span>Lab Komputer</span><span><i class="fas fa-arrow-right"></i></span></div></div>
           </article>
+        </div>
       </div>
+      <button class="produk-arrow next" id="produkNext" aria-label="Selanjutnya"><i class="fas fa-chevron-right"></i></button>
     </div>
+    <div class="produk-dots" id="produkDots"></div>
   </section>
 
   <!-- ===== SECTION 8 — KEGIATAN & PRESTASI ===== -->
@@ -1883,4 +2034,41 @@
 })();
 </script>
 
+<script>
+/* ---- Produk Slider ---- */
+(function(){
+  var track=document.getElementById('produkTrack'),prevBtn=document.getElementById('produkPrev'),nextBtn=document.getElementById('produkNext'),dotsWrap=document.getElementById('produkDots');
+  if(!track)return;
+  var index=0;
+  function cards(){return Array.prototype.slice.call(track.children)}
+  function visible(){return cards().filter(function(c){return c.style.display!=='none'})}
+  function pageSize(){if(window.innerWidth<=760)return 1;if(window.innerWidth<=1050)return 2;return 3}
+  function buildDots(){
+    if(!dotsWrap)return;
+    dotsWrap.innerHTML='';var total=visible().length,pages=Math.max(1,Math.ceil(total/pageSize()));
+    if(total<=pageSize()){dotsWrap.classList.add('hidden');return}
+    dotsWrap.classList.remove('hidden');
+    for(var i=0;i<pages;i++){var b=document.createElement('button');if(i===index)b.classList.add('active');b.setAttribute('aria-label','Slide '+(i+1));(function(idx){b.addEventListener('click',function(){goTo(idx)})})(i);dotsWrap.appendChild(b)}
+  }
+  function update(){
+    var vis=visible(),per=pageSize(),maxIndex=Math.max(0,Math.ceil(vis.length/per)-1);
+    if(index>maxIndex)index=maxIndex;
+    var offset=0,visIdx=0,i=0;
+    for(;i<cards().length;i++){if(cards()[i].style.display==='none')continue;if(visIdx===index*per)break;offset+=cards()[i].offsetWidth+19;visIdx++}
+    track.style.transform='translateX(-'+offset+'px)';
+    if(prevBtn)prevBtn.disabled=index<=0;
+    if(nextBtn)nextBtn.disabled=index>=maxIndex;
+    if(dotsWrap)Array.prototype.forEach.call(dotsWrap.children,function(d,di){d.classList.toggle('active',di===index)})
+  }
+  function goTo(i){var maxIndex=Math.max(0,Math.ceil(visible().length/pageSize())-1);index=Math.min(Math.max(i,0),maxIndex);update()}
+  if(prevBtn)prevBtn.addEventListener('click',function(){goTo(index-1)});
+  if(nextBtn)nextBtn.addEventListener('click',function(){goTo(index+1)});
+  var startX=0,currentX=0,isSwiping=false;
+  track.addEventListener('touchstart',function(e){if(e.touches&&e.touches.length){startX=e.touches[0].clientX;isSwiping=true;currentX=startX}},{passive:true});
+  track.addEventListener('touchmove',function(e){if(!isSwiping||!e.touches||!e.touches.length)return;currentX=e.touches[0].clientX},{passive:true});
+  track.addEventListener('touchend',function(){if(!isSwiping)return;var diffX=startX-currentX;if(Math.abs(diffX)>35){if(diffX>0)goTo(index+1);else goTo(index-1)}startX=0;currentX=0;isSwiping=false});
+  window.addEventListener('resize',function(){buildDots();update()});
+  buildDots();update()
+})();
+</script>
 @endpush
