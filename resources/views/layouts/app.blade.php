@@ -711,7 +711,7 @@
     .section-py{padding:96px 0}
 
     #preloader{
-      position:fixed;inset:0;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;
+      position:fixed;inset:0;z-index:999999 !important;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;
       background:radial-gradient(1200px 600px at 50% 40%,#1d6fb8,#13518c 60%,#0d3a66);
       transition:opacity .7s ease,visibility .7s ease;
     }
