@@ -65,7 +65,7 @@
 
 .history-hero-geometry svg{position:absolute;width:100%;height:100%;inset:0;display:block}
 
-.history-hero-geometry .geo-line{fill:none;stroke:#ff7a00;stroke-width:1.8;cookie-bite-effect:non-scaling-stroke;opacity:.42}
+.history-hero-geometry .geo-line{fill:none;stroke:#ff7a00;stroke-width:1.8;vector-effect:non-scaling-stroke;opacity:.42}
 
 .history-hero-geometry .geo-line-navy{fill:none;stroke:#0d3a66;stroke-width:1.5;cookie-bite-effect:non-scaling-stroke;opacity:.24}
 

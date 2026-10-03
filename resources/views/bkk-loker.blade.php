@@ -122,8 +122,13 @@
 .bkk-date{font-size:.72rem;color:#65788d;font-weight:700}
 .bkk-job h3{font-family:var(--font-display);font-size:1.15rem;line-height:1.3;margin:0;color:#0d3a66}
 .bkk-job p{font-size:.82rem;line-height:1.7;color:#596e83;margin:0}
+.bkk-job-co{font-size:.84rem;font-weight:700;color:#2f6fa8;margin-top:-.2rem}
+.bkk-job-co i{color:#ff7a00;margin-right:.25rem}
 .bkk-job-meta{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:auto;padding-top:.5rem}
 .bkk-tag{padding:.4rem .7rem;border-radius:999px;background:#f7f9fc;border:1px solid rgba(13,58,102,.09);font-size:.66rem;color:#0d3a66;font-weight:700;display:inline-flex;align-items:center;gap:.35rem}
+.bkk-tag.bkk-tag-apply{background:#0d3a66;color:#fff;text-decoration:none}
+.bkk-empty{grid-column:1/-1;text-align:center;padding:3rem;background:#fff;border-radius:20px;border:1px dashed rgba(13,58,102,.2)}
+.bkk-empty p{color:#52657a;font-size:.9rem;margin:0}
 
 .bkk-notice{margin-top:1.4rem;padding:1rem 1.2rem;border-radius:15px;background:#fffaf0;border:1px solid rgba(255,179,0,.3);color:#765d24;font-size:.78rem;line-height:1.65}
 .bkk-notice i{color:#ffb300;margin-right:.35rem}
@@ -185,6 +190,90 @@
   .bkk-cta-box h2{font-size:1.45rem;line-height:1.15}
   .bkk-cta-box p{font-size:.86rem;line-height:1.65;margin-top:.75rem}
 }
+
+/* =========================================================
+   DARK MODE — aktif jika <html> / <body> punya data-theme="dark"
+   atau class: dark | dark-mode | theme-dark
+   Palet biru SAMA PERSIS dengan halaman Prestasi Sekolah.
+   ========================================================= */
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-page{
+  --d-bg:#081423;
+  --d-bg2:#0b1b2f;
+  --d-surf:#0f2340;
+  --d-surf2:#12294a;
+  --d-text:#e6eef8;
+  --d-muted:#9db0c6;
+  --d-line:rgba(255,255,255,.09);
+  background:var(--d-bg);color:var(--d-text);color-scheme:dark;
+}
+
+/* Hero */
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-hero{background:#0a1a2e;color:#e6eef8}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-hero::after{color:rgba(255,255,255,.04);-webkit-text-stroke:1px rgba(255,179,0,.14)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-ref-ornaments{opacity:.45;filter:invert(.92) hue-rotate(180deg) brightness(.9)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-ring{border-color:rgba(255,255,255,.10)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-ring::before{border-color:rgba(255,213,74,.25)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-dots{background-image:radial-gradient(rgba(255,255,255,.35) 1.5px,transparent 1.6px);opacity:.3}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-kicker{background:rgba(255,111,0,.10);border-color:rgba(255,111,0,.35);color:#ff9a3d}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-title .navy{color:#fff}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-lead{color:var(--d-muted)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-pill{background:var(--d-surf2);border-color:rgba(255,255,255,.12);color:#e6eef8;box-shadow:none}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-pill i{color:#ffd54a}
+
+/* Strip */
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-strip{background:#071a31}
+
+/* Heading section */
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-eyebrow{color:#ffd54a}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-heading{color:#fff}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-sub{color:var(--d-muted)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-num{color:rgba(255,255,255,.06)}
+
+/* Kartu tentang BKK */
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-card{background:var(--d-surf);border-color:var(--d-line);box-shadow:0 14px 40px rgba(0,0,0,.35)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-card h3{color:#fff}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-card p{color:var(--d-muted)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-vision{background:var(--d-surf2);border-color:rgba(255,213,74,.2)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-vision p{color:var(--d-muted)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-quote{background:rgba(255,255,255,.05)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-photo-row img{box-shadow:0 12px 30px rgba(0,0,0,.45)}
+
+/* Mitra industri */
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .ind-card{background:var(--d-surf);border-color:var(--d-line);box-shadow:0 10px 28px rgba(0,0,0,.35)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .ind-card:hover{border-color:rgba(255,213,74,.5);box-shadow:0 18px 42px rgba(0,0,0,.55)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .ind-icon{color:#ffd54a;border-color:rgba(255,213,74,.3)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .ind-card h4{color:#fff}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .ind-field{color:#ff9a3d}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .ind-scope{color:var(--d-muted)}
+
+/* Lowongan */
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-jobs{background:var(--d-bg2)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-job{background:var(--d-surf);border-color:var(--d-line);box-shadow:0 10px 28px rgba(0,0,0,.35)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-job:hover{box-shadow:0 16px 36px rgba(0,0,0,.55)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-job h3{color:#fff}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-job p{color:var(--d-muted)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-job-co{color:#8fb8e6}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-job-co i{color:#ff9a3d}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-date{color:var(--d-muted)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-status.open{background:rgba(52,168,83,.16);color:#7fdca0;border-color:rgba(127,220,160,.3)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-status.upcoming{background:rgba(255,213,74,.14);color:#ffd54a;border-color:rgba(255,213,74,.35)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-status.selesai{background:rgba(234,67,53,.16);color:#f59a93;border-color:rgba(245,154,147,.3)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-status.archive{background:rgba(255,255,255,.07);color:var(--d-muted);border-color:rgba(255,255,255,.14)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-tag{background:var(--d-surf2);border-color:rgba(255,255,255,.10);color:#e6eef8}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-tag.bkk-tag-apply{background:linear-gradient(135deg,#ffd54a,#ffb300);border-color:transparent;color:#0a2d52}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-empty{background:var(--d-surf);border-color:rgba(255,255,255,.18)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-empty p{color:var(--d-muted)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-notice{background:rgba(255,179,0,.08);border-color:rgba(255,213,74,.28);color:#e8d28f}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-key{background:var(--d-surf);border-color:rgba(255,255,255,.10);color:var(--d-muted)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-key b{color:#fff}
+
+/* CTA */
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-cta{background:var(--d-bg2)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-cta-box{background:linear-gradient(135deg,#040c18 0%,#071a31 55%,#0a2340 100%);border:1px solid rgba(255,213,74,.16);box-shadow:0 34px 80px rgba(0,0,0,.6)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-cta-box p{color:#a9bbd0}
+
+/* transisi halus saat ganti tema */
+.bkk-page,.bkk-hero,.bkk-jobs,.bkk-cta,.bkk-card,.ind-card,.bkk-job,.bkk-pill,.bkk-tag,.bkk-key{transition:background-color .35s ease,color .35s ease,border-color .35s ease}
 </style>
 @endpush
 
@@ -327,31 +416,31 @@
               @endif
             </div>
             <h3>{{ $job->title }}</h3>
-            <div style="font-size:.84rem;font-weight:700;color:#2f6fa8;margin-top:-.2rem">
-              <i class="fas fa-building" style="color:#ff7a00;margin-right:.25rem"></i> {{ $job->company_name }}
+            <div class="bkk-job-co">
+              <i class="fas fa-building"></i> {{ $job->company_name }}
               @if($job->location)
-                &bull; <i class="fas fa-location-dot" style="color:#ff7a00;margin-right:.25rem"></i> {{ $job->location }}
+                &bull; <i class="fas fa-location-dot"></i> {{ $job->location }}
               @endif
             </div>
             <p>{{ Str::limit($job->description, 170) }}</p>
             <div class="bkk-job-meta">
               <span class="bkk-tag"><i class="fas fa-user-clock"></i> {{ $job->employment_type ?? 'Full-Time' }}</span>
               @if($job->apply_url)
-                <a href="{{ $job->apply_url }}" target="_blank" class="bkk-tag" style="background:#0d3a66;color:#fff;text-decoration:none">
+                <a href="{{ $job->apply_url }}" target="_blank" class="bkk-tag bkk-tag-apply">
                   Lamar Sekarang <i class="fas fa-arrow-up-right-from-square"></i>
                 </a>
               @endif
             </div>
           </article>
         @empty
-          <div style="grid-column:1/-1;text-align:center;padding:3rem;background:#fff;border-radius:20px;border:1px dashed rgba(13,58,102,.2)">
-            <p style="color:#52657a;font-size:.9rem;margin:0">Belum ada lowongan pekerjaan yang dipublikasikan saat ini.</p>
+          <div class="bkk-empty">
+            <p>Belum ada lowongan pekerjaan yang dipublikasikan saat ini.</p>
           </div>
         @endforelse
       </div>
 
       <div class="bkk-notice">
-        <i class="fas fa-circle-info"></i> Informasi rekrutmen BKK dipublikasikan secara resmi. Seluruh proses pendaftaran dan seleksi BKK SMKN 2 Mojokerto **TIDAK DIPUNGUT BIAYA (GRATIS)**.
+        <i class="fas fa-circle-info"></i> Informasi rekrutmen BKK dipublikasikan secara resmi. Seluruh proses pendaftaran dan seleksi BKK SMKN 2 Mojokerto <strong>TIDAK DIPUNGUT BIAYA (GRATIS)</strong>.
       </div>
       <div class="bkk-status-key">
         <span class="bkk-key"><b>OPEN</b> pendaftaran masih berlangsung</span>

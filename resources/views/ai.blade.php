@@ -357,90 +357,89 @@
   .am-runner{grid-template-columns:110px 1fr 40px;gap:.7rem}
   .am-join-box{flex-direction:column;align-items:flex-start;text-align:left}
 }
-/* ---------- DARK MODE OVERRIDES (Ekstra Matchmaker) ---------- */
-body.theme-dark .am-page {
-  --am-bg: #061221;
-  --am-card: #102a45;
-  --am-navy: #f4f8fc;
-  --am-navy-dark: #eaf2fb;
-  --am-ink: #eaf2fb;
-  --am-muted: #8fa8c2;
-  --am-line: #1d3a5c;
-  background: #061221 !important;
-  color: #eaf2fb !important;
+
+/* =========================================================
+   DARK MODE — aktif jika <html> / <body> punya data-theme="dark"
+   atau class: dark | dark-mode | theme-dark
+   Palet biru SAMA dengan halaman Prestasi & BKK:
+   #081423 / #0b1b2f (latar), #0f2340 (kartu), #12294a (pill/tab)
+   Catatan: --am-navy-dark TIDAK di-override supaya teks navy di
+   atas tombol emas tetap terbaca. Heading digelapkan manual.
+   ========================================================= */
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .am-page{
+  --am-bg:#081423;
+  --am-card:#0f2340;
+  --am-ink:#e6eef8;
+  --am-muted:#9db0c6;
+  --am-line:rgba(255,255,255,.09);
+  --am-teal-ink:#4fd6e6;
+  background:#081423;color:#e6eef8;color-scheme:dark;
 }
 
-body.theme-dark .qz-stage {
-  background: linear-gradient(145deg, #0d2338 0%, #102a45 100%) !important;
-  border: 1px solid #1d3a5c !important;
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45) !important;
-}
+/* latar */
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .am-bgfield{background:
+  radial-gradient(1200px 620px at 12% -10%,rgba(14,165,183,.14),transparent 60%),
+  radial-gradient(1000px 600px at 92% 6%,rgba(255,179,0,.07),transparent 60%),
+  radial-gradient(1000px 760px at 50% 120%,rgba(47,111,168,.14),transparent 60%),
+  #081423}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .am-bgdots{background-image:radial-gradient(rgba(255,255,255,.07) 1.2px,transparent 1.3px);opacity:.5}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .am-glow{opacity:.5}
 
-body.theme-dark .qz-question {
-  color: #f4f8fc !important;
-}
+/* hero */
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .am-hero{background:linear-gradient(120deg,#040c18 0%,#071a31 50%,#0a2340 100%);border:1px solid rgba(255,213,74,.16);box-shadow:0 30px 64px rgba(0,0,0,.55)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .am-hero-side{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.12);box-shadow:0 20px 44px rgba(0,0,0,.4)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .am-meta-chip{background:#12294a;border-color:rgba(255,255,255,.12)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .am-hero-live{background:#12294a;color:#e6eef8;border:1px solid rgba(255,255,255,.12);box-shadow:0 16px 34px rgba(0,0,0,.5)}
 
-body.theme-dark .qz-question-tag {
-  background: rgba(136, 84, 208, 0.22) !important;
-  color: #d6bbfb !important;
-  border: 1px solid rgba(136, 84, 208, 0.35) !important;
-}
+/* kuis */
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .qz-stage{background:#0f2340;border-color:rgba(255,255,255,.09);box-shadow:0 26px 60px rgba(0,0,0,.45)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .qz-qcounter{background:#12294a;color:#d6bbfb;border:1px solid rgba(255,255,255,.09)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .qz-qcounter i{color:#a879f9}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .qz-timer-track{stroke:rgba(255,255,255,.12)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .qz-timer:not(.qz-timer-low) span{color:#d6bbfb}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .qz-progressbar{background:rgba(255,255,255,.08)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .qz-question{color:#fff}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .qz-question-tag{background:rgba(136,84,208,.22);color:#d6bbfb;border:1px solid rgba(136,84,208,.35)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .qz-back{background:#12294a;color:#c9d8e8;border-color:rgba(255,255,255,.09)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .qz-back:hover{border-color:#a879f9;color:#fff}
 
-body.theme-dark .qz-qcounter {
-  background: #15314f !important;
-  color: #d6bbfb !important;
-  border: 1px solid #1d3a5c !important;
-}
+/* kartu umum */
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .am-card{box-shadow:0 26px 60px rgba(0,0,0,.45)}
 
-body.theme-dark .qz-qcounter i {
-  color: #a879f9 !important;
-}
+/* processing */
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .am-proc h2{color:#fff}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .am-proc-line:not(.is-shown){color:rgba(230,238,248,.35)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .am-proc-line:not(.is-done) i{color:rgba(230,238,248,.35)}
 
-body.theme-dark .qz-timer-track {
-  stroke: #1d3a5c !important;
-}
+/* narasi AI */
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .am-narrative{background:rgba(14,165,183,.08);border-color:rgba(14,165,183,.28)}
 
-body.theme-dark .qz-timer span {
-  color: #d6bbfb !important;
-}
+/* judul section */
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .am-section-head h2{color:#fff}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .am-eks-info-list b{color:#fff}
 
-body.theme-dark .qz-progressbar {
-  background: #15314f !important;
-}
+/* podium */
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .am-podium-title{color:#fff}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .am-podium-name{color:#fff}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .am-podium-spot .am-podium-base{background:linear-gradient(180deg,#12294a,#0f2340);border-color:rgba(255,255,255,.12);color:#fff}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .am-podium-rank1 .am-podium-base{background:linear-gradient(180deg,rgba(255,179,0,.26),rgba(255,179,0,.08));border-color:rgba(255,213,74,.45);color:#ffd54a}
 
-body.theme-dark .qz-back {
-  background: #15314f !important;
-  color: #c9d8e8 !important;
-  border-color: #1d3a5c !important;
-}
+/* ranking lengkap */
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .am-eksrow-bar-fill{background:linear-gradient(90deg,#0ea5b7,#ffd54a)}
 
-body.theme-dark .qz-back:hover {
-  border-color: #a879f9 !important;
-  color: #ffffff !important;
-}
+/* tab detail */
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .am-eks-tab{background:#12294a;border-color:rgba(255,255,255,.09)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .am-eks-tab .am-eks-tab-pct{background:rgba(79,214,230,.14)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .am-eks-tab:hover{border-color:rgba(255,213,74,.55);color:#fff}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .am-eks-tab.active{background:linear-gradient(135deg,#ffd54a,#ffb300);border-color:#ffb300;color:#082846}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .am-eks-tab.active .am-eks-tab-pct{background:rgba(13,58,102,.16);color:#082846}
 
-body.theme-dark .am-card,
-body.theme-dark .am-proc,
-body.theme-dark .am-podium-block,
-body.theme-dark .am-eks-card {
-  background: #102a45 !important;
-  border-color: #1d3a5c !important;
-  color: #eaf2fb !important;
-}
+/* cara gabung */
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .am-join-box{background:linear-gradient(120deg,rgba(255,255,255,.04),rgba(255,179,0,.08));border-color:rgba(255,255,255,.09)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .am-join-text h3{color:#fff}
 
-body.theme-dark .am-podium-title {
-  color: #f4f8fc !important;
-}
-
-body.theme-dark .am-podium-sub {
-  color: #8fa8c2 !important;
-}
-
-body.theme-dark .am-narrative {
-  background: #0d2338 !important;
-  border-color: #1d3a5c !important;
-  color: #eaf2fb !important;
-}
+/* transisi halus saat ganti tema */
+.am-page,.am-card,.qz-stage,.am-eks-tab,.am-join-box,.am-narrative,.am-podium-base,.am-hero-live{transition:background-color .35s ease,color .35s ease,border-color .35s ease}
 
 @media(max-width:560px){
   .am-wrap{padding:32px 0 70px}
