@@ -338,9 +338,32 @@
       ],
     ];
 
-    $unreadEVoices = \App\Models\EVoice::orderBy('created_at', 'desc')->take(5)->get();
-    $unreadFactChecks = \App\Models\FactCheck::orderBy('created_at', 'desc')->take(5)->get();
-    $hasNewNotif = $unreadEVoices->isNotEmpty() || $unreadFactChecks->isNotEmpty();
+    $unreadEVoices = \App\Models\EVoice::orderBy('created_at', 'desc')->take(5)->get()->map(function($ev) {
+        return (object)[
+            'type' => 'EVOICE',
+            'title' => 'E-Voice: [' . $ev->ticket_code . '] ' . $ev->title,
+            'text' => $ev->description,
+            'url' => \Illuminate\Support\Facades\Route::has('admin.e-voices.index') ? route('admin.e-voices.index') : url('/admin/e-voices'),
+            'time' => $ev->created_at,
+            'icon' => 'fa-comments',
+            'badge' => 'E-Voice'
+        ];
+    });
+
+    $unreadFactChecks = \App\Models\FactCheck::orderBy('created_at', 'desc')->take(5)->get()->map(function($fc) {
+        return (object)[
+            'type' => 'FACTCHECK',
+            'title' => 'FactCheck: ' . ($fc->title ?: 'Laporan Klarifikasi Isu'),
+            'text' => $fc->claim ?: $fc->source_url,
+            'url' => \Illuminate\Support\Facades\Route::has('admin.fact-checks.index') ? route('admin.fact-checks.index') : url('/admin/fact-checks'),
+            'time' => $fc->created_at ?: now(),
+            'icon' => 'fa-shield-halved',
+            'badge' => 'FactCheck'
+        ];
+    });
+
+    $combinedAdminNotifications = $unreadEVoices->concat($unreadFactChecks)->sortByDesc('time')->take(6);
+    $hasNewNotif = $combinedAdminNotifications->isNotEmpty();
   @endphp
 
   <!-- ===================== SIDEBAR ===================== -->
@@ -401,68 +424,68 @@
       </div>
 
       <div class="db-top-right">
-        <!-- BELL NOTIFICATIONS DROPDOWN (E-VOICE) -->
-        <button class="db-icon-btn" id="dbBtnBell" title="Notifikasi E-Voice Aspirasi" type="button">
+        <!-- BELL NOTIFICATIONS DROPDOWN (E-VOICE & FACTCHECK) -->
+        <button class="db-icon-btn" id="dbBtnBell" title="Notifikasi E-Voice &amp; FactCheck" type="button">
           <i class="fas fa-bell"></i>
-          @if($unreadEVoices->isNotEmpty())
+          @if($hasNewNotif)
             <span class="dot"></span>
           @endif
         </button>
         <div class="db-dropdown" id="dbDropBell">
           <div class="db-dropdown-head">
-            <h4>Notifikasi E-Voice Aspirasi</h4>
-            <span style="font-size:.7rem;color:var(--gold-light)">{{ $unreadEVoices->count() }} Terbaru</span>
+            <h4>Notifikasi Terkini (E-Voice &amp; FactCheck)</h4>
+            <span style="font-size:.7rem;color:var(--gold-light)">{{ $combinedAdminNotifications->count() }} Terbaru</span>
           </div>
           <div class="db-dropdown-list">
-            @forelse($unreadEVoices as $ev)
-              <a href="{{ \Illuminate\Support\Facades\Route::has('admin.e-voices.index') ? route('admin.e-voices.index') : url('/admin/e-voices') }}" class="db-dropdown-item" style="text-decoration:none">
-                <i class="fas fa-comments"></i>
+            @forelse($combinedAdminNotifications as $item)
+              <a href="{{ $item->url }}" class="db-dropdown-item" style="text-decoration:none">
+                <i class="fas {{ $item->icon }}"></i>
                 <div>
-                  <strong>[{{ $ev->ticket_code }}] {{ \Illuminate\Support\Str::limit($ev->title, 28) }}</strong>
-                  <p style="font-size:.72rem;color:var(--text-muted)">{{ \Illuminate\Support\Str::limit($ev->description, 45) }}</p>
-                  <span style="font-size:.65rem;color:var(--gold-light);display:block;margin-top:.2rem">{{ $ev->created_at ? $ev->created_at->diffForHumans() : 'Baru saja' }}</span>
+                  <strong>{{ \Illuminate\Support\Str::limit($item->title, 28) }}</strong>
+                  <p style="font-size:.72rem;color:var(--text-muted)">{{ \Illuminate\Support\Str::limit($item->text, 45) }}</p>
+                  <span style="font-size:.65rem;color:var(--gold-light);display:block;margin-top:.2rem">{{ $item->time ? $item->time->diffForHumans() : 'Baru saja' }} &bull; {{ $item->badge }}</span>
                 </div>
               </a>
             @empty
               <div class="db-dropdown-item">
                 <i class="fas fa-info-circle"></i>
                 <div>
-                  <strong>Belum Ada E-Voice Baru</strong>
-                  <p style="font-size:.72rem;color:var(--text-muted)">Aspirasi siswa akan muncul di sini.</p>
+                  <strong>Belum Ada Notifikasi Baru</strong>
+                  <p style="font-size:.72rem;color:var(--text-muted)">E-Voice dan FactCheck akan muncul di sini.</p>
                 </div>
               </div>
             @endforelse
           </div>
         </div>
 
-        <!-- ENVELOPE MESSAGES DROPDOWN (FACTCHECK / HOAX) -->
-        <button class="db-icon-btn" id="dbBtnMail" title="Laporan Kabar Hoax FactCheck" type="button">
+        <!-- ENVELOPE MESSAGES DROPDOWN (E-VOICE & FACTCHECK) -->
+        <button class="db-icon-btn" id="dbBtnMail" title="Pesan E-Voice &amp; FactCheck" type="button">
           <i class="fas fa-envelope"></i>
-          @if($unreadFactChecks->isNotEmpty())
+          @if($hasNewNotif)
             <span class="dot"></span>
           @endif
         </button>
         <div class="db-dropdown" id="dbDropMail">
           <div class="db-dropdown-head">
-            <h4>Laporan FactCheck / Kabar Hoax</h4>
-            <span style="font-size:.7rem;color:var(--gold-light)">{{ $unreadFactChecks->count() }} Masuk</span>
+            <h4>Pesan &amp; Laporan Masuk</h4>
+            <span style="font-size:.7rem;color:var(--gold-light)">{{ $combinedAdminNotifications->count() }} Masuk</span>
           </div>
           <div class="db-dropdown-list">
-            @forelse($unreadFactChecks as $fc)
-              <a href="{{ \Illuminate\Support\Facades\Route::has('admin.fact-checks.index') ? route('admin.fact-checks.index') : url('/admin/fact-checks') }}" class="db-dropdown-item" style="text-decoration:none">
-                <i class="fas fa-shield-halved"></i>
+            @forelse($combinedAdminNotifications as $item)
+              <a href="{{ $item->url }}" class="db-dropdown-item" style="text-decoration:none">
+                <i class="fas {{ $item->icon }}"></i>
                 <div>
-                  <strong>{{ \Illuminate\Support\Str::limit($fc->title ?: 'Laporan Klarifikasi Isu', 28) }}</strong>
-                  <p style="font-size:.72rem;color:var(--text-muted)">{{ \Illuminate\Support\Str::limit($fc->claim ?: $fc->source_url, 45) }}</p>
-                  <span style="font-size:.65rem;color:var(--gold-light);display:block;margin-top:.2rem">{{ $fc->created_at ? $fc->created_at->diffForHumans() : 'Baru saja' }}</span>
+                  <strong>{{ \Illuminate\Support\Str::limit($item->title, 28) }}</strong>
+                  <p style="font-size:.72rem;color:var(--text-muted)">{{ \Illuminate\Support\Str::limit($item->text, 45) }}</p>
+                  <span style="font-size:.65rem;color:var(--gold-light);display:block;margin-top:.2rem">{{ $item->time ? $item->time->diffForHumans() : 'Baru saja' }} &bull; {{ $item->badge }}</span>
                 </div>
               </a>
             @empty
               <div class="db-dropdown-item">
                 <i class="fas fa-info-circle"></i>
                 <div>
-                  <strong>Belum Ada Laporan FactCheck</strong>
-                  <p style="font-size:.72rem;color:var(--text-muted)">Laporan kabar hoax akan muncul di sini.</p>
+                  <strong>Belum Ada Pesan Masuk</strong>
+                  <p style="font-size:.72rem;color:var(--text-muted)">Laporan E-Voice dan FactCheck akan muncul di sini.</p>
                 </div>
               </div>
             @endforelse
