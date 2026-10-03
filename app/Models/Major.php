@@ -20,13 +20,20 @@ class Major extends Model
         'description',
         'icon_url',
         'is_active',
+        'details',
     ];
 
     protected function casts(): array
     {
         return [
             'is_active' => 'boolean',
+            'details'   => 'array',
         ];
+    }
+
+    public function getDetail(string $key, mixed $default = null): mixed
+    {
+        return data_get($this->details, $key, $default);
     }
 
     public function alumni(): HasMany

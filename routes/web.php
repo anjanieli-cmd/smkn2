@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\StrukturAdminController;
 use App\Http\Controllers\Admin\PpdbAdminController;
 use App\Http\Controllers\Admin\BeritaAdminController;
 use App\Http\Controllers\Admin\MajorAdminController;
+use App\Http\Controllers\MajorPublicController;
 
 Route::middleware(['auth'])            // <- samakan dengan grup admin kamu
     ->prefix('admin/berita')
@@ -187,11 +188,12 @@ Route::get('/program-keahlian', function () {
     return view('program-keahlian', compact('majors'));
 })->name('program-keahlian');
 
-Route::view('/keahlian/aphp', 'keahlian.aphp')->name('aphp');
-Route::view('/keahlian/dkv', 'keahlian.dkv')->name('dkv');
-Route::view('/keahlian/kuliner', 'keahlian.kuliner')->name('kuliner');
-Route::view('/keahlian/lps', 'keahlian.lps')->name('lps');
-Route::view('/keahlian/rpl', 'keahlian.rpl')->name('rpl');
+Route::get('/keahlian/aphp', [MajorPublicController::class, 'show'])->defaults('slugOrCode', 'aphp')->name('aphp');
+Route::get('/keahlian/dkv', [MajorPublicController::class, 'show'])->defaults('slugOrCode', 'dkv')->name('dkv');
+Route::get('/keahlian/kuliner', [MajorPublicController::class, 'show'])->defaults('slugOrCode', 'kuliner')->name('kuliner');
+Route::get('/keahlian/lps', [MajorPublicController::class, 'show'])->defaults('slugOrCode', 'lps')->name('lps');
+Route::get('/keahlian/rpl', [MajorPublicController::class, 'show'])->defaults('slugOrCode', 'rpl')->name('rpl');
+Route::get('/keahlian/{slug}', [MajorPublicController::class, 'show'])->name('keahlian.detail');
 
 
 // ==========================================================================
