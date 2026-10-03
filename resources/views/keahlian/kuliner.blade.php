@@ -1173,37 +1173,31 @@ html body.theme-dark .aphp-page .aphp-cta::after{color:rgba(255,255,255,.03)}
         <div class="bc-ic"><i class="fas fa-utensils"></i></div>
         <h4>Pengolahan Makanan</h4>
         <p>Mempelajari teknik dasar memasak, mengolah bahan pangan, dan menyajikan makanan Indonesia maupun internasional.</p>
-        <span class="bc-arrow">Pelajari <i class="fas fa-arrow-right"></i></span>
       </div>
       <div class="belajar-card" data-num="02" data-reveal style="--d:1">
         <div class="bc-ic green"><i class="fas fa-cookie-bite"></i></div>
         <h4>Pastry &amp; Bakery</h4>
         <p>Membuat kue, roti, dan produk pastry dengan teknik, resep, dan takaran yang tepat.</p>
-        <span class="bc-arrow">Pelajari <i class="fas fa-arrow-right"></i></span>
       </div>
       <div class="belajar-card" data-num="03" data-reveal style="--d:2">
         <div class="bc-ic blue"><i class="fas fa-magnifying-glass"></i></div>
         <h4>Sanitasi &amp; Keamanan Pangan</h4>
         <p>Mempelajari standar kebersihan, keamanan pangan, dan kontrol kualitas hidangan sesuai standar industri.</p>
-        <span class="bc-arrow">Pelajari <i class="fas fa-arrow-right"></i></span>
       </div>
       <div class="belajar-card" data-num="04" data-reveal style="--d:3">
         <div class="bc-ic gold"><i class="fas fa-camera"></i></div>
         <h4>Food Styling &amp; Presentasi</h4>
         <p>Menata dan menyajikan hidangan agar tampil menarik untuk dokumentasi, promosi, dan konten digital.</p>
-        <span class="bc-arrow">Pelajari <i class="fas fa-arrow-right"></i></span>
       </div>
       <div class="belajar-card" data-num="05" data-reveal style="--d:4">
         <div class="bc-ic"><i class="fas fa-plate-wheat"></i></div>
         <h4>Food &amp; Beverage Service</h4>
         <p>Mempelajari tata cara pelayanan makanan dan minuman sesuai standar industri perhotelan dan restoran.</p>
-        <span class="bc-arrow">Pelajari <i class="fas fa-arrow-right"></i></span>
       </div>
       <div class="belajar-card" data-num="06" data-reveal style="--d:5">
         <div class="bc-ic gold"><i class="fas fa-lightbulb"></i></div>
         <h4>Kewirausahaan Kuliner</h4>
         <p>Mengembangkan jiwa usaha: menghitung kelayakan, memasarkan, dan membangun bisnis kuliner mandiri.</p>
-        <span class="bc-arrow">Pelajari <i class="fas fa-arrow-right"></i></span>
       </div>
     </div>
   </section>

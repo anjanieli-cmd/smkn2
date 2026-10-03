@@ -1781,37 +1781,31 @@ html body.theme-dark .aphp-page .aphp-cta::after{color:rgba(255,255,255,.03)}
         <div class="bc-ic"><i class="fas fa-code"></i></div>
         <h4>Algoritma &amp; Pemrograman Dasar</h4>
         <p>Mempelajari logika berpikir komputasional, struktur data, dan dasar-dasar bahasa pemrograman.</p>
-        <span class="bc-arrow">Pelajari <i class="fas fa-arrow-right"></i></span>
       </div>
       <div class="belajar-card" data-num="02" data-reveal style="--d:1">
         <div class="bc-ic green"><i class="fas fa-globe"></i></div>
         <h4>Pemrograman Web</h4>
         <p>Membangun website dengan HTML, CSS, JavaScript, hingga framework backend modern.</p>
-        <span class="bc-arrow">Pelajari <i class="fas fa-arrow-right"></i></span>
       </div>
       <div class="belajar-card" data-num="03" data-reveal style="--d:2">
         <div class="bc-ic blue"><i class="fas fa-mobile-screen-button"></i></div>
         <h4>Pemrograman Mobile</h4>
         <p>Mengembangkan aplikasi Android/mobile mulai dari antarmuka hingga fungsi utama aplikasi.</p>
-        <span class="bc-arrow">Pelajari <i class="fas fa-arrow-right"></i></span>
       </div>
       <div class="belajar-card" data-num="04" data-reveal style="--d:3">
         <div class="bc-ic gold"><i class="fas fa-database"></i></div>
         <h4>Basis Data</h4>
         <p>Merancang, membuat query, dan mengelola basis data untuk mendukung aplikasi yang dibangun.</p>
-        <span class="bc-arrow">Pelajari <i class="fas fa-arrow-right"></i></span>
       </div>
       <div class="belajar-card" data-num="05" data-reveal style="--d:4">
         <div class="bc-ic"><i class="fas fa-pen-ruler"></i></div>
         <h4>UI/UX Design</h4>
         <p>Merancang antarmuka yang mudah digunakan, konsisten, dan sesuai kebutuhan pengguna.</p>
-        <span class="bc-arrow">Pelajari <i class="fas fa-arrow-right"></i></span>
       </div>
       <div class="belajar-card" data-num="06" data-reveal style="--d:5">
         <div class="bc-ic gold"><i class="fas fa-lightbulb"></i></div>
         <h4>Kewirausahaan Digital</h4>
         <p>Mengembangkan jiwa usaha: membangun produk digital, memasarkan, dan membangun startup mandiri.</p>
-        <span class="bc-arrow">Pelajari <i class="fas fa-arrow-right"></i></span>
       </div>
     </div>
   </section>

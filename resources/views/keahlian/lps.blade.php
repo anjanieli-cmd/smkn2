@@ -1162,37 +1162,31 @@ html body.theme-dark .aphp-page .aphp-cta::after{color:rgba(255,255,255,.03)}
         <div class="bc-ic"><i class="fas fa-piggy-bank"></i></div>
         <h4>Produk &amp; Layanan Syariah</h4>
         <p>Mempelajari produk tabungan, giro, deposito, serta layanan simpanan berbasis prinsip syariah.</p>
-        <span class="bc-arrow">Pelajari <i class="fas fa-arrow-right"></i></span>
       </div>
       <div class="belajar-card" data-num="02" data-reveal style="--d:1">
         <div class="bc-ic green"><i class="fas fa-handshake"></i></div>
         <h4>Akad Muamalah</h4>
         <p>Memahami akad murabahah, mudharabah, musyarakah, ijarah, dan penerapannya dalam pembiayaan.</p>
-        <span class="bc-arrow">Pelajari <i class="fas fa-arrow-right"></i></span>
       </div>
       <div class="belajar-card" data-num="03" data-reveal style="--d:2">
         <div class="bc-ic blue"><i class="fas fa-magnifying-glass"></i></div>
         <h4>Administrasi &amp; Kepatuhan</h4>
         <p>Mempelajari proses verifikasi dokumen, ketelitian transaksi, dan kepatuhan terhadap prinsip syariah.</p>
-        <span class="bc-arrow">Pelajari <i class="fas fa-arrow-right"></i></span>
       </div>
       <div class="belajar-card" data-num="04" data-reveal style="--d:3">
         <div class="bc-ic gold"><i class="fas fa-headset"></i></div>
         <h4>Layanan Nasabah (Customer Service)</h4>
         <p>Melatih komunikasi, keramahan, dan penyelesaian keluhan nasabah secara profesional.</p>
-        <span class="bc-arrow">Pelajari <i class="fas fa-arrow-right"></i></span>
       </div>
       <div class="belajar-card" data-num="05" data-reveal style="--d:4">
         <div class="bc-ic"><i class="fas fa-calculator"></i></div>
         <h4>Operasional Teller</h4>
         <p>Praktik menghitung, menerima, dan mengeluarkan uang tunai sesuai prosedur perbankan.</p>
-        <span class="bc-arrow">Pelajari <i class="fas fa-arrow-right"></i></span>
       </div>
       <div class="belajar-card" data-num="06" data-reveal style="--d:5">
         <div class="bc-ic gold"><i class="fas fa-lightbulb"></i></div>
         <h4>Kewirausahaan Syariah</h4>
         <p>Mengembangkan jiwa usaha berbasis ekonomi syariah: menghitung kelayakan, memasarkan, dan membangun bisnis mandiri.</p>
-        <span class="bc-arrow">Pelajari <i class="fas fa-arrow-right"></i></span>
       </div>
     </div>
   </section>

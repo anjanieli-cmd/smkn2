@@ -1793,37 +1793,31 @@ html body.theme-dark .aphp-page .aphp-cta::after{color:rgba(255,255,255,.03)}
         <div class="bc-ic"><i class="fas fa-vector-square"></i></div>
         <h4>Desain Grafis</h4>
         <p>Mempelajari prinsip desain grafis, komposisi, warna, tipografi, dan tata letak untuk menghasilkan visual yang komunikatif.</p>
-        <span class="bc-arrow">Pelajari <i class="fas fa-arrow-right"></i></span>
       </div>
       <div class="belajar-card" data-num="02" data-reveal style="--d:1">
         <div class="bc-ic green"><i class="fas fa-palette"></i></div>
         <h4>Konsep Visual</h4>
         <p>Mengembangkan konsep, moodboard, referensi, dan gaya visual sesuai kebutuhan proyek.</p>
-        <span class="bc-arrow">Pelajari <i class="fas fa-arrow-right"></i></span>
       </div>
       <div class="belajar-card" data-num="03" data-reveal style="--d:2">
         <div class="bc-ic blue"><i class="fas fa-magnifying-glass"></i></div>
         <h4>Analisis &amp; Mutu</h4>
         <p>Mempelajari proses review karya, konsistensi visual, keterbacaan, dan kesesuaian desain dengan target audiens.</p>
-        <span class="bc-arrow">Pelajari <i class="fas fa-arrow-right"></i></span>
       </div>
       <div class="belajar-card" data-num="04" data-reveal style="--d:3">
         <div class="bc-ic gold"><i class="fas fa-circle-check"></i></div>
         <h4>Fotografi &amp; Videografi</h4>
         <p>Membuat foto dan video untuk kebutuhan dokumentasi, promosi, storytelling, dan konten digital.</p>
-        <span class="bc-arrow">Pelajari <i class="fas fa-arrow-right"></i></span>
       </div>
       <div class="belajar-card" data-num="05" data-reveal style="--d:4">
         <div class="bc-ic"><i class="fas fa-object-group"></i></div>
         <h4>Branding &amp; Identitas Visual</h4>
         <p>Merancang logo, warna, tipografi, dan elemen identitas visual yang konsisten untuk sebuah brand.</p>
-        <span class="bc-arrow">Pelajari <i class="fas fa-arrow-right"></i></span>
       </div>
       <div class="belajar-card" data-num="06" data-reveal style="--d:5">
         <div class="bc-ic gold"><i class="fas fa-lightbulb"></i></div>
         <h4>Kewirausahaan</h4>
         <p>Mengembangkan jiwa usaha: menghitung kelayakan, memasarkan, dan membangun bisnis mandiri.</p>
-        <span class="bc-arrow">Pelajari <i class="fas fa-arrow-right"></i></span>
       </div>
     </div>
   </section>
