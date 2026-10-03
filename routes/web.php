@@ -16,35 +16,25 @@ use App\Http\Controllers\Admin\BeritaAdminController;
 use App\Http\Controllers\Admin\MajorAdminController;
 use App\Http\Controllers\MajorPublicController;
 
-Route::middleware(['auth'])            // <- samakan dengan grup admin kamu
+Route::middleware(['auth'])
     ->prefix('admin/berita')
     ->name('admin.berita.')
     ->group(function () {
         Route::get('/', [BeritaAdminController::class, 'index'])->name('index');
-
-        // teks halaman (hero, strip, CTA)
         Route::put('/settings', [BeritaAdminController::class, 'updateSettings'])->name('settings.update');
-
-        // artikel
         Route::post('/articles', [BeritaAdminController::class, 'storeArticle'])->name('articles.store');
         Route::put('/articles/{article}', [BeritaAdminController::class, 'updateArticle'])->name('articles.update');
         Route::delete('/articles/{article}', [BeritaAdminController::class, 'destroyArticle'])->name('articles.destroy');
         Route::post('/articles/{article}/toggle', [BeritaAdminController::class, 'toggleArticle'])->name('articles.toggle');
         Route::post('/articles/{article}/move/{direction}', [BeritaAdminController::class, 'moveArticle'])
             ->whereIn('direction', ['up', 'down'])->name('articles.move');
-
-        // penempatan (featured / side / most_read)
         Route::put('/placements', [BeritaAdminController::class, 'updatePlacements'])->name('placements.update');
-
-        // cerita skaneda
         Route::post('/stories', [BeritaAdminController::class, 'storeStory'])->name('stories.store');
         Route::put('/stories/{story}', [BeritaAdminController::class, 'updateStory'])->name('stories.update');
         Route::delete('/stories/{story}', [BeritaAdminController::class, 'destroyStory'])->name('stories.destroy');
         Route::post('/stories/{story}/toggle', [BeritaAdminController::class, 'toggleStory'])->name('stories.toggle');
         Route::post('/stories/{story}/move/{direction}', [BeritaAdminController::class, 'moveStory'])
             ->whereIn('direction', ['up', 'down'])->name('stories.move');
-
-        // kategori
         Route::post('/categories', [BeritaAdminController::class, 'storeCategory'])->name('categories.store');
         Route::put('/categories/{category}', [BeritaAdminController::class, 'updateCategory'])->name('categories.update');
         Route::delete('/categories/{category}', [BeritaAdminController::class, 'destroyCategory'])->name('categories.destroy');
@@ -52,18 +42,14 @@ Route::middleware(['auth'])            // <- samakan dengan grup admin kamu
             ->whereIn('direction', ['up', 'down'])->name('categories.move');
     });
 
-Route::middleware(['auth'])            // <- samakan dengan grup admin kamu
+Route::middleware(['auth'])
     ->prefix('admin/ppdb')
     ->name('admin.ppdb.')
     ->group(function () {
         Route::get('/', [PpdbAdminController::class, 'index'])->name('index');
-
-        // teks per tab: teks | definisi | jalur | syarat | alur | jadwal | jurusan | faq
         Route::put('/settings/{tab}', [PpdbAdminController::class, 'updateSettings'])
             ->whereIn('tab', ['teks', 'definisi', 'jalur', 'syarat', 'alur', 'jadwal', 'jurusan', 'faq'])
             ->name('settings.update');
-
-        // daftar (kartu / baris) per section
         Route::post('/items/{section}', [PpdbAdminController::class, 'storeItem'])
             ->whereIn('section', ['definisi', 'jalur', 'syarat', 'alur', 'jadwal', 'jurusan', 'faq'])
             ->name('items.store');
@@ -74,26 +60,19 @@ Route::middleware(['auth'])            // <- samakan dengan grup admin kamu
             ->whereIn('direction', ['up', 'down'])->name('items.move');
     });
 
-
-Route::middleware(['auth'])            // <- samakan dengan grup admin kamu
+Route::middleware(['auth'])
     ->prefix('admin/struktur')
     ->name('admin.struktur.')
     ->group(function () {
         Route::get('/', [StrukturAdminController::class, 'index'])->name('index');
-
-        // teks tunggal per tab: hero | peran
         Route::put('/settings/{tab}', [StrukturAdminController::class, 'updateSettings'])
             ->whereIn('tab', ['hero', 'peran'])->name('settings.update');
-
-        // orang / jabatan di bagan
         Route::post('/members', [StrukturAdminController::class, 'storeMember'])->name('members.store');
         Route::put('/members/{member}', [StrukturAdminController::class, 'updateMember'])->name('members.update');
         Route::delete('/members/{member}', [StrukturAdminController::class, 'destroyMember'])->name('members.destroy');
         Route::post('/members/{member}/toggle', [StrukturAdminController::class, 'toggleMember'])->name('members.toggle');
         Route::post('/members/{member}/move/{direction}', [StrukturAdminController::class, 'moveMember'])
             ->whereIn('direction', ['up', 'down'])->name('members.move');
-
-        // kartu "Alur Kerja"
         Route::post('/roles', [StrukturAdminController::class, 'storeRole'])->name('roles.store');
         Route::put('/roles/{role}', [StrukturAdminController::class, 'updateRole'])->name('roles.update');
         Route::delete('/roles/{role}', [StrukturAdminController::class, 'destroyRole'])->name('roles.destroy');
@@ -102,17 +81,13 @@ Route::middleware(['auth'])            // <- samakan dengan grup admin kamu
             ->whereIn('direction', ['up', 'down'])->name('roles.move');
     });
 
-Route::middleware(['auth'])            // <- samakan dengan grup admin kamu
+Route::middleware(['auth'])
     ->prefix('admin/visi-misi')
     ->name('admin.visi-misi.')
     ->group(function () {
         Route::get('/', [VisiMisiAdminController::class, 'index'])->name('index');
-
-        // teks tunggal per tab: hero | visi | misi | tujuan | nilai
         Route::put('/settings/{tab}', [VisiMisiAdminController::class, 'updateSettings'])
             ->whereIn('tab', ['hero', 'visi', 'misi', 'tujuan', 'nilai'])->name('settings.update');
-
-        // item kartu (misi / tujuan / nilai)
         Route::post('/items', [VisiMisiAdminController::class, 'storeItem'])->name('items.store');
         Route::put('/items/{item}', [VisiMisiAdminController::class, 'updateItem'])->name('items.update');
         Route::delete('/items/{item}', [VisiMisiAdminController::class, 'destroyItem'])->name('items.destroy');
@@ -121,9 +96,7 @@ Route::middleware(['auth'])            // <- samakan dengan grup admin kamu
             ->whereIn('direction', ['up', 'down'])->name('items.move');
     });
 
-
-// ---------- ADMIN ----------
-Route::middleware(['auth'])            // <- samakan dengan grup admin kamu
+Route::middleware(['auth'])
     ->prefix('admin/tour')
     ->name('admin.tour.')
     ->group(function () {
@@ -133,14 +106,11 @@ Route::middleware(['auth'])            // <- samakan dengan grup admin kamu
         Route::delete('/scenes/{scene}', [TourAdminController::class, 'destroy'])->name('destroy');
         Route::post('/scenes/{scene}/move/{direction}', [TourAdminController::class, 'move'])
             ->whereIn('direction', ['up', 'down'])->name('move');
-
         Route::post('/scenes/{scene}/hotspots', [TourAdminController::class, 'storeHotspot'])->name('hotspots.store');
         Route::put('/hotspots/{hotspot}', [TourAdminController::class, 'updateHotspot'])->name('hotspots.update');
         Route::delete('/hotspots/{hotspot}', [TourAdminController::class, 'destroyHotspot'])->name('hotspots.destroy');
     });
 
-// ---------- API PUBLIK (dipakai profile/tour.blade.php) ----------
-// Kalau route /api/tour sudah ada, GANTI isinya ke controller ini (jangan dobel).
 Route::get('/api/tour', [TourApiController::class, 'index']);
 
 
@@ -163,14 +133,12 @@ Route::get('/', function () {
 // ==========================================================================
 Route::view('/profil', 'profil')->name('profil');
 
-// Sejarah Sekolah (Dynamic DB data — diisi lewat Admin > Sejarah Sekolah)
 Route::get('/profile/sejarah-sekolah', [SejarahSekolahController::class, 'index'])
     ->name('profil.sejarah-sekolah');
 
 Route::view('/profile/visi-misi', 'profile.visi-misi')->name('profil.visi-misi');
 Route::view('/profile/struktur-organisasi', 'profile.struktur-organisasi')->name('profil.struktur-organisasi');
 
-// Guru & Staf (Dynamic DB data)
 Route::get('/profile/guru-staf', function () {
     $teachers = \App\Models\TeacherStaff::where('is_active', true)->orderBy('name', 'asc')->get();
     return view('profile.guru-staf', compact('teachers'));
@@ -188,6 +156,14 @@ Route::get('/program-keahlian', function () {
     return view('program-keahlian', compact('majors'));
 })->name('program-keahlian');
 
+// Halaman detail tiap kompetensi keahlian (nama route utama)
+Route::view('/keahlian/aphp', 'keahlian.aphp')->name('keahlian.aphp');
+Route::view('/keahlian/dkv', 'keahlian.dkv')->name('keahlian.dkv');
+Route::view('/keahlian/kuliner', 'keahlian.kuliner')->name('keahlian.kuliner');
+Route::view('/keahlian/lps', 'keahlian.lps')->name('keahlian.lps');
+Route::view('/keahlian/rpl', 'keahlian.rpl')->name('keahlian.rpl');
+
+// Alias lama — biar navbar & footer yang pakai route('rpl'), route('dkv'), dll tetap jalan
 Route::get('/keahlian/aphp', [MajorPublicController::class, 'show'])->defaults('slugOrCode', 'aphp')->name('aphp');
 Route::get('/keahlian/dkv', [MajorPublicController::class, 'show'])->defaults('slugOrCode', 'dkv')->name('dkv');
 Route::get('/keahlian/kuliner', [MajorPublicController::class, 'show'])->defaults('slugOrCode', 'kuliner')->name('kuliner');
@@ -238,9 +214,7 @@ Route::get('/berita/factcheck', function () {
 
 Route::get('/galeri/kegiatan', function (Illuminate\Http\Request $request) {
     \Database\Seeders\GallerySeeder::seedIfEmpty();
-
     $query = \App\Models\Gallery::with('photos');
-
     if ($request->filled('search')) {
         $search = $request->input('search');
         $query->where(function ($q) use ($search) {
@@ -249,18 +223,18 @@ Route::get('/galeri/kegiatan', function (Illuminate\Http\Request $request) {
               ->orWhere('category', 'like', "%{$search}%");
         });
     }
-
     $albums = $query->orderBy('created_at', 'desc')
         ->orderBy('event_date', 'desc')
         ->get();
-
     return view('galeri.kegiatan', compact('albums'));
 })->name('kegiatan');
+
 Route::get('/prestasi', function () {
     \Database\Seeders\AchievementSeeder::seedIfEmpty();
     $items = \App\Models\SchoolAchievement::orderBy('created_at', 'desc')->get();
     return view('siswa.prestasi-siswa', compact('items'));
 })->name('prestasi');
+
 Route::redirect('/galeri/prestasi-sekolah', '/prestasi')->name('prestasi-sekolah');
 
 
@@ -284,12 +258,11 @@ Route::get('/alumni/portofolio', function () {
 Route::view('/ppdb', 'ppdb.index')->name('ppdb');
 Route::view('/ai', 'ai')->name('ai');
 
-
-// Standard Login fallback route for Laravel Auth middleware
 Route::get('/login', [AdminAuthController::class, 'showLoginForm'])->name('login');
 
+
 // ==========================================================================
-// ADMIN PANEL (DEDICATED PAGES)
+// ADMIN PANEL
 // ==========================================================================
 Route::prefix('admin')->name('admin.')->group(function () {
 
@@ -297,13 +270,11 @@ Route::prefix('admin')->name('admin.')->group(function () {
         return redirect()->route('admin.dashboard');
     });
 
-    // ===== Halaman login (khusus tamu / belum login) =====
     Route::middleware('guest')->group(function () {
         Route::get('/login', [AdminAuthController::class, 'showLoginForm'])->name('login');
         Route::post('/login', [AdminAuthController::class, 'login'])->name('login.submit');
     });
 
-    // ===== Halaman yang butuh login =====
     Route::middleware('auth')->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
         Route::post('/logout', [AdminAuthController::class, 'logout'])->name('logout');
@@ -323,7 +294,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
             return view('admin.teachers.edit', compact('item'));
         })->name('teachers.edit');
 
-        // 2. Extracurriculars & Organizations
+        // 2. Extracurriculars
         Route::get('/extracurriculars', function () {
             $items = \App\Models\Extracurricular::orderBy('name', 'asc')->get();
             return view('admin.extracurriculars.index', compact('items'));
@@ -338,7 +309,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
             return view('admin.extracurriculars.edit', compact('item'));
         })->name('extracurriculars.edit');
 
-        // 3. Mitra Industri DUDI
+        // 3. Mitra Industri
         Route::get('/industries', function () {
             $items = \App\Models\IndustryPartnership::all();
             return view('admin.industries.index', compact('items'));
@@ -374,7 +345,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
             return view('admin.student-works.index', compact('items'));
         })->name('student-works.index');
 
-        // 6. School Fact-Check
+        // 6. Fact-Check
         Route::get('/fact-checks', function () {
             $items = \App\Models\FactCheck::latest()->get();
             return view('admin.fact-checks.index', compact('items'));
@@ -407,13 +378,12 @@ Route::prefix('admin')->name('admin.')->group(function () {
         // Sejarah Sekolah
         Route::get('/school-history', [SchoolHistoryController::class, 'index'])
             ->name('school-history.index');
-
         Route::put('/school-history', [SchoolHistoryController::class, 'update'])
             ->name('school-history.update');
 
         require __DIR__ . '/admin-pengaturan.php';
-        
-        // 8. Galeri Kegiatan Sekolah (Album & Foto)
+
+        // 8. Galeri
         Route::get('/gallery', [GalleryAdminController::class, 'index'])->name('gallery.index');
         Route::post('/gallery', [GalleryAdminController::class, 'store'])->name('gallery.store');
         Route::put('/gallery/{id}', [GalleryAdminController::class, 'update'])->name('gallery.update');
@@ -421,13 +391,13 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('/gallery/{id}/photos', [GalleryAdminController::class, 'uploadPhotos'])->name('gallery.photos.upload');
         Route::delete('/gallery/photos/{photoId}', [GalleryAdminController::class, 'deletePhoto'])->name('gallery.photos.destroy');
 
-        // 9. Prestasi Sekolah (Trophy Cabinet & Dokumentasi)
+        // 9. Prestasi
         Route::get('/achievements', [AchievementAdminController::class, 'index'])->name('achievements.index');
         Route::post('/achievements', [AchievementAdminController::class, 'store'])->name('achievements.store');
         Route::put('/achievements/{id}', [AchievementAdminController::class, 'update'])->name('achievements.update');
         Route::delete('/achievements/{id}', [AchievementAdminController::class, 'destroy'])->name('achievements.destroy');
 
-        // 10. Program Keahlian / Jurusan
+        // 10. Program Keahlian
         Route::get('/majors', [MajorAdminController::class, 'index'])->name('majors.index');
         Route::post('/majors', [MajorAdminController::class, 'store'])->name('majors.store');
         Route::put('/majors/{id}', [MajorAdminController::class, 'update'])->name('majors.update');

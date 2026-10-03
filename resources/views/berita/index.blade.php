@@ -188,8 +188,8 @@
   box-shadow:0 8px 20px rgba(13,58,102,.28)}
 .br-filter-btn.active i{color:#ffd54a;opacity:1}
 .br-search{position:relative;min-width:230px}
-.br-search i{position:absolute;left:.95rem;top:50%;transform:translateY(-50%);color:#7c8fa3;font-size:.85rem;pointer-events:none}
-.br-search input{width:100%;appearance:none;border:1px solid rgba(13,58,102,.16);border-radius:999px;
+.br-search i{position:absolute;left:.95rem;top:50%;transform:translateY(-50%);color:#7c8fa3;font-size:.85rem;pointer-events:none;z-index:2}
+.br-search input{width:100%;appearance:none;-webkit-appearance:none;border:1px solid rgba(13,58,102,.16);border-radius:999px;
   padding:.62rem 1rem .62rem 2.5rem;font-family:inherit;font-size:.82rem;color:#0d3a66;
   background:#f7f9fc;outline:none;transition:border .3s,box-shadow .3s}
 .br-search input::placeholder{color:#8ba0b4}
@@ -238,6 +238,11 @@
   color:#fff;margin-bottom:.3rem}
 .br-most-body span{font-size:.68rem;color:rgba(235,245,253,.65);display:inline-flex;align-items:center;gap:.4rem}
 .br-most-body span i{color:#ffd54a;font-size:.62rem}
+
+/* ---------- KARTU BISA DIKLIK ---------- */
+.br-item,.br-side-item,.br-most-item,.br-featured{cursor:pointer}
+.br-item:focus-visible,.br-side-item:focus-visible,.br-most-item:focus-visible,.br-featured:focus-visible{
+  outline:3px solid rgba(255,193,7,.45);outline-offset:3px}
 
 /* ---------- CERITA SKANEDA ---------- */
 .br-story{position:relative;overflow:hidden;margin-top:clamp(2rem,4vw,3rem)}
@@ -382,27 +387,53 @@ body.br-modal-open{overflow:hidden}
   border-radius:6px;
 }
 
-/* ---------- MODAL DETAIL BERITA ---------- */
+/* ---------- MODAL DETAIL BERITA (POPUP) ---------- */
 .br-news-modal{
-  position:fixed;inset:0;z-index:10000;display:none;align-items:center;justify-content:center;
+  position:fixed;inset:0;z-index:100000;display:none;align-items:center;justify-content:center;
   padding:1rem;background:rgba(7,22,42,.76);backdrop-filter:blur(7px);
 }
 .br-news-modal.show{display:flex}
 .br-news-modal-box{
-  position:relative;width:min(900px,100%);max-height:88vh;overflow:auto;background:#fff;
-  border-radius:24px;padding:clamp(1.5rem,4vw,2.8rem);
+  position:relative;width:min(1000px,100%);max-height:92vh;overflow:auto;background:#fff;
+  border-radius:24px;padding:0 0 clamp(1.5rem,4vw,2.6rem);
   box-shadow:0 30px 90px rgba(0,0,0,.32);animation:newsModalIn .3s ease;
+}
+.br-news-modal-box > *:not(.br-news-modal-img):not(.br-news-modal-close){
+  margin-left:clamp(1.4rem,4vw,2.8rem);margin-right:clamp(1.4rem,4vw,2.8rem);
 }
 .br-news-modal-close{
   position:absolute;right:1rem;top:1rem;width:40px;height:40px;border:0;border-radius:50%;
-  background:#f0f3f7;color:#0d3a66;cursor:pointer;font-size:1rem;
+  background:rgba(255,255,255,.92);color:#0d3a66;cursor:pointer;font-size:1rem;z-index:5;
   display:flex;align-items:center;justify-content:center;transition:.25s;
+  box-shadow:0 6px 18px rgba(0,0,0,.18);
 }
 .br-news-modal-close:hover{background:#0d3a66;color:#fff}
+
+/* FOTO POPUP — besar, tidak dipotong, latar blur dari foto yang sama */
+.br-news-modal-img{
+  position:relative;width:100%;min-height:220px;overflow:hidden;background:#0d3a66;
+  display:flex;align-items:center;justify-content:center;
+  border-radius:24px 24px 0 0;margin-bottom:1.6rem;
+}
+.br-news-modal-img .br-news-modal-img-bg{
+  position:absolute;inset:-30px;background-size:cover;background-position:center;
+  filter:blur(30px) brightness(.65) saturate(1.2);transform:scale(1.1);
+}
+.br-news-modal-img img{
+  position:relative;z-index:1;display:block;width:100%;height:auto;
+  max-height:min(68vh,640px);object-fit:contain;object-position:center;
+  image-rendering:auto;
+}
+.br-news-modal-img[hidden]{display:none}
+.br-news-modal-box.no-img{padding-top:clamp(1.8rem,4vw,2.8rem)}
 .br-news-modal-category{margin-bottom:.9rem}
+.br-news-modal-meta{display:flex;align-items:center;gap:.5rem;font-size:.74rem;font-weight:700;color:#5b6472;
+  letter-spacing:.04em;margin-bottom:.9rem}
+.br-news-modal-meta:empty{display:none}
+.br-news-modal-meta i{color:#ffb300}
 .br-news-modal-title{
-  font-family:var(--font-display);font-size:clamp(1.6rem,3vw,2.6rem);
-  line-height:1.12;color:#0d3a66;margin:0 3rem 1.2rem 0;
+  font-family:var(--font-display);font-size:clamp(1.5rem,3vw,2.4rem);
+  line-height:1.15;color:#0d3a66;margin-top:0;margin-bottom:1.2rem;padding-right:0;
 }
 .br-news-modal-content{font-size:.95rem;line-height:1.85;color:#4a6079}
 .br-news-modal-content p{margin:0 0 1rem}
@@ -415,8 +446,10 @@ body.br-modal-open{overflow:hidden}
   to{opacity:1;transform:none}
 }
 @media(max-width:640px){
-  .br-news-modal{padding:.7rem}
-  .br-news-modal-box{border-radius:18px;padding:1.3rem}
+  .br-news-modal{padding:.5rem}
+  .br-news-modal-box{border-radius:18px;max-height:94vh}
+  .br-news-modal-img{border-radius:18px 18px 0 0;min-height:180px}
+  .br-news-modal-img img{max-height:55vh}
 }
 
 /* =========================================================
@@ -469,13 +502,30 @@ body.br-dark .br-filter-btn.active{background:linear-gradient(135deg,#ffd54a,#ff
   border-color:#ffb300!important;color:#0a2d52!important;box-shadow:0 8px 20px rgba(255,179,0,.25)!important}
 body.br-dark .br-filter-btn.active i{color:#0a2d52!important}
 
-/* ===== SEARCH ===== */
-body.br-dark .br-search i{color:#7f93ab!important}
-body.br-dark .br-search input{background:#0f2340!important;border:1px solid rgba(255,255,255,.14)!important;
-  color:#fff!important;-webkit-text-fill-color:#fff!important}
-body.br-dark .br-search input::placeholder{color:#6d819a!important;-webkit-text-fill-color:#6d819a!important}
-body.br-dark .br-search input:focus{background:#12294a!important;border-color:#ffc107!important;
-  box-shadow:0 0 0 3px rgba(255,193,7,.20)!important}
+/* ===== SEARCH (diperkuat: specificity tinggi + wrapper + autofill) ===== */
+html body.br-dark .br-page .br-search,
+html body.br-dark .br-toolbar .br-search{background:transparent!important;background-color:transparent!important;border:0!important;box-shadow:none!important}
+html body.br-dark .br-page .br-search i,
+html body.br-dark .br-toolbar .br-search i{color:#7f93ab!important}
+html body.br-dark .br-page .br-search input,
+html body.br-dark .br-toolbar .br-search input,
+html body.br-dark .br-toolbar input[type="search"],
+html body.br-dark .br-toolbar input[type="text"],
+html body.br-dark input#brSearch{
+  background:#0f2340!important;background-color:#0f2340!important;background-image:none!important;
+  border:1px solid rgba(255,255,255,.14)!important;border-radius:999px!important;
+  color:#fff!important;-webkit-text-fill-color:#fff!important;caret-color:#ffd54a;
+  color-scheme:dark;box-shadow:none!important;
+}
+html body.br-dark .br-toolbar input::placeholder,
+html body.br-dark input#brSearch::placeholder{color:#6d819a!important;-webkit-text-fill-color:#6d819a!important;opacity:1}
+html body.br-dark .br-toolbar input:focus,
+html body.br-dark input#brSearch:focus{background:#12294a!important;background-color:#12294a!important;
+  border-color:#ffc107!important;box-shadow:0 0 0 3px rgba(255,193,7,.20)!important}
+html body.br-dark .br-toolbar input:-webkit-autofill,
+html body.br-dark input#brSearch:-webkit-autofill{
+  -webkit-box-shadow:0 0 0 1000px #0f2340 inset!important;-webkit-text-fill-color:#fff!important}
+html body.br-dark .br-toolbar input[type="search"]::-webkit-search-cancel-button{filter:invert(1)}
 
 /* ===== BOX / KARTU ===== */
 body.br-dark .br-featured,
@@ -528,17 +578,19 @@ body.br-dark .br-cat-humas{background:rgba(255,255,255,.08)!important;color:#b8c
 body.br-dark .br-cta-box{background:linear-gradient(135deg,#040c18,#071a31 55%,#0a2340)!important;
   border:1px solid rgba(255,213,74,.16)!important;box-shadow:0 30px 70px rgba(0,0,0,.6)!important}
 
-/* Modal */
+/* Modal (popup berita & cerita) */
 body.br-dark .br-story-modal,
 body.br-dark .br-news-modal{background:rgba(2,8,16,.78)!important}
 body.br-dark .br-story-modal-box,
 body.br-dark .br-news-modal-box{background:#0a1a2e!important;border:1px solid rgba(255,255,255,.10)!important}
+body.br-dark .br-news-modal-img{background:#0f2340!important}
 body.br-dark .br-story-modal-close,
 body.br-dark .br-news-modal-close{background:#17325a!important;color:#e6eef8!important}
 body.br-dark .br-story-modal-close:hover,
 body.br-dark .br-news-modal-close:hover{background:#ffb300!important;color:#0a2d52!important}
 body.br-dark .br-story-modal-title,
 body.br-dark .br-news-modal-title{color:#fff!important}
+body.br-dark .br-news-modal-meta{color:#9db0c6!important}
 body.br-dark .br-story-modal-content,
 body.br-dark .br-news-modal-content{color:#c3d1e2!important}
 body.br-dark .br-news-modal-source{border-top-color:rgba(255,255,255,.12)!important;color:#8fa3bb!important}
@@ -582,15 +634,16 @@ body.br-dark .br-news-modal-source{border-top-color:rgba(255,255,255,.12)!import
   }, 300);
 
   /* =========================================================
-     MODAL BACA KISAHNYA — dari window.BERITA_DATA (lihat
-     resources/views/profile/partials/berita-content.blade.php)
+     POPUP DETAIL BERITA
+     - Klik kartu mana saja (daftar, unggulan, sidebar, artikel
+       pilihan) atau tombol [data-news-trigger] -> popup terbuka.
+     - Isi popup: window.BERITA_DATA[id] kalau ada, kalau tidak
+       diambil otomatis dari kartu yang diklik (judul, kategori,
+       foto, tanggal, ringkasan).
+     - Foto: dipilih versi terbesar yang tersedia.
      ========================================================= */
-  var newsModal = document.getElementById('newsModal');
-  var newsModalClose = document.getElementById('newsModalClose');
-  var newsModalTitle = document.getElementById('newsModalTitle');
-  var newsModalCategory = document.getElementById('newsModalCategory');
-  var newsModalContent = document.getElementById('newsModalContent');
   var newsData = window.BERITA_DATA || {};
+  var CARD_SEL = '.br-item, .br-side-item, .br-most-item, .br-featured';
 
   function escapeHtml(value) {
     return String(value)
@@ -598,46 +651,217 @@ body.br-dark .br-news-modal-source{border-top-color:rgba(255,255,255,.12)!import
       .replace(/"/g, '&quot;').replace(/'/g, '&#039;');
   }
 
-  function openNewsStory(id) {
-    var item = newsData[id];
-    if (!item || !newsModal) return;
+  function ensureNewsModal() {
+    var m = document.getElementById('newsModal');
+    if (!m) {
+      m = document.createElement('div');
+      m.className = 'br-news-modal';
+      m.id = 'newsModal';
+      m.innerHTML =
+        '<div class="br-news-modal-box" role="dialog" aria-modal="true" aria-labelledby="newsModalTitle">' +
+          '<button type="button" class="br-news-modal-close" id="newsModalClose" aria-label="Tutup"><i class="fas fa-times"></i></button>' +
+          '<div class="br-news-modal-img" id="newsModalImg" hidden></div>' +
+          '<div class="br-news-modal-category" id="newsModalCategory"></div>' +
+          '<div class="br-news-modal-meta" id="newsModalMeta"></div>' +
+          '<h2 class="br-news-modal-title" id="newsModalTitle"></h2>' +
+          '<div class="br-news-modal-content" id="newsModalContent"></div>' +
+        '</div>';
+    } else {
+      var box = m.querySelector('.br-news-modal-box');
+      var cat = document.getElementById('newsModalCategory');
+      if (box && cat) {
+        if (!document.getElementById('newsModalImg')) {
+          var im = document.createElement('div');
+          im.className = 'br-news-modal-img'; im.id = 'newsModalImg'; im.hidden = true;
+          box.insertBefore(im, cat);
+        }
+        if (!document.getElementById('newsModalMeta')) {
+          var me = document.createElement('div');
+          me.className = 'br-news-modal-meta'; me.id = 'newsModalMeta';
+          box.insertBefore(me, cat.nextSibling);
+        }
+      }
+    }
+    // pindahkan ke <body> supaya tidak terpotong overflow/transform parent
+    if (m.parentNode !== document.body) document.body.appendChild(m);
 
-    newsModalTitle.textContent = item.title;
-    newsModalCategory.innerHTML = item.category
-      ? '<span class="br-cat ' + item.category.class + '"><i class="fas ' + item.category.icon + '"></i> ' + escapeHtml(item.category.label) + '</span>'
-      : '<span class="br-cat br-cat-sekolah"><i class="fas fa-newspaper"></i> Berita</span>';
-    newsModalContent.innerHTML = (item.content || []).map(function (p) {
+    if (m.dataset.bound !== '1') {
+      m.dataset.bound = '1';
+      m.addEventListener('click', function (event) {
+        if (event.target === m) closeNewsStory();
+      });
+      var closeBtn = document.getElementById('newsModalClose');
+      if (closeBtn) closeBtn.addEventListener('click', closeNewsStory);
+    }
+    return m;
+  }
+
+  function textOf(root, sel) {
+    var el = root ? root.querySelector(sel) : null;
+    return el ? el.textContent.replace(/\s+/g, ' ').trim() : '';
+  }
+
+  /* Ambil URL foto terbesar dari srcset */
+  function largestFromSrcset(srcset) {
+    if (!srcset) return '';
+    var best = '', bestW = 0;
+    srcset.split(',').forEach(function (part) {
+      var bits = part.trim().split(/\s+/);
+      if (!bits[0]) return;
+      var w = parseFloat(bits[1]) || 1;
+      if (w >= bestW) { bestW = w; best = bits[0]; }
+    });
+    return best;
+  }
+
+  /* Cari foto terbaik (resolusi tertinggi) dari sebuah kartu */
+  function bestImageFromCard(card) {
+    if (!card) return '';
+    var img = card.querySelector('img');
+    if (img) {
+      var ds = img.dataset || {};
+      var candidate = ds.full || ds.large || ds.original || ds.hires || ds.src ||
+        largestFromSrcset(img.getAttribute('srcset')) ||
+        img.getAttribute('data-src') || img.currentSrc || img.src || '';
+      if (candidate) return candidate;
+    }
+    // kalau foto dipasang lewat background-image
+    var nodes = card.querySelectorAll('[style*="background"], .br-item-img, .br-side-thumb, .br-featured-img');
+    for (var i = 0; i < nodes.length; i++) {
+      var bg = getComputedStyle(nodes[i]).backgroundImage;
+      var mt = bg && bg.match(/url\(["']?(.*?)["']?\)/);
+      if (mt && mt[1]) return mt[1];
+    }
+    return '';
+  }
+
+  /* Ambil data dari kartu kalau BERITA_DATA tidak punya entrinya */
+  function dataFromCard(card) {
+    if (!card) return null;
+    var title = textOf(card, 'h3, h4, .br-most-body b');
+    if (!title) return null;
+    var catEl = card.querySelector('.br-cat');
+    var excerpt = textOf(card, '.br-item-excerpt, .br-featured-excerpt');
+    var date = textOf(card, '.br-item-date, .br-featured-date, .br-side-date, .br-most-body span');
+    return {
+      title: title,
+      catHtml: catEl ? catEl.outerHTML : '',
+      image: bestImageFromCard(card),
+      date: date,
+      content: excerpt ? [excerpt] : []
+    };
+  }
+
+  /* Pasang foto ke popup (tanpa innerHTML supaya URL aman) */
+  function setModalImage(imgBox, box, src, alt) {
+    if (!imgBox) return;
+    imgBox.innerHTML = '';
+    if (!src) {
+      imgBox.hidden = true;
+      if (box) box.classList.add('no-img');
+      return;
+    }
+    var bg = document.createElement('div');
+    bg.className = 'br-news-modal-img-bg';
+    bg.style.backgroundImage = 'url("' + String(src).replace(/"/g, '%22') + '")';
+
+    var im = document.createElement('img');
+    im.alt = alt || '';
+    im.decoding = 'async';
+    im.onerror = function () {
+      imgBox.hidden = true;
+      if (box) box.classList.add('no-img');
+    };
+    im.src = src;
+
+    imgBox.appendChild(bg);
+    imgBox.appendChild(im);
+    imgBox.hidden = false;
+    if (box) box.classList.remove('no-img');
+  }
+
+  function openNewsStory(id, card) {
+    var modal = ensureNewsModal();
+    var item = id != null ? newsData[id] : null;
+    var fb = dataFromCard(card);
+    if (!item && !fb) return;
+
+    var title = (item && item.title) || (fb && fb.title) || '';
+    var image = (item && item.image) || (fb && fb.image) || '';
+    var date = (item && item.date) || (fb && fb.date) || '';
+    var content = (item && item.content && item.content.length) ? item.content : (fb ? fb.content : []);
+
+    var catHtml;
+    if (item && item.category) {
+      catHtml = '<span class="br-cat ' + escapeHtml(item.category.class) + '"><i class="fas ' + escapeHtml(item.category.icon) + '"></i> ' + escapeHtml(item.category.label) + '</span>';
+    } else if (fb && fb.catHtml) {
+      catHtml = fb.catHtml;
+    } else {
+      catHtml = '<span class="br-cat br-cat-sekolah"><i class="fas fa-newspaper"></i> Berita</span>';
+    }
+
+    var box = modal.querySelector('.br-news-modal-box');
+    setModalImage(document.getElementById('newsModalImg'), box, image, title);
+
+    document.getElementById('newsModalTitle').textContent = title;
+    document.getElementById('newsModalCategory').innerHTML = catHtml;
+    var metaEl = document.getElementById('newsModalMeta');
+    if (metaEl) metaEl.innerHTML = date ? '<i class="far fa-calendar-alt"></i> ' + escapeHtml(date) : '';
+    document.getElementById('newsModalContent').innerHTML = (content || []).map(function (p) {
       return '<p>' + escapeHtml(p) + '</p>';
     }).join('');
 
-    newsModal.classList.add('show');
+    modal.classList.add('show');
     document.body.classList.add('br-modal-open');
+    if (box) box.scrollTop = 0;
+    var closeBtn = document.getElementById('newsModalClose');
+    if (closeBtn) closeBtn.focus({ preventScroll: true });
   }
 
   function closeNewsStory() {
-    if (!newsModal) return;
-    newsModal.classList.remove('show');
+    var m = document.getElementById('newsModal');
+    if (m) m.classList.remove('show');
     document.body.classList.remove('br-modal-open');
   }
 
-  function bindNewsTriggers() {
-    document.querySelectorAll('[data-news-trigger]').forEach(function (el) {
-      if (el.dataset.newsBound === '1') return;
-      el.dataset.newsBound = '1';
-      el.addEventListener('click', function (event) {
-        event.preventDefault();
-        openNewsStory(el.getAttribute('data-news-trigger'));
-      });
-    });
-  }
-  bindNewsTriggers();
+  ensureNewsModal();
 
-  if (newsModalClose) newsModalClose.addEventListener('click', closeNewsStory);
-  if (newsModal) {
-    newsModal.addEventListener('click', function (event) {
-      if (event.target === newsModal) closeNewsStory();
+  /* Satu handler untuk semua kartu & tombol */
+  document.addEventListener('click', function (event) {
+    if (event.target.closest('.br-news-modal')) return;
+
+    var trg = event.target.closest('[data-news-trigger]');
+    var card = event.target.closest(CARD_SEL);
+    if (!trg && !card) return;
+
+    var id = trg ? trg.getAttribute('data-news-trigger') : null;
+    if (!id && card) {
+      var inner = card.querySelector('[data-news-trigger]');
+      if (inner) id = inner.getAttribute('data-news-trigger');
+    }
+    if (!card && trg) card = trg.closest(CARD_SEL);
+
+    event.preventDefault();
+    openNewsStory(id, card);
+  });
+
+  /* Aksesibilitas: kartu bisa difokus & dibuka dengan Enter/Spasi */
+  function makeCardsAccessible() {
+    document.querySelectorAll(CARD_SEL).forEach(function (card) {
+      if (card.dataset.a11y === '1') return;
+      card.dataset.a11y = '1';
+      if (!card.hasAttribute('tabindex')) card.setAttribute('tabindex', '0');
+      card.setAttribute('role', 'button');
     });
   }
+  makeCardsAccessible();
+  document.addEventListener('keydown', function (event) {
+    if (event.key !== 'Enter' && event.key !== ' ') return;
+    var card = event.target && event.target.matches && event.target.matches(CARD_SEL) ? event.target : null;
+    if (!card) return;
+    event.preventDefault();
+    card.click();
+  });
 
   /* =========================================================
      10 BERITA AWAL + LIHAT SEMUA + FILTER + SEARCH
@@ -692,7 +916,7 @@ body.br-dark .br-news-modal-source{border-top-color:rgba(255,255,255,.12)!import
       if (icon) icon.className = expanded ? 'fas fa-chevron-up' : 'fas fa-chevron-down';
     }
 
-    bindNewsTriggers();
+    makeCardsAccessible();
   }
 
   if (moreBtn) {
@@ -769,6 +993,8 @@ body.br-dark .br-news-modal-source{border-top-color:rgba(255,255,255,.12)!import
    Memasang class "br-dark" di <body> kalau layout sedang dark,
    apa pun cara layout menandainya (class, atribut, atau hanya
    mengubah warna background).
+   + Kolom cari dipaksa dark lewat inline !important supaya
+     tidak bisa ditimpa style layout.
    ========================================================= */
 (function () {
   function lum(c) {
@@ -790,7 +1016,44 @@ body.br-dark .br-news-modal-source{border-top-color:rgba(255,255,255,.12)!import
     if (l === null) l = lum(getComputedStyle(document.documentElement).backgroundColor);
     return l !== null && l < 0.4;
   }
-  function sync() { document.body.classList.toggle('br-dark', isDark()); }
+
+  /* Paksa kolom cari (input + wrapper) ikut tema */
+  function paintSearch(dark) {
+    var inputs = document.querySelectorAll('#brSearch, .br-search input, .br-toolbar input');
+    var wraps = document.querySelectorAll('.br-search');
+    var inProps = {
+      'background': '#0f2340',
+      'background-color': '#0f2340',
+      'background-image': 'none',
+      'color': '#ffffff',
+      '-webkit-text-fill-color': '#ffffff',
+      'border': '1px solid rgba(255,255,255,.14)',
+      'border-radius': '999px',
+      'box-shadow': 'none',
+      'color-scheme': 'dark'
+    };
+    inputs.forEach(function (el) {
+      Object.keys(inProps).forEach(function (k) {
+        if (dark) el.style.setProperty(k, inProps[k], 'important');
+        else el.style.removeProperty(k);
+      });
+    });
+    wraps.forEach(function (el) {
+      if (dark) {
+        el.style.setProperty('background', 'transparent', 'important');
+        el.style.setProperty('border', '0', 'important');
+      } else {
+        el.style.removeProperty('background');
+        el.style.removeProperty('border');
+      }
+    });
+  }
+
+  function sync() {
+    var dark = isDark();
+    document.body.classList.toggle('br-dark', dark);
+    paintSearch(dark);
+  }
 
   function syncSoon() { sync(); setTimeout(sync, 450); }
 
@@ -814,6 +1077,7 @@ body.br-dark .br-news-modal-source{border-top-color:rgba(255,255,255,.12)!import
   new MutationObserver(function () { syncSoon(); })
     .observe(document.body, { attributes: true, attributeFilter: ['data-theme', 'data-bs-theme', 'style'] });
   document.addEventListener('click', function () { setTimeout(sync, 500); });
+  window.addEventListener('load', syncSoon);
   if (window.matchMedia) {
     var mq = window.matchMedia('(prefers-color-scheme: dark)');
     if (mq.addEventListener) mq.addEventListener('change', syncSoon);
