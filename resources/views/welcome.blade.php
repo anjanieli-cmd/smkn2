@@ -1288,7 +1288,7 @@
         <article class="carousel-card" data-index="0" tabindex="0" role="button" aria-label="Jurusan APHP">
           <div class="card-inner">
             <div class="cc-photo p-aphp">
-              <img src="{{ asset('images/aphp.png') }}" alt="Siswa APHP SMK Negeri 2 Mojokerto" loading="lazy">
+              <img src="{{ asset('images/APHP.png') }}" alt="Siswa APHP SMK Negeri 2 Mojokerto" loading="lazy">
             </div>
             <div class="cc-body">
               <div class="cc-abbr">APHP</div>
@@ -1301,7 +1301,7 @@
         <article class="carousel-card" data-index="1" tabindex="0" role="button" aria-label="Jurusan DKV">
           <div class="card-inner">
             <div class="cc-photo p-dkv">
-              <img src="{{ asset('images/dkv.png') }}" alt="Siswa DKV SMK Negeri 2 Mojokerto" loading="lazy">
+              <img src="{{ asset('images/DKV.png') }}" alt="Siswa DKV SMK Negeri 2 Mojokerto" loading="lazy">
             </div>
             <div class="cc-body">
               <div class="cc-abbr">DKV</div>
@@ -1314,7 +1314,7 @@
         <article class="carousel-card" data-index="2" tabindex="0" role="button" aria-label="Jurusan Kuliner">
           <div class="card-inner">
             <div class="cc-photo p-kuliner">
-              <img src="{{ asset('images/kuliner.png') }}" alt="Siswa Kuliner SMK Negeri 2 Mojokerto" loading="lazy">
+              <img src="{{ asset('images/Kuliner.png') }}" alt="Siswa Kuliner SMK Negeri 2 Mojokerto" loading="lazy">
             </div>
             <div class="cc-body">
               <div class="cc-abbr">KULINER</div>
@@ -1327,7 +1327,7 @@
         <article class="carousel-card" data-index="3" tabindex="0" role="button" aria-label="Jurusan LPS">
           <div class="card-inner">
             <div class="cc-photo p-lps">
-              <img src="{{ asset('images/lps.png') }}" alt="Siswa LPS SMK Negeri 2 Mojokerto" loading="lazy">
+              <img src="{{ asset('images/LPS.png') }}" alt="Siswa LPS SMK Negeri 2 Mojokerto" loading="lazy">
             </div>
             <div class="cc-body">
               <div class="cc-abbr">LPS</div>
@@ -1340,7 +1340,7 @@
         <article class="carousel-card" data-index="4" tabindex="0" role="button" aria-label="Jurusan RPL">
           <div class="card-inner">
             <div class="cc-photo p-rpl">
-              <img src="{{ asset('images/rpl.png') }}" alt="Siswa RPL SMK Negeri 2 Mojokerto" loading="lazy">
+              <img src="{{ asset('images/RPL.png') }}" alt="Siswa RPL SMK Negeri 2 Mojokerto" loading="lazy">
             </div>
             <div class="cc-body">
               <div class="cc-abbr">RPL</div>
