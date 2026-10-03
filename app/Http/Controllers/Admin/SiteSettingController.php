@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\HomeAchievement;
+use App\Models\HomeIndustryLogo;
 use App\Models\SiteSetting;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -70,9 +72,11 @@ class SiteSettingController extends Controller
     // ===================== KONTEN BERANDA =====================
     public function general(): View
     {
-        $settings = SiteSetting::many(array_merge(self::GENERAL_KEYS, ['sambutan_photo']));
+        $settings      = SiteSetting::many(array_merge(self::GENERAL_KEYS, ['sambutan_photo']));
+        $industryLogos = HomeIndustryLogo::orderBy('order')->get()->each->append('logo_url');
+        $achievements  = HomeAchievement::orderBy('order')->get()->each->append('image_url');
 
-        return view('admin.settings.general', compact('settings'));
+        return view('admin.settings.general', compact('settings', 'industryLogos', 'achievements'));
     }
 
     public function updateGeneral(Request $request): RedirectResponse
@@ -113,8 +117,12 @@ class SiteSettingController extends Controller
 
         SiteSetting::setMany($data);
 
+        $tab = in_array($request->input('_tab'), ['hero', 'sambutan', 'kontak'], true)
+            ? $request->input('_tab')
+            : 'hero';
+
         return redirect()
-            ->route('admin.general.index')
+            ->to(route('admin.general.index') . '#' . $tab)
             ->with('status', 'Konten Beranda berhasil disimpan.');
     }
 
