@@ -1,14 +1,15 @@
 {{--
   Isi halaman Visi & Misi — semua teks/kartu dibaca dari database (diatur di admin).
-  CSS dan script tetap ada di resources/views/profile/visi.blade.php (file lama kamu).
+  CSS dan script tetap ada di resources/views/profile/visi.blade.php.
 --}}
 @php
   $vm     = \App\Support\VisiMisiContent::get();
   $s      = $vm['s'];
   $tags   = $vm['tags'];
-  $misi   = $vm['misi'];
-  $tujuan = $vm['tujuan'];
-  $nilai  = $vm['nilai'];
+  $misi   = collect($vm['misi']);
+  $tujuan = collect($vm['tujuan']);
+  $nilai  = collect($vm['nilai']);
+  $emptyStyle = 'width:min(720px,90%);margin:0 auto;padding:1.4rem 1.6rem;border:1px dashed rgba(255,179,0,.6);border-radius:18px;background:rgba(255,179,0,.08);color:inherit;text-align:center;font-size:.9rem;position:relative;z-index:2';
 @endphp
 
 <div class="visi-page">
@@ -59,8 +60,7 @@
     </div>
   </section>
 
-  <!-- MISI -->
-  @if($misi->isNotEmpty())
+  <!-- MISI (selalu tampil) -->
   <section class="misi-section">
     @include('profile.partials.visi-orn')
 
@@ -72,21 +72,23 @@
       @if($s['misi_desc'] !== '')<p class="misi-desc">{{ $s['misi_desc'] }}</p>@endif
     </div>
 
-    <div class="misi-grid">
-      @foreach($misi as $m)
-        <article class="misi-card" data-reveal style="--d:{{ $loop->index % 3 }}">
-          <span class="misi-num">{{ str_pad($loop->iteration, 2, '0', STR_PAD_LEFT) }}</span>
-          <div class="misi-icon"><i class="fas {{ $m->icon ?: 'fa-star' }}"></i></div>
-          <h3 class="misi-title">{{ $m->title }}</h3>
-          @if($m->text)<p class="misi-text">{{ $m->text }}</p>@endif
-        </article>
-      @endforeach
-    </div>
+    @if($misi->isNotEmpty())
+      <div class="misi-grid">
+        @foreach($misi as $m)
+          <article class="misi-card" data-reveal style="--d:{{ $loop->index % 3 }}">
+            <span class="misi-num">{{ str_pad($loop->iteration, 2, '0', STR_PAD_LEFT) }}</span>
+            <div class="misi-icon"><i class="fas {{ $m->icon ?: 'fa-star' }}"></i></div>
+            <h3 class="misi-title">{{ $m->title }}</h3>
+            @if($m->text)<p class="misi-text">{{ $m->text }}</p>@endif
+          </article>
+        @endforeach
+      </div>
+    @else
+      <div style="{{ $emptyStyle }}">Belum ada data Misi. Isi dulu lewat admin Visi &amp; Misi, atau cek tabel / cache-nya.</div>
+    @endif
   </section>
-  @endif
 
-  <!-- TUJUAN -->
-  @if($tujuan->isNotEmpty())
+  <!-- TUJUAN (selalu tampil) -->
   <section class="tujuan-section">
     @include('profile.partials.visi-orn')
 
@@ -95,21 +97,24 @@
         <div class="eyebrow">{{ $s['tujuan_eyebrow'] }}</div>
         <h2 class="big-heading">{{ $s['tujuan_heading'] }} <span>{{ $s['tujuan_heading_gold'] }}</span></h2>
       </div>
-      <div class="tujuan-grid">
-        @foreach($tujuan as $t)
-          <div class="tujuan-card" data-reveal style="--d:{{ $loop->index % 4 }}">
-            <div class="tujuan-num">{{ str_pad($loop->iteration, 2, '0', STR_PAD_LEFT) }}</div>
-            <div class="tujuan-title">{{ $t->title }}</div>
-            @if($t->text)<p class="tujuan-text">{{ $t->text }}</p>@endif
-          </div>
-        @endforeach
-      </div>
+
+      @if($tujuan->isNotEmpty())
+        <div class="tujuan-grid">
+          @foreach($tujuan as $t)
+            <div class="tujuan-card" data-reveal style="--d:{{ $loop->index % 4 }}">
+              <div class="tujuan-num">{{ str_pad($loop->iteration, 2, '0', STR_PAD_LEFT) }}</div>
+              <div class="tujuan-title">{{ $t->title }}</div>
+              @if($t->text)<p class="tujuan-text">{{ $t->text }}</p>@endif
+            </div>
+          @endforeach
+        </div>
+      @else
+        <div style="{{ $emptyStyle }};margin-top:2rem">Belum ada data Tujuan.</div>
+      @endif
     </div>
   </section>
-  @endif
 
-  <!-- NILAI -->
-  @if($nilai->isNotEmpty())
+  <!-- NILAI (selalu tampil) -->
   <section class="nilai-section">
     @include('profile.partials.visi-orn')
 
@@ -121,20 +126,23 @@
       @if($s['nilai_desc'] !== '')<p class="misi-desc">{{ $s['nilai_desc'] }}</p>@endif
     </div>
 
-    <div class="nilai-grid">
-      @foreach($nilai as $n)
-        <article class="nilai-card" data-reveal style="--d:{{ $loop->index % 3 }}">
-          <div class="nilai-top">
-            <div class="nilai-icon"><i class="fas {{ $n->icon ?: 'fa-star' }}"></i></div>
-            <span class="nilai-no">{{ str_pad($loop->iteration, 2, '0', STR_PAD_LEFT) }}</span>
-          </div>
-          <h3 class="nilai-title">{{ $n->title }}</h3>
-          @if($n->text)<p class="nilai-text">{{ $n->text }}</p>@endif
-        </article>
-      @endforeach
-    </div>
+    @if($nilai->isNotEmpty())
+      <div class="nilai-grid">
+        @foreach($nilai as $n)
+          <article class="nilai-card" data-reveal style="--d:{{ $loop->index % 3 }}">
+            <div class="nilai-top">
+              <div class="nilai-icon"><i class="fas {{ $n->icon ?: 'fa-star' }}"></i></div>
+              <span class="nilai-no">{{ str_pad($loop->iteration, 2, '0', STR_PAD_LEFT) }}</span>
+            </div>
+            <h3 class="nilai-title">{{ $n->title }}</h3>
+            @if($n->text)<p class="nilai-text">{{ $n->text }}</p>@endif
+          </article>
+        @endforeach
+      </div>
+    @else
+      <div style="{{ $emptyStyle }}">Belum ada data Nilai.</div>
+    @endif
   </section>
-  @endif
 
   <!-- CTA -->
   <section class="visi-cta">

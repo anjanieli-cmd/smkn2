@@ -195,6 +195,100 @@ body:has(.vt360-fullpage) .app-header{display:none !important}
   .vt360-calib-btn{display:none !important}
 }
 </style>
+
+<style id="vt360-dark-mode">
+/* =========================================================
+   VIRTUAL TOUR 360° — DARK MODE
+   Aktif saat <body> punya class "theme-dark".
+   ========================================================= */
+
+/* ---------- kartu info lokasi ---------- */
+html body.theme-dark .vt360-info-card{
+  background:rgba(10,26,44,.92);
+  border-color:rgba(255,255,255,.12);
+  box-shadow:0 16px 40px rgba(0,0,0,.5);
+}
+html body.theme-dark .vt360-info-card h3{color:#fff}
+html body.theme-dark .vt360-info-card p{color:#a9bbcd}
+
+/* ---------- tombol buka navigasi ---------- */
+html body.theme-dark .vt360-navtoggle{
+  background:rgba(10,26,44,.92);
+  border-color:rgba(255,255,255,.14);
+  color:#e6eef7;
+  box-shadow:0 10px 24px rgba(0,0,0,.45);
+}
+
+/* ---------- panel navigasi ---------- */
+html body.theme-dark .vt360-navpanel{
+  background:rgba(10,26,44,.96);
+  border-color:rgba(255,255,255,.12);
+  box-shadow:0 24px 60px rgba(0,0,0,.6);
+}
+html body.theme-dark .vt360-navpanel-head{border-bottom-color:rgba(255,255,255,.1)}
+html body.theme-dark .vt360-navpanel-head span{color:#cfe3f7}
+
+/* tab kategori */
+html body.theme-dark .vt360-cat-btn{
+  background:rgba(255,255,255,.07);
+  border-color:rgba(255,255,255,.14);
+  color:#a9bbcd;
+}
+html body.theme-dark .vt360-cat-btn:hover{color:#fff;border-color:rgba(255,213,74,.5)}
+html body.theme-dark .vt360-cat-btn.active{
+  background:linear-gradient(135deg,#ffd54a,#f9a825);
+  border-color:transparent;
+  color:#0d3a66;
+}
+
+/* daftar lokasi */
+html body.theme-dark .vt360-navlist::-webkit-scrollbar-thumb{background:rgba(255,255,255,.2)}
+html body.theme-dark .vt360-navitem{color:#e6eef7}
+html body.theme-dark .vt360-navitem:hover{background:rgba(255,255,255,.08)}
+html body.theme-dark .vt360-navitem.active{
+  background:linear-gradient(135deg,#ffd54a,#f9a825);
+  color:#0d3a66;
+}
+html body.theme-dark .vt360-navitem.active i{color:#0d3a66}
+
+/* ---------- tombol keluar ---------- */
+html body.theme-dark .vt360-exit-btn{
+  background:rgba(10,26,44,.92);
+  border-color:rgba(255,255,255,.14);
+  color:#e6eef7;
+  box-shadow:0 10px 24px rgba(0,0,0,.45);
+}
+html body.theme-dark .vt360-exit-btn:hover{background:#f9a825;color:#0d3a66}
+
+/* ---------- hotspot ---------- */
+html body.theme-dark .vt360-hotspot{
+  background:rgba(10,26,44,.92);
+  border-color:rgba(255,213,74,.4);
+  box-shadow:0 10px 26px rgba(0,0,0,.55);
+}
+html body.theme-dark .vt360-hotspot:hover{background:#f9a825;color:#0d3a66}
+html body.theme-dark .vt360-hotspot:hover i{color:#0d3a66}
+
+/* ---------- mode kalibrasi ---------- */
+html body.theme-dark .vt360-calib-btn{
+  background:rgba(10,26,44,.95);
+  border-color:rgba(255,255,255,.18);
+}
+html body.theme-dark .vt360-calib-btn.active{background:#e64545}
+html body.theme-dark .vt360-calib-info{
+  background:rgba(10,26,44,.96);
+  color:#e6eef7;
+  box-shadow:0 16px 40px rgba(0,0,0,.55);
+}
+html body.theme-dark .vt360-calib-info code{background:rgba(255,255,255,.1);color:#ffd54a}
+
+/* ---------- latar & state kosong (sedikit lebih gelap) ---------- */
+html body.theme-dark .vt360-fullpage,
+html body.theme-dark .vt360-embed-wrap,
+html body.theme-dark .vt360-loading{background:#050f1b}
+html body.theme-dark .vt360-empty{background:linear-gradient(150deg,#050f1b,#0c3256)}
+</style>
+
 @endpush
 
 @section('content')

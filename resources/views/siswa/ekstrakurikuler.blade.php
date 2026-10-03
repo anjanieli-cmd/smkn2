@@ -7,18 +7,13 @@
 <style>
 /* =========================================================
    EKSTRAKURIKULER — SKANEDA ACTIVITY EXPLORER
-   Hero: 100% senada Karya Siswa (light theme, watermark
-   typography, ornamen abstrak, judul besar bertumpuk).
-   Header & footer dari layouts.app (identik, tidak diubah).
-   Konten baru: filter kategori interaktif + grid kartu
-   "reveal panel" (bukan carousel flip lagi) — lebih mudah
-   dijelajahi, lebih informatif, tampilan lebih premium & unik.
+   Header & footer dari layouts.app (tidak diubah).
    Warna: navy #0d3a66, biru #2f6fa8, putih, gold #ffd54a/#ffb300.
    ========================================================= */
 .ek-page{background:#f7f9fc;color:#0d3a66;overflow:hidden;position:relative}
 .ek-page *{box-sizing:border-box}
 
-/* ---------- HERO (identik gaya Karya Siswa) ---------- */
+/* ---------- HERO ---------- */
 .ek-hero{position:relative;min-height:clamp(560px,72vh,740px);display:flex;align-items:center;overflow:hidden;
   background:#fff;color:#0d3a66;isolation:isolate}
 .ek-hero::after{content:"EKSTRAKURIKULER";position:absolute;z-index:0;left:2%;top:58%;transform:translateY(-50%);
@@ -63,7 +58,7 @@
   .ek-title{font-size:clamp(2.5rem,10.5vw,4.2rem)}}
 @media(max-width:560px){.ek-ref-ornament-image{opacity:.62}}
 
-/* ---------- HOME-ORN (ornamen geometris, identik sistem situs) ---------- */
+/* ---------- HOME-ORN (ornamen geometris) ---------- */
 .home-orn{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
 .home-orn .ho-chevron{position:absolute;width:360px;height:360px;
   border:1px solid rgba(13,58,102,.16);transform:rotate(45deg);border-radius:18px}
@@ -137,7 +132,7 @@
 .ek-desc{font-size:.94rem;line-height:1.85;color:#718396;max-width:560px;margin-top:1.1rem}
 .ek-stats .ek-desc{color:rgba(235,245,253,.75)}
 
-/* ---------- 1. INTRO (editorial 2 kolom) ---------- */
+/* ---------- 1. INTRO ---------- */
 .ek-intro{position:relative;padding:96px 0 100px;background:#fff}
 .ek-intro-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:4.5rem;align-items:center}
 .ek-intro-note{max-width:440px;color:#718396;font-size:.86rem;line-height:1.85;margin-top:1rem}
@@ -159,7 +154,7 @@
   background:linear-gradient(135deg,#ffd54a,#ffb300);color:#0d3a66;font-size:.7rem;font-weight:900;
   letter-spacing:.1em;text-transform:uppercase;padding:.5rem .8rem;border-radius:999px;box-shadow:0 10px 24px rgba(255,179,0,.35)}
 
-/* ---------- 2. STATS band ---------- */
+/* ---------- 2. STATS ---------- */
 .ek-stats{background:#0d3a66;color:#fff;position:relative;padding:96px 0}
 .ek-stats-head{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;flex-wrap:wrap;margin-bottom:3rem}
 .ek-stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4rem}
@@ -177,12 +172,11 @@
 .ek-stat>span{display:block;margin-top:.55rem;font-size:.82rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:#ffd54a}
 .ek-stat>p{font-size:.82rem;line-height:1.6;color:rgba(235,245,253,.7);margin:.6rem 0 0}
 
-/* ---------- 3. EXPLORER (fitur utama: filter kategori + kartu reveal-panel) ---------- */
+/* ---------- 3. EXPLORER ---------- */
 .ek-explore{position:relative;padding:100px 0 110px;
   background-image:radial-gradient(rgba(13,58,102,.05) 1.4px,transparent 1.5px);background-size:22px 22px}
 .ek-explore-head{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap}
 
-/* filter chips */
 .ek-filters{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:2.4rem}
 .ek-filter{display:inline-flex;align-items:center;gap:.5rem;padding:.62rem 1.05rem;border-radius:999px;
   border:1px solid #e3edf0;background:#fff;font-size:.76rem;font-weight:800;color:#48688a;cursor:pointer;
@@ -201,6 +195,7 @@
 .ek-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.25rem;margin-top:2.2rem;width:100%}
 .ek-item{display:flex;flex-direction:column;height:100%;min-width:0;transition:opacity .35s var(--ease,ease),transform .35s var(--ease,ease)}
 .ek-item.ek-hidden{display:none}
+.ek-empty{grid-column:1/-1;text-align:center;padding:2rem;color:#64748b}
 
 .ek-card{position:relative;display:flex;flex-direction:column;width:100%;min-width:0;height:100%;flex:1 1 auto;background:#fff;border-radius:16px;
   border:1px solid rgba(13,58,102,.08);box-shadow:0 8px 22px rgba(13,58,102,.06);overflow:hidden;
@@ -259,7 +254,7 @@
 .ek-card-meta li svg{width:11px;height:11px;flex:0 0 11px;margin-top:.15rem;color:#ff9800}
 .ek-card-meta li b{color:#0d3a66;font-weight:800}
 
-/* ---------- 4. CTA (kartu kontras, senada CTA lain di situs) ---------- */
+/* ---------- 4. CTA ---------- */
 .ek-cta-wrap{position:relative;width:min(1180px,92%);margin:0 auto 5.5rem;padding:64px 5% 68px;text-align:center;
   border-radius:28px;overflow:hidden;color:#fff;
   background:linear-gradient(135deg,#0a2d52,#0d3a66 55%,#123f6e);
@@ -307,13 +302,107 @@
   .ek-cta-btn{padding:.75rem 1.4rem;font-size:.84rem}
   [data-reveal]{opacity:1!important;transform:none!important}
 }
+
+/* =========================================================
+   DARK MODE (satu blok, tanpa duplikat)
+   Memakai CSS nesting (Chrome/Edge 120+, Safari 17.2+, Firefox 117+).
+   Selector :is(...) menangkap berbagai cara layout menandai dark mode
+   (di <html> maupun <body>). Hapus yang tidak dipakai kalau sudah tahu.
+   ========================================================= */
+:is([data-theme="dark"], [data-bs-theme="dark"], .dark, .dark-mode, .dark-theme, .theme-dark){
+
+  & .ek-page{background:#081423;color:#e6eef8}
+
+  /* Hero */
+  & .ek-hero{background:#0a1a2e;color:#e6eef8}
+  & .ek-hero::after{color:rgba(255,255,255,.04);-webkit-text-stroke:1px rgba(255,179,0,.14)}
+  & .ek-ref-ornaments{opacity:.45}
+  & .ek-ref-ornament-image{filter:invert(.92) hue-rotate(180deg) brightness(.9)}
+  & .ek-kicker{background:rgba(255,111,0,.10);border-color:rgba(255,111,0,.35);color:#ff9a3d}
+  & .ek-title .ek-white{color:#fff}
+  & .ek-lead{color:#9db0c6}
+  & .ek-pill{background:#12294a;border-color:rgba(255,255,255,.12);color:#e6eef8;box-shadow:none}
+
+  /* Ornamen */
+  & .home-orn .ho-chevron{border-color:rgba(255,255,255,.12)}
+  & .home-orn .ho-chevron::after{border-color:rgba(120,170,220,.16)}
+  & .home-orn .ho-line{background:rgba(255,255,255,.10)}
+  & .home-orn .ho-line::after{background:rgba(120,170,220,.18)}
+  & .home-orn .ho-dots{background-image:radial-gradient(rgba(255,255,255,.35) 1.6px,transparent 1.7px);opacity:.3}
+  & .home-orn .ho-ring{border-color:rgba(255,255,255,.10)}
+  & .home-orn .ho-ring::before{border-color:rgba(120,170,220,.2)}
+  & .home-orn .ho-square::before{border-color:rgba(255,255,255,.15)}
+  & .home-orn .ho-corner::after{background:rgba(255,255,255,.16)}
+
+  /* Heading umum */
+  & .big-heading{color:#fff}
+  & .ek-eyebrow{color:#ffd54a}
+  & .ek-desc{color:#9db0c6}
+
+  /* Intro */
+  & .ek-intro{background:#0b1b2f}
+  & .ek-intro-note{color:#9db0c6}
+  & .ek-mini{background:#12294a;border-color:rgba(255,255,255,.08)}
+  & .ek-mini:hover{box-shadow:0 16px 36px rgba(0,0,0,.4)}
+  & .ek-mini b{color:#fff}
+  & .ek-mini span{color:#9db0c6}
+  & .ek-intro-visual{box-shadow:0 30px 70px rgba(0,0,0,.5);border-color:rgba(255,179,0,.3)}
+
+  /* Stats */
+  & .ek-stats{background:#061121}
+  & .ek-stat{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.10)}
+
+  /* Explorer */
+  & .ek-explore{background-color:#081423;background-image:radial-gradient(rgba(255,255,255,.05) 1.4px,transparent 1.5px)}
+  & .ek-filter{background:#12294a;border-color:rgba(255,255,255,.10);color:#b8c8dc}
+  & .ek-filter .ek-filter-count{background:rgba(255,255,255,.10);color:#b8c8dc}
+  & .ek-filter:hover{border-color:rgba(255,213,74,.6)}
+  & .ek-filter.active{background:linear-gradient(135deg,#ffd54a,#ffb300);border-color:#ffb300;color:#0a2d52;box-shadow:0 14px 30px rgba(255,179,0,.25)}
+  & .ek-filter.active .ek-filter-count{background:rgba(10,45,82,.15);color:#0a2d52}
+  & .ek-count-line{color:#9db0c6}
+  & .ek-count-line b{color:#ffd54a}
+  & .ek-empty{color:#9db0c6}
+
+  /* Kartu */
+  & .ek-card{background:#0f2340;border-color:rgba(255,255,255,.08);box-shadow:0 10px 26px rgba(0,0,0,.35)}
+  & .ek-card:hover{box-shadow:0 20px 42px rgba(0,0,0,.55)}
+  & .ek-card-avatar{border-color:rgba(255,255,255,.12)}
+  & .ek-card-uname{color:#fff}
+  & .ek-card-usub{color:#8fa3bb}
+  & .ek-card-menu{color:#5f748e}
+  & .ek-card-media{background:#0a1a2e}
+  & .ek-act{color:#9db0c6}
+  & .ek-card-caption{color:#c3d1e2}
+  & .ek-card-caption .ek-card-name{color:#ffd54a}
+  & .ek-card-tag{background:rgba(255,213,74,.16);color:#ffd54a}
+  & .ek-card-sched{color:#b8c8dc}
+  & .ek-card-more{color:#ffd54a}
+  & .ek-card:hover .ek-card-more,
+  & .ek-card.open .ek-card-more{color:#ff9a3d}
+  & .ek-card-meta{border-top-color:rgba(255,255,255,.16)}
+  & .ek-card-meta li{color:#c3d1e2}
+  & .ek-card-meta li b{color:#fff}
+
+  /* CTA */
+  & .ek-cta-wrap{background:linear-gradient(135deg,#040c18 0%,#071a31 55%,#0a2340 100%);
+    border:1px solid rgba(255,213,74,.16);
+    box-shadow:0 34px 80px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,.04)}
+  & .ek-cta-wrap p{color:#a9bbd0}
+  & .ek-cta-note{color:#8fa3bb}
+  & .ek-cta-wrap .home-orn .ho-chevron,
+  & .ek-cta-wrap .home-orn .ho-ring{border-color:rgba(255,255,255,.08)}
+}
+
+/* transisi halus saat ganti tema */
+.ek-page,.ek-hero,.ek-intro,.ek-stats,.ek-explore,.ek-card,.ek-mini,.ek-filter,.ek-pill,.ek-cta-wrap{
+  transition:background-color .35s ease,color .35s ease,border-color .35s ease}
 </style>
 @endpush
 
 @section('content')
 <div class="ek-page">
 
-  <!-- HERO (senada 100% dengan hero Karya Siswa) -->
+  <!-- HERO -->
   <section class="ek-hero">
     <div class="ek-ref-ornaments" aria-hidden="true" style="background-image:url('{{ asset('images/wide_minimalist_abstract_technology_background_des.png') }}');background-size:cover;background-position:center center;">
       <img
@@ -330,7 +419,6 @@
           <span class="ek-white">Ekstra</span>
           <span class="ek-gold">Kurikuler</span>
         </h1>
-        </div>
       </div>
     </div>
   </section>
@@ -431,7 +519,7 @@
     </div>
   </section>
 
-  <!-- 3. EXPLORER: filter kategori + grid kartu (fitur utama, baru) -->
+  <!-- 3. EXPLORER -->
   <section class="ek-explore" id="ek-explore">
     <div class="home-orn" aria-hidden="true">
       <span class="ho-chevron"></span><span class="ho-dots"></span><span class="ho-ring"></span><span class="ho-square"></span><span class="ho-gold"></span>
@@ -509,7 +597,7 @@
             </article>
           </div>
         @empty
-          <p style="grid-column:1/-1;text-align:center;padding:2rem;color:#64748b">Belum ada data ekstrakurikuler.</p>
+          <p class="ek-empty">Belum ada data ekstrakurikuler.</p>
         @endforelse
       </div>
 
@@ -566,7 +654,7 @@
             </article>
           </div>
         @empty
-          <p style="grid-column:1/-1;text-align:center;padding:2rem;color:#64748b">Belum ada data organisasi.</p>
+          <p class="ek-empty">Belum ada data organisasi.</p>
         @endforelse
       </div>
     </div>
@@ -591,7 +679,7 @@
 
 @push('scripts')
 <script>
-  /* ---- Scroll Reveal (senada halaman lain) ---- */
+  /* ---- Scroll Reveal ---- */
   (function () {
     var revealEls = document.querySelectorAll('[data-reveal]');
     if (!('IntersectionObserver' in window)) {
@@ -638,7 +726,7 @@
     }
   })();
 
-  /* ---- Kartu: klik/tap untuk membuka panel detail (desktop tetap bisa hover) ---- */
+  /* ---- Kartu: klik/tap untuk membuka panel detail ---- */
   (function () {
     document.querySelectorAll('[data-toggle]').forEach(function (card) {
       card.addEventListener('click', function () {
