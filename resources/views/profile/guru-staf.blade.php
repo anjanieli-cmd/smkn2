@@ -1,4 +1,3 @@
-
 @extends('layouts.app')
 
 @section('title', 'Staff & Guru — SMK Negeri 2 Mojokerto')
@@ -7,438 +6,120 @@
 @push('styles')
 <style>
 /* =========================================================
-   STAFF & GURU — HERO 100% mengikuti Struktur Organisasi
-   GURU & STAF — PREMIUM EDITION
-   Visual language: SENADA PERSIS dengan Sejarah Sekolah,
-   Struktur Organisasi & Visi Misi — foto gedung + overlay,
-   watermark typography, ornamen geometris (home-orn),
-   glassmorphism, scroll-reveal.
-   Kartu: ID card lanyard design (flip 3D) — depan identitas
-   + pas foto 3x4, belakang profil & motto.
+   STAFF & GURU — PREMIUM EDITION
+   Hero mengikuti Struktur Organisasi. Kartu: ID card flip 3D
+   (depan identitas + pas foto, belakang profil & motto).
    Warna: navy #0d3a66, biru #2f6fa8, putih, gold #ffd54a/#ffb300.
+   (CSS yang tidak dipakai halaman ini sudah dirapikan.)
    ========================================================= */
 .sg-page{background:#f7f9fc;color:#0d3a66;overflow:hidden;position:relative}
 .sg-page *{box-sizing:border-box}
-.sg-shell{width:100%}
-
-/* ---------- HERO: clean editorial showcase, tanpa foto background ---------- */
-.history-hero{position:relative;min-height:78vh;display:flex;align-items:center;overflow:hidden;
-  background:#fff;color:#0d3a66}
-.history-hero::before{display:none}
-.history-hero::after{content:"STAFF & GURU";position:absolute;z-index:0;left:-2%;top:50%;transform:translateY(-50%);
-  font-family:var(--font-display);font-size:clamp(10rem,30vw,30rem);font-weight:900;line-height:.78;
-  letter-spacing:.015em;color:rgba(13,58,102,.035);
-  -webkit-text-stroke:1px rgba(255,122,0,.12);
-  pointer-events:none;white-space:nowrap;user-select:none}
-
-/* ---------- ORNAMEN HERO KHUSUS: GEOMETRIC NETWORK ---------- */
-.history-hero-geometry{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
-.history-hero-geometry svg{position:absolute;width:100%;height:100%;inset:0;display:block}
-.history-hero-geometry .geo-line{fill:none;stroke:#ff7a00;stroke-width:1.8;vector-effect:non-scaling-stroke;opacity:.42}
-.history-hero-geometry .geo-line-navy{fill:none;stroke:#0d3a66;stroke-width:1.5;vector-effect:non-scaling-stroke;opacity:.24}
-.history-hero-geometry .geo-node{fill:#fff;stroke:#ff7a00;stroke-width:2;vector-effect:non-scaling-stroke}
-.history-hero-geometry .geo-node-navy{fill:#fff;stroke:#0d3a66;stroke-width:2;vector-effect:non-scaling-stroke}
-.history-hero-geometry .geo-ring{fill:none;stroke:#0d3a66;stroke-width:1.2;opacity:.16}
-.history-hero-geometry .geo-ring-orange{fill:none;stroke:#ff7a00;stroke-width:1.5;opacity:.28}
-.history-hero-geometry .geo-diamond{fill:none;stroke:#ff7a00;stroke-width:1.4;opacity:.30}
-.history-hero-geometry .geo-dot{fill:#ff7a00;opacity:.52}
-.history-hero-geometry .geo-square{fill:#ff7a00;opacity:.9}
-.history-hero-geometry .geo-square-navy{fill:#0d3a66;opacity:.9}
-.history-hero-geometry .geo-soft{fill:#ff7a00;opacity:.055}
-
-.history-hero-geometry .geo-cluster-left{position:absolute;left:-70px;top:-58px;width:330px;height:250px}
-.history-hero-geometry .geo-cluster-right{position:absolute;right:-55px;top:18px;width:360px;height:270px}
-.history-hero-geometry .geo-network-left{position:absolute;left:-35px;bottom:12px;width:500px;height:220px}
-.history-hero-geometry .geo-modules{position:absolute;right:-25px;bottom:-8px;width:430px;height:210px;transform:rotate(-2deg)}
-
-.history-hero::after{z-index:0}
-
-.history-hero-inner{position:relative;z-index:3;width:100%;max-width:1500px;margin:0 auto;
-  padding:clamp(4rem,10vh,7rem) clamp(1.25rem,4vw,4.5rem) clamp(4rem,9vh,6rem);
-  display:block}
-
-.history-kicker{display:inline-flex;align-items:center;gap:.65rem;font-size:.72rem;font-weight:900;
-  letter-spacing:.18em;text-transform:uppercase;color:#ff6f00;margin-bottom:1.05rem;
-  padding:.55rem .85rem;border:1px solid rgba(255,111,0,.18);border-radius:999px;
-  background:#fffaf5}
-.history-kicker::before{content:"";width:9px;height:9px;border-radius:50%;
-  background:#ff6f00;box-shadow:0 0 0 6px rgba(255,111,0,.10)}
-
-.history-title{font-family:var(--font-display);font-size:clamp(4rem,10vw,9.2rem);line-height:.84;
-  letter-spacing:-.035em;margin:0;max-width:1250px;text-transform:uppercase;
-  text-shadow:none;animation:hdFadeUp .7s .1s var(--ease, ease) both}
-.history-title .sejarah-white{color:#0d3a66;display:block}
-.history-title .skaneda-gold{display:block;
-  background:linear-gradient(135deg,#ffd54a 0%,#ffb300 45%,#ff7a00 100%);
-  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#ff6f00;
-  text-shadow:none;letter-spacing:-.025em}
-
-.history-lead{font-size:1rem;line-height:1.75;color:#52657a;max-width:720px;
-  margin:1.7rem 0 0;animation:hdFadeUp .7s .26s var(--ease, ease) both}
-.history-hero-meta{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.6rem;animation:hdFadeUp .7s .4s var(--ease, ease) both}
-.history-pill{display:inline-flex;align-items:center;gap:.5rem;padding:.55rem .85rem;
-  border:1px solid rgba(13,58,102,.12);background:#fff;border-radius:999px;color:#0d3a66;
-  font-size:.72rem;font-weight:800;box-shadow:0 8px 24px rgba(13,58,102,.06)}
-.history-pill i{color:#ff7a00}
-.hero-photo{display:none}
-.hero-photo::before,.hero-photo img,.hero-photo-caption{display:none}
 @keyframes hdFadeUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
 
-  /* ---------- BRAND CARD: SKANEDA ---------- */
-  .sg-brand-card{
-    width:min(100%,520px);
-    min-height:108px;
-    display:grid !important;
-    grid-template-columns:92px minmax(0,1fr) 38px;
-    align-items:center;
-    gap:1.1rem;
-    margin-top:1.7rem;
-    padding:1rem 1.15rem !important;
-    border-radius:24px !important;
-    text-decoration:none;
-    color:#0d3a66;
-    background:rgba(255,255,255,.94) !important;
-    border:1px solid rgba(13,58,102,.10) !important;
-    box-shadow:0 18px 45px rgba(13,58,102,.12),0 4px 16px rgba(255,170,0,.08) !important;
-    backdrop-filter:blur(12px);
-    -webkit-backdrop-filter:blur(12px);
-  }
-  .sg-brand-card:hover{
-    transform:translateY(-4px);
-    background:#fff !important;
-    border-color:rgba(255,180,0,.25) !important;
-    box-shadow:0 24px 55px rgba(13,58,102,.16),0 8px 22px rgba(255,170,0,.10) !important;
-  }
-  .sg-brand-logo{
-    width:78px;height:78px;
-    display:grid;place-items:center;
-    border-radius:20px;
-    background:linear-gradient(145deg,#fff,#f4f8fc);
-    border:1px solid rgba(13,58,102,.08);
-    box-shadow:0 8px 20px rgba(13,58,102,.10);
-    overflow:hidden;
-  }
-  .sg-brand-logo img{
-    width:64px;height:64px;object-fit:contain;display:block;
-  }
-  .sg-brand-copy{
-    display:flex;flex-direction:column;gap:.22rem;
-    min-width:0;
-  }
-  .sg-brand-copy strong{
-    font-family:var(--font-display);
-    font-size:1.18rem;
-    line-height:1.15;
-    font-weight:900;
-    color:#0d3a66;
-    white-space:nowrap;
-  }
-  .sg-brand-copy small{
-    font-size:.92rem;
-    line-height:1.35;
-    font-weight:700;
-    color:#5d7893;
-  }
-  .sg-brand-card .history-vt-arrow{
-    color:#ffb300;
-    font-size:1.25rem;
-    justify-self:end;
-  }
+/* ---------- HERO ---------- */
+.history-hero{position:relative;min-height:78vh;display:flex;align-items:center;overflow:hidden;background:#fff;color:#0d3a66}
+.history-hero::after{content:"STAFF & GURU";position:absolute;z-index:0;left:-2%;top:50%;transform:translateY(-50%);
+  font-family:var(--font-display);font-size:clamp(10rem,30vw,30rem);font-weight:900;line-height:.78;letter-spacing:.015em;
+  color:rgba(13,58,102,.035);-webkit-text-stroke:1px rgba(255,122,0,.12);pointer-events:none;white-space:nowrap;user-select:none}
+.history-ref-ornaments{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+.history-ref-ornament-image{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover;object-position:center;max-width:none;opacity:1}
+.history-hero-inner{position:relative;z-index:4;width:100%;max-width:1500px;margin:0 auto;display:block;
+  padding:clamp(4rem,10vh,7rem) clamp(1.25rem,4vw,4.5rem) clamp(4rem,9vh,6rem)}
+.history-kicker{position:relative;z-index:5;display:inline-flex;align-items:center;gap:.65rem;font-size:.72rem;font-weight:900;letter-spacing:.18em;text-transform:uppercase;
+  color:#ff6f00;margin-bottom:1.05rem;padding:.55rem .85rem;border:1px solid rgba(255,111,0,.18);border-radius:999px;background:#fffaf5}
+.history-kicker::before{content:"";width:9px;height:9px;border-radius:50%;background:#ff6f00;box-shadow:0 0 0 6px rgba(255,111,0,.10)}
+.history-title{position:relative;z-index:5;font-family:var(--font-display);font-size:clamp(4rem,10vw,9.2rem);line-height:.84;letter-spacing:-.035em;
+  margin:0;max-width:1250px;text-transform:uppercase;animation:hdFadeUp .7s .1s var(--ease,ease) both}
+.history-title .sejarah-white{color:#0d3a66;display:block}
+.history-title .skaneda-gold{display:block;background:linear-gradient(135deg,#ffd54a 0%,#ffb300 45%,#ff7a00 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#ffc107;text-shadow:none;letter-spacing:-.025em}
+.history-vt-cta{position:relative;z-index:5;display:inline-flex;align-items:center;gap:.8rem;width:max-content;max-width:100%;margin-top:1.7rem;
+  padding:.8rem 1rem;border-radius:16px;text-decoration:none;color:#0d3a66;background:#fff;border:1px solid rgba(13,58,102,.12);
+  box-shadow:0 12px 30px rgba(13,58,102,.08);transition:transform .3s ease,background .3s ease,border-color .3s ease,box-shadow .3s ease}
+.history-vt-cta:hover{transform:translateY(-4px);background:#fffaf5;border-color:rgba(255,122,0,.28);box-shadow:0 18px 38px rgba(13,58,102,.12)}
+.history-vt-icon{flex:0 0 46px;width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,#ffd54a,#ff7a00);color:#0d3a66;font-size:.9rem}
+.history-vt-cta strong{display:block;font-size:1rem;line-height:1.15;font-weight:900;letter-spacing:.01em}
+.history-vt-cta small{display:block;margin-top:.25rem;color:#718096;font-size:.72rem;font-weight:600}
+.history-vt-arrow{margin-left:.3rem;color:#ffd54a;font-size:1rem}
 
-  .history-vt-cta{
-    display:inline-flex;align-items:center;gap:.8rem;margin-top:1.7rem;
-    padding:.8rem 1rem;border-radius:16px;text-decoration:none;color:#0d3a66;
-    background:#fff;border:1px solid rgba(13,58,102,.12);
-    box-shadow:0 12px 30px rgba(13,58,102,.08);
-    transition:transform .3s ease,background .3s ease,border-color .3s ease,box-shadow .3s ease
-  }
-  .history-vt-cta:hover{
-    transform:translateY(-4px);background:#fffaf5;
-    border-color:rgba(255,122,0,.28);box-shadow:0 18px 38px rgba(13,58,102,.12)
-  }
-  .history-vt-icon{
-    width:46px;height:46px;border-radius:14px;display:grid;place-items:center;
-    background:linear-gradient(135deg,#ffd54a,#ff7a00);color:#0d3a66;font-size:.9rem
-  }
-  .history-vt-cta strong{display:block;font-size:1rem;line-height:1.15;font-weight:900;letter-spacing:.01em}
-  .history-vt-cta small{display:block;margin-top:.25rem;color:#718096;font-size:.72rem;font-weight:600}
-  .history-vt-arrow{margin-left:.3rem;color:#ffd54a;font-size:1rem}
-
-@media(max-width:700px){
-  .sg-brand-card{
-    width:100%;
-    grid-template-columns:68px minmax(0,1fr) 28px;
-    min-height:86px;
-    padding:.75rem .85rem !important;
-    gap:.75rem;
-    border-radius:18px !important;
-  }
-  .sg-brand-logo{width:58px;height:58px;border-radius:15px}
-  .sg-brand-logo img{width:48px;height:48px}
-  .sg-brand-copy strong{font-size:.92rem;white-space:normal}
-  .sg-brand-copy small{font-size:.72rem}
-  .sg-brand-card .history-vt-arrow{font-size:1rem}
-
-  .history-hero{min-height:70vh}
-  .history-hero-inner{padding-top:3.5rem;padding-bottom:4rem}
-  .history-title{font-size:clamp(3.5rem,16vw,6rem);line-height:.88}
-  .history-hero::after{font-size:clamp(7rem,32vw,12rem);left:-8%}
-}
-
-.history-ref-ornaments{
-  position:absolute;
-  inset:0;
-  z-index:1;
-  pointer-events:none;
-  overflow:hidden;
-}
-.history-ref-ornaments svg{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  display:block;
-}
-.history-ref-ornaments path{
-  fill:none;
-  stroke:#0d3a66;
-  stroke-width:1.8;
-  vector-effect:non-scaling-stroke;
-  opacity:.20;
-}
-.history-ref-ornaments .ref-soft path{
-  stroke:#ff7a00;
-  opacity:.28;
-}
-.history-ref-ornaments .ref-soft-bottom path{
-  stroke:#0d3a66;
-  opacity:.18;
-}
-.history-ref-ornaments .ref-left path{
-  stroke:#0d3a66;
-  opacity:.18;
-}
-.history-ref-ornaments .ref-right path,
-.history-ref-ornaments .ref-bottom path{
-  stroke:#0d3a66;
-  opacity:.23;
-}
-.history-ref-ornaments .ref-diamond-orange{
-  fill:none;
-  stroke:#ff7a00;
-  stroke-width:2;
-  opacity:.52;
-}
-.history-ref-ornaments .ref-hex{
-  fill:none;
-  stroke:#0d3a66;
-  stroke-width:2;
-  opacity:.30;
-}
-.history-ref-ornaments .ref-fill-orange{
-  fill:#ff7a00;
-  opacity:.95;
-}
-.history-ref-ornaments .ref-fill-navy{
-  fill:#0d3a66;
-  opacity:.95;
-}
-.history-ref-ornaments .ref-node-orange{
-  fill:#fff;
-  stroke:#ff7a00;
-  stroke-width:2;
-}
-.history-ref-ornaments .ref-node-navy{
-  fill:#fff;
-  stroke:#0d3a66;
-  stroke-width:2;
-}
-.history-ref-ornaments .ref-orbit{
-  fill:none;
-  stroke:#0d3a66;
-  stroke-width:1.6;
-  opacity:.22;
-}
-.history-ref-ornaments .ref-orbit-orange{
-  fill:none;
-  stroke:#ff7a00;
-  stroke-width:1.6;
-  opacity:.30;
-}
-.history-ref-ornaments .ref-orbit-core{
-  fill:none;
-  stroke:#0d3a66;
-  stroke-width:2.2;
-  opacity:.50;
-}
-.history-ref-ornaments .ref-heavy-orange{
-  fill:none;
-  stroke:#ff7a00;
-  stroke-width:7;
-  opacity:.90;
-}
-.history-ref-ornaments .ref-heavy-navy{
-  fill:none;
-  stroke:#0d3a66;
-  stroke-width:7;
-  opacity:.90;
-}
-.history-ref-ornaments .ref-dots circle{
-  fill:#0d3a66;
-  opacity:.20;
-}
-.history-ref-ornaments .ref-soft rect,
-.history-ref-ornaments .ref-soft-bottom rect{
-  fill:none;
-  stroke:#ff7a00;
-  stroke-width:2;
-  opacity:.45;
-}
-/* ---------- SECTION COMMON (keluarga Beranda) ---------- */
+/* ---------- COMMON ---------- */
 .sg-wide{width:min(1380px,92%);margin:auto}
-.sg-section{position:relative;padding:96px 0 110px;background:#fff}
-.eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-size:.74rem;font-weight:800;
-  letter-spacing:.18em;text-transform:uppercase;color:#0d3a66;margin-bottom:.85rem}
+.eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-size:.74rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#0d3a66;margin-bottom:.85rem}
 .eyebrow::before{content:"";width:26px;height:3px;border-radius:99px;background:linear-gradient(90deg,#0d3a66,#2f6fa8)}
-.big-heading{font-family:var(--font-display);font-size:clamp(2.1rem,4.4vw,4.2rem);line-height:1.02;
-  letter-spacing:.01em;margin:0;color:#0d3a66;text-shadow:0 2px 10px rgba(13,58,102,.06)}
-.big-heading span{background:linear-gradient(135deg,#ffd54a 0%,#ffb300 45%,#ff7a00 100%);
-  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+.big-heading{font-family:var(--font-display);font-size:clamp(2.1rem,4.4vw,4.2rem);line-height:1.02;letter-spacing:.01em;margin:0;color:#0d3a66;text-shadow:0 2px 10px rgba(13,58,102,.06)}
+.big-heading span{background:linear-gradient(135deg,#ffd54a 0%,#ffb300 45%,#ff7a00 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
 .sg-sec-desc{font-size:.98rem;line-height:1.9;color:#5f7186;margin:1rem 0 0;max-width:640px}
 
-/* ---------- INTRO / STATS (glassmorphism) ---------- */
+/* ---------- INTRO / STATS ---------- */
 .sg-intro{position:relative;padding:96px 0 110px;background:#fff}
 .intro-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:5rem;align-items:center}
 .intro-copy{font-size:1rem;line-height:1.95;color:#5f7186;margin-top:1.25rem;max-width:720px}
 .stat-strip{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
-.stat-box{position:relative;padding:1.4rem;border-radius:22px;overflow:hidden;min-height:150px;
-  background:rgba(255,255,255,.72);border:1px solid rgba(13,58,102,.16);
+.stat-box{position:relative;padding:1.4rem;border-radius:22px;overflow:hidden;min-height:150px;background:rgba(255,255,255,.72);border:1px solid rgba(13,58,102,.16);
   box-shadow:0 18px 44px rgba(13,58,102,.08);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
-.stat-box::after{content:"";position:absolute;right:-26px;bottom:-30px;width:90px;height:90px;
-  border:2px solid rgba(255,179,0,.25);transform:rotate(45deg)}
-.stat-num{font-family:var(--font-display);font-size:clamp(2.2rem,4vw,3.1rem);font-weight:800;line-height:1;
-  background:linear-gradient(135deg,#0d3a66,#2f6fa8);-webkit-background-clip:text;background-clip:text;
-  -webkit-text-fill-color:transparent;color:#0d3a66}
+.stat-box::after{content:"";position:absolute;right:-26px;bottom:-30px;width:90px;height:90px;border:2px solid rgba(255,179,0,.25);transform:rotate(45deg)}
+.stat-num{font-family:var(--font-display);font-size:clamp(2.2rem,4vw,3.1rem);font-weight:800;line-height:1;background:linear-gradient(135deg,#0d3a66,#2f6fa8);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#0d3a66}
 .stat-label{font-size:.78rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:#5f7186;margin-top:.6rem}
 .stat-label i{color:#ffb300;margin-right:.3rem}
 
-/* ---------- GURU & STAF SECTION ---------- */
+/* ---------- KATALOG ---------- */
 .sg-catalog{position:relative;padding:96px 0 110px;background:#fff}
 .sg-wrap{width:min(1380px,92%);margin:auto}
 .sg-sec-head{max-width:720px}
-.sg-toolbar{display:flex;flex-wrap:wrap;gap:.8rem;align-items:center;margin:2.2rem 0 2.6rem;
-  background:rgba(255,255,255,.85);border:1px solid rgba(13,58,102,.14);border-radius:20px;
-  padding:1rem 1.2rem;box-shadow:0 14px 36px rgba(13,58,102,.07);
-  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
-.sg-search{display:flex;align-items:center;gap:.6rem;flex:1;min-width:220px;padding:.55rem .95rem;
-  border:1px solid rgba(13,58,102,.16);border-radius:12px;background:#f7f9fc;color:#5f7186}
+.sg-toolbar{display:flex;flex-wrap:wrap;gap:.8rem;align-items:center;margin:2.2rem 0 2.6rem;background:rgba(255,255,255,.85);border:1px solid rgba(13,58,102,.14);border-radius:20px;
+  padding:1rem 1.2rem;box-shadow:0 14px 36px rgba(13,58,102,.07);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.sg-search{display:flex;align-items:center;gap:.6rem;flex:1;min-width:220px;padding:.55rem .95rem;border:1px solid rgba(13,58,102,.16);border-radius:12px;background:#f7f9fc;color:#5f7186}
 .sg-search i{color:#2f6fa8}
-.sg-search input{border:none;outline:none;background:transparent;flex:1;font-size:.9rem;color:#0d3a66;
-  font-family:inherit;min-width:0}
+.sg-search input{border:none;outline:none;background:transparent;flex:1;font-size:.9rem;color:#0d3a66;font-family:inherit;min-width:0}
 .sg-search input::placeholder{color:#93a5b8}
 .sg-filter-label{font-size:.72rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#5f7186}
 .sg-filters{display:flex;flex-wrap:wrap;gap:.5rem}
-.sg-fchip{border:1px solid rgba(13,58,102,.2);background:#fff;color:#0d3a66;font-size:.78rem;font-weight:800;
-  padding:.5rem 1rem;border-radius:999px;cursor:pointer;font-family:inherit;
+.sg-fchip{border:1px solid rgba(13,58,102,.2);background:#fff;color:#0d3a66;font-size:.78rem;font-weight:800;padding:.5rem 1rem;border-radius:999px;cursor:pointer;font-family:inherit;
   transition:all .3s ease;display:inline-flex;align-items:center;gap:.4rem}
 .sg-fchip i{color:#2f6fa8}
 .sg-fchip:hover{border-color:rgba(255,179,0,.5);transform:translateY(-2px)}
-.sg-fchip.is-active{background:linear-gradient(135deg,#0d3a66,#2f6fa8);color:#fff;border-color:transparent;
-  box-shadow:0 10px 22px rgba(13,58,102,.3)}
+.sg-fchip.is-active{background:linear-gradient(135deg,#0d3a66,#2f6fa8);color:#fff;border-color:transparent;box-shadow:0 10px 22px rgba(13,58,102,.3)}
 .sg-fchip.is-active i{color:#ffd54a}
-
 .sg-empty{display:none;text-align:center;padding:3.5rem 1rem;color:#5f7186}
 .sg-empty.show{display:block}
 .sg-empty i{font-size:2.4rem;color:#c7d3e0;margin-bottom:.9rem}
 .sg-empty strong{display:block;font-family:var(--font-display);font-size:1.3rem;color:#0d3a66;margin-bottom:.4rem}
 
-/* ---------- KATALOG: PAGED GRID (jumlah kartu per halaman fleksibel, geser ke samping) ---------- */
+/* PAGED GRID */
 .sg-slider{position:relative}
-.sg-grid-viewport{
-  overflow-x:auto;
-  overflow-y:hidden;
-  scroll-behavior:smooth;
-  scroll-snap-type:x mandatory;
-  -webkit-overflow-scrolling:touch;
-  padding-bottom:.4rem;
-}
+.sg-grid-viewport{overflow-x:auto;overflow-y:hidden;scroll-behavior:smooth;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding-bottom:.4rem}
 .sg-grid-viewport::-webkit-scrollbar{display:none}
-
-/* align-items:flex-start supaya halaman dengan kartu lebih sedikit TIDAK ikut
-   diregangkan (stretch) menyamai tinggi halaman yang penuh — ini penyebab
-   jarak antar kartu jadi renggang di halaman yang isinya kurang dari 12. */
 .sg-track{display:flex;width:max-content;align-items:flex-start}
-
-/* Satu halaman menampung sampai 12 kartu (3 kolom x 4 baris pada desktop).
-   grid-auto-rows:auto + align-content:start membuat setiap kartu ukurannya
-   konsisten dan jarak antar kartu tetap sama, baik halaman berisi 12, 8,
-   atau berapa pun jumlah kartunya. */
-.sg-page-block{
-  flex:0 0 min(1380px,92vw);
-  width:min(1380px,92vw);
-  scroll-snap-align:start;
-  align-self:flex-start;
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  grid-auto-rows:auto;
-  align-content:start;
-  gap:1.8rem;
-  padding:0 .4rem;
-  box-sizing:border-box;
-}
+.sg-page-block{flex:0 0 min(1380px,92vw);width:min(1380px,92vw);scroll-snap-align:start;align-self:flex-start;display:grid;grid-template-columns:repeat(3,1fr);
+  grid-auto-rows:auto;align-content:start;gap:1.8rem;padding:0 .4rem;box-sizing:border-box}
 .sg-card.is-hidden{display:none}
-
-/* Tombol panah navigasi slider (simetris di tengah secara vertikal) */
-.sg-arrow{position:absolute;top:50%;transform:translateY(-50%);width:54px;height:54px;border-radius:50%;
-  background:#0d3a66;border:none;display:flex;align-items:center;justify-content:center;
-  color:#fff;font-size:1.1rem;cursor:pointer;z-index:10;box-shadow:0 12px 26px rgba(13,58,102,.4);
-  transition:background .25s ease,transform .25s ease,opacity .25s ease}
+.sg-arrow{position:absolute;top:50%;transform:translateY(-50%);width:54px;height:54px;border-radius:50%;background:#0d3a66;border:none;display:flex;align-items:center;justify-content:center;
+  color:#fff;font-size:1.1rem;cursor:pointer;z-index:10;box-shadow:0 12px 26px rgba(13,58,102,.4);transition:background .25s ease,transform .25s ease,opacity .25s ease}
 .sg-arrow:hover{background:#ffb300;color:#0d3a66;transform:translateY(-50%) scale(1.08)}
 .sg-arrow.prev{left:-64px}
 .sg-arrow.next{right:-64px}
 .sg-arrow:disabled{opacity:.3;cursor:default;pointer-events:none}
-
 .sg-page-dots{display:flex;justify-content:center;flex-wrap:wrap;gap:.5rem;margin-top:1.6rem}
-.sg-page-dots button{width:9px;height:9px;border-radius:50%;border:none;background:rgba(13,58,102,.2);
-  cursor:pointer;padding:0;transition:background .25s ease,width .25s ease}
+.sg-page-dots button{width:9px;height:9px;border-radius:50%;border:none;background:rgba(13,58,102,.2);cursor:pointer;padding:0;transition:background .25s ease,width .25s ease}
 .sg-page-dots button.active{background:#ffb300;width:26px;border-radius:6px}
-
-.sg-scroll-hint{display:flex;align-items:center;gap:.5rem;justify-content:center;margin-top:1rem;
-  font-size:.72rem;font-weight:700;color:#8199b1;letter-spacing:.04em}
+.sg-scroll-hint{display:flex;align-items:center;gap:.5rem;justify-content:center;margin-top:1rem;font-size:.72rem;font-weight:700;color:#8199b1;letter-spacing:.04em}
 .sg-scroll-hint i{color:#ffb300}
-
-@media (max-width:1200px){
-  .sg-page-block{grid-template-columns:repeat(3,1fr)}
-}
-@media (max-width:950px){
+@media(max-width:1200px){.sg-page-block{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:950px){
   .sg-page-block{grid-template-columns:repeat(2,1fr);gap:1.5rem;flex:0 0 92vw;width:92vw;max-width:92vw}
   .sg-arrow{width:46px;height:46px;font-size:1rem}
   .sg-arrow.prev{left:-22px}
   .sg-arrow.next{right:-22px}
 }
-@media (max-width:700px){
+@media(max-width:700px){
   .sg-toolbar{flex-direction:column;align-items:stretch}
   .sg-search{width:100%}
   .sg-filters{overflow-x:auto;white-space:nowrap;flex-wrap:nowrap;padding-bottom:.3rem}
   .sg-grid-viewport{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;scroll-snap-type:x mandatory}
-  .sg-page-block{
-    display:flex !important;
-    flex-direction:row !important;
-    flex-wrap:nowrap !important;
-    overflow-x:auto !important;
-    scroll-snap-type:x mandatory !important;
-    gap:1.1rem !important;
-    flex:0 0 100% !important;
-    width:100% !important;
-    max-width:100% !important;
-    padding:0 0.5rem 0.5rem !important;
-  }
-  .sg-card{
-    flex:0 0 calc(100vw - 44px) !important;
-    width:calc(100vw - 44px) !important;
-    max-width:340px !important;
-    scroll-snap-align:center !important;
-  }
+  .sg-page-block{display:flex!important;flex-direction:row!important;flex-wrap:nowrap!important;overflow-x:auto!important;scroll-snap-type:x mandatory!important;gap:1.1rem!important;
+    flex:0 0 100%!important;width:100%!important;max-width:100%!important;padding:0 .5rem .5rem!important}
+  .sg-card{flex:0 0 calc(100vw - 44px)!important;width:calc(100vw - 44px)!important;max-width:340px!important;scroll-snap-align:center!important}
   .sg-slider{padding-bottom:3.4rem}
   .sg-arrow{top:auto;bottom:0;transform:none;width:44px;height:44px;font-size:.9rem}
   .sg-arrow:hover{transform:scale(1.08)}
@@ -447,149 +128,79 @@
 }
 
 /* =========================================================
-   KARTU ID DIGITAL — DIGITAL IDENTITY CARD (LANDSCAPE / HORIZONTAL)
+   KARTU ID DIGITAL (landscape, flip 3D)
    ========================================================= */
 .idwrap{perspective:1600px;width:100%}
-.idcard{position:relative;width:100%;aspect-ratio:4/5;transform-style:preserve-3d;
-  transition:transform .75s cubic-bezier(.23,.7,.35,1);cursor:pointer;outline:none}
+.idcard{position:relative;width:100%;aspect-ratio:4/5;transform-style:preserve-3d;transition:transform .75s cubic-bezier(.23,.7,.35,1);cursor:pointer;outline:none}
 .idcard.flipped{transform:rotateY(180deg)}
-.idface{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;
-  border-radius:22px;overflow:hidden;display:flex;flex-direction:column;background:#fff;
-  border:1px solid rgba(13,58,102,.12);
-  box-shadow:0 18px 44px rgba(13,58,102,.12),0 2px 8px rgba(13,58,102,.06)}
-.idcard:hover .idface{box-shadow:0 28px 62px rgba(13,58,102,.22),0 4px 12px rgba(13,58,102,.08);
-  border-color:rgba(255,179,0,.4)}
+.idface{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:22px;overflow:hidden;display:flex;flex-direction:column;background:#fff;
+  border:1px solid rgba(13,58,102,.12);box-shadow:0 18px 44px rgba(13,58,102,.12),0 2px 8px rgba(13,58,102,.06)}
+.idcard:hover .idface{box-shadow:0 28px 62px rgba(13,58,102,.22),0 4px 12px rgba(13,58,102,.08);border-color:rgba(255,179,0,.4)}
 .idfront{transform:rotateY(0deg)}
 .idback{transform:rotateY(180deg)}
-
 .idcard-h{aspect-ratio:1.58/1;min-height:0}
-
-.idcard-h .idfront::before{content:"SKANEDA";position:absolute;right:-8px;bottom:14%;z-index:1;pointer-events:none;
-  font-family:var(--font-display);font-size:clamp(1.9rem,3.2vw,2.7rem);font-weight:900;line-height:1;
-  letter-spacing:.06em;color:rgba(13,58,102,.045);-webkit-text-stroke:1px rgba(13,58,102,.06);
-  white-space:nowrap;user-select:none;transform:rotate(-90deg);transform-origin:right center}
-.idcard-h .idfront::after{content:"";position:absolute;right:-14px;top:-14px;width:52px;height:52px;z-index:1;
-  border:2px solid rgba(255,179,0,.2);transform:rotate(45deg);pointer-events:none}
-
-.idh-head{position:relative;z-index:2;display:flex;align-items:center;gap:.6rem;padding:.5rem .78rem .48rem;
-  background:linear-gradient(135deg,#0b3558,#0d3a66 55%,#164e80);color:#fff;overflow:hidden}
-.idh-head::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;
-  background:linear-gradient(90deg,#ffd54a,#ffb300,#ff7a00)}
-.idh-head::before{content:"";position:absolute;right:-18px;top:-26px;width:64px;height:64px;
-  border:2px solid rgba(255,213,74,.18);transform:rotate(45deg)}
-.idh-logo{
-  flex:0 0 auto;
-  width:32px;
-  height:32px;
-  min-width:32px;
-  min-height:32px;
-  border-radius:9px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  overflow:hidden;
-  background:linear-gradient(135deg,#ffd54a,#ffb300);
-  box-shadow:0 6px 14px rgba(255,179,0,.38);
-}
-.idh-logo img{
-  display:block;
-  width:25px;
-  height:25px;
-  max-width:25px;
-  max-height:25px;
-  object-fit:contain;
-  object-position:center;
-  opacity:1;
-  visibility:visible;
-}
+.idcard-h .idfront::before{content:"SKANEDA";position:absolute;right:-8px;bottom:14%;z-index:1;pointer-events:none;font-family:var(--font-display);font-size:clamp(1.9rem,3.2vw,2.7rem);font-weight:900;line-height:1;
+  letter-spacing:.06em;color:rgba(13,58,102,.045);-webkit-text-stroke:1px rgba(13,58,102,.06);white-space:nowrap;user-select:none;transform:rotate(-90deg);transform-origin:right center}
+.idcard-h .idfront::after{content:"";position:absolute;right:-14px;top:-14px;width:52px;height:52px;z-index:1;border:2px solid rgba(255,179,0,.2);transform:rotate(45deg);pointer-events:none}
+.idh-head{position:relative;z-index:2;display:flex;align-items:center;gap:.6rem;padding:.5rem .78rem .48rem;background:linear-gradient(135deg,#0b3558,#0d3a66 55%,#164e80);color:#fff;overflow:hidden}
+.idh-head::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:linear-gradient(90deg,#ffd54a,#ffb300,#ff7a00)}
+.idh-head::before{content:"";position:absolute;right:-18px;top:-26px;width:64px;height:64px;border:2px solid rgba(255,213,74,.18);transform:rotate(45deg)}
+.idh-logo{flex:0 0 auto;width:32px;height:32px;min-width:32px;min-height:32px;border-radius:9px;display:flex;align-items:center;justify-content:center;overflow:hidden;
+  background:linear-gradient(135deg,#ffd54a,#ffb300);box-shadow:0 6px 14px rgba(255,179,0,.38)}
+.idh-logo img{display:block;width:25px;height:25px;max-width:25px;max-height:25px;object-fit:contain;object-position:center;opacity:1;visibility:visible}
 .idh-brand{min-width:0}
-.idh-school{font-family:var(--font-display);font-size:.7rem;font-weight:900;letter-spacing:.08em;
-  text-transform:uppercase;line-height:1.18;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.idh-sub{font-size:.48rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
-  color:rgba(255,255,255,.66);margin-top:.08rem;white-space:nowrap}
-.idh-chip{margin-left:auto;position:relative;z-index:2;display:inline-flex;align-items:center;gap:.3rem;
-  font-size:.52rem;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:#0d3a66;
-  background:linear-gradient(135deg,#ffd54a,#ffc107 55%,#ffb300);padding:.2rem .55rem;border-radius:999px;
-  box-shadow:0 4px 10px rgba(255,179,0,.3);white-space:nowrap}
+.idh-school{font-family:var(--font-display);font-size:.7rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase;line-height:1.18;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.idh-sub{font-size:.48rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.66);margin-top:.08rem;white-space:nowrap}
+.idh-chip{margin-left:auto;position:relative;z-index:2;display:inline-flex;align-items:center;gap:.3rem;font-size:.52rem;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:#0d3a66;
+  background:linear-gradient(135deg,#ffd54a,#ffc107 55%,#ffb300);padding:.2rem .55rem;border-radius:999px;box-shadow:0 4px 10px rgba(255,179,0,.3);white-space:nowrap}
 .idh-chip i{font-size:.56rem}
-
 .idh-body{position:relative;z-index:2;flex:1;display:flex;gap:.85rem;padding:.62rem .78rem .66rem;min-height:0}
-.idh-photo-wrap{flex:0 0 31%;max-width:122px;display:flex;flex-direction:column;align-items:center;
-  justify-content:center;gap:.32rem;min-height:0}
-.idh-photo{width:100%;aspect-ratio:3/4;border-radius:10px;overflow:hidden;
-  border:2.5px solid #fff;background:linear-gradient(135deg,#e8f1f9,#d4e4f3);
-  box-shadow:0 10px 22px rgba(13,58,102,.26),0 0 0 1px rgba(13,58,102,.12)}
+.idh-photo-wrap{flex:0 0 31%;max-width:122px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.32rem;min-height:0}
+.idh-photo{width:100%;aspect-ratio:3/4;border-radius:10px;overflow:hidden;border:2.5px solid #fff;background:linear-gradient(135deg,#e8f1f9,#d4e4f3);box-shadow:0 10px 22px rgba(13,58,102,.26),0 0 0 1px rgba(13,58,102,.12)}
 .idh-photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .55s ease}
 .idcard:hover .idh-photo img{transform:scale(1.05)}
-.idh-photo::after{content:"";position:absolute;inset:0;pointer-events:none;border-radius:10px;
-  box-shadow:inset 0 0 0 1px rgba(13,58,102,.14),inset 0 -18px 24px -16px rgba(13,58,102,.35)}
-.idh-serial{font-size:.46rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#5f7186;
-  white-space:nowrap;max-width:100%;overflow:hidden;text-overflow:ellipsis}
+.idh-photo::after{content:"";position:absolute;inset:0;pointer-events:none;border-radius:10px;box-shadow:inset 0 0 0 1px rgba(13,58,102,.14),inset 0 -18px 24px -16px rgba(13,58,102,.35)}
+.idh-serial{font-size:.46rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#5f7186;white-space:nowrap;max-width:100%;overflow:hidden;text-overflow:ellipsis}
 .idh-barcode{display:flex;flex-direction:column;gap:2px;width:74%;opacity:.8}
 .idh-barcode div{height:2.5px;background:#0d3a66;border-radius:2px}
-
 .idh-info{flex:1;display:flex;flex-direction:column;min-width:0;padding-top:.05rem}
-.idh-cat{display:inline-flex;align-items:center;gap:.3rem;align-self:flex-start;
-  font-size:.48rem;font-weight:900;letter-spacing:.16em;text-transform:uppercase;color:#8a5a00;
-  background:rgba(255,179,0,.14);border:1px solid rgba(255,179,0,.32);padding:.16rem .5rem;border-radius:6px;
-  max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.idh-cat{display:inline-flex;align-items:center;gap:.3rem;align-self:flex-start;font-size:.48rem;font-weight:900;letter-spacing:.16em;text-transform:uppercase;color:#8a5a00;
+  background:rgba(255,179,0,.14);border:1px solid rgba(255,179,0,.32);padding:.16rem .5rem;border-radius:6px;max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .idh-cat i{color:#ffb300;font-size:.5rem}
-.idh-name{font-family:var(--font-display);font-size:clamp(.84rem,1.05vw,1rem);font-weight:800;color:#0d3a66;
-  line-height:1.24;margin:.4rem 0 .48rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;
-  overflow:hidden;min-height:0}
+.idh-name{font-family:var(--font-display);font-size:clamp(.84rem,1.05vw,1rem);font-weight:800;color:#0d3a66;line-height:1.24;margin:.4rem 0 .48rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:0}
 .idh-rows{display:flex;flex-direction:column;gap:.34rem;margin-bottom:auto}
 .idh-row{display:flex;align-items:baseline;gap:.5rem;min-width:0}
 .idh-lbl{flex:0 0 46px;font-size:.46rem;font-weight:900;letter-spacing:.12em;color:#8aa0b4;text-transform:uppercase}
-.idh-val{font-size:.63rem;font-weight:800;color:#0d3a66;line-height:1.35;min-width:0;
-  display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}
-.idh-meta{display:inline-flex;align-items:center;gap:.32rem;margin-top:.44rem;
-  font-size:.5rem;font-weight:800;color:#2f6fa8;letter-spacing:.06em;text-transform:uppercase}
+.idh-val{font-size:.63rem;font-weight:800;color:#0d3a66;line-height:1.35;min-width:0;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}
+.idh-meta{display:inline-flex;align-items:center;gap:.32rem;margin-top:.44rem;font-size:.5rem;font-weight:800;color:#2f6fa8;letter-spacing:.06em;text-transform:uppercase}
 .idh-meta i{color:#ffb300}
-.idh-foot{display:flex;align-items:center;justify-content:space-between;margin-top:.42rem;padding-top:.36rem;
-  border-top:1px dashed rgba(13,58,102,.18);gap:.4rem}
-.idh-id{font-size:.48rem;font-weight:900;letter-spacing:.14em;color:#5f7186;text-transform:uppercase;
-  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.idh-flip{display:inline-flex;align-items:center;gap:.28rem;font-size:.48rem;font-weight:900;
-  letter-spacing:.1em;text-transform:uppercase;color:#ff8a00;white-space:nowrap}
+.idh-foot{display:flex;align-items:center;justify-content:space-between;margin-top:.42rem;padding-top:.36rem;border-top:1px dashed rgba(13,58,102,.18);gap:.4rem}
+.idh-id{font-size:.48rem;font-weight:900;letter-spacing:.14em;color:#5f7186;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.idh-flip{display:inline-flex;align-items:center;gap:.28rem;font-size:.48rem;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:#ff8a00;white-space:nowrap}
 .idh-flip i{font-size:.52rem}
-
-.id-hint{position:absolute;right:.55rem;top:.55rem;z-index:5;width:24px;height:24px;border-radius:50%;
-  background:rgba(255,255,255,.94);color:#0d3a66;font-size:.64rem;display:flex;align-items:center;
+.id-hint{position:absolute;right:.55rem;top:.55rem;z-index:5;width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,.94);color:#0d3a66;font-size:.64rem;display:flex;align-items:center;
   justify-content:center;box-shadow:0 4px 10px rgba(4,14,28,.24);transition:transform .4s ease}
 .idcard:hover .id-hint{transform:rotate(180deg)}
 
+/* Belakang kartu (ukuran teks sudah diperbesar) */
 .idback{background:linear-gradient(160deg,#0b3558,#0d3a66 58%,#123f6e);color:#fff}
-.idback::after{content:"";position:absolute;right:-20px;top:-20px;width:90px;height:90px;
-  border:2px solid rgba(255,213,74,.18);transform:rotate(45deg);pointer-events:none}
-.idback-head{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;padding:.62rem .9rem .5rem;
-  border-bottom:1px solid rgba(255,255,255,.12)}
-.idback-head .id-school{font-size:.88rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;line-height:1.2;font-family:var(--font-display)}
-.idback-head .id-school-sub{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.72);margin-top:.14rem;font-weight:700}
+.idback::after{content:"";position:absolute;right:-20px;top:-20px;width:90px;height:90px;border:2px solid rgba(255,213,74,.18);transform:rotate(45deg);pointer-events:none}
+.idback-head{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;padding:.62rem .9rem .5rem;border-bottom:1px solid rgba(255,255,255,.12)}
+.idback-head .id-school{font-size:clamp(.82rem,1.15vw,.98rem);font-weight:800;letter-spacing:.045em;text-transform:uppercase;line-height:1.2;font-family:var(--font-display)}
+.idback-head .id-school-sub{font-size:clamp(.56rem,.78vw,.68rem);letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.72);margin-top:.14rem;font-weight:700}
 .idback-body{flex:1;overflow:auto;padding:.62rem .85rem .7rem;display:flex;flex-direction:column}
-.idback-label{display:inline-flex;align-items:center;gap:.35rem;font-size:.52rem;font-weight:800;
-  letter-spacing:.2em;text-transform:uppercase;color:#ffd54a;margin-bottom:.4rem}
-.idback-label::before{content:"";width:16px;height:2px;border-radius:99px;
-  background:linear-gradient(90deg,#ffd54a,#ffb300)}
-.idback-bio{font-size:.78rem;line-height:1.55;color:rgba(235,245,253,.9);margin:0 0 .6rem;
-  display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-.idback-quote{position:relative;margin-top:auto;padding:.55rem .7rem;border-radius:10px;
-  background:rgba(255,255,255,.07);border:1px solid rgba(255,213,74,.22)}
-.idback-quote::before{content:"\201C";position:absolute;top:-.3rem;left:.5rem;font-family:Georgia,serif;
-  font-size:1.5rem;color:#ffd54a;line-height:1}
-.idback-quote p{font-size:.72rem;line-height:1.5;color:#f3e9d6;font-style:italic;margin:0}
+.idback-label{display:inline-flex;align-items:center;gap:.35rem;font-size:clamp(.62rem,.82vw,.72rem);font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#ffd54a;margin-bottom:.4rem}
+.idback-label::before{content:"";width:16px;height:2px;border-radius:99px;background:linear-gradient(90deg,#ffd54a,#ffb300)}
+.idback-bio{font-size:clamp(.72rem,1vw,.84rem);line-height:1.5;color:rgba(235,245,253,.9);margin:0 0 .6rem;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.idback-quote{position:relative;margin-top:auto;padding:.55rem .7rem;border-radius:10px;background:rgba(255,255,255,.07);border:1px solid rgba(255,213,74,.22)}
+.idback-quote::before{content:"\201C";position:absolute;top:-.3rem;left:.5rem;font-family:Georgia,serif;font-size:1.5rem;color:#ffd54a;line-height:1}
+.idback-quote p{font-size:clamp(.68rem,.92vw,.78rem);line-height:1.5;color:#f3e9d6;font-style:italic;margin:0}
 .idback-quote p::after{content:"\201D";color:#ffd54a;font-style:normal}
-.idback-foot{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;padding:.45rem .85rem .6rem;
-  border-top:1px solid rgba(255,255,255,.1)}
-.idback-foot span{font-size:.58rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
-  color:rgba(255,255,255,.62)}
+.idback-foot{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;padding:.45rem .85rem .6rem;border-top:1px solid rgba(255,255,255,.1)}
+.idback-foot span{font-size:clamp(.54rem,.72vw,.64rem);font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.62)}
 .idback-foot i{color:#ffd54a;font-size:.56rem}
-
-@media(max-width:1200px){
-  .idcard-h{aspect-ratio:1.5/1}
-}
-@media(max-width:950px){
-  .idcard-h{aspect-ratio:1.62/1}
-}
+@media(max-width:1200px){.idcard-h{aspect-ratio:1.5/1}}
+@media(max-width:950px){.idcard-h{aspect-ratio:1.62/1}}
 @media(max-width:700px){
   .idcard-h{aspect-ratio:1.55/1}
   .idh-body{gap:.7rem;padding:.55rem .65rem .6rem}
@@ -610,16 +221,11 @@
   .idh-barcode{width:70%}
   .idh-serial{font-size:.42rem}
 }
-/* =========================================================
-   VIRTUAL TOUR 360 — 100% mengikuti Sejarah Sekolah
-   ========================================================= */
-.vt-section{
-  position:relative;overflow:hidden;isolation:isolate;padding:120px 0 130px;
-  background:linear-gradient(180deg,#eef5fb 0%,#ffffff 48%,#f3f7fb 100%);
-}
-.vt-section::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.42;
-  background-image:radial-gradient(circle,rgba(13,58,102,.18) 1.5px,transparent 2px);
-  background-size:22px 22px;mask-image:linear-gradient(90deg,transparent 0%,#000 15%,#000 85%,transparent 100%)}
+
+/* ---------- VIRTUAL TOUR 360 ---------- */
+.vt-section{position:relative;overflow:hidden;isolation:isolate;padding:120px 0 130px;background:linear-gradient(180deg,#eef5fb 0%,#ffffff 48%,#f3f7fb 100%)}
+.vt-section::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.42;background-image:radial-gradient(circle,rgba(13,58,102,.18) 1.5px,transparent 2px);background-size:22px 22px;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 15%,#000 85%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0%,#000 15%,#000 85%,transparent 100%)}
 .vt-watermark{position:absolute;right:-20px;top:40px;font-size:clamp(9rem,18vw,16rem);font-weight:900;line-height:.8;color:rgba(13,58,102,.035);letter-spacing:-.08em;z-index:0;user-select:none}
 .vt-decor-ring{position:absolute;right:-70px;top:80px;width:300px;height:300px;border:1px solid rgba(13,58,102,.12);border-radius:50%;z-index:0}
 .vt-decor-ring::before{content:"";position:absolute;inset:35px;border:1px dashed rgba(255,179,0,.3);border-radius:50%}
@@ -631,7 +237,7 @@
 .vt-frame img{width:100%;height:100%;display:block;object-fit:cover;transition:transform .7s cubic-bezier(.22,.61,.36,1)}
 .vt-frame:hover img{transform:scale(1.045)}
 .vt-badge{position:absolute;left:1.2rem;top:1.2rem;z-index:3;display:inline-flex;align-items:center;gap:.5rem;padding:.58rem .85rem;border-radius:999px;background:rgba(13,58,102,.86);color:#fff;font-size:.74rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;backdrop-filter:blur(8px)}
-.vt-play{position:absolute;z-index:4;left:50%;top:50%;transform:translate(-50%,-50%);width:78px;height:78px;border-radius:50%;border:7px solid rgba(255,255,255,.22);background:linear-gradient(135deg,#ffd54a,#ff8a00);color:#0d3a66;font-size:1.35rem;display:grid;place-items:center;cursor:pointer;box-shadow:0 18px 45px rgba(255,138,0,.38);transition:transform .3s ease,box-shadow .3s ease}
+.vt-play{position:absolute;z-index:4;left:50%;top:50%;transform:translate(-50%,-50%);width:78px;height:78px;border-radius:50%;border:7px solid rgba(255,255,255,.22);background:linear-gradient(135deg,#ffd54a,#ff8a00);color:#0d3a66;font-size:1.35rem;display:grid;place-items:center;cursor:pointer;text-decoration:none;box-shadow:0 18px 45px rgba(255,138,0,.38);transition:transform .3s ease,box-shadow .3s ease}
 .vt-play:hover{transform:translate(-50%,-50%) scale(1.08);box-shadow:0 24px 55px rgba(255,138,0,.5)}
 .vt-caption{position:absolute;left:1.4rem;right:1.4rem;bottom:1.25rem;z-index:3;display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;color:#fff}
 .vt-caption strong{display:block;font-size:1.2rem;font-weight:900}.vt-caption span{display:block;margin-top:.22rem;color:rgba(255,255,255,.76);font-size:.78rem}
@@ -645,91 +251,34 @@
 @media(max-width:600px){.vt-section{padding:85px 0 95px}.vt-inner{width:92%;gap:2rem}.vt-frame{aspect-ratio:4/3;border-radius:22px}.vt-play{width:64px;height:64px}.vt-caption{left:1rem;right:1rem;bottom:1rem}.vt-caption strong{font-size:1rem}.vt-caption span{font-size:.7rem}.vt-cam{display:none!important}.vt-title{font-size:clamp(2.35rem,12vw,3.3rem)}.vt-decor-ring{width:190px;height:190px;right:-80px}.vt-decor-dots{width:90px;height:90px;background-size:14px 14px}}
 
 /* ---------- CTA PENUTUP ---------- */
-.sg-cta{position:relative;margin-top:4.6rem;padding:90px 0 100px;overflow:hidden;text-align:center;isolation:isolate;
+.sg-cta{position:relative;width:min(1100px,92%);margin:4.6rem auto 7rem;padding:62px 34px 70px;box-sizing:border-box;overflow:hidden;text-align:center;isolation:isolate;
   border-radius:28px;background:linear-gradient(135deg,#0b3558,#0d3a66 45%,#0d3a66);color:#fff}
-.sg-cta::after{content:"SKANEDA";position:absolute;left:50%;bottom:-34px;transform:translateX(-50%);
-  font-family:var(--font-display);font-size:clamp(3.4rem,11vw,9rem);font-weight:900;line-height:1;
-  letter-spacing:.05em;color:rgba(255,255,255,.045);-webkit-text-stroke:1px rgba(255,255,255,.06);
-  pointer-events:none;white-space:nowrap;user-select:none}
-.sg-cta-inner{position:relative;z-index:2;width:min(800px,92%);margin:auto}
-.sg-cta h3{font-family:var(--font-display);font-size:clamp(1.9rem,4vw,3.2rem);line-height:1.08;margin:0 0 1rem}
-.sg-cta h3 span{background:linear-gradient(135deg,#ffd54a,#ffb300 50%,#ff7a00);
-  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
-.sg-cta p{color:rgba(235,245,253,.8);line-height:1.85;max-width:620px;margin:0 auto 2rem}
-.sg-cta-btn{display:inline-flex;align-items:center;gap:.6rem;padding:.95rem 2rem;border-radius:999px;
-  background:linear-gradient(135deg,#ffd54a,#ff8a00);color:#0d3a66;font-size:.92rem;font-weight:900;
-  text-decoration:none;box-shadow:0 16px 36px rgba(255,138,0,.4);
-  transition:transform .3s ease,box-shadow .3s ease}
+.sg-cta::after{content:"SKANEDA";position:absolute;left:50%;bottom:-28px;transform:translateX(-50%);font-family:var(--font-display);font-size:clamp(3rem,9vw,7rem);font-weight:900;line-height:1;
+  letter-spacing:.05em;color:rgba(255,255,255,.045);-webkit-text-stroke:1px rgba(255,255,255,.06);pointer-events:none;white-space:nowrap;user-select:none}
+.sg-cta-inner{position:relative;z-index:2;width:min(680px,90%);margin:auto}
+.sg-cta h3{font-family:var(--font-display);font-size:clamp(1.65rem,3.2vw,2.65rem);line-height:1.1;margin:0 0 .9rem}
+.sg-cta h3 span{background:linear-gradient(135deg,#ffd54a,#ffb300 50%,#ff7a00);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+.sg-cta p{color:rgba(235,245,253,.8);line-height:1.7;max-width:560px;font-size:.9rem;margin:0 auto 1.55rem}
+.sg-cta-btn{display:inline-flex;align-items:center;gap:.6rem;padding:.82rem 1.7rem;border-radius:999px;background:linear-gradient(135deg,#ffd54a,#ff8a00);color:#0d3a66;font-size:.86rem;font-weight:900;
+  text-decoration:none;box-shadow:0 16px 36px rgba(255,138,0,.4);transition:transform .3s ease,box-shadow .3s ease}
 .sg-cta-btn:hover{transform:translateY(-4px);box-shadow:0 22px 46px rgba(255,138,0,.5)}
 .sg-cta-btn i{transition:transform .3s ease}
 .sg-cta-btn:hover i{transform:translateX(5px)}
 
-.sg-cta{
-  width:min(1100px,92%) !important;
-  margin:4.6rem auto 7rem !important;
-  padding:62px 34px 70px !important;
-  box-sizing:border-box !important;
-}
-.sg-cta-inner{width:min(680px,90%) !important}
-.sg-cta h3{
-  font-size:clamp(1.65rem,3.2vw,2.65rem) !important;
-  line-height:1.1 !important;
-  margin-bottom:.9rem !important;
-}
-.sg-cta p{
-  max-width:560px !important;
-  font-size:.9rem !important;
-  line-height:1.7 !important;
-  margin-bottom:1.55rem !important;
-}
-.sg-cta-btn{
-  padding:.82rem 1.7rem !important;
-  font-size:.86rem !important;
-}
-.sg-cta::after{font-size:clamp(3rem,9vw,7rem) !important;bottom:-28px !important}
-@media(max-width:700px){
-  .sg-cta{
-    margin-top:3rem !important;
-    margin-bottom:5.5rem !important;
-    padding:54px 0 62px !important;
-  }
-  .sg-cta h3{font-size:clamp(1.5rem,7.5vw,2.15rem) !important}
-  .sg-cta p{font-size:.82rem !important;line-height:1.65 !important}
-}
-
 /* ---------- ORNAMEN (home-orn) ---------- */
 .home-orn{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
-.home-orn .ho-chevron{position:absolute;width:360px;height:360px;
-  border-top:2px solid rgba(13,58,102,.11);border-right:2px solid rgba(13,58,102,.11);transform:rotate(45deg)}
-.home-orn .ho-chevron::after{content:"";position:absolute;inset:34px;
-  border-top:2px solid rgba(47,111,168,.09);border-right:2px solid rgba(47,111,168,.09)}
-.home-orn .ho-line{position:absolute;width:310px;height:2px;
-  background:linear-gradient(90deg,transparent,#2f6fa8,transparent);opacity:.25;transform:rotate(-42deg)}
-.home-orn .ho-line::after{content:"";position:absolute;left:70px;top:11px;width:190px;height:1px;
-  background:linear-gradient(90deg,transparent,#ffd54a,transparent)}
-.home-orn .ho-dots{position:absolute;width:125px;height:125px;
-  background-image:radial-gradient(circle,#2f6fa8 2px,transparent 2.8px);
-  background-size:18px 18px;opacity:.38}
-.home-orn .ho-ring{position:absolute;width:170px;height:170px;border:1px solid rgba(13,58,102,.13);
-  border-radius:50%;box-shadow:0 0 0 20px rgba(13,58,102,.025),0 0 0 42px rgba(255,213,74,.025)}
+.home-orn .ho-chevron{position:absolute;width:360px;height:360px;border-top:2px solid rgba(13,58,102,.11);border-right:2px solid rgba(13,58,102,.11);transform:rotate(45deg)}
+.home-orn .ho-chevron::after{content:"";position:absolute;inset:34px;border-top:2px solid rgba(47,111,168,.09);border-right:2px solid rgba(47,111,168,.09)}
+.home-orn .ho-line{position:absolute;width:310px;height:2px;background:linear-gradient(90deg,transparent,#2f6fa8,transparent);opacity:.25;transform:rotate(-42deg)}
+.home-orn .ho-line::after{content:"";position:absolute;left:70px;top:11px;width:190px;height:1px;background:linear-gradient(90deg,transparent,#ffd54a,transparent)}
+.home-orn .ho-dots{position:absolute;width:125px;height:125px;background-image:radial-gradient(circle,#2f6fa8 2px,transparent 2.8px);background-size:18px 18px;opacity:.38}
+.home-orn .ho-ring{position:absolute;width:170px;height:170px;border:1px solid rgba(13,58,102,.13);border-radius:50%;box-shadow:0 0 0 20px rgba(13,58,102,.025),0 0 0 42px rgba(255,213,74,.025)}
 .home-orn .ho-ring::before{content:"";position:absolute;inset:22px;border:1px dashed rgba(47,111,168,.18);border-radius:50%}
-.home-orn .ho-gold{position:absolute;width:52px;height:8px;border-radius:99px;
-  background:linear-gradient(90deg,#ffd54a,#ffb300,#ff7a00);
-  box-shadow:0 8px 22px rgba(255,179,0,.18);transform:rotate(-35deg)}
+.home-orn .ho-gold{position:absolute;width:52px;height:8px;border-radius:99px;background:linear-gradient(90deg,#ffd54a,#ffb300,#ff7a00);box-shadow:0 8px 22px rgba(255,179,0,.18);transform:rotate(-35deg)}
 .home-orn .ho-square{position:absolute;width:58px;height:58px;border:2px solid rgba(255,179,0,.32);transform:rotate(45deg)}
 .home-orn .ho-square::before{content:"";position:absolute;inset:10px;border:1px solid rgba(13,58,102,.18)}
-.home-orn .ho-corner{position:absolute;width:110px;height:110px;
-  border-left:3px solid rgba(13,58,102,.12);border-bottom:3px solid rgba(13,58,102,.12)}
-.home-orn .ho-corner::after{content:"";position:absolute;left:18px;bottom:18px;width:46px;height:3px;
-  background:#ffd54a;border-radius:99px}
-
-.sg-hero .home-orn .ho-chevron{left:-150px;bottom:-60px;border-color:rgba(255,255,255,.10)}
-.sg-hero .home-orn .ho-chevron::after{border-color:rgba(255,213,74,.08)}
-.sg-hero .home-orn .ho-line{right:-80px;top:22%;opacity:.22}
-.sg-hero .home-orn .ho-dots{right:6%;bottom:14%;opacity:.3}
-.sg-hero .home-orn .ho-ring{left:44%;bottom:-90px;border-color:rgba(255,255,255,.12)}
-.sg-hero .home-orn .ho-gold{right:16%;top:20%}
-.sg-hero .home-orn .ho-square{left:12%;top:22%}
+.home-orn .ho-corner{position:absolute;width:110px;height:110px;border-left:3px solid rgba(13,58,102,.12);border-bottom:3px solid rgba(13,58,102,.12)}
+.home-orn .ho-corner::after{content:"";position:absolute;left:18px;bottom:18px;width:46px;height:3px;background:#ffd54a;border-radius:99px}
 
 .sg-catalog .home-orn .ho-chevron{right:-145px;top:45px}
 .sg-catalog .home-orn .ho-line{left:-80px;top:170px}
@@ -738,58 +287,43 @@
 .sg-catalog .home-orn .ho-gold{right:16%;top:22%}
 .sg-catalog .home-orn .ho-square{left:11%;top:15%}
 .sg-catalog .home-orn .ho-corner{right:3%;bottom:8%;transform:rotate(180deg)}
-
 .sg-cta .home-orn .ho-chevron{left:-120px;bottom:-80px;border-color:rgba(255,255,255,.10)}
 .sg-cta .home-orn .ho-chevron::after{border-color:rgba(255,213,74,.08)}
 .sg-cta .home-orn .ho-dots{left:8%;top:30%;opacity:.22}
 .sg-cta .home-orn .ho-ring{right:-70px;top:20%;border-color:rgba(255,255,255,.10)}
 .sg-cta .home-orn .ho-gold{left:20%;bottom:26%}
+.sg-catalog>*:not(.home-orn),.sg-cta>*:not(.home-orn){position:relative;z-index:2}
 
-.sg-hero>*:not(.home-orn),
-.sg-catalog>*:not(.home-orn),
-.sg-cta>*:not(.home-orn){position:relative;z-index:2}
+/* ---------- ORNAMEN HALAMAN ---------- */
+.sg-page::before{content:"";position:fixed;right:-110px;top:18%;width:230px;height:230px;border:2px solid rgba(13,58,102,.14);transform:rotate(45deg);z-index:0;pointer-events:none}
+.sg-page::after{content:"";position:fixed;left:-95px;bottom:10%;width:190px;height:190px;border:2px solid rgba(47,111,168,.14);border-radius:28px;transform:rotate(25deg);z-index:0;pointer-events:none}
 
-/* ---------- ORNAMEN HALAMAN (fixed diamonds) ---------- */
-.sg-page::before{content:"";position:fixed;right:-110px;top:18%;width:230px;height:230px;
-  border:2px solid rgba(13,58,102,.14);transform:rotate(45deg);z-index:0;pointer-events:none}
-.sg-page::after{content:"";position:fixed;left:-95px;bottom:10%;width:190px;height:190px;
-  border:2px solid rgba(47,111,168,.14);border-radius:28px;transform:rotate(25deg);z-index:0;pointer-events:none}
-
-/* ---------- HOVER LANGUAGE (keluarga Sejarah) ---------- */
-.sg-page .eyebrow,.sg-page .sg-card,.sg-page .hero-photo,.sg-page .big-heading,
-.sg-page .sg-title,.sg-page .sg-fchip{transition:transform .35s ease,box-shadow .35s ease,
-  filter .35s ease,border-color .35s ease,background .35s ease}
-.sg-page .sg-kicker:hover{transform:translateX(7px);filter:drop-shadow(0 5px 12px rgba(255,213,74,.2))}
+/* ---------- HOVER ---------- */
+.sg-page .eyebrow,.sg-page .sg-card,.sg-page .big-heading,.sg-page .sg-fchip{transition:transform .35s ease,box-shadow .35s ease,filter .35s ease,border-color .35s ease,background .35s ease}
 .sg-page .eyebrow:hover{transform:translateX(6px)}
-.sg-page .hero-photo:hover{transform:translateY(-42px) rotate(0deg) scale(1.015);
-  box-shadow:0 45px 95px rgba(13,58,102,.35),0 18px 35px rgba(0,0,0,.22)}
-.sg-page .hero-photo:hover img{transform:scale(1.07)}
 .sg-page .big-heading:hover{transform:translateX(4px)}
 
-/* ---------- SCROLL REVEAL (keluarga Sejarah) ---------- */
-[data-reveal]{opacity:0;transform:translateY(36px);
-  transition:opacity .7s ease,transform .7s var(--ease, ease)}
+/* ---------- SCROLL REVEAL ---------- */
+[data-reveal]{opacity:0;transform:translateY(36px);transition:opacity .7s ease,transform .7s var(--ease,ease)}
 [data-reveal="left"]{transform:translateX(-46px)}
 [data-reveal="right"]{transform:translateX(46px)}
 [data-reveal].revealed{opacity:1;transform:none}
 [data-reveal]{transition-delay:calc(var(--d,0)*90ms)}
 
 /* ---------- RESPONSIVE ---------- */
-@media(max-width:950px){
-  .sg-hero-inner{grid-template-columns:1fr;gap:2rem}
-  .hero-photo{height:360px;transform:translateY(-18px) rotate(1deg)}
-  .intro-grid{grid-template-columns:1fr;gap:3rem}
-}
+@media(max-width:950px){.intro-grid{grid-template-columns:1fr;gap:3rem}}
+@media(max-width:900px){.history-ref-ornament-image{opacity:.88}}
 @media(max-width:700px){
-  .sg-hero{min-height:0;align-items:flex-start}
-  .sg-hero-inner{padding:clamp(3rem,8vh,4.5rem) 5% 3.6rem;width:90%}
-  .sg-hero-inner::after{right:5%;top:4%;width:48px;height:48px}
-  .sg-hero::after{font-size:clamp(3.6rem,22vw,6rem);opacity:.6;right:-4%}
-  .sg-title{font-size:clamp(2.4rem,11vw,3.6rem);margin-top:0}
-  .hero-photo{height:300px}
+  .history-hero{min-height:70vh}
+  .history-hero-inner{padding-top:3.5rem;padding-bottom:4rem}
+  .history-title{font-size:clamp(3.5rem,16vw,6rem);line-height:.88}
+  .history-hero::after{font-size:clamp(7rem,32vw,12rem);left:-8%}
   .history-vt-cta{width:min(100%,340px)}
-  .sg-section,.sg-intro,.sg-catalog{padding:85px 0 90px}
-  .sg-cta{width:92%;margin:3rem auto 5.5rem !important;padding:54px 22px 62px !important;box-sizing:border-box !important}
+  .history-vt-cta .history-vt-arrow{margin-left:auto}
+  .sg-intro,.sg-catalog{padding:85px 0 90px}
+  .sg-cta{width:92%;margin:3rem auto 5.5rem;padding:54px 22px 62px}
+  .sg-cta h3{font-size:clamp(1.5rem,7.5vw,2.15rem)}
+  .sg-cta p{font-size:.82rem;line-height:1.65}
   .sg-toolbar{padding:.9rem}
   .sg-wrap{width:92%}
   .home-orn .ho-chevron{width:220px;height:220px}
@@ -798,70 +332,24 @@
   .home-orn .ho-line{width:190px}
   .home-orn .ho-square{width:42px;height:42px}
   .home-orn .ho-corner{width:70px;height:70px}
-  .sg-hero .home-orn .ho-chevron{left:-120px;bottom:-40px}
   [data-reveal]{opacity:1;transform:none}
 }
-
-/* ---------- HERO STAFF & GURU: FINAL COLOR / LAYER FIX ---------- */
-.sg-title .sg-gold{
-  background:linear-gradient(135deg,#ffd54a 0%,#ffb300 45%,#ff7a00 100%) !important;
-  -webkit-background-clip:text !important;
-  background-clip:text !important;
-  -webkit-text-fill-color:transparent !important;
-  color:#ffc107 !important;
-  text-shadow:0 4px 24px rgba(255,174,0,.18) !important;
-}
-.history-ref-ornament-image{
-  position:absolute!important;
-  inset:0!important;
-  width:100%!important;
-  height:100%!important;
-  display:block!important;
-  object-fit:cover!important;
-  object-position:center center!important;
-  max-width:none!important;
-  opacity:1!important;
-}
-.history-hero-inner{
-  position:relative!important;
-  z-index:4!important;
-}
-.history-title,.history-kicker,.history-vt-cta{
-  position:relative!important;
-  z-index:5!important;
-}
-@media(max-width:900px){
-  .history-ref-ornament-image{object-position:center center!important;opacity:.88!important}
-}
-@media(max-width:560px){
-  .history-ref-ornament-image{object-position:center center!important;opacity:.62!important}
-}
-
+@media(max-width:560px){.history-ref-ornament-image{opacity:.62}}
 </style>
 
-
-<style id="staff-guru-virtual-tour-hero-final">
-  .history-vt-cta{width:max-content;max-width:100%}
-  .history-vt-cta .history-vt-icon{flex:0 0 46px}
-  @media(max-width:700px){
-    .history-vt-cta{width:min(100%,340px)}
-    .history-vt-cta .history-vt-arrow{margin-left:auto}
-  }
-</style>
 <style id="staff-guru-dark-mode">
 /* =========================================================
-   STAFF & GURU — DARK MODE
-   Aktif saat <body> punya class "theme-dark" (tombol matahari/bulan di layout).
-   Prefix "html body.theme-dark" mengalahkan blok dark mode global di layout.
+   STAFF & GURU — DARK MODE (navy gelap, serasi navbar)
+   Aktif saat <body> punya class "theme-dark".
    ========================================================= */
 html body.theme-dark .sg-page{background:#08131f!important;color:#e6eef7;color-scheme:dark}
 html body.theme-dark .sg-page::before{border-color:rgba(143,189,235,.14)}
 html body.theme-dark .sg-page::after{border-color:rgba(143,189,235,.12)}
 
-/* ---------- HERO ---------- */
-html body.theme-dark .sg-page .history-hero{background:linear-gradient(180deg,#0b1d31 0%,#08131f 100%)!important;color:#e6eef7}
+/* HERO */
+html body.theme-dark .sg-page .history-hero{background:linear-gradient(180deg,#0a1a2c 0%,#07121f 100%)!important;color:#e6eef7}
 html body.theme-dark .sg-page .history-hero::after{color:rgba(255,255,255,.035)!important;-webkit-text-stroke:1px rgba(255,179,0,.14)!important}
-html body.theme-dark .sg-page .history-ref-ornament-image{filter:invert(1) hue-rotate(180deg);mix-blend-mode:screen;opacity:.6!important}
+html body.theme-dark .sg-page .history-ref-ornament-image{filter:invert(1) hue-rotate(180deg);mix-blend-mode:screen;opacity:.5!important}
 html body.theme-dark .sg-page .history-title .sejarah-white{color:#fff!important}
 html body.theme-dark .sg-page .history-kicker{background:rgba(255,111,0,.1);border-color:rgba(255,179,0,.3);color:#ffb347}
 html body.theme-dark .sg-page .history-vt-cta{background:rgba(255,255,255,.06)!important;border-color:rgba(255,255,255,.14)!important;color:#fff!important;box-shadow:0 12px 30px rgba(0,0,0,.4)}
@@ -869,13 +357,13 @@ html body.theme-dark .sg-page .history-vt-cta:hover{background:rgba(255,179,0,.1
 html body.theme-dark .sg-page .history-vt-cta strong{color:#fff!important}
 html body.theme-dark .sg-page .history-vt-cta small{color:#9fb2c6}
 
-/* ---------- UMUM ---------- */
+/* UMUM */
 html body.theme-dark .sg-page .eyebrow{color:#cfe3f7!important}
 html body.theme-dark .sg-page .eyebrow::before{background:linear-gradient(90deg,#ffd54a,#ff9800)!important}
 html body.theme-dark .sg-page .big-heading{color:#fff!important;text-shadow:none}
 html body.theme-dark .sg-page .sg-sec-desc{color:#a9bbcd!important}
 
-/* ---------- INTRO + STAT ---------- */
+/* INTRO + STAT */
 html body.theme-dark .sg-page .sg-intro{background:#0a1928!important}
 html body.theme-dark .sg-page .intro-copy{color:#a9bbcd!important}
 html body.theme-dark .sg-page .stat-box{background:rgba(255,255,255,.05)!important;border-color:rgba(255,255,255,.12)!important;box-shadow:0 18px 44px rgba(0,0,0,.35)!important}
@@ -884,8 +372,8 @@ html body.theme-dark .sg-page .stat-num{background:linear-gradient(135deg,#fff,#
 html body.theme-dark .sg-page .stat-label{color:#9fb2c6!important}
 html body.theme-dark .sg-page .stat-label i{color:#ffd54a}
 
-/* ---------- KATALOG ---------- */
-html body.theme-dark .sg-page .sg-catalog{background:linear-gradient(180deg,#0b1b2d 0%,#091522 100%)!important}
+/* KATALOG */
+html body.theme-dark .sg-page .sg-catalog{background:linear-gradient(180deg,#0b1b2d 0%,#08131f 100%)!important}
 html body.theme-dark .sg-page .home-orn .ho-chevron{border-top-color:rgba(143,189,235,.14);border-right-color:rgba(143,189,235,.14)}
 html body.theme-dark .sg-page .home-orn .ho-chevron::after{border-top-color:rgba(255,213,74,.08);border-right-color:rgba(255,213,74,.08)}
 html body.theme-dark .sg-page .home-orn .ho-ring{border-color:rgba(143,189,235,.16);box-shadow:0 0 0 20px rgba(143,189,235,.03),0 0 0 42px rgba(255,213,74,.025)}
@@ -893,7 +381,7 @@ html body.theme-dark .sg-page .home-orn .ho-dots{background-image:radial-gradien
 html body.theme-dark .sg-page .home-orn .ho-corner{border-left-color:rgba(143,189,235,.16);border-bottom-color:rgba(143,189,235,.16)}
 html body.theme-dark .sg-page .home-orn .ho-square::before{border-color:rgba(143,189,235,.22)}
 
-/* ---------- TOOLBAR: SEARCH + FILTER (menimpa aturan "putih" di layout) ---------- */
+/* TOOLBAR */
 html body.theme-dark .sg-page .sg-toolbar{background:rgba(8,19,31,.85)!important;border:1px solid rgba(255,255,255,.12)!important;box-shadow:0 18px 44px rgba(0,0,0,.4)!important}
 html body.theme-dark .sg-page .sg-toolbar .sg-search{background:rgba(255,255,255,.07)!important;border:1px solid rgba(255,255,255,.16)!important;box-shadow:none!important}
 html body.theme-dark .sg-page .sg-toolbar .sg-search:focus-within{border-color:rgba(255,213,74,.55)!important;box-shadow:0 0 0 4px rgba(255,213,74,.12)!important}
@@ -912,20 +400,20 @@ html body.theme-dark .sg-page .sg-empty{color:#a9bbcd}
 html body.theme-dark .sg-page .sg-empty i{color:#3b5671}
 html body.theme-dark .sg-page .sg-empty strong{color:#fff!important}
 
-/* ---------- PANAH, DOTS, HINT ---------- */
-html body.theme-dark .sg-page .sg-arrow{background:linear-gradient(135deg,#1d4a75,#245a8f);box-shadow:0 12px 28px rgba(0,0,0,.45)}
+/* PANAH, DOTS, HINT */
+html body.theme-dark .sg-page .sg-arrow{background:linear-gradient(135deg,#12304f,#1b4a78);box-shadow:0 12px 28px rgba(0,0,0,.45)}
 html body.theme-dark .sg-page .sg-arrow:hover{background:linear-gradient(135deg,#ffb300,#ff8a00);color:#0d3a66}
 html body.theme-dark .sg-page .sg-page-dots button{background:rgba(255,255,255,.22)}
 html body.theme-dark .sg-page .sg-page-dots button.active{background:#ffb300}
 html body.theme-dark .sg-page .sg-scroll-hint{color:#8fa3b8}
 
-/* ---------- KARTU ID: DEPAN ---------- */
+/* KARTU ID: DEPAN */
 html body.theme-dark .sg-page .idface{border-color:rgba(255,255,255,.12);box-shadow:0 18px 44px rgba(0,0,0,.45),0 2px 8px rgba(0,0,0,.3)}
 html body.theme-dark .sg-page .idfront{background:#0f2236!important}
 html body.theme-dark .sg-page .idcard:hover .idface{border-color:rgba(255,179,0,.45);box-shadow:0 28px 62px rgba(0,0,0,.6)}
 html body.theme-dark .sg-page .idcard-h .idfront::before{color:rgba(255,255,255,.04);-webkit-text-stroke:1px rgba(255,255,255,.06)}
 html body.theme-dark .sg-page .idcard-h .idfront::after{border-color:rgba(255,179,0,.25)}
-html body.theme-dark .sg-page .idh-head{background:linear-gradient(135deg,#0a2a48,#0c3256 55%,#12406b)}
+html body.theme-dark .sg-page .idh-head{background:linear-gradient(135deg,#0a1a2c,#0c2038 55%,#102c4d)}
 html body.theme-dark .sg-page .idh-school{color:#fff!important}
 html body.theme-dark .sg-page .idh-photo{border-color:rgba(255,255,255,.85);background:linear-gradient(135deg,#1a3752,#12283f);box-shadow:0 10px 22px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.12)}
 html body.theme-dark .sg-page .idh-serial{color:#8fa3b8}
@@ -939,13 +427,13 @@ html body.theme-dark .sg-page .idh-foot{border-top-color:rgba(255,255,255,.16)}
 html body.theme-dark .sg-page .idh-id{color:#9fb2c6}
 html body.theme-dark .sg-page .idh-flip{color:#ffb300}
 
-/* ---------- KARTU ID: BELAKANG (teks ditegaskan karena layout memaksa <p> redup) ---------- */
-html body.theme-dark .sg-page .idback{background:linear-gradient(160deg,#0a2a48,#0c3256 58%,#10406b)!important}
+/* KARTU ID: BELAKANG */
+html body.theme-dark .sg-page .idback{background:linear-gradient(160deg,#0a1a2c,#0c2038 58%,#0e2640)!important}
 html body.theme-dark .sg-page .idcard-h .idback-bio{color:rgba(235,245,253,.92)!important}
 html body.theme-dark .sg-page .idcard-h .idback-quote p{color:#f3e9d6!important}
 html body.theme-dark .sg-page .idback-quote{background:rgba(255,255,255,.07);border-color:rgba(255,213,74,.25)}
 
-/* ---------- VIRTUAL TOUR ---------- */
+/* VIRTUAL TOUR */
 html body.theme-dark .sg-page .vt-section{background:linear-gradient(180deg,#0a1928 0%,#08131f 50%,#0a1726 100%)!important}
 html body.theme-dark .sg-page .vt-section::before{background-image:radial-gradient(circle,rgba(143,189,235,.2) 1.5px,transparent 2px);opacity:.35}
 html body.theme-dark .sg-page .vt-watermark{color:rgba(255,255,255,.04)}
@@ -961,72 +449,26 @@ html body.theme-dark .sg-page .vt-desc{color:#a9bbcd!important}
 html body.theme-dark .sg-page .vt-feat{background:rgba(255,255,255,.06)!important;border-color:rgba(255,255,255,.12)!important;color:#cfe3f7!important}
 html body.theme-dark .sg-page .vt-btn{background:linear-gradient(135deg,#ffd54a,#ff8a00);color:#0d3a66;box-shadow:0 14px 32px rgba(0,0,0,.4)}
 
-/* ---------- CTA PENUTUP ---------- */
-html body.theme-dark .sg-page .sg-cta{background:linear-gradient(135deg,#12395f 0%,#0f3256 48%,#14406d 100%)!important;border:1px solid rgba(255,255,255,.12);box-shadow:0 24px 55px rgba(0,0,0,.5)}
+/* CTA PENUTUP */
+html body.theme-dark .sg-page .sg-cta{background:linear-gradient(135deg,#0a1a2c 0%,#0c2038 50%,#0e2542 100%)!important;border:1px solid rgba(255,255,255,.08)!important;box-shadow:0 24px 55px rgba(0,0,0,.55)!important}
+html body.theme-dark .sg-page .sg-cta::after{color:rgba(255,255,255,.035)!important}
 html body.theme-dark .sg-page .sg-cta h3{color:#fff!important}
 html body.theme-dark .sg-page .sg-cta p{color:rgba(235,245,253,.82)!important}
-
-/* ---------- CTA "Ingin bergabung...": kartu dibuat gelap ---------- */
-html body.theme-dark .sg-page .sg-cta{
-  background:linear-gradient(135deg,#0a1a2c 0%,#0c2038 50%,#0e2542 100%) !important;
-  border:1px solid rgba(255,255,255,.08) !important;
-  box-shadow:0 24px 55px rgba(0,0,0,.55) !important;
-}
-html body.theme-dark .sg-page .sg-cta::after{color:rgba(255,255,255,.035) !important}
 html body.theme-dark .sg-page .sg-cta .home-orn .ho-line{display:none}
 </style>
-<style id="staff-guru-card-back-text-final">
-/* Ukuran teks belakang kartu diperbesar agar terbaca jelas saat kartu dibalik */
-.idcard-h .idback-head .id-school{
-  font-size:clamp(.82rem,1.15vw,.98rem) !important;
-  letter-spacing:.045em !important;
-}
-.idcard-h .idback-head .id-school-sub{
-  font-size:clamp(.56rem,.78vw,.68rem) !important;
-  letter-spacing:.12em !important;
-}
-.idcard-h .idback-label{
-  font-size:clamp(.62rem,.82vw,.72rem) !important;
-}
-.idcard-h .idback-bio{
-  font-size:clamp(.72rem,1vw,.84rem) !important;
-  line-height:1.5 !important;
-}
-.idcard-h .idback-quote p{
-  font-size:clamp(.68rem,.92vw,.78rem) !important;
-  line-height:1.5 !important;
-}
-.idcard-h .idback-foot span{
-  font-size:clamp(.54rem,.72vw,.64rem) !important;
-}
-</style>
-
-<style id="staff-guru-gold-final">
-.history-title .skaneda-gold{
-  background:linear-gradient(135deg,#ffd54a 0%,#ffb300 45%,#ff7a00 100%) !important;
-  -webkit-background-clip:text !important;
-  background-clip:text !important;
-  -webkit-text-fill-color:transparent !important;
-  color:#ffc107 !important;
-  text-shadow:none !important;
-}
-</style>
-
 @endpush
 
 @section('content')
+@php
+  $tourUrl = \Illuminate\Support\Facades\Route::has('profil.tour') ? route('profil.tour') : url('/profile/tour');
+@endphp
 
 <div class="sg-page">
 
-  <!-- HERO — visual 100% mengikuti Hero halaman Sejarah -->
+  <!-- HERO -->
   <section class="history-hero">
     <div class="history-ref-ornaments" aria-hidden="true">
-      <img
-        src="{{ asset('images/wide_minimalist_abstract_technology_background_des.png') }}"
-        alt=""
-        class="history-ref-ornament-image"
-        aria-hidden="true"
-      >
+      <img src="{{ asset('images/wide_minimalist_abstract_technology_background_des.png') }}" alt="" class="history-ref-ornament-image" aria-hidden="true">
     </div>
     <div class="history-hero-inner">
       <div>
@@ -1035,7 +477,7 @@ html body.theme-dark .sg-page .sg-cta .home-orn .ho-line{display:none}
           <span class="sejarah-white">STAFF &amp;</span>
           <span class="skaneda-gold">GURU</span>
         </h3>
-        <a class="history-vt-cta" href="#virtual-tour" aria-label="Lihat Virtual Tour 360 derajat SMK Negeri 2 Mojokerto">
+        <a class="history-vt-cta" href="{{ $tourUrl }}" aria-label="Lihat Virtual Tour 360 derajat SMK Negeri 2 Mojokerto">
           <span class="history-vt-icon"><i class="fas fa-street-view"></i></span>
           <span><strong>Lihat Virtual Tour 360°</strong><small>Jelajahi SMK Negeri 2 Mojokerto</small></span>
           <i class="fas fa-arrow-right history-vt-arrow" aria-hidden="true"></i>
@@ -1078,13 +520,8 @@ html body.theme-dark .sg-page .sg-cta .home-orn .ho-line{display:none}
   <!-- KATALOG GURU & STAF -->
   <section class="sg-catalog">
     <div class="home-orn" aria-hidden="true">
-      <span class="ho-chevron"></span>
-      <span class="ho-line"></span>
-      <span class="ho-dots"></span>
-      <span class="ho-ring"></span>
-      <span class="ho-gold"></span>
-      <span class="ho-square"></span>
-      <span class="ho-corner"></span>
+      <span class="ho-chevron"></span><span class="ho-line"></span><span class="ho-dots"></span><span class="ho-ring"></span>
+      <span class="ho-gold"></span><span class="ho-square"></span><span class="ho-corner"></span>
     </div>
 
     <div class="sg-wrap">
@@ -1200,7 +637,7 @@ html body.theme-dark .sg-page .sg-cta .home-orn .ho-line{display:none}
                 </div>
               @endforeach
             @endif
-            </div>
+          </div>
         </div>
 
         <button class="sg-arrow next" id="sgNext" type="button" aria-label="Selanjutnya">
@@ -1213,7 +650,7 @@ html body.theme-dark .sg-page .sg-cta .home-orn .ho-line{display:none}
     </div>
   </section>
 
-  <!-- VIRTUAL TOUR 360° — JELAJAHI, SAMA DENGAN HALAMAN SEJARAH -->
+  <!-- VIRTUAL TOUR 360° -->
   <section class="vt-section" id="virtual-tour" aria-label="Virtual Tour 360 SMK Negeri 2 Mojokerto">
     <span class="vt-watermark" aria-hidden="true">360°</span>
     <div class="vt-decor-ring" aria-hidden="true"></div>
@@ -1223,7 +660,7 @@ html body.theme-dark .sg-page .sg-cta .home-orn .ho-line{display:none}
         <div class="vt-frame">
           <img src="{{ asset('images/hero-sekolah.jpg') }}" alt="Lingkungan SMK Negeri 2 Mojokerto — Virtual Tour 360 derajat" loading="lazy">
           <span class="vt-badge"><i class="fa-solid fa-street-view"></i> 360° Tour</span>
-          <button class="vt-play" type="button" aria-label="Mulai Virtual Tour 360 derajat" onclick="document.getElementById('vtTourLink')?.click()"><i class="fa-solid fa-play"></i></button>
+          <a class="vt-play" href="{{ $tourUrl }}" aria-label="Mulai Virtual Tour 360 derajat"><i class="fa-solid fa-play"></i></a>
           <div class="vt-caption">
             <div><strong>Jelajahi Sekolah</strong><span>SMK Negeri 2 Mojokerto</span></div>
             <span class="vt-cam"><i class="fa-solid fa-camera"></i> 360°</span>
@@ -1236,7 +673,7 @@ html body.theme-dark .sg-page .sg-cta .home-orn .ho-line{display:none}
         <h2 class="vt-title" data-reveal>Jelajahi <span class="vt-gold">SMKN 2 Mojokerto</span><span class="vt-sub">Lihat Virtual Tour 360°</span></h2>
         <p class="vt-desc" data-reveal>Jelajahi lingkungan SMK Negeri 2 Mojokerto secara interaktif melalui Virtual Tour 360°. Rasakan suasana sekolah dari sudut pandangmu dan lihat fasilitas sekolah secara lebih dekat.</p>
         <div class="vt-feats" data-reveal><span class="vt-feat"><i class="fa-solid fa-check"></i> Interaktif</span><span class="vt-feat"><i class="fa-solid fa-check"></i> Panorama 360°</span><span class="vt-feat"><i class="fa-solid fa-check"></i> Akses Mudah</span></div>
-        <a href="#" id="vtTourLink" class="vt-btn" data-reveal>Mulai Virtual Tour <i class="fa-solid fa-arrow-right"></i></a>
+        <a href="{{ $tourUrl }}" id="vtTourLink" class="vt-btn" data-reveal>Mulai Virtual Tour <i class="fa-solid fa-arrow-right"></i></a>
       </div>
     </div>
   </section>
@@ -1244,21 +681,13 @@ html body.theme-dark .sg-page .sg-cta .home-orn .ho-line{display:none}
   <!-- CTA PENUTUP -->
   <div class="sg-cta" data-reveal>
     <div class="home-orn" aria-hidden="true">
-      <span class="ho-chevron"></span>
-      <span class="ho-line"></span>
-      <span class="ho-dots"></span>
-      <span class="ho-ring"></span>
-      <span class="ho-gold"></span>
-      <span class="ho-square"></span>
-      <span class="ho-corner"></span>
+      <span class="ho-chevron"></span><span class="ho-line"></span><span class="ho-dots"></span><span class="ho-ring"></span>
+      <span class="ho-gold"></span><span class="ho-square"></span><span class="ho-corner"></span>
     </div>
-
     <div class="sg-cta-inner">
       <h3>Ingin bergabung menjadi bagian <span>keluarga besar SKANEDA?</span></h3>
       <p>Kami selalu terbuka bagi pendidik dan tenaga kependidikan yang memiliki semangat mengabdi untuk kemajuan pendidikan vokasi.</p>
-      <a href="{{ route('kontak') }}" class="sg-cta-btn">
-        Hubungi Sekolah <i class="fas fa-arrow-right"></i>
-      </a>
+      <a href="{{ route('kontak') }}" class="sg-cta-btn">Hubungi Sekolah <i class="fas fa-arrow-right"></i></a>
     </div>
   </div>
 
@@ -1279,10 +708,9 @@ html body.theme-dark .sg-page .sg-cta .home-orn .ho-line{display:none}
 
     if (!track || !viewport) return;
 
-    var PAGE_SIZE = 12; // maksimum kartu per halaman; jumlah baris di grid menyesuaikan sendiri
+    var PAGE_SIZE = 12; // maksimum kartu per halaman
 
-    /* ---- Flip Kartu — pakai event delegation di container, supaya tetap
-       berfungsi walau kartu dipindah-pindah ke halaman baru saat difilter ---- */
+    /* ---- Flip kartu (event delegation, tetap jalan walau kartu dipindah saat filter) ---- */
     track.addEventListener('click', function (e) {
       if (e.target.closest('a')) return;
       var card = e.target.closest('.idcard');
@@ -1294,17 +722,13 @@ html body.theme-dark .sg-page .sg-cta .home-orn .ho-line{display:none}
       if (card) { e.preventDefault(); card.classList.toggle('flipped'); }
     });
 
-    /* ---- Simpan semua kartu asli (guru + staff, urutan sesuai HTML) sekali saja ---- */
     var allCards = Array.prototype.slice.call(track.querySelectorAll('.sg-card'));
 
     function pageBlocks() {
       return Array.prototype.slice.call(track.querySelectorAll('.sg-page-block'));
     }
 
-    /* ---- Bangun ulang halaman dari daftar kartu yang sudah difilter.
-       Kartu (elemen DOM asli, bukan salinan) dipindah ke wrapper halaman
-       baru supaya paging & jarak antar kartu selalu konsisten, baik untuk
-       kategori Semua, Guru, maupun Staff — tanpa halaman kosong. ---- */
+    /* ---- Bangun ulang halaman dari kartu yang sudah difilter ---- */
     function renderPages(cards) {
       track.innerHTML = '';
       for (var i = 0; i < cards.length; i += PAGE_SIZE) {
@@ -1344,8 +768,7 @@ html body.theme-dark .sg-page .sg-cta .home-orn .ho-line{display:none}
     }
 
     function updateArrows() {
-      var blocks = pageBlocks();
-      var onlyOnePage = blocks.length <= 1;
+      var onlyOnePage = pageBlocks().length <= 1;
       var maxScroll = viewport.scrollWidth - viewport.clientWidth;
       prevBtn.disabled = onlyOnePage || viewport.scrollLeft <= 4;
       nextBtn.disabled = onlyOnePage || viewport.scrollLeft >= (maxScroll - 4);
@@ -1366,11 +789,7 @@ html body.theme-dark .sg-page .sg-cta .home-orn .ho-line{display:none}
       updatePageDots();
     });
 
-    /* ---- Search & Filter Guru/Staff ----
-       "Semua"  -> gabungkan kartu guru & staff apa adanya (urutan asli),
-                   tidak perlu dipisah per kategori.
-       "Guru"   -> render ulang halaman berisi kartu guru saja.
-       "Staff"  -> render ulang halaman berisi kartu staff saja. ---- */
+    /* ---- Search & Filter Guru/Staff ---- */
     function applyFilter() {
       var q = (searchInput.value || '').toLowerCase().trim();
       var activeFilter = '*';
@@ -1404,7 +823,7 @@ html body.theme-dark .sg-page .sg-cta .home-orn .ho-line{display:none}
     applyFilter();
   })();
 
-  /* ---- Scroll Reveal (senada Sejarah Sekolah) ---- */
+  /* ---- Scroll Reveal ---- */
   (function () {
     var revealEls = document.querySelectorAll('[data-reveal]');
     if (!('IntersectionObserver' in window)) {

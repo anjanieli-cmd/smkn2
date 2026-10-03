@@ -501,6 +501,116 @@
   .psk-timeline-track{animation:none}
   .psk-timeline-wrap{overflow-x:auto}
 }
+
+/* =========================================================
+   DARK MODE — aktif jika <html> / <body> punya data-theme="dark"
+   atau class: dark | dark-mode | theme-dark
+   ========================================================= */
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-page{--psk-bg:#081423;--psk-bg2:#0b1b2f;--psk-surf:#0f2340;--psk-surf2:#12294a;
+  --psk-text:#e6eef8;--psk-muted:#9db0c6;--psk-line:rgba(255,255,255,.09);
+  background:var(--psk-bg);color:var(--psk-text);color-scheme:dark}
+
+/* ---------- HERO ---------- */
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-hero{background:#0a1a2e;color:#e6eef8}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-hero::after{color:rgba(255,255,255,.04);-webkit-text-stroke:1px rgba(255,179,0,.14)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-ref-ornaments{opacity:.45;filter:invert(.92) hue-rotate(180deg) brightness(.9)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-kicker{background:rgba(255,179,0,.1);border-color:rgba(255,213,74,.3);color:#ffd54a}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-title .psk-white{color:#fff}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-lead{color:var(--psk-muted)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-pill{background:#12294a;border-color:rgba(255,255,255,.12);color:#e6eef8;box-shadow:none}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-pill i{color:#ffd54a}
+
+/* ---------- JUDUL & TEKS UMUM ---------- */
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-section-title{color:#fff}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-subtitle{color:var(--psk-muted)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-eyebrow{color:#ffd54a}
+
+/* ---------- 1. PEMBUKA ---------- */
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-opening{background:var(--psk-bg2)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-opening-desc{color:var(--psk-muted)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-opening-desc strong{color:#fff}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-om{background:var(--psk-surf2);border-left-color:#ffb300}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-om b{color:#fff}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-om span{color:var(--psk-muted)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-cabinet{border-color:var(--psk-line);box-shadow:0 30px 70px rgba(0,0,0,.55)}
+
+/* ---------- 2. FEATURED ---------- */
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-featured{background:var(--psk-bg)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-feat-photo{border-color:var(--psk-line);box-shadow:0 26px 60px rgba(0,0,0,.5)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-feat-rank{background:var(--psk-surf2);color:#ffd54a;border:1px solid rgba(255,213,74,.3)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-feat-info h3{color:#fff}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-feat-desc{color:var(--psk-muted)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-feat-meta span{background:var(--psk-surf);border-color:var(--psk-line);color:var(--psk-text);box-shadow:0 4px 14px rgba(0,0,0,.3)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-featured-read{background:#ffb300;color:#0d3a66}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-featured-read i{color:#0d3a66}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-featured-read:hover{background:#ffd54a;color:#0d3a66}
+
+/* ---------- 3. PENCAPAIAN PRESTASI ---------- */
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-achv{background:var(--psk-bg)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-achv-card{background:var(--psk-surf);border-color:var(--psk-line);box-shadow:0 12px 30px rgba(0,0,0,.35)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-achv-card:hover{box-shadow:0 22px 46px rgba(0,0,0,.55);border-color:rgba(255,213,74,.5)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-achv-body h3{color:#fff}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-achv-body p{color:var(--psk-muted)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-achv-tag{color:var(--psk-text)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-achv-year{background:var(--psk-surf2);color:var(--psk-muted)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-achv-link{color:#ffd54a}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-more-btn{background:var(--psk-surf);color:var(--psk-text);border-color:var(--psk-line);box-shadow:0 10px 24px rgba(0,0,0,.35)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-more-btn:hover{border-color:#ffb300;color:#ffd54a}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-achv-empty{color:var(--psk-muted)}
+
+/* ---------- FILTER & TOMBOL ---------- */
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-fbtn{background:var(--psk-surf);color:var(--psk-text);border-color:var(--psk-line)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-fbtn:hover{border-color:#ffb300}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-fbtn.active{background:#ffb300;color:#0d3a66;border-color:#ffb300;box-shadow:0 8px 20px rgba(255,179,0,.3)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-fbtn.active i{color:#0d3a66}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-yearnav-label{color:var(--psk-muted)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-ybtn{background:var(--psk-surf);color:var(--psk-text);border-color:var(--psk-line)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-ybtn.active{background:#ffb300;color:#0d3a66;border-color:#ffb300}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-slider-arrow{background:var(--psk-surf);color:var(--psk-text);border-color:var(--psk-line);box-shadow:0 10px 24px rgba(0,0,0,.35)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-slider-arrow:hover{background:#ffb300;color:#0d3a66;border-color:#ffb300}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-slider-arrow:disabled{background:var(--psk-surf);color:var(--psk-text);border-color:var(--psk-line)}
+
+/* ---------- 4. GALERI / MOMEN KEJAYAAN ---------- */
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-gallery{background:var(--psk-bg2)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-slider-wrap::after{background:linear-gradient(90deg,rgba(11,27,47,0),var(--psk-bg2) 88%)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-photo{border-color:var(--psk-line);box-shadow:0 16px 36px rgba(0,0,0,.5)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-note{background:var(--psk-surf);color:var(--psk-muted);border-color:rgba(255,255,255,.2)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-moment-placeholder{background:linear-gradient(135deg,var(--psk-surf),var(--psk-surf2));color:var(--psk-muted)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-moment-placeholder strong{color:#fff}
+
+/* ---------- 5. QUOTE (sudah gelap, hanya dipertegas) ---------- */
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-quote{background:linear-gradient(135deg,#040c18 0%,#071a31 55%,#0a2340 100%)}
+
+/* ---------- 6. PERJALANAN PRESTASI ---------- */
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-archive{background:var(--psk-bg)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-archive-badge{background:var(--psk-surf);color:var(--psk-text);border-color:var(--psk-line)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-tl-circle{background:var(--psk-surf2);box-shadow:0 10px 26px rgba(0,0,0,.5)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-tl-count{background:rgba(255,179,0,.12);color:#ffd54a;border-color:rgba(255,213,74,.35)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-tl-list::-webkit-scrollbar-thumb{background:rgba(255,255,255,.22)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-tl-item{background:var(--psk-surf);border-color:var(--psk-line)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-tl-item:hover{background:var(--psk-surf2);border-color:rgba(255,213,74,.55);box-shadow:0 8px 18px rgba(0,0,0,.4)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-tl-item strong{color:#fff}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-tl-item small{color:var(--psk-muted)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-tl-empty{background:var(--psk-surf);color:var(--psk-muted);border-color:rgba(255,255,255,.2)}
+
+/* ---------- 7. CTA ---------- */
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-cta{background:var(--psk-bg2)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-cta-box{background:linear-gradient(135deg,#040c18 0%,#071a31 55%,#0a2340 100%);border:1px solid rgba(255,213,74,.16);box-shadow:0 34px 80px rgba(0,0,0,.6)}
+
+/* ---------- LIGHTBOX & MODAL ARTIKEL ---------- */
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-article-modal{background:rgba(2,8,18,.78)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-article-dialog{background:var(--psk-surf);border-color:var(--psk-line);box-shadow:0 35px 100px rgba(0,0,0,.6)}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-article-close{background:var(--psk-surf2);color:#fff}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-article-close:hover{background:#ffb300;color:#0d3a66}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-article-date{color:#ffd54a}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-article-dialog h3{color:#fff}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .psk-article-body{color:var(--psk-muted)}
+
+/* ---------- TRANSISI HALUS SAAT PINDAH TEMA ---------- */
+.psk-page,.psk-hero,.psk-opening,.psk-featured,.psk-achv,.psk-gallery,.psk-archive,.psk-cta,
+.psk-achv-card,.psk-om,.psk-fbtn,.psk-ybtn,.psk-pill,.psk-tl-item,.psk-article-dialog{
+  transition:background-color .35s ease,border-color .35s ease,color .35s ease}
+
 </style>
 @endpush
 
@@ -902,7 +1012,7 @@
           <div class="psk-achv-photo">
             <i class="fas fa-image"></i>
             <img src="{{ asset('images/prestasi/fiksi25.jpg') }}" alt="Tim APHP Skaneda Melaju ke Babak Final FIKSI 2025" loading="lazy" onerror="this.remove()">
-            <span class="psk-achv-rank"><i class="fas fa-trophy"></i> Finalis </span>
+            <span class="psk-achv-rank"><i class="fas fa-trophy"></i> Finalis</span>
             <span class="psk-achv-level"><i class="fas fa-map-marker-alt"></i> Nasional</span>
           </div>
           <div class="psk-achv-body">
@@ -1167,6 +1277,8 @@
             <span class="psk-achv-link">Lihat berita <i class="fas fa-arrow-right"></i></span>
           </div>
         </article>
+      </div>
+
       <div class="psk-achv-more" data-reveal>
         <button type="button" class="psk-more-btn" id="pskAchvMore">Muat Prestasi Lainnya <i class="fas fa-chevron-down"></i></button>
         <span class="psk-achv-empty" id="pskAchvEmpty" hidden><i class="fas fa-info-circle"></i> Belum ada prestasi pada kategori ini.</span>
@@ -1175,84 +1287,82 @@
   </section>
 
   <!-- ================= 4. MOMEN KEJAYAAN ================= -->
-<section class="psk-gallery">
-  <div class="psk-section">
+  <section class="psk-gallery">
+    <div class="psk-section">
 
-    <div data-reveal>
-      <span class="psk-eyebrow">Dokumentasi Prestasi</span>
+      <div data-reveal>
+        <span class="psk-eyebrow">Dokumentasi Prestasi</span>
 
-      <h2 class="psk-section-title">
-        Momen <span class="psk-gold">Kejayaan</span>
-      </h2>
+        <h2 class="psk-section-title">
+          Momen <span class="psk-gold">Kejayaan</span>
+        </h2>
 
-      <p class="psk-subtitle">
-        Ruang dokumentasi untuk foto-foto asli pencapaian Skaneda,
-        disusun dalam grid bento dengan ukuran yang bervariasi.
-      </p>
+        <p class="psk-subtitle">
+          Ruang dokumentasi untuk foto-foto asli pencapaian Skaneda,
+          disusun dalam grid bento dengan ukuran yang bervariasi.
+        </p>
+      </div>
+
+      <div class="psk-moment-grid" style="margin-top:2.2rem;" data-reveal>
+
+        <!-- ADIWIYATA PROVINSI 2025 -->
+        <div class="psk-photo psk-mo-a">
+          <img
+            src="{{ asset('images/prestasi/adiwiyata.jpeg') }}"
+            alt="Dokumentasi Sekolah Adiwiyata Provinsi 2025">
+          <span class="psk-photo-cap">
+            <strong>Sekolah Adiwiyata Provinsi Jawa Timur</strong>
+            <span>
+              <i class="fas fa-map-marked-alt"></i>
+              Provinsi · 2025
+            </span>
+          </span>
+        </div>
+
+        <!-- LKS NASIONAL 2024 -->
+        <div class="psk-photo psk-mo-b">
+          <img
+            src="{{ asset('images/prestasi/lkslampung.jpg') }}"
+            alt="Dokumentasi LKS Nasional 2024">
+          <span class="psk-photo-cap">
+            <strong>LKS Patisserie And Confectionery</strong>
+            <span>
+              <i class="fas fa-globe-asia"></i>
+              Nasional · 2024
+            </span>
+          </span>
+        </div>
+
+        <!-- PASKIBRAKA 2024 -->
+        <div class="psk-photo psk-mo-c">
+          <img
+            src="{{ asset('images/prestasi/paskib24.jpg') }}"
+            alt="Dokumentasi Paskibraka 2024">
+          <span class="psk-photo-cap">
+            <strong>Paskibraka Skaneda</strong>
+            <span>
+              <i class="fas fa-globe-asia"></i>
+              Nasional · 2024
+            </span>
+          </span>
+        </div>
+
+        <!-- LKS JAWA TIMUR 2026 -->
+        <div class="psk-photo psk-mo-d">
+          <img
+            src="{{ asset('images/prestasi/lks26.jpg') }}"
+            alt="Dokumentasi LKS Jawa Timur 2026">
+          <span class="psk-photo-cap">
+            <strong>LKS Jawa Timur</strong>
+            <span>
+              <i class="fas fa-map-marked-alt"></i>
+              Provinsi · 2026
+            </span>
+          </span>
+        </div>
+      </div>
     </div>
-
-    <div class="psk-moment-grid" style="margin-top:2.2rem;" data-reveal>
-
-      <!-- FESTIKA JATIM 2025 -->
-      <div class="psk-photo psk-mo-a">
-        <img
-          src="{{ asset('images/prestasi/adiwiyata.jpeg') }}"
-          alt="Dokumentasi FESTIKA Jatim 2025">
-        <span class="psk-photo-cap">
-          <strong>Sekolah Adiwiyata Provinsi Jawa Timur</strong>
-          <span>
-            <i class="fas fa-map-marked-alt"></i>
-            Provinsi · 2025
-          </span>
-        </span>
-      </div>
-
-      <!-- LKS NASIONAL 2024 -->
-      <div class="psk-photo psk-mo-b">
-        <img
-          src="{{ asset('images/prestasi/lkslampung.jpg') }}"
-          alt="Dokumentasi LKS Nasional 2024">
-        <span class="psk-photo-cap">
-          <strong>LKS Patisserie And Confectionery</strong>
-          <span>
-            <i class="fas fa-globe-asia"></i>
-            Nasional · 2024
-          </span>
-        </span>
-      </div>
-
-
-      <!-- PASKIBRAKA 2024 -->
-      <div class="psk-photo psk-mo-c">
-        <img
-          src="{{ asset('images/prestasi/paskib24.jpg') }}"
-          alt="Dokumentasi Paskibraka 2024">
-        <span class="psk-photo-cap">
-          <strong>Paskibraka Skaneda</strong>
-          <span>
-            <i class="fas fa-globe-asia"></i>
-            Nasional · 2024
-          </span>
-        </span>
-      </div>
-
-
-      <!-- LKS JAWA TIMUR 2026 -->
-      <div class="psk-photo psk-mo-d">
-        <img
-          src="{{ asset('images/prestasi/lks26.jpg') }}"
-          alt="Dokumentasi LKS Jawa Timur 2026">
-        <span class="psk-photo-cap">
-          <strong>LKS Jawa Timur</strong>
-          <span>
-            <i class="fas fa-map-marked-alt"></i>
-            Provinsi · 2026
-          </span>
-        </span>
-      </div>
-    </div>
-  </div>
-</section>
+  </section>
 
   <!-- ================= 5. QUOTE / MOTO (background sudah lebih berisi — pattern + ornamen + foto opsional) ================= -->
   <section class="psk-quote">
