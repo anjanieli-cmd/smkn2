@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\AnnouncementController;
 use App\Http\Controllers\Admin\PartnerController;
 use App\Http\Controllers\Admin\RoadmapController;
 use App\Http\Controllers\Admin\SiteSettingController;
+use App\Http\Controllers\Admin\HomeContentController;
 use Illuminate\Support\Facades\Route;
 
 // Roadmap Pengembangan
@@ -33,6 +34,8 @@ Route::put('/partners', [PartnerController::class, 'update'])->name('partners.up
 Route::get('/footer', [SiteSettingController::class, 'footer'])->name('footer.index');
 Route::put('/footer', [SiteSettingController::class, 'updateFooter'])->name('footer.update');
 
-// Konten Umum Website
+// Konten beranda
 Route::get('/general', [SiteSettingController::class, 'general'])->name('general.index');
 Route::put('/general', [SiteSettingController::class, 'updateGeneral'])->name('general.update');
+Route::put('/general/industry', [HomeContentController::class, 'updateIndustry'])->name('general.industry.update');
+Route::put('/general/achievements', [HomeContentController::class, 'updateAchievements'])->name('general.achievements.update');

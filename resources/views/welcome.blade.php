@@ -2399,36 +2399,19 @@
     </div>
 
     <div class="out-logo-window" data-reveal style="--d:1">
+      @php
+        $homeIndustryLogos = \App\Models\HomeIndustryLogo::active()->get();
+      @endphp
       <div class="out-logo-track" id="industryTrack">
         <div class="out-logo-group">
-          <div class="out-logo-card"><img class="out-logo-only" src="{{ asset('images/industri/hummatech.png') }}" alt="Logo Hummatech" loading="lazy"></div>
-          <div class="out-logo-card"><img class="out-logo-only" src="{{ asset('images/industri/primafood.png') }}" alt="Logo PrimaFood" loading="lazy"></div>
-          <div class="out-logo-card"><img class="out-logo-only" src="{{ asset('images/industri/anekapay.png') }}" alt="Logo AnekaPay" loading="lazy"></div>
-          <div class="out-logo-card"><img class="out-logo-only" src="{{ asset('images/industri/minarsih.png') }}" alt="Logo Minarsih" loading="lazy"></div>
-          <div class="out-logo-card"><img class="out-logo-only" src="{{ asset('images/industri/digiprosb.png') }}" alt="Logo DigiproSB" loading="lazy"></div>
-          <div class="out-logo-card"><img class="out-logo-only" src="{{ asset('images/industri/smartfren.png') }}" alt="Logo Smartfren" loading="lazy"></div>
-          <div class="out-logo-card"><img class="out-logo-only" src="{{ asset('images/industri/hsp.png') }}" alt="Logo HSP" loading="lazy"></div>
-          <div class="out-logo-card"><img class="out-logo-only" src="{{ asset('images/industri/sido-jodo.png') }}" alt="Logo Sido Jodo" loading="lazy"></div>
-          <div class="out-logo-card"><img class="out-logo-only" src="{{ asset('images/industri/maspion-it.png') }}" alt="Logo Maspion IT" loading="lazy"></div>
-          <div class="out-logo-card"><img class="out-logo-only" src="{{ asset('images/industri/media-tama.png') }}" alt="Logo MediaTama" loading="lazy"></div>
-          <div class="out-logo-card"><img class="out-logo-only" src="{{ asset('images/industri/otak-kanan.png') }}" alt="Logo Otak Kanan" loading="lazy"></div>
-          <div class="out-logo-card"><img class="out-logo-only" src="{{ asset('images/industri/apika-finance.png') }}" alt="Logo Apika Finance" loading="lazy"></div>
-          <div class="out-logo-card"><img class="out-logo-only" src="{{ asset('images/industri/rs-islam-sakinah-mojokerto.png') }}" alt="Logo Rumah Sakit Islam Sakinah Mojokerto" loading="lazy"></div>
+          @foreach($homeIndustryLogos as $logo)
+          <div class="out-logo-card"><img class="out-logo-only" src="{{ $logo->logo_url }}" alt="Logo {{ $logo->name }}" loading="lazy"></div>
+          @endforeach
         </div>
         <div class="out-logo-group" aria-hidden="true">
-          <div class="out-logo-card"><img class="out-logo-only" src="{{ asset('images/industri/hummatech.png') }}" alt="Logo Hummatech" loading="lazy"></div>
-          <div class="out-logo-card"><img class="out-logo-only" src="{{ asset('images/industri/primafood.png') }}" alt="Logo PrimaFood" loading="lazy"></div>
-          <div class="out-logo-card"><img class="out-logo-only" src="{{ asset('images/industri/anekapay.png') }}" alt="Logo AnekaPay" loading="lazy"></div>
-          <div class="out-logo-card"><img class="out-logo-only" src="{{ asset('images/industri/minarsih.png') }}" alt="Logo Minarsih" loading="lazy"></div>
-          <div class="out-logo-card"><img class="out-logo-only" src="{{ asset('images/industri/digiprosb.png') }}" alt="Logo DigiproSB" loading="lazy"></div>
-          <div class="out-logo-card"><img class="out-logo-only" src="{{ asset('images/industri/smartfren.png') }}" alt="Logo Smartfren" loading="lazy"></div>
-          <div class="out-logo-card"><img class="out-logo-only" src="{{ asset('images/industri/hsp.png') }}" alt="Logo HSP" loading="lazy"></div>
-          <div class="out-logo-card"><img class="out-logo-only" src="{{ asset('images/industri/sido-jodo.png') }}" alt="Logo Sido Jodo" loading="lazy"></div>
-          <div class="out-logo-card"><img class="out-logo-only" src="{{ asset('images/industri/maspion-it.png') }}" alt="Logo Maspion IT" loading="lazy"></div>
-          <div class="out-logo-card"><img class="out-logo-only" src="{{ asset('images/industri/media-tama.png') }}" alt="Logo MediaTama" loading="lazy"></div>
-          <div class="out-logo-card"><img class="out-logo-only" src="{{ asset('images/industri/otak-kanan.png') }}" alt="Logo Otak Kanan" loading="lazy"></div>
-          <div class="out-logo-card"><img class="out-logo-only" src="{{ asset('images/industri/apika-finance.png') }}" alt="Logo Apika Finance" loading="lazy"></div>
-          <div class="out-logo-card"><img class="out-logo-only" src="{{ asset('images/industri/rs-islam-sakinah-mojokerto.png') }}" alt="Logo Rumah Sakit Islam Sakinah Mojokerto" loading="lazy"></div>
+          @foreach($homeIndustryLogos as $logo)
+          <div class="out-logo-card"><img class="out-logo-only" src="{{ $logo->logo_url }}" alt="Logo {{ $logo->name }}" loading="lazy"></div>
+          @endforeach
         </div>
       </div>
     </div>
@@ -2958,23 +2941,16 @@
 
       <div class="prestasi-feed-viewport">
         <div class="prestasi-feed-rail" id="prestasiFeedRail" aria-label="Feed prestasi siswa">
+          @php
+            $homeAchievements = \App\Models\HomeAchievement::active()->get();
+          @endphp
+          @foreach($homeAchievements as $card)
           <article class="prestasi-feed">
             <div class="prestasi-feed-head"><div class="prestasi-feed-avatar"><img src="{{ asset('images/logo_smkn2.png') }}" alt="SKANEDA"></div><div class="prestasi-feed-account"><strong>SKANEDA</strong><span>SMK Negeri 2 Mojokerto</span></div><div class="prestasi-feed-more" aria-hidden="true">•••</div></div>
-            <div class="prestasi-feed-media"><img src="{{ asset('images/lks.jpeg') }}" alt="Lomba Kompetensi Siswa" loading="lazy"></div>
-            <div class="prestasi-feed-body"><div class="prestasi-feed-actions" aria-hidden="true"><i class="fa-regular fa-heart"></i><i class="fa-regular fa-comment"></i><i class="fa-regular fa-paper-plane"></i><i class="fa-regular fa-bookmark save"></i></div><span class="prestasi-feed-tag">Medali Perak — Nasional</span><h3>LKS Nasional <span>Patisserie &amp; Confectionery</span></h3><p>SMK Negeri 2 Mojokerto meraih medali perak pada Lomba Kompetensi Siswa SMK bidang patisserie and confectionery tingkat nasional.</p><div class="prestasi-feed-meta"><span><i class="fa-solid fa-calendar"></i> 2024</span><span><i class="fa-solid fa-medal"></i> Tingkat Nasional</span></div></div>
+            <div class="prestasi-feed-media"><img src="{{ $card->image_url ?? asset('images/logo_smkn2.png') }}" alt="{{ $card->title }}" loading="lazy"></div>
+            <div class="prestasi-feed-body"><div class="prestasi-feed-actions" aria-hidden="true"><i class="fa-regular fa-heart"></i><i class="fa-regular fa-comment"></i><i class="fa-regular fa-paper-plane"></i><i class="fa-regular fa-bookmark save"></i></div>@if($card->tag)<span class="prestasi-feed-tag">{{ $card->tag }}</span>@endif<h3>{{ $card->title }}@if($card->subtitle) <span>{{ $card->subtitle }}</span>@endif</h3>@if($card->description)<p>{{ $card->description }}</p>@endif<div class="prestasi-feed-meta">@if($card->year)<span><i class="fa-solid fa-calendar"></i> {{ $card->year }}</span>@endif @if($card->meta_label)<span><i class="fa-solid fa-medal"></i> {{ $card->meta_label }}</span>@endif</div></div>
           </article>
-
-          <article class="prestasi-feed">
-            <div class="prestasi-feed-head"><div class="prestasi-feed-avatar"><img src="{{ asset('images/logo_smkn2.png') }}" alt="SKANEDA"></div><div class="prestasi-feed-account"><strong>SKANEDA</strong><span>SMK Negeri 2 Mojokerto</span></div><div class="prestasi-feed-more" aria-hidden="true">•••</div></div>
-            <div class="prestasi-feed-media"><img src="{{ asset('images/adiwiyata.jpeg') }}" alt="Sekolah Adiwiyata Provinsi" loading="lazy"></div>
-            <div class="prestasi-feed-body"><div class="prestasi-feed-actions" aria-hidden="true"><i class="fa-regular fa-heart"></i><i class="fa-regular fa-comment"></i><i class="fa-regular fa-paper-plane"></i><i class="fa-regular fa-bookmark save"></i></div><span class="prestasi-feed-tag">Penghargaan — Jawa Timur</span><h3>SMKN 2 Mojokerto <span>Raih Adiwiyata Provinsi</span></h3><p>SMK Negeri 2 Mojokerto meraih penghargaan Sekolah Adiwiyata Provinsi Jawa Timur.</p><div class="prestasi-feed-meta"><span><i class="fa-solid fa-calendar"></i> 2025</span><span><i class="fa-solid fa-medal"></i> Lingkungan</span></div></div>
-          </article>
-
-          <article class="prestasi-feed">
-            <div class="prestasi-feed-head"><div class="prestasi-feed-avatar"><img src="{{ asset('images/logo_smkn2.png') }}" alt="SKANEDA"></div><div class="prestasi-feed-account"><strong>SKANEDA</strong><span>SMK Negeri 2 Mojokerto</span></div><div class="prestasi-feed-more" aria-hidden="true">•••</div></div>
-            <div class="prestasi-feed-media"><img src="{{ asset('images/klic.jpeg') }}" alt="Program KLIC" loading="lazy"></div>
-            <div class="prestasi-feed-body"><div class="prestasi-feed-actions" aria-hidden="true"><i class="fa-regular fa-heart"></i><i class="fa-regular fa-comment"></i><i class="fa-regular fa-paper-plane"></i><i class="fa-regular fa-bookmark save"></i></div><span class="prestasi-feed-tag">Prestasi — KLIC</span><h3>Prestasi <span>Program KLIC</span></h3><p>SMK Negeri 2 Mojokerto kembali menorehkan prestasi melalui program Korea E-Learning Improvement Cooperation (KLIC).</p><div class="prestasi-feed-meta"><span><i class="fa-solid fa-calendar"></i> 2025</span><span><i class="fa-solid fa-medal"></i> E-Learning</span></div></div>
-          </article>
+          @endforeach
 
         </div>
       </div>
