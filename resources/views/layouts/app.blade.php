@@ -1170,8 +1170,10 @@
     .footer-partners-row{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:1.2rem 2.2rem}
     .footer-partner-logo{display:flex;align-items:center;justify-content:center;background:transparent!important;border:none!important;padding:0!important;border-radius:0!important;transition:all .3s ease;cursor:pointer}
     .footer-partner-logo:hover{transform:translateY(-3px) scale(1.08)}
-    .footer-partner-logo img{height:36px;width:auto;max-width:130px;object-fit:contain;filter:brightness(2.2);opacity:.75;transition:all .3s ease}
-    .footer-partner-logo:hover img{filter:none;opacity:1}
+    /* Logo mitra: abu-abu dulu, berwarna sesuai logo aslinya saat kursor datang (berlaku di light & dark mode) */
+    .footer-partner-logo img{height:36px;width:auto;max-width:130px;object-fit:contain;filter:grayscale(1) brightness(1.7);opacity:.62;transition:filter .35s ease,opacity .35s ease}
+    .footer-partner-logo:hover img,
+    .footer-partner-logo:focus-within img{filter:grayscale(0) brightness(1);opacity:1}
 
     .footer-bottom{border-top:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.25);color:rgba(255,255,255,.65);font-size:.82rem;padding:1.3rem 0;margin-top:3rem}
     .footer-bottom-inner{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
@@ -1535,7 +1537,7 @@
 
     body.theme-dark .bg-blob{opacity:.28}
     body.theme-dark #cursorGlow{opacity:.7}
-    body.theme-dark .footer-partner-logo{filter:grayscale(100%) brightness(2.4) contrast(.85)}
+    body.theme-dark .footer-partner-logo{filter:none}
 
     /* ---------- DARK MODE — NAVBAR & ANNOUNCE BAR ---------- */
     body.theme-dark .announce-bar{
@@ -2757,15 +2759,24 @@ html body.theme-dark .vt-btn{background:linear-gradient(135deg,#ffd54a,#ff8a00) 
         </div>
       </div>
     </nav>
-    <div class="footer-social">
-      <div class="footer-social-label">Ikuti Media Sosial SKANEDA</div>
-      <div class="footer-social-row">
-        <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-        <a href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
-        <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-        <a href="https://tiktok.com" target="_blank" rel="noopener" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
-      </div>
-    </div>
+    @php
+  $socialLinks = array_filter([
+    ['url' => \App\Models\SiteSetting::get('footer_instagram'), 'icon' => 'fa-instagram',  'label' => 'Instagram'],
+    ['url' => \App\Models\SiteSetting::get('footer_youtube'),   'icon' => 'fa-youtube',    'label' => 'YouTube'],
+    ['url' => \App\Models\SiteSetting::get('footer_facebook'),  'icon' => 'fa-facebook-f', 'label' => 'Facebook'],
+    ['url' => \App\Models\SiteSetting::get('footer_tiktok'),    'icon' => 'fa-tiktok',     'label' => 'TikTok'],
+  ], fn ($s) => filled($s['url']));
+@endphp
+@if (count($socialLinks))
+<div class="footer-social">
+  <div class="footer-social-label">{{ \App\Models\SiteSetting::get('footer_social_label') ?: 'Ikuti Media Sosial SKANEDA' }}</div>
+  <div class="footer-social-row">
+    @foreach ($socialLinks as $s)
+      <a href="{{ $s['url'] }}" target="_blank" rel="noopener" aria-label="{{ $s['label'] }} SMKN 2 Mojokerto"><i class="fa-brands {{ $s['icon'] }}"></i></a>
+    @endforeach
+  </div>
+</div>
+@endif
 
     {{-- ===== MITRA & PENDUKUNG ===== --}}
     <div class="footer-partners">

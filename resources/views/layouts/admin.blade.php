@@ -335,7 +335,7 @@
         ['admin.announcement.index',    'fa-bullhorn',          'Announcement Bar'],
         ['admin.partners.index',        'fa-building',          'Logo Partner / Mitra'],
         ['admin.footer.index',  'fa-shoe-prints', 'Informasi Footer'],
-        ['admin.general.index', 'fa-globe',       'Konten Umum Website'],
+        ['admin.general.index', 'fa-globe',       'Konten Beranda'],
       ],
     ];
   @endphp

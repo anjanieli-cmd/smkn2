@@ -23,10 +23,11 @@ class SiteSetting extends Model
         // ---------- Informasi Footer ----------
         'footer_sub'            => 'Sekolah Menengah Kejuruan Unggulan',
         'footer_tagline'        => 'Mencetak lulusan vokasi berkualitas, berkarakter, dan siap bersaing di era global.',
-        'footer_social_label'   => 'Follow Our Journey',
-        'footer_instagram'      => '',
-        'footer_youtube'        => '',
-        'footer_facebook'       => '',
+        'footer_social_label'   => 'Ikuti Media Sosial SKANEDA',
+        'footer_instagram'      => 'https://www.instagram.com/smkn_2_mojokerto/reels/',
+        'footer_youtube'        => 'https://www.youtube.com/@smkn2mojokertoofficial51',
+        'footer_facebook'       => 'https://www.facebook.com/smkn2mojokerto/?locale=id_ID',
+        'footer_tiktok'         => 'https://www.tiktok.com/@smkn_2_mojokerto',
         'footer_partners_label' => 'Didukung Oleh',
         'footer_copyright'      => '© 2026 SMK Negeri 2 Mojokerto',
         'footer_slogan'         => 'Belajar hari ini, berkarya untuk masa depan.',
@@ -40,6 +41,13 @@ class SiteSetting extends Model
         'contact_phone'         => '0312 2292 9922',
         'contact_email'         => 'info@smkn2mojokerto.sch.id',
         'contact_hours'         => 'Senin–Jumat · 07.00–16.00 WIB',
+
+        // ---------- Sambutan Kepala Sekolah (beranda) ----------
+        'sambutan_photo'        => 'images/pak-is.jpeg',
+        'sambutan_name'         => 'Iswahyudi, S.ST. M.Pd',
+        'sambutan_role'         => 'Kepala SMK Negeri 2 Mojokerto',
+        'sambutan_quote'        => 'Satu langkah hari ini lebih berharga dari pada seribu rencana yang di tunda.',
+        'sambutan_message'      => 'Assalamu’alaikum warahmatullahi wabarakatuh. Selamat datang di website resmi SMK Negeri 2 Mojokerto. Kami berkomitmen mencetak generasi vokasi yang kompeten, berkarakter, dan siap bersaing di dunia industri global. Bersama seluruh civitas akademika, kami terus berinovasi demi masa depan pendidikan vokasi yang lebih baik.',
 
         // ---------- Roadmap (intro + statistik) ----------
         'roadmap_intro_copy'    => 'Roadmap ini menjadi penunjuk arah bersama bagi seluruh warga sekolah: guru, tenaga kependidikan, peserta didik, orang tua, hingga mitra dunia usaha dan industri. Setiap fase dirancang dengan target konkret, indikator keberhasilan, dan semangat gotong royong — agar setiap langkah kecil hari ini bermuara pada lompatan besar di masa depan.',

@@ -812,9 +812,9 @@
 <section class="hd-hero" id="home" aria-label="Beranda">
   <div class="hd-hero-inner">
     <div class="hd-hero-copy">
-      <div class="hd-eyebrow">Disiplin, Berprestasi</div>
+      <div class="hd-eyebrow">{{ \App\Models\SiteSetting::get('hero_eyebrow') }}</div>
       <h1 class="hd-title">SMKN <span class="hd-num">2</span><br><span class="hd-line-sub">MOJOKERTO</span></h1>
-      <p class="hd-desc">Mewujudkan pendidikan vokasi yang unggul, berkarakter, dan siap menghadapi masa depan.</p>
+      <p class="hd-desc">{{ \App\Models\SiteSetting::get('hero_desc') }}</p>
       <div class="hd-actions">
         <a href="#lulusan-terbaik" class="hd-btn hd-btn-primary">Jelajahi Sekolah <i class="fa-solid fa-arrow-right"></i></a>
         <a href="#virtual-tour" class="hd-btn hd-btn-vt"><span class="vt-pulse" aria-hidden="true"></span> Virtual Tour 360° <i class="fa-solid fa-street-view"></i></a>
@@ -1207,19 +1207,19 @@
           <div class="ws-inner">
             <div class="ws-left">
               <div class="ws-photo-frame">
-                <img class="ws-photo" src="{{ asset('images/pak-is.jpeg') }}" alt="Kepala Sekolah" loading="lazy" />
+                <img class="ws-photo" src="{{ asset(\App\Models\SiteSetting::get('sambutan_photo') ?: 'images/pak-is.jpeg') }}" alt="{{ \App\Models\SiteSetting::get('sambutan_name') }}" loading="lazy" />
               </div>
-              <div class="ws-photo-cap">Iswahyudi, S.ST. M.Pd</div>
-              <div class="ws-photo-role">Kepala SMK Negeri <span class="num-2">2</span> Mojokerto</div>
+              <div class="ws-photo-cap">{{ \App\Models\SiteSetting::get('sambutan_name') }}</div>
+              <div class="ws-photo-role">{{ \App\Models\SiteSetting::get('sambutan_role') }}</div>
             </div>
             <div class="ws-right">
               <div class="ws-kicker"><span class="ws-kicker-line"></span>Welcome Message</div>
               <div class="ws-welcome">Sambutan Kepala Sekolah</div>
-              <div class="ws-quote">&ldquo;Satu langkah hari ini lebih berharga dari pada seribu rencana yang di tunda.&rdquo;</div>
-              <p class="ws-msg">Assalamu&rsquo;alaikum warahmatullahi wabarakatuh. Selamat datang di website resmi SMK Negeri 2 Mojokerto. Kami berkomitmen mencetak generasi vokasi yang kompeten, berkarakter, dan siap bersaing di dunia industri global. Bersama seluruh civitas akademika, kami terus berinovasi demi masa depan pendidikan vokasi yang lebih baik.</p>
+              <div class="ws-quote">&ldquo;{{ \App\Models\SiteSetting::get('sambutan_quote') }}&rdquo;</div>
+              <p class="ws-msg">{!! nl2br(e(\App\Models\SiteSetting::get('sambutan_message'))) !!}</p>
               <div class="ws-sign">
-                <div class="ws-sign-name">Iswahyudi, S.ST. M.Pd</div>
-                <div class="ws-sign-role">Kepala SMK Negeri <span class="num-2">2</span> Mojokerto</div>
+                <div class="ws-sign-name">{{ \App\Models\SiteSetting::get('sambutan_name') }}</div>
+                <div class="ws-sign-role">{{ \App\Models\SiteSetting::get('sambutan_role') }}</div>
               </div>
             </div>
           </div>
@@ -3048,14 +3048,22 @@
 </section>
 
 <!-- ================= KONTAK & FOOTER ================= -->
+@php
+  $contactAddress = \App\Models\SiteSetting::get('contact_address');
+  $contactPhone   = \App\Models\SiteSetting::get('contact_phone');
+  $contactEmail   = \App\Models\SiteSetting::get('contact_email');
+  $contactHours   = \App\Models\SiteSetting::get('contact_hours');
+  $mapEmbedUrl    = 'https://www.google.com/maps?q=' . rawurlencode($contactAddress) . '&output=embed';
+  $mapOpenUrl     = 'https://www.google.com/maps/search/?api=1&query=' . urlencode($contactAddress);
+@endphp
 <section class="kontak-section section-py" id="kontak" aria-label="Kontak dan lokasi sekolah">
   <div class="container">
     <div class="ft-wrap">
       <div class="ft-head" data-reveal="title">
         <div class="ft-eyebrow">Temukan Kami</div>
         <h2 class="ft-title">Temukan <span class="gold">Kami</span></h2>
-        <p class="ft-sub" data-reveal="text" style="--d:1">Kami siap membantu Anda.</p>
-        <p class="ft-line" data-reveal="text" style="--d:2">Informasi sekolah, PPDB, dan program keahlian.</p>
+        <p class="ft-sub" data-reveal="text" style="--d:1">{{ \App\Models\SiteSetting::get('contact_sub') }}</p>
+        <p class="ft-line" data-reveal="text" style="--d:2">{{ \App\Models\SiteSetting::get('contact_line') }}</p>
       </div>
       <div class="ft-grid">
         <div class="ft-card" data-reveal="card" style="--d:1">
@@ -3068,32 +3076,32 @@
             <div class="ft-row-icon"><i class="fas fa-location-dot"></i></div>
             <div>
               <div class="ft-row-label">Alamat</div>
-              <div class="ft-row-value">Jl. Raya Pulorejo, Kel. Pulorejo, Kec. Prajurit Kulon, Kota Mojokerto, Jawa Timur 61325</div>
+              <div class="ft-row-value">{{ $contactAddress }}</div>
             </div>
           </div>
           <div class="ft-row">
             <div class="ft-row-icon"><i class="fas fa-phone"></i></div>
             <div>
               <div class="ft-row-label">Telepon</div>
-              <div class="ft-row-value"><a href="tel:031222929922">0312 2292 9922</a></div>
+              <div class="ft-row-value"><a href="tel:{{ preg_replace('/[^0-9+]/', '', $contactPhone) }}">{{ $contactPhone }}</a></div>
             </div>
           </div>
           <div class="ft-row">
             <div class="ft-row-icon"><i class="fas fa-envelope"></i></div>
             <div>
               <div class="ft-row-label">Email</div>
-              <div class="ft-row-value"><a href="mailto:info@smkn2mojokerto.sch.id">info@smkn2mojokerto.sch.id</a></div>
+              <div class="ft-row-value"><a href="mailto:{{ $contactEmail }}">{{ $contactEmail }}</a></div>
             </div>
           </div>
           <div class="ft-row">
             <div class="ft-row-icon"><i class="fas fa-clock"></i></div>
             <div>
               <div class="ft-row-label">Jam Operasional</div>
-              <div class="ft-row-value">Senin&ndash;Jumat &middot; 07.00&ndash;16.00 WIB</div>
+              <div class="ft-row-value">{{ $contactHours }}</div>
             </div>
           </div>
           <hr class="ft-stub" />
-          <a class="ft-map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=Jalan+Raya+Pulorejo%2C+Kelurahan+Pulorejo%2C+Kecamatan+Prajurit+Kulon%2C+Kota+Mojokerto%2C+Jawa+Timur+61325" target="_blank" rel="noopener">
+          <a class="ft-map-btn" href="{{ $mapOpenUrl }}" target="_blank" rel="noopener">
             Buka di Google Maps <i class="fa-solid fa-arrow-up-right-from-square"></i>
           </a>
         </div>
@@ -3103,7 +3111,7 @@
             <div class="ft-pin-ring"></div>
             <div class="ft-pin-ring r2"></div>
           </div>
-          <iframe title="Lokasi SMK Negeri 2 Mojokerto" src="https://www.google.com/maps?q=Jl.%20Raya%20Pulorejo%2C%20Kel.%20Pulorejo%2C%20Kec.%20Prajurit%20Kulon%2C%20Kota%20Mojokerto%2C%20Jawa%20Timur%2061325&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+          <iframe title="Lokasi SMK Negeri 2 Mojokerto" src="{{ $mapEmbedUrl }}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
         </div>
       </div>
       <div class="ft-cta" data-reveal style="--d:3">
@@ -3121,6 +3129,65 @@
     </div>
   </div>
 </section>
+{{-- =========================================================
+     BERANDA — DARK MODE (palet disamakan dengan halaman RPL)
+     Aktif saat <body> punya class "theme-dark".
+     Dasar #08131f / #0a1928, kartu #0f2236, garis rgba(255,255,255,.1)
+     ========================================================= --}}
+<style id="home-dark-mode">
+/* ---------- LATAR SECTION: selang-seling 2 tone seperti RPL ---------- */
+html body.theme-dark .vt-section{background:linear-gradient(180deg,#0a1928 0%,#08131f 50%,#0a1726 100%)!important}
+html body.theme-dark .jurusan-section{background:#08131f!important}
+html body.theme-dark .out-sec.out-alumni{background:#0a1928!important}
+html body.theme-dark .out-sec.out-industry{background:#08131f!important}
+html body.theme-dark .out-sec.out-ptn{background:#0a1928!important}
+html body.theme-dark .prestasi-section{background:#08131f!important}
+html body.theme-dark .kontak-section{background:#0a1928!important}
+
+/* ---------- LULUSAN TERBAIK ---------- */
+/* kotak panjang "Koleksi Jurusan" (tadinya putih) */
+html body.theme-dark .out-alumni .out-jurusan-filter{background:rgba(255,255,255,.05)!important;border:1px solid rgba(255,255,255,.1)!important;box-shadow:0 12px 30px rgba(0,0,0,.35)!important}
+html body.theme-dark .out-alumni .out-jurusan-label span{color:#cfe3f7!important}
+html body.theme-dark .out-alumni .out-jurusan-label small{color:#8fa3b8!important}
+html body.theme-dark .out-alumni .out-jurusan-pill{background:rgba(255,255,255,.06)!important;border-color:rgba(255,255,255,.12)!important;color:#cfe3f7!important}
+html body.theme-dark .out-alumni .out-jurusan-pill:hover{background:rgba(255,179,0,.1)!important;border-color:rgba(255,179,0,.45)!important;color:#fff!important}
+html body.theme-dark .out-alumni .out-jurusan-pill.active{background:#1d6fb8!important;border-color:#28a9e1!important;color:#fff!important}
+/* kartu ID alumni */
+html body.theme-dark .out-alumni .out-id-viewport{background:linear-gradient(135deg,rgba(15,34,54,.9),rgba(29,111,184,.2))!important;box-shadow:0 28px 70px rgba(0,0,0,.5)!important}
+html body.theme-dark .out-alumni .out-id-card{background:#0f2236!important;border-color:rgba(255,255,255,.1)!important;box-shadow:0 18px 45px rgba(0,0,0,.45)!important}
+html body.theme-dark .out-alumni .out-id-photo{background:#0a1928!important}
+html body.theme-dark .out-alumni .out-id-line{background:linear-gradient(90deg,#ffb300 0%,rgba(255,179,0,.3) 45%,rgba(255,255,255,.08) 100%)!important}
+html body.theme-dark .out-alumni .out-id-barcode{background:repeating-linear-gradient(90deg,#9fb2c6 0 2px,transparent 2px 4px,#9fb2c6 4px 5px,transparent 5px 8px)!important}
+html body.theme-dark .out-alumni .out-route-node{background:rgba(255,255,255,.06)!important;border-color:rgba(255,255,255,.12)!important;color:#cfe3f7!important}
+html body.theme-dark .out-alumni .out-route-node.gold{background:rgba(255,179,0,.14)!important;border-color:rgba(255,179,0,.3)!important;color:#ffd54a!important}
+
+/* ---------- KERJA SAMA INDUSTRI: logo saja, tanpa kotak ---------- */
+html body.theme-dark .out-industry .out-logo-card{background:transparent!important;border:0!important;box-shadow:none!important}
+html body.theme-dark .out-industry .out-logo-only{filter:drop-shadow(0 0 10px rgba(255,255,255,.14))}
+html body.theme-dark .out-industry .out-logo-card:hover{filter:drop-shadow(0 12px 22px rgba(255,179,0,.2))}
+html body.theme-dark .out-industry .out-logo-window::before{background:linear-gradient(90deg,#08131f,transparent)!important}
+html body.theme-dark .out-industry .out-logo-window::after{background:linear-gradient(270deg,#08131f,transparent)!important}
+html body.theme-dark .out-industry .out-ind-pills span{background:rgba(255,255,255,.06)!important;border-color:rgba(255,255,255,.12)!important;color:#cfe3f7!important}
+html body.theme-dark .out-industry .out-desc{color:#a9bbcd!important}
+
+/* ---------- LULUSAN PTN ---------- */
+html body.theme-dark .out-ptn .out-desc{color:#a9bbcd!important}
+html body.theme-dark .out-ptn .out-ptn-window,
+html body.theme-dark .out-ptn .out-ptn-destination-card{border-color:rgba(255,255,255,.1)!important}
+html body.theme-dark .out-ptn .out-ptn-destination-card{background:#0f2236!important}
+
+/* ---------- PRESTASI ---------- */
+html body.theme-dark .prestasi-section .prestasi-feed{background:#0f2236!important;border-color:rgba(255,255,255,.1)!important}
+html body.theme-dark .prestasi-section .prestasi-feed-head{background:rgba(255,255,255,.04)!important;border-bottom-color:rgba(255,255,255,.08)!important}
+html body.theme-dark .prestasi-section .prestasi-feed-tag{background:rgba(255,179,0,.12)!important;border-color:rgba(255,179,0,.3)!important}
+html body.theme-dark .prestasi-section .prestasi-arrow{background:#0f2236!important;border-color:rgba(255,255,255,.15)!important}
+html body.theme-dark .prestasi-section .prestasi-desc{color:#a9bbcd!important}
+</style>
+
+<style id="home-dkv-photo-fix">
+.cc-photo.p-dkv img{translate:0 9%}
+</style>
+
 @endsection
 
 @push('scripts')

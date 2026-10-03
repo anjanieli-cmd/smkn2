@@ -38,21 +38,27 @@
       <label>Judul bagian media sosial</label>
       <input type="text" name="footer_social_label" class="db-form-control" maxlength="100" value="{{ old('footer_social_label', $settings['footer_social_label']) }}">
     </div>
-    <div class="ad-grid-3">
+    <div class="ad-grid-2">
       <div class="db-form-group">
         <label><i class="fa-brands fa-instagram" style="color:var(--gold)"></i> Instagram</label>
-        <input type="url" name="footer_instagram" class="db-form-control" placeholder="https://instagram.com/..." value="{{ old('footer_instagram', $settings['footer_instagram']) }}">
+        <input type="url" name="footer_instagram" class="db-form-control" placeholder="https://instagram.com/..." value="{{ old('footer_instagram', $settings['footer_instagram'] ?? '') }}">
       </div>
       <div class="db-form-group">
         <label><i class="fa-brands fa-youtube" style="color:var(--gold)"></i> YouTube</label>
-        <input type="url" name="footer_youtube" class="db-form-control" placeholder="https://youtube.com/..." value="{{ old('footer_youtube', $settings['footer_youtube']) }}">
-      </div>
-      <div class="db-form-group">
-        <label><i class="fa-brands fa-facebook-f" style="color:var(--gold)"></i> Facebook</label>
-        <input type="url" name="footer_facebook" class="db-form-control" placeholder="https://facebook.com/..." value="{{ old('footer_facebook', $settings['footer_facebook']) }}">
+        <input type="url" name="footer_youtube" class="db-form-control" placeholder="https://youtube.com/..." value="{{ old('footer_youtube', $settings['footer_youtube'] ?? '') }}">
       </div>
     </div>
-    <small class="ad-hint">Kolom yang dikosongkan akan menyembunyikan ikon media sosialnya di website. Kalau ketiganya kosong, seluruh bagian ini disembunyikan.</small>
+    <div class="ad-grid-2">
+      <div class="db-form-group">
+        <label><i class="fa-brands fa-facebook-f" style="color:var(--gold)"></i> Facebook</label>
+        <input type="url" name="footer_facebook" class="db-form-control" placeholder="https://facebook.com/..." value="{{ old('footer_facebook', $settings['footer_facebook'] ?? '') }}">
+      </div>
+      <div class="db-form-group">
+        <label><i class="fa-brands fa-tiktok" style="color:var(--gold)"></i> TikTok</label>
+        <input type="url" name="footer_tiktok" class="db-form-control" placeholder="https://www.tiktok.com/@..." value="{{ old('footer_tiktok', $settings['footer_tiktok'] ?? '') }}">
+      </div>
+    </div>
+    <small class="ad-hint">Kolom yang dikosongkan akan menyembunyikan ikon media sosialnya di website. Kalau keempatnya kosong, seluruh bagian ini disembunyikan.</small>
   </div>
 
   <div class="db-panel">
