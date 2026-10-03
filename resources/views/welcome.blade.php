@@ -65,7 +65,7 @@
 
     /* Pengaman horizontal scroll (clip tidak membuat scroll container,
        sehingga sticky navbar di layout tetap berfungsi) */
-    body{overflow-x:clip}
+    body{overflow-x:hidden}
 
     /* Ornamen halus: rotasi sangat lambat / floating / pulse */
     @keyframes ornSpinSlow{to{transform:rotate(360deg)}}
@@ -173,25 +173,31 @@
     @keyframes glassShine{0%,55%{opacity:.5;transform:translateX(-8%)}85%,100%{opacity:.9;transform:translateX(8%)}}
 
     @media(max-width:900px){
-      .window-frame{aspect-ratio:auto;min-height:640px}
-      .ws-inner{grid-template-columns:1fr;grid-template-rows:auto 1fr;gap:1.4rem;padding:2.2rem 2rem;text-align:center}
+      .window-section{padding:60px 0}
+      .window-frame{aspect-ratio:auto;min-height:480px}
+      .ws-inner{grid-template-columns:1fr;grid-template-rows:auto 1fr;gap:1.2rem;padding:2rem 1.6rem;text-align:center}
       .ws-left{gap:.4rem}
-      .ws-photo-frame{width:min(190px,60%)}
+      .ws-photo-frame{width:min(160px,50%)}
       .ws-right{text-align:center}
       .ws-kicker{justify-content:center}
       .ws-kicker-line{display:none}
-      .ws-quote{border-left:0;padding-left:0;border-top:1px solid rgba(255,213,74,.4);padding-top:.8rem}
-      .ws-msg{margin-left:auto;margin-right:auto}
+      .ws-quote{border-left:0;padding-left:0;border-top:1px solid rgba(255,213,74,.4);padding-top:.6rem;margin-top:.6rem;font-size:1rem}
+      .ws-msg{margin-left:auto;margin-right:auto;font-size:.85rem;line-height:1.65}
     }
     @media(max-width:600px){
-      .window-frame{min-height:720px}
-      .ws-inner{padding:1.6rem 1.2rem}
-      .ws-photo-frame{width:min(160px,62%)}
-      .ws-welcome{font-size:1.35rem}
-      .ws-msg{font-size:.82rem}
-      .wk-title{font-size:1.3rem;letter-spacing:.04em}
-      .wk-label{font-size:.62rem;letter-spacing:.28em}
-      .wk-btn{font-size:.72rem;letter-spacing:.16em;padding:.75rem 1.5rem}
+      .window-section{padding:44px 0}
+      .window-frame{min-height:430px}
+      .ws-inner{padding:1.2rem 1rem;gap:.9rem}
+      .ws-photo-frame{width:min(125px,48%);aspect-ratio:1/1.1;padding:6px}
+      .ws-welcome{font-size:1.2rem;line-height:1.15}
+      .ws-quote{font-size:.9rem;margin-top:.5rem;padding-top:.4rem}
+      .ws-msg{font-size:.8rem;line-height:1.6;margin-top:.5rem}
+      .ws-sign{margin-top:.8rem;padding-top:.7rem}
+      .ws-sign-name{font-size:.95rem}
+      .ws-sign-role{font-size:.62rem}
+      .wk-title{font-size:1.2rem;letter-spacing:.03em}
+      .wk-label{font-size:.6rem;letter-spacing:.22em}
+      .wk-btn{font-size:.7rem;letter-spacing:.14em;padding:.65rem 1.25rem}
     }
         /* ============================================================
        JURUSAN — FEATURED PROGRAMS (carousel 3 kartu — center active)
@@ -361,19 +367,14 @@
     .ft-title .ft-gold{color:#FA5E11;background:none;-webkit-text-fill-color:#FA5E11}
     .ft-sub{color:var(--text-muted);font-size:.96rem;margin-bottom:.3rem}
     .ft-line{color:var(--text-muted);font-size:.84rem;opacity:.85}
-    .ft-map{position:relative;height:520px;border-radius:24px;overflow:hidden;box-shadow:var(--shadow-lg);background:#d7e5f2}
-    .ft-map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
-    .ft-map[data-reveal]{transform:scale(.98)}
-    .ft-map[data-reveal].revealed{transform:none}
-    .ft-pin{position:absolute;top:16%;left:50%;z-index:3;display:flex;flex-direction:column;align-items:center;pointer-events:none}
-    .ft-pin-badge{position:relative;z-index:2;width:54px;height:54px;border-radius:50% 50% 50% 4px;transform:rotate(-45deg);background:linear-gradient(135deg,#f59e0b,#ffb43a);display:flex;align-items:center;justify-content:center;box-shadow:0 12px 26px rgba(245,158,11,.5);border:3px solid #fff}
-    .ft-pin-badge img{width:28px;height:28px;transform:rotate(45deg);object-fit:contain}
-    .ft-pin-ring{position:absolute;top:27px;left:0;width:54px;height:54px;border-radius:50%;background:rgba(245,158,11,.4);animation:ftPulse 2.8s cubic-bezier(.22,.61,.36,1) infinite}
-    .ft-pin-ring.r2{animation-delay:1.4s}
-    @keyframes ftPulse{0%{transform:scale(.35);opacity:.9}70%{transform:scale(1.9);opacity:0}100%{transform:scale(1.9);opacity:0}}
-    .ft-card{position:absolute;left:0;right:0;bottom:26px;margin:0 auto;width:min(600px,calc(100% - 3rem));z-index:4;background:#fff;border-radius:20px;box-shadow:0 24px 60px rgba(18,59,96,.28);padding:1.25rem 1.5rem 0}
+
+    .ft-grid{display:grid;grid-template-columns:minmax(320px,440px) 1fr;gap:2rem;align-items:stretch}
+
+    .ft-card{position:relative;width:100%;z-index:2;background:#fff;border-radius:24px;box-shadow:0 20px 50px rgba(18,59,96,.12);border:1px solid rgba(13,58,102,.1);padding:1.6rem 1.8rem 1.4rem;display:flex;flex-direction:column;justify-content:space-between;transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease}
+    .ft-card:hover{transform:translateY(-4px);box-shadow:0 28px 60px rgba(18,59,96,.18);border-color:rgba(255,179,0,.4)}
     .ft-card[data-reveal]{transform:translateY(20px)}
     .ft-card[data-reveal].revealed{transform:none}
+
     .ft-card-head{display:flex;align-items:center;gap:.85rem;margin-bottom:.9rem}
     .ft-card-logo{width:46px;height:46px;border-radius:13px;overflow:hidden;background:linear-gradient(135deg,#123b60,#1e5b92);display:flex;align-items:center;justify-content:center;flex-shrink:0}
     .ft-card-logo img{width:34px;height:34px;object-fit:contain}
@@ -386,11 +387,23 @@
     .ft-row-value{font-size:.9rem;font-weight:600;color:var(--ink);line-height:1.45}
     .ft-row-value a{color:var(--ink);text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(245,158,11,.55)}
     .ft-row-value a:hover{color:var(--gold)}
-    .ft-stub{border:0;border-top:2px dashed #d5e2ee;margin:.9rem -1.5rem .9rem}
-    .ft-map-btn{display:flex;align-items:center;justify-content:center;gap:.55rem;width:100%;border:0;border-radius:14px;background:linear-gradient(135deg,#123b60,#1e5b92);color:#fff;font-size:.9rem;font-weight:800;letter-spacing:.06em;padding:.95rem 1rem;cursor:pointer;transition:all .3s var(--ease)}
-    .ft-map-btn:hover{background:linear-gradient(135deg,#0f3153,#185081);transform:translateY(-2px);box-shadow:0 14px 30px rgba(18,59,96,.35)}
+    .ft-stub{border:0;border-top:2px dashed #d5e2ee;margin:1rem 0 .9rem}
+    .ft-map-btn{display:flex;align-items:center;justify-content:center;gap:.55rem;width:100%;border:0;border-radius:14px;background:linear-gradient(135deg,#123b60,#1e5b92);color:#fff;font-size:.9rem;font-weight:800;letter-spacing:.06em;padding:.95rem 1rem;cursor:pointer;transition:all .3s var(--ease);text-decoration:none}
+    .ft-map-btn:hover{background:linear-gradient(135deg,#0f3153,#185081);transform:translateY(-2px);box-shadow:0 14px 30px rgba(18,59,96,.35);color:#fff}
     .ft-map-btn i{color:var(--gold);transition:transform .3s var(--ease)}
     .ft-map-btn:hover i{transform:translate(3px,-3px)}
+
+    .ft-map{position:relative;width:100%;min-height:480px;height:100%;border-radius:24px;overflow:hidden;box-shadow:0 20px 50px rgba(18,59,96,.12);border:1px solid rgba(13,58,102,.1);background:#d7e5f2}
+    .ft-map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
+    .ft-map[data-reveal]{transform:scale(.98)}
+    .ft-map[data-reveal].revealed{transform:none}
+    .ft-pin{position:absolute;top:16%;left:50%;z-index:3;display:flex;flex-direction:column;align-items:center;pointer-events:none}
+    .ft-pin-badge{position:relative;z-index:2;width:54px;height:54px;border-radius:50% 50% 50% 4px;transform:rotate(-45deg);background:linear-gradient(135deg,#f59e0b,#ffb43a);display:flex;align-items:center;justify-content:center;box-shadow:0 12px 26px rgba(245,158,11,.5);border:3px solid #fff}
+    .ft-pin-badge img{width:28px;height:28px;transform:rotate(45deg);object-fit:contain}
+    .ft-pin-ring{position:absolute;top:27px;left:0;width:54px;height:54px;border-radius:50%;background:rgba(245,158,11,.4);animation:ftPulse 2.8s cubic-bezier(.22,.61,.36,1) infinite}
+    .ft-pin-ring.r2{animation-delay:1.4s}
+    @keyframes ftPulse{0%{transform:scale(.35);opacity:.9}70%{transform:scale(1.9);opacity:0}100%{transform:scale(1.9);opacity:0}}
+
     .ft-cta{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:1.1rem;margin-top:2.4rem;text-align:center}
     .ft-cta p{margin:0;color:var(--text-muted);font-size:.92rem;max-width:520px}
     .ft-cta-btn{display:inline-flex;align-items:center;gap:.55rem;border:0;border-radius:99px;background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:#123b60;font-weight:800;font-size:.86rem;letter-spacing:.05em;padding:.78rem 1.5rem;cursor:pointer;transition:all .3s var(--ease);box-shadow:0 12px 26px rgba(245,158,11,.35)}
@@ -420,22 +433,19 @@
     .ft-evoice-btn:hover{transform:translateY(-2px);background:rgba(255,255,255,.16);border-color:rgba(255,213,74,.45)}
     .ft-evoice-btn i{transition:transform .3s var(--ease);color:#ffd54a}
     .ft-evoice-btn:hover i{transform:translateX(4px)}
+
+    @media(max-width:991px){
+      .ft-grid{grid-template-columns:1fr;gap:1.5rem}
+      .ft-map{min-height:380px;height:380px}
+    }
     @media(max-width:640px){
+      .ft-card{padding:1.3rem 1.2rem}
+      .ft-map{min-height:320px;height:320px}
       .ft-evoice{flex-direction:column;align-items:flex-start;text-align:left}
       .ft-evoice-btn{width:100%;justify-content:center}
     }
-    @media(max-width:768px){
-      .ft-map{height:430px}
-      .ft-card{position:static;width:100%;margin:1.3rem auto 0;box-shadow:0 18px 44px rgba(18,59,96,.2)}
-      .ft-card[data-reveal],.ft-card[data-reveal].revealed{transform:none}
-    }
 
     /* ---------- RESPONSIVE ---------- */
-    @media(max-width:1024px){
-      .footer-nav{gap:1.8rem 2.2rem}
-      .footer-nav-group{width:100%;text-align:center}
-      .footer-nav-links{justify-content:center}
-    }
     @media(max-width:900px){
       .section-py{padding:72px 0}
       .hero-stats-inner{grid-template-columns:repeat(2,1fr)}
@@ -1860,8 +1870,8 @@
 .out-alumni .out-id-viewport{max-width:780px;padding:12px;border-radius:34px;background:linear-gradient(135deg,rgba(13,58,102,.12),rgba(255,179,0,.18));box-shadow:0 28px 75px rgba(13,58,102,.16)}
 .out-alumni .out-id-card{min-height:390px;border-radius:25px;grid-template-columns:43% 57%;border:1px solid rgba(13,58,102,.1);box-shadow:0 18px 45px rgba(13,58,102,.11);background:linear-gradient(145deg,#fff 0%,#fff 72%,#f7fafc 100%)}
 .out-alumni .out-id-card::before{height:7px}
-.out-alumni .out-id-photo{margin:1.25rem 0 1.25rem 1.25rem;min-height:335px;border-radius:19px;background:#dce8f1;box-shadow:inset 0 0 0 1px rgba(255,255,255,.7),0 12px 28px rgba(13,58,102,.12)}
-.out-alumni .out-id-photo img{object-position:center top}
+.out-alumni .out-id-photo{margin:1.25rem 0 1.25rem 1.25rem;min-height:335px;border-radius:19px;background:#dce8f1;box-shadow:inset 0 0 0 1px rgba(255,255,255,.7),0 12px 28px rgba(13,58,102,.12);overflow:hidden}
+.out-alumni .out-id-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
 .out-alumni .out-id-photo::before{content:"BEST GRADUATE";position:absolute;left:14px;bottom:14px;z-index:2;padding:.48rem .62rem;border-radius:7px;background:rgba(13,58,102,.9);color:#fff;font-size:.5rem;font-weight:900;letter-spacing:.15em}
 .out-alumni .out-id-info{padding:1.7rem 1.8rem 1.45rem 1.55rem}
 .out-alumni .out-id-brand{margin-bottom:1.4rem;color:#0d3a66;font-size:.68rem}
@@ -1882,27 +1892,38 @@
 .out-alumni .out-dot{height:7px;width:7px}
 .out-alumni .out-dot.active{width:28px}
 @media(max-width:1050px){
-  .out-alumni-head{grid-template-columns:1fr;gap:2rem}
+  .out-alumni-head{grid-template-columns:1fr;gap:1.8rem}
   .out-alumni .out-copy{max-width:760px;margin:0 auto;width:100%}
   .out-alumni .out-id-stage{max-width:820px;width:100%;margin:0 auto}
 }
 @media(max-width:700px){
-  .out-alumni .out-copy{padding-left:1rem}
-  .out-alumni .out-copy::after{left:0}
-  .out-alumni .out-title{font-size:clamp(2.6rem,12vw,4rem)}
-  .out-alumni .out-id-stage{padding-top:1.8rem}
-  .out-alumni .out-id-stage::before{right:1rem;top:.15rem}
+  .out-alumni .out-copy{padding:.5rem 0 .5rem 1rem}
+  .out-alumni .out-copy::before{display:none}
+  .out-alumni .out-copy::after{left:0;top:.5rem;bottom:.5rem}
+  .out-alumni .out-title{font-size:clamp(2.2rem,8vw,3.2rem)}
+  .out-alumni .out-id-stage{padding-top:1.2rem}
+  .out-alumni .out-id-stage::before{right:1rem;top:.15rem;font-size:.5rem;padding:.35rem .6rem}
   .out-alumni .out-id-stage::after{display:none}
   .out-alumni .out-id-card{grid-template-columns:1fr;min-height:0}
-  .out-alumni .out-id-photo{margin:1rem 1rem 0;height:300px;min-height:300px}
-  .out-alumni .out-id-info{padding:1.25rem}
-  .out-alumni .out-slider-controls{justify-content:center;padding-right:0}
-  .out-alumni .out-slider-controls::before{display:none}
+  .out-alumni .out-id-photo{margin:1.1rem auto 0;width:min(210px,72%);height:235px;min-height:235px;border-radius:16px;box-shadow:0 8px 22px rgba(13,58,102,.12)}
+  .out-alumni .out-id-info{padding:1rem 1.1rem 1.1rem}
+  .out-alumni .out-id-name{font-size:1.45rem;max-width:none}
+  .out-alumni .out-id-role{margin-bottom:.8rem;font-size:.6rem}
+  .out-alumni .out-id-line{margin-bottom:.8rem}
+  .out-alumni .out-id-meta{grid-template-columns:repeat(2,1fr);gap:.4rem}
+  .out-alumni .out-id-meta div{padding:.5rem .6rem;font-size:.75rem}
+  .out-alumni .out-slider-controls{justify-content:center;padding-right:0;margin-top:1rem !important}
+  .out-alumni .out-slider-controls::before{display:none !important}
 }
 @media(max-width:480px){
+  .out-alumni .out-jurusan-list{display:flex !important;overflow-x:auto !important;flex-wrap:nowrap !important;padding-bottom:6px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .out-alumni .out-jurusan-list::-webkit-scrollbar{display:none}
+  .out-alumni .out-jurusan-pill{flex:0 0 auto !important;white-space:nowrap !important;padding:.5rem .85rem !important;font-size:.68rem !important}
   .out-alumni .out-route[aria-label="Indeks jurusan lulusan"] .out-route-node{padding:.46rem .58rem}
-  .out-alumni .out-id-photo{height:260px;min-height:260px}
-  .out-alumni .out-id-meta{grid-template-columns:1fr}
+  .out-alumni .out-id-photo{width:min(185px,68%);height:205px;min-height:205px;margin:.9rem auto 0;border-radius:14px}
+  .out-alumni .out-id-name{font-size:1.3rem}
+  .out-alumni .out-id-meta{grid-template-columns:repeat(2,1fr);gap:.35rem}
+  .out-alumni .out-id-meta div{padding:.42rem .5rem;font-size:.7rem}
 }
 
 /* FINAL FIX — navigasi slider Lulusan Terbaik selalu terlihat */
@@ -3036,14 +3057,8 @@
         <p class="ft-sub" data-reveal="text" style="--d:1">Kami siap membantu Anda.</p>
         <p class="ft-line" data-reveal="text" style="--d:2">Informasi sekolah, PPDB, dan program keahlian.</p>
       </div>
-      <div class="ft-map" data-reveal style="--d:1">
-        <div class="ft-pin" aria-hidden="true">
-          <div class="ft-pin-badge"><img src="{{ asset('images/logo_smkn2.png') }}" alt="" /></div>
-          <div class="ft-pin-ring"></div>
-          <div class="ft-pin-ring r2"></div>
-        </div>
-        <iframe title="Lokasi SMK Negeri 2 Mojokerto" src="https://www.google.com/maps?q=Jl.%20Raya%20Pulorejo%2C%20Kel.%20Pulorejo%2C%20Kec.%20Prajurit%20Kulon%2C%20Kota%20Mojokerto%2C%20Jawa%20Timur%2061325&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
-        <div class="ft-card" data-reveal style="--d:2">
+      <div class="ft-grid">
+        <div class="ft-card" data-reveal="card" style="--d:1">
           <div class="ft-card-head">
             <div class="ft-card-logo"><img src="{{ asset('images/logo_smkn2.png') }}" alt="Logo SMKN 2 Mojokerto" /></div>
             <div class="ft-card-title">SMKN 2 MOJOKERTO<small>Kontak &amp; Informasi</small></div>
@@ -3081,6 +3096,14 @@
           <a class="ft-map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=Jalan+Raya+Pulorejo%2C+Kelurahan+Pulorejo%2C+Kecamatan+Prajurit+Kulon%2C+Kota+Mojokerto%2C+Jawa+Timur+61325" target="_blank" rel="noopener">
             Buka di Google Maps <i class="fa-solid fa-arrow-up-right-from-square"></i>
           </a>
+        </div>
+        <div class="ft-map" data-reveal="img" style="--d:2">
+          <div class="ft-pin" aria-hidden="true">
+            <div class="ft-pin-badge"><img src="{{ asset('images/logo_smkn2.png') }}" alt="" /></div>
+            <div class="ft-pin-ring"></div>
+            <div class="ft-pin-ring r2"></div>
+          </div>
+          <iframe title="Lokasi SMK Negeri 2 Mojokerto" src="https://www.google.com/maps?q=Jl.%20Raya%20Pulorejo%2C%20Kel.%20Pulorejo%2C%20Kec.%20Prajurit%20Kulon%2C%20Kota%20Mojokerto%2C%20Jawa%20Timur%2061325&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
         </div>
       </div>
       <div class="ft-cta" data-reveal style="--d:3">

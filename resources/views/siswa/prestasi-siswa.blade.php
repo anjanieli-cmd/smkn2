@@ -38,12 +38,12 @@
 .psk-kicker::before{content:"";width:9px;height:9px;border-radius:50%;background:#ffb300;
   box-shadow:0 0 0 6px rgba(255,179,0,.10)}
 
-.psk-title{position:relative;z-index:5;font-family:var(--font-display);font-size:clamp(3.6rem,9vw,8rem);
-  line-height:.86;letter-spacing:-.03em;margin:0;max-width:900px;text-transform:uppercase;
+.psk-title{position:relative;z-index:5;font-family:var(--font-display);font-size:clamp(3.2rem,7.5vw,6.4rem);
+  line-height:.96;letter-spacing:-.02em;margin:0;max-width:900px;text-transform:uppercase;
   text-shadow:none;animation:hdFadeUp .7s .1s var(--ease, ease) both}
 .psk-title .psk-white{color:#0d3a66;display:block}
 .psk-title .psk-gold{display:block;
-  background:linear-gradient(135deg,#ffd54a 0%,#ffb300 48%,#ff8a00 100%);
+  background:linear-gradient(135deg,#ffd54a 0%,#ffb300 48%,#ff7a00 100%);
   -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;
   text-shadow:none;letter-spacing:-.02em}
 .psk-lead{position:relative;z-index:5;font-size:1rem;line-height:1.8;color:#52657a;max-width:640px;
@@ -58,10 +58,19 @@
 @media(min-width:1050px){.psk-hero-inner{padding-right:40%}}
 @media(max-width:1050px){.psk-hero-inner{padding-right:1.25rem}.psk-ref-ornaments{opacity:.72}}
 @media(max-width:900px){.psk-title{font-size:clamp(3.2rem,10.5vw,6rem)}.psk-ref-ornament-image{opacity:.88}}
-@media(max-width:700px){.psk-hero{align-items:flex-start;min-height:0}
-  .psk-hero-inner{width:100%;padding:clamp(2.8rem,7vh,4rem) 1.25rem 2.8rem}
-  .psk-hero::after{font-size:clamp(3.2rem,20vw,5.4rem);opacity:.6;left:-2%}
-  .psk-title{font-size:clamp(2.4rem,11vw,3.6rem)}}
+@media(max-width:768px){
+  .psk-hero{align-items:flex-start;min-height:0}
+  .psk-hero-inner{width:min(92%,100%);margin:0 auto;padding:clamp(2.8rem,7vh,4rem) 0 2.8rem}
+  .psk-hero::after, .psk-prestasi::before, .psk-quote-orn, .psk-cabinet-orn{display:none!important}
+  .psk-title{font-size:clamp(2.8rem,11vw,4.5rem)}
+  .psk-opening .psk-section, .psk-featured .psk-section, .psk-archive-head, .psk-cta-box{grid-template-columns:1fr!important;gap:2rem}
+  .psk-opening-meta{grid-template-columns:1fr!important;gap:.8rem}
+  .psk-om{border-left-width:3px;padding:.8rem 1rem}
+  .psk-cabinet{min-height:360px}
+  .psk-cabinet-body{padding:1.5rem 1.2rem}
+  .psk-cta-btn{justify-self:center;margin-top:1.2rem}
+  [data-reveal]{opacity:1!important;transform:none!important}
+}
 @media(max-width:560px){.psk-ref-ornament-image{opacity:.62}}
 
 /* ---------- UTIL: reveal + layout dasar ---------- */

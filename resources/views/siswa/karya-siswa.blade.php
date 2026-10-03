@@ -17,7 +17,7 @@
   background:#fff;color:#0d3a66;isolation:isolate}
 .ks-hero::before{display:none}
 .ks-hero::after{content:"KARYA";position:absolute;z-index:0;left:2%;top:58%;transform:translateY(-50%);
-  font-family:var(--font-display);font-size:clamp(9rem,23vw,23rem);font-weight:900;line-height:.78;
+  font-family:var(--font-display);font-size:clamp(11rem,26vw,28rem);font-weight:900;line-height:.78;
   letter-spacing:.015em;color:rgba(13,58,102,.035);-webkit-text-stroke:1px rgba(255,122,0,.09);
   pointer-events:none;white-space:nowrap;user-select:none}
 .ks-ref-ornaments{position:absolute!important;inset:0;z-index:1;overflow:hidden;pointer-events:none;opacity:1}
@@ -26,21 +26,22 @@
 .ks-hero-inner{position:relative;z-index:4;width:100%;max-width:1500px;margin:0 auto;
   padding:clamp(4rem,10vh,7rem) clamp(1.25rem,4.2vw,4.5rem) clamp(4rem,9vh,6rem);display:block}
 
-.ks-kicker{position:relative;z-index:5;display:inline-flex;align-items:center;gap:.65rem;font-size:.72rem;
+.ks-kicker{position:relative;z-index:5;display:inline-flex;align-items:center;gap:.65rem;font-size:.85rem;
   font-weight:900;letter-spacing:.18em;text-transform:uppercase;color:#ff6f00;margin-bottom:1.2rem;
-  padding:.55rem .85rem;border:1px solid rgba(255,111,0,.18);border-radius:999px;background:#fffaf5}
+  padding:.6rem 1.05rem;border:1px solid rgba(255,111,0,.18);border-radius:999px;background:#fffaf5}
 .ks-kicker::before{content:"";width:9px;height:9px;border-radius:50%;background:#ff6f00;
   box-shadow:0 0 0 6px rgba(255,111,0,.10)}
 
-.ks-title{position:relative;z-index:5;font-family:var(--font-display);font-size:clamp(5.2rem,11.5vw,11rem);
-  line-height:.82;letter-spacing:-.045em;margin:0;max-width:900px;text-transform:uppercase;
+/* ---------- TITLE: bertumpuk besar, 100% senada PPDB ---------- */
+.ks-title{position:relative;z-index:5;font-family:var(--font-display);font-size:clamp(5.5rem,13vw,11.5rem);
+  line-height:.84;letter-spacing:-.035em;margin:0;max-width:900px;text-transform:uppercase;
   text-shadow:none;animation:hdFadeUp .7s .1s var(--ease, ease) both}
 .ks-title .ks-white{color:#0d3a66;display:block}
 .ks-title .ks-gold{display:block;
   background:linear-gradient(135deg,#ffd54a 0%,#ffb300 48%,#ff7a00 100%);
   -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;
   text-shadow:none;letter-spacing:-.025em}
-.ks-lead{font-size:1rem;line-height:1.75;color:#52657a;max-width:720px;
+.ks-lead{font-size:1.05rem;line-height:1.75;color:#52657a;max-width:720px;
   margin:1.7rem 0 0;animation:hdFadeUp .7s .26s var(--ease, ease) both}
 .ks-hero-meta{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.6rem;animation:hdFadeUp .7s .4s var(--ease, ease) both}
 .ks-pill{display:inline-flex;align-items:center;gap:.5rem;padding:.55rem .85rem;
@@ -51,8 +52,8 @@
 .hero-photo{display:none}
 @media(min-width:1050px){.ks-hero-inner{padding-right:44%}}
 @media(max-width:1050px){.ks-hero-inner{padding-right:1.25rem}.ks-ref-ornaments{opacity:.72}}
-@media(max-width:900px){.ks-title{font-size:clamp(4.6rem,13vw,8rem)}.ks-ref-ornament-image{opacity:.88}}
-@media(max-width:700px){.ks-hero{align-items:flex-start}.ks-hero-inner{width:90%}.ks-title{font-size:clamp(3.4rem,16vw,5.6rem)}}
+@media(max-width:900px){.ks-title{font-size:clamp(4.2rem,12vw,8.5rem)}.ks-ref-ornament-image{opacity:.88}}
+@media(max-width:700px){.ks-hero{align-items:flex-start}.ks-hero-inner{width:90%}.ks-title{font-size:clamp(3.6rem,13.5vw,6.5rem)}}
 @media(max-width:560px){.ks-ref-ornament-image{opacity:.62}}
 
 /* ---------- HOME-ORN ---------- */
@@ -281,31 +282,27 @@
   .hero-photo{height:360px;transform:translateY(-18px) rotate(1deg)}
   .ks-intro-grid{grid-template-columns:1fr;gap:3rem}
 }
-@media(max-width:700px){
+@media(max-width:768px){
   .ks-hero{min-height:0;align-items:flex-start}
-  .ks-hero-inner{padding:clamp(3rem,8vh,4.5rem) 5% 3.6rem;width:90%}
-  .ks-hero::after{font-size:clamp(3.6rem,22vw,6rem);opacity:.6;right:-4%}
-  .ks-title{font-size:clamp(2.8rem,13vw,4.2rem);margin-top:0}
+  .ks-hero-inner{padding:clamp(3rem,8vh,4.5rem) 5% 3.6rem;width:100%}
+  .ks-hero::after{display:none!important}
+  .ks-title{font-size:clamp(3.6rem,13vw,6.2rem);margin-top:0}
   .hero-photo{height:300px}
-  .ks-section,.ks-intro,.ks-slider{padding:85px 0 90px}
-  .ks-kategori,.ks-prestasi{padding:85px 0 90px}
-  .ks-cta{padding:56px 5% 64px;margin-bottom:4.5rem;width:92%;margin-left:auto;margin-right:auto}
-  .ks-kat-grid{grid-template-columns:1fr 1fr;gap:1rem}
-  .ks-mini-stats{grid-template-columns:1fr 1fr 1fr;gap:.6rem}
-  .ks-arrow{width:44px;height:44px;font-size:.9rem}
-  .ks-arrow.ks-prev{left:-8px}
-  .ks-arrow.ks-next{right:-8px}
-  .ks-slide{height:clamp(400px,115vw,470px)}
-  .ks-slide-cap{padding:0 1.2rem 1.4rem}
-  .ks-slide-meta span{font-size:.66rem;padding:.32rem .6rem}
-  .home-orn .ho-chevron{width:220px;height:220px}
-  .home-orn .ho-dots{width:80px;height:80px;background-size:14px 14px}
-  .home-orn .ho-ring{width:110px;height:110px}
-  .home-orn .ho-line{width:190px}
-  .home-orn .ho-square{width:42px;height:42px}
-  .home-orn .ho-corner{width:70px;height:70px}
-  .ks-hero .home-orn .ho-chevron{left:-120px;bottom:-40px}
-  [data-reveal]{opacity:1;transform:none}
+  .ks-section,.ks-intro,.ks-slider{padding:48px 0 54px}
+  .ks-kategori,.ks-prestasi{padding:48px 0 54px}
+  .ks-intro-grid{grid-template-columns:1fr;gap:2rem}
+  .ks-cta{padding:42px 1.2rem 48px;margin-bottom:3.5rem;width:100%;border-radius:20px}
+  .ks-kat-grid{grid-template-columns:1fr 1fr;gap:.8rem}
+  .ks-mini-stats{grid-template-columns:1fr;gap:.8rem}
+  .ks-arrow{width:40px;height:40px;font-size:.85rem}
+  .ks-arrow.ks-prev{left:6px}
+  .ks-arrow.ks-next{right:6px}
+  .ks-slide{height:clamp(320px,95vw,420px)}
+  .ks-slide-cap{padding:0 1rem 1.2rem}
+  .ks-slide-cap h3{font-size:1.35rem}
+  .ks-slide-meta span{font-size:.72rem;padding:.35rem .7rem}
+  .home-orn, .ks-prestasi::before{display:none!important}
+  [data-reveal]{opacity:1!important;transform:none!important}
 }
 </style>
 

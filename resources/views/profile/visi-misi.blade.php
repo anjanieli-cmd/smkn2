@@ -537,13 +537,13 @@
   .visi-hero{min-height:620px}
   .visi-hero-inner{width:min(100% - 28px,1180px);padding:85px 0 55px}
   .visi-hero::after{font-size:8rem;opacity:.7}
-  .visi-title{font-size:clamp(3.5rem,16vw,6rem)}
+  .visi-title{font-size:clamp(2.8rem,14vw,5rem)}
   .visi-lead{font-size:.88rem}
   .misi-grid,.nilai-grid{grid-template-columns:1fr}
-  .tujuan-grid{grid-template-columns:1fr 1fr;gap:.8rem}
-  .visi-section,.misi-section,.tujuan-section,.nilai-section{padding:85px 0 90px}
+  .tujuan-grid{grid-template-columns:1fr;gap:.9rem}
+  .visi-section,.misi-section,.tujuan-section,.nilai-section{padding:75px 0 80px}
   .visi-card{padding:2rem 1.4rem}
-  .visi-card::after{font-size:7rem;right:0}
+  .visi-card::after{font-size:6rem;right:0;max-width:100%;overflow:hidden}
   .home-orn .ho-chevron{width:220px;height:220px}
   .home-orn .ho-dots{width:80px;height:80px;background-size:14px 14px}
   .home-orn .ho-ring{width:110px;height:110px}
@@ -552,6 +552,9 @@
   .home-orn .ho-corner{width:70px;height:70px}
   .visi-hero .home-orn .ho-chevron{left:-120px;bottom:-40px}
   [data-reveal]{opacity:1;transform:none}
+}
+@media(max-width:480px){
+  .tujuan-grid{grid-template-columns:1fr !important}
 }
 </style>
 <style id="visimisi-dark-mode">

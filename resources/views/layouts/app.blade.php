@@ -57,13 +57,15 @@
     }
 
     *{margin:0;padding:0;box-sizing:border-box}
-    html{scroll-behavior:smooth}
+    html{scroll-behavior:smooth;overflow-x:hidden;width:100%;max-width:100%}
     body{
       font-family:var(--font-body);
       color:var(--text);
       background:var(--bg);
       line-height:1.7;
       overflow-x:hidden;
+      width:100%;
+      max-width:100%;
       -webkit-font-smoothing:antialiased;
       position:relative;
       isolation:isolate;
@@ -769,12 +771,16 @@
     .announce-item i{color:var(--gold);animation:tada 3s infinite}
 
     /* ============================================================
-       NAVBAR — SEMUA LINK BOLD & FONT SAMA DENGAN "DISIPLIN, BERPRESTASI"
+       NAVBAR & ANNOUNCEMENT BAR — ANNOUNCE BAR SCROLLS AWAY, NAVBAR FIXED ON SCROLL
        ============================================================ */
-    #navbar{position:relative;width:100%;margin:0;padding:0;transition:all .4s var(--ease);background:transparent}
-    #navbar.scrolled{top:0}
+    body{padding-top:0 !important}
+    .announce-bar{position:relative;z-index:1001;width:100%;margin:0;padding:0}
+    #navbar{position:relative;z-index:9999;width:100%;margin:0;padding:0;transition:background .3s var(--ease), box-shadow .3s var(--ease)}
+    #navbar.is-fixed{position:fixed;top:0;left:0;right:0;z-index:9999;width:100%;box-shadow:0 12px 36px rgba(0,0,0,.35)}
+    #navbar.scrolled{background:rgba(10,47,87,.95);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+    #navbarSpacer{display:none;width:100%;height:72px}
     .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.95rem 2rem;border-radius:0;background:linear-gradient(135deg,#0d3a66,#1d6fb8);backdrop-filter:blur(18px) saturate(160%);-webkit-backdrop-filter:blur(18px) saturate(160%);border:0;border-bottom:1px solid rgba(255,255,255,.18);box-shadow:0 10px 34px rgba(13,58,102,.35),inset 0 1px 0 rgba(255,255,255,.25);transition:all .4s var(--ease);width:100%;max-width:100%;margin:0}
-    #navbar.scrolled .nav-inner{background:linear-gradient(135deg,#0a2f57,#13518c);box-shadow:0 14px 44px rgba(13,58,102,.5);padding:.8rem 2rem;border-radius:0;border:0;border-bottom:1px solid rgba(255,255,255,.12)}
+    #navbar.scrolled .nav-inner{background:linear-gradient(135deg,#0a2f57,#13518c);box-shadow:0 14px 44px rgba(13,58,102,.5);padding:.75rem 2rem;border-radius:0;border:0;border-bottom:1px solid rgba(255,255,255,.12)}
     #navbar::after{content:"";position:absolute;bottom:-1px;left:0;right:0;height:1px;background:rgba(255,255,255,.06);opacity:.4;pointer-events:none}
     .nav-inner > *{position:relative;z-index:1}
     .nav-brand{display:flex;align-items:center;gap:.7rem;flex-shrink:0}
@@ -783,9 +789,25 @@
     .nav-brand-text{display:flex;flex-direction:column;line-height:1.08;white-space:nowrap}
     .nav-brand-text strong{display:block;font-family:'Poppins',sans-serif;font-size:1.28rem;color:#fff;line-height:1.12;font-weight:800;letter-spacing:.02em;text-shadow:0 1px 2px rgba(0,0,0,.25);white-space:nowrap}
     .nav-brand-text strong .num-2{color:#ffd54f;text-shadow:0 1px 3px rgba(0,0,0,.35)}
-    .nav-brand-text .brand-sub{display:block;font-family:'Poppins',sans-serif;font-size:.8rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);text-shadow:0 1px 2px rgba(0,0,0,.35);white-space:nowrap;margin-top:2px}
-    .nav-brand-text span{display:none}
+    .nav-brand-text .brand-sub{display:block !important;font-family:'Poppins',sans-serif;font-size:.8rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);text-shadow:0 1px 2px rgba(0,0,0,.35);white-space:nowrap;margin-top:2px}
     .num-2{color:#f9a825;font-style:normal}
+
+    @media(min-width: 901px){
+      .nav-menu{
+        display:flex !important;
+        position:static !important;
+        visibility:visible !important;
+        pointer-events:auto !important;
+        background:transparent !important;
+        flex-direction:row !important;
+        height:auto !important;
+        width:auto !important;
+        padding:0 !important;
+        box-shadow:none !important;
+        gap:.12rem !important;
+      }
+      .nav-toggle{display:none !important}
+    }
 
     /* ============================================================
        NAVBAR LINK — BOLD, FONT Plus Jakarta Sans
@@ -982,6 +1004,13 @@
     [data-reveal].revealed{opacity:1;transform:none}
     [data-reveal]{transition-delay:calc(var(--d,0)*90ms)}
 
+    /* BACKDROP OVERLAY UNTUK MOBILE DRAWER MENU */
+    .nav-overlay{
+      position:fixed;inset:0;background:rgba(0,0,0,.55);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);
+      z-index:99;opacity:0;visibility:hidden;pointer-events:none;transition:all .35s ease;
+    }
+    .nav-overlay.open{opacity:1;visibility:visible;pointer-events:auto}
+
     /* ============================================================
        RESPONSIVE & MOBILE NAVBAR FIXES (HP STAY + COMPACT SIZE)
        ============================================================ */
@@ -1063,8 +1092,8 @@
         width: 20px !important;
         height: 2px !important;
       }
-      .nav-menu{position:fixed;top:0;right:-320px;width:280px;height:100vh;flex-direction:column;align-items:flex-start;gap:.3rem;background:rgba(13,58,102,.97);padding:4.2rem 1.3rem 2rem;box-shadow:-20px 0 60px rgba(0,0,0,.5);transition:right .45s var(--ease);overflow-y:auto;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);z-index:10000}
-      .nav-menu.open{right:0}
+      .nav-menu{position:fixed;top:0;right:-320px;width:300px;max-width:calc(100vw - 40px);height:100vh;flex-direction:column;align-items:flex-start;gap:.3rem;background:rgba(13,58,102,.97);padding:4.6rem 1.4rem 2rem;box-shadow:-20px 0 60px rgba(0,0,0,.45);transition:right .45s var(--ease),visibility .45s ease;overflow-y:auto;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);visibility:hidden;pointer-events:none;z-index:100}
+      .nav-menu.open{right:0;visibility:visible;pointer-events:auto}
       .nav-item{width:100%}
       .nav-link{width:100%;justify-content:flex-start;font-size:1.02rem;padding:.65rem .8rem}
       /* Pada mobile, garis bawah di kiri */
@@ -1081,11 +1110,14 @@
       .dropdown-menu a{font-size:.88rem;padding:.5rem .7rem}
       .nav-item.dropdown-open .dropdown-menu{display:block}
       .nav-cta{font-size:1.02rem;padding:.65rem 1rem !important}
-      .nav-ai-matchmaker{width:100%;padding:.65rem .8rem !important;border-radius:10px !important;height:44px !important}
-      .ai-nav-badge{top:2px !important;right:10px !important;min-width:32px !important;height:24px !important;font-size:.82rem !important;}
+      .nav-ai-matchmaker{width:100% !important;min-width:0 !important;padding:.65rem .8rem !important;border-radius:10px !important}
+      .ai-nav-badge{top:4px !important;right:10px !important;min-width:34px !important;height:25px !important;font-size:.82rem !important;}
     }
     @media(max-width:600px){
       .section-py{padding:60px 0}
+      .preloader-logo{width:76px;height:76px}
+      .preloader-text{font-size:.68rem;letter-spacing:.22em}
+      .preloader-bar{width:160px}
       .announce-bar .container{padding:0 .8rem}
       .nav-inner{padding:.35rem .75rem !important;min-height:44px !important}
       #navbar.scrolled .nav-inner{padding:.3rem .75rem !important}
@@ -1109,49 +1141,80 @@
       .nav-link::after{transition:none !important}
     }
   
-    /* ===== FOOTER DESIGN RESTORED ===== */
-/* ---------- FOOTER (School Signature) ---------- */
-    .footer-main{background:#092C4C;color:#fff;padding:72px 0 0;position:relative;overflow:hidden}
-    .footer-main::before{content:"";position:absolute;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(40,169,225,.07),transparent 65%);top:-200px;right:-140px;pointer-events:none}
-    .footer-main::after{content:"";position:absolute;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(245,158,11,.05),transparent 65%);bottom:-160px;left:-120px;pointer-events:none}
-    .footer-accent{width:72px;height:4px;border-radius:99px;background:linear-gradient(90deg,#F59E0B,#fbbf24);margin-bottom:2.2rem}
-    .footer-statement{text-align:center}
-    .footer-sig-name{font-family:var(--font-display);font-size:clamp(2.4rem,6vw,4.2rem);line-height:1.06;letter-spacing:.01em;color:#fff;text-transform:uppercase}
-    .footer-sig-name .num-2{color:#F59E0B;font-size:1.16em}
-    .footer-sig-sub{font-size:1rem;font-weight:600;letter-spacing:.06em;color:rgba(255,255,255,.92);margin-top:.9rem;text-transform:uppercase}
-    .footer-sig-tagline{font-size:.92rem;line-height:1.7;color:rgba(255,255,255,.65);max-width:560px;margin:.7rem auto 0}
-    .footer-divider{height:1px;background:rgba(255,255,255,.12);margin:2.6rem auto;max-width:960px}
-    .footer-nav{display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;gap:2.2rem 3.2rem}
-    .footer-nav-group{text-align:left}
-    .footer-nav-group-title{font-size:.7rem;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#F59E0B;margin-bottom:.8rem}
-    .footer-nav-links{display:flex;flex-wrap:wrap;gap:.45rem 1.1rem}
-    .footer-nav-links a{font-size:.9rem;color:rgba(255,255,255,.8);transition:color .25s}
-    .footer-nav-links a:hover{color:#F59E0B}
-    .footer-nav-links a::after{content:"";display:inline-block;width:3px;height:3px;border-radius:50%;background:rgba(255,255,255,.35);margin:0 0 .18rem .55rem}
-    .footer-nav-links a:last-child::after{display:none}
+    /* ===== FOOTER DESIGN PREMIUM ===== */
+    .footer-main{background:linear-gradient(180deg,#092C4C 0%,#061a30 100%);color:#fff;padding:64px 0 0;position:relative;overflow:hidden;border-top:2px solid rgba(245,158,11,.4)}
+    .footer-main::before{content:"";position:absolute;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(40,169,225,.08),transparent 65%);top:-200px;right:-140px;pointer-events:none}
+    .footer-main::after{content:"";position:absolute;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(245,158,11,.06),transparent 65%);bottom:-160px;left:-120px;pointer-events:none}
+    .footer-accent{width:72px;height:4px;border-radius:99px;background:linear-gradient(90deg,#F59E0B,#fbbf24,#38bdf8);margin:0 auto 2.2rem}
+    .footer-statement{text-align:center;max-width:700px;margin:0 auto}
+    .footer-sig-name{font-family:var(--font-display);font-size:clamp(2.2rem,5vw,3.8rem);line-height:1.06;letter-spacing:.02em;color:#fff;text-transform:uppercase}
+    .footer-sig-name .num-2{color:#F59E0B;font-size:1.14em}
+    .footer-sig-sub{font-size:.88rem;font-weight:700;letter-spacing:.18em;color:#ffd54a;margin-top:.8rem;text-transform:uppercase}
+    .footer-sig-tagline{font-size:.92rem;line-height:1.75;color:rgba(255,255,255,.75);max-width:580px;margin:.7rem auto 0}
+    .footer-divider{height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent);margin:2.4rem auto;max-width:960px}
+    .footer-nav{display:grid;grid-template-columns:repeat(4,1fr);gap:2.2rem;max-width:1100px;margin:0 auto;text-align:left}
+    .footer-nav-group-title{font-size:.74rem;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#F59E0B;margin-bottom:1rem;display:flex;align-items:center;gap:.4rem}
+    .footer-nav-group-title::before{content:"";width:12px;height:2px;background:#F59E0B;border-radius:99px}
+    .footer-nav-links{display:flex;flex-direction:column;gap:.6rem}
+    .footer-nav-links a{font-size:.88rem;color:rgba(255,255,255,.8);text-decoration:none;transition:all .25s ease;display:inline-flex;align-items:center;gap:.4rem}
+    .footer-nav-links a:hover{color:#F59E0B;transform:translateX(4px)}
     .footer-social{display:flex;flex-direction:column;align-items:center;gap:1rem;padding:2.6rem 0 0}
-    .footer-social-label{font-size:.7rem;font-weight:800;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+    .footer-social-label{font-size:.72rem;font-weight:800;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.6)}
     .footer-social-row{display:flex;gap:.9rem}
-    .footer-social-row a{width:44px;height:44px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,.22);color:rgba(255,255,255,.85);font-size:1.05rem;transition:all .3s}
-    .footer-social-row a:hover{background:#F59E0B;border-color:#F59E0B;color:#092C4C;transform:translateY(-3px)}
+    .footer-social-row a{width:44px;height:44px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,.22);color:rgba(255,255,255,.9);font-size:1.05rem;background:rgba(255,255,255,.05);transition:all .3s ease}
+    .footer-social-row a:hover{background:#F59E0B;border-color:#F59E0B;color:#092C4C;transform:translateY(-4px);box-shadow:0 8px 20px rgba(245,158,11,.35)}
 
-    /* ---------- FOOTER PARTNERS / MITRA LOGO ---------- */
+    /* PARTNERS (KEMBALIKAN KE TANPA BG KOTAK & W/ HOVER EFFECT) */
     .footer-partners{padding:2.4rem 0 0;text-align:center}
-    .footer-partners-label{font-size:.7rem;font-weight:800;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:1.2rem}
-    .footer-partners-row{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:1.4rem 2.2rem}
-    .footer-partner-logo{display:flex;align-items:center;justify-content:center;height:44px;padding:0 .4rem;opacity:.75;filter:grayscale(100%) brightness(1.8);transition:all .3s}
-    .footer-partner-logo:hover{opacity:1;filter:none}
-    .footer-partner-logo img{height:100%;width:auto;max-width:120px;object-fit:contain}
+    .footer-partners-label{font-size:.72rem;font-weight:800;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:1.2rem}
+    .footer-partners-row{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:1.2rem 2.2rem}
+    .footer-partner-logo{display:flex;align-items:center;justify-content:center;background:transparent!important;border:none!important;padding:0!important;border-radius:0!important;transition:all .3s ease;cursor:pointer}
+    .footer-partner-logo:hover{transform:translateY(-3px) scale(1.08)}
+    .footer-partner-logo img{height:36px;width:auto;max-width:130px;object-fit:contain;filter:brightness(2.2);opacity:.75;transition:all .3s ease}
+    .footer-partner-logo:hover img{filter:none;opacity:1}
 
-    .footer-bottom{border-top:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.18);color:rgba(255,255,255,.55);font-size:.8rem;padding:1.15rem 0;margin-top:3.2rem}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.25);color:rgba(255,255,255,.65);font-size:.82rem;padding:1.3rem 0;margin-top:3rem}
     .footer-bottom-inner{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
     .footer-copy{display:flex;align-items:center;gap:.8rem;flex-wrap:wrap}
-    .footer-copy-sign{font-style:italic;color:rgba(255,255,255,.72)}
+    .footer-copy-sign{font-style:italic;color:rgba(255,255,255,.68)}
     .footer-legal{display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap}
-    .footer-legal a{color:rgba(255,255,255,.6);transition:color .25s}
+    .footer-legal a{color:rgba(255,255,255,.7);text-decoration:none;transition:color .25s}
     .footer-legal a:hover{color:#F59E0B}
-    .footer-admin-link{display:inline-flex;align-items:center;gap:.35rem;color:rgba(255,255,255,.45) !important;border:1px solid rgba(255,255,255,.18);border-radius:7px;padding:.28rem .6rem;font-size:.76rem}
-    .footer-admin-link:hover{color:#F59E0B !important;border-color:rgba(245,158,11,.5)}
+    .footer-admin-link{display:inline-flex;align-items:center;gap:.35rem;color:rgba(255,255,255,.5) !important;border:1px solid rgba(255,255,255,.2);border-radius:8px;padding:.3rem .7rem;font-size:.78rem;transition:all .25s}
+    .footer-admin-link:hover{color:#F59E0B !important;border-color:rgba(245,158,11,.6);background:rgba(245,158,11,.1)}
+
+    @media(max-width:991px){
+      .footer-nav { grid-template-columns: repeat(2, 1fr); gap: 1.8rem 1.2rem; padding: 0 1rem; }
+    }
+    @media(max-width:768px){
+      .footer-main { padding: 32px 0 0; }
+      .footer-accent { margin: 0 auto 1.2rem; height: 3px; width: 56px; }
+      .footer-sig-name { font-size: clamp(1.6rem, 6.5vw, 2.4rem); }
+      .footer-sig-sub { font-size: .76rem; margin-top: .4rem; letter-spacing: .14em; }
+      .footer-sig-tagline { font-size: .8rem; line-height: 1.55; margin: .5rem auto 0; padding: 0 1rem; max-width: 90%; }
+      .footer-divider { margin: 1.2rem auto; }
+      .footer-nav { grid-template-columns: repeat(2, 1fr); gap: 1.2rem .8rem; padding: 0 .8rem; }
+      .footer-nav-group-title { font-size: .68rem; margin-bottom: .6rem; }
+      .footer-nav-links { gap: .45rem; }
+      .footer-nav-links a { font-size: .8rem; }
+      .footer-social { padding: 1.2rem 0 0; gap: .6rem; }
+      .footer-social-label { font-size: .65rem; }
+      .footer-social-row { gap: .6rem; }
+      .footer-social-row a { width: 38px; height: 38px; font-size: .92rem; }
+      .footer-partners { padding: 1.2rem 0 0; }
+      .footer-partners-label { font-size: .65rem; margin-bottom: .8rem; }
+      .footer-partners-row { gap: .8rem 1.4rem; }
+      .footer-partner-logo { background: transparent!important; border: none!important; padding: 0!important; }
+      .footer-partner-logo img { height: 24px; max-width: 90px; }
+      .footer-bottom { margin-top: 1.5rem; padding: 1rem 1rem 85px; }
+      .footer-bottom-inner { flex-direction: column; justify-content: center; text-align: center; gap: .6rem; }
+      .footer-copy { justify-content: center; flex-direction: column; gap: .2rem; font-size: .76rem; }
+      .footer-legal { justify-content: center; flex-wrap: wrap; gap: .6rem 1rem; font-size: .76rem; }
+    }
+    @media(max-width:540px){
+      .footer-nav { grid-template-columns: repeat(2, 1fr); gap: 1.1rem .6rem; padding: 0 .5rem; text-align: left; }
+      .footer-sig-name { font-size: 1.5rem; }
+    }
 
     /* ---------- SIBOT ---------- */
     .sibot-fab{position:fixed;right:22px;bottom:22px;z-index:900}
@@ -2538,110 +2601,106 @@ html body.theme-dark .vt-btn{background:linear-gradient(135deg,#ffd54a,#ff8a00) 
   {{-- ================= CURSOR GLOW ================= --}}
   <div id="cursorGlow" aria-hidden="true"></div>
 
-  {{-- ================= SITE HEADER (FIXED TOP: TULISAN BERJALAN + NAVBAR) ================= --}}
-  <header class="site-header" id="siteHeader">
-    {{-- ANNOUNCEMENT BAR (FULL WIDTH AT VERY TOP) --}}
-    <div class="announce-bar">
-      <div class="container">
-        <div class="announce-ticker" id="announceTicker">
-          <div class="announce-item"><i class="fas fa-bullhorn"></i> PPDB 2025/2026 Dibuka — Daftar Sekarang!</div>
-          <div class="announce-item"><i class="fas fa-trophy"></i> Juara 1 LKS Provinsi Jawa Timur 2024 — Selamat!</div>
-          <div class="announce-item"><i class="fas fa-calendar"></i> Ujian Akhir Semester: 10–20 Juni 2025</div>
-          <div class="announce-item"><i class="fas fa-star"></i> Akreditasi A — SMK Negeri 2 Mojokerto</div>
-          <div class="announce-item"><i class="fas fa-bullhorn"></i> PPDB 2025/2026 Dibuka — Daftar Sekarang!</div>
-          <div class="announce-item"><i class="fas fa-trophy"></i> Juara 1 LKS Provinsi Jawa Timur 2024 — Selamat!</div>
-          <div class="announce-item"><i class="fas fa-calendar"></i> Ujian Akhir Semester: 10–20 Juni 2025</div>
-          <div class="announce-item"><i class="fas fa-star"></i> Akreditasi A — SMK Negeri 2 Mojokerto</div>
-        </div>
+  {{-- ================= ANNOUNCEMENT BAR (SCROLLS AWAY WITH PAGE) ================= --}}
+  <div class="announce-bar">
+    <div class="container">
+      <div class="announce-ticker" id="announceTicker">
+        <div class="announce-item"><i class="fas fa-bullhorn"></i> PPDB 2025/2026 Dibuka — Daftar Sekarang!</div>
+        <div class="announce-item"><i class="fas fa-trophy"></i> Juara 1 LKS Provinsi Jawa Timur 2024 — Selamat!</div>
+        <div class="announce-item"><i class="fas fa-calendar"></i> Ujian Akhir Semester: 10–20 Juni 2025</div>
+        <div class="announce-item"><i class="fas fa-star"></i> Akreditasi A — SMK Negeri 2 Mojokerto</div>
+        <div class="announce-item"><i class="fas fa-bullhorn"></i> PPDB 2025/2026 Dibuka — Daftar Sekarang!</div>
+        <div class="announce-item"><i class="fas fa-trophy"></i> Juara 1 LKS Provinsi Jawa Timur 2024 — Selamat!</div>
+        <div class="announce-item"><i class="fas fa-calendar"></i> Ujian Akhir Semester: 10–20 Juni 2025</div>
+        <div class="announce-item"><i class="fas fa-star"></i> Akreditasi A — SMK Negeri 2 Mojokerto</div>
       </div>
     </div>
+  </div>
 
-    {{-- NAVBAR (FULL WIDTH BELOW ANNOUNCEMENT BAR) --}}
-    <nav id="navbar">
-      <div class="nav-inner">
-        <a href="{{ route('home') }}" class="nav-brand">
-          <div class="nav-logo"><img src="{{ asset('images/logo_smkn2.png') }}" alt="Logo SMK Negeri 2" /></div>
-          <div class="nav-brand-text">
-            <strong>SMK NEGERI <em class="num-2">2</em></strong>
-            <span class="brand-sub">MOJOKERTO</span>
+  {{-- ================= NAVBAR (STICKY AT TOP WHEN SCROLLED) ================= --}}
+  <header id="navbar">
+    <div class="nav-inner">
+      <a href="{{ route('home') }}" class="nav-brand">
+        <div class="nav-logo"><img src="{{ asset('images/logo_smkn2.png') }}" alt="Logo SMK Negeri 2" /></div>
+        <div class="nav-brand-text">
+          <strong>SMK NEGERI <em class="num-2">2</em></strong>
+          <span class="brand-sub">MOJOKERTO</span>
+        </div>
+      </a>
+
+      <ul class="nav-menu" id="navMenu">
+        <li class="nav-item"><a href="{{ route('home') }}" class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}">Beranda</a></li>
+
+        <li class="nav-item">
+          <a href="#" class="nav-link dropdown-trigger">Profil <i class="fas fa-chevron-down"></i></a>
+          <div class="dropdown-menu">
+            <a href="{{ route('profil.sejarah-sekolah') }}"><i class="fas fa-history"></i> Sejarah Sekolah</a>
+            <a href="{{ route('profil.visi-misi') }}"><i class="fas fa-eye"></i> Visi &amp; Misi</a>
+            <a href="{{ route('profil.struktur-organisasi') }}"><i class="fas fa-sitemap"></i> Struktur Organisasi</a>
+            <a href="{{ route('profil.guru-staf') }}"><i class="fas fa-chalkboard-user"></i> Guru &amp; Staf</a>
+            <a href="{{ route('profil.roadmap-pengembangan') }}"><i class="fas fa-road"></i> Roadmap Pengembangan</a>
+            <a href="{{ route('profil.tour') }}"><i class="fas fa-street-view"></i> Tour Virtual 360°</a>
           </div>
-        </a>
+        </li>
 
-        <ul class="nav-menu" id="navMenu">
-          <li class="nav-item"><a href="{{ route('home') }}" class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}">Beranda</a></li>
+        <li class="nav-item">
+          <a href="#" class="nav-link dropdown-trigger">Program Keahlian <i class="fas fa-chevron-down"></i></a>
+          <div class="dropdown-menu">
+            <a href="{{ route('aphp') }}"><i class="fas fa-wheat-awn"></i> Agribisnis Pengolahan Hasil Pertanian</a>
+            <a href="{{ route('dkv') }}"><i class="fas fa-palette"></i> Desain Komunikasi Visual</a>
+            <a href="{{ route('kuliner') }}"><i class="fas fa-utensils"></i> Kuliner</a>
+            <a href="{{ route('lps') }}"><i class="fas fa-calculator"></i> Layanan Perbankan Syariah</a>
+            <a href="{{ route('rpl') }}"><i class="fas fa-code"></i> Rekayasa Perangkat Lunak</a>
+          </div>
+        </li>
 
-          <li class="nav-item">
-            <a href="#" class="nav-link dropdown-trigger">Profil <i class="fas fa-chevron-down"></i></a>
-            <div class="dropdown-menu">
-              <a href="{{ route('profil.sejarah-sekolah') }}"><i class="fas fa-history"></i> Sejarah Sekolah</a>
-              <a href="{{ route('profil.visi-misi') }}"><i class="fas fa-eye"></i> Visi &amp; Misi</a>
-              <a href="{{ route('profil.struktur-organisasi') }}"><i class="fas fa-sitemap"></i> Struktur Organisasi</a>
-              <a href="{{ route('profil.guru-staf') }}"><i class="fas fa-chalkboard-user"></i> Guru &amp; Staf</a>
-              <a href="{{ route('profil.roadmap-pengembangan') }}"><i class="fas fa-road"></i> Roadmap Pengembangan</a>
-              <a href="{{ route('profil.tour') }}"><i class="fas fa-street-view"></i> Tour Virtual 360°</a>
-            </div>
-          </li>
+        <li class="nav-item"><a href="{{ route('ppdb') }}" class="nav-link {{ request()->routeIs('ppdb') ? 'active' : '' }}">PPDB</a></li>
 
-          <li class="nav-item">
-            <a href="#" class="nav-link dropdown-trigger">Program Keahlian <i class="fas fa-chevron-down"></i></a>
-            <div class="dropdown-menu">
-              <a href="{{ route('aphp') }}"><i class="fas fa-wheat-awn"></i> Agribisnis Pengolahan Hasil Pertanian</a>
-              <a href="{{ route('dkv') }}"><i class="fas fa-palette"></i> Desain Komunikasi Visual</a>
-              <a href="{{ route('kuliner') }}"><i class="fas fa-utensils"></i> Kuliner</a>
-              <a href="{{ route('lps') }}"><i class="fas fa-calculator"></i> Layanan Perbankan Syariah</a>
-              <a href="{{ route('rpl') }}"><i class="fas fa-code"></i> Rekayasa Perangkat Lunak</a>
-            </div>
-          </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link dropdown-trigger">Siswa <i class="fas fa-chevron-down"></i></a>
+          <div class="dropdown-menu">
+            <a href="{{ url('/siswa/karya-siswa') }}"><i class="fas fa-lightbulb"></i> Karya Siswa</a>
+            <a href="{{ url('/siswa/ekstrakurikuler') }}"><i class="fas fa-people-group"></i> Ekstrakurikuler</a>
+            <a href="{{ url('/siswa/voice') }}"><i class="fas fa-comment-dots"></i> E-Voice</a>
+          </div>
+        </li>
 
-          <li class="nav-item"><a href="{{ route('ppdb') }}" class="nav-link {{ request()->routeIs('ppdb') ? 'active' : '' }}">PPDB</a></li>
+        <li class="nav-item">
+          <a href="#" class="nav-link dropdown-trigger">Berita <i class="fas fa-chevron-down"></i></a>
+          <div class="dropdown-menu">
+            <a href="{{ url('/berita/index') }}"><i class="fas fa-newspaper"></i> Semua Berita</a>
+            <a href="{{ url('/berita/factcheck') }}"><i class="fas fa-shield-halved"></i> School FactCheck</a>
+          </div>
+        </li>
 
-          <li class="nav-item">
-            <a href="#" class="nav-link dropdown-trigger">Siswa <i class="fas fa-chevron-down"></i></a>
-            <div class="dropdown-menu">
-              <a href="{{ url('/siswa/karya-siswa') }}"><i class="fas fa-lightbulb"></i> Karya Siswa</a>
-              <a href="{{ url('/siswa/ekstrakurikuler') }}"><i class="fas fa-people-group"></i> Ekstrakurikuler</a>
-              <a href="{{ url('/siswa/voice') }}"><i class="fas fa-comment-dots"></i> E-Voice</a>
-            </div>
-          </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link dropdown-trigger">Galeri <i class="fas fa-chevron-down"></i></a>
+          <div class="dropdown-menu">
+            <a href="{{ url('/galeri/kegiatan') }}"><i class="fas fa-school"></i> Kegiatan Sekolah</a>
+            <a href="{{ url('/galeri/prestasi-sekolah') }}"><i class="fas fa-medal"></i> Prestasi</a>
+          </div>
+        </li>
 
-          <li class="nav-item">
-            <a href="#" class="nav-link dropdown-trigger">Berita <i class="fas fa-chevron-down"></i></a>
-            <div class="dropdown-menu">
-              <a href="{{ url('/berita/index') }}"><i class="fas fa-newspaper"></i> Semua Berita</a>
-              <a href="{{ url('/berita/factcheck') }}"><i class="fas fa-shield-halved"></i> School FactCheck</a>
-            </div>
-          </li>
+        <li class="nav-item"><a href="{{ url('/bkk-loker') }}" class="nav-link {{ request()->is('bkk-loker*') ? 'active' : '' }}">BKK &amp; Loker</a></li>
 
-          <li class="nav-item">
-            <a href="#" class="nav-link dropdown-trigger">Galeri <i class="fas fa-chevron-down"></i></a>
-            <div class="dropdown-menu">
-              <a href="{{ url('/galeri/kegiatan') }}"><i class="fas fa-school"></i> Kegiatan Sekolah</a>
-              <a href="{{ url('/galeri/prestasi-sekolah') }}"><i class="fas fa-medal"></i> Prestasi</a>
-            </div>
-          </li>
+        <li class="nav-item">
+          <a href="{{ url('/ai') }}"
+             class="nav-link nav-cta nav-ai-matchmaker {{ request()->is('ai*') ? 'active' : '' }}"
+             aria-label="Cari Ekskulmu">
+            <i class="fas fa-wand-magic-sparkles ai-icon"></i>
+            <span>Cari Ekskulmu</span>
+            <span class="ai-nav-badge">AI</span>
+          </a>
+        </li>
+      </ul>
 
-          <li class="nav-item"><a href="{{ url('/bkk-loker') }}" class="nav-link {{ request()->is('bkk-loker*') ? 'active' : '' }}">BKK &amp; Loker</a></li>
-
-          <li class="nav-item">
-            <a href="{{ url('/ai') }}"
-               class="nav-link nav-cta nav-ai-matchmaker {{ request()->is('ai*') ? 'active' : '' }}"
-               aria-label="Cari Ekskulmu">
-              <i class="fas fa-wand-magic-sparkles ai-icon"></i>
-              <span>Cari Ekskulmu</span>
-              <span class="ai-nav-badge">AI</span>
-            </a>
-          </li>
-        </ul>
-
-        <button class="nav-toggle" id="navToggle" aria-label="Menu">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-    </nav>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </header>
-
-  {{-- ================= HEADER SPACER ================= --}}
-  <div class="header-spacer" aria-hidden="true"></div>
+  <div id="navbarSpacer" aria-hidden="true"></div>
+  <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
 
   {{-- ================= KONTEN PER HALAMAN ================= --}}
   @yield('content')
@@ -2654,50 +2713,63 @@ html body.theme-dark .vt-btn{background:linear-gradient(135deg,#ffd54a,#ff8a00) 
     <div class="footer-accent"></div>
     <div class="footer-statement">
       <div class="footer-sig-name">SMK Negeri <span class="num-2">2</span><br>Mojokerto</div>
-      <div class="footer-sig-sub">Sekolah Menengah Kejuruan Unggulan</div>
-      <p class="footer-sig-tagline">Mencetak lulusan vokasi berkualitas, berkarakter, dan siap bersaing di era global.</p>
+      <div class="footer-sig-sub">Sekolah Menengah Kejuruan Unggulan Kota Mojokerto</div>
+      <p class="footer-sig-tagline">Mencetak lulusan vokasi berkualitas, berkarakter mulia, dan siap bersaing di era global.</p>
     </div>
     <div class="footer-divider"></div>
     <nav class="footer-nav" aria-label="Navigasi footer">
       <div class="footer-nav-group">
-        <div class="footer-nav-group-title">Explore</div>
+        <div class="footer-nav-group-title">Jelajahi</div>
         <div class="footer-nav-links">
-          <a href="#beranda">Beranda</a>
-          <a href="#profil">Profil</a>
-          <a href="#jurusan">Jurusan</a>
-          <a href="#berita">Berita</a>
-          <a href="#galeri">Galeri</a>
-          <a href="school-roadmap.html">Roadmap Sekolah</a>
+          <a href="{{ route('home') }}"><i class="fas fa-chevron-right" style="font-size:0.65rem"></i> Beranda</a>
+          <a href="{{ route('profil.sejarah-sekolah') }}"><i class="fas fa-chevron-right" style="font-size:0.65rem"></i> Sejarah Sekolah</a>
+          <a href="{{ route('profil.visi-misi') }}"><i class="fas fa-chevron-right" style="font-size:0.65rem"></i> Visi &amp; Misi</a>
+          <a href="{{ route('profil.guru-staf') }}"><i class="fas fa-chevron-right" style="font-size:0.65rem"></i> Staff &amp; Guru</a>
+          <a href="{{ route('profil.struktur-organisasi') }}"><i class="fas fa-chevron-right" style="font-size:0.65rem"></i> Struktur Organisasi</a>
         </div>
       </div>
       <div class="footer-nav-group">
-        <div class="footer-nav-group-title">Informasi</div>
+        <div class="footer-nav-group-title">Program Keahlian</div>
         <div class="footer-nav-links">
-          <a href="#ppdb">PPDB</a>
-          <a href="#kontak">Kontak</a>
-          <a href="#sitemap">Sitemap</a>
+          <a href="{{ route('rpl') }}"><i class="fas fa-chevron-right" style="font-size:0.65rem"></i> Rekayasa Perangkat Lunak</a>
+          <a href="{{ route('dkv') }}"><i class="fas fa-chevron-right" style="font-size:0.65rem"></i> Desain Komunikasi Visual</a>
+          <a href="{{ route('aphp') }}"><i class="fas fa-chevron-right" style="font-size:0.65rem"></i> Agribisnis Hasil Pertanian</a>
+          <a href="{{ route('kuliner') }}"><i class="fas fa-chevron-right" style="font-size:0.65rem"></i> Kuliner / Tata Boga</a>
+          <a href="{{ route('lps') }}"><i class="fas fa-chevron-right" style="font-size:0.65rem"></i> Perbankan Syariah</a>
         </div>
       </div>
       <div class="footer-nav-group">
-        <div class="footer-nav-group-title">Legal</div>
+        <div class="footer-nav-group-title">Informasi &amp; BKK</div>
         <div class="footer-nav-links">
-          <a href="#">Kebijakan Privasi</a>
-          <a href="#">Syarat &amp; Ketentuan</a>
+          <a href="{{ route('ppdb') }}"><i class="fas fa-chevron-right" style="font-size:0.65rem"></i> PPDB Online</a>
+          <a href="{{ route('bkk-loker') }}"><i class="fas fa-chevron-right" style="font-size:0.65rem"></i> BKK &amp; Lowongan Kerja</a>
+          <a href="{{ route('karya-siswa') }}"><i class="fas fa-chevron-right" style="font-size:0.65rem"></i> Galeri Karya Siswa</a>
+          <a href="{{ route('ekstrakurikuler') }}"><i class="fas fa-chevron-right" style="font-size:0.65rem"></i> Ekstrakurikuler</a>
+          <a href="{{ route('kontak') }}"><i class="fas fa-chevron-right" style="font-size:0.65rem"></i> Kontak &amp; Lokasi</a>
+        </div>
+      </div>
+      <div class="footer-nav-group">
+        <div class="footer-nav-group-title">Kontak Sekolah</div>
+        <div class="footer-nav-links">
+          <span style="font-size:0.84rem;color:rgba(255,255,255,.75)"><i class="fas fa-location-dot" style="color:#F59E0B;margin-right:4px"></i> Jl. Raya Pulorejo, Kec. Prajurit Kulon, Kota Mojokerto</span>
+          <span style="font-size:0.84rem;color:rgba(255,255,255,.75)"><i class="fas fa-clock" style="color:#F59E0B;margin-right:4px"></i> Senin–Jumat · 07.00–16.00 WIB</span>
+          <span style="font-size:0.84rem;color:rgba(255,255,255,.75)"><i class="fas fa-envelope" style="color:#F59E0B;margin-right:4px"></i> info@smkn2mojokerto.sch.id</span>
         </div>
       </div>
     </nav>
     <div class="footer-social">
-      <div class="footer-social-label">Follow Our Journey</div>
+      <div class="footer-social-label">Ikuti Media Sosial SKANEDA</div>
       <div class="footer-social-row">
-        <a href="https://www.instagram.com/smkn_2_mojokerto/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-        <a href="https://www.youtube.com/channel/UCqiKo-o2OjwsAdJP58TpiUw" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
-        <a href="https://www.facebook.com/smkn2mojokerto?locale=id_ID" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="https://tiktok.com" target="_blank" rel="noopener" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
       </div>
     </div>
 
-    {{-- ===== MITRA & PENDUKUNG (logo Garuda Spark, JHIC 2.0, Jagoan Hosting, Ngalup, Komdigi) ===== --}}
+    {{-- ===== MITRA & PENDUKUNG ===== --}}
     <div class="footer-partners">
-      <div class="footer-partners-label">Didukung Oleh</div>
+      <div class="footer-partners-label">Kemitraan &amp; Pendukung</div>
       <div class="footer-partners-row">
         <div class="footer-partner-logo"><img src="{{ asset('images/partners/garuda-spark.png') }}" alt="Garuda Spark"></div>
         <div class="footer-partner-logo"><img src="{{ asset('images/partners/jhic.png') }}" alt="JHIC 2.0"></div>
@@ -2712,7 +2784,7 @@ html body.theme-dark .vt-btn{background:linear-gradient(135deg,#ffd54a,#ff8a00) 
       <div class="footer-bottom-inner">
         <div class="footer-copy">
           <span>&copy; 2026 SMK Negeri 2 Mojokerto</span>
-          <span class="footer-copy-sign">Belajar hari ini, berkarya untuk masa depan.</span>
+          <span class="footer-copy-sign">— Belajar hari ini, berkarya untuk masa depan.</span>
         </div>
         <div class="footer-legal">
           <a href="#">Kebijakan Privasi</a>
@@ -2885,20 +2957,52 @@ html body.theme-dark .vt-btn{background:linear-gradient(135deg,#ffd54a,#ff8a00) 
     });
 
     const navbar = document.getElementById('navbar');
-    let lastScroll = 0;
-    window.addEventListener('scroll', () => {
+    const announceBar = document.querySelector('.announce-bar');
+    const navbarSpacer = document.getElementById('navbarSpacer');
+
+    function handleNavbarScroll() {
+      if (!navbar) return;
+      const announceHeight = announceBar ? announceBar.offsetHeight : 34;
       const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-      if (currentScroll > 50) navbar.classList.add('scrolled');
-      else navbar.classList.remove('scrolled');
-      lastScroll = currentScroll;
-    });
+
+      if (currentScroll >= announceHeight && currentScroll > 5) {
+        navbar.classList.add('is-fixed', 'scrolled');
+        if (navbarSpacer) {
+          navbarSpacer.style.height = navbar.offsetHeight + 'px';
+          navbarSpacer.style.display = 'block';
+        }
+      } else {
+        navbar.classList.remove('is-fixed', 'scrolled');
+        if (navbarSpacer) navbarSpacer.style.display = 'none';
+      }
+    }
+
+    window.addEventListener('scroll', handleNavbarScroll, { passive: true });
+    window.addEventListener('resize', handleNavbarScroll, { passive: true });
+    handleNavbarScroll();
 
     const navToggle = document.getElementById('navToggle');
     const navMenu = document.getElementById('navMenu');
+    const navOverlay = document.getElementById('navOverlay');
+
+    function closeNavMenu() {
+      if (navMenu) navMenu.classList.remove('open');
+      if (navOverlay) navOverlay.classList.remove('open');
+    }
+
     if (navToggle && navMenu) {
-      navToggle.addEventListener('click', () => navMenu.classList.toggle('open'));
+      navToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = navMenu.classList.toggle('open');
+        if (navOverlay) navOverlay.classList.toggle('open', isOpen);
+      });
+      if (navOverlay) {
+        navOverlay.addEventListener('click', closeNavMenu);
+      }
       navMenu.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', () => navMenu.classList.remove('open'));
+        if (!link.classList.contains('dropdown-trigger')) {
+          link.addEventListener('click', closeNavMenu);
+        }
       });
     }
 
@@ -3037,14 +3141,14 @@ html body.theme-dark .vt-btn{background:linear-gradient(135deg,#ffd54a,#ff8a00) 
     fasilitas: "Fasilitas & Virtual Tour 360° SMKN 2 Mojokerto:\nSekolah kami dilengkapi fasilitas lengkap seperti Gerbang Utama, Lobi Utama, Lapangan Olahraga, Aula Serbaguna, Kantin Sekolah, Musholla, Area Parkir, Perpustakaan Digital, serta Laboratorium Praktik (Lab RPL, DKV, LPS, APHP, Dapur Kuliner). Seluruh lokasi ini dapat dikunjungi dan dilihat 360° di menu Virtual Tour (/profile/tour).",
     ppdb: "Informasi PPDB SMKN 2 Mojokerto:\nPendaftaran dilakukan secara online melalui portal resmi PPDB Jawa Timur (Jalur Prestasi, Afirmasi, dan Zonasi). Pendaftaran TIDAK DIPUNGUT BIAYA (GRATIS).",
     ekskul: "Ekstrakurikuler SMKN 2 Mojokerto:\nPramuka (Wajib), Paskibra, Robotik & Coding Club, PMR, Olahraga (Futsal, Basket, Voli), Seni Musik & Tari, serta Kerohanian Islam.",
-    jadwal: "Jam Belajar SMKN 2 Mojokerto:\nKegiatan Belajar Mengajar (KBM) berlangsung Senin hingga Jumat pukul 07.00 WIB - 15.30 WIB. Gerbang sekolah ditutup tepat pukul 07.00 WIB. Hari Sabtu dan Minggu libur.",
+    jadwal: "Jam Belajar & Operasional SMKN 2 Mojokerto:\nKegiatan Belajar Mengajar (KBM) dan operasional sekolah berlangsung Senin hingga Jumat pukul 07.00 WIB - 16.00 WIB. Gerbang sekolah ditutup tepat pukul 07.00 WIB. Hari Sabtu dan Minggu libur.",
     pkl: "BKK & Kemitraan Industri SMKN 2 Mojokerto:\nUnit BKK memfasilitasi Praktek Kerja Lapangan (PKL) dan penyaluran lulusan ke mitra industri seperti PT Telkom, PT Astra International, Bank Syariah Indonesia, dan industri perhotelan/pangan.",
-    kontak: "Alamat dan Kontak Resmi SMKN 2 Mojokerto:\nAlamat: Jl. Raden Wijaya No. 1, Kranggan, Kota Mojokerto, Jawa Timur\nTelepon: (0321) 321555\nEmail: info@smkn2mojokerto.sch.id",
+    kontak: "Alamat dan Kontak Resmi SMKN 2 Mojokerto:\nAlamat: Jl. Raya Pulorejo, Kel. Pulorejo, Kec. Prajurit Kulon, Kota Mojokerto, Jawa Timur 61325\nTelepon: 0312 2292 9922 / (0321) 321555\nEmail: info@smkn2mojokerto.sch.id\nJam Operasional: Senin–Jumat · 07.00–16.00 WIB",
     struktur: "Struktur Organisasi SMKN 2 Mojokerto:\n• Kepala Sekolah: Iswahyudi S.ST. M.Pd.\n• Waka Kurikulum: MELATI PUSPITA SARI, S.Pd.\n• Waka Kesiswaan: AINUR ROFIK, M. Pd, Si.\n• Waka Sarpras: M. WIRA HENDY HIMAWAN, M.Pd\n• Waka Humastri: ARIKAWWEKU CKRISNA, S.Pd.\n• Bendahara BOS: MEGA NOVINDA SARI, S.Pd.\n• Bendahara BPOPP: FAJAR DHILAMAYA, S.Pd.\n• Koordinator BKK: MULAT ADITYAWIRANTI, S.Pd.\n• Kaprog RPL: DANANG TEGUH SANTOSO, S.Kom\n• Kaprog DKV: NURFALAH SEPTAYOGA S.Kom.\n• Kaprog APHP: DESY ANDINI DILIAWATI, S.T.P.\n• Kaprog Kuliner: DHIYAH AMANATI KARTIKA SARI, S.Pd.\n• Kaprog LPS: METIY ARIANA, S.Pd, M.Pd.\nDetail lengkap dapat dilihat di menu Struktur Organisasi (/profile/structure).",
     waka: "Wakil Kepala Sekolah (Waka) SMKN 2 Mojokerto:\n1. Waka Kurikulum: MELATI PUSPITA SARI, S.Pd.\n2. Waka Kesiswaan: AINUR ROFIK, M. Pd, Si.\n3. Waka Sarana & Prasarana: M. WIRA HENDY HIMAWAN, M.Pd\n4. Waka Humastri: ARIKAWWEKU CKRISNA, S.Pd.",
     kaprog: "Ketua Program Keahlian (Kaprog/Kaprodi) SMKN 2 Mojokerto:\n• RPL (PPLG): DANANG TEGUH SANTOSO, S.Kom\n• DKV: NURFALAH SEPTAYOGA S.Kom.\n• APHP: DESY ANDINI DILIAWATI, S.T.P.\n• Kuliner: DHIYAH AMANATI KARTIKA SARI, S.Pd.\n• LPS: METIY ARIANA, S.Pd, M.Pd.",
     bendahara: "Bendahara SMKN 2 Mojokerto:\n• Bendahara BOS: MEGA NOVINDA SARI, S.Pd.\n• Bendahara BPOPP: FAJAR DHILAMAYA, S.Pd.",
-    sejarah: "Sejarah SMKN 2 Mojokerto:\nBerdiri di kawasan Kranggan, Kota Mojokerto sebagai SMK Pusat Keunggulan (PK) dengan 5 konsentrasi keahlian berstandar nasional dan internasional. Selengkapnya di menu Sejarah Sekolah (/profile/history).",
+    sejarah: "Sejarah SMKN 2 Mojokerto:\nBerdiri di kawasan Pulorejo, Prajurit Kulon, Kota Mojokerto sebagai SMK Pusat Keunggulan (PK) dengan 5 konsentrasi keahlian berstandar nasional dan internasional. Selengkapnya di menu Sejarah Sekolah (/profile/history).",
     visi: "Visi SMKN 2 Mojokerto:\nTerwujudnya lulusan yang berakhlak mulia, kompeten, berjiwa wirausaha, dan berdaya saing global.",
     staf: "Tenaga Kependidikan / Staf SMKN 2 Mojokerto:\nSMK Negeri 2 Mojokerto memiliki 20+ Tenaga Kependidikan & Staf yang mengelola administrasi, keuangan, perpustakaan, dan layanan operasional sekolah:\n• Bendahara BOS: MEGA NOVINDA SARI, S.Pd.\n• Bendahara BPOPP: FAJAR DHILAMAYA, S.Pd.\n• Koordinator BKK: MULAT ADITYAWIRANTI, S.Pd.\n• Staf TU, Perpustakaan Digital, Teknisi Lab & Pengelola Sarana.\nDetail selengkapnya di menu Staff & Guru (/profile/staff-guru).",
     guru: "Tenaga Pendidik / Guru SMKN 2 Mojokerto:\nSMK Negeri 2 Mojokerto didukung oleh 67+ Guru Profesional bersertifikasi di bidang produktif keahlian (RPL, DKV, APHP, Kuliner, LPS) maupun normatif-adaptif.\nDetail selengkapnya di menu Staff & Guru (/profile/staff-guru).",

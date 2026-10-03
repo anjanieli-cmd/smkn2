@@ -411,23 +411,39 @@
   .sg-page-block{grid-template-columns:repeat(3,1fr)}
 }
 @media (max-width:950px){
-  .sg-page-block{grid-template-columns:repeat(2,1fr);gap:1.5rem}
+  .sg-page-block{grid-template-columns:repeat(2,1fr);gap:1.5rem;flex:0 0 92vw;width:92vw;max-width:92vw}
   .sg-arrow{width:46px;height:46px;font-size:1rem}
   .sg-arrow.prev{left:-22px}
   .sg-arrow.next{right:-22px}
 }
 @media (max-width:700px){
-  .sg-page-block{grid-template-columns:1fr;gap:1.1rem}
-  /* Di layar sempit, panah dipindah ke bawah grid (bukan menumpuk di samping
-     kartu) supaya tidak menutupi konten kartu maupun kepotong tepi layar. */
+  .sg-toolbar{flex-direction:column;align-items:stretch}
+  .sg-search{width:100%}
+  .sg-filters{overflow-x:auto;white-space:nowrap;flex-wrap:nowrap;padding-bottom:.3rem}
+  .sg-grid-viewport{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;scroll-snap-type:x mandatory}
+  .sg-page-block{
+    display:flex !important;
+    flex-direction:row !important;
+    flex-wrap:nowrap !important;
+    overflow-x:auto !important;
+    scroll-snap-type:x mandatory !important;
+    gap:1.1rem !important;
+    flex:0 0 100% !important;
+    width:100% !important;
+    max-width:100% !important;
+    padding:0 0.5rem 0.5rem !important;
+  }
+  .sg-card{
+    flex:0 0 calc(100vw - 44px) !important;
+    width:calc(100vw - 44px) !important;
+    max-width:340px !important;
+    scroll-snap-align:center !important;
+  }
   .sg-slider{padding-bottom:3.4rem}
   .sg-arrow{top:auto;bottom:0;transform:none;width:44px;height:44px;font-size:.9rem}
   .sg-arrow:hover{transform:scale(1.08)}
   .sg-arrow.prev{left:calc(50% - 58px)}
   .sg-arrow.next{right:calc(50% - 58px)}
-}
-@media (max-width:420px){
-  .sg-page-block{grid-template-columns:1fr}
 }
 
 /* =========================================================

@@ -17,7 +17,7 @@
 .history-shell{width:100%}
 
 /* ---------- HERO: clean editorial showcase, tanpa foto background ---------- */
-.history-hero{position:relative;min-height:78vh;display:flex;align-items:center;overflow:hidden;
+.history-hero{position:relative;min-height:calc(82vh - 76px);min-height:clamp(520px,78vh,820px);display:flex;align-items:center;justify-content:center;overflow:hidden;
   background:#fff;color:#0d3a66}
 .history-hero::before{display:none}
 /* Watermark besar seperti referensi: sangat tipis, berada di belakang judul */
@@ -55,8 +55,8 @@
 .history-hero::after{z-index:0}
 
 .history-hero-inner{position:relative;z-index:3;width:100%;max-width:1500px;margin:0 auto;
-  padding:clamp(4rem,10vh,7rem) clamp(1.25rem,4vw,4.5rem) clamp(4rem,9vh,6rem);
-  display:block}
+  padding:clamp(4.5rem,8vh,6.5rem) clamp(1.25rem,4vw,4.5rem);
+  display:flex;flex-direction:column;justify-content:center;align-items:flex-start}
 
 .history-kicker{display:inline-flex;align-items:center;gap:.65rem;font-size:.72rem;font-weight:900;
   letter-spacing:.18em;text-transform:uppercase;color:#ff6f00;margin-bottom:1.05rem;
@@ -247,11 +247,29 @@
 /* ---------- FINAL HERO TUNING ---------- */
 .history-hero-inner{width:100%;max-width:1500px}
 .history-title{max-width:1250px}
-@media(max-width:700px){
-  .history-hero{min-height:70vh}
-  .history-hero-inner{padding-top:3.5rem;padding-bottom:4rem}
-  .history-title{font-size:clamp(3.5rem,16vw,6rem);line-height:.88}
-  .history-hero::after{font-size:clamp(7rem,32vw,12rem);left:-8%}
+@media(max-width:900px){
+  .intro-grid{grid-template-columns:1fr !important;gap:2rem !important}
+  .story-band{grid-template-columns:1fr !important;min-height:auto !important}
+  .story-image{min-height:260px !important}
+  .story-content{padding:2.5rem 1.5rem !important}
+  .mosaic{grid-template-columns:1fr !important;grid-template-rows:auto !important;gap:1rem !important}
+  .mosaic-card.big{grid-row:auto !important;height:240px !important}
+  .mosaic-card{height:200px !important}
+}
+@media(max-width:768px){
+  .history-hero{min-height:calc(75vh - 76px);min-height:480px;display:flex;align-items:center;justify-content:center}
+  .history-hero-inner{padding:3.5rem 1.25rem 4rem;width:100%}
+  .history-title{font-size:clamp(2.8rem,14vw,5rem);line-height:.9}
+  .history-hero::after{font-size:clamp(5rem,24vw,9rem);left:-4%;max-width:100%;overflow:hidden}
+  .timeline-head{flex-direction:column;align-items:flex-start;gap:1rem;margin-bottom:36px}
+  .timeline-note{text-align:left;max-width:100%}
+  .timeline::before{left:20px !important}
+  .timeline-item{width:100% !important;padding-left:50px !important;padding-right:0 !important;padding-bottom:36px !important;text-align:left !important}
+  .timeline-item.left, .timeline-item.right{left:0 !important;text-align:left !important}
+  .timeline-marker{left:-8px !important;right:auto !important;top:10px !important;width:42px !important;height:42px !important}
+  .timeline-card::before{left:0 !important;right:auto !important}
+  .story-list{grid-template-columns:1fr !important}
+  .stat-strip{grid-template-columns:1fr !important}
 }
 
 
@@ -670,8 +688,8 @@
   .mosaic-card.big{grid-row:auto;grid-column:span 2}
 }
 @media(max-width:700px){
-  .history-hero{min-height:0;align-items:flex-start}
-  .history-hero-inner{padding:clamp(3rem,8vh,4.5rem) 0 3.6rem;width:90%}
+  .history-hero{min-height:calc(70vh - 76px);min-height:420px;display:flex;align-items:center;justify-content:center}
+  .history-hero-inner{padding:3.2rem 1.25rem 3.5rem;width:100%;margin:0 auto}
   .history-hero::after{font-size:clamp(4.5rem,26vw,7rem);opacity:.6}
   .history-title{font-size:clamp(2.5rem,12vw,4rem);margin-top:0}
   .hero-photo{height:300px}
@@ -3403,11 +3421,41 @@ var idx=0, opened=true;
   .history-book .book-page.page-right.is-active{left:340px!important;width:340px!important;height:510px!important}
   .history-book.is-open ~ .book-actions{transform:none!important}
 }
-@media (max-width:700px){
-  .history-book,.history-book.is-open{width:600px!important;height:430px!important}
-  .history-book .book-cover{width:300px!important;height:430px!important}
-  .history-book .book-spread{width:600px!important;height:430px!important}
-  .history-book .book-page.page-right.is-active{left:300px!important;width:300px!important;height:430px!important}
+@media (max-width:768px){
+  .history-book-stage{width:100%!important;max-width:100%!important;padding:20px 0!important;overflow:hidden!important}
+  .history-book-side-title{width:100%!important;max-width:100%!important;margin:0 0 20px 0!important;transform:none!important}
+  .history-book-side-title h2{width:100%!important;max-width:100%!important;font-size:clamp(2.2rem,8.5vw,3.2rem)!important}
+  .history-book-side-title p{width:100%!important;max-width:100%!important}
+  .history-book,#historyBook,.history-book.is-open,#historyBook.history-book,#historyBook.history-book.is-open{
+    width:min(100%, 340px)!important;
+    height:auto!important;
+    min-height:450px!important;
+    max-width:100%!important;
+    transform:none!important;
+    margin:0 auto!important;
+    align-self:center!important;
+  }
+  .history-book .book-cover{display:none!important}
+  .history-book .book-spread{width:100%!important;height:100%!important;min-height:450px!important;position:relative!important;left:0!important;top:0!important}
+  .history-book .book-page.page-right.is-active{left:0!important;top:0!important;width:100%!important;height:100%!important;min-height:450px!important;position:relative!important;padding:24px 20px 20px!important}
+  .history-book .book-page h4{font-size:1.35rem!important;max-width:100%!important;line-height:1.2!important}
+  .history-book .book-page p{font-size:0.85rem!important;max-width:100%!important;line-height:1.65!important}
+  .history-book .book-page .lead{font-size:0.92rem!important;max-width:100%!important}
+  .history-book .page-note{left:20px!important;right:20px!important;max-width:100%!important}
+  .history-book .page-footer{left:20px!important;right:20px!important}
+  .book-actions{align-self:center!important;margin:16px auto 0!important;transform:none!important}
+
+  /* Prevent decorative side element overflow */
+  .history-page::before, .history-page::after,
+  .history-hero::after, .history-hero-geometry,
+  .history-hero-inner::before, .history-hero-inner::after,
+  .timeline-section::before, .timeline-section::after,
+  .timeline::after, .timeline-head::before, .timeline-head::after,
+  .timeline-item::before, .timeline-item::after,
+  .story-content::before, .story-band::before,
+  .future::before, .future::after {
+    display: none !important;
+  }
 }
 </style>
 <style id="principal-feed-height-fix">
@@ -3565,6 +3613,20 @@ var idx=0, opened=true;
 }
 </style>
 
+<style id="FINAL-V24-HERO-CENTER-VERTICAL">
+/* FINAL V24: vertical centering guarantee for hero title "SEJARAH SKANEDA" across desktop & mobile */
+.history-hero {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+.history-hero-inner {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+}
+</style>
+
 <style id="sejarah-dark-mode">
 /* =========================================================
    SEJARAH SEKOLAH — DARK MODE PREMIUM
@@ -3698,4 +3760,3 @@ var idx=0, opened=true;
 :is([data-theme="dark"],[data-bs-theme="dark"],.dark,.dark-mode,.dark-theme,.theme-dark) .home-orn .ho-corner{border-left-color:rgba(143,189,235,.16);border-bottom-color:rgba(143,189,235,.16)}
 :is([data-theme="dark"],[data-bs-theme="dark"],.dark,.dark-mode,.dark-theme,.theme-dark) .home-orn .ho-square::before{border-color:rgba(143,189,235,.22)}
 </style>
-
