@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Prestasi Sekolah — SMK Negeri 2 Mojokerto')
-@section('description', 'Prestasi institusi SMK Negeri 2 Mojokerto — trophy cabinet, pencapaian utama, galeri penghargaan, dan arsip prestasi resmi sekolah dari tingkat kota hingga nasional.')
+@section('title', \App\Support\PrestasiContent::get('seo_title'))
+@section('description', \App\Support\PrestasiContent::get('seo_description'))
 
 @push('styles')
 <style>
@@ -629,6 +629,82 @@
 @endpush
 
 @section('content')
+@php
+  $pc = fn (string $k) => \App\Support\PrestasiContent::get($k);
+  $pr = fn (string $k) => \App\Support\PrestasiContent::rich($k);
+
+  /* =========================================================
+     SUMBER DATA PRESTASI = database (tabel school_achievements).
+     Kelola lewat Admin → Galeri → Prestasi Sekolah.
+     Data awal bisa dipulihkan kapan saja lewat terminal:
+       php artisan db:seed --class=AchievementSeeder
+     ========================================================= */
+  $bulanId = [1=>'Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
+
+  $prestasi = [];
+  foreach (($items ?? collect()) as $it) {
+      $lvl = strtolower($it->level ?? 'provinsi');
+      if (str_contains($lvl, 'kota') || str_contains($lvl, 'kabupaten')) {
+          $levelBucket = 'kota';
+      } elseif (str_contains($lvl, 'nasional')) {
+          $levelBucket = 'nasional';
+      } elseif (str_contains($lvl, 'internasional')) {
+          $levelBucket = 'internasional';
+      } else {
+          $levelBucket = 'provinsi';
+      }
+
+      $imgSrc = null;
+      if (!empty($it->image_url)) {
+          $imgSrc = str_starts_with($it->image_url, 'http') ? $it->image_url : asset($it->image_url);
+      }
+
+      $dateLabel = $it->event_date
+          ? $it->event_date->format('d') . ' ' . $bulanId[(int) $it->event_date->format('n')] . ' ' . $it->event_date->format('Y')
+          : 'Tahun ' . ($it->year ?: date('Y'));
+
+      $prestasi[] = [
+          'id'         => 'db_' . $it->id,
+          'date'       => $dateLabel,
+          'year'       => (int) ($it->year ?: date('Y')),
+          'level'      => $levelBucket,
+          'levelLabel' => $it->level_label ?: ($it->level ?: 'Provinsi'),
+          'tag'        => $it->tag ?: ($it->winner_name ?: 'SKANEDA'),
+          'rank'       => $it->rank ?: 'Prestasi',
+          'title'      => $it->title,
+          'desc'       => $it->description ?: $it->title,
+          'image'      => $imgSrc,
+          'featured'   => (bool) $it->is_featured,
+      ];
+  }
+
+  $prestasiByYear = collect($prestasi)->groupBy('year');
+  // Timeline hanya menampilkan tahun yang punya data; tahun kosong otomatis dilewati.
+  $timelineYears = $prestasiByYear->keys()->sort()->values()->all();
+  // Filter Internasional muncul otomatis kalau ada datanya
+  $hasInternasional = collect($prestasi)->contains('level', 'internasional');
+
+  // Rentang tahun otomatis (mis. "2022 — 2026")
+  $yearMin = count($timelineYears) ? min($timelineYears) : (int) date('Y');
+  $yearMax = count($timelineYears) ? max($timelineYears) : (int) date('Y');
+  $yearRange = $yearMin === $yearMax ? (string) $yearMin : $yearMin . ' — ' . $yearMax;
+
+  // Capaian utama: yang ditandai "featured" di admin; kalau tidak ada pakai yang terbaru
+  $featured = collect($prestasi)->firstWhere('featured', true) ?? ($prestasi[0] ?? null);
+
+  // Data untuk modal artikel di JS (foreach biasa supaya aman dipakai di dalam @json satu baris)
+  $articleDataJs = [];
+  foreach ($prestasi as $p) {
+      $articleDataJs[] = [
+          'id'    => $p['id'],
+          'date'  => $p['date'],
+          'title' => $p['title'],
+          'level' => $p['levelLabel'],
+          'image' => $p['image'] ?: '',
+          'body'  => [$p['desc']],
+      ];
+  }
+@endphp
 <div class="psk-page">
 
   <!-- ================= HERO (SAMA GAYA dengan hero Kegiatan) ================= -->
@@ -643,141 +719,33 @@
     </div>
     <div class="psk-hero-inner">
       <div>
-        <div class="psk-kicker">Trophy Cabinet Sekolah</div>
+        <div class="psk-kicker">{{ $pc('hero_kicker') }}</div>
         <h1 class="psk-title">
-          <span class="psk-white">Prestasi</span>
-          <span class="psk-gold">Sekolah</span>
+          <span class="psk-white">{{ $pc('hero_title_white') }}</span>
+          <span class="psk-gold">{{ $pc('hero_title_gold') }}</span>
         </h1>
-        <p class="psk-lead">Arsip prestasi siswa, guru, dan alumni SMK Negeri 2 Mojokerto yang terdokumentasi dalam berbagai ajang dari tingkat kota hingga capaian internasional.</p>
+        <p class="psk-lead">{{ $pc('hero_lead') }}</p>
         <div class="psk-hero-meta">
-          <span class="psk-pill"><i class="fas fa-award"></i> Arsip Resmi Sekolah</span>
-          <span class="psk-pill"><i class="fas fa-map-marked-alt"></i> Kota → Internasional</span>
-          <span class="psk-pill"><i class="fas fa-calendar-alt"></i> 2022 — 2026</span>
+          @if ($pc('hero_pill1') !== '')<span class="psk-pill"><i class="fas fa-award"></i> {{ $pc('hero_pill1') }}</span>@endif
+          @if ($pc('hero_pill2') !== '')<span class="psk-pill"><i class="fas fa-map-marked-alt"></i> {{ $pc('hero_pill2') }}</span>@endif
+          <span class="psk-pill"><i class="fas fa-calendar-alt"></i> {{ $pc('hero_pill3') !== '' ? $pc('hero_pill3') : $yearRange }}</span>
         </div>
       </div>
     </div>
   </section>
 
-  @php
-    /* =========================================================
-       SUMBER DATA TUNGGAL PRESTASI
-       Dipakai bersama oleh section "Pencapaian Prestasi" (kartu
-       artikel + filter tingkat) dan section "Perjalanan Prestasi"
-       (timeline per tahun), serta modal artikel di bagian bawah.
-       Tambah/edit prestasi cukup di array ini saja.
-       level      : bucket filter -> kota | provinsi | nasional | internasional
-       levelLabel : label tampilan yang lebih spesifik
-       rank       : label singkat untuk badge di kartu (mis. "Juara 1")
-       image      : nama file JPG di /public/images/prestasi/ (upload manual,
-                    nama file bebas asal cocok dengan yang ditulis di sini)
-       ========================================================= */
-    $dbPrestasi = [];
-    if (isset($items) && count($items) > 0) {
-        foreach ($items as $it) {
-            $lvl = strtolower($it->level ?? 'provinsi');
-            if (str_contains($lvl, 'kota') || str_contains($lvl, 'kabupaten')) {
-                $levelBucket = 'kota';
-            } elseif (str_contains($lvl, 'nasional')) {
-                $levelBucket = 'nasional';
-            } elseif (str_contains($lvl, 'internasional')) {
-                $levelBucket = 'internasional';
-            } else {
-                $levelBucket = 'provinsi';
-            }
-
-            $imgSrc = $it->image_url ? (str_starts_with($it->image_url, 'http') ? $it->image_url : asset($it->image_url)) : asset('images/prestasi/lks-web.jpg');
-
-            $dbPrestasi[] = [
-                'id'         => 'db_' . $it->id,
-                'date'       => $it->year ? 'Tahun ' . $it->year : '2026',
-                'year'       => (int) ($it->year ?? 2026),
-                'level'      => $levelBucket,
-                'levelLabel' => $it->level ?? 'Provinsi',
-                'tag'        => $it->winner_name ?? 'SKANEDA',
-                'rank'       => 'Prestasi',
-                'title'      => $it->title,
-                'desc'       => $it->description ?? $it->title,
-                'image'      => $imgSrc,
-            ];
-        }
-    }
-
-    $fallbackPrestasi = [
-      ['id'=>'a1','date'=>'01 September 2022','year'=>2022,'level'=>'kota','levelLabel'=>'Kota Mojokerto','tag'=>'Perbankan Syariah','rank'=>'Duta Koperasi','title'=>'Siswi Perbankan Syariah Dinobatkan sebagai Duta Koperasi Bertalenta 2022','desc'=>'Cantika Putri Hapsari, siswi Perbankan Syariah SMKN 2 Mojokerto, berhasil meraih kategori Duta Koperasi Bertalenta Kota Mojokerto 2022. Prestasi ini menjadi bukti kemampuan dan kepeduliannya dalam mengembangkan literasi perkoperasian di kalangan generasi muda.','image'=>'a1.jpg'],
-      ['id'=>'a2','date'=>'11 September 2022','year'=>2022,'level'=>'kota','levelLabel'=>'Kota Mojokerto & Jombang','tag'=>'Umum','rank'=>'Duta GenRe','title'=>'Siswa SMKN 2 Mojokerto Raih Prestasi di Ajang Duta GenRe 2022','desc'=>'Siswa SMKN 2 Mojokerto berhasil menorehkan prestasi dalam ajang Duta GenRe 2022. Riska Kurniaila meraih Duta GenRe Sosial Media Inspiratif Kabupaten Jombang, sementara Muhammad Zulkifli dan Siti Nur Kholifah menjadi finalis Duta GenRe Kota Mojokerto.','image'=>'a2.jpg'],
-      ['id'=>'a3','date'=>'27 Juli 2024','year'=>2024,'level'=>'kota','levelLabel'=>'Kota Mojokerto','tag'=>'Perbankan Syariah','rank'=>'Juara 3','title'=>'Skaneda Raih Juara 3 Lomba Cerdas Cermat DISKOPUKMPERINDAG','desc'=>'Tim Layanan Perbankan Syariah SMKN 2 Mojokerto berhasil meraih Juara 3 Lomba Cerdas Cermat Tingkat SMA/SMK/MA se-Kota Mojokerto. Prestasi ini diraih berkat ketekunan, disiplin waktu, literasi yang luas, serta bimbingan dari para guru.','image'=>'a3.jpg'],
-      ['id'=>'a4','date'=>'03 Agustus 2024','year'=>2024,'level'=>'kota','levelLabel'=>'Kota Mojokerto','tag'=>'Umum','rank'=>'Juara Favorit','title'=>'Skaneda Raih Juara Favorit Duta Koperasi 2024','desc'=>'Naura Rahma Putri berhasil meraih Juara Favorit Duta Koperasi Kota Mojokerto 2024, sementara Zidana Khoiron dan Lahriria Amanah Muarta menjadi finalis. Prestasi ini didukung kekompakan tim, sosialisasi koperasi, serta dukungan warga sekolah.','image'=>'a4.jpg'],
-      ['id'=>'a5','date'=>'14 Agustus 2024','year'=>2024,'level'=>'nasional','levelLabel'=>'Nasional','tag'=>'Paskibraka','rank'=>'Multi Juara','title'=>'Skaneda Sapu Bersih Juara Lomba Paskibraka Tingkat Nasional 2024','desc'=>'Tim Paskibraka SMKN 2 Mojokerto berhasil meraih berbagai penghargaan dalam lomba LKBB Mahapatih Se-Nasional. Prestasi yang diraih meliputi juara variasi, formasi, pasukan, kostum, make-up, serta beberapa kategori lainnya.','image'=>'a5.jpg'],
-      ['id'=>'a7','date'=>'18 Agustus 2024','year'=>2024,'level'=>'nasional','levelLabel'=>'Nasional','tag'=>'Program','rank'=>'Program Terpilih','title'=>'Skaneda Terpilih dalam Program Korea E-Learning Improvement Cooperation (KLIC)','desc'=>'SMKN 2 Mojokerto menjadi salah satu sekolah terpilih dalam program Korea E-Learning Improvement Cooperation (KLIC). Melalui program ini, guru mendapatkan pelatihan teknologi pembelajaran, termasuk Artificial Intelligence dan Robotic Programming dari para pengajar Korea.','image'=>'a7.jpg'],
-      ['id'=>'a8','date'=>'23 Agustus 2024','year'=>2024,'level'=>'nasional','levelLabel'=>'Nasional','tag'=>'Kuliner','rank'=>'Juara 2','title'=>'Tim Kuliner Skaneda Raih Medali Perak LKS Nasional','desc'=>'Ahmed Husein Jalili dan Mohammad Dzakaa Irawan berhasil meraih Medali Perak atau Juara 2 Nasional dalam LKS XXXII bidang Patisserie and Confectionery di Lampung. Prestasi ini merupakan hasil latihan intensif selama hampir 10 bulan dan dukungan dari para pembimbing.','image'=>'a8.jpg'],
-      ['id'=>'a9','date'=>'21 September 2024','year'=>2024,'level'=>'provinsi','levelLabel'=>'Jawa Timur','tag'=>'Umum','rank'=>'Juara Favorit','title'=>'Skaneda Raih Juara Favorit Lomba Koperasi Tingkat Jawa Timur','desc'=>'Tim Layanan Perbankan Syariah SMKN 2 Mojokerto berhasil meraih Juara Favorit Lomba Koperasi Tingkat Jawa Timur 2024. Prestasi ini diraih melalui kekompakan tim, kreativitas, inovasi produk, serta kolaborasi Kopsis Dewantara dengan berbagai jurusan.','image'=>'a9.jpg'],
-      ['id'=>'a10','date'=>'21 September 2024','year'=>2024,'level'=>'nasional','levelLabel'=>'Nasional','tag'=>'RPL & DKV','rank'=>'6 & 10 Besar','title'=>'Dua Tim RPL dan DKV Lolos 6 dan 10 Besar Nasional FIKSI','desc'=>'Dua tim SMKN 2 Mojokerto berhasil lolos dalam FIKSI Tingkat Nasional 2024. Tim Saqran Cakra menempati 6 besar melalui inovasi desain kaos Majapahit, sedangkan Tim Skaneda Mojokerto masuk 10 besar melalui produk Tambal Express.','image'=>'a10.jpg'],
-      ['id'=>'a11','date'=>'16 Oktober 2024','year'=>2024,'level'=>'kota','levelLabel'=>'Mojokerto Raya','tag'=>'Olahraga','rank'=>'Juara 1','title'=>'Tim Futsal Skaneda Raih Juara 1 Tingkat Mojokerto Raya','desc'=>'Tim Futsal SMKN 2 Mojokerto berhasil menjadi Juara 1 Pertandingan Futsal Pelajar Tingkat SMA/SMK se-Mojokerto Raya. Kemenangan ini diraih melalui permainan kompak dan strategi yang diterapkan bersama pelatih serta dukungan keluarga besar Skaneda.','image'=>'a11.jpg'],
-      ['id'=>'a12','date'=>'16 Oktober 2024','year'=>2024,'level'=>'kota','levelLabel'=>'Mojokerto Raya','tag'=>'Umum','rank'=>'Juara 2','title'=>'PMR Skaneda Raih Juara 2 Lomba Poster dan Video Kreatif','desc'=>'Tim PMR SMKN 2 Mojokerto berhasil meraih Juara 2 Lomba Video Kreatif dan Poster dalam rangka HUT ke-79 PMI. Prestasi ini menjadi hasil dari kreativitas, disiplin, latihan, serta bimbingan pembina PMR Skaneda.','image'=>'a12.jpg'],
-      ['id'=>'a13','date'=>'19 Oktober 2024','year'=>2024,'level'=>'nasional','levelLabel'=>'Nasional','tag'=>'RPL','rank'=>'10 Besar','title'=>'Tim Maja Force RPL Lolos 10 Besar MEA Tingkat Nasional','desc'=>'Tim Maja Force dari RPL SMKN 2 Mojokerto berhasil masuk 10 besar Madani Entrepreneur Academy (MEA) Tingkat Nasional. Tim mengembangkan inovasi minuman berbahan buah maja dan mempersiapkan produk melalui berbagai tahapan seleksi serta pembinaan.','image'=>'a13.jpg'],
-      ['id'=>'a14','date'=>'03 Maret 2025','year'=>2025,'level'=>'kota','levelLabel'=>'Kota Mojokerto','tag'=>'Akuntansi','rank'=>'Juara 1','title'=>'Skaneda Raih Juara 1 LKS DIKMEN Bidang Akuntansi','desc'=>'Putra Ananda Rifky Noviansyah Hardianto berhasil meraih Juara 1 LKS DIKMEN Bidang Akuntansi Tingkat Kabupaten/Kota Mojokerto. Prestasi ini diraih melalui latihan intensif, tryout, evaluasi, serta pendalaman materi akuntansi dan pajak.','image'=>'a14.jpg'],
-      ['id'=>'a15','date'=>'25 Desember 2025','year'=>2025,'level'=>'provinsi','levelLabel'=>'Jawa Timur','tag'=>'Lingkungan','rank'=>'Penghargaan','title'=>'SMKN 2 Mojokerto Raih Penghargaan Sekolah Adiwiyata Provinsi','desc'=>'SMKN 2 Mojokerto berhasil meraih penghargaan sebagai Sekolah Adiwiyata Provinsi Jawa Timur setelah sebelumnya masuk dalam Top 20 dari 238 sekolah calon Adiwiyata. Capaian ini menjadi bukti komitmen sekolah dalam membangun lingkungan pendidikan yang berkelanjutan.','image'=>'a15.jpg'],
-      ['id'=>'a16','date'=>'26 Desember 2025','year'=>2025,'level'=>'provinsi','levelLabel'=>'Jawa Timur','tag'=>'RPL','rank'=>'Juara 2 & 3','title'=>'Talenta Muda Skaneda Bersinar, Dua Tim Raih Juara FESTIKA Jatim 2025','desc'=>'Dua tim SMKN 2 Mojokerto, Outsider dan Jayashima, berhasil meraih Juara 2 dan Juara 3 dalam FESTIKA Jawa Timur 2025 kategori AREK-AI Aplikasi Python. Prestasi ini menunjukkan kemampuan siswa dalam mengembangkan teknologi dan berinovasi di era digital.','image'=>'a16.jpg'],
-      ['id'=>'a17','date'=>'04 Juli 2026','year'=>2026,'level'=>'kota','levelLabel'=>'Kota Mojokerto','tag'=>'Olahraga','rank'=>'Juara 2','title'=>'Skaneda Raih Juara 2 Tolak Peluru pada POPKOTA Mojokerto 2026','desc'=>'Dawwas, siswa SMKN 2 Mojokerto, berhasil meraih Juara 2 Tolak Peluru Putra dalam Pekan Olahraga Pelajar Kota Mojokerto 2026. Prestasi ini menjadi bukti semangat, disiplin, dan sportivitas siswa Skaneda dalam bidang olahraga.','image'=>'a17.jpg'],
-      ['id'=>'a18','date'=>'26 Mei 2026','year'=>2026,'level'=>'kota','levelLabel'=>'Kota Mojokerto','tag'=>'Seni','rank'=>'Juara 2 & 3','title'=>'Skaneda Raih Prestasi pada FLS3N Kota Mojokerto 2026','desc'=>'SMKN 2 Mojokerto berhasil menorehkan prestasi dalam FLS3N Kota Mojokerto 2026. Gracia meraih Juara 2 Solo Putri, sedangkan Fauziyah meraih Juara 3 Komik Digital, bersama peserta lainnya yang turut memberikan penampilan terbaik.','image'=>'a18.jpg'],
-      ['id'=>'a19','date'=>'10 Mei 2026','year'=>2026,'level'=>'kota','levelLabel'=>'Kota Mojokerto','tag'=>'Olahraga','rank'=>'Juara 3','title'=>'Skaneda Raih Medali Perunggu Cabang Dayung','desc'=>'Ayu Pinky berhasil meraih Medali Perunggu Cabang Olahraga Dayung pada Pekan Olahraga Pelajar Kota Mojokerto 2026. Prestasi ini menjadi bukti kerja keras, kedisiplinan, dan semangat pantang menyerah dalam mencapai prestasi olahraga.','image'=>'a19.jpg'],
-      ['id'=>'a20','date'=>'21 April 2026','year'=>2026,'level'=>'kota','levelLabel'=>'Internal Sekolah','tag'=>'Inspirasi','rank'=>'Inspiratif','title'=>'Inspiratif! Kak Carla, Bukti Semangat Skaneda Menuju Prestasi','desc'=>'Perjalanan inspiratif Kak Carla menjadi gambaran bahwa kerja keras, konsistensi, dan semangat belajar dapat membuka berbagai kesempatan. Kisah tersebut diharapkan mampu memotivasi siswa Skaneda untuk berani mengembangkan potensi dan meraih cita-cita.','image'=>'a20.jpg'],
-      ['id'=>'a21','date'=>'13 April 2026','year'=>2026,'level'=>'provinsi','levelLabel'=>'Jawa Timur','tag'=>'DKV & Kuliner','rank'=>'Juara 3','title'=>'Skaneda Raih Juara 3 pada Dua Bidang LKS Jawa Timur 2026','desc'=>'SMKN 2 Mojokerto berhasil meraih Juara 3 Graphic Design Technology dan Juara 3 Patisserie and Confectionery dalam LKS Jawa Timur 2026. Prestasi ini menjadi hasil dari kerja keras, dedikasi, latihan, serta dukungan para pembimbing.','image'=>'a21.jpg'],
-      ['id'=>'a22','date'=>'05 Mei 2026','year'=>2026,'level'=>'kota','levelLabel'=>'Kota Mojokerto','tag'=>'Umum','rank'=>'Partisipasi','title'=>'Skaneda Raih Prestasi pada Ajang Duta GenRe Kota Mojokerto 2026','desc'=>'SMKN 2 Mojokerto kembali berpartisipasi dalam Duta GenRe Kota Mojokerto 2026. Keikutsertaan ini menjadi bukti komitmen sekolah dalam membentuk generasi muda yang sehat, berkarakter, memiliki kepedulian sosial, serta mampu menjadi teladan bagi lingkungan.','image'=>'a22.jpg'],
-      ['id'=>'a23','date'=>'29 Juli 2026','year'=>2026,'level'=>'internasional','levelLabel'=>'Internasional','tag'=>'Beasiswa','rank'=>'Beasiswa','title'=>'Alumni Skaneda Raih Beasiswa di Huaqiao University, China','desc'=>'Kameela Masyayu Ananda Apsari, alumni SMKN 2 Mojokerto, berhasil memperoleh Beasiswa Keguruan Bahasa Tionghoa dari LKPBT Jatim di Huaqiao University, China. Pencapaian ini menjadi bukti bahwa lulusan Skaneda mampu melanjutkan pendidikan dan meraih kesempatan hingga tingkat internasional.','image'=>'a23.jpg'],
-      ['id'=>'a24','date'=>'17 Agustus 2026','year'=>2026,'level'=>'kota','levelLabel'=>'Kabupaten Mojokerto','tag'=>'Olahraga','rank'=>'Juara 1','title'=>'Dhiva Alennia Raih Juara 1 Pencak Silat KONI Championship','desc'=>'Dhiva Alennia berhasil meraih Juara 1 Pencak Silat KONI Championship yang diselenggarakan di GOR Dinas Pendidikan Kabupaten Mojokerto. Prestasi ini menjadi bukti kerja keras, keberanian, disiplin, dan semangat pantang menyerah dalam meraih podium.','image'=>'a24.jpg'],
-      ['id'=>'a25','date'=>'29 November 2024','year'=>2024,'level'=>'provinsi','levelLabel'=>'Malang (Regional)','tag'=>'RPL','rank'=>'Juara 1','title'=>'Tim Penerbang Roket Raih Juara 1 Web Development di Polinema','desc'=>'Tim Penerbang Roket SMKN 2 Mojokerto berhasil meraih Juara 1 Lomba Web Development yang diselenggarakan di Politeknik Negeri Malang. Prestasi ini menunjukkan kreativitas, kemampuan teknologi, kerja sama, serta semangat belajar siswa dalam bidang pengembangan web.','image'=>'a25.jpg'],
-      ['id'=>'a26','date'=>'18 Oktober 2025','year'=>2025,'level'=>'nasional','levelLabel'=>'Nasional','tag'=>'APHP','rank'=>'Finalis','title'=>'Tim APHP Skaneda Melaju ke Babak Final FIKSI 2025','desc'=>'Tim APHP (Agribisnis Pengolahan Hasil Pertanian) SMKN 2 Mojokerto kembali menorehkan prestasi dengan berhasil lolos sebagai finalis dalam ajang Festival Inovasi dan Kewirausahaan Siswa Indonesia (FIKSI) 2025. Pencapaian ini menjadi bukti atas kreativitas, inovasi, dan kerja keras tim APHP Skaneda dalam mengembangkan ide kewirausahaan di bidang pengolahan hasil pertanian. Keberhasilan melaju ke tahap final menjadi kesempatan bagi Tim APHP Skaneda untuk terus menunjukkan potensi dan membawa nama SMKN 2 Mojokerto pada ajang bergengsi tersebut.','image'=>'a26.jpg'],
-    ];
-
-    $prestasi = array_merge($dbPrestasi, $fallbackPrestasi);
-    $prestasiByYear = collect($prestasi)->groupBy('year');
-    // Hanya tahun yang benar-benar punya data prestasi yang ditampilkan di
-    // timeline "Perjalanan Prestasi" — tahun kosong (mis. 2023) otomatis
-    // dilewati tanpa perlu diedit manual kalau data prestasi berubah.
-    $timelineYears = $prestasiByYear->keys()->sort()->values()->all();
-    // Aktifkan filter Internasional otomatis kalau ada datanya
-    $hasInternasional = collect($prestasi)->contains('level', 'internasional');
-
-    // Data siap-pakai untuk modal artikel di JS. Dibuat dengan foreach biasa
-    // (bukan closure/fluent chain) supaya aman dipakai langsung di dalam
-    // @json(...) satu baris — closure multi-baris di dalam @json() bisa
-    // membuat parser Blade salah hitung tanda kurung/bracket.
-    //
-    // 'image' hanya diisi kalau berupa URL/path lengkap (data dari database).
-    // Untuk data fallback, nama file seperti "a1.jpg" bukan file asli, jadi
-    // dikosongkan — foto asli diambil dari <img> kartu di halaman lewat JS.
-    $articleDataJs = [];
-    foreach ($prestasi as $p) {
-        $imgFull = '';
-        if (!empty($p['image']) && (str_contains($p['image'], '/') || str_starts_with($p['image'], 'http'))) {
-            $imgFull = $p['image'];
-        }
-        $articleDataJs[] = [
-            'id' => $p['id'],
-            'date' => $p['date'],
-            'title' => $p['title'],
-            'level' => $p['levelLabel'],
-            'image' => $imgFull,
-            'body' => [$p['desc']],
-        ];
-    }
-  @endphp
 
   <!-- ================= 1. PEMBUKA: JEJAK PRESTASI SKANEDA ================= -->
   <section class="psk-opening">
     <div class="psk-section">
       <div data-reveal="left">
-        <span class="psk-eyebrow">Institutional Achievement</span>
-        <h2 class="psk-section-title">Jejak Prestasi<br><span class="psk-gold">Skaneda</span></h2>
-        <p class="psk-opening-desc">Kumpulan artikel prestasi <strong>SMK Negeri 2 Mojokerto</strong> yang dihimpun dari dokumen prestasi siswa, guru, dan alumni. Setiap artikel memuat pencapaian sesuai informasi dan tingkat yang tercantum pada sumber.</p>
-        <!-- Angka di bawah dihitung otomatis dari array $prestasi (didefinisikan
-             sebelum section "Pencapaian Prestasi"). Tambah data di sana, angka
-             ini menyesuaikan sendiri. -->
+        <span class="psk-eyebrow">{{ $pc('opening_eyebrow') }}</span>
+        <h2 class="psk-section-title">{{ $pc('opening_title_white') }}<br><span class="psk-gold">{{ $pc('opening_title_gold') }}</span></h2>
+        <p class="psk-opening-desc">{!! $pr('opening_desc') !!}</p>
         <div class="psk-opening-meta">
-          <div class="psk-om"><b><em data-count="{{ count($prestasi ?? []) ?: 25 }}">0</em></b><span>Artikel Prestasi</span></div>
-          <div class="psk-om"><b>Internasional</b><span>Jangkauan Terluas di Data</span></div>
-          <div class="psk-om"><b>{{ $prestasiByYear->count() }}</b><span>Tahun Tercatat</span></div>
+          <div class="psk-om"><b><em data-count="{{ count($prestasi) }}">0</em></b><span>{{ $pc('opening_meta1_label') }}</span></div>
+          <div class="psk-om"><b>{{ $pc('opening_meta2_value') }}</b><span>{{ $pc('opening_meta2_label') }}</span></div>
+          <div class="psk-om"><b>{{ $prestasiByYear->count() }}</b><span>{{ $pc('opening_meta3_label') }}</span></div>
         </div>
       </div>
       <div data-reveal="right">
@@ -789,13 +757,13 @@
             <span class="co-gold"></span>
           </span>
           <div class="psk-cabinet-body">
-            <span class="psk-cabinet-tag"><i class="fas fa-trophy"></i> Trophy Cabinet</span>
-            <h3>Etalase Kehormatan<br>Sekolah</h3>
-            <p>Piala, medali, penghargaan, dan pencapaian dari berbagai ajang menjadi bukti nyata perjalanan prestasi Skaneda.</p>
+            <span class="psk-cabinet-tag"><i class="fas fa-trophy"></i> {{ $pc('cabinet_tag') }}</span>
+            <h3>{!! $pr('cabinet_title') !!}</h3>
+            <p>{{ $pc('cabinet_text') }}</p>
             <div class="psk-cabinet-foot">
-              <span><i class="fas fa-calendar-alt"></i> 2022 — 2026</span>
-              <span><i class="fas fa-medal"></i> {{ count($prestasi) }} Artikel Prestasi</span>
-              <span><i class="fas fa-flag"></i> Kota · Provinsi · Nasional · Internasional</span>
+              <span><i class="fas fa-calendar-alt"></i> {{ $yearRange }}</span>
+              <span><i class="fas fa-medal"></i> {{ count($prestasi) }} {{ $pc('cabinet_foot_count_label') }}</span>
+              <span><i class="fas fa-flag"></i> {{ $pc('cabinet_foot_levels') }}</span>
             </div>
           </div>
         </div>
@@ -803,40 +771,44 @@
     </div>
   </section>
 
-  <!-- ================= 2. FEATURED ACHIEVEMENT ================= -->
+  <!-- ================= 2. FEATURED ACHIEVEMENT (dari prestasi bertanda "Capaian Utama") ================= -->
+  @if ($featured)
   <section class="psk-featured">
     <div class="psk-section">
       <div class="psk-feat-photo" data-reveal="left">
         <div class="psk-moment-placeholder">
-          <div><i class="fas fa-image"></i><strong>Foto dokumentasi akan ditambahkan</strong><span>Biarkan kosong terlebih dahulu dan tambahkan foto asli FESTIKA Jatim 2025 nanti.</span></div>
+          <div><i class="fas fa-image"></i><strong>Foto dokumentasi akan ditambahkan</strong><span>Unggah foto lewat admin pada prestasi ini.</span></div>
         </div>
-        <img src="{{ asset('images/prestasi/festika.jpeg') }}" alt="Tim Outsider dan Jayashima juara FESTIKA Jatim 2025" loading="eager" onerror="this.remove()">
-        <span class="psk-feat-badge"><i class="fas fa-crown"></i> Featured Achievement</span>
-        <span class="psk-feat-year">2025<small>Tahun Capaian</small></span>
+        @if ($featured['image'])
+          <img src="{{ $featured['image'] }}" alt="{{ $featured['title'] }}" loading="eager" onerror="this.remove()">
+        @endif
+        <span class="psk-feat-badge"><i class="fas fa-crown"></i> {{ $pc('featured_badge') }}</span>
+        <span class="psk-feat-year">{{ $featured['year'] }}<small>{{ $pc('featured_year_label') }}</small></span>
       </div>
       <div class="psk-feat-info" data-reveal="right">
-        <span class="psk-eyebrow">Capaian Utama Institusi</span>
-        <span class="psk-feat-rank"><i class="fas fa-trophy"></i> Juara 2 &amp; Juara 3 — FESTIKA Jatim</span>
-        <h3>Talenta Muda Skaneda Bersinar, Dua Tim Raih Juara FESTIKA Jatim 2025</h3>
-        <p class="psk-feat-desc">Dua tim dari SMKN 2 Mojokerto sukses memboyong gelar juara di ajang Festival Teknologi Informasi dan Komunikasi (FESTIKA) Jawa Timur 2025. Outsider meraih peringkat kedua dan Jayashima peringkat ketiga pada nominasi AREK-AI Aplikasi Phyton.</p>
+        <span class="psk-eyebrow">{{ $pc('featured_eyebrow') }}</span>
+        <span class="psk-feat-rank"><i class="fas fa-trophy"></i> {{ $featured['rank'] }}</span>
+        <h3>{{ $featured['title'] }}</h3>
+        <p class="psk-feat-desc">{{ $featured['desc'] }}</p>
         <div class="psk-feat-meta">
-          <span><i class="fas fa-map-marked-alt"></i> Provinsi</span>
-          <span><i class="fas fa-code"></i> AREK-AI Aplikasi Phyton</span>
-          <span><i class="fas fa-calendar-alt"></i> 2025</span>
-          <span><i class="fas fa-medal"></i> Juara 2 &amp; 3</span>
+          <span><i class="fas fa-map-marked-alt"></i> {{ $featured['levelLabel'] }}</span>
+          <span><i class="fas fa-tag"></i> {{ $featured['tag'] }}</span>
+          <span><i class="fas fa-calendar-alt"></i> {{ $featured['year'] }}</span>
+          <span><i class="fas fa-medal"></i> {{ $featured['rank'] }}</span>
         </div>
-        <button type="button" class="psk-featured-read" data-article-id="a16"><i class="fas fa-book-open"></i> Baca selengkapnya</button>
+        <button type="button" class="psk-featured-read" data-article-id="{{ $featured['id'] }}"><i class="fas fa-book-open"></i> {{ $pc('featured_button') }}</button>
       </div>
     </div>
   </section>
+  @endif
 
   <!-- ================= 3. PENCAPAIAN PRESTASI (artikel + filter tingkat) ================= -->
   <section class="psk-achv" id="pencapaian-prestasi">
     <div class="psk-section">
       <div data-reveal>
-        <span class="psk-eyebrow">Dokumentasi Resmi</span>
-        <h2 class="psk-section-title">Pencapaian <span class="psk-gold">Prestasi</span></h2>
-        <p class="psk-subtitle">Kumpulan berita pencapaian siswa, guru, dan alumni Skaneda — lengkap dengan foto, judul, dan isi artikelnya, dari tingkat kota hingga internasional.</p>
+        <span class="psk-eyebrow">{{ $pc('achv_eyebrow') }}</span>
+        <h2 class="psk-section-title">{{ $pc('achv_title_white') }} <span class="psk-gold">{{ $pc('achv_title_gold') }}</span></h2>
+        <p class="psk-subtitle">{{ $pc('achv_subtitle') }}</p>
       </div>
 
       <div class="psk-achv-filters" data-reveal>
@@ -849,462 +821,34 @@
         @endif
       </div>
 
-      <!-- Simpan foto di public/images/prestasi/ -->
+      <!-- Kartu dibuat otomatis dari database. Kelola lewat Admin → Prestasi Sekolah. -->
       <div class="psk-achv-grid" id="pskAchvGrid" data-reveal>
-        <article class="psk-achv-card" data-level="kota" data-article-id="a24">
+        @foreach ($prestasi as $p)
+        <article class="psk-achv-card" data-level="{{ $p['level'] }}" data-article-id="{{ $p['id'] }}">
           <div class="psk-achv-photo">
             <i class="fas fa-image"></i>
-            <img src="{{ asset('images/prestasi/pencaksilat.jpeg') }}" alt="Dhiva Alennia Raih Juara 1 Pencak Silat KONI Championship" loading="lazy" onerror="this.remove()">
-            <span class="psk-achv-rank"><i class="fas fa-trophy"></i> Juara 1</span>
-            <span class="psk-achv-level"><i class="fas fa-map-marker-alt"></i> Kabupaten Mojokerto</span>
+            @if ($p['image'])
+              <img src="{{ $p['image'] }}" alt="{{ $p['title'] }}" loading="lazy" onerror="this.remove()">
+            @endif
+            <span class="psk-achv-rank"><i class="fas fa-trophy"></i> {{ $p['rank'] }}</span>
+            <span class="psk-achv-level"><i class="fas fa-map-marker-alt"></i> {{ $p['levelLabel'] }}</span>
           </div>
           <div class="psk-achv-body">
-            <h3>Dhiva Alennia Raih Juara 1 Pencak Silat KONI Championship</h3>
-            <p>Dhiva Alennia berhasil meraih Juara 1 Pencak Silat KONI Championship yang diselenggarakan di GOR Dinas Pendidikan Kabupaten Mojokerto. Prestasi ini menjadi bukti kerja keras, keberanian, disiplin, dan semangat pantang menyerah dalam meraih podium.</p>
+            <h3>{{ $p['title'] }}</h3>
+            <p>{{ $p['desc'] }}</p>
             <div class="psk-achv-foot">
-              <span class="psk-achv-tag"><i class="fas fa-tag"></i> Olahraga</span>
-              <span class="psk-achv-year">2026</span>
+              <span class="psk-achv-tag"><i class="fas fa-tag"></i> {{ $p['tag'] }}</span>
+              <span class="psk-achv-year">{{ $p['year'] }}</span>
             </div>
             <span class="psk-achv-link">Lihat berita <i class="fas fa-arrow-right"></i></span>
           </div>
         </article>
-
-        <article class="psk-achv-card" data-level="internasional" data-article-id="a23">
-          <div class="psk-achv-photo">
-            <i class="fas fa-image"></i>
-            <img src="{{ asset('images/prestasi/china.jpeg') }}" alt="Alumni Skaneda Raih Beasiswa di Huaqiao University, China" loading="lazy" onerror="this.remove()">
-            <span class="psk-achv-rank"><i class="fas fa-trophy"></i> Beasiswa</span>
-            <span class="psk-achv-level"><i class="fas fa-map-marker-alt"></i> Internasional</span>
-          </div>
-          <div class="psk-achv-body">
-            <h3>Alumni Skaneda Raih Beasiswa di Huaqiao University, China</h3>
-            <p>Kameela Masyayu Ananda Apsari, alumni SMKN 2 Mojokerto, berhasil memperoleh Beasiswa Keguruan Bahasa Tionghoa dari LKPBT Jatim di Huaqiao University, China. Pencapaian ini menjadi bukti bahwa lulusan Skaneda mampu melanjutkan pendidikan dan meraih kesempatan hingga tingkat internasional.</p>
-            <div class="psk-achv-foot">
-              <span class="psk-achv-tag"><i class="fas fa-tag"></i> Beasiswa</span>
-              <span class="psk-achv-year">2026</span>
-            </div>
-            <span class="psk-achv-link">Lihat berita <i class="fas fa-arrow-right"></i></span>
-          </div>
-        </article>
-
-        <article class="psk-achv-card" data-level="kota" data-article-id="a17">
-          <div class="psk-achv-photo">
-            <i class="fas fa-image"></i>
-            <img src="{{ asset('images/prestasi/tolakpeluru.jpeg') }}" alt="Skaneda Raih Juara 2 Tolak Peluru pada POPKOTA Mojokerto 2026" loading="lazy" onerror="this.remove()">
-            <span class="psk-achv-rank"><i class="fas fa-trophy"></i> Juara 2</span>
-            <span class="psk-achv-level"><i class="fas fa-map-marker-alt"></i> Kota Mojokerto</span>
-          </div>
-          <div class="psk-achv-body">
-            <h3>Skaneda Raih Juara 2 Tolak Peluru pada POPKOTA Mojokerto 2026</h3>
-            <p>Dawwas, siswa SMKN 2 Mojokerto, berhasil meraih Juara 2 Tolak Peluru Putra dalam Pekan Olahraga Pelajar Kota Mojokerto 2026. Prestasi ini menjadi bukti semangat, disiplin, dan sportivitas siswa Skaneda dalam bidang olahraga.</p>
-            <div class="psk-achv-foot">
-              <span class="psk-achv-tag"><i class="fas fa-tag"></i> Olahraga</span>
-              <span class="psk-achv-year">2026</span>
-            </div>
-            <span class="psk-achv-link">Lihat berita <i class="fas fa-arrow-right"></i></span>
-          </div>
-        </article>
-
-        <article class="psk-achv-card" data-level="kota" data-article-id="a18">
-          <div class="psk-achv-photo">
-            <i class="fas fa-image"></i>
-            <img src="{{ asset('images/prestasi/fls3n.jpeg') }}" alt="Skaneda Raih Prestasi pada FLS3N Kota Mojokerto 2026" loading="lazy" onerror="this.remove()">
-            <span class="psk-achv-rank"><i class="fas fa-trophy"></i> Juara 2 &amp; 3</span>
-            <span class="psk-achv-level"><i class="fas fa-map-marker-alt"></i> Kota Mojokerto</span>
-          </div>
-          <div class="psk-achv-body">
-            <h3>Skaneda Raih Prestasi pada FLS3N Kota Mojokerto 2026</h3>
-            <p>SMKN 2 Mojokerto berhasil menorehkan prestasi dalam FLS3N Kota Mojokerto 2026. Gracia meraih Juara 2 Solo Putri, sedangkan Fauziyah meraih Juara 3 Komik Digital, bersama peserta lainnya yang turut memberikan penampilan terbaik.</p>
-            <div class="psk-achv-foot">
-              <span class="psk-achv-tag"><i class="fas fa-tag"></i> Seni</span>
-              <span class="psk-achv-year">2026</span>
-            </div>
-            <span class="psk-achv-link">Lihat berita <i class="fas fa-arrow-right"></i></span>
-          </div>
-        </article>
-
-        <article class="psk-achv-card" data-level="kota" data-article-id="a19">
-          <div class="psk-achv-photo">
-            <i class="fas fa-image"></i>
-            <img src="{{ asset('images/prestasi/dayung.jpeg') }}" alt="Skaneda Raih Medali Perunggu Cabang Dayung" loading="lazy" onerror="this.remove()">
-            <span class="psk-achv-rank"><i class="fas fa-trophy"></i> Juara 3</span>
-            <span class="psk-achv-level"><i class="fas fa-map-marker-alt"></i> Kota Mojokerto</span>
-          </div>
-          <div class="psk-achv-body">
-            <h3>Skaneda Raih Medali Perunggu Cabang Dayung</h3>
-            <p>Ayu Pinky berhasil meraih Medali Perunggu Cabang Olahraga Dayung pada Pekan Olahraga Pelajar Kota Mojokerto 2026. Prestasi ini menjadi bukti kerja keras, kedisiplinan, dan semangat pantang menyerah dalam mencapai prestasi olahraga.</p>
-            <div class="psk-achv-foot">
-              <span class="psk-achv-tag"><i class="fas fa-tag"></i> Olahraga</span>
-              <span class="psk-achv-year">2026</span>
-            </div>
-            <span class="psk-achv-link">Lihat berita <i class="fas fa-arrow-right"></i></span>
-          </div>
-        </article>
-
-        <article class="psk-achv-card" data-level="kota" data-article-id="a22">
-          <div class="psk-achv-photo">
-            <i class="fas fa-image"></i>
-            <img src="{{ asset('images/prestasi/dugen26.jpeg') }}" alt="Skaneda Raih Prestasi pada Ajang Duta GenRe Kota Mojokerto 2026" loading="lazy" onerror="this.remove()">
-            <span class="psk-achv-rank"><i class="fas fa-trophy"></i> Partisipasi</span>
-            <span class="psk-achv-level"><i class="fas fa-map-marker-alt"></i> Kota Mojokerto</span>
-          </div>
-          <div class="psk-achv-body">
-            <h3>Skaneda Raih Prestasi pada Ajang Duta GenRe Kota Mojokerto 2026</h3>
-            <p>SMKN 2 Mojokerto kembali berpartisipasi dalam Duta GenRe Kota Mojokerto 2026. Keikutsertaan ini menjadi bukti komitmen sekolah dalam membentuk generasi muda yang sehat, berkarakter, memiliki kepedulian sosial, serta mampu menjadi teladan bagi lingkungan.</p>
-            <div class="psk-achv-foot">
-              <span class="psk-achv-tag"><i class="fas fa-tag"></i> Umum</span>
-              <span class="psk-achv-year">2026</span>
-            </div>
-            <span class="psk-achv-link">Lihat berita <i class="fas fa-arrow-right"></i></span>
-          </div>
-        </article>
-
-        <article class="psk-achv-card" data-level="kota" data-article-id="a20">
-          <div class="psk-achv-photo">
-            <i class="fas fa-image"></i>
-            <img src="{{ asset('images/prestasi/carla.jpeg') }}" alt="Inspiratif! Kak Carla, Bukti Semangat Skaneda Menuju Prestasi" loading="lazy" onerror="this.remove()">
-            <span class="psk-achv-rank"><i class="fas fa-trophy"></i> Inspiratif</span>
-            <span class="psk-achv-level"><i class="fas fa-map-marker-alt"></i> Internal Sekolah</span>
-          </div>
-          <div class="psk-achv-body">
-            <h3>Inspiratif! Kak Carla, Bukti Semangat Skaneda Menuju Prestasi</h3>
-            <p>Perjalanan inspiratif Kak Carla menjadi gambaran bahwa kerja keras, konsistensi, dan semangat belajar dapat membuka berbagai kesempatan. Kisah tersebut diharapkan mampu memotivasi siswa Skaneda untuk berani mengembangkan potensi dan meraih cita-cita.</p>
-            <div class="psk-achv-foot">
-              <span class="psk-achv-tag"><i class="fas fa-tag"></i> Inspirasi</span>
-              <span class="psk-achv-year">2026</span>
-            </div>
-            <span class="psk-achv-link">Lihat berita <i class="fas fa-arrow-right"></i></span>
-          </div>
-        </article>
-
-        <article class="psk-achv-card" data-level="provinsi" data-article-id="a21">
-          <div class="psk-achv-photo">
-            <i class="fas fa-image"></i>
-            <img src="{{ asset('images/prestasi/lks26.jpg') }}" alt="Skaneda Raih Juara 3 pada Dua Bidang LKS Jawa Timur 2026" loading="lazy" onerror="this.remove()">
-            <span class="psk-achv-rank"><i class="fas fa-trophy"></i> Juara 3</span>
-            <span class="psk-achv-level"><i class="fas fa-map-marker-alt"></i> Jawa Timur</span>
-          </div>
-          <div class="psk-achv-body">
-            <h3>Skaneda Raih Juara 3 pada Dua Bidang LKS Jawa Timur 2026</h3>
-            <p>SMKN 2 Mojokerto berhasil meraih Juara 3 Graphic Design Technology dan Juara 3 Patisserie and Confectionery dalam LKS Jawa Timur 2026. Prestasi ini menjadi hasil dari kerja keras, dedikasi, latihan, serta dukungan para pembimbing.</p>
-            <div class="psk-achv-foot">
-              <span class="psk-achv-tag"><i class="fas fa-tag"></i> DKV &amp; Kuliner</span>
-              <span class="psk-achv-year">2026</span>
-            </div>
-            <span class="psk-achv-link">Lihat berita <i class="fas fa-arrow-right"></i></span>
-          </div>
-        </article>
-
-        <article class="psk-achv-card" data-level="provinsi" data-article-id="a16">
-          <div class="psk-achv-photo">
-            <i class="fas fa-image"></i>
-            <img src="{{ asset('images/prestasi/festika.jpeg') }}" alt="Talenta Muda Skaneda Bersinar, Dua Tim Raih Juara FESTIKA Jatim 2025" loading="lazy" onerror="this.remove()">
-            <span class="psk-achv-rank"><i class="fas fa-trophy"></i> Juara 2 &amp; 3</span>
-            <span class="psk-achv-level"><i class="fas fa-map-marker-alt"></i> Jawa Timur</span>
-          </div>
-          <div class="psk-achv-body">
-            <h3>Talenta Muda Skaneda Bersinar, Dua Tim Raih Juara FESTIKA Jatim 2025</h3>
-            <p>Dua tim SMKN 2 Mojokerto, Outsider dan Jayashima, berhasil meraih Juara 2 dan Juara 3 dalam FESTIKA Jawa Timur 2025 kategori AREK-AI Aplikasi Python. Prestasi ini menunjukkan kemampuan siswa dalam mengembangkan teknologi dan berinovasi di era digital.</p>
-            <div class="psk-achv-foot">
-              <span class="psk-achv-tag"><i class="fas fa-tag"></i> RPL</span>
-              <span class="psk-achv-year">2025</span>
-            </div>
-            <span class="psk-achv-link">Lihat berita <i class="fas fa-arrow-right"></i></span>
-          </div>
-        </article>
-
-        <article class="psk-achv-card" data-level="provinsi" data-article-id="a15">
-          <div class="psk-achv-photo">
-            <i class="fas fa-image"></i>
-            <img src="{{ asset('images/prestasi/adiwiyata.jpeg') }}" alt="SMKN 2 Mojokerto Raih Penghargaan Sekolah Adiwiyata Provinsi" loading="lazy" onerror="this.remove()">
-            <span class="psk-achv-rank"><i class="fas fa-trophy"></i> Penghargaan</span>
-            <span class="psk-achv-level"><i class="fas fa-map-marker-alt"></i> Jawa Timur</span>
-          </div>
-          <div class="psk-achv-body">
-            <h3>SMKN 2 Mojokerto Raih Penghargaan Sekolah Adiwiyata Provinsi</h3>
-            <p>SMKN 2 Mojokerto berhasil meraih penghargaan sebagai Sekolah Adiwiyata Provinsi Jawa Timur setelah sebelumnya masuk dalam Top 20 dari 238 sekolah calon Adiwiyata. Capaian ini menjadi bukti komitmen sekolah dalam membangun lingkungan pendidikan yang berkelanjutan.</p>
-            <div class="psk-achv-foot">
-              <span class="psk-achv-tag"><i class="fas fa-tag"></i> Lingkungan</span>
-              <span class="psk-achv-year">2025</span>
-            </div>
-            <span class="psk-achv-link">Lihat berita <i class="fas fa-arrow-right"></i></span>
-          </div>
-        </article>
-
-        <article class="psk-achv-card" data-level="nasional" data-article-id="a26">
-          <div class="psk-achv-photo">
-            <i class="fas fa-image"></i>
-            <img src="{{ asset('images/prestasi/fiksi25.jpg') }}" alt="Tim APHP Skaneda Melaju ke Babak Final FIKSI 2025" loading="lazy" onerror="this.remove()">
-            <span class="psk-achv-rank"><i class="fas fa-trophy"></i> Finalis</span>
-            <span class="psk-achv-level"><i class="fas fa-map-marker-alt"></i> Nasional</span>
-          </div>
-          <div class="psk-achv-body">
-            <h3>Tim APHP Skaneda Melaju ke Babak Final FIKSI 2025</h3>
-            <p>Tim APHP (Agribisnis Pengolahan Hasil Pertanian) SMKN 2 Mojokerto kembali menorehkan prestasi dengan berhasil lolos sebagai finalis dalam ajang Festival Inovasi dan Kewirausahaan Siswa Indonesia (FIKSI) 2025. Pencapaian ini menjadi bukti atas kreativitas, inovasi, dan kerja keras tim APHP Skaneda dalam mengembangkan ide kewirausahaan di bidang pengolahan hasil pertanian. Keberhasilan melaju ke tahap final menjadi kesempatan bagi Tim APHP Skaneda untuk terus menunjukkan potensi dan membawa nama SMKN 2 Mojokerto pada ajang bergengsi tersebut.</p>
-            <div class="psk-achv-foot">
-              <span class="psk-achv-tag"><i class="fas fa-tag"></i> APHP</span>
-              <span class="psk-achv-year">2025</span>
-            </div>
-            <span class="psk-achv-link">Lihat berita <i class="fas fa-arrow-right"></i></span>
-          </div>
-        </article>
-
-        <article class="psk-achv-card" data-level="kota" data-article-id="a14">
-          <div class="psk-achv-photo">
-            <i class="fas fa-image"></i>
-            <img src="{{ asset('images/prestasi/lksakuntansi.jpg') }}" alt="Skaneda Raih Juara 1 LKS DIKMEN Bidang Akuntansi" loading="lazy" onerror="this.remove()">
-            <span class="psk-achv-rank"><i class="fas fa-trophy"></i> Juara 1</span>
-            <span class="psk-achv-level"><i class="fas fa-map-marker-alt"></i> Kota Mojokerto</span>
-          </div>
-          <div class="psk-achv-body">
-            <h3>Skaneda Raih Juara 1 LKS DIKMEN Bidang Akuntansi</h3>
-            <p>Putra Ananda Rifky Noviansyah Hardianto berhasil meraih Juara 1 LKS DIKMEN Bidang Akuntansi Tingkat Kabupaten/Kota Mojokerto. Prestasi ini diraih melalui latihan intensif, tryout, evaluasi, serta pendalaman materi akuntansi dan pajak.</p>
-            <div class="psk-achv-foot">
-              <span class="psk-achv-tag"><i class="fas fa-tag"></i> Akuntansi</span>
-              <span class="psk-achv-year">2025</span>
-            </div>
-            <span class="psk-achv-link">Lihat berita <i class="fas fa-arrow-right"></i></span>
-          </div>
-        </article>
-
-        <article class="psk-achv-card" data-level="provinsi" data-article-id="a25">
-          <div class="psk-achv-photo">
-            <i class="fas fa-image"></i>
-            <img src="{{ asset('images/prestasi/goldentiket.jpeg') }}" alt="Tim Penerbang Roket Raih Juara 1 Web Development di Polinema" loading="lazy" onerror="this.remove()">
-            <span class="psk-achv-rank"><i class="fas fa-trophy"></i> Juara 1</span>
-            <span class="psk-achv-level"><i class="fas fa-map-marker-alt"></i> Malang (Regional)</span>
-          </div>
-          <div class="psk-achv-body">
-            <h3>Tim Penerbang Roket Raih Juara 1 Web Development di Polinema</h3>
-            <p>Tim Penerbang Roket SMKN 2 Mojokerto berhasil meraih Juara 1 Lomba Web Development yang diselenggarakan di Politeknik Negeri Malang. Prestasi ini menunjukkan kreativitas, kemampuan teknologi, kerja sama, serta semangat belajar siswa dalam bidang pengembangan web.</p>
-            <div class="psk-achv-foot">
-              <span class="psk-achv-tag"><i class="fas fa-tag"></i> RPL</span>
-              <span class="psk-achv-year">2024</span>
-            </div>
-            <span class="psk-achv-link">Lihat berita <i class="fas fa-arrow-right"></i></span>
-          </div>
-        </article>
-
-        <article class="psk-achv-card" data-level="nasional" data-article-id="a13">
-          <div class="psk-achv-photo">
-            <i class="fas fa-image"></i>
-            <img src="{{ asset('images/prestasi/mea.jpg') }}" alt="Tim Maja Force RPL Lolos 10 Besar MEA Tingkat Nasional" loading="lazy" onerror="this.remove()">
-            <span class="psk-achv-rank"><i class="fas fa-trophy"></i> 10 Besar</span>
-            <span class="psk-achv-level"><i class="fas fa-map-marker-alt"></i> Nasional</span>
-          </div>
-          <div class="psk-achv-body">
-            <h3>Tim Maja Force RPL Lolos 10 Besar MEA Tingkat Nasional</h3>
-            <p>Tim Maja Force dari RPL SMKN 2 Mojokerto berhasil masuk 10 besar Madani Entrepreneur Academy (MEA) Tingkat Nasional. Tim mengembangkan inovasi minuman berbahan buah maja dan mempersiapkan produk melalui berbagai tahapan seleksi serta pembinaan.</p>
-            <div class="psk-achv-foot">
-              <span class="psk-achv-tag"><i class="fas fa-tag"></i> RPL</span>
-              <span class="psk-achv-year">2024</span>
-            </div>
-            <span class="psk-achv-link">Lihat berita <i class="fas fa-arrow-right"></i></span>
-          </div>
-        </article>
-
-        <article class="psk-achv-card" data-level="kota" data-article-id="a11">
-          <div class="psk-achv-photo">
-            <i class="fas fa-image"></i>
-            <img src="{{ asset('images/prestasi/lombafutsal.jpg') }}" alt="Tim Futsal Skaneda Raih Juara 1 Tingkat Mojokerto Raya" loading="lazy" onerror="this.remove()">
-            <span class="psk-achv-rank"><i class="fas fa-trophy"></i> Juara 1</span>
-            <span class="psk-achv-level"><i class="fas fa-map-marker-alt"></i> Mojokerto Raya</span>
-          </div>
-          <div class="psk-achv-body">
-            <h3>Tim Futsal Skaneda Raih Juara 1 Tingkat Mojokerto Raya</h3>
-            <p>Tim Futsal SMKN 2 Mojokerto berhasil menjadi Juara 1 Pertandingan Futsal Pelajar Tingkat SMA/SMK se-Mojokerto Raya. Kemenangan ini diraih melalui permainan kompak dan strategi yang diterapkan bersama pelatih serta dukungan keluarga besar Skaneda.</p>
-            <div class="psk-achv-foot">
-              <span class="psk-achv-tag"><i class="fas fa-tag"></i> Olahraga</span>
-              <span class="psk-achv-year">2024</span>
-            </div>
-            <span class="psk-achv-link">Lihat berita <i class="fas fa-arrow-right"></i></span>
-          </div>
-        </article>
-
-        <article class="psk-achv-card" data-level="kota" data-article-id="a12">
-          <div class="psk-achv-photo">
-            <i class="fas fa-image"></i>
-            <img src="{{ asset('images/prestasi/juarapmr.jpg') }}" alt="PMR Skaneda Raih Juara 2 Lomba Poster dan Video Kreatif" loading="lazy" onerror="this.remove()">
-            <span class="psk-achv-rank"><i class="fas fa-trophy"></i> Juara 2</span>
-            <span class="psk-achv-level"><i class="fas fa-map-marker-alt"></i> Mojokerto Raya</span>
-          </div>
-          <div class="psk-achv-body">
-            <h3>PMR Skaneda Raih Juara 2 Lomba Poster dan Video Kreatif</h3>
-            <p>Tim PMR SMKN 2 Mojokerto berhasil meraih Juara 2 Lomba Video Kreatif dan Poster dalam rangka HUT ke-79 PMI. Prestasi ini menjadi hasil dari kreativitas, disiplin, latihan, serta bimbingan pembina PMR Skaneda.</p>
-            <div class="psk-achv-foot">
-              <span class="psk-achv-tag"><i class="fas fa-tag"></i> Umum</span>
-              <span class="psk-achv-year">2024</span>
-            </div>
-            <span class="psk-achv-link">Lihat berita <i class="fas fa-arrow-right"></i></span>
-          </div>
-        </article>
-
-        <article class="psk-achv-card" data-level="provinsi" data-article-id="a9">
-          <div class="psk-achv-photo">
-            <i class="fas fa-image"></i>
-            <img src="{{ asset('images/prestasi/lombakoperasi.jpg') }}" alt="Skaneda Raih Juara Favorit Lomba Koperasi Tingkat Jawa Timur" loading="lazy" onerror="this.remove()">
-            <span class="psk-achv-rank"><i class="fas fa-trophy"></i> Juara Favorit</span>
-            <span class="psk-achv-level"><i class="fas fa-map-marker-alt"></i> Jawa Timur</span>
-          </div>
-          <div class="psk-achv-body">
-            <h3>Skaneda Raih Juara Favorit Lomba Koperasi Tingkat Jawa Timur</h3>
-            <p>Tim Layanan Perbankan Syariah SMKN 2 Mojokerto berhasil meraih Juara Favorit Lomba Koperasi Tingkat Jawa Timur 2024. Prestasi ini diraih melalui kekompakan tim, kreativitas, inovasi produk, serta kolaborasi Kopsis Dewantara dengan berbagai jurusan.</p>
-            <div class="psk-achv-foot">
-              <span class="psk-achv-tag"><i class="fas fa-tag"></i> Umum</span>
-              <span class="psk-achv-year">2024</span>
-            </div>
-            <span class="psk-achv-link">Lihat berita <i class="fas fa-arrow-right"></i></span>
-          </div>
-        </article>
-
-        <article class="psk-achv-card" data-level="nasional" data-article-id="a10">
-          <div class="psk-achv-photo">
-            <i class="fas fa-image"></i>
-            <img src="{{ asset('images/prestasi/fiksi.jpg') }}" alt="Dua Tim RPL dan DKV Lolos 6 dan 10 Besar Nasional FIKSI" loading="lazy" onerror="this.remove()">
-            <span class="psk-achv-rank"><i class="fas fa-trophy"></i> 6 &amp; 10 Besar</span>
-            <span class="psk-achv-level"><i class="fas fa-map-marker-alt"></i> Nasional</span>
-          </div>
-          <div class="psk-achv-body">
-            <h3>Dua Tim RPL dan DKV Lolos 6 dan 10 Besar Nasional FIKSI</h3>
-            <p>Dua tim SMKN 2 Mojokerto berhasil lolos dalam FIKSI Tingkat Nasional 2024. Tim Saqran Cakra menempati 6 besar melalui inovasi desain kaos Majapahit, sedangkan Tim Skaneda Mojokerto masuk 10 besar melalui produk Tambal Express.</p>
-            <div class="psk-achv-foot">
-              <span class="psk-achv-tag"><i class="fas fa-tag"></i> RPL &amp; DKV</span>
-              <span class="psk-achv-year">2024</span>
-            </div>
-            <span class="psk-achv-link">Lihat berita <i class="fas fa-arrow-right"></i></span>
-          </div>
-        </article>
-
-        <article class="psk-achv-card" data-level="nasional" data-article-id="a8">
-          <div class="psk-achv-photo">
-            <i class="fas fa-image"></i>
-            <img src="{{ asset('images/prestasi/lkslampung.jpg') }}" alt="Tim Kuliner Skaneda Raih Medali Perak LKS Nasional" loading="lazy" onerror="this.remove()">
-            <span class="psk-achv-rank"><i class="fas fa-trophy"></i> Juara 2</span>
-            <span class="psk-achv-level"><i class="fas fa-map-marker-alt"></i> Nasional</span>
-          </div>
-          <div class="psk-achv-body">
-            <h3>Tim Kuliner Skaneda Raih Medali Perak LKS Nasional</h3>
-            <p>Ahmed Husein Jalili dan Mohammad Dzakaa Irawan berhasil meraih Medali Perak atau Juara 2 Nasional dalam LKS XXXII bidang Patisserie and Confectionery di Lampung. Prestasi ini merupakan hasil latihan intensif selama hampir 10 bulan dan dukungan dari para pembimbing.</p>
-            <div class="psk-achv-foot">
-              <span class="psk-achv-tag"><i class="fas fa-tag"></i> Kuliner</span>
-              <span class="psk-achv-year">2024</span>
-            </div>
-            <span class="psk-achv-link">Lihat berita <i class="fas fa-arrow-right"></i></span>
-          </div>
-        </article>
-
-        <article class="psk-achv-card" data-level="nasional" data-article-id="a7">
-          <div class="psk-achv-photo">
-            <i class="fas fa-image"></i>
-            <img src="{{ asset('images/prestasi/klic.jpg') }}" alt="Skaneda Terpilih dalam Program Korea E-Learning Improvement Cooperation (KLIC)" loading="lazy" onerror="this.remove()">
-            <span class="psk-achv-rank"><i class="fas fa-trophy"></i> Program Terpilih</span>
-            <span class="psk-achv-level"><i class="fas fa-map-marker-alt"></i> Nasional</span>
-          </div>
-          <div class="psk-achv-body">
-            <h3>Skaneda Terpilih dalam Program Korea E-Learning Improvement Cooperation (KLIC)</h3>
-            <p>SMKN 2 Mojokerto menjadi salah satu sekolah terpilih dalam program Korea E-Learning Improvement Cooperation (KLIC). Melalui program ini, guru mendapatkan pelatihan teknologi pembelajaran, termasuk Artificial Intelligence dan Robotic Programming dari para pengajar Korea.</p>
-            <div class="psk-achv-foot">
-              <span class="psk-achv-tag"><i class="fas fa-tag"></i> Program</span>
-              <span class="psk-achv-year">2024</span>
-            </div>
-            <span class="psk-achv-link">Lihat berita <i class="fas fa-arrow-right"></i></span>
-          </div>
-        </article>
-
-        <article class="psk-achv-card" data-level="nasional" data-article-id="a5">
-          <div class="psk-achv-photo">
-            <i class="fas fa-image"></i>
-            <img src="{{ asset('images/prestasi/paskib24.jpg') }}" alt="Skaneda Sapu Bersih Juara Lomba Paskibraka Tingkat Nasional 2024" loading="lazy" onerror="this.remove()">
-            <span class="psk-achv-rank"><i class="fas fa-trophy"></i> Multi Juara</span>
-            <span class="psk-achv-level"><i class="fas fa-map-marker-alt"></i> Nasional</span>
-          </div>
-          <div class="psk-achv-body">
-            <h3>Skaneda Sapu Bersih Juara Lomba Paskibraka Tingkat Nasional 2024</h3>
-            <p>Tim Paskibraka SMKN 2 Mojokerto berhasil meraih berbagai penghargaan dalam lomba LKBB Mahapatih Se-Nasional. Prestasi yang diraih meliputi juara variasi, formasi, pasukan, kostum, make-up, serta beberapa kategori lainnya.</p>
-            <div class="psk-achv-foot">
-              <span class="psk-achv-tag"><i class="fas fa-tag"></i> Paskibraka</span>
-              <span class="psk-achv-year">2024</span>
-            </div>
-            <span class="psk-achv-link">Lihat berita <i class="fas fa-arrow-right"></i></span>
-          </div>
-        </article>
-
-        <article class="psk-achv-card" data-level="kota" data-article-id="a4">
-          <div class="psk-achv-photo">
-            <i class="fas fa-image"></i>
-            <img src="{{ asset('images/prestasi/dutkop24.jpg') }}" alt="Skaneda Raih Juara Favorit Duta Koperasi 2024" loading="lazy" onerror="this.remove()">
-            <span class="psk-achv-rank"><i class="fas fa-trophy"></i> Juara Favorit</span>
-            <span class="psk-achv-level"><i class="fas fa-map-marker-alt"></i> Kota Mojokerto</span>
-          </div>
-          <div class="psk-achv-body">
-            <h3>Skaneda Raih Juara Favorit Duta Koperasi 2024</h3>
-            <p>Naura Rahma Putri berhasil meraih Juara Favorit Duta Koperasi Kota Mojokerto 2024, sementara Zidana Khoiron dan Lahriria Amanah Muarta menjadi finalis. Prestasi ini didukung kekompakan tim, sosialisasi koperasi, serta dukungan warga sekolah.</p>
-            <div class="psk-achv-foot">
-              <span class="psk-achv-tag"><i class="fas fa-tag"></i> Umum</span>
-              <span class="psk-achv-year">2024</span>
-            </div>
-            <span class="psk-achv-link">Lihat berita <i class="fas fa-arrow-right"></i></span>
-          </div>
-        </article>
-
-        <article class="psk-achv-card" data-level="kota" data-article-id="a3">
-          <div class="psk-achv-photo">
-            <i class="fas fa-image"></i>
-            <img src="{{ asset('images/prestasi/cerdascermat.jpg') }}" alt="Skaneda Raih Juara 3 Lomba Cerdas Cermat DISKOPUKMPERINDAG" loading="lazy" onerror="this.remove()">
-            <span class="psk-achv-rank"><i class="fas fa-trophy"></i> Juara 3</span>
-            <span class="psk-achv-level"><i class="fas fa-map-marker-alt"></i> Kota Mojokerto</span>
-          </div>
-          <div class="psk-achv-body">
-            <h3>Skaneda Raih Juara 3 Lomba Cerdas Cermat DISKOPUKMPERINDAG</h3>
-            <p>Tim Layanan Perbankan Syariah SMKN 2 Mojokerto berhasil meraih Juara 3 Lomba Cerdas Cermat Tingkat SMA/SMK/MA se-Kota Mojokerto. Prestasi ini diraih berkat ketekunan, disiplin waktu, literasi yang luas, serta bimbingan dari para guru.</p>
-            <div class="psk-achv-foot">
-              <span class="psk-achv-tag"><i class="fas fa-tag"></i> Perbankan Syariah</span>
-              <span class="psk-achv-year">2024</span>
-            </div>
-            <span class="psk-achv-link">Lihat berita <i class="fas fa-arrow-right"></i></span>
-          </div>
-        </article>
-
-        <article class="psk-achv-card" data-level="kota" data-article-id="a2">
-          <div class="psk-achv-photo">
-            <i class="fas fa-image"></i>
-            <img src="{{ asset('images/prestasi/dugen22.jpg') }}" alt="Siswa SMKN 2 Mojokerto Raih Prestasi di Ajang Duta GenRe 2022" loading="lazy" onerror="this.remove()">
-            <span class="psk-achv-rank"><i class="fas fa-trophy"></i> Duta GenRe</span>
-            <span class="psk-achv-level"><i class="fas fa-map-marker-alt"></i> Kota Mojokerto</span>
-          </div>
-          <div class="psk-achv-body">
-            <h3>Siswa SMKN 2 Mojokerto Raih Prestasi di Ajang Duta GenRe 2022</h3>
-            <p>Siswa SMKN 2 Mojokerto berhasil menorehkan prestasi dalam ajang Duta GenRe 2022. Riska Kurniaila meraih Duta GenRe Sosial Media Inspiratif Kabupaten Jombang, sementara Muhammad Zulkifli dan Siti Nur Kholifah menjadi finalis Duta GenRe Kota Mojokerto.</p>
-            <div class="psk-achv-foot">
-              <span class="psk-achv-tag"><i class="fas fa-tag"></i> Umum</span>
-              <span class="psk-achv-year">2022</span>
-            </div>
-            <span class="psk-achv-link">Lihat berita <i class="fas fa-arrow-right"></i></span>
-          </div>
-        </article>
-
-        <article class="psk-achv-card" data-level="kota" data-article-id="a1">
-          <div class="psk-achv-photo">
-            <i class="fas fa-image"></i>
-            <img src="{{ asset('images/prestasi/dutkop22.jpg') }}" alt="Siswi Perbankan Syariah Dinobatkan sebagai Duta Koperasi Bertalenta 2022" loading="lazy" onerror="this.remove()">
-            <span class="psk-achv-rank"><i class="fas fa-trophy"></i> Duta Koperasi</span>
-            <span class="psk-achv-level"><i class="fas fa-map-marker-alt"></i> Kota Mojokerto</span>
-          </div>
-          <div class="psk-achv-body">
-            <h3>Siswi Perbankan Syariah Dinobatkan sebagai Duta Koperasi Bertalenta 2022</h3>
-            <p>Cantika Putri Hapsari, siswi Perbankan Syariah SMKN 2 Mojokerto, berhasil meraih kategori Duta Koperasi Bertalenta Kota Mojokerto 2022. Prestasi ini menjadi bukti kemampuan dan kepeduliannya dalam mengembangkan literasi perkoperasian di kalangan generasi muda.</p>
-            <div class="psk-achv-foot">
-              <span class="psk-achv-tag"><i class="fas fa-tag"></i> Perbankan Syariah</span>
-              <span class="psk-achv-year">2022</span>
-            </div>
-            <span class="psk-achv-link">Lihat berita <i class="fas fa-arrow-right"></i></span>
-          </div>
-        </article>
+        @endforeach
       </div>
 
       <div class="psk-achv-more" data-reveal>
-        <button type="button" class="psk-more-btn" id="pskAchvMore">Muat Prestasi Lainnya <i class="fas fa-chevron-down"></i></button>
-        <span class="psk-achv-empty" id="pskAchvEmpty" hidden><i class="fas fa-info-circle"></i> Belum ada prestasi pada kategori ini.</span>
+        <button type="button" class="psk-more-btn" id="pskAchvMore">{{ $pc('achv_more_button') }} <i class="fas fa-chevron-down"></i></button>
+        <span class="psk-achv-empty" id="pskAchvEmpty" hidden><i class="fas fa-info-circle"></i> {{ $pc('achv_empty') }}</span>
       </div>
     </div>
   </section>
@@ -1314,75 +858,34 @@
     <div class="psk-section">
 
       <div data-reveal>
-        <span class="psk-eyebrow">Dokumentasi Prestasi</span>
+        <span class="psk-eyebrow">{{ $pc('moment_eyebrow') }}</span>
 
         <h2 class="psk-section-title">
-          Momen <span class="psk-gold">Kejayaan</span>
+          {{ $pc('moment_title_white') }} <span class="psk-gold">{{ $pc('moment_title_gold') }}</span>
         </h2>
 
-        <p class="psk-subtitle">
-          Ruang dokumentasi untuk foto-foto asli pencapaian Skaneda,
-          disusun dalam grid bento dengan ukuran yang bervariasi.
-        </p>
+        <p class="psk-subtitle">{{ $pc('moment_subtitle') }}</p>
       </div>
 
       <div class="psk-moment-grid" style="margin-top:2.2rem;" data-reveal>
-
-        <!-- ADIWIYATA PROVINSI 2025 -->
-        <div class="psk-photo psk-mo-a">
-          <img
-            src="{{ asset('images/prestasi/adiwiyata.jpeg') }}"
-            alt="Dokumentasi Sekolah Adiwiyata Provinsi 2025">
-          <span class="psk-photo-cap">
-            <strong>Sekolah Adiwiyata Provinsi Jawa Timur</strong>
-            <span>
-              <i class="fas fa-map-marked-alt"></i>
-              Provinsi · 2025
-            </span>
-          </span>
-        </div>
-
-        <!-- LKS NASIONAL 2024 -->
-        <div class="psk-photo psk-mo-b">
-          <img
-            src="{{ asset('images/prestasi/lkslampung.jpg') }}"
-            alt="Dokumentasi LKS Nasional 2024">
-          <span class="psk-photo-cap">
-            <strong>LKS Patisserie And Confectionery</strong>
-            <span>
-              <i class="fas fa-globe-asia"></i>
-              Nasional · 2024
-            </span>
-          </span>
-        </div>
-
-        <!-- PASKIBRAKA 2024 -->
-        <div class="psk-photo psk-mo-c">
-          <img
-            src="{{ asset('images/prestasi/paskib24.jpg') }}"
-            alt="Dokumentasi Paskibraka 2024">
-          <span class="psk-photo-cap">
-            <strong>Paskibraka Skaneda</strong>
-            <span>
-              <i class="fas fa-globe-asia"></i>
-              Nasional · 2024
-            </span>
-          </span>
-        </div>
-
-        <!-- LKS JAWA TIMUR 2026 -->
-        <div class="psk-photo psk-mo-d">
-          <img
-            src="{{ asset('images/prestasi/lks26.jpg') }}"
-            alt="Dokumentasi LKS Jawa Timur 2026">
-          <span class="psk-photo-cap">
-            <strong>LKS Jawa Timur</strong>
-            <span>
-              <i class="fas fa-map-marked-alt"></i>
-              Provinsi · 2026
-            </span>
-          </span>
-        </div>
+        @for ($n = 1; $n <= 4; $n++)
+          @php
+            $mImg   = $pc("moment{$n}_image");
+            $mTitle = $pc("moment{$n}_title");
+            $mMeta  = $pc("moment{$n}_meta");
+            $mIcon  = preg_match('/nasional|internasional/i', $mMeta) ? 'fa-globe-asia' : 'fa-map-marked-alt';
+            $mCls   = [1 => 'psk-mo-a', 2 => 'psk-mo-b', 3 => 'psk-mo-c', 4 => 'psk-mo-d'][$n];
+          @endphp
+          @if ($mImg !== '')
+            <div class="psk-photo {{ $mCls }}">
+              <img src="{{ asset($mImg) }}" alt="{{ $mTitle }}">
+              <span class="psk-photo-cap">
+                <strong>{{ $mTitle }}</strong>
+                <span><i class="fas {{ $mIcon }}"></i> {{ $mMeta }}</span>
+              </span>
+            </div>
+          @endif
+        @endfor
       </div>
     </div>
   </section>
@@ -1390,7 +893,7 @@
   <!-- ================= 5. QUOTE / MOTO (background sudah lebih berisi — pattern + ornamen + foto opsional) ================= -->
   <section class="psk-quote">
     <div class="psk-quote-bg">
-      <img src="{{ asset('images/ps-kampus.jpg') }}" alt="Lingkungan sekolah SMK Negeri 2 Mojokerto" loading="eager">
+      <img src="{{ asset($pc('quote_image')) }}" alt="Lingkungan sekolah SMK Negeri 2 Mojokerto" loading="eager">
     </div>
     <div class="psk-quote-orn" aria-hidden="true">
       <span class="qo-ring1"></span>
@@ -1404,8 +907,8 @@
     </div>
     <div class="psk-section" data-reveal>
       <span class="psk-quote-mark">"</span>
-      <p class="psk-quote-text">Prestasi bukan sekadar penghargaan, tetapi <em>bukti perjalanan sekolah</em> dalam memberikan pendidikan terbaik.</p>
-      <span class="psk-quote-src">Moto Prestasi SMK Negeri 2 Mojokerto</span>
+      <p class="psk-quote-text">{!! $pr('quote_text') !!}</p>
+      <span class="psk-quote-src">{{ $pc('quote_source') }}</span>
     </div>
   </section>
 
@@ -1414,11 +917,11 @@
     <div class="psk-section">
       <div class="psk-archive-head" data-reveal>
         <div>
-          <span class="psk-eyebrow">Prestige Journey</span>
-          <h2 class="psk-section-title">Perjalanan <span class="psk-gold">Prestasi</span></h2>
-          <p class="psk-subtitle">Jejak kemenangan peserta didik Skaneda dari tahun ke tahun — setiap titik adalah kerja keras yang membuahkan hasil. Klik salah satu judul untuk membaca artikel lengkapnya.</p>
+          <span class="psk-eyebrow">{{ $pc('archive_eyebrow') }}</span>
+          <h2 class="psk-section-title">{{ $pc('archive_title_white') }} <span class="psk-gold">{{ $pc('archive_title_gold') }}</span></h2>
+          <p class="psk-subtitle">{{ $pc('archive_subtitle') }}</p>
         </div>
-        <span class="psk-archive-badge"><i class="fas fa-file-alt"></i> Arsip 2022 — 2026</span>
+        <span class="psk-archive-badge"><i class="fas fa-file-alt"></i> {{ $pc('archive_badge') !== '' ? $pc('archive_badge') : 'Arsip ' . $yearRange }}</span>
       </div>
 
       <div class="psk-timeline-wrap">
@@ -1461,11 +964,11 @@
     <div class="psk-section">
       <div class="psk-cta-box" data-reveal>
         <div class="psk-cta-inner">
-          <span class="psk-cta-eyebrow"><i class="fas fa-handshake"></i> Mari Bergabung</span>
-          <h3>Jadilah Bagian dari Perjalanan Prestasi Skaneda</h3>
-          <p>Bergabunglah bersama keluarga besar SMK Negeri 2 Mojokerto — tempat disiplin, karya, dan prestasi tumbuh menjadi kebanggaan.</p>
+          <span class="psk-cta-eyebrow"><i class="fas fa-handshake"></i> {{ $pc('cta_eyebrow') }}</span>
+          <h3>{{ $pc('cta_title') }}</h3>
+          <p>{{ $pc('cta_text') }}</p>
         </div>
-        <a class="psk-cta-btn" href="{{ route('kontak') }}"><i class="fas fa-arrow-right"></i> Hubungi Sekolah</a>
+        <a class="psk-cta-btn" href="{{ route('kontak') }}"><i class="fas fa-arrow-right"></i> {{ $pc('cta_button') }}</a>
       </div>
     </div>
   </section>

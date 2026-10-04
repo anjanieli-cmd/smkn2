@@ -394,6 +394,11 @@ Route::prefix('admin')->name('admin.')->group(function () {
         // 9. Prestasi
         Route::get('/achievements', [AchievementAdminController::class, 'index'])->name('achievements.index');
         Route::post('/achievements', [AchievementAdminController::class, 'store'])->name('achievements.store');
+
+        // Teks halaman publik. Harus di atas route {id} supaya "page" tidak dibaca sebagai id.
+        Route::put('/achievements/page', [AchievementAdminController::class, 'updatePage'])->name('achievements.page.update');
+        Route::post('/achievements/page/reset', [AchievementAdminController::class, 'resetPage'])->name('achievements.page.reset');
+
         Route::put('/achievements/{id}', [AchievementAdminController::class, 'update'])->name('achievements.update');
         Route::delete('/achievements/{id}', [AchievementAdminController::class, 'destroy'])->name('achievements.destroy');
 
