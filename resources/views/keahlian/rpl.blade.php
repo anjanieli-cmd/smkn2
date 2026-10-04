@@ -43,935 +43,57 @@
 .orn .o-hex{position:absolute;width:80px;height:80px;border:1.5px solid rgba(11,95,165,.12);clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%)}
 .orn .o-hex::after{content:"";position:absolute;inset:10px;border:1px solid rgba(255,213,74,.15);clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%)}
 
-/* ===== HERO — DISALIN 1:1 DARI HALAMAN SEJARAH, judul tetap RPL ===== */
+/* ===== HERO ===== */
 .history-page{background:#f7f9fc;color:#0d3a66;overflow:hidden}
-
 .history-page *{box-sizing:border-box}
-
 .history-shell{width:100%}
-
-.history-hero{position:relative;min-height:78vh;display:flex;align-items:center;overflow:hidden;
-  background:#fff;color:#0d3a66}
-
+.history-hero{position:relative;min-height:78vh;display:flex;align-items:center;overflow:hidden;background:#fff;color:#0d3a66}
 .history-hero::before{display:none}
-
-.history-hero::after{content:"SEJARAH";position:absolute;z-index:0;left:-2%;top:50%;transform:translateY(-50%);
-  font-family:var(--font-display);font-size:clamp(8rem,24vw,24rem);font-weight:900;line-height:.78;
-  letter-spacing:.015em;color:rgba(13,58,102,.035);
-  -webkit-text-stroke:1px rgba(255,122,0,.12);
-  pointer-events:none;white-space:nowrap;user-select:none}
-
+.history-hero::after{content:"SEJARAH";position:absolute;z-index:0;left:-2%;top:50%;transform:translateY(-50%);font-family:var(--font-display);font-size:clamp(8rem,24vw,24rem);font-weight:900;line-height:.78;letter-spacing:.015em;color:rgba(13,58,102,.035);-webkit-text-stroke:1px rgba(255,122,0,.12);pointer-events:none;white-space:nowrap;user-select:none}
 .history-hero-geometry{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
-
 .history-hero-geometry svg{position:absolute;width:100%;height:100%;inset:0;display:block}
-
-.history-hero-geometry .geo-line{fill:none;stroke:#ff7a00;stroke-width:1.8;vector-effect:non-scaling-stroke;opacity:.42}
-
-.history-hero-geometry .geo-line-navy{fill:none;stroke:#0d3a66;stroke-width:1.5;cookie-bite-effect:non-scaling-stroke;opacity:.24}
-
-.history-hero-geometry .geo-node{fill:#fff;stroke:#ff7a00;stroke-width:2;cookie-bite-effect:non-scaling-stroke}
-
-.history-hero-geometry .geo-node-navy{fill:#fff;stroke:#0d3a66;stroke-width:2;cookie-bite-effect:non-scaling-stroke}
-
-.history-hero-geometry .geo-ring{fill:none;stroke:#0d3a66;stroke-width:1.2;opacity:.16}
-
-.history-hero-geometry .geo-ring-orange{fill:none;stroke:#ff7a00;stroke-width:1.5;opacity:.28}
-
-.history-hero-geometry .geo-diamond{fill:none;stroke:#ff7a00;stroke-width:1.4;opacity:.30}
-
-.history-hero-geometry .geo-dot{fill:#ff7a00;opacity:.52}
-
-.history-hero-geometry .geo-square{fill:#ff7a00;opacity:.9}
-
-.history-hero-geometry .geo-square-navy{fill:#0d3a66;opacity:.9}
-
-.history-hero-geometry .geo-soft{fill:#ff7a00;opacity:.055}
-
-.history-hero-geometry .geo-cluster-left{position:absolute;left:-70px;top:-58px;width:330px;height:250px}
-
-.history-hero-geometry .geo-cluster-right{position:absolute;right:-55px;top:18px;width:360px;height:270px}
-
-.history-hero-geometry .geo-network-left{position:absolute;left:-35px;bottom:12px;width:500px;height:220px}
-
-.history-hero-geometry .geo-modules{position:absolute;right:-25px;bottom:-8px;width:430px;height:210px;transform:rotate(-2deg)}
-
-.history-hero::after{z-index:0}
-
-.history-hero-inner{position:relative;z-index:3;width:100%;max-width:1500px;margin:0 auto;
-  padding:clamp(4rem,10vh,7rem) clamp(1.25rem,4vw,4.5rem) clamp(4rem,9vh,6rem);
-  display:block}
-
-.history-kicker{display:inline-flex;align-items:center;gap:.65rem;font-size:.72rem;font-weight:900;
-  letter-spacing:.18em;text-transform:uppercase;color:#ff6f00;margin-bottom:1.05rem;
-  padding:.55rem .85rem;border:1px solid rgba(255,111,0,.18);border-radius:999px;
-  background:#fffaf5}
-
-.history-kicker::before{content:"";width:9px;height:9px;border-radius:50%;
-  background:#ff6f00;box-shadow:0 0 0 6px rgba(255,111,0,.10)}
-
-.history-title{font-family:var(--font-display);font-size:clamp(4rem,10vw,9.2rem);line-height:.84;
-  letter-spacing:-.035em;margin:0;max-width:1250px;text-transform:uppercase;
-  text-shadow:none;animation:hdFadeUp .7s .1s var(--ease, ease) both}
-
+.history-hero-inner{position:relative;z-index:3;width:100%;max-width:1500px;margin:0 auto;padding:clamp(4rem,10vh,7rem) clamp(1.25rem,4vw,4.5rem) clamp(4rem,9vh,6rem);display:block}
+.history-kicker{display:inline-flex;align-items:center;gap:.65rem;font-size:.72rem;font-weight:900;letter-spacing:.18em;text-transform:uppercase;color:#ff6f00;margin-bottom:1.05rem;padding:.55rem .85rem;border:1px solid rgba(255,111,0,.18);border-radius:999px;background:#fffaf5}
+.history-kicker::before{content:"";width:9px;height:9px;border-radius:50%;background:#ff6f00;box-shadow:0 0 0 6px rgba(255,111,0,.10)}
+.history-title{font-family:var(--font-display);font-size:clamp(4rem,10vw,9.2rem);line-height:.84;letter-spacing:-.035em;margin:0;max-width:1250px;text-transform:uppercase;text-shadow:none;animation:hdFadeUp .7s .1s var(--ease, ease) both}
 .history-title .sejarah-white{color:#0d3a66;display:block}
-
-.history-title .skaneda-gold{display:block;
-  background:linear-gradient(135deg,#ff7a00 0%,#ff6a00 55%,#f4511e 100%);
-  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#ff6f00;
-  text-shadow:none;letter-spacing:-.025em}
-
-.history-lead{font-size:1rem;line-height:1.75;color:#52657a;max-width:720px;
-  margin:1.7rem 0 0;animation:hdFadeUp .7s .26s var(--ease, ease) both}
-
+.history-title .skaneda-gold{display:block;background:linear-gradient(135deg,#ff7a00 0%,#ff6a00 55%,#f4511e 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#ff6f00;text-shadow:none;letter-spacing:-.025em}
+.history-lead{font-size:1rem;line-height:1.75;color:#52657a;max-width:720px;margin:1.7rem 0 0;animation:hdFadeUp .7s .26s var(--ease, ease) both}
 .history-hero-meta{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.6rem;animation:hdFadeUp .7s .4s var(--ease, ease) both}
-
-.history-pill{display:inline-flex;align-items:center;gap:.5rem;padding:.55rem .85rem;
-  border:1px solid rgba(13,58,102,.12);background:#fff;border-radius:999px;color:#0d3a66;
-  font-size:.72rem;font-weight:800;box-shadow:0 8px 24px rgba(13,58,102,.06)}
-
+.history-pill{display:inline-flex;align-items:center;gap:.5rem;padding:.55rem .85rem;border:1px solid rgba(13,58,102,.12);background:#fff;border-radius:999px;color:#0d3a66;font-size:.72rem;font-weight:800;box-shadow:0 8px 24px rgba(13,58,102,.06)}
 .history-pill i{color:#ff7a00}
-
 .hero-photo{display:none}
-
 .hero-photo::before,.hero-photo img,.hero-photo-caption{display:none}
-
 @keyframes hdFadeUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
-
-.history-vt-cta{
-    display:inline-flex;align-items:center;gap:.8rem;margin-top:1.7rem;
-    padding:.8rem 1rem;border-radius:16px;text-decoration:none;color:#0d3a66;
-    background:#fff;border:1px solid rgba(13,58,102,.12);
-    box-shadow:0 12px 30px rgba(13,58,102,.08);
-    transition:transform .3s ease,background .3s ease,border-color .3s ease,box-shadow .3s ease
-  }
-
-.history-vt-cta:hover{
-    transform:translateY(-4px);background:#fffaf5;
-    border-color:rgba(255,122,0,.28);box-shadow:0 18px 38px rgba(13,58,102,.12)
-  }
-
-.history-vt-icon{
-    width:46px;height:46px;border-radius:14px;display:grid;place-items:center;
-    background:linear-gradient(135deg,#ffd54a,#ff7a00);color:#0d3a66;font-size:.9rem
-  }
-
+.history-vt-cta{display:inline-flex;align-items:center;gap:.8rem;margin-top:1.7rem;padding:.8rem 1rem;border-radius:16px;text-decoration:none;color:#0d3a66;background:#fff;border:1px solid rgba(13,58,102,.12);box-shadow:0 12px 30px rgba(13,58,102,.08);transition:transform .3s ease,background .3s ease,border-color .3s ease,box-shadow .3s ease}
+.history-vt-cta:hover{transform:translateY(-4px);background:#fffaf5;border-color:rgba(255,122,0,.28);box-shadow:0 18px 38px rgba(13,58,102,.12)}
+.history-vt-icon{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,#ffd54a,#ff7a00);color:#0d3a66;font-size:.9rem}
 .history-vt-cta strong{display:block;font-size:1rem;line-height:1.15;font-weight:900;letter-spacing:.01em}
-
 .history-vt-cta small{display:block;margin-top:.25rem;color:#718096;font-size:.72rem;font-weight:600}
-
 .history-vt-arrow{margin-left:.3rem;color:#ffd54a;font-size:1rem}
-
 .history-wide{width:min(1380px,92%);margin:auto}
-
 .history-intro{position:relative;padding:96px 0 110px;background:#fff}
-
 .history-hero-inner{width:100%;max-width:1500px}
-
 .history-title{max-width:1250px}
-
-@media(max-width:700px) {
-.history-hero{min-height:70vh}
-.history-hero-inner{padding-top:3.5rem;padding-bottom:4rem}
-.history-title{font-size:clamp(3.5rem,16vw,6rem);line-height:.88}
-.history-hero::after{font-size:clamp(7rem,32vw,12rem);left:-8%}
-}
-
+@media(max-width:700px){.history-hero{min-height:70vh}.history-hero-inner{padding-top:3.5rem;padding-bottom:4rem}.history-title{font-size:clamp(3.5rem,16vw,6rem);line-height:.88}.history-hero::after{font-size:clamp(7rem,32vw,12rem);left:-8%}}
 .history-page{position:relative}
-
-.history-page::before{content:"";position:fixed;right:-110px;top:18%;width:230px;height:230px;border:2px solid rgba(13,58,102,.14);transform:rotate(45deg);z-index:0;pointer-events:none}
-
-.history-page::after{content:"";position:fixed;left:-95px;bottom:10%;width:190px;height:190px;border:2px solid rgba(47,111,168,.14);border-radius:28px;transform:rotate(25deg);z-index:0;pointer-events:none}
-
 .history-hero,.history-intro,.timeline-section,.story-band,.mosaic-section,.future{position:relative;z-index:1}
-
-.history-hero-inner::before{content:"";position:absolute;left:-28px;top:18%;width:12px;height:180px;border-left:3px solid #ffd54a;border-top:3px solid #ffd54a;opacity:.9}
-
-.history-hero-inner::after{content:"";position:absolute;right:44%;top:8%;width:72px;height:72px;border:2px solid rgba(255,213,74,.55);transform:rotate(45deg);pointer-events:none}
-
-.history-page .history-kicker,
-.history-page .history-pill,
-.history-page .eyebrow,
-.history-page .stat-box,
-.history-page .timeline-card,
-.history-page .timeline-marker,
-.history-page .story-chip,
-.history-page .mosaic-card,
-.history-page .future-point,
-.history-page .hero-photo,
-.history-page .big-heading,
-.history-page .history-title{
-  transition:transform .35s ease,box-shadow .35s ease,filter .35s ease,border-color .35s ease,background .35s ease;
-}
-
-.history-page .history-pill:hover{transform:translateY(-4px);background:rgba(13,58,102,.55);border-color:rgba(255,213,74,.5)}
-
-.history-page .history-kicker:hover{transform:translateX(7px);filter:drop-shadow(0 5px 12px rgba(255,213,74,.2))}
-
-.history-page .eyebrow:hover{transform:translateX(6px)}
-
-.history-page .stat-box:hover{transform:translateY(-9px) rotate(-.5deg);border-color:rgba(13,58,102,.32);box-shadow:0 28px 58px rgba(13,58,102,.18)}
-
-.history-page .timeline-card:hover{transform:translateY(-9px) scale(1.015);border-color:rgba(13,58,102,.22);box-shadow:0 30px 65px rgba(13,58,102,.2)}
-
-.history-page .timeline-card:hover::before{width:8px}
-
-.history-page .timeline-marker:hover{transform:rotate(45deg) scale(1.1);box-shadow:0 16px 35px rgba(13,58,102,.38)}
-
-.history-page .hero-photo:hover{transform:translateY(-42px) rotate(0deg) scale(1.015);box-shadow:0 45px 95px rgba(13,58,102,.35),0 18px 35px rgba(0,0,0,.22)}
-
-.history-page .hero-photo:hover img{transform:scale(1.07)}
-
-.history-page .story-chip:hover{transform:translateY(-5px);border-color:rgba(255,213,74,.4);background:rgba(255,255,255,.11)}
-
-.history-page .mosaic-card:hover{transform:translateY(-7px);box-shadow:0 28px 58px rgba(13,58,102,.22)}
-
-.history-page .future-point:hover{transform:translateY(-5px) scale(1.02);box-shadow:0 10px 24px rgba(13,58,102,.12)}
-
-.history-page .big-heading:hover{transform:translateX(4px)}
-
-@media(max-width:700px) {
-.history-hero-inner::before{left:0;top:14%;height:110px}
-.history-hero-inner::after{right:5%;top:4%;width:48px;height:48px}
-.history-page::before,.history-page::after{opacity:.45}
-}
-
 .history-page{overflow:hidden}
-
-.history-intro .home-orn .ho-chevron{right:-130px;top:70px}
-
-.history-intro .home-orn .ho-line{left:-55px;bottom:75px}
-
-.history-intro .home-orn .ho-dots{right:18%;bottom:55px}
-
-.history-intro .home-orn .ho-ring{left:-80px;top:35%}
-
-.history-intro .home-orn .ho-gold{right:12%;top:26%}
-
-.history-intro .home-orn .ho-square{left:13%;bottom:18%}
-
 .history-intro>*:not(.home-orn),
 .timeline-section>*:not(.home-orn),
 .story-band>*:not(.home-orn),
 .mosaic-section>*:not(.home-orn),
 .future>*:not(.home-orn){position:relative;z-index:2}
-
-@media(max-width:950px) {
-.history-hero-inner{grid-template-columns:1fr;gap:2rem}
-.hero-photo{height:360px}
-}
-
-@media(max-width:700px) {
-.history-hero{min-height:0;align-items:flex-start}
-.history-hero-inner{padding:clamp(3rem,8vh,4.5rem) 0 3.6rem;width:90%}
-.history-hero::after{font-size:clamp(4.5rem,26vw,7rem);opacity:.6}
-.history-title{font-size:clamp(2.5rem,12vw,4rem);margin-top:0}
-.hero-photo{height:300px}
-}
-
-.history-hero-inner::before{display:none!important;content:none!important}
-
-.history-vt-cta{position:relative;z-index:4}
-
-@media(max-width:950px) {
-.history-hero-inner{grid-template-columns:1fr;gap:2rem}
-.history-hero-inner>div:first-child{max-width:900px}
-}
-
-@media(max-width:700px) {
-.history-vt-cta{width:min(100%,340px)}
-.history-vt-cta .history-vt-arrow{margin-left:auto}
-}
-
-@media (max-width: 900px) {
-.history-hero-geometry .hhg-path-a{width:240px;left:-70px;top:22%}
-.history-hero-geometry .hhg-path-b{width:280px;right:-110px;top:72%}
-.history-hero-geometry .hhg-path-c{left:10%;width:210px}
-.history-hero-geometry .hhg-diamond{width:52px;height:52px;right:8%;top:24%}
-.history-hero-geometry .hhg-corner{right:3%;top:8%;width:66px;height:66px}
-.history-hero-geometry .hhg-orbit{width:150px;height:66px;left:-48px;bottom:8%}
-}
-
-@media (max-width: 560px) {
-.history-hero-geometry .hhg-node{width:9px;height:9px}
-.history-hero-geometry .hhg-node-a{left:8%;top:20%}
-.history-hero-geometry .hhg-node-b{left:18%;bottom:10%}
-.history-hero-geometry .hhg-node-c{right:11%;top:18%}
-.history-hero-geometry .hhg-node-d{right:5%;bottom:18%}
-.history-hero-geometry .hhg-diamond{right:5%;top:31%;width:38px;height:38px}
-.history-hero-geometry .hhg-dashes{left:4%;top:11%;width:60px;height:42px;background-size:10px 10px}
-.history-hero-geometry .hhg-corner{display:none}
-.history-hero-geometry .hhg-path-b{right:-145px}
-}
-
 .history-hero > .home-orn{display:none}
+.history-hero > .history-ref-ornaments{position:absolute!important;inset:0!important;z-index:1!important;overflow:hidden!important;pointer-events:none!important;opacity:1!important}
+.history-ref-ornament-image{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;display:block!important;object-fit:cover!important;object-position:center center!important;max-width:none!important;opacity:1!important}
+.history-hero-inner{position:relative!important;z-index:4!important}
+.history-title,.history-kicker,.history-vt-cta{position:relative!important;z-index:5!important}
+@media(max-width:900px){.history-ref-ornament-image{object-position:center center!important;opacity:.88!important}}
+@media(max-width:560px){.history-ref-ornament-image{object-position:center center!important;opacity:.62!important}}
 
-.history-hero-inner::before,.history-hero-inner::after{display:none!important}
-
-.history-hero-geometry{z-index:1;opacity:1}
-
-.history-hero-geometry::before{
-  content:"";position:absolute;left:-70px;top:-35px;width:300px;height:300px;border-radius:50%;
-  background-image:radial-gradient(circle,rgba(13,58,102,.16) 1.5px,transparent 1.7px);
-  background-size:18px 18px;opacity:.62;
-  -webkit-mask-image:radial-gradient(circle at 52% 52%,#000 0 48%,transparent 72%);mask-image:radial-gradient(circle at 52% 52%,#000 0 48%,transparent 72%);
-}
-
-.history-hero-geometry::after{
-  content:"";position:absolute;right:-30px;bottom:-40px;width:420px;height:190px;
-  background:
-    linear-gradient(135deg,transparent 47%,rgba(255,122,0,.62) 48%,rgba(255,122,0,.62) 49%,transparent 50%),
-    linear-gradient(35deg,transparent 48%,rgba(13,58,102,.22) 49%,rgba(13,58,102,.22) 50%,transparent 51%);
-  opacity:.75;transform:rotate(-5deg);
-}
-
-.history-hero-geometry .hhg-path{height:1.5px;opacity:.55;box-shadow:none}
-
-.history-hero-geometry .hhg-path-a{width:430px;left:-95px;top:48%;background:#ff7a00;transform:rotate(30deg);opacity:.38}
-
-.history-hero-geometry .hhg-path-b{width:470px;right:-150px;top:38%;background:#0d3a66;transform:rotate(-36deg);opacity:.22}
-
-.history-hero-geometry .hhg-path-c{width:310px;left:auto;right:3%;bottom:15%;background:#ff7a00;transform:rotate(-13deg);opacity:.42}
-
-.history-hero-geometry .hhg-node{width:11px;height:11px;border:2px solid #ff7a00;background:#fff;box-shadow:0 0 0 5px rgba(255,122,0,.08)}
-
-.history-hero-geometry .hhg-node-a{left:8%;top:18%}
-
-.history-hero-geometry .hhg-node-b{left:31%;bottom:12%}
-
-.history-hero-geometry .hhg-node-c{right:22%;top:23%;border-color:#0d3a66;box-shadow:0 0 0 5px rgba(13,58,102,.06)}
-
-.history-hero-geometry .hhg-node-d{right:8%;bottom:18%}
-
-.history-hero-geometry .hhg-diamond{width:58px;height:58px;right:21%;top:18%;border:1px solid rgba(255,122,0,.34);background:transparent;box-shadow:none}
-
-.history-hero-geometry .hhg-orbit{width:230px;height:100px;left:-75px;bottom:5%;border:1px solid rgba(13,58,102,.18);background:transparent;transform:rotate(-16deg)}
-
-.history-hero-geometry .hhg-orbit::after{width:7px;height:7px;right:22px;top:9px;background:#ff7a00}
-
-.history-hero-geometry .hhg-corner{right:2.5%;top:12%;width:110px;height:110px;border-top:1px solid rgba(255,122,0,.28);border-right:1px solid rgba(13,58,102,.18);border-radius:0 26px 0 0}
-
-.history-hero-geometry .hhg-corner::after{width:45px;height:1.5px;right:-2px;top:46px;background:#ff7a00}
-
-.history-hero-geometry .hhg-dashes{left:7%;top:11%;width:82px;height:54px;background-image:radial-gradient(circle,rgba(255,122,0,.32) 1.2px,transparent 1.4px);background-size:12px 12px;opacity:.75}
-
-.history-hero-geometry .hhg-node-a::after,.history-hero-geometry .hhg-node-b::after,.history-hero-geometry .hhg-node-c::after,.history-hero-geometry .hhg-node-d::after{content:"";position:absolute;width:72px;height:1px;background:rgba(255,122,0,.25);left:9px;top:5px;transform-origin:left center}
-
-.history-hero-geometry .hhg-node-a::after{transform:rotate(28deg);width:95px}
-
-.history-hero-geometry .hhg-node-b::after{transform:rotate(-18deg);width:110px}
-
-.history-hero-geometry .hhg-node-c::after{transform:rotate(24deg);background:rgba(13,58,102,.20);width:90px}
-
-.history-hero-geometry .hhg-node-d::after{transform:rotate(-34deg);width:70px}
-
-@media(max-width:900px) {
-.history-hero-geometry .hhg-path-a{width:250px;left:-90px;top:45%}
-.history-hero-geometry .hhg-path-b{width:300px;right:-150px;top:34%}
-.history-hero-geometry .hhg-diamond{right:8%;top:18%;width:42px;height:42px}
-.history-hero-geometry .hhg-corner{right:0;top:10%;width:75px;height:75px}
-.history-hero-geometry .hhg-orbit{width:160px;height:72px;left:-70px}
-}
-
-@media(max-width:560px) {
-.history-hero-geometry::before{width:210px;height:210px;left:-70px;top:-25px;background-size:14px 14px}
-.history-hero-geometry::after{width:250px;height:120px;right:-80px;bottom:-20px}
-.history-hero-geometry .hhg-node-a{left:7%;top:16%}
-.history-hero-geometry .hhg-node-b{left:18%;bottom:10%}
-.history-hero-geometry .hhg-node-c{right:18%;top:20%}
-.history-hero-geometry .hhg-node-d{right:5%;bottom:15%}
-.history-hero-geometry .hhg-node::after{display:none}
-.history-hero-geometry .hhg-corner{display:none}
-}
-
-.history-hero-geometry{
-  z-index:1;
-  pointer-events:none;
-}
-
-.history-hero-geometry .geo-cluster-left,
-.history-hero-geometry .geo-network-left{
-  display:none !important;
-}
-
-.history-hero-geometry .geo-cluster-right{
-  display:block;
-  left:auto;
-  right:1.5%;
-  top:7%;
-  width:min(430px,38vw);
-  height:min(320px,34vh);
-  transform:none;
-  opacity:.92;
-}
-
-.history-hero-geometry .geo-modules{
-  display:block;
-  left:auto;
-  right:-1%;
-  bottom:5%;
-  width:min(420px,36vw);
-  height:min(220px,24vh);
-  transform:rotate(-2deg);
-  opacity:.82;
-}
-
-.history-hero-geometry::before{
-  left:auto;
-  right:3%;
-  top:31%;
-  width:min(300px,25vw);
-  height:min(300px,30vh);
-  border-radius:50%;
-  background-image:
-    radial-gradient(circle,rgba(13,58,102,.18) 1.4px,transparent 1.7px);
-  background-size:17px 17px;
-  opacity:.42;
-  -webkit-mask-image:radial-gradient(circle at 50% 50%,#000 0 43%,transparent 72%);
-  mask-image:radial-gradient(circle at 50% 50%,#000 0 43%,transparent 72%);
-}
-
-.history-hero-geometry::after{
-  right:-25px;
-  left:auto;
-  bottom:4%;
-  width:min(520px,44vw);
-  height:180px;
-  background:
-    linear-gradient(135deg,transparent 47.5%,rgba(255,122,0,.52) 48%,rgba(255,122,0,.52) 48.7%,transparent 49.2%),
-    linear-gradient(25deg,transparent 49%,rgba(13,58,102,.20) 49.5%,rgba(13,58,102,.20) 50.2%,transparent 50.7%);
-  opacity:.62;
-  transform:none;
-}
-
-.history-hero-inner{
-  z-index:4;
-}
-
-.history-title,
-.history-kicker,
-.history-vt-cta{
-  position:relative;
-  z-index:5;
-}
-
-@media (min-width:1100px) {
-.history-hero-inner{
-    padding-right:42%;
-  }
-.history-title{
-    max-width:820px;
-  }
-}
-
-@media (max-width:900px) {
-.history-hero-inner{
-    padding-right:1.25rem;
-  }
-.history-hero-geometry .geo-cluster-right{
-    right:-45px;
-    top:8%;
-    width:330px;
-    height:260px;
-    opacity:.58;
-  }
-.history-hero-geometry .geo-modules{
-    right:-55px;
-    bottom:2%;
-    width:330px;
-    height:180px;
-    opacity:.58;
-  }
-.history-hero-geometry::before{
-    right:-35px;
-    top:34%;
-    width:240px;
-    height:240px;
-  }
-}
-
-@media (max-width:560px) {
-.history-hero-geometry .geo-cluster-right{
-    right:-115px;
-    top:10%;
-    width:270px;
-    height:220px;
-    opacity:.34;
-  }
-.history-hero-geometry .geo-modules{
-    right:-120px;
-    bottom:0;
-    width:280px;
-    height:150px;
-    opacity:.30;
-  }
-.history-hero-geometry::before{
-    right:-90px;
-    top:38%;
-    width:210px;
-    height:210px;
-    opacity:.24;
-  }
-.history-hero-geometry::after{
-    right:-120px;
-    width:300px;
-    height:130px;
-    opacity:.28;
-  }
-}
-
-@media (max-width:900px) {
-.history-hero-geometry .geo-cluster-left{left:-105px;top:-42px;transform:scale(.82);transform-origin:top left}
-.history-hero-geometry .geo-cluster-right{right:-130px;top:20px;transform:scale(.78);transform-origin:top right}
-.history-hero-geometry .geo-network-left{left:-120px;bottom:8px;transform:scale(.72);transform-origin:bottom left}
-.history-hero-geometry .geo-modules{right:-135px;bottom:-8px;transform:scale(.68) rotate(-2deg);transform-origin:bottom right}
-}
-
-@media (max-width:560px) {
-.history-hero-geometry .geo-cluster-left{left:-150px;top:-38px;transform:scale(.62);opacity:.72}
-.history-hero-geometry .geo-cluster-right{right:-180px;top:14px;transform:scale(.58);opacity:.68}
-.history-hero-geometry .geo-network-left{left:-180px;bottom:4px;transform:scale(.52);opacity:.65}
-.history-hero-geometry .geo-modules{right:-205px;bottom:-12px;transform:scale(.50) rotate(-2deg);opacity:.72}
-.history-hero::after{font-size:clamp(7rem,31vw,11rem);opacity:.8}
-}
-
-.history-jurusan-industry-decor{
-  position:absolute;
-  inset:0;
-  z-index:1;
-  pointer-events:none;
-  overflow:hidden;
-}
-
-.history-jurusan-industry-decor svg{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  display:block;
-}
-
-.history-jurusan-industry-decor .jd-grid{
-  stroke:#0d3a66;
-  stroke-width:1.5px;
-  opacity:.15;
-}
-
-.history-jurusan-industry-decor .jd-diag{
-  fill:none;
-  stroke:#ff9f00;
-  stroke-width:3px;
-  stroke-linecap:round;
-  opacity:.48;
-}
-
-.history-jurusan-industry-decor .jd-diag-soft{
-  fill:none;
-  stroke:#0d3a66;
-  stroke-width:1.9px;
-  stroke-linecap:round;
-  opacity:.24;
-}
-
-.history-jurusan-industry-decor .jd-square{
-  fill:none;
-  stroke:#ff9f00;
-  stroke-width:2.8px;
-  opacity:.68;
-}
-
-.history-jurusan-industry-decor .jd-square-fill{
-  fill:#ffb300;
-  opacity:.22;
-}
-
-.history-jurusan-industry-decor .jd-hex{
-  fill:none;
-  stroke:#0d3a66;
-  stroke-width:2.8px;
-  opacity:.34;
-}
-
-.history-jurusan-industry-decor .jd-node{
-  fill:#ff9f00;
-  opacity:.82;
-}
-
-.history-jurusan-industry-decor .jd-plus{
-  stroke:#0d3a66;
-  stroke-width:2.8px;
-  stroke-linecap:round;
-  opacity:.42;
-}
-
-.history-jurusan-industry-decor .jd-corner{
-  fill:none;
-  stroke:#ff9f00;
-  stroke-width:4px;
-  stroke-linecap:square;
-  opacity:.52;
-}
-
-@media (min-width:1100px) {
-.history-jurusan-industry-decor{
-    left:28%;
-  }
-}
-
-@media (max-width:1099px) {
-.history-jurusan-industry-decor{
-    left:18%;
-    opacity:.82;
-  }
-}
-
-@media (max-width:640px) {
-.history-jurusan-industry-decor{
-    left:5%;
-    opacity:.68;
-  }
-}
-
-.history-hero{
-  min-height:clamp(620px,78vh,790px)!important;
-  background:#fff!important;
-  position:relative;
-  isolation:isolate;
-}
-
-.history-hero>.home-orn,
-.history-hero>.history-hero-geometry{
-  display:none!important;
-}
-
-.history-ref-ornaments{
-  position:absolute;
-  inset:0;
-  z-index:1;
-  pointer-events:none;
-  overflow:hidden;
-}
-
-.history-ref-ornaments svg{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  display:block;
-}
-
-.history-ref-ornaments path{
-  fill:none;
-  stroke:#0d3a66;
-  stroke-width:1.8;
-  cookie-bite-effect:non-scaling-stroke;
-  opacity:.20;
-}
-
-.history-ref-ornaments .ref-soft path{
-  stroke:#ff7a00;
-  opacity:.28;
-}
-
-.history-ref-ornaments .ref-soft-bottom path{
-  stroke:#0d3a66;
-  opacity:.18;
-}
-
-.history-ref-ornaments .ref-left path{
-  stroke:#0d3a66;
-  opacity:.18;
-}
-
-.history-ref-ornaments .ref-right path,
-.history-ref-ornaments .ref-bottom path{
-  stroke:#0d3a66;
-  opacity:.23;
-}
-
-.history-ref-ornaments .ref-diamond-orange{
-  fill:none;
-  stroke:#ff7a00;
-  stroke-width:2;
-  opacity:.52;
-}
-
-.history-ref-ornaments .ref-hex{
-  fill:none;
-  stroke:#0d3a66;
-  stroke-width:2;
-  opacity:.30;
-}
-
-.history-ref-ornaments .ref-fill-orange{
-  fill:#ff7a00;
-  opacity:.95;
-}
-
-.history-ref-ornaments .ref-fill-navy{
-  fill:#0d3a66;
-  opacity:.95;
-}
-
-.history-ref-ornaments .ref-node-orange{
-  fill:#fff;
-  stroke:#ff7a00;
-  stroke-width:2;
-}
-
-.history-ref-ornaments .ref-node-navy{
-  fill:#fff;
-  stroke:#0d3a66;
-  stroke-width:2;
-}
-
-.history-ref-ornaments .ref-orbit{
-  fill:none;
-  stroke:#0d3a66;
-  stroke-width:1.6;
-  opacity:.22;
-}
-
-.history-ref-ornaments .ref-orbit-orange{
-  fill:none;
-  stroke:#ff7a00;
-  stroke-width:1.6;
-  opacity:.30;
-}
-
-.history-ref-ornaments .ref-orbit-core{
-  fill:none;
-  stroke:#0d3a66;
-  stroke-width:2.2;
-  opacity:.50;
-}
-
-.history-ref-ornaments .ref-heavy-orange{
-  fill:none;
-  stroke:#ff7a00;
-  stroke-width:7;
-  opacity:.90;
-}
-
-.history-ref-ornaments .ref-heavy-navy{
-  fill:none;
-  stroke:#0d3a66;
-  stroke-width:7;
-  opacity:.90;
-}
-
-.history-ref-ornaments .ref-dots circle{
-  fill:#0d3a66;
-  opacity:.20;
-}
-
-.history-ref-ornaments .ref-soft rect,
-.history-ref-ornaments .ref-soft-bottom rect{
-  fill:none;
-  stroke:#ff7a00;
-  stroke-width:2;
-  opacity:.45;
-}
-
-.history-hero::after{
-  content:"SEJARAH"!important;
-  left:2%!important;
-  top:58%!important;
-  font-size:clamp(9rem,23vw,23rem)!important;
-  color:rgba(13,58,102,.035)!important;
-  -webkit-text-stroke:1px rgba(255,122,0,.09)!important;
-  z-index:0!important;
-}
-
-.history-hero-inner{
-  z-index:4!important;
-  max-width:1500px!important;
-  padding:clamp(4rem,10vh,7rem) clamp(1.25rem,4.2vw,4.5rem) clamp(4rem,9vh,6rem)!important;
-}
-
-.history-title{
-  font-size:clamp(4.4rem,9.8vw,9.3rem)!important;
-  line-height:.82!important;
-  max-width:900px!important;
-  letter-spacing:-.045em!important;
-}
-
-.history-title .sejarah-white{
-  color:#0d3a66!important;
-}
-
-.history-title .skaneda-gold{
-  background:linear-gradient(135deg,#ffd54a 0%,#ffb300 48%,#ff7a00 100%)!important;
-  -webkit-background-clip:text!important;
-  background-clip:text!important;
-  -webkit-text-fill-color:transparent!important;
-  color:transparent!important;
-}
-
-.history-kicker{
-  margin-bottom:1.2rem!important;
-}
-
-.history-vt-cta{
-  margin-top:2rem!important;
-}
-
-@media(min-width:1050px) {
-.history-hero-inner{
-    padding-right:44%!important;
-  }
-}
-
-@media(max-width:900px) {
-.history-ref-ornaments{
-    opacity:.72;
-  }
-.history-title{
-    font-size:clamp(4rem,11vw,7rem)!important;
-  }
-}
-
-@media(max-width:560px) {
-.history-ref-ornaments{
-    opacity:.40;
-  }
-.history-hero-inner{
-    padding-right:1.25rem!important;
-  }
-.history-title{
-    font-size:clamp(3.3rem,16vw,5.5rem)!important;
-  }
-}
-
-.history-hero{
-  background:#fff!important;
-  overflow:hidden!important;
-}
-
-.history-hero>.history-ref-ornaments{
-  display:block!important;
-  position:absolute!important;
-  inset:0!important;
-  z-index:1!important;
-  pointer-events:none!important;
-}
-
-.history-hero>.history-ref-ornaments svg{
-  width:100%!important;
-  height:100%!important;
-}
-
-.history-hero-inner{
-  position:relative!important;
-  z-index:4!important;
-  padding-right:44%!important;
-}
-
-.history-title{
-  position:relative!important;
-  z-index:5!important;
-  max-width:900px!important;
-}
-
-.history-kicker,.history-vt-cta{
-  position:relative!important;
-  z-index:5!important;
-}
-
-.history-ref-ornaments .ref-right path,
-.history-ref-ornaments .ref-bottom path{
-  opacity:.34!important;
-}
-
-.history-ref-ornaments .ref-diamond-orange{
-  stroke-width:2.4!important;
-  opacity:.72!important;
-}
-
-.history-ref-ornaments .ref-fill-orange,
-.history-ref-ornaments .ref-fill-navy{
-  opacity:.96!important;
-}
-
-.history-ref-ornaments .ref-hex{
-  stroke-width:2.4!important;
-  opacity:.48!important;
-}
-
-.history-ref-ornaments .ref-orbit{
-  stroke-width:1.8!important;
-  opacity:.30!important;
-}
-
-.history-ref-ornaments .ref-orbit-orange{
-  stroke-width:1.8!important;
-  opacity:.42!important;
-}
-
-.history-ref-ornaments .ref-heavy-orange,
-.history-ref-ornaments .ref-heavy-navy{
-  stroke-width:6!important;
-  opacity:.72!important;
-}
-
-.history-ref-ornaments .ref-node-orange,
-.history-ref-ornaments .ref-node-navy{
-  stroke-width:2.2!important;
-}
-
-@media(max-width:1050px) {
-.history-hero-inner{padding-right:1.25rem!important}
-.history-ref-ornaments{opacity:.72!important}
-}
-
-@media(max-width:700px) {
-.history-hero-inner{padding-right:1.25rem!important}
-.history-ref-ornaments{opacity:.45!important}
-.history-title{font-size:clamp(3rem,14vw,5rem)!important}
-}
-
-.history-hero > .history-ref-ornaments{
-  position:absolute!important;
-  inset:0!important;
-  z-index:1!important;
-  overflow:hidden!important;
-  pointer-events:none!important;
-  opacity:1!important;
-}
-
-.history-ref-ornament-image{
-  position:absolute!important;
-  inset:0!important;
-  width:100%!important;
-  height:100%!important;
-  display:block!important;
-  object-fit:cover!important;
-  object-position:center center!important;
-  max-width:none!important;
-  opacity:1!important;
-}
-
-.history-hero-inner{
-  position:relative!important;
-  z-index:4!important;
-}
-
-.history-title,.history-kicker,.history-vt-cta{
-  position:relative!important;
-  z-index:5!important;
-}
-
-@media(max-width:900px) {
-.history-ref-ornament-image{object-position:center center!important;opacity:.88!important}
-}
-
-@media(max-width:560px) {
-.history-ref-ornament-image{object-position:center center!important;opacity:.62!important}
-}
 /* Override khusus: watermark judul besar di background hero -> RPL (bukan SEJARAH) */
-.aphp-page .history-hero::after{
-  content:"RPL"!important;
-}
-
+.aphp-page .history-hero::after{content:"RPL"!important}
 
 /* ===== SECTION 1 — VIDEO PENGENALAN (HERO MINI) ===== */
 .vid-section{position:relative;padding:80px 0 90px;isolation:isolate;background:linear-gradient(180deg,#F8FBFF 0%,#EEF5FB 100%);overflow:hidden}
@@ -1001,7 +123,6 @@
 .vid-card .vc-ic.gold{background:linear-gradient(135deg,#FFD54A,#FF8A00);color:#0d3a66}
 .vid-card b{font-size:.72rem;font-weight:800;color:#0d3a66;line-height:1.25}
 .vid-card span{font-size:.62rem;line-height:1.5;color:#718396}
-/* Video showcase */
 .vid-stage{position:relative}
 .vid-stage::before{content:"";position:absolute;top:-12px;left:-12px;width:52px;height:2px;background:linear-gradient(90deg,#FFD54A,#FF8A00);border-radius:99px;z-index:3}
 .vid-stage::after{content:"";position:absolute;bottom:-12px;right:-12px;width:34px;height:2px;background:linear-gradient(90deg,#0B5FA5,#28A9E1);border-radius:99px;z-index:3}
@@ -1017,25 +138,6 @@
 .vid-hex{position:absolute;left:-22px;bottom:26%;width:74px;height:74px;border:1px solid rgba(255,255,255,.14);clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);opacity:.6;z-index:1}
 .vid-hex::after{content:"";position:absolute;inset:8px;border:1px solid rgba(255,213,74,.22);clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%)}
 .vid-diag{position:absolute;right:12%;bottom:14%;width:120px;height:1px;background:linear-gradient(90deg,transparent,rgba(255,213,74,.5));transform:rotate(-24deg);z-index:1}
-
-/* ===== VIDEO PREVIEW FIX ===== */
-.vid-player .vid-preview{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  object-position:center center;
-  z-index:0;
-  background:#071b33;
-}
-.vid-player .vid-preview::-webkit-media-controls{display:none!important}
-.vid-player .vid-bg{
-  z-index:0;
-  opacity:.08;
-}
-.vid-player .vid-preview + .vid-bg{pointer-events:none}
-
 .vid-player::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(7,27,51,.72));z-index:1}
 .vid-play{position:relative;z-index:2;width:82px;height:82px;border-radius:50%;background:linear-gradient(135deg,#FFD54A,#FFB300 50%,#FF8A00);display:flex;align-items:center;justify-content:center;font-size:1.7rem;color:#0d3a66;box-shadow:0 15px 40px rgba(255,138,0,.35),inset 0 0 0 6px rgba(7,27,51,.08);transition:transform .35s ease,box-shadow .35s ease}
 .vid-player:hover .vid-play{transform:scale(1.08);box-shadow:0 20px 46px rgba(255,138,0,.45)}
@@ -1043,13 +145,16 @@
 .vid-player .vid-brand{position:absolute;top:12px;right:14px;z-index:2;text-align:right;line-height:1.15}
 .vid-player .vid-brand b{display:block;font-family:var(--font-display);font-size:.78rem;font-weight:900;letter-spacing:.1em;color:#FFD54A}
 .vid-player .vid-brand span{font-size:.5rem;font-weight:800;letter-spacing:.22em;color:rgba(248,251,255,.65);text-transform:uppercase}
-/* icon helpers (emoji-free) */
+.vid-player .vid-preview{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;z-index:0;background:#071b33}
+.vid-player .vid-preview::-webkit-media-controls{display:none!important}
+.vid-player .vid-bg{z-index:0;opacity:.08}
+.vid-player .vid-preview + .vid-bg{pointer-events:none}
 .dkv-kicker i{font-size:.8rem;color:#6FAF45}
 .fcta-copy h3 i{color:#FFD54A;margin-right:.4rem;font-size:1.1em;vertical-align:-2px}
 @media(max-width:1050px){.vid-wrap{grid-template-columns:1fr;gap:2.6rem}.vid-cards{grid-template-columns:repeat(3,1fr)}.vid-side{display:none}.vid-stage::before,.vid-stage::after{display:none}}
 @media(max-width:760px){.vid-cards{grid-template-columns:1fr}.vid-copy h2{font-size:clamp(1.9rem,7vw,2.6rem)}.vid-play{width:66px;height:66px;font-size:1.35rem}.vid-ring{width:110px;height:110px;right:-18px;top:-18px}.vid-section{padding:64px 0 72px}}
 
-/* ===== SECTION 2 — TENTANG RPL / FROM FARM TO PRODUCT ===== */
+/* ===== SECTION 2 — TENTANG RPL ===== */
 .tentang-section{position:relative;overflow:hidden;background:linear-gradient(135deg,#f8fbff 0%,#eef5fb 55%,#e7f1f8 100%);padding-top:88px;padding-bottom:100px}
 .tentang-section::before{content:"";position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(11,95,165,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(11,95,165,.035) 1px,transparent 1px);background-size:54px 54px;mask-image:linear-gradient(90deg,black,transparent 82%)}
 .tentang-section::after{content:"RPL";position:absolute;right:-5%;bottom:-10%;font-family:var(--font-display);font-size:clamp(10rem,25vw,22rem);font-weight:900;line-height:.8;letter-spacing:-.04em;color:rgba(7,27,51,.025);pointer-events:none}
@@ -1081,8 +186,6 @@
 .tentang-mini-card .tm-ic.green{background:linear-gradient(135deg,#6FAF45,#8BC34A)}
 .tentang-mini-card .tm-ic.gold{background:linear-gradient(135deg,#FFD54A,#FF8A00);color:#0d3a66}
 .tentang-mini-card span{font-size:.7rem;font-weight:750;color:#102941;line-height:1.35}
-
-/* visual: no external image dependency, no broken thumbnails */
 .tentang-visual{position:relative;min-height:500px;display:flex;align-items:center;justify-content:center;z-index:3}
 .tentang-visual::before{content:"";position:absolute;width:88%;height:88%;right:-3%;top:6%;border:1px solid rgba(255,179,0,.2);border-radius:30px;transform:rotate(2deg);pointer-events:none}
 .tentang-visual::after{content:"";position:absolute;width:82%;height:82%;right:3%;top:9%;border:1px dashed rgba(11,95,165,.16);border-radius:30px;transform:rotate(-2deg);pointer-events:none}
@@ -1119,6 +222,7 @@
 .tv-status i{font-size:.45rem;color:#6FAF45}
 @media(max-width:1050px){.tentang-grid{grid-template-columns:1fr;gap:2.8rem}.tentang-copy{max-width:760px}.tentang-visual{min-height:460px}.tv-panel{width:min(100%,680px)}}
 @media(max-width:760px){.tentang-section{padding-top:72px;padding-bottom:80px}.tentang-copy .tc-top{margin-bottom:.9rem}.tentang-copy h2{font-size:clamp(2.25rem,10vw,3.2rem)}.tentang-copy .tc-lead{font-size:.94rem}.tentang-mini{grid-template-columns:1fr}.tentang-visual{min-height:430px}.tentang-visual::before,.tentang-visual::after{display:none}.tv-panel{min-height:420px;border-radius:24px}.tv-core{width:130px;height:130px}.tv-core strong{font-size:1.55rem}.tv-flow{grid-template-columns:1fr;padding:1rem}.tv-step{min-height:58px}.tv-bottom{left:1rem;right:1rem}.tv-top{padding:1rem}.tentang-section::after{font-size:8rem;right:-8%;bottom:0}}
+
 /* ===== SECTION 4 — PEMBELAJARAN 6 KARTU ===== */
 .belajar-section{background:linear-gradient(180deg,#eef5fb 0%,#f8fbff 100%)}
 .belajar-head{width:min(860px,92%);margin:0 auto 56px;text-align:center}
@@ -1269,7 +373,6 @@
 @media(max-width:1050px){.prospek-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:640px){.prospek-grid{grid-template-columns:1fr}}
 
-
 /* ===== SECTION 11 — FINAL CTA ===== */
 .aphp-cta{position:relative;width:min(1180px,94%);margin:20px auto 80px;padding:58px 2.5rem 62px;border-radius:28px;overflow:hidden;text-align:center;isolation:isolate;background:linear-gradient(135deg,#0d3a66 0%,#0a2a4e 50%,#0B5FA5 100%);box-shadow:0 30px 70px rgba(7,27,51,.28)}
 .aphp-cta .cta-bg{position:absolute;inset:0;z-index:0;opacity:.12}
@@ -1320,23 +423,8 @@
 }
 
 /* ===== RPL INDUSTRY PARTNERS — CLEAN LOGO MARQUEE ===== */
-.industry-collab{
-  position:relative;
-  overflow:hidden;
-  isolation:isolate;
-  background:linear-gradient(180deg,#ffffff 0%,#f8fbff 100%);
-  padding-top:5.5rem;
-  padding-bottom:4.2rem;
-}
-.industry-collab::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  pointer-events:none;
-  opacity:.55;
-  background-image:radial-gradient(circle at 15% 20%,rgba(11,95,165,.08) 0 2px,transparent 2.5px),linear-gradient(90deg,transparent 49.8%,rgba(11,95,165,.035) 50%,transparent 50.2%);
-  background-size:22px 22px,90px 90px;
-}
+.industry-collab{position:relative;overflow:hidden;isolation:isolate;background:linear-gradient(180deg,#ffffff 0%,#f8fbff 100%);padding-top:5.5rem;padding-bottom:4.2rem}
+.industry-collab::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.55;background-image:radial-gradient(circle at 15% 20%,rgba(11,95,165,.08) 0 2px,transparent 2.5px),linear-gradient(90deg,transparent 49.8%,rgba(11,95,165,.035) 50%,transparent 50.2%);background-size:22px 22px,90px 90px}
 .industry-collab .orn{z-index:0;opacity:.55}
 .industry-collab .ic-head,.industry-collab .ic-marquee-wrap,.industry-collab .ic-footer{position:relative;z-index:2}
 .industry-collab .ic-head{text-align:center;max-width:940px;margin:0 auto}
@@ -1345,13 +433,7 @@
 .industry-collab .ic-head .big-heading{margin:.8rem 0 .65rem;color:#0d3a66;font-size:clamp(2.25rem,4.5vw,4.25rem);line-height:1.02;font-weight:950;letter-spacing:-.045em}
 .industry-collab .ic-head .big-heading span{color:#ff9f00}
 .industry-collab .ic-head p{max-width:760px;margin:0 auto;color:#687d95;font-size:.98rem;line-height:1.8}
-.industry-collab .ic-marquee-wrap{
-  position:relative;
-  width:100%;
-  overflow:hidden;
-  margin-top:3.1rem;
-  padding:1rem 0;
-}
+.industry-collab .ic-marquee-wrap{position:relative;width:100%;overflow:hidden;margin-top:3.1rem;padding:1rem 0}
 .industry-collab .ic-marquee-wrap::before,.industry-collab .ic-marquee-wrap::after{content:"";position:absolute;z-index:3;top:0;bottom:0;width:120px;pointer-events:none}
 .industry-collab .ic-marquee-wrap::before{left:0;background:linear-gradient(90deg,#fff,transparent)}
 .industry-collab .ic-marquee-wrap::after{right:0;background:linear-gradient(270deg,#fff,transparent)}
@@ -1375,7 +457,6 @@
 
 /* =========================================================
    LAB TOUR — SAMA PERSIS DENGAN VIRTUAL TOUR DI HALAMAN SEJARAH
-   Hanya konten, gambar, label, dan anchor yang disesuaikan untuk RPL.
    ========================================================= */
 .aphp-page .vt-section{position:relative;overflow:hidden;isolation:isolate;padding:120px 0 130px;background:linear-gradient(180deg,#eef5fb 0%,#ffffff 48%,#f3f7fb 100%);scroll-margin-top:90px}
 .aphp-page .vt-section::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.42;background-image:radial-gradient(circle,rgba(13,58,102,.18) 1.5px,transparent 2px);background-size:22px 22px;mask-image:linear-gradient(90deg,transparent 0%,#000 15%,#000 85%,transparent 100%)}
@@ -1401,17 +482,14 @@
 .aphp-page .vt-desc{max-width:590px;color:#667b90;line-height:1.9;font-size:.98rem;margin-top:.2rem}.aphp-page .vt-feats{display:flex;flex-wrap:wrap;gap:.55rem;margin:1.25rem 0}.aphp-page .vt-feat{display:inline-flex;align-items:center;gap:.4rem;padding:.55rem .75rem;border-radius:999px;background:#fff;border:1px solid rgba(13,58,102,.1);color:#315b80;font-size:.74rem;font-weight:800}.aphp-page .vt-feat i{color:#ff9f00}.aphp-page .vt-btn{display:inline-flex;align-items:center;justify-content:center;gap:.65rem;padding:.9rem 1.2rem;border-radius:14px;background:linear-gradient(135deg,#0d3a66,#164e80);color:#fff;text-decoration:none;font-weight:900;box-shadow:0 14px 32px rgba(13,58,102,.2);transition:transform .3s ease,box-shadow .3s ease}.aphp-page .vt-btn:hover{transform:translateY(-4px);box-shadow:0 20px 40px rgba(13,58,102,.28)}
 @media(max-width:900px){.aphp-page .vt-inner{grid-template-columns:1fr;gap:2.5rem}.aphp-page .vt-copy{max-width:700px}.aphp-page .vt-title{font-size:clamp(2.6rem,10vw,4rem)}}
 @media(max-width:600px){.aphp-page .vt-section{padding:85px 0 95px}.aphp-page .vt-inner{width:92%;gap:2rem}.aphp-page .vt-frame{aspect-ratio:4/3;border-radius:22px}.aphp-page .vt-play{width:64px;height:64px}.aphp-page .vt-caption{left:1rem;right:1rem;bottom:1rem}.aphp-page .vt-caption strong{font-size:1rem}.aphp-page .vt-caption span{font-size:.7rem}.aphp-page .vt-cam{display:none!important}.aphp-page .vt-title{font-size:clamp(2.35rem,12vw,3.3rem)}.aphp-page .vt-decor-ring{width:190px;height:190px;right:-80px}.aphp-page .vt-decor-dots{width:90px;height:90px;background-size:14px 14px}}
-
 </style>
 
 <style id="rpl-dark-mode">
 /* =========================================================
    RPL — DARK MODE
-   Aktif saat <body> punya class "theme-dark".
    ========================================================= */
 html body.theme-dark .aphp-page{background:#08131f;color:#e6eef7;color-scheme:dark}
 
-/* ---------- UMUM ---------- */
 html body.theme-dark .aphp-page .eyebrow{color:#cfe3f7}
 html body.theme-dark .aphp-page .eyebrow.gold{color:#ffb347}
 html body.theme-dark .aphp-page .big-heading{color:#fff}
@@ -1423,7 +501,6 @@ html body.theme-dark .aphp-page .orn .o-corner{border-left-color:rgba(143,189,23
 html body.theme-dark .aphp-page .orn .o-square::before{border-color:rgba(143,189,235,.22)}
 html body.theme-dark .aphp-page .orn .o-hex{border-color:rgba(143,189,235,.18)}
 
-/* ---------- HERO ---------- */
 html body.theme-dark .aphp-page .history-hero{background:linear-gradient(180deg,#0b1d31 0%,#08131f 100%)!important;color:#e6eef7}
 html body.theme-dark .aphp-page .history-hero::after{color:rgba(255,255,255,.035)!important;-webkit-text-stroke:1px rgba(255,179,0,.14)!important}
 html body.theme-dark .aphp-page .history-ref-ornament-image{filter:invert(1) hue-rotate(180deg);mix-blend-mode:screen;opacity:.6!important}
@@ -1434,7 +511,6 @@ html body.theme-dark .aphp-page .history-vt-cta:hover{background:rgba(255,179,0,
 html body.theme-dark .aphp-page .history-vt-cta strong{color:#fff!important}
 html body.theme-dark .aphp-page .history-vt-cta small{color:#9fb2c6}
 
-/* ---------- SECTION 1: VIDEO ---------- */
 html body.theme-dark .aphp-page .vid-section{background:linear-gradient(180deg,#0a1928 0%,#08131f 100%)}
 html body.theme-dark .aphp-page .vid-copy h2{color:#fff}
 html body.theme-dark .aphp-page .vid-copy .vc-label{color:#8fa3b8}
@@ -1446,7 +522,6 @@ html body.theme-dark .aphp-page .vid-card span:not(.vc-ic){color:#9fb2c6}
 html body.theme-dark .aphp-page .vid-side{color:rgba(255,255,255,.3)}
 html body.theme-dark .aphp-page .vid-player{box-shadow:0 30px 80px rgba(0,0,0,.55);border-color:rgba(255,255,255,.12)}
 
-/* ---------- SECTION 2: TENTANG ---------- */
 html body.theme-dark .aphp-page .tentang-section{background:linear-gradient(135deg,#0a1928 0%,#0b1d31 55%,#0a1726 100%)}
 html body.theme-dark .aphp-page .tentang-section::before{background-image:linear-gradient(rgba(143,189,235,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(143,189,235,.05) 1px,transparent 1px)}
 html body.theme-dark .aphp-page .tentang-section::after{color:rgba(255,255,255,.03)}
@@ -1463,7 +538,6 @@ html body.theme-dark .aphp-page .tentang-visual::before{border-color:rgba(255,17
 html body.theme-dark .aphp-page .tentang-visual::after{border-color:rgba(143,189,235,.18)}
 html body.theme-dark .aphp-page .tv-panel{box-shadow:0 30px 70px rgba(0,0,0,.55);border-color:rgba(255,255,255,.1)}
 
-/* ---------- SECTION 3: MITRA INDUSTRI ---------- */
 html body.theme-dark .aphp-page .industry-collab{background:linear-gradient(180deg,#08131f 0%,#0a1928 100%)}
 html body.theme-dark .aphp-page .industry-collab::before{opacity:.3}
 html body.theme-dark .aphp-page .industry-collab .ic-head .big-heading{color:#fff}
@@ -1473,7 +547,6 @@ html body.theme-dark .aphp-page .industry-collab .ic-marquee-wrap::before{backgr
 html body.theme-dark .aphp-page .industry-collab .ic-marquee-wrap::after{background:linear-gradient(270deg,#08131f,transparent)}
 html body.theme-dark .aphp-page .industry-collab .ic-footer{color:#8fa3b8}
 
-/* ---------- SECTION 4: PEMBELAJARAN ---------- */
 html body.theme-dark .aphp-page .belajar-section{background:linear-gradient(180deg,#0a1928 0%,#08131f 100%)}
 html body.theme-dark .aphp-page .belajar-head p{color:#a9bbcd}
 html body.theme-dark .aphp-page .belajar-card{background:#0f2236;border-color:rgba(255,255,255,.1)}
@@ -1482,12 +555,10 @@ html body.theme-dark .aphp-page .belajar-card::after{color:rgba(255,255,255,.04)
 html body.theme-dark .aphp-page .belajar-card h4{color:#fff}
 html body.theme-dark .aphp-page .belajar-card p{color:#9fb2c6}
 
-/* ---------- SECTION 5: PRAKTIK ---------- */
 html body.theme-dark .aphp-page .praktik-section{background:#08131f}
 html body.theme-dark .aphp-page .praktik-head p{color:#a9bbcd}
 html body.theme-dark .aphp-page .praktik-card:hover{box-shadow:0 30px 66px rgba(0,0,0,.6)}
 
-/* ---------- SECTION 6: FASILITAS ---------- */
 html body.theme-dark .aphp-page .fasilitas-section{background:linear-gradient(180deg,#08131f 0%,#0a1928 100%)}
 html body.theme-dark .aphp-page .fasilitas-head p{color:#a9bbcd}
 html body.theme-dark .aphp-page .fasilitas-card{background:#0f2236;border-color:rgba(255,255,255,.1)}
@@ -1496,7 +567,6 @@ html body.theme-dark .aphp-page .fasilitas-card h4{color:#fff}
 html body.theme-dark .aphp-page .fasilitas-card p{color:#9fb2c6}
 html body.theme-dark .aphp-page .fasilitas-cta{background:linear-gradient(135deg,#0a1a2c 0%,#0c2038 50%,#0e2542 100%);border:1px solid rgba(255,255,255,.08)}
 
-/* ---------- SECTION 7: KARYA SISWA ---------- */
 html body.theme-dark .aphp-page .produk-section{background:#08131f}
 html body.theme-dark .aphp-page .produk-note{color:#9fb2c6}
 html body.theme-dark .aphp-page .produk-card{background:#0f2236;border-color:rgba(255,255,255,.1);box-shadow:0 20px 44px rgba(0,0,0,.4)}
@@ -1504,12 +574,10 @@ html body.theme-dark .aphp-page .produk-card:hover{box-shadow:0 28px 60px rgba(0
 html body.theme-dark .aphp-page .produk-card .pc-body h3{color:#fff}
 html body.theme-dark .aphp-page .produk-card .pc-body p{color:#9fb2c6}
 
-/* ---------- SECTION 8: KEGIATAN ---------- */
 html body.theme-dark .aphp-page .kegiatan-section{background:linear-gradient(180deg,#0a1928 0%,#08131f 100%)}
 html body.theme-dark .aphp-page .kegiatan-head p{color:#a9bbcd}
 html body.theme-dark .aphp-page .kegiatan-card:hover{box-shadow:0 24px 50px rgba(0,0,0,.55)}
 
-/* ---------- SECTION 9: PROSPEK ---------- */
 html body.theme-dark .aphp-page .prospek-section{background:#08131f}
 html body.theme-dark .aphp-page .prospek-head p{color:#a9bbcd}
 html body.theme-dark .aphp-page .prospek-card{background:#0f2236;border-color:rgba(255,255,255,.1)}
@@ -1518,7 +586,6 @@ html body.theme-dark .aphp-page .prospek-card .ps-body h4{color:#fff}
 html body.theme-dark .aphp-page .prospek-card .ps-body p{color:#9fb2c6}
 html body.theme-dark .aphp-page .prospek-card .ps-body .ps-tags span{color:#cfe3f7;background:rgba(143,189,235,.14)}
 
-/* ---------- CODING LAB TOUR ---------- */
 html body.theme-dark .aphp-page .vt-section{background:linear-gradient(180deg,#0a1928 0%,#08131f 50%,#0a1726 100%)}
 html body.theme-dark .aphp-page .vt-section::before{background-image:radial-gradient(circle,rgba(143,189,235,.2) 1.5px,transparent 2px);opacity:.35}
 html body.theme-dark .aphp-page .vt-watermark{color:rgba(255,255,255,.04)}
@@ -1534,535 +601,20 @@ html body.theme-dark .aphp-page .vt-desc{color:#a9bbcd}
 html body.theme-dark .aphp-page .vt-feat{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.12);color:#cfe3f7}
 html body.theme-dark .aphp-page .vt-btn{background:linear-gradient(135deg,#ffd54a,#ff8a00);color:#0d3a66;box-shadow:0 14px 32px rgba(0,0,0,.4)}
 
-/* ---------- FINAL CTA ---------- */
 html body.theme-dark .aphp-page .aphp-cta{background:linear-gradient(135deg,#0a1a2c 0%,#0c2038 50%,#0e2542 100%);border:1px solid rgba(255,255,255,.08);box-shadow:0 24px 55px rgba(0,0,0,.55)}
 html body.theme-dark .aphp-page .aphp-cta::after{color:rgba(255,255,255,.03)}
 </style>
-
 @endpush
 
+{{-- =====================================================================
+     ISI HALAMAN & SCRIPT diambil dari partial (data dari Admin > RPL):
+       resources/views/keahlian/partials/rpl-content.blade.php
+       resources/views/keahlian/partials/rpl-scripts.blade.php
+     ===================================================================== --}}
 @section('content')
-<div class="aphp-page">
-  <!-- ===== HERO — sama persis dengan hero halaman Sejarah, judul RPL ===== -->
-  <section class="history-hero">
-    <div class="history-ref-ornaments" aria-hidden="true">
-      <img src="{{ asset('images/wide_minimalist_abstract_technology_background_des.png') }}" alt="" class="history-ref-ornament-image" aria-hidden="true">
-    </div>
-    <div class="history-hero-inner">
-      <div>
-        <div class="history-kicker"><i class="fas fa-code"></i> PROGRAM KEAHLIAN RPL</div>
-        <h1 class="history-title">
-          <span class="sejarah-white">RPL</span>
-          <span class="skaneda-gold">SKANEDA</span>
-        </h1>
-        <a class="history-vt-cta" href="{{ route('profil.tour') }}?scene=lab-rpl">
-          <span class="history-vt-icon"><i class="fas fa-laptop-code"></i></span>
-          <span><strong>Lihat Coding Lab Tour</strong><small>Jelajahi Laboratorium Komputer Rekayasa Perangkat Lunak</small></span>
-          <i class="fas fa-arrow-right history-vt-arrow"></i>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== SECTION 1 — VIDEO PENGENALAN (HERO MINI) ===== -->
-  <section class="vid-section" id="video-aphp">
-    <div class="orn" aria-hidden="true">
-      <span class="o-dots"></span><span class="o-line"></span>
-      <span class="o-ring"></span><span class="o-hex"></span>
-      <span class="o-gold"></span><i class="fas fa-code o-wheat"></i>
-      <i class="fas fa-laptop-code o-flask"></i>
-    </div>
-    <div class="vid-wrap">
-      <div class="vid-copy" data-reveal="left">
-        <div class="vc-eyebrow">
-          <span class="vc-num">01</span>
-          <span class="vc-line"></span>
-          <span class="vc-label">Pengenalan Kompetensi Keahlian</span>
-        </div>
-        <h2><span class="sejarah-white">MENGENAL LEBIH DEKAT</span><span class="t-gold"> RPL</span></h2>
-        <p class="vc-desc">Kenali Program Keahlian Rekayasa Perangkat Lunak (RPL), mulai dari pembelajaran, praktik coding, fasilitas laboratorium, hingga berbagai pengalaman yang akan kamu dapatkan selama belajar di RPL.</p>
-        <div class="vid-cards">
-          <div class="vid-card">
-            <span class="vc-ic green"><i class="fas fa-code"></i></span>
-            <b>Dasar Pemrograman</b>
-            <span>Memahami logika, algoritma, dan struktur data</span>
-          </div>
-          <div class="vid-card">
-            <span class="vc-ic"><i class="fas fa-laptop-code"></i></span>
-            <b>Pengembangan Aplikasi</b>
-            <span>Mempelajari pengembangan aplikasi web &amp; mobile</span>
-          </div>
-          <div class="vid-card">
-            <span class="vc-ic gold"><i class="fas fa-database"></i></span>
-            <b>Basis Data</b>
-            <span>Merancang dan mengelola basis data aplikasi</span>
-          </div>
-        </div>
-      </div>
-      <div class="vid-stage" data-reveal="right">
-        <span class="vid-side">RPL • SKANEDA</span>
-        <div class="vid-player" role="button" tabindex="0" aria-label="Putar video pengenalan RPL" onclick="document.getElementById('videoRplModal').style.display='flex'; document.getElementById('videoRplPlayer').play();">
-          <video class="vid-preview" muted playsinline preload="auto" aria-hidden="true">
-            <source src="{{ asset('images/videos/video-rpl.mp4') }}" type="video/mp4">
-          </video>
-          <div class="vid-bg" aria-hidden="true"></div>
-          <span class="vid-ring" aria-hidden="true"></span>
-          <span class="vid-hex" aria-hidden="true"></span>
-          <span class="vid-diag" aria-hidden="true"></span>
-          <span class="vid-play"><i class="fas fa-circle-play"></i></span>
-          <span class="vid-brand"><b>RPL</b><span>Program Keahlian</span></span>
-          <span class="vid-label"><i class="fas fa-play"></i> Video Pengenalan</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== POPUP VIDEO RPL ===== -->
-  <div id="videoRplModal" style="display:none;position:fixed;inset:0;z-index:99999;background:rgba(7,27,51,.88);align-items:center;justify-content:center;padding:20px;"
-       onclick="if(event.target===this){document.getElementById('videoRplPlayer').pause();document.getElementById('videoRplPlayer').currentTime=0;this.style.display='none';}">
-    <div style="position:relative;width:min(430px,92vw);max-height:92vh;background:#0d3a66;border-radius:20px;padding:10px;box-shadow:0 30px 80px rgba(0,0,0,.35);display:flex;align-items:center;justify-content:center;">
-      <button type="button" aria-label="Tutup video"
-        onclick="document.getElementById('videoRplPlayer').pause();document.getElementById('videoRplPlayer').currentTime=0;document.getElementById('videoRplModal').style.display='none';"
-        style="position:absolute;right:-10px;top:-10px;width:38px;height:38px;border:0;border-radius:50%;background:#FFD54A;color:#0d3a66;font-size:22px;font-weight:900;line-height:1;cursor:pointer;z-index:2;">&times;</button>
-      <video id="videoRplPlayer" controls playsinline preload="metadata"
-        style="display:block;width:auto;max-width:100%;height:auto;max-height:88vh;border-radius:14px;background:#06192e;object-fit:contain;">
-        <source src="{{ asset('images/videos/video-rpl.mp4') }}" type="video/mp4">
-        Browser kamu tidak mendukung pemutaran video.
-      </video>
-    </div>
-  </div>
-
-  <!-- ===== SECTION 2 — TENTANG RPL ===== -->
-  <section class="tentang-section section-pad" id="tentang-aphp">
-    <div class="orn" aria-hidden="true">
-      <span class="o-chevron"></span><span class="o-line"></span><span class="o-dots"></span>
-      <span class="o-ring"></span><span class="o-gold"></span><span class="o-square"></span>
-    </div>
-
-    <div class="aphp-wide tentang-grid">
-      <div class="tentang-copy" data-reveal="left">
-        <div class="tc-top">
-          <span class="tc-num">02</span>
-          <span class="tc-line"></span>
-          <span class="tc-label">Tentang Kompetensi Keahlian</span>
-        </div>
-
-        <div class="eyebrow gold">Apa Itu RPL?</div>
-        <h2 class="big-heading">DARI LOGIKA <span>MENJADI APLIKASI</span></h2>
-
-        <p class="tc-lead">Program Keahlian <strong>Rekayasa Perangkat Lunak (RPL)</strong> membekali peserta didik dengan keterampilan merancang, membangun, dan menguji perangkat lunak — mulai dari pemrograman dasar, pengembangan aplikasi web &amp; mobile, basis data, hingga UI/UX design.</p>
-        <p class="tc-sub">Pembelajaran mencakup algoritma &amp; struktur data, bahasa pemrograman, basis data, pengembangan aplikasi berbasis web dan mobile, desain antarmuka (UI/UX), serta pengujian dan penerapan perangkat lunak. Melalui proyek nyata dan praktik laboratorium, siswa belajar membangun aplikasi yang fungsional sekaligus mengembangkan jiwa kewirausahaan digital.</p>
-
-        <div class="tentang-mini">
-          <div class="tentang-mini-card">
-            <span class="tm-ic"><i class="fas fa-code"></i></span>
-            <span>Pemrograman — Menguasai logika &amp; bahasa pemrograman</span>
-          </div>
-          <div class="tentang-mini-card">
-            <span class="tm-ic green"><i class="fas fa-laptop-code"></i></span>
-            <span>Pengembangan Aplikasi — Membangun aplikasi web &amp; mobile</span>
-          </div>
-          <div class="tentang-mini-card">
-            <span class="tm-ic gold"><i class="fas fa-database"></i></span>
-            <span>Basis Data — Merancang dan mengelola basis data</span>
-          </div>
-          <div class="tentang-mini-card">
-            <span class="tm-ic"><i class="fas fa-pen-ruler"></i></span>
-            <span>UI/UX — Merancang antarmuka yang mudah digunakan</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="tentang-visual" data-reveal="right">
-        <div class="tv-panel">
-          <div class="tv-top">
-            <div class="tv-top-label"><i class="fas fa-layer-group"></i> Alur RPL</div>
-            <div class="tv-top-code">02 / RPL</div>
-          </div>
-
-          <div class="tv-center">
-            <div class="tv-core">
-              <i class="fas fa-code"></i>
-              <strong>RPL</strong>
-              <small>Logika hingga Rilis</small>
-            </div>
-          </div>
-
-          <div class="tv-flow">
-            <div class="tv-step">
-              <span class="ts-ic"><i class="fas fa-lightbulb"></i></span>
-              <span class="ts-copy"><strong>Analisis Kebutuhan</strong><small>Mengenal masalah pengguna</small></span>
-              <i class="fas fa-arrow-right tv-arrow"></i>
-            </div>
-            <div class="tv-step">
-              <span class="ts-ic green"><i class="fas fa-code"></i></span>
-              <span class="ts-copy"><strong>Coding &amp; Development</strong><small>Membangun aplikasi</small></span>
-              <i class="fas fa-arrow-right tv-arrow"></i>
-            </div>
-            <div class="tv-step">
-              <span class="ts-ic blue"><i class="fas fa-bug"></i></span>
-              <span class="ts-copy"><strong>Testing &amp; Debugging</strong><small>Kualitas &amp; keamanan</small></span>
-              <i class="fas fa-arrow-right tv-arrow"></i>
-            </div>
-            <div class="tv-step">
-              <span class="ts-ic gold"><i class="fas fa-rocket"></i></span>
-              <span class="ts-copy"><strong>Rilis Aplikasi</strong><small>Siap digunakan</small></span>
-              <i class="fas fa-arrow-right tv-arrow"></i>
-            </div>
-          </div>
-
-          <div class="tv-bottom">
-            <span>WEB • MOBILE • DATABASE</span>
-            <span class="tv-status"><i class="fas fa-circle"></i> Program Keahlian</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-      <!-- ===== SECTION 3 — INDUSTRY COLLABORATION MARQUEE ===== -->
-    <section class="industry-collab section-pad" id="industri-aphp">
-      <div class="orn" aria-hidden="true">
-        <span class="o-chevron"></span><span class="o-dots"></span>
-        <span class="o-ring"></span><span class="o-gold"></span>
-        <span class="o-hex"></span>
-      </div>
-      <div class="ic-head" data-reveal>
-        <div class="eyebrow">Kerja Sama &amp; Industri Teknologi</div>
-        <h2 class="big-heading">BERKOLABORASI DENGAN <span>INDUSTRI TEKNOLOGI</span></h2>
-      </div>
-      <div class="ic-marquee-wrap" data-reveal aria-label="Mitra industri RPL">
-        <div class="ic-marquee">
-          <div class="ic-logo-group">
-            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/rpl/hummatech.png') }}" alt="Logo PT Hummatech Indonesia" loading="lazy"></div>
-            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/rpl/minarsih.png') }}" alt="Logo PT Minarsih Tech Mojokerto" loading="lazy"></div>
-            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/rpl/ubig.png') }}" alt="Logo PT Universal Big Data" loading="lazy"></div>
-            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/rpl/it-brain.png') }}" alt="Logo IT Brain Indonesia" loading="lazy"></div>
-            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/rpl/otak-kanan.png') }}" alt="Logo PT Otak Kanan" loading="lazy"></div>
-            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/rpl/it-corner.png') }}" alt="Logo IT Corner" loading="lazy"></div>
-            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/rpl/topsell.png') }}" alt="Logo Topsell Mojokerto" loading="lazy"></div>
-            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/rpl/bitniaga.png') }}" alt="Logo Bitniaga" loading="lazy"></div>
-            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/rpl/movenpick.png') }}" alt="Logo Movenpink Hotel" loading="lazy"></div>
-            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/rpl/dispenduk.png') }}" alt="Logo Dispenduk" loading="lazy"></div>
-            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/rpl/jaccsmfm.png') }}" alt="Logo Jaccs MFM" loading="lazy"></div>
-            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/rpl/permata.png') }}" alt="Logo Permata" loading="lazy"></div>
-          </div>
-          <div class="ic-logo-group" aria-hidden="true">
-            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/rpl/hummatech.png') }}" alt="" loading="lazy"></div>
-            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/rpl/minarsih.png') }}" alt="" loading="lazy"></div>
-            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/rpl/ubig.png') }}" alt="" loading="lazy"></div>
-            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/rpl/it-brain.png') }}" alt="" loading="lazy"></div>
-            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/rpl/otak-kanan.png') }}" alt="" loading="lazy"></div>
-            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/rpl/it-corner.png') }}" alt="" loading="lazy"></div>
-            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/rpl/topsell.png') }}" alt="" loading="lazy"></div>
-            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/rpl/bitniaga.png') }}" alt="" loading="lazy"></div>
-            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/rpl/movenpick.png') }}" alt="" loading="lazy"></div>
-            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/rpl/dispenduk.png') }}" alt="" loading="lazy"></div>
-            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/rpl/jaccsmfm.png') }}" alt="" loading="lazy"></div>
-            <div class="ic-logo"><img class="ic-logo-only" src="{{ asset('images/rpl/permata.png') }}" alt="" loading="lazy"></div>
-          </div>
-        </div>
-      </div>
-      <div class="ic-footer" data-reveal><span>Belajar &bull; Coding &bull; Berkolaborasi &bull; Siap Berkarya</span></div>
-    </section>
-
-<!-- ===== SECTION 4 — PEMBELAJARAN ===== -->
-  <section class="belajar-section section-pad" id="pembelajaran">
-    <div class="orn" aria-hidden="true">
-      <span class="o-chevron"></span><span class="o-dots"></span>
-      <span class="o-ring"></span><span class="o-gold"></span><span class="o-corner"></span>
-    </div>
-    <div class="belajar-head" data-reveal>
-      <div class="eyebrow gold">APA YANG KAMU PELAJARI?</div>
-      <h2 class="big-heading">APA YANG AKAN <span>KAMU PELAJARI?</span></h2>
-    </div>
-    <div class="belajar-grid">
-      <div class="belajar-card" data-num="01" data-reveal>
-        <div class="bc-ic"><i class="fas fa-code"></i></div>
-        <h4>Algoritma &amp; Pemrograman Dasar</h4>
-        <p>Mempelajari logika berpikir komputasional, struktur data, dan dasar-dasar bahasa pemrograman.</p>
-      </div>
-      <div class="belajar-card" data-num="02" data-reveal style="--d:1">
-        <div class="bc-ic green"><i class="fas fa-globe"></i></div>
-        <h4>Pemrograman Web</h4>
-        <p>Membangun website dengan HTML, CSS, JavaScript, hingga framework backend modern.</p>
-      </div>
-      <div class="belajar-card" data-num="03" data-reveal style="--d:2">
-        <div class="bc-ic blue"><i class="fas fa-mobile-screen-button"></i></div>
-        <h4>Pemrograman Mobile</h4>
-        <p>Mengembangkan aplikasi Android/mobile mulai dari antarmuka hingga fungsi utama aplikasi.</p>
-      </div>
-      <div class="belajar-card" data-num="04" data-reveal style="--d:3">
-        <div class="bc-ic gold"><i class="fas fa-database"></i></div>
-        <h4>Basis Data</h4>
-        <p>Merancang, membuat query, dan mengelola basis data untuk mendukung aplikasi yang dibangun.</p>
-      </div>
-      <div class="belajar-card" data-num="05" data-reveal style="--d:4">
-        <div class="bc-ic"><i class="fas fa-pen-ruler"></i></div>
-        <h4>UI/UX Design</h4>
-        <p>Merancang antarmuka yang mudah digunakan, konsisten, dan sesuai kebutuhan pengguna.</p>
-      </div>
-      <div class="belajar-card" data-num="06" data-reveal style="--d:5">
-        <div class="bc-ic gold"><i class="fas fa-lightbulb"></i></div>
-        <h4>Kewirausahaan Digital</h4>
-        <p>Mengembangkan jiwa usaha: membangun produk digital, memasarkan, dan membangun startup mandiri.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== SECTION 5 — PRAKTIK ===== -->
-  <section class="praktik-section section-pad" id="praktik-aphp">
-    <div class="praktik-head" data-reveal>
-      <div class="eyebrow gold">BELAJAR LEWAT PROYEK NYATA</div>
-      <h2 class="big-heading">BELAJAR BUKAN <span>HANYA DI DALAM KELAS</span></h2>
-    </div>
-    <div class="praktik-grid">
-      <div class="praktik-card" data-reveal>
-        <img src="{{ asset('images/rpl/praktik-rpl.jpg') }}" alt="Praktik coding di laboratorium komputer" loading="lazy">
-        <span class="pc-badge"><i class="fas fa-code"></i> Praktik</span>
-        <div class="pc-body">
-          <h4>Praktik Lab Komputer</h4>
-          <p>Mengerjakan proyek pemrograman dan pengembangan aplikasi di laboratorium komputer RPL yang mendukung proses belajar.</p>
-        </div>
-      </div>
-      <div class="praktik-card" data-reveal style="--d:1">
-        <img src="{{ asset('images/rpl/ukk-rpl.jpeg') }}" alt="Pengembangan aplikasi nyata" loading="lazy">
-        <span class="pc-badge"><i class="fas fa-laptop-code"></i> Pengembangan</span>
-        <div class="pc-body">
-          <h4>Pengembangan Aplikasi</h4>
-          <p>Menghasilkan aplikasi nyata seperti website, aplikasi mobile, sistem informasi, dan game sederhana.</p>
-        </div>
-      </div>
-      <div class="praktik-card" data-reveal style="--d:2">
-        <img src="{{ asset('images/rpl/pengujian-rpl.jpg') }}" alt="Presentasi dan pengujian aplikasi" loading="lazy">
-        <span class="pc-badge"><i class="fas fa-circle-check"></i> Evaluasi</span>
-        <div class="pc-body">
-          <h4>Pengujian Aplikasi</h4>
-          <p>Menguji, dan menyempurnakan aplikasi berdasarkan fungsi, tampilan, dan kebutuhan pengguna.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== SECTION 6 — FASILITAS ===== -->
-  <section class="fasilitas-section section-pad" id="fasilitas-aphp">
-    <div class="orn" aria-hidden="true">
-      <span class="o-chevron"></span><span class="o-line"></span><span class="o-dots"></span>
-      <span class="o-ring"></span><span class="o-gold"></span>
-    </div>
-    <div class="fasilitas-head" data-reveal>
-      <div class="eyebrow gold">Bebas Bereksperimen</div>
-      <h2 class="big-heading">RUANG UNTUK <span>BEREKSPERIMEN</span></h2>
-    </div>
-    <div class="fasilitas-grid">
-      <div class="fasilitas-card" data-reveal><div class="fc-ic"><i class="fas fa-laptop-code"></i></div><h4>Laboratorium Komputer</h4><p>Lab pemrograman lengkap dengan perangkat modern untuk praktik coding dan pengembangan aplikasi.</p></div>
-    </div>
-  </section>
-
-  <!-- ===== SECTION 7 — KARYA SISWA ===== -->
-  <section class="produk-section section-pad" id="produk-aphp">
-    <div class="orn" aria-hidden="true">
-      <span class="o-chevron"></span><span class="o-line"></span><span class="o-dots"></span>
-      <span class="o-ring"></span><span class="o-gold"></span><span class="o-square"></span>
-    </div>
-    <div class="produk-head" data-reveal>
-      <div>
-        <div class="eyebrow">Karya Siswa</div>
-        <h2 class="big-heading">DARI IDE <span>MENJADI KARYA</span></h2>
-      </div>
-      <div class="produk-note">Kumpulan proyek siswa RPL — dirancang melalui proses analisis, coding, pengujian, dan presentasi aplikasi.</div>
-    </div>
-    <div class="produk-slider" data-reveal>
-      <button class="produk-arrow prev" id="produkPrev" aria-label="Sebelumnya"><i class="fas fa-chevron-left"></i></button>
-      <div class="produk-viewport">
-        <div class="produk-track" id="produkTrack">
-          <article class="produk-card" data-cat="web">
-            <div class="produk-photo"><img src="{{ asset('images/rpl/tambalbanexpres.jpeg') }}" alt="Aplikasi Tambal Ban Express" loading="lazy"><span class="produk-badge">Pemrograman Web</span></div>
-            <div class="pc-body"><h3>Aplikasi Tambal Ban Express</h3><p>Aplikasi layanan tambal ban berbasis web yang memudahkan pengguna memesan layanan tambal ban secara cepat dan praktis.</p><div class="pc-foot"><span>Lab Komputer</span></div></div>
-          </article>
-          <article class="produk-card" data-cat="mobile">
-            <div class="produk-photo"><img src="{{ asset('images/rpl/estrakbuahmojo.jpeg') }}" alt="Maja Mojo" loading="lazy"><span class="produk-badge">Pengolahan</span></div>
-            <div class="pc-body"><h3>Maja Mojo</h3><p>Minuman olahan berbahan dasar buah mojo dengan cita rasa unik, inovasi kreatif siswa RPL dalam memanfaatkan bahan pangan lokal.</p><div class="pc-foot"><span>Lab Komputer</span></div></div>
-          </article>
-          <article class="produk-card" data-cat="uiux">
-            <div class="produk-photo"><img src="{{ asset('images/rpl/festika-produk.jpeg') }}" alt="Website Berbasis Python" loading="lazy"><span class="produk-badge">UI/UX Design</span></div>
-            <div class="pc-body"><h3>Website Berbasis Python</h3><p>Meraih prestasi melalui pengembangan website berbasis Python dalam ajang FESTIKA 2025.</p><div class="pc-foot"><span>Lab Komputer</span></div></div>
-          </article>
-        </div>
-      </div>
-      <button class="produk-arrow next" id="produkNext" aria-label="Selanjutnya"><i class="fas fa-chevron-right"></i></button>
-    </div>
-    <div class="produk-dots" id="produkDots"></div>
-  </section>
-
-  <!-- ===== SECTION 8 — KEGIATAN & PRESTASI ===== -->
-  <section class="kegiatan-section section-pad" id="kegiatan-aphp">
-    <div class="orn" aria-hidden="true">
-      <span class="o-chevron"></span><span class="o-dots"></span>
-      <span class="o-ring"></span><span class="o-gold"></span><span class="o-corner"></span>
-    </div>
-    <div class="kegiatan-head" data-reveal>
-      <div class="eyebrow gold">BERKARYA & BERPRESTASI</div>
-      <h2 class="big-heading">AKTIF BERKARYA, <span>BERANI BERPRESTASI</span></h2>
-    </div>
-    <div class="kegiatan-grid">
-      <div class="kegiatan-card tall" data-reveal>
-        <img src="{{ asset('images/rpl/prestasi-rpl.jpg') }}" alt="Prestasi siswa RPL" loading="lazy">
-        <span class="kg-badge"><i class="fas fa-trophy"></i> Prestasi</span>
-        <div class="kg-body"><h4>Prestasi Siswa RPL</h4><span>Prestasi lomba pemrograman, hackathon, web design, dan aplikasi mobile tingkat kota hingga nasional</span></div>
-      </div>
-      <div class="kegiatan-card" data-reveal style="--d:1">
-        <img src="{{ asset('images/rpl/codingbareng.jpg') }}" alt="Praktik coding RPL" loading="lazy">
-        <span class="kg-badge"><i class="fas fa-code"></i> Praktik</span>
-        <div class="kg-body"><h4>Coding Bareng</h4><span>Kegiatan praktik rutin di laboratorium RPL untuk menghasilkan aplikasi nyata</span></div>
-      </div>
-      <div class="kegiatan-card" data-reveal style="--d:2">
-        <img src="{{ asset('images/rpl/ki-rpl.jpg') }}" alt="Kunjungan industri RPL" loading="lazy">
-        <span class="kg-badge"><i class="fas fa-building"></i> Industri</span>
-        <div class="kg-body"><h4>Kunjungan Industri Teknologi</h4><span>Belajar langsung dari startup, software house, dan perusahaan teknologi</span></div>
-      </div>
-      <div class="kegiatan-card" data-reveal>
-        <img src="{{ asset('images/rpl/pameran.png') }}" alt="Pameran aplikasi RPL" loading="lazy">
-        <span class="kg-badge"><i class="fas fa-laptop-code"></i> Pameran</span>
-        <div class="kg-body"><h4>Pameran</h4><span>Memamerkan website terbaik karya siswa dalam berbagai pameran teknologi</span></div>
-      </div>
-      <div class="kegiatan-card" data-reveal style="--d:1">
-        <img src="{{ asset('images/rpl/pkl-rpl.jpeg') }}" alt="PKL siswa RPL" loading="lazy">
-        <span class="kg-badge"><i class="fas fa-user-tie"></i> PKL</span>
-        <div class="kg-body"><h4>PKL &amp; Magang di Industri Teknologi</h4><span>Pengalaman kerja langsung di software house, startup, dan perusahaan digital</span></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== SECTION 9 — PROSPEK LULUSAN ===== -->
-  <section class="prospek-section section-pad" id="prospek-aphp">
-    <div class="prospek-head" data-reveal>
-      <div class="eyebrow gold">Mau Jadi Apa?</div>
-      <h2 class="big-heading">SETELAH LULUS, <span>MAU JADI APA?</span></h2>
-    </div>
-    <div class="prospek-grid">
-      <div class="prospek-card" data-reveal>
-        <div class="ps-photo"><span class="ps-num">01</span><img src="{{ asset('images/rpl/kerja-rpl.jpg') }}" alt="Bekerja di industri teknologi" loading="lazy"><i class="fas fa-laptop-code blue"></i></div>
-        <div class="ps-body"><h4>KERJA</h4><p>Software Developer, Programmer, Web Developer, Mobile App Developer, UI/UX Designer, Database Administrator — siap berkarya di industri teknologi.</p><div class="ps-tags"><span>Software House</span><span>Startup Teknologi</span><span>IT Perusahaan</span><span>Freelancer</span></div></div>
-      </div>
-      <div class="prospek-card" data-reveal style="--d:1">
-        <div class="ps-photo"><span class="ps-num">02</span><img src="{{ asset('images/rpl/kuliah.jpeg') }}" alt="Melanjutkan kuliah di bidang informatika" loading="lazy"><i class="fas fa-graduation-cap"></i></div>
-        <div class="ps-body"><h4>KULIAH</h4><p>Teknik Informatika, Sistem Informasi, Ilmu Komputer, Teknologi Informasi, atau bidang teknologi terkait — bekal RPL jadi modal kuat di perguruan tinggi.</p><div class="ps-tags"><span>Teknik Informatika</span><span>Sistem Informasi</span><span>Ilmu Komputer</span></div></div>
-      </div>
-      <div class="prospek-card" data-reveal style="--d:2">
-        <div class="ps-photo"><span class="ps-num">03</span><img src="{{ asset('images/rpl/usaha-rpl.jpeg') }}" alt="Membangun startup atau usaha digital sendiri" loading="lazy"><i class="fas fa-laptop-code green"></i></div>
-        <div class="ps-body"><h4>USAHA DIGITAL</h4><p>Jasa pembuatan website, aplikasi, startup digital, freelance developer, dan bisnis teknologi mandiri — bangun usaha digital dengan produk dan idemu sendiri.</p><div class="ps-tags"><span>Startup</span><span>Freelance Developer</span><span>Produk Digital</span></div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== LAB TOUR — VISUAL IDENTIK DENGAN VIRTUAL TOUR SEJARAH ===== -->
-  <section class="vt-section" id="lab-tour" aria-label="Coding Lab Tour RPL SMK Negeri 2 Mojokerto">
-    <span class="vt-watermark" aria-hidden="true">RPL</span>
-    <div class="vt-decor-ring" aria-hidden="true"></div>
-    <div class="vt-decor-dots" aria-hidden="true"></div>
-    <div class="vt-inner">
-      <div class="vt-media" data-reveal="left">
-        <div class="vt-frame">
-          <img src="{{ asset('tour/lab-rpl.jpg') }}" alt="Laboratorium Komputer Rekayasa Perangkat Lunak SMK Negeri 2 Mojokerto — Coding Lab Tour" loading="lazy">
-          <span class="vt-badge"><i class="fa-solid fa-laptop-code"></i> Coding Lab Tour</span>
-          <button class="vt-play" type="button" aria-label="Mulai Coding Lab Tour RPL" onclick="document.getElementById('labTourLink')?.click()"><i class="fa-solid fa-play"></i></button>
-          <div class="vt-caption">
-            <div><strong>Jelajahi Laboratorium Komputer RPL</strong><span>Fasilitas praktik Rekayasa Perangkat Lunak</span></div>
-            <span class="vt-cam"><i class="fa-solid fa-camera"></i> LAB</span>
-          </div>
-        </div>
-        <div class="vt-chip"><i class="fa-solid fa-compass"></i><div><strong>Coding Lab Tour RPL</strong><span>Explore RPL Coding Lab</span></div></div>
-      </div>
-      <div class="vt-copy">
-        <div class="vt-kicker" data-reveal>Software Development Practice Experience</div>
-        <h2 class="vt-title" data-reveal>Jelajahi <span class="vt-gold">Laboratorium Komputer RPL</span><span class="vt-sub">Lihat Coding Lab Tour RPL</span></h2>
-        <p class="vt-desc" data-reveal>Kenali lebih dekat laboratorium komputer RPL sebagai ruang belajar dan praktik untuk merancang, membangun, dan menguji aplikasi web maupun mobile.</p>
-        <div class="vt-feats" data-reveal><span class="vt-feat"><i class="fa-solid fa-check"></i> Fasilitas Lab Komputer</span><span class="vt-feat"><i class="fa-solid fa-check"></i> Pengembangan Aplikasi</span><span class="vt-feat"><i class="fa-solid fa-check"></i> Presentasi Proyek</span></div>
-        <a href="{{ route('profil.tour') }}?scene=lab-rpl" id="labTourLink" class="vt-btn" data-reveal>Mulai Coding Lab Tour <i class="fa-solid fa-arrow-right"></i></a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== SECTION 11 — FINAL CTA ===== -->
-  <section class="aphp-cta">
-    <div class="cta-bg" aria-hidden="true"><img src="{{ asset('images/aphp-upacara.jpg') }}" alt="" loading="lazy"></div>
-    <div class="orn" aria-hidden="true">
-      <span class="o-chevron"></span><span class="o-dots"></span>
-      <span class="o-ring"></span><span class="o-gold"></span>
-      <i class="fas fa-code o-wheat"></i>
-    </div>
-    <div class="aphp-cta-inner" data-reveal>
-      <h2>Siap Menjadi Bagian dari <span>RPL?</span></h2>
-      <p>Kenali potensimu, temukan pengalaman belajar yang sesuai, dan mulai perjalananmu bersama RPL — dari logika menuju aplikasi dan karier di dunia teknologi.</p>
-      <div class="aphp-cta-actions">
-        <a href="{{ route('ppdb') }}" class="aphp-cta-btn"><i class="fas fa-pen"></i> Daftar PPDB</a>
-      </div>
-    </div>
-  </section>
-</div>
+@include('keahlian.partials.rpl-content')
 @endsection
 
 @push('scripts')
-<script>
-/* ---- Scroll Reveal ---- */
-(function(){
-  var els=document.querySelectorAll('[data-reveal]');
-  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('revealed')});return}
-  var obs=new IntersectionObserver(function(entries){
-    entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('revealed');obs.unobserve(e.target)}})
-  },{threshold:0.1,rootMargin:'0px 0px -50px 0px'});
-  els.forEach(function(e){obs.observe(e)});
-  var pending=Array.prototype.slice.call(els),checks=0;
-  var iv=setInterval(function(){
-    checks++;var vh=window.innerHeight;
-    pending=pending.filter(function(el){
-      if(el.classList.contains('revealed'))return false;
-      var r=el.getBoundingClientRect();
-      if(r.top<vh+200&&r.bottom>-30){el.classList.add('revealed');return false}
-      return true
-    });
-    if(checks>=8){pending.forEach(function(el){el.classList.add('revealed')});clearInterval(iv)}
-    else if(pending.length===0)clearInterval(iv)
-  },400)
-})();
-</script>
-
-<script>
-/* ---- Produk Slider ---- */
-(function(){
-  var track=document.getElementById('produkTrack'),prevBtn=document.getElementById('produkPrev'),nextBtn=document.getElementById('produkNext'),dotsWrap=document.getElementById('produkDots');
-  if(!track)return;
-  var index=0;
-  function cards(){return Array.prototype.slice.call(track.children)}
-  function visible(){return cards().filter(function(c){return c.style.display!=='none'})}
-  function pageSize(){if(window.innerWidth<=760)return 1;if(window.innerWidth<=1050)return 2;return 3}
-  function buildDots(){
-    if(!dotsWrap)return;
-    dotsWrap.innerHTML='';var total=visible().length,pages=Math.max(1,Math.ceil(total/pageSize()));
-    if(total<=pageSize()){dotsWrap.classList.add('hidden');return}
-    dotsWrap.classList.remove('hidden');
-    for(var i=0;i<pages;i++){var b=document.createElement('button');if(i===index)b.classList.add('active');b.setAttribute('aria-label','Slide '+(i+1));(function(idx){b.addEventListener('click',function(){goTo(idx)})})(i);dotsWrap.appendChild(b)}
-  }
-  function update(){
-    var vis=visible(),per=pageSize(),maxIndex=Math.max(0,Math.ceil(vis.length/per)-1);
-    if(index>maxIndex)index=maxIndex;
-    var offset=0,visIdx=0,i=0;
-    for(;i<cards().length;i++){if(cards()[i].style.display==='none')continue;if(visIdx===index*per)break;offset+=cards()[i].offsetWidth+19;visIdx++}
-    track.style.transform='translateX(-'+offset+'px)';
-    if(prevBtn)prevBtn.disabled=index<=0;
-    if(nextBtn)nextBtn.disabled=index>=maxIndex;
-    if(dotsWrap)Array.prototype.forEach.call(dotsWrap.children,function(d,di){d.classList.toggle('active',di===index)})
-  }
-  function goTo(i){var maxIndex=Math.max(0,Math.ceil(visible().length/pageSize())-1);index=Math.min(Math.max(i,0),maxIndex);update()}
-  if(prevBtn)prevBtn.addEventListener('click',function(){goTo(index-1)});
-  if(nextBtn)nextBtn.addEventListener('click',function(){goTo(index+1)});
-  var startX=0,currentX=0,isSwiping=false;
-  track.addEventListener('touchstart',function(e){if(e.touches&&e.touches.length){startX=e.touches[0].clientX;isSwiping=true;currentX=startX}},{passive:true});
-  track.addEventListener('touchmove',function(e){if(!isSwiping||!e.touches||!e.touches.length)return;currentX=e.touches[0].clientX},{passive:true});
-  track.addEventListener('touchend',function(){if(!isSwiping)return;var diffX=startX-currentX;if(Math.abs(diffX)>35){if(diffX>0)goTo(index+1);else goTo(index-1)}startX=0;currentX=0;isSwiping=false});
-  window.addEventListener('resize',function(){buildDots();update()});
-  buildDots();update()
-})();
-</script>
+@include('keahlian.partials.rpl-scripts')
 @endpush

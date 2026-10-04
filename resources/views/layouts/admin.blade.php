@@ -287,7 +287,9 @@
 
   {{--
     Peta menu sidebar admin.
-    Setiap item: [route_name, icon_fa, label].
+    Setiap item: [route_name, icon_fa, label, params (opsional)].
+    - params dipakai untuk item yang memakai route yang sama tetapi beda tujuan,
+      misalnya jurusan: ['major' => 'rpl'] -> /admin/majors?major=rpl
     route_name boleh null (untuk item non-CRUD seperti "Pengaturan Chatbot NARA"
     yang mungkin belum punya route sama sekali).
     Kalau route_name diisi tapi belum terdaftar di routes/web.php (php artisan route:list
@@ -305,7 +307,11 @@
         ['admin.tour.index',            'fa-street-view',       'Tour Virtual 360°'],
       ],
       'Program Keahlian' => [
-        ['admin.majors.index',          'fa-graduation-cap',    'Jurusan / Program Keahlian'],
+        ['admin.aphp.index', 'fa-seedling',     'APHP',    ['major' => 'aphp']],
+        ['admin.dkv.index', 'fa-pen-ruler',    'DKV',     ['major' => 'dkv']],
+        ['admin.kuliner.index', 'fa-utensils',     'Kuliner', ['major' => 'kuliner']],
+        ['admin.lps.index', 'fa-building-columns', 'LPS', ['major' => 'lps']],
+        ['admin.rpl.index', 'fa-code',         'RPL',     ['major' => 'rpl']],
       ],
       'PPDB' => [
         ['admin.ppdb.index',            'fa-file-signature',    'Jalur &amp; Kuota Pendaftaran'],
@@ -320,12 +326,11 @@
         ['admin.fact-checks.index',     'fa-shield-halved',     'School Factcheck'],
       ],
       'Galeri' => [
-        ['admin.gallery.index',         'fa-images',            'Kegiatan Sekolah'],
+        ['admin.kegiatan.index',         'fa-images',            'Kegiatan Sekolah'],
         ['admin.achievements.index',    'fa-trophy',            'Prestasi Sekolah'],
       ],
-      'BKK & Kemitraan' => [
-        ['admin.job-vacancies.index',   'fa-briefcase',         'Lowongan Kerja'],
-        ['admin.industries.index',      'fa-handshake',         'DUDI &amp; Mitra Industri'],
+      'BKK' => [
+        ['admin.bkk.index',   'fa-briefcase',         'Lowongan Kerja'],
       ],
       'AI Tools' => [
         ['admin.ai-matchmaker.index',   'fa-robot',             'AI Matchmaker Ekskul'],
@@ -387,13 +392,30 @@
       @foreach($adminMenu as $groupTitle => $items)
         <div class="db-nav-group">
           <div class="db-nav-title">{!! $groupTitle !!}</div>
-          @foreach($items as [$routeName, $icon, $label])
+          @foreach($items as $item)
             @php
+              $routeName = $item[0];
+              $icon      = $item[1];
+              $label     = $item[2];
+              $params    = $item[3] ?? [];
+
               // route() dipanggil aman: kalau nama route belum terdaftar, fallback ke '#'
               // supaya tidak melempar RouteNotFoundException saat halaman dirender.
               $routeExists = \Illuminate\Support\Facades\Route::has($routeName);
-              $href        = $routeExists ? route($routeName) : '#';
-              $isActive    = $routeExists && request()->routeIs(str_replace('.index', '.*', $routeName));
+              $href        = $routeExists ? route($routeName, $params) : '#';
+
+              $isActive = $routeExists && request()->routeIs(str_replace('.index', '.*', $routeName));
+
+              // Item dengan params (mis. jurusan) hanya aktif jika query-nya cocok,
+              // supaya APHP / DKV / Kuliner / LPS / RPL tidak aktif bersamaan.
+              if ($isActive && !empty($params)) {
+                foreach ($params as $key => $value) {
+                  if (request()->query($key) !== $value) {
+                    $isActive = false;
+                    break;
+                  }
+                }
+              }
             @endphp
             <a href="{{ $href }}" class="db-nav-item {{ $isActive ? 'active' : '' }}">
               <i class="fas {{ $icon }}"></i> {!! $label !!}

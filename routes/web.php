@@ -15,6 +15,118 @@ use App\Http\Controllers\Admin\PpdbAdminController;
 use App\Http\Controllers\Admin\BeritaAdminController;
 use App\Http\Controllers\Admin\MajorAdminController;
 use App\Http\Controllers\MajorPublicController;
+use App\Http\Controllers\Admin\AphpAdminController;
+use App\Http\Controllers\Admin\DkvAdminController;
+use App\Http\Controllers\Admin\KulinerAdminController;
+use App\Http\Controllers\Admin\LpsAdminController;
+use App\Http\Controllers\Admin\RplAdminController;
+use App\Http\Controllers\Admin\BkkAdminController;
+use App\Http\Controllers\Admin\KegiatanAdminController;
+
+Route::middleware(['auth'])            // <- samakan dengan grup admin kamu
+    ->prefix('admin/kegiatan')
+    ->name('admin.kegiatan.')
+    ->group(function () {
+        Route::get('/', [KegiatanAdminController::class, 'index'])->name('index');
+
+        // teks halaman
+        Route::put('/settings', [KegiatanAdminController::class, 'updateSettings'])->name('settings.update');
+
+        // album
+        Route::post('/albums', [KegiatanAdminController::class, 'storeAlbum'])->name('albums.store');
+        Route::put('/albums/{album}', [KegiatanAdminController::class, 'updateAlbum'])->name('albums.update');
+        Route::delete('/albums/{album}', [KegiatanAdminController::class, 'destroyAlbum'])->name('albums.destroy');
+        Route::post('/albums/{album}/toggle', [KegiatanAdminController::class, 'toggleAlbum'])->name('albums.toggle');
+        Route::post('/albums/{album}/move/{direction}', [KegiatanAdminController::class, 'moveAlbum'])
+            ->whereIn('direction', ['up', 'down'])->name('albums.move');
+
+        // sorotan (featured / momen pilihan)
+        Route::put('/placements', [KegiatanAdminController::class, 'updatePlacements'])->name('placements.update');
+
+        // kalender tahunan
+        Route::post('/months', [KegiatanAdminController::class, 'storeMonth'])->name('months.store');
+        Route::put('/months/{month}', [KegiatanAdminController::class, 'updateMonth'])->name('months.update');
+        Route::delete('/months/{month}', [KegiatanAdminController::class, 'destroyMonth'])->name('months.destroy');
+        Route::post('/months/{month}/toggle', [KegiatanAdminController::class, 'toggleMonth'])->name('months.toggle');
+        Route::post('/months/{month}/move/{direction}', [KegiatanAdminController::class, 'moveMonth'])
+            ->whereIn('direction', ['up', 'down'])->name('months.move');
+
+        // kategori
+        Route::post('/categories', [KegiatanAdminController::class, 'storeCategory'])->name('categories.store');
+        Route::put('/categories/{category}', [KegiatanAdminController::class, 'updateCategory'])->name('categories.update');
+        Route::delete('/categories/{category}', [KegiatanAdminController::class, 'destroyCategory'])->name('categories.destroy');
+        Route::post('/categories/{category}/move/{direction}', [KegiatanAdminController::class, 'moveCategory'])
+            ->whereIn('direction', ['up', 'down'])->name('categories.move');
+    });
+
+Route::middleware(['auth'])            // <- samakan dengan grup admin kamu
+    ->prefix('admin/bkk')
+    ->name('admin.bkk.')
+    ->group(function () {
+        Route::get('/', [BkkAdminController::class, 'index'])->name('index');
+
+        // teks halaman (hero, strip, tentang, judul bagian, catatan, CTA)
+        Route::put('/settings', [BkkAdminController::class, 'updateSettings'])->name('settings.update');
+        Route::post('/photos', [BkkAdminController::class, 'updatePhotos'])->name('photos.update');
+
+        // lowongan
+        Route::post('/jobs', [BkkAdminController::class, 'storeJob'])->name('jobs.store');
+        Route::put('/jobs/{job}', [BkkAdminController::class, 'updateJob'])->name('jobs.update');
+        Route::delete('/jobs/{job}', [BkkAdminController::class, 'destroyJob'])->name('jobs.destroy');
+        Route::post('/jobs/{job}/toggle', [BkkAdminController::class, 'toggleJob'])->name('jobs.toggle');
+        Route::put('/jobs/{job}/status', [BkkAdminController::class, 'statusJob'])->name('jobs.status');
+
+        // mitra industri
+        Route::post('/industries', [BkkAdminController::class, 'storeIndustry'])->name('industries.store');
+        Route::put('/industries/{industry}', [BkkAdminController::class, 'updateIndustry'])->name('industries.update');
+        Route::delete('/industries/{industry}', [BkkAdminController::class, 'destroyIndustry'])->name('industries.destroy');
+        Route::post('/industries/{industry}/toggle', [BkkAdminController::class, 'toggleIndustry'])->name('industries.toggle');
+        Route::post('/industries/{industry}/move/{direction}', [BkkAdminController::class, 'moveIndustry'])
+            ->whereIn('direction', ['up', 'down'])->name('industries.move');
+    });
+
+Route::middleware(['auth'])            // <- samakan dengan grup admin kamu
+    ->prefix('admin/rpl')
+    ->name('admin.rpl.')
+    ->group(function () {
+        Route::get('/', [RplAdminController::class, 'index'])->name('index');
+        Route::put('/section/{section}', [RplAdminController::class, 'updateSection'])->name('section.update');
+    });
+
+Route::middleware(['auth'])            // <- samakan dengan grup admin kamu
+    ->prefix('admin/lps')
+    ->name('admin.lps.')
+    ->group(function () {
+        Route::get('/', [LpsAdminController::class, 'index'])->name('index');
+        Route::put('/section/{section}', [LpsAdminController::class, 'updateSection'])->name('section.update');
+    });
+
+
+Route::middleware(['auth'])            // <- samakan dengan grup admin kamu
+    ->prefix('admin/kuliner')
+    ->name('admin.kuliner.')
+    ->group(function () {
+        Route::get('/', [KulinerAdminController::class, 'index'])->name('index');
+        Route::put('/section/{section}', [KulinerAdminController::class, 'updateSection'])->name('section.update');
+    });
+
+
+Route::middleware(['auth'])            // <- samakan dengan grup admin kamu
+    ->prefix('admin/dkv')
+    ->name('admin.dkv.')
+    ->group(function () {
+        Route::get('/', [DkvAdminController::class, 'index'])->name('index');
+        Route::put('/section/{section}', [DkvAdminController::class, 'updateSection'])->name('section.update');
+    });
+
+Route::middleware(['auth'])            // <- samakan dengan grup admin kamu
+    ->prefix('admin/aphp')
+    ->name('admin.aphp.')
+    ->group(function () {
+        Route::get('/', [AphpAdminController::class, 'index'])->name('index');
+        Route::put('/section/{section}', [AphpAdminController::class, 'updateSection'])->name('section.update');
+    });
+
 
 Route::middleware(['auth'])
     ->prefix('admin/berita')
