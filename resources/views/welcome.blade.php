@@ -441,8 +441,12 @@
     @media(max-width:640px){
       .ft-card{padding:1.3rem 1.2rem}
       .ft-map{min-height:320px;height:320px}
-      .ft-evoice{flex-direction:column;align-items:flex-start;text-align:left}
-      .ft-evoice-btn{width:100%;justify-content:center}
+      .ft-evoice{padding:1rem 1.1rem;gap:.85rem;border-radius:16px;margin-top:1rem;flex-direction:column;align-items:flex-start;text-align:left}
+      .ft-evoice-icon{width:42px;height:42px;flex:0 0 42px;font-size:1.05rem;border-radius:12px}
+      .ft-evoice-text{min-width:0;flex:1 1 auto}
+      .ft-evoice-text h3{font-size:.92rem;margin-bottom:.15rem}
+      .ft-evoice-text p{font-size:.76rem;line-height:1.5}
+      .ft-evoice-btn{width:100%;justify-content:center;padding:.55rem 1rem;font-size:.76rem}
     }
 
     /* ---------- RESPONSIVE ---------- */
@@ -1430,7 +1434,18 @@
 .out-ind-pills{display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin-top:1.2rem}
 .out-ind-pills span{display:inline-flex;align-items:center;gap:.45rem;padding:.62rem 1rem;background:#fff;border:1px solid rgba(13,58,102,.1);border-radius:99px;color:#17446c;font-size:.72rem;font-weight:800;box-shadow:0 6px 16px rgba(13,58,102,.05)}
 .out-ind-pills i{color:#ffb300}
-@media(max-width:640px){.industry-jurusan-decor{opacity:1}.out-logo-card{width:132px;height:100px}.out-logo-only{width:110px;height:80px}}
+@media(max-width:768px){
+  .out-sec.out-industry{padding:2.5rem 0 !important}
+  .out-industry .out-title{font-size:clamp(1.7rem,6vw,2.4rem)}
+  .out-industry .out-desc{font-size:.88rem;line-height:1.65}
+  .out-logo-window{margin-top:1.5rem;padding:.5rem 0}
+  .out-logo-window::before,.out-logo-window::after{width:70px}
+  .out-logo-card{width:132px;height:100px}
+  .out-logo-only{width:110px;height:80px}
+  .out-ind-pills{gap:.5rem;margin-top:1rem}
+  .out-ind-pills span{padding:.48rem .8rem;font-size:.7rem}
+}
+@media(max-width:640px){.industry-jurusan-decor{opacity:1}}
 
 /* ---------- LULUSAN PTN — EDITORIAL UNIVERSITY DESTINATIONS ---------- */
 .out-ptn{position:relative;background:#fff;overflow:hidden}
