@@ -1106,8 +1106,10 @@
       .nav-link.active::after{
         transform:scaleX(1);
       }
-      .dropdown-menu{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;border:0;background:rgba(29,111,184,.05);margin-top:.3rem;display:none;min-width:0;padding:.3rem .5rem}
-      .dropdown-menu a{font-size:.88rem;padding:.5rem .7rem}
+      .dropdown-menu{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;border:0;background:rgba(255,255,255,.08);margin-top:.3rem;display:none;min-width:0;padding:.35rem .6rem;border-radius:12px}
+      .dropdown-menu a{font-size:.88rem;padding:.55rem .75rem;color:#ffffff !important;font-weight:700}
+      .dropdown-menu a i{color:#ffd54a !important}
+      .dropdown-menu a:hover, .dropdown-menu a:focus{color:#ffd54a !important;background:rgba(255,255,255,.12) !important}
       .nav-item.dropdown-open .dropdown-menu{display:block}
       .nav-cta{font-size:1.02rem;padding:.65rem 1rem !important}
       .nav-ai-matchmaker{width:100% !important;min-width:0 !important;padding:.65rem .8rem !important;border-radius:10px !important}

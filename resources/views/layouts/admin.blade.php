@@ -332,9 +332,6 @@
       'BKK' => [
         ['admin.bkk.index',   'fa-briefcase',         'Lowongan Kerja'],
       ],
-      'AI Tools' => [
-        ['admin.ai-matchmaker.index',   'fa-robot',             'AI Matchmaker Ekskul'],
-      ],
       'Pengaturan Situs' => [
         ['admin.announcement.index',    'fa-bullhorn',          'Announcement Bar'],
         ['admin.partners.index',        'fa-building',          'Logo Partner / Mitra'],
