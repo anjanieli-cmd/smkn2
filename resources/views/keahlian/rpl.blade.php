@@ -1878,15 +1878,15 @@ html body.theme-dark .aphp-page .aphp-cta::after{color:rgba(255,255,255,.03)}
         <div class="produk-track" id="produkTrack">
           <article class="produk-card" data-cat="web">
             <div class="produk-photo"><img src="{{ asset('images/rpl/tambalbanexpres.jpeg') }}" alt="Aplikasi Tambal Ban Express" loading="lazy"><span class="produk-badge">Pemrograman Web</span></div>
-            <div class="pc-body"><h3>Aplikasi Tambal Ban Express</h3><p>Aplikasi layanan tambal ban berbasis web yang memudahkan pengguna memesan layanan tambal ban secara cepat dan praktis.</p><div class="pc-foot"><span>Lab Komputer</span><span><i class="fas fa-arrow-right"></i></span></div></div>
+            <div class="pc-body"><h3>Aplikasi Tambal Ban Express</h3><p>Aplikasi layanan tambal ban berbasis web yang memudahkan pengguna memesan layanan tambal ban secara cepat dan praktis.</p><div class="pc-foot"><span>Lab Komputer</span></div></div>
           </article>
           <article class="produk-card" data-cat="mobile">
             <div class="produk-photo"><img src="{{ asset('images/rpl/estrakbuahmojo.jpeg') }}" alt="Maja Mojo" loading="lazy"><span class="produk-badge">Pengolahan</span></div>
-            <div class="pc-body"><h3>Maja Mojo</h3><p>Minuman olahan berbahan dasar buah mojo dengan cita rasa unik, inovasi kreatif siswa RPL dalam memanfaatkan bahan pangan lokal.</p><div class="pc-foot"><span>Lab Komputer</span><span><i class="fas fa-arrow-right"></i></span></div></div>
+            <div class="pc-body"><h3>Maja Mojo</h3><p>Minuman olahan berbahan dasar buah mojo dengan cita rasa unik, inovasi kreatif siswa RPL dalam memanfaatkan bahan pangan lokal.</p><div class="pc-foot"><span>Lab Komputer</span></div></div>
           </article>
           <article class="produk-card" data-cat="uiux">
             <div class="produk-photo"><img src="{{ asset('images/rpl/festika-produk.jpeg') }}" alt="Website Berbasis Python" loading="lazy"><span class="produk-badge">UI/UX Design</span></div>
-            <div class="pc-body"><h3>Website Berbasis Python</h3><p>Meraih prestasi melalui pengembangan website berbasis Python dalam ajang FESTIKA 2025.</p><div class="pc-foot"><span>Lab Komputer</span><span><i class="fas fa-arrow-right"></i></span></div></div>
+            <div class="pc-body"><h3>Website Berbasis Python</h3><p>Meraih prestasi melalui pengembangan website berbasis Python dalam ajang FESTIKA 2025.</p><div class="pc-foot"><span>Lab Komputer</span></div></div>
           </article>
         </div>
       </div>

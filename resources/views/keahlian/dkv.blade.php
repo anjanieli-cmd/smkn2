@@ -1897,19 +1897,19 @@ html body.theme-dark .aphp-page .aphp-cta::after{color:rgba(255,255,255,.03)}
         <div class="produk-track" id="produkTrack">
           <article class="produk-card" data-cat="desain">
             <div class="produk-photo"><img src="{{ asset('images/dkv/tambalbanexpres.jpeg') }}" alt="Desain Aplikasi" loading="lazy"><span class="produk-badge">Desain Grafis</span></div>
-            <div class="pc-body"><h3>Desain Aplikasi</h3><p>Merancang tampilan untuk pengguna melalui eksplorasi layout, warna, tipografi, dan elemen visual yang fungsional dan menarik.</p><div class="pc-foot"><span>Studio Produksi</span><span><i class="fas fa-arrow-right"></i></span></div></div>
+            <div class="pc-body"><h3>Desain Aplikasi</h3><p>Merancang tampilan untuk pengguna melalui eksplorasi layout, warna, tipografi, dan elemen visual yang fungsional dan menarik.</p><div class="pc-foot"><span>Studio Produksi</span></div></div>
           </article>
           <article class="produk-card" data-cat="foto">
             <div class="produk-photo"><img src="{{ asset('images/dkv/multimie.jpeg') }}" alt="Fotografi produk" loading="lazy"><span class="produk-badge">Fotografi</span></div>
-            <div class="pc-body"><h3>Fotografi Produk</h3><p>Eksplorasi komposisi, pencahayaan, dan sudut pengambilan untuk menghasilkan visual yang menarik.</p><div class="pc-foot"><span>Studio Produksi</span><span><i class="fas fa-arrow-right"></i></span></div></div>
+            <div class="pc-body"><h3>Fotografi Produk</h3><p>Eksplorasi komposisi, pencahayaan, dan sudut pengambilan untuk menghasilkan visual yang menarik.</p><div class="pc-foot"><span>Studio Produksi</span></div></div>
           </article>
           <article class="produk-card" data-cat="branding">
             <div class="produk-photo"><img src="{{ asset('images/dkv/nirmana.jpeg') }}" alt="Produk Kreatif" loading="lazy"><span class="produk-badge">Produk Kreatif</span></div>
-            <div class="pc-body"><h3>NIRMANA 3D</h3><p>Mengeksplorasi bentuk, ruang, tekstur, dan komposisi untuk menghasilkan karya tiga dimensi yang harmonis dan menarik.</p><div class="pc-foot"><span>Studio Produksi</span><span><i class="fas fa-arrow-right"></i></span></div></div>
+            <div class="pc-body"><h3>NIRMANA 3D</h3><p>Mengeksplorasi bentuk, ruang, tekstur, dan komposisi untuk menghasilkan karya tiga dimensi yang harmonis dan menarik.</p><div class="pc-foot"><span>Studio Produksi</span></div></div>
           </article>
           <article class="produk-card" data-cat="branding">
             <div class="produk-photo"><img src="{{ asset('images/dkv/patung.jpeg') }}" alt="Figur Karakter" loading="lazy"><span class="produk-badge">Produk Kreatif</span></div>
-            <div class="pc-body"><h3>Figur Karakter</h3><p>Merancang karakter visual dengan bentuk, warna, dan identitas yang unik.</p><div class="pc-foot"><span>Studio Produksi</span><span><i class="fas fa-arrow-right"></i></span></div></div>
+            <div class="pc-body"><h3>Figur Karakter</h3><p>Merancang karakter visual dengan bentuk, warna, dan identitas yang unik.</p><div class="pc-foot"><span>Studio Produksi</span></div></div>
           </article>
         </div>
       </div>

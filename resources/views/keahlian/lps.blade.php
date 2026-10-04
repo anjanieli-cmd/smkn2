@@ -1261,15 +1261,15 @@ html body.theme-dark .aphp-page .aphp-cta::after{color:rgba(255,255,255,.03)}
         <div class="produk-track" id="produkTrack">
           <article class="produk-card" data-cat="teller">
             <div class="produk-photo"><img src="{{ asset('images/lps/pengelolaan-keuangan.png') }}" alt="Praktik teller karya siswa LPS" loading="lazy"><span class="produk-badge">Teller</span></div>
-            <div class="pc-body"><h3>Praktik Teller</h3><p>Simulasi menerima setoran, penarikan tunai, dan transfer sesuai prosedur bank syariah.</p><div class="pc-foot"><span>Bank Mini</span><span><i class="fas fa-arrow-right"></i></span></div></div>
+            <div class="pc-body"><h3>Praktik Teller</h3><p>Simulasi menerima setoran, penarikan tunai, dan transfer sesuai prosedur bank syariah.</p><div class="pc-foot"><span>Bank Mini</span></div></div>
           </article>
           <article class="produk-card" data-cat="cs">
             <div class="produk-photo"><img src="{{ asset('images/lps/praktik-koperasi.png') }}" alt="Simulasi customer service karya siswa LPS" loading="lazy"><span class="produk-badge">Pelayanan</span></div>
-            <div class="pc-body"><h3>Praktik Pelayanan Koperasi</h3><p>Melatih siswa dalam memberikan pelayanan, mengelola transaksi, dan menjalankan kegiatan koperasi secara langsung.</p><div class="pc-foot"><span>Koperasi</span><span><i class="fas fa-arrow-right"></i></span></div></div>
+            <div class="pc-body"><h3>Praktik Pelayanan Koperasi</h3><p>Melatih siswa dalam memberikan pelayanan, mengelola transaksi, dan menjalankan kegiatan koperasi secara langsung.</p><div class="pc-foot"><span>Koperasi</span></div></div>
           </article>
           <article class="produk-card" data-cat="administrasi">
             <div class="produk-photo"><img src="{{ asset('images/lps/vania-carla.jpeg') }}" alt="Praktik administrasi karya siswa LPS" loading="lazy"><span class="produk-badge">Duta</span></div>
-            <div class="pc-body"><h3>Duta Koperasi Jawa Timur</h3><p>Mengenalkan nilai, peran, dan manfaat koperasi serta mengajak generasi muda memahami & berpartisipasi dalam kegiatan koperasi.</p><div class="pc-foot"><span>Koperasi</span><span><i class="fas fa-arrow-right"></i></span></div></div>
+            <div class="pc-body"><h3>Duta Koperasi Jawa Timur</h3><p>Mengenalkan nilai, peran, dan manfaat koperasi serta mengajak generasi muda memahami & berpartisipasi dalam kegiatan koperasi.</p><div class="pc-foot"><span>Koperasi</span></div></div>
           </article>
         </div>
       </div>

@@ -1901,19 +1901,19 @@ html body.theme-dark .aphp-page .aphp-cta::after{color:rgba(255,255,255,.03)}
         <div class="produk-track" id="produkTrack">
           <article class="produk-card" data-cat="makanan">
             <div class="produk-photo"><img src="{{ asset('images/aphp/multimie.jpeg') }}" alt="MultiMie produk inovasi siswa APHP" loading="lazy"><span class="produk-badge">Makanan</span></div>
-            <div class="pc-body"><h3>MultiMie</h3><p>Mi instan praktis dengan bumbu siap seduh — produk inovasi siswa APHP.</p><div class="pc-foot"><span>Unit Produksi</span><span><i class="fas fa-arrow-right"></i></span></div></div>
+            <div class="pc-body"><h3>MultiMie</h3><p>Mi instan praktis dengan bumbu siap seduh — produk inovasi siswa APHP.</p><div class="pc-foot"><span>Unit Produksi</span></div></div>
           </article>
           <article class="produk-card" data-cat="minuman">
             <div class="produk-photo"><img src="{{ asset('images/aphp/bungatelang.jpeg') }}" alt="Sari Bunga Telang" loading="lazy"><span class="produk-badge">Minuman</span></div>
-            <div class="pc-body"><h3>Sari Bunga Telang</h3><p>Minuman herbal alami dari ekstrak bunga telang dengan warna biru khas dan cita rasa menyegarkan — inovasi olahan kreatif siswa APHP.</p><div class="pc-foot"><span>Unit Produksi</span><span><i class="fas fa-arrow-right"></i></span></div></div>
+            <div class="pc-body"><h3>Sari Bunga Telang</h3><p>Minuman herbal alami dari ekstrak bunga telang dengan warna biru khas dan cita rasa menyegarkan — inovasi olahan kreatif siswa APHP.</p><div class="pc-foot"><span>Unit Produksi</span></div></div>
           </article>
           <article class="produk-card" data-cat="makanan">
             <div class="produk-photo"><img src="{{ asset('images/aphp/mie-kelor.jpeg') }}" alt="Mie Daun Kelor" loading="lazy"><span class="produk-badge">Makanan</span></div>
-            <div class="pc-body"><h3>Mie Daun Kelor</h3><p>Mie goreng bergizi dengan warna hijau alami dari ekstrak daun kelor, dilengkapi isian ayam dan sayuran.</p><div class="pc-foot"><span>Unit Produksi</span><span><i class="fas fa-arrow-right"></i></span></div></div>
+            <div class="pc-body"><h3>Mie Daun Kelor</h3><p>Mie goreng bergizi dengan warna hijau alami dari ekstrak daun kelor, dilengkapi isian ayam dan sayuran.</p><div class="pc-foot"><span>Unit Produksi</span></div></div>
           </article>
           <article class="produk-card" data-cat="makanan">
             <div class="produk-photo"><img src="{{ asset('images/aphp/triplechoco.jpeg') }}" alt="Triple Choco" loading="lazy"><span class="produk-badge">Makanan</span></div>
-            <div class="pc-body"><h3>Triple Choco</h3><p>Roti manis dengan perpaduan tiga varian cokelat — produk kreatif siswa APHP</p><div class="pc-foot"><span>Unit Produksi</span><span><i class="fas fa-arrow-right"></i></span></div></div>
+            <div class="pc-body"><h3>Triple Choco</h3><p>Roti manis dengan perpaduan tiga varian cokelat — produk kreatif siswa APHP</p><div class="pc-foot"><span>Unit Produksi</span></div></div>
           </article>
         </div>
       </div>

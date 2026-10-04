@@ -1275,15 +1275,15 @@ html body.theme-dark .aphp-page .aphp-cta::after{color:rgba(255,255,255,.03)}
         <div class="produk-track" id="produkTrack">
           <article class="produk-card" data-cat="masakan">
             <div class="produk-photo"><img src="{{ asset('images/kuliner/beimie.jpeg') }}" alt="Hidangan nusantara karya siswa KULINER" loading="lazy"><span class="produk-badge">Masakan Utama</span></div>
-            <div class="pc-body"><h3>BeiMie</h3><p>Mie unik berbahan dasar daun murbei yang alami dan kaya manfaat, perpaduan cita rasa lezat dengan pilihan yang lebih sehat.</p><div class="pc-foot"><span>Studio Produksi</span><span><i class="fas fa-arrow-right"></i></span></div></div>
+            <div class="pc-body"><h3>BeiMie</h3><p>Mie unik berbahan dasar daun murbei yang alami dan kaya manfaat, perpaduan cita rasa lezat dengan pilihan yang lebih sehat.</p><div class="pc-foot"><span>Studio Produksi</span></div></div>
           </article>
           <article class="produk-card" data-cat="plating">
             <div class="produk-photo"><img src="{{ asset('images/kuliner/rotitawar-kuliner.jpeg') }}" alt="Food photography karya siswa KULINER" loading="lazy"><span class="produk-badge">Food Photography</span></div>
-            <div class="pc-body"><h3>Fotografi Produk</h3><p>Eksplorasi komposisi, pencahayaan, dan sudut pengambilan untuk menghasilkan visual hidangan yang menggugah selera.</p><div class="pc-foot"><span>Studio Produksi</span><span><i class="fas fa-arrow-right"></i></span></div></div>
+            <div class="pc-body"><h3>Fotografi Produk</h3><p>Eksplorasi komposisi, pencahayaan, dan sudut pengambilan untuk menghasilkan visual hidangan yang menggugah selera.</p><div class="pc-foot"><span>Studio Produksi</span></div></div>
           </article>
           <article class="produk-card" data-cat="pastry">
             <div class="produk-photo"><img src="{{ asset('images/kuliner/pastry-kuliner.jpeg') }}" alt="Kreasi kue karya siswa KULINER" loading="lazy"><span class="produk-badge">Pastry &amp; Bakery</span></div>
-            <div class="pc-body"><h3>Kreasi Kue &amp; Roti</h3><p>Pembuatan aneka kue dan roti dengan teknik dan resep pastry yang tepat, tampil cantik dan lezat.</p><div class="pc-foot"><span>Studio Produksi</span><span><i class="fas fa-arrow-right"></i></span></div></div>
+            <div class="pc-body"><h3>Kreasi Kue &amp; Roti</h3><p>Pembuatan aneka kue dan roti dengan teknik dan resep pastry yang tepat, tampil cantik dan lezat.</p><div class="pc-foot"><span>Studio Produksi</span></div></div>
           </article>
         </div>
       </div>
