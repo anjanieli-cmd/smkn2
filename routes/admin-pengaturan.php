@@ -39,3 +39,6 @@ Route::get('/general', [SiteSettingController::class, 'general'])->name('general
 Route::put('/general', [SiteSettingController::class, 'updateGeneral'])->name('general.update');
 Route::put('/general/industry', [HomeContentController::class, 'updateIndustry'])->name('general.industry.update');
 Route::put('/general/achievements', [HomeContentController::class, 'updateAchievements'])->name('general.achievements.update');
+Route::put('/general/majors', [HomeContentController::class, 'updateMajors'])->name('general.majors.update');
+Route::put('/general/alumni', [HomeContentController::class, 'updateAlumni'])->name('general.alumni.update');
+Route::put('/general/ptns', [HomeContentController::class, 'updatePtns'])->name('general.ptns.update');

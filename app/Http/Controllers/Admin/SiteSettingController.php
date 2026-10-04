@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\HomeAchievement;
+use App\Models\HomeBestAlumni;
 use App\Models\HomeIndustryLogo;
+use App\Models\HomeMajor;
+use App\Models\HomePtn;
 use App\Models\SiteSetting;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -75,8 +78,13 @@ class SiteSettingController extends Controller
         $settings      = SiteSetting::many(array_merge(self::GENERAL_KEYS, ['sambutan_photo']));
         $industryLogos = HomeIndustryLogo::orderBy('order')->get()->each->append('logo_url');
         $achievements  = HomeAchievement::orderBy('order')->get()->each->append('image_url');
+        $majors        = HomeMajor::orderBy('order')->get()->each->append('image_url');
+        $bestAlumni    = HomeBestAlumni::orderBy('order')->get()->each->append('photo_url');
+        $ptns          = HomePtn::orderBy('order')->get()->each->append(['logo_url', 'students_text']);
 
-        return view('admin.settings.general', compact('settings', 'industryLogos', 'achievements'));
+        return view('admin.settings.general', compact(
+            'settings', 'industryLogos', 'achievements', 'majors', 'bestAlumni', 'ptns'
+        ));
     }
 
     public function updateGeneral(Request $request): RedirectResponse
