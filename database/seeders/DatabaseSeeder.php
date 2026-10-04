@@ -1399,6 +1399,7 @@ class DatabaseSeeder extends Seeder
             LpsContentSeeder::class,
             RplContentSeeder::class,
             BkkSeeder::class,
+            JobVacancySeeder::class,
         ]);
     }
 }
