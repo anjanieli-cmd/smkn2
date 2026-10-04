@@ -326,12 +326,11 @@
         ['admin.fact-checks.index',     'fa-shield-halved',     'School Factcheck'],
       ],
       'Galeri' => [
-        ['admin.gallery.index',         'fa-images',            'Kegiatan Sekolah'],
+        ['admin.kegiatan.index',         'fa-images',            'Kegiatan Sekolah'],
         ['admin.achievements.index',    'fa-trophy',            'Prestasi Sekolah'],
       ],
-      'BKK & Kemitraan' => [
-        ['admin.job-vacancies.index',   'fa-briefcase',         'Lowongan Kerja'],
-        ['admin.industries.index',      'fa-handshake',         'DUDI &amp; Mitra Industri'],
+      'BKK' => [
+        ['admin.bkk.index',   'fa-briefcase',         'Lowongan Kerja'],
       ],
       'AI Tools' => [
         ['admin.ai-matchmaker.index',   'fa-robot',             'AI Matchmaker Ekskul'],

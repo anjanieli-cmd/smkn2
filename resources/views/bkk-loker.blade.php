@@ -21,7 +21,7 @@
   background:var(--bg);color:var(--head);position:relative;overflow:hidden
 }
 .bkk-page *,.bkk-page *::before,.bkk-page *::after{box-sizing:border-box}
-.bkk-page a:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:999px}
+.bkk-page a:focus-visible,.bkk-page button:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:999px}
 
 /* =========================================================
    HERO
@@ -36,6 +36,7 @@
 .bkk-dots{position:absolute;width:120px;height:120px;left:44%;bottom:8%;opacity:.4;background-image:radial-gradient(rgba(13,58,102,.4) 1.5px,transparent 1.6px);background-size:16px 16px}
 
 .bkk-hero-inner{position:relative;z-index:4;width:100%;max-width:1360px;margin:0 auto;padding:clamp(3.5rem,9vh,6rem) clamp(1.25rem,4vw,4rem);display:grid;grid-template-columns:minmax(0,1.5fr) minmax(280px,.62fr);gap:clamp(2rem,5vw,4.5rem);align-items:center}
+.bkk-hero-inner.no-pills{grid-template-columns:minmax(0,1fr)}
 .bkk-kicker{display:inline-flex;align-items:center;gap:.65rem;margin-bottom:1.3rem;padding:.5rem .95rem .5rem .8rem;border:1px solid rgba(255,111,0,.22);border-radius:999px;background:#fff8f0;color:#d85f00;font-size:.82rem;font-weight:800}
 .bkk-kicker::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--orange);box-shadow:0 0 0 5px rgba(255,111,0,.13)}
 .bkk-title{margin:0;max-width:880px;font-family:var(--font-display);font-size:clamp(3.4rem,9vw,7.6rem);line-height:.88;letter-spacing:-.035em;text-transform:uppercase}
@@ -62,7 +63,7 @@
 .bkk-strip{background:var(--navy);color:#fff;border-bottom:3px solid var(--gold-2)}
 .bkk-strip-inner{max-width:1360px;margin:0 auto;display:flex;align-items:center;gap:1rem;padding:.9rem clamp(1.25rem,4vw,4rem)}
 .bkk-strip-label{flex:none;display:inline-flex;align-items:center;gap:.4rem;padding:.42rem .85rem;border-radius:999px;background:linear-gradient(135deg,#ffd54a,#ffb300);color:var(--navy);font-size:.74rem;font-weight:900;white-space:nowrap}
-.bkk-strip-text{min-width:0;font-size:.84rem;color:rgba(255,255,255,.88);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bkk-strip-text{min-width:0;font-size:.84rem;line-height:1.55;color:rgba(255,255,255,.88)}
 
 /* =========================================================
    SECTION UMUM
@@ -75,7 +76,6 @@
 .bkk-heading{margin:0;font-family:var(--font-display);font-size:clamp(2.1rem,4.4vw,3.5rem);line-height:1.04;letter-spacing:-.028em;color:var(--head)}
 .bkk-heading em{font-style:normal;color:inherit;padding:0 .12em;margin:0 -.12em;background:linear-gradient(transparent 60%,var(--hl) 60%,var(--hl) 92%,transparent 92%);-webkit-box-decoration-break:clone;box-decoration-break:clone}
 .bkk-sub{max-width:580px;margin:1rem 0 0;color:var(--text);font-size:.96rem;line-height:1.8}
-.bkk-num{display:none}
 
 /* =========================================================
    TENTANG BKK
@@ -84,6 +84,7 @@
 .bkk-card{grid-column:span 7;background:var(--surf);border:1px solid var(--line);border-radius:26px;box-shadow:var(--shadow);padding:clamp(1.6rem,3vw,2.4rem)}
 .bkk-card h3{margin:0 0 1rem;font-family:var(--font-display);font-size:clamp(1.3rem,2.2vw,1.7rem);line-height:1.2;letter-spacing:-.015em;color:var(--head)}
 .bkk-card p{margin:0;max-width:62ch;color:var(--text);font-size:.92rem;line-height:1.9}
+.bkk-card p + p{margin-top:.8rem}
 .bkk-vision{grid-column:span 5;position:relative;overflow:hidden;background:var(--navy);border-color:transparent;color:#fff}
 .bkk-vision::before{content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;border-radius:50%;border:1px dashed rgba(255,213,74,.4)}
 .bkk-vision::after{content:"";position:absolute;left:1.4rem;bottom:1.2rem;width:90px;height:60px;opacity:.35;background-image:radial-gradient(rgba(255,255,255,.7) 1.4px,transparent 1.5px);background-size:14px 14px}
@@ -104,10 +105,10 @@
 .ind-card{display:flex;flex-direction:column;gap:.55rem;padding:1.5rem;background:var(--surf);border:1px solid var(--line);border-radius:22px;transition:border-color .2s ease,box-shadow .2s ease}
 .ind-card:hover{border-color:var(--gold);box-shadow:var(--shadow)}
 .ind-icon{width:54px;height:54px;display:grid;place-items:center;margin-bottom:.7rem;border-radius:17px 17px 17px 4px;background:var(--navy);color:var(--gold-2);font-family:var(--font-display);font-size:1.45rem;font-weight:900;line-height:1}
-.ind-card h4{margin:0;font-family:var(--font-display);font-size:1.1rem;line-height:1.3;color:var(--head)}
+.ind-card h3{margin:0;font-family:var(--font-display);font-size:1.1rem;line-height:1.3;color:var(--head)}
 .ind-field{align-self:flex-start;display:inline-flex;align-items:center;gap:.4rem;padding:.3rem .65rem;border-radius:999px;background:rgba(255,111,0,.09);color:#c85500;font-size:.76rem;font-weight:800}
 .ind-scope{margin:auto 0 0;padding-top:.95rem;border-top:1px dashed var(--line-2);color:var(--text);font-size:.84rem;line-height:1.65}
-.ind-card h4 + .ind-field + .ind-scope{margin-top:.6rem}
+.ind-card h3 + .ind-field + .ind-scope{margin-top:.6rem}
 
 /* =========================================================
    LOWONGAN — kartu bergaya tiket
@@ -116,6 +117,7 @@
 .bkk-jobs::before{content:"";position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:44px 44px;opacity:.55;-webkit-mask-image:linear-gradient(180deg,#000,transparent 70%);mask-image:linear-gradient(180deg,#000,transparent 70%)}
 .bkk-job-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.3rem}
 .bkk-job{--st:var(--ok);position:relative;display:flex;flex-direction:column;gap:.8rem;padding:1.5rem 1.5rem 1.4rem 1.85rem;background:var(--surf);border:1px solid var(--line);border-radius:20px;box-shadow:0 10px 30px rgba(13,58,102,.06);overflow:hidden;transition:box-shadow .2s ease,border-color .2s ease}
+.bkk-job[hidden]{display:none}
 .bkk-job::before{content:"";position:absolute;left:0;top:0;bottom:0;width:6px;background:var(--st)}
 .bkk-job:hover{box-shadow:var(--shadow);border-color:var(--line-2)}
 .bkk-job.is-open{--st:var(--ok)}
@@ -143,6 +145,10 @@
 .bkk-tag.bkk-tag-apply{margin-left:auto;padding:.55rem 1.05rem;background:var(--navy);border-color:var(--navy);color:#fff;font-size:.78rem;font-weight:800;text-decoration:none;transition:background-color .2s ease,color .2s ease,border-color .2s ease}
 .bkk-tag.bkk-tag-apply:hover{background:var(--gold);border-color:var(--gold);color:var(--navy)}
 
+.bkk-more-wrap{position:relative;z-index:2;display:flex;justify-content:center;margin-top:1.6rem}
+.bkk-more{display:inline-flex;align-items:center;gap:.5rem;padding:.8rem 1.4rem;border-radius:999px;border:1px solid var(--line-2);background:var(--surf);color:var(--head);font:inherit;font-size:.84rem;font-weight:800;cursor:pointer;transition:background-color .2s ease,border-color .2s ease,color .2s ease}
+.bkk-more:hover{background:var(--gold);border-color:var(--gold);color:var(--navy)}
+
 .bkk-empty{grid-column:1/-1;text-align:center;padding:3.2rem 1.5rem;background:var(--surf);border:2px dashed var(--line-2);border-radius:22px}
 .bkk-empty p{margin:0;color:var(--text);font-size:.95rem}
 
@@ -166,6 +172,8 @@
 .bkk-cta-box h2{margin:0 auto;max-width:760px;font-family:var(--font-display);font-size:clamp(2rem,4.4vw,3.4rem);line-height:1.08;letter-spacing:-.025em}
 .bkk-cta-box h2 em{font-style:normal;color:var(--gold-2)}
 .bkk-cta-box p{max-width:640px;margin:1.2rem auto 0;color:rgba(235,245,253,.8);font-size:.95rem;line-height:1.85}
+.bkk-cta-btn{display:inline-flex;align-items:center;gap:.55rem;margin-top:1.8rem;padding:.9rem 1.7rem;border-radius:999px;background:linear-gradient(135deg,#ffd54a,#ffb300);color:#0a2d52;font-size:.92rem;font-weight:900;text-decoration:none;box-shadow:0 14px 30px rgba(255,179,0,.28);transition:transform .2s ease,background-color .2s ease}
+.bkk-cta-btn:hover{transform:translateY(-2px);background:#fff}
 
 /* =========================================================
    RESPONSIVE
@@ -194,7 +202,7 @@
   .bkk-pills{max-width:none}
   .bkk-pill{padding:.9rem 1.1rem;font-size:.86rem}
   .bkk-strip-inner{flex-direction:column;align-items:flex-start;gap:.5rem;padding:.8rem 1rem}
-  .bkk-strip-text{white-space:normal;font-size:.8rem;line-height:1.55}
+  .bkk-strip-text{font-size:.8rem}
   .bkk-section{padding:2.6rem 1rem}
   .bkk-partners{padding-top:.5rem}
   .bkk-heading{font-size:clamp(1.8rem,8vw,2.4rem)}
@@ -259,6 +267,7 @@
 :is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-tag{color:#e6eef8;border-color:rgba(255,255,255,.1)}
 :is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-tag.bkk-tag-apply{background:linear-gradient(135deg,#ffd54a,#ffb300);border-color:transparent;color:#0a2d52}
 :is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-tag.bkk-tag-apply:hover{background:#fff;color:#0a2d52}
+:is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-more:hover{background:var(--gold-2);border-color:var(--gold-2);color:var(--navy-2)}
 :is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-notice{background:rgba(255,179,0,.08);border-color:rgba(255,213,74,.28);border-left-color:var(--gold);color:#e8d28f}
 :is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-cta{background:var(--bg-alt)}
 :is([data-theme="dark"],.dark,.dark-mode,.theme-dark) .bkk-cta-box{background:radial-gradient(circle at 85% 0%,rgba(255,179,0,.14),transparent 45%),linear-gradient(135deg,#040c18 0%,#071a31 55%,#0a2340 100%);border:1px solid rgba(255,213,74,.16);box-shadow:0 34px 80px rgba(0,0,0,.6)}
@@ -270,6 +279,27 @@
 @endpush
 
 @section('content')
+@php
+  /*
+   | Semua isi halaman dibaca dari database (diatur di admin BKK).
+   | Variabel $industries / $jobVacancies dari controller lama TIDAK lagi dipakai —
+   | nilainya ditimpa oleh data dari BkkContent di bawah ini.
+   */
+  $bk           = \App\Support\BkkContent::get();
+  $s            = $bk['s'];
+  $photos       = $bk['photos'];
+  $industries   = $bk['industries'];
+  $jobVacancies = $bk['jobs'];
+  $ctaUrl       = $bk['ctaUrl'];
+
+  $pills = array_values(array_filter([
+      ['fa-briefcase', $s['hero_pill_1']],
+      ['fa-building', $s['hero_pill_2']],
+      ['fa-user-graduate', $s['hero_pill_3']],
+  ], fn ($p) => trim($p[1]) !== ''));
+
+  $jobVisible = 8; // lowongan yang langsung tampil; sisanya di balik tombol
+@endphp
 <div class="bkk-page">
   <!-- HERO SECTION -->
   <section class="bkk-hero">
@@ -277,24 +307,32 @@
       <img src="{{ asset('images/wide_minimalist_abstract_technology_background_des.png') }}" alt="" class="bkk-ref-ornament-image" aria-hidden="true">
     </div>
     <div class="bkk-orn" aria-hidden="true"><span class="bkk-ring"></span><span class="bkk-dots"></span></div>
-    <div class="bkk-hero-inner">
+    <div class="bkk-hero-inner {{ count($pills) ? '' : 'no-pills' }}">
       <div>
-        <div class="bkk-kicker">Pusat Informasi Karier Skaneda</div>
-        <h1 class="bkk-title"><span class="navy">BKK &amp;</span><span class="gold">Loker</span></h1>
-        <p class="bkk-lead">Bursa Kerja Khusus SMK Negeri 2 Mojokerto — membantu siswa dan alumni menuju dunia kerja lewat informasi karier, rekrutmen industri, persiapan kerja, dan jejaring dengan dunia usaha.</p>
+        @if(trim($s['hero_kicker']) !== '')
+          <div class="bkk-kicker">{{ $s['hero_kicker'] }}</div>
+        @endif
+        <h1 class="bkk-title"><span class="navy">{{ $s['hero_title_1'] }}</span><span class="gold">{{ $s['hero_title_2'] }}</span></h1>
+        @if(trim($s['hero_lead']) !== '')
+          <p class="bkk-lead">{{ $s['hero_lead'] }}</p>
+        @endif
       </div>
-      <div class="bkk-pills">
-        <span class="bkk-pill"><i class="fas fa-briefcase"></i> Informasi Karier</span>
-        <span class="bkk-pill"><i class="fas fa-building"></i> Rekrutmen Industri</span>
-        <span class="bkk-pill"><i class="fas fa-user-graduate"></i> Siswa &amp; Alumni</span>
-      </div>
+      @if(count($pills))
+        <div class="bkk-pills">
+          @foreach($pills as [$pillIcon, $pillText])
+            <span class="bkk-pill"><i class="fas {{ $pillIcon }}"></i> {{ $pillText }}</span>
+          @endforeach
+        </div>
+      @endif
     </div>
   </section>
 
   <div class="bkk-strip">
     <div class="bkk-strip-inner">
-      <span class="bkk-strip-label"><i class="fas fa-bolt"></i> BKK Skaneda</span>
-      <span class="bkk-strip-text">Informasi lowongan, kegiatan BKK, rekrutmen industri, persiapan karier, dan penelusuran lulusan.</span>
+      <span class="bkk-strip-label"><i class="fas fa-bolt"></i> {{ $s['strip_label'] }}</span>
+      @if(trim($s['strip_text']) !== '')
+        <span class="bkk-strip-text">{{ $s['strip_text'] }}</span>
+      @endif
     </div>
   </div>
 
@@ -303,108 +341,115 @@
     <div class="bkk-container">
       <div class="bkk-head">
         <div>
-          <span class="bkk-eyebrow">Tentang BKK</span>
-          <h2 class="bkk-heading">Mengenal <em>BKK Skaneda</em></h2>
-          <p class="bkk-sub">BKK merupakan layanan sekolah yang menghubungkan kompetensi siswa dan alumni dengan kebutuhan dunia kerja.</p>
+          @if(trim($s['about_eyebrow']) !== '')
+            <span class="bkk-eyebrow">{{ $s['about_eyebrow'] }}</span>
+          @endif
+          <h2 class="bkk-heading">{{ $s['about_title'] }} @if(trim($s['about_title_em']) !== '')<em>{{ $s['about_title_em'] }}</em>@endif</h2>
+          @if(trim($s['about_sub']) !== '')
+            <p class="bkk-sub">{{ $s['about_sub'] }}</p>
+          @endif
         </div>
-        <div class="bkk-num">01</div>
       </div>
       <div class="bkk-intro">
         <article class="bkk-card">
-          <h3>Bursa Kerja Khusus SMK Negeri 2 Mojokerto</h3>
-          <p>BKK membantu siswa dan alumni memperoleh informasi, akses, serta pendampingan menuju dunia kerja. Kegiatannya mencakup pelayanan informasi kerja, penempatan dan penyaluran tenaga kerja, kerja sama dengan dunia kerja/dunia industri, administrasi pencari kerja, bimbingan industri dan jabatan, serta pemantauan perkembangan karier lulusan.</p>
-          <p style="margin-top:.8rem">Layanan BKK juga berkembang melalui rekrutmen industri, workshop dan seminar karier, simulasi psikotes, job fair/job matching, kegiatan Alumni Berbagi, penelusuran alumni, dan tracer vokasi.</p>
+          <h3>{{ $s['about_card_title'] }}</h3>
+          @if(trim($s['about_p1']) !== '')<p>{{ $s['about_p1'] }}</p>@endif
+          @if(trim($s['about_p2']) !== '')<p>{{ $s['about_p2'] }}</p>@endif
         </article>
         <article class="bkk-card bkk-vision">
-          <h3>Visi BKK</h3>
-          <p>Komitmen BKK dalam memberikan pelayanan karier bagi masyarakat pendidikan.</p>
-          <div class="bkk-quote">“Kami siap melayani masyarakat pendidikan dan pembelajaran berbasis budaya Kerja, Disiplin dan Berprestasi.”</div>
+          <h3>{{ $s['vision_title'] }}</h3>
+          @if(trim($s['vision_text']) !== '')<p>{{ $s['vision_text'] }}</p>@endif
+          @if(trim($s['vision_quote']) !== '')
+            <div class="bkk-quote">“{{ $s['vision_quote'] }}”</div>
+          @endif
         </article>
       </div>
-      <div class="bkk-photo-row">
-        <img src="{{ asset('images/bkk/rekruitment-tongtji.png') }}" alt="Dokumentasi kegiatan BKK 1" loading="lazy">
-        <img src="{{ asset('images/bkk/rekruitment-deabakery.png') }}" alt="Dokumentasi kegiatan BKK 2" loading="lazy">
-        <img src="{{ asset('images/bkk/rekruitment-btpn.png') }}" alt="Dokumentasi kegiatan BKK 3" loading="lazy">
-      </div>
+      @if(collect($photos)->contains(fn ($p) => $p['url'] !== ''))
+        <div class="bkk-photo-row">
+          @foreach($photos as $photo)
+            @if($photo['url'] !== '')
+              <img src="{{ $photo['url'] }}" alt="{{ $photo['alt'] }}" loading="lazy">
+            @endif
+          @endforeach
+        </div>
+      @endif
     </div>
   </section>
 
-  <!-- SECTION: DYNAMIC DUDI & MITRA INDUSTRI -->
+  <!-- SECTION: DUDI & MITRA INDUSTRI -->
   <section class="bkk-section bkk-partners">
     <div class="bkk-container">
       <div class="bkk-head">
         <div>
-          <span class="bkk-eyebrow">DUDI &amp; Kemitraan</span>
-          <h2 class="bkk-heading">Mitra <em>Industri</em></h2>
-          <p class="bkk-sub">Kerja sama strategis SMKN 2 Mojokerto dengan perusahaan mitra untuk PKL, Kelas Industri, &amp; Rekrutmen Lulusan.</p>
+          @if(trim($s['partners_eyebrow']) !== '')
+            <span class="bkk-eyebrow">{{ $s['partners_eyebrow'] }}</span>
+          @endif
+          <h2 class="bkk-heading">{{ $s['partners_title'] }} @if(trim($s['partners_title_em']) !== '')<em>{{ $s['partners_title_em'] }}</em>@endif</h2>
+          @if(trim($s['partners_sub']) !== '')
+            <p class="bkk-sub">{{ $s['partners_sub'] }}</p>
+          @endif
         </div>
-        <div class="bkk-num">02</div>
       </div>
 
       <div class="ind-grid">
         @forelse($industries as $ind)
           <article class="ind-card">
-            <div class="ind-icon" aria-hidden="true">{{ \Illuminate\Support\Str::upper(\Illuminate\Support\Str::substr(preg_replace('/^(PT|CV|UD)\.?\s+/i', '', $ind->company_name), 0, 1)) }}</div>
-            <h4>{{ $ind->company_name }}</h4>
-            <span class="ind-field"><i class="fas fa-layer-group"></i> {{ $ind->field_of_work ?? 'Industri Umum' }}</span>
-            <p class="ind-scope">{{ $ind->partnership_scope ?? 'PKL & Rekrutmen Lulusan' }}</p>
+            <div class="ind-icon" aria-hidden="true">{{ $ind->initial }}</div>
+            <h3>{{ $ind->company_name }}</h3>
+            <span class="ind-field"><i class="fas fa-layer-group"></i> {{ $ind->field_of_work ?: 'Industri Umum' }}</span>
+            <p class="ind-scope">{{ $ind->partnership_scope ?: 'PKL & Rekrutmen Lulusan' }}</p>
           </article>
         @empty
-          <article class="ind-card"><div class="ind-icon" aria-hidden="true">T</div><h4>PT Telkom Indonesia (Persero) Tbk</h4><span class="ind-field"><i class="fas fa-layer-group"></i> IT &amp; Telekomunikasi</span><p class="ind-scope">PKL, Kelas Industri &amp; Rekrutmen Lulusan</p></article>
-          <article class="ind-card"><div class="ind-icon" aria-hidden="true">B</div><h4>Bank Syariah Indonesia (BSI)</h4><span class="ind-field"><i class="fas fa-layer-group"></i> Keuangan &amp; Perbankan</span><p class="ind-scope">Magang Industri &amp; Rekrutmen Alumni</p></article>
-          <article class="ind-card"><div class="ind-icon" aria-hidden="true">H</div><h4>Hotel Vasa Surabaya</h4><span class="ind-field"><i class="fas fa-layer-group"></i> Hospitality &amp; Kuliner</span><p class="ind-scope">Praktik Kerja Lapangan Kuliner</p></article>
-          <article class="ind-card"><div class="ind-icon" aria-hidden="true">C</div><h4>PT Cheil Jedang Indonesia</h4><span class="ind-field"><i class="fas fa-layer-group"></i> Manufaktur &amp; Olahan Pangan</span><p class="ind-scope">Kemitraan Rekrutmen &amp; Kunjungan Industri</p></article>
-          <article class="ind-card"><div class="ind-icon" aria-hidden="true">P</div><h4>PT Perhutani Anugerah Kimia</h4><span class="ind-field"><i class="fas fa-layer-group"></i> Industri Hasil Hutan &amp; Kimia</span><p class="ind-scope">Kerja Sama Penyerapan Lulusan Vokasi</p></article>
+          <div class="bkk-empty">
+            <p>Informasi mitra industri akan segera diperbarui.</p>
+          </div>
         @endforelse
       </div>
     </div>
   </section>
 
-  <!-- SECTION: DYNAMIC LOWONGAN KERJA -->
+  <!-- SECTION: LOWONGAN KERJA -->
   <section class="bkk-section bkk-jobs">
     <div class="bkk-container">
       <div class="bkk-head">
         <div>
-          <span class="bkk-eyebrow">Informasi Rekrutmen</span>
-          <h2 class="bkk-heading">Loker &amp; <em>Rekrutmen</em></h2>
-          <p class="bkk-sub">Daftar lowongan pekerjaan &amp; rekrutmen resmi BKK SMKN 2 Mojokerto.</p>
+          @if(trim($s['jobs_eyebrow']) !== '')
+            <span class="bkk-eyebrow">{{ $s['jobs_eyebrow'] }}</span>
+          @endif
+          <h2 class="bkk-heading">{{ $s['jobs_title'] }} @if(trim($s['jobs_title_em']) !== '')<em>{{ $s['jobs_title_em'] }}</em>@endif</h2>
+          @if(trim($s['jobs_sub']) !== '')
+            <p class="bkk-sub">{{ $s['jobs_sub'] }}</p>
+          @endif
         </div>
-        <div class="bkk-num">03</div>
       </div>
 
       <div class="bkk-job-grid">
         @forelse($jobVacancies as $job)
           @php
-            $st = $job->status->value ?? $job->status;
+            $st = $job->effective_status;
             $statusClass = match($st) {
-              'OPEN' => 'open',
+              'OPEN'     => 'open',
               'UPCOMING' => 'upcoming',
-              'SELESAI' => 'selesai',
-              'ARSIP' => 'archive',
-              default => 'open'
+              'SELESAI'  => 'selesai',
+              'ARSIP'    => 'archive',
+              default    => 'open',
             };
             $statusIcon = match($st) {
-              'OPEN' => 'fa-door-open',
+              'OPEN'     => 'fa-door-open',
               'UPCOMING' => 'fa-clock',
-              'SELESAI' => 'fa-circle-check',
-              'ARSIP' => 'fa-archive',
-              default => 'fa-briefcase'
+              'SELESAI'  => 'fa-circle-check',
+              'ARSIP'    => 'fa-box-archive',
+              default    => 'fa-briefcase',
             };
-            $statusLabel = match($st) {
-              'OPEN' => 'OPEN (Pendaftaran Berlangsung)',
-              'UPCOMING' => 'UPCOMING (Akan Datang)',
-              'SELESAI' => 'SELESAI (Berakhir)',
-              'ARSIP' => 'ARSIP (Dokumentasi)',
-              default => $st
-            };
+            $statusLabel = \App\Models\BkkJobVacancy::STATUSES[$st] ?? $st;
           @endphp
-          <article class="bkk-job is-{{ $statusClass }}">
+          <article class="bkk-job is-{{ $statusClass }} {{ $loop->index >= $jobVisible ? 'bkk-job-extra' : '' }}" @if($loop->index >= $jobVisible) hidden @endif>
             <div class="bkk-job-top">
               <span class="bkk-status {{ $statusClass }}">
                 <i class="fas {{ $statusIcon }}"></i> {{ $statusLabel }}
               </span>
               @if($job->deadline)
-                <span class="bkk-date"><i class="far fa-calendar-alt"></i> Batas: {{ \Carbon\Carbon::parse($job->deadline)->format('d M Y') }}</span>
+                <span class="bkk-date"><i class="far fa-calendar-alt"></i> Batas: {{ $job->deadline->copy()->locale('id')->translatedFormat('d F Y') }}</span>
               @endif
             </div>
             <h3>{{ $job->title }}</h3>
@@ -414,11 +459,13 @@
                 &bull; <i class="fas fa-location-dot"></i> {{ $job->location }}
               @endif
             </div>
-            <p>{{ Str::limit($job->description, 170) }}</p>
+            @if(trim((string) $job->description) !== '')
+              <p>{{ \Illuminate\Support\Str::limit($job->description, 170) }}</p>
+            @endif
             <div class="bkk-job-meta">
-              <span class="bkk-tag"><i class="fas fa-user-clock"></i> {{ $job->employment_type ?? 'Full-Time' }}</span>
-              @if($job->apply_url)
-                <a href="{{ $job->apply_url }}" target="_blank" rel="noopener" class="bkk-tag bkk-tag-apply">
+              <span class="bkk-tag"><i class="fas fa-user-clock"></i> {{ $job->employment_type ?: 'Full-Time' }}</span>
+              @if($job->apply_url && in_array($st, ['OPEN', 'UPCOMING'], true))
+                <a href="{{ $job->apply_url }}" @unless($job->apply_is_mail) target="_blank" rel="noopener noreferrer" @endunless class="bkk-tag bkk-tag-apply">
                   Lamar Sekarang <i class="fas fa-arrow-up-right-from-square"></i>
                 </a>
               @endif
@@ -431,9 +478,19 @@
         @endforelse
       </div>
 
-      <div class="bkk-notice">
-        <i class="fas fa-circle-info"></i> Informasi rekrutmen BKK dipublikasikan secara resmi. Seluruh proses pendaftaran dan seleksi BKK SMKN 2 Mojokerto <strong>TIDAK DIPUNGUT BIAYA (GRATIS)</strong>.
-      </div>
+      @if($jobVacancies->count() > $jobVisible)
+        <div class="bkk-more-wrap">
+          <button type="button" class="bkk-more" id="bkkJobMore">
+            <i class="fas fa-chevron-down"></i> Tampilkan {{ $jobVacancies->count() - $jobVisible }} lowongan lainnya
+          </button>
+        </div>
+      @endif
+
+      @if(trim($s['notice_text']) !== '' || trim($s['notice_bold']) !== '')
+        <div class="bkk-notice">
+          <i class="fas fa-circle-info"></i> {{ trim($s['notice_text']) }}@if(trim($s['notice_bold']) !== '') <strong>{{ trim($s['notice_bold']) }}</strong>.@endif
+        </div>
+      @endif
       <div class="bkk-status-key">
         <span class="bkk-key"><b>OPEN</b> pendaftaran masih berlangsung</span>
         <span class="bkk-key"><b>UPCOMING</b> rekrutmen akan datang</span>
@@ -446,9 +503,29 @@
   <!-- CTA SECTION -->
   <section class="bkk-cta">
     <div class="bkk-cta-box">
-      <h2>Siap melangkah menuju <em>dunia kerja?</em></h2>
-      <p>Pantau informasi rekrutmen, kegiatan BKK, pembekalan karier, dan berbagai kesempatan yang dipublikasikan oleh SMK Negeri 2 Mojokerto.</p>
+      <h2>{{ $s['cta_title'] }} @if(trim($s['cta_title_em']) !== '')<em>{{ $s['cta_title_em'] }}</em>@endif</h2>
+      @if(trim($s['cta_text']) !== '')
+        <p>{{ $s['cta_text'] }}</p>
+      @endif
+      @if(trim($s['cta_btn_text']) !== '' && $ctaUrl !== '')
+        <a href="{{ $ctaUrl }}" class="bkk-cta-btn" @if(\Illuminate\Support\Str::startsWith($ctaUrl, 'http')) target="_blank" rel="noopener noreferrer" @endif>
+          {{ $s['cta_btn_text'] }} <i class="fas fa-arrow-right"></i>
+        </a>
+      @endif
     </div>
   </section>
 </div>
 @endsection
+
+@push('scripts')
+<script>
+(function () {
+  var btn = document.getElementById('bkkJobMore');
+  if (!btn) return;
+  btn.addEventListener('click', function () {
+    document.querySelectorAll('.bkk-job-extra').forEach(function (el) { el.hidden = false; });
+    btn.parentNode.removeChild(btn);
+  });
+})();
+</script>
+@endpush

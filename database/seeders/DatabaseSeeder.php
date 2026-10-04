@@ -1398,6 +1398,7 @@ class DatabaseSeeder extends Seeder
             KulinerContentSeeder::class,
             LpsContentSeeder::class,
             RplContentSeeder::class,
+            BkkSeeder::class,
         ]);
     }
 }
