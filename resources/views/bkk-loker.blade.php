@@ -464,11 +464,6 @@
             @endif
             <div class="bkk-job-meta">
               <span class="bkk-tag"><i class="fas fa-user-clock"></i> {{ $job->employment_type ?: 'Full-Time' }}</span>
-              @if($job->apply_url && in_array($st, ['OPEN', 'UPCOMING'], true))
-                <a href="{{ $job->apply_url }}" @unless($job->apply_is_mail) target="_blank" rel="noopener noreferrer" @endunless class="bkk-tag bkk-tag-apply">
-                  Lamar Sekarang <i class="fas fa-arrow-up-right-from-square"></i>
-                </a>
-              @endif
             </div>
           </article>
         @empty

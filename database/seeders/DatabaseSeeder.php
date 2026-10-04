@@ -1401,6 +1401,7 @@ class DatabaseSeeder extends Seeder
             BkkSeeder::class,
             KegiatanSeeder::class,
             KaryaSeeder::class,
+            JobVacancySeeder::class,
         ]);
     }
 }
