@@ -317,7 +317,7 @@
         ['admin.ppdb.index',            'fa-file-signature',    'Jalur &amp; Kuota Pendaftaran'],
       ],
       'Siswa' => [
-        ['admin.student-works.index',   'fa-palette',           'Karya Siswa'],
+        ['admin.karya.index',   'fa-palette',           'Karya Siswa'],
         ['admin.extracurriculars.index','fa-futbol',            'Ekstrakurikuler'],
         ['admin.e-voices.index',        'fa-comments',          'E-Voice Aspirasi'],
       ],

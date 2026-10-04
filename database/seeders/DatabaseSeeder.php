@@ -1399,6 +1399,8 @@ class DatabaseSeeder extends Seeder
             LpsContentSeeder::class,
             RplContentSeeder::class,
             BkkSeeder::class,
+            KegiatanSeeder::class,
+            KaryaSeeder::class,
         ]);
     }
 }

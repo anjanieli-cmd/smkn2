@@ -8,6 +8,7 @@
 /* =========================================================
    KARYA SISWA — GALERI KARYA PESERTA DIDIK
    Warna: navy #0d3a66, biru #2f6fa8, putih, gold #ffd54a/#ffb300.
+   Isi halaman dikelola dari admin Karya Siswa (App\Support\KaryaContent).
    ========================================================= */
 .ks-page{background:#f7f9fc;color:#0d3a66;overflow:hidden;position:relative}
 .ks-page *{box-sizing:border-box}
@@ -32,7 +33,7 @@
 .ks-kicker::before{content:"";width:9px;height:9px;border-radius:50%;background:#ff6f00;
   box-shadow:0 0 0 6px rgba(255,111,0,.10)}
 
-/* ---------- TITLE: bertumpuk besar, 100% senada PPDB ---------- */
+/* ---------- TITLE: bertumpuk besar, senada PPDB ---------- */
 .ks-title{position:relative;z-index:5;font-family:var(--font-display);font-size:clamp(5.5rem,13vw,11.5rem);
   line-height:.84;letter-spacing:-.035em;margin:0;max-width:900px;text-transform:uppercase;
   text-shadow:none;animation:hdFadeUp .7s .1s var(--ease, ease) both}
@@ -41,22 +42,13 @@
   background:linear-gradient(135deg,#ffd54a 0%,#ffb300 48%,#ff7a00 100%);
   -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;
   text-shadow:none;letter-spacing:-.025em}
-.ks-lead{font-size:1.05rem;line-height:1.75;color:#52657a;max-width:720px;
-  margin:1.7rem 0 0;animation:hdFadeUp .7s .26s var(--ease, ease) both}
-.ks-hero-meta{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.6rem;animation:hdFadeUp .7s .4s var(--ease, ease) both}
-.ks-pill{display:inline-flex;align-items:center;gap:.5rem;padding:.55rem .85rem;
-  border:1px solid rgba(13,58,102,.12);background:#fff;border-radius:999px;color:#0d3a66;
-  font-size:.72rem;font-weight:800;box-shadow:0 8px 24px rgba(13,58,102,.06)}
-.ks-pill i{color:#ff7a00}
 
-.hero-photo{display:none}
 @media(min-width:1050px){.ks-hero-inner{padding-right:44%}}
 @media(max-width:1050px){.ks-hero-inner{padding-right:1.25rem}.ks-ref-ornaments{opacity:.72}}
 @media(max-width:900px){.ks-title{font-size:clamp(4.2rem,12vw,8.5rem)}.ks-ref-ornament-image{opacity:.88}}
-@media(max-width:700px){.ks-hero{align-items:flex-start}.ks-hero-inner{width:90%}.ks-title{font-size:clamp(3.6rem,13.5vw,6.5rem)}}
 @media(max-width:560px){.ks-ref-ornament-image{opacity:.62}}
 
-/* ---------- HOME-ORN ---------- */
+/* ---------- HOME-ORN (ornamen geometris) ---------- */
 .home-orn{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
 .home-orn .ho-chevron{position:absolute;width:360px;height:360px;
   border:1px solid rgba(13,58,102,.16);transform:rotate(45deg);border-radius:18px}
@@ -66,8 +58,7 @@
 .home-orn .ho-line::after{content:"";position:absolute;left:70px;top:11px;width:190px;height:1px;background:rgba(47,111,168,.16)}
 .home-orn .ho-dots{position:absolute;width:125px;height:125px;opacity:.5;
   background-image:radial-gradient(rgba(13,58,102,.4) 1.6px,transparent 1.7px);background-size:16px 16px}
-.home-orn .ho-ring{position:absolute;width:170px;height:170px;border:1px solid rgba(13,58,102,.13);
-  border-radius:50%}
+.home-orn .ho-ring{position:absolute;width:170px;height:170px;border:1px solid rgba(13,58,102,.13);border-radius:50%}
 .home-orn .ho-ring::before{content:"";position:absolute;inset:22px;border:1px dashed rgba(47,111,168,.18);border-radius:50%}
 .home-orn .ho-gold{position:absolute;width:52px;height:8px;border-radius:99px;
   background:linear-gradient(90deg,#ffd54a,#ffb300)}
@@ -79,13 +70,6 @@
   background:rgba(13,58,102,.16)}
 
 /* posisi ornamen per section */
-.ks-hero .home-orn .ho-chevron{left:-150px;bottom:-60px;border-color:rgba(255,255,255,.10)}
-.ks-hero .home-orn .ho-chevron::after{border-color:rgba(255,213,74,.08)}
-.ks-hero .home-orn .ho-line{right:-80px;top:22%;opacity:.22}
-.ks-hero .home-orn .ho-dots{right:6%;bottom:14%;opacity:.3}
-.ks-hero .home-orn .ho-ring{left:44%;bottom:-90px;border-color:rgba(255,255,255,.12)}
-.ks-hero .home-orn .ho-gold{right:16%;top:20%}
-.ks-hero .home-orn .ho-square{left:12%;top:22%}
 .ks-intro .home-orn .ho-chevron{right:-145px;top:45px}
 .ks-intro .home-orn .ho-line{left:-80px;top:170px}
 .ks-intro .home-orn .ho-dots{left:3%;bottom:100px}
@@ -114,7 +98,6 @@
 .ks-cta .home-orn .ho-ring{right:-70px;top:20%;border-color:rgba(255,255,255,.10)}
 .ks-cta .home-orn .ho-gold{left:20%;bottom:26%}
 
-.ks-hero>*:not(.home-orn),
 .ks-intro>*:not(.home-orn),
 .ks-slider>*:not(.home-orn),
 .ks-kategori>*:not(.home-orn),
@@ -125,6 +108,7 @@
 .ks-section{width:min(1180px,92%);margin:0 auto}
 .ks-intro{position:relative;padding:96px 0 110px;background:#fff}
 .ks-intro-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:4.5rem;align-items:center}
+.ks-intro-grid.is-single{grid-template-columns:1fr}
 
 .big-heading{font-family:var(--font-display);font-size:clamp(2.2rem,4.6vw,3.6rem);font-weight:800;
   line-height:1.16;letter-spacing:.01em;margin:0;color:#0d3a66;text-transform:uppercase}
@@ -134,8 +118,9 @@
 
 /* ---------- 1. PENGANTAR ---------- */
 .ks-blurb{font-size:.92rem;line-height:1.9;color:#718396;margin:0}
+.ks-blurb+.ks-blurb{margin-top:1.2rem}
 .ks-blurb strong{color:#0d3a66}
-.ks-mini-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2.2rem}
+.ks-mini-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2rem}
 .ks-mini{position:relative;background:#f3f7fb;border:1px solid #e3edf0;border-radius:18px;padding:1.1rem 1rem;text-align:center;
   transition:transform .35s var(--ease, ease),box-shadow .35s var(--ease, ease)}
 .ks-mini:hover{transform:translateY(-6px);box-shadow:0 16px 36px rgba(13,58,102,.10)}
@@ -159,8 +144,9 @@
 .ks-slider-note{max-width:360px;color:#718396;font-size:.8rem;line-height:1.7}
 
 .ks-carousel{position:relative;margin-top:3.2rem;max-width:1000px;margin-left:auto;margin-right:auto}
-.ks-viewport{position:relative;overflow:hidden;border-radius:26px;
+.ks-viewport{position:relative;overflow:hidden;border-radius:26px;touch-action:pan-y;
   box-shadow:0 34px 80px rgba(13,58,102,.22);border:1px solid rgba(255,255,255,.25)}
+.ks-viewport:focus-visible{outline:3px solid #ffb300;outline-offset:4px}
 .ks-track{display:flex;transition:transform .65s var(--ease, ease)}
 .ks-slide{position:relative;flex:0 0 100%;min-width:100%;height:clamp(380px,52vw,520px);overflow:hidden;background:#0d3a66}
 .ks-slide img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.02)}
@@ -187,10 +173,12 @@
   background:linear-gradient(135deg,#ffd54a,#ffb300);box-shadow:0 14px 34px rgba(255,179,0,.42);
   transition:transform .3s var(--ease, ease),box-shadow .3s var(--ease, ease)}
 .ks-arrow:hover{transform:translateY(-50%) scale(1.08);box-shadow:0 18px 42px rgba(255,179,0,.5)}
+.ks-arrow:focus-visible,.ks-dot:focus-visible{outline:3px solid #0d3a66;outline-offset:3px}
 .ks-arrow.ks-prev{left:-27px}
 .ks-arrow.ks-next{right:-27px}
+.ks-carousel.is-single .ks-arrow,.ks-carousel.is-single .ks-dots,.ks-carousel.is-single .ks-counter{display:none}
 
-.ks-dots{display:flex;justify-content:center;gap:.55rem;margin-top:1.6rem}
+.ks-dots{display:flex;justify-content:center;flex-wrap:wrap;gap:.55rem;margin-top:1.6rem}
 .ks-dot{width:10px;height:10px;border-radius:99px;border:none;cursor:pointer;padding:0;
   background:rgba(13,58,102,.22);transition:all .35s var(--ease, ease)}
 .ks-dot.active{width:34px;background:linear-gradient(90deg,#ffd54a,#ffb300)}
@@ -199,19 +187,19 @@
   font-family:var(--font-display);font-size:.82rem;font-weight:800;color:#718396;letter-spacing:.1em}
 .ks-counter b{color:#0d3a66}
 
-/* ---------- 3. KATEGORI ---------- */
+/* ---------- 3. BIDANG / KATEGORI ---------- */
 .ks-kategori{position:relative;padding:96px 0 110px;background:#fff}
-.ks-kat-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1.2rem;margin-top:3rem}
+.ks-kat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.2rem;margin-top:3rem}
 .ks-kat-card{position:relative;background:#fff;border:1px solid #e3edf0;border-radius:22px;padding:1.7rem 1.3rem 1.5rem;
   text-align:center;transition:transform .35s var(--ease, ease),box-shadow .35s var(--ease, ease),border-color .35s var(--ease, ease)}
 .ks-kat-card:hover{transform:translateY(-8px);box-shadow:0 26px 55px rgba(13,58,102,.14);border-color:rgba(13,58,102,.22)}
 .ks-kat-icon{width:60px;height:60px;margin:0 auto;border-radius:18px;display:flex;align-items:center;justify-content:center;
   font-size:1.4rem;color:#fff;background:linear-gradient(135deg,#0d3a66,#2f6fa8);
   transition:transform .35s var(--ease, ease)}
-.ks-kat-card:nth-child(2) .ks-kat-icon{background:linear-gradient(135deg,#ffd54a,#ffb300);color:#0a2d52}
-.ks-kat-card:nth-child(3) .ks-kat-icon{background:linear-gradient(135deg,#2f6fa8,#0d3a66)}
-.ks-kat-card:nth-child(4) .ks-kat-icon{background:linear-gradient(135deg,#5a89b8,#2f6fa8)}
-.ks-kat-card:nth-child(5) .ks-kat-icon{background:linear-gradient(135deg,#ffb300,#ff8a00);color:#0a2d52}
+.ks-kat-card:nth-child(5n+2) .ks-kat-icon{background:linear-gradient(135deg,#ffd54a,#ffb300);color:#0a2d52}
+.ks-kat-card:nth-child(5n+3) .ks-kat-icon{background:linear-gradient(135deg,#2f6fa8,#0d3a66)}
+.ks-kat-card:nth-child(5n+4) .ks-kat-icon{background:linear-gradient(135deg,#5a89b8,#2f6fa8)}
+.ks-kat-card:nth-child(5n+5) .ks-kat-icon{background:linear-gradient(135deg,#ffb300,#ff8a00);color:#0a2d52}
 .ks-kat-card:hover .ks-kat-icon{transform:rotate(-8deg) scale(1.06)}
 .ks-kat-name{font-family:var(--font-display);font-size:1rem;font-weight:800;color:#0d3a66;margin:.95rem 0 .3rem}
 .ks-kat-text{font-size:.76rem;line-height:1.65;color:#718396;margin:0}
@@ -236,11 +224,12 @@
 .ks-prestasi-medal{position:absolute;z-index:2;right:-7px;bottom:-7px;width:32px;height:32px;border-radius:10px;
   display:flex;align-items:center;justify-content:center;font-size:.8rem;color:#fff;
   background:linear-gradient(135deg,#ffd54a,#ffb300);box-shadow:0 8px 18px rgba(4,14,28,.28);border:2.5px solid #fff}
-.ks-prestasi-card:nth-child(2) .ks-prestasi-medal{background:linear-gradient(135deg,#9db2c8,#5a89b8)}
-.ks-prestasi-card:nth-child(3) .ks-prestasi-medal{background:linear-gradient(135deg,#d99a5b,#b06f2c)}
-.ks-prestasi-card:nth-child(4) .ks-prestasi-medal{background:linear-gradient(135deg,#2f6fa8,#0d3a66)}
-.ks-prestasi-card:nth-child(5) .ks-prestasi-medal{background:linear-gradient(135deg,#ffb300,#ff8a00);color:#0a2d52}
-.ks-prestasi-card:nth-child(6) .ks-prestasi-medal{background:linear-gradient(135deg,#0d3a66,#5a89b8)}
+.ks-prestasi-card:nth-child(6n+2) .ks-prestasi-medal{background:linear-gradient(135deg,#9db2c8,#5a89b8)}
+.ks-prestasi-card:nth-child(6n+3) .ks-prestasi-medal{background:linear-gradient(135deg,#d99a5b,#b06f2c)}
+.ks-prestasi-card:nth-child(6n+4) .ks-prestasi-medal{background:linear-gradient(135deg,#2f6fa8,#0d3a66)}
+.ks-prestasi-card:nth-child(6n+5) .ks-prestasi-medal{background:linear-gradient(135deg,#ffb300,#ff8a00);color:#0a2d52}
+.ks-prestasi-card:nth-child(6n+6) .ks-prestasi-medal{background:linear-gradient(135deg,#0d3a66,#5a89b8)}
+.ks-prestasi-body{min-width:0}
 .ks-prestasi-body h3{margin:0;font-family:var(--font-display);font-size:1.02rem;font-weight:800;color:#0d3a66;line-height:1.3}
 .ks-prestasi-body p{margin:.4rem 0 0;font-size:.8rem;line-height:1.7;color:#718396}
 .ks-prestasi-year{display:inline-block;margin-top:.55rem;font-size:.68rem;font-weight:800;letter-spacing:.06em;color:#b45309;
@@ -278,8 +267,6 @@
   .ks-prestasi-grid{grid-template-columns:1fr}
 }
 @media(max-width:950px){
-  .ks-hero-inner{grid-template-columns:1fr;gap:2rem}
-  .hero-photo{height:360px;transform:translateY(-18px) rotate(1deg)}
   .ks-intro-grid{grid-template-columns:1fr;gap:3rem}
 }
 @media(max-width:768px){
@@ -287,12 +274,11 @@
   .ks-hero-inner{padding:clamp(3rem,8vh,4.5rem) 5% 3.6rem;width:100%}
   .ks-hero::after{display:none!important}
   .ks-title{font-size:clamp(3.6rem,13vw,6.2rem);margin-top:0}
-  .hero-photo{height:300px}
-  .ks-section,.ks-intro,.ks-slider{padding:48px 0 54px}
-  .ks-kategori,.ks-prestasi{padding:48px 0 54px}
-  .ks-intro-grid{grid-template-columns:1fr;gap:2rem}
+  .ks-intro,.ks-slider,.ks-kategori,.ks-prestasi{padding:48px 0 54px}
+  .ks-intro-grid{gap:2rem}
   .ks-cta{padding:42px 1.2rem 48px;margin-bottom:3.5rem;width:100%;border-radius:20px}
   .ks-kat-grid{grid-template-columns:1fr 1fr;gap:.8rem}
+  .ks-kat-grid .ks-kat-card:last-child:nth-child(odd){grid-column:1/-1}
   .ks-mini-stats{grid-template-columns:1fr;gap:.8rem}
   .ks-arrow{width:40px;height:40px;font-size:.85rem}
   .ks-arrow.ks-prev{left:6px}
@@ -301,8 +287,12 @@
   .ks-slide-cap{padding:0 1rem 1.2rem}
   .ks-slide-cap h3{font-size:1.35rem}
   .ks-slide-meta span{font-size:.72rem;padding:.35rem .7rem}
-  .home-orn, .ks-prestasi::before{display:none!important}
+  .home-orn,.ks-prestasi::before{display:none!important}
   [data-reveal]{opacity:1!important;transform:none!important}
+}
+@media(prefers-reduced-motion:reduce){
+  .ks-track,.ks-prestasi-media img,.ks-kat-icon,.ks-mini,.ks-kat-card,.ks-prestasi-card{transition:none!important}
+  [data-reveal]{opacity:1!important;transform:none!important;transition:none!important}
 }
 </style>
 
@@ -359,8 +349,6 @@ html body.theme-dark .ks-page .ks-ref-ornament-image{
 }
 html body.theme-dark .ks-page .ks-title .ks-white{color:#fff}
 html body.theme-dark .ks-page .ks-kicker{background:rgba(255,111,0,.1);border-color:rgba(255,179,0,.3);color:#ffb347}
-html body.theme-dark .ks-page .ks-lead{color:#a9bbcd}
-html body.theme-dark .ks-page .ks-pill{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.14);color:#e6eef7;box-shadow:0 8px 24px rgba(0,0,0,.35)}
 
 /* ---------- 1. PENGANTAR ---------- */
 html body.theme-dark .ks-page .ks-intro{background:#0a1928}
@@ -382,10 +370,11 @@ html body.theme-dark .ks-page .ks-slider-note{color:#9fb2c6}
 html body.theme-dark .ks-page .ks-viewport{box-shadow:0 34px 80px rgba(0,0,0,.6);border-color:rgba(255,255,255,.12)}
 html body.theme-dark .ks-page .ks-dot{background:rgba(255,255,255,.22)}
 html body.theme-dark .ks-page .ks-dot.active{background:linear-gradient(90deg,#ffd54a,#ffb300)}
+html body.theme-dark .ks-page .ks-arrow:focus-visible,html body.theme-dark .ks-page .ks-dot:focus-visible{outline-color:#ffd54a}
 html body.theme-dark .ks-page .ks-counter{color:#8fa3b8}
 html body.theme-dark .ks-page .ks-counter b{color:#fff}
 
-/* ---------- 3. KATEGORI ---------- */
+/* ---------- 3. BIDANG ---------- */
 html body.theme-dark .ks-page .ks-kategori{background:#0a1928}
 html body.theme-dark .ks-page .ks-kat-card{background:#0f2236;border-color:rgba(255,255,255,.1)}
 html body.theme-dark .ks-page .ks-kat-card:hover{border-color:rgba(255,213,74,.35);box-shadow:0 26px 55px rgba(0,0,0,.55)}
@@ -408,7 +397,20 @@ html body.theme-dark .ks-page .ks-cta{background:linear-gradient(135deg,#0a1a2c 
 @endpush
 
 @section('content')
-<div class="ks-page">
+@php
+  $k = \App\Support\KaryaContent::get();
+  $s = $k['s'];
+  $slides = $k['slides'];
+  $products = $k['products'];
+  $cats = $k['categories'];
+  $fallback = $k['fallback'];
+  $has = fn ($key) => trim($s[$key]) !== '';
+  $stats = collect([1, 2, 3])->filter(fn ($n) => $has("stat_{$n}_num"));
+  $hasRight = $has('blurb_1') || $has('blurb_2');
+  $orn = '<div class="home-orn" aria-hidden="true"><span class="ho-chevron"></span><span class="ho-line"></span><span class="ho-dots"></span><span class="ho-ring"></span><span class="ho-gold"></span><span class="ho-square"></span></div>';
+@endphp
+
+<div class="ks-page" id="ksPage">
 
   <!-- HERO -->
   <section class="ks-hero">
@@ -422,10 +424,10 @@ html body.theme-dark .ks-page .ks-cta{background:linear-gradient(135deg,#0a1a2c 
     </div>
     <div class="ks-hero-inner">
       <div>
-        <div class="ks-kicker">Galeri Karya Peserta Didik</div>
+        @if($has('hero_kicker'))<div class="ks-kicker">{{ $s['hero_kicker'] }}</div>@endif
         <h1 class="ks-title">
-          <span class="ks-white">Karya</span>
-          <span class="ks-gold">Siswa</span>
+          <span class="ks-white">{{ $s['hero_title_1'] }}</span>
+          <span class="ks-gold">{{ $s['hero_title_2'] }}</span>
         </h1>
       </div>
     </div>
@@ -443,182 +445,74 @@ html body.theme-dark .ks-page .ks-cta{background:linear-gradient(135deg,#0a1a2c 
       <span class="ho-corner"></span>
     </div>
 
-    <div class="ks-section ks-intro-grid">
+    <div class="ks-section ks-intro-grid {{ $hasRight ? '' : 'is-single' }}">
       <div data-reveal="left">
-        <h2 class="big-heading">Karya nyata, <span>buah dari belajar.</span></h2>
-        <p class="ks-intro-note">Karya siswa adalah wujud nyata dari pembelajaran berbasis proyek dan kearifan lokal yang dikembangkan SMK Negeri 2 Mojokerto.</p>
+        <h2 class="big-heading">{{ $s['intro_title'] }}@if($has('intro_title_em')) <span>{{ $s['intro_title_em'] }}</span>@endif</h2>
+        @if($has('intro_note'))<p class="ks-intro-note">{{ $s['intro_note'] }}</p>@endif
 
-        <div class="ks-mini-stats" style="margin-top:2rem">
-          <div class="ks-mini" data-reveal>
-            <b><em>25+</em></b>
-            <span>Karya Per Tahun</span>
+        @if($stats->isNotEmpty())
+          <div class="ks-mini-stats">
+            @foreach($stats as $n)
+              <div class="ks-mini" data-reveal style="--d:{{ $loop->index }}">
+                <b><em>{{ $s["stat_{$n}_num"] }}</em></b>
+                @if($has("stat_{$n}_label"))<span>{{ $s["stat_{$n}_label"] }}</span>@endif
+              </div>
+            @endforeach
           </div>
-          <div class="ks-mini" data-reveal style="--d:1">
-            <b><em>5</em></b>
-            <span>Kompetensi Keahlian</span>
-          </div>
-          <div class="ks-mini" data-reveal style="--d:2">
-            <b><em>3</em></b>
-            <span>Kategori Unggulan</span>
-          </div>
-        </div>
+        @endif
 
-        <div class="ks-cat-line" data-reveal><i class="fas fa-layer-group"></i> Kategori karya yang dikembangkan</div>
-        <div class="ks-cat-chips" data-reveal>
-          <span class="ks-chip"><i class="fas fa-code"></i> Aplikasi &amp; IT</span>
-          <span class="ks-chip"><i class="fas fa-utensils"></i> Kuliner</span>
-          <span class="ks-chip"><i class="fas fa-palette"></i> Desain</span>
-          <span class="ks-chip"><i class="fas fa-seedling"></i> Produk Olahan</span>
-          <span class="ks-chip"><i class="fas fa-chart-line"></i> Bisnis &amp; Keuangan</span>
-        </div>
+        @if($cats->isNotEmpty())
+          @if($has('cat_line'))<div class="ks-cat-line" data-reveal><i class="fas fa-layer-group"></i> {{ $s['cat_line'] }}</div>@endif
+          <div class="ks-cat-chips" data-reveal>
+            @foreach($cats as $c)
+              <span class="ks-chip"><i class="fas {{ $c->icon }}"></i> {{ $c->label }}</span>
+            @endforeach
+          </div>
+        @endif
       </div>
 
-      <div data-reveal="right">
-        <p class="ks-blurb">Setiap kompetensi keahlian di Skaneda menghasilkan <strong>karya yang nyata dan aplikatif</strong> — dari aplikasi digital, produk kuliner, desain visual, hingga olahan hasil pertanian bernilai tambah. Karya-karya ini lahir dari <strong>praktik langsung, kerja sama industri, dan ajang lomba</strong>, sehingga peserta didik tidak hanya unggul secara teori, tetapi juga <strong>siap berkarya dan siap bekerja</strong> setelah lulus.</p>
-        <p class="ks-blurb" style="margin-top:1.2rem">Lewat galeri ini, kami mempersembahkan sebagian kecil dari <strong>kebanggaan Skaneda</strong> — bukti bahwa peserta didik SMK bisa menghasilkan karya yang membanggakan sekolah, keluarga, dan daerah.</p>
-      </div>
+      @if($hasRight)
+        <div data-reveal="right">
+          @if($has('blurb_1'))<p class="ks-blurb">{{ \App\Support\KaryaContent::rich($s['blurb_1']) }}</p>@endif
+          @if($has('blurb_2'))<p class="ks-blurb">{{ \App\Support\KaryaContent::rich($s['blurb_2']) }}</p>@endif
+        </div>
+      @endif
     </div>
   </section>
 
   <!-- 2. CAROUSEL / SLIDER GALERI KARYA SISWA -->
+  @if($slides->isNotEmpty())
   <section class="ks-slider">
-    <div class="home-orn" aria-hidden="true">
-      <span class="ho-chevron"></span>
-      <span class="ho-line"></span>
-      <span class="ho-dots"></span>
-      <span class="ho-ring"></span>
-      <span class="ho-gold"></span>
-      <span class="ho-square"></span>
-    </div>
+    {!! $orn !!}
 
     <div class="ks-section">
       <div class="ks-slider-head" data-reveal>
-        <h2 class="big-heading">Galeri karya <span>pilihan.</span></h2>
-        <p class="ks-slider-note">Geser atau gunakan tombol panah untuk menjelajahi karya — setiap slide memuat foto, judul karya, nama siswa, jurusan, dan tahun.</p>
+        <h2 class="big-heading">{{ $s['slider_title'] }}@if($has('slider_title_em')) <span>{{ $s['slider_title_em'] }}</span>@endif</h2>
+        @if($has('slider_note'))<p class="ks-slider-note">{{ $s['slider_note'] }}</p>@endif
       </div>
 
-      <div class="ks-carousel" data-reveal>
-        <div class="ks-viewport">
+      <div class="ks-carousel {{ $slides->count() < 2 ? 'is-single' : '' }}" data-reveal>
+        <div class="ks-viewport" id="ksViewport" tabindex="0" role="region" aria-roledescription="carousel" aria-label="Galeri karya siswa pilihan">
           <div class="ks-track" id="ksTrack">
-            <div class="ks-slide">
-              <img src="{{ asset('images/karya/multimie.jpeg') }}" alt="Karya APHP: MultiMie" loading="eager">
-              <span class="ks-slide-tag"><i class="fas fa-utensils"></i> Makanan</span>
-              <span class="ks-slide-no">01 / 08</span>
-              <div class="ks-slide-cap">
-                <h3>MultiMie</h3>
-                <p>Mi instan praktis dengan bumbu siap seduh — produk inovasi siswa APHP.</p>
-                <div class="ks-slide-meta">
-                  <span><i class="fas fa-user"></i> Tim APHP Angkatan 2023</span>
-                  <span><i class="fas fa-seedling"></i> Agribisnis Pengolahan Hasil Pertanian</span>
-                  <span><i class="fas fa-calendar-alt"></i> 2025</span>
+            @foreach($slides as $w)
+              <div class="ks-slide" role="group" aria-roledescription="slide" aria-label="Karya {{ $loop->iteration }} dari {{ $slides->count() }}">
+                <img src="{{ $w->cover }}" alt="Karya: {{ $w->title }}" loading="{{ $loop->first ? 'eager' : 'lazy' }}"
+                     onerror="this.onerror=null;this.src='{{ $fallback }}'">
+                <span class="ks-slide-tag"><i class="fas {{ $w->tag_icon }}"></i> {{ $w->tag_label }}</span>
+                <span class="ks-slide-no">{{ str_pad($loop->iteration, 2, '0', STR_PAD_LEFT) }} / {{ str_pad($slides->count(), 2, '0', STR_PAD_LEFT) }}</span>
+                <div class="ks-slide-cap">
+                  <h3>{{ $w->title }}</h3>
+                  @if($w->desc !== '')<p>{{ $w->desc }}</p>@endif
+                  @if($w->student !== '' || $w->major !== '' || $w->year !== '')
+                    <div class="ks-slide-meta">
+                      @if($w->student !== '')<span><i class="fas fa-user"></i> {{ $w->student }}</span>@endif
+                      @if($w->major !== '')<span><i class="fas {{ $w->major_icon }}"></i> {{ $w->major }}</span>@endif
+                      @if($w->year !== '')<span><i class="fas fa-calendar-alt"></i> {{ $w->year }}</span>@endif
+                    </div>
+                  @endif
                 </div>
               </div>
-            </div>
-
-            <div class="ks-slide">
-              <img src="{{ asset('images/karya/tambalbanexpres.jpeg') }}" alt="Karya RPL: Pengembangan Aplikasi Mobile" loading="lazy">
-              <span class="ks-slide-tag"><i class="fas fa-code"></i> Aplikasi &amp; IT</span>
-              <span class="ks-slide-no">02 / 08</span>
-              <div class="ks-slide-cap">
-                <h3>Aplikasi Tambal Ban Express</h3>
-                <p>Mengembangkan aplikasi layanan tambal ban berbasis web untuk memudahkan pemesanan dan pelayanan secara cepat dan praktis.</p>
-                <div class="ks-slide-meta">
-                  <span><i class="fas fa-user"></i> Kelas XII RPL</span>
-                  <span><i class="fas fa-laptop-code"></i> Rekayasa Perangkat Lunak</span>
-                  <span><i class="fas fa-calendar-alt"></i> 2024</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="ks-slide">
-              <img src="{{ asset('images/karya/bungatelang.jpeg') }}" alt="Sari Bunga Telang" loading="lazy">
-              <span class="ks-slide-tag"><i class="fas fa-bottle-water"></i> Minuman</span>
-              <span class="ks-slide-no">03 / 08</span>
-              <div class="ks-slide-cap">
-                <h3>Sari Bunga Telang</h3>
-                <p>Minuman herbal alami dari ekstrak bunga telang dengan warna biru khas dan cita rasa menyegarkan — inovasi olahan kreatif siswa APHP.</p>
-                <div class="ks-slide-meta">
-                  <span><i class="fas fa-user"></i> Kelas XII APHP</span>
-                  <span><i class="fas fa-utensils"></i> Kuliner</span>
-                  <span><i class="fas fa-calendar-alt"></i> 2024</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="ks-slide">
-              <img src="{{ asset('images/karya/pastry-kuliner.jpeg') }}" alt="Karya Kuliner: Pastry &amp; Bakery" loading="lazy">
-              <span class="ks-slide-tag"><i class="fas fa-utensils"></i> Makanan</span>
-              <span class="ks-slide-no">04 / 08</span>
-              <div class="ks-slide-cap">
-                <h3>Pastry &amp; Bakery Kreatif</h3>
-                <p>Pembuatan aneka kue dan roti dengan teknik dan resep pastry yang tepat, tampil cantik dan lezat.</p>
-                <div class="ks-slide-meta">
-                  <span><i class="fas fa-user"></i> Kelas XI Kuliner</span>
-                  <span><i class="fas fa-utensils"></i> Kuliner</span>
-                  <span><i class="fas fa-calendar-alt"></i> 2025</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="ks-slide">
-              <img src="{{ asset('images/karya/nirmana.jpeg') }}" alt="Nirmana 3D" loading="lazy">
-              <span class="ks-slide-tag"><i class="fas fa-palette"></i> Produk Kreatif</span>
-              <span class="ks-slide-no">05 / 08</span>
-              <div class="ks-slide-cap">
-                <h3>Nirmana 3D</h3>
-                <p>Mengeksplorasi bentuk, ruang, tekstur, dan komposisi untuk menghasilkan karya tiga dimensi yang harmonis dan menarik.</p>
-                <div class="ks-slide-meta">
-                  <span><i class="fas fa-user"></i> Kelas XII DKV</span>
-                  <span><i class="fas fa-palette"></i> Desain Komunikasi Visual</span>
-                  <span><i class="fas fa-calendar-alt"></i> 2025</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="ks-slide">
-              <img src="{{ asset('images/karya/estrakbuahmojo.jpeg') }}" alt="Maja Mojo" loading="lazy">
-              <span class="ks-slide-tag"><i class="fas fa-bottle-water"></i> Minuman</span>
-              <span class="ks-slide-no">06 / 08</span>
-              <div class="ks-slide-cap">
-                <h3>Maja Mojo</h3>
-                <p>Minuman olahan berbahan dasar buah mojo dengan cita rasa unik, inovasi kreatif siswa RPL dalam memanfaatkan bahan pangan lokal.</p>
-                <div class="ks-slide-meta">
-                  <span><i class="fas fa-user"></i> Tim RPL</span>
-                  <span><i class="fas fa-laptop-code"></i> Rekayasa Perangkat Lunak</span>
-                  <span><i class="fas fa-calendar-alt"></i> 2024</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="ks-slide">
-              <img src="{{ asset('images/karya/vocamo.png') }}" alt="Karya APHP: Produk Olahan Pertanian" loading="lazy">
-              <span class="ks-slide-tag"><i class="fas fa-seedling"></i> Produk Olahan</span>
-              <span class="ks-slide-no">07 / 08</span>
-              <div class="ks-slide-cap">
-                <h3>Produk Olahan Hasil Pertanian</h3>
-                <p>Mengolah bahan pangan menjadi berbagai produk roti bernilai tambah — dari roti manis, roti isi, hingga kreasi roti inovatif.</p>
-                <div class="ks-slide-meta">
-                  <span><i class="fas fa-user"></i> APHP</span>
-                  <span><i class="fas fa-seedling"></i> Agribisnis Pengolahan Hasil Pertanian</span>
-                  <span><i class="fas fa-calendar-alt"></i> 2024</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="ks-slide">
-              <img src="{{ asset('images/karya/bei-mie.jpeg') }}" alt="Bei Mie" loading="lazy">
-              <span class="ks-slide-tag"><i class="fas fa-utensils"></i> Makanan</span>
-              <span class="ks-slide-no">08 / 08</span>
-              <div class="ks-slide-cap">
-                <h3>Bei Mie</h3>
-                <p>Mie unik berbahan dasar daun murbei yang alami dan kaya manfaat, perpaduan cita rasa lezat dengan pilihan yang lebih sehat.</p>
-                <div class="ks-slide-meta">
-                  <span><i class="fas fa-user"></i> Kelas XI Kuliner</span>
-                  <span><i class="fas fa-utensils"></i> Kuliner</span>
-                  <span><i class="fas fa-calendar-alt"></i> 2025</span>
-                </div>
-              </div>
-            </div>
+            @endforeach
           </div>
         </div>
 
@@ -626,165 +520,65 @@ html body.theme-dark .ks-page .ks-cta{background:linear-gradient(135deg,#0a1a2c 
         <button class="ks-arrow ks-next" id="ksNext" type="button" aria-label="Karya berikutnya"><i class="fas fa-chevron-right"></i></button>
 
         <div class="ks-dots" id="ksDots"></div>
-        <div class="ks-counter"><span id="ksCur">1</span> / <b id="ksTotal">8</b></div>
+        <div class="ks-counter" aria-live="polite"><span id="ksCur">1</span> / <b id="ksTotal">{{ $slides->count() }}</b></div>
       </div>
     </div>
   </section>
+  @endif
 
-  <!-- 3. KATEGORI KARYA -->
+  <!-- 3. BIDANG / KATEGORI KARYA -->
+  @if($cats->isNotEmpty())
   <section class="ks-kategori">
-    <div class="home-orn" aria-hidden="true">
-      <span class="ho-chevron"></span>
-      <span class="ho-line"></span>
-      <span class="ho-dots"></span>
-      <span class="ho-ring"></span>
-      <span class="ho-gold"></span>
-      <span class="ho-square"></span>
-    </div>
+    {!! $orn !!}
 
     <div class="ks-section">
       <div class="ks-slider-head" data-reveal>
-        <h2 class="big-heading">Lima bidang, <span>ratusan karya.</span></h2>
-        <p class="ks-slider-note">Karya siswa tersebar di seluruh kompetensi keahlian — semuanya lahir dari praktik nyata dan kemitraan industri.</p>
+        <h2 class="big-heading">{{ $s['kat_title'] }}@if($has('kat_title_em')) <span>{{ $s['kat_title_em'] }}</span>@endif</h2>
+        @if($has('kat_note'))<p class="ks-slider-note">{{ $s['kat_note'] }}</p>@endif
       </div>
 
       <div class="ks-kat-grid">
-        <div class="ks-kat-card" data-reveal>
-          <div class="ks-kat-icon"><i class="fas fa-code"></i></div>
-          <h3 class="ks-kat-name">Aplikasi &amp; IT</h3>
-          <p class="ks-kat-text">Aplikasi web, mobile, dan sistem informasi buatan siswa RPL.</p>
-        </div>
-        <div class="ks-kat-card" data-reveal style="--d:1">
-          <div class="ks-kat-icon"><i class="fas fa-utensils"></i></div>
-          <h3 class="ks-kat-name">Kuliner</h3>
-          <p class="ks-kat-text">Hidangan nusantara, pastry &amp; bakery, dan inovasi menu.</p>
-        </div>
-        <div class="ks-kat-card" data-reveal style="--d:2">
-          <div class="ks-kat-icon"><i class="fas fa-palette"></i></div>
-          <h3 class="ks-kat-name">Desain Visual</h3>
-          <p class="ks-kat-text">Desain grafis, ilustrasi, branding, dan media promosi.</p>
-        </div>
-        <div class="ks-kat-card" data-reveal style="--d:3">
-          <div class="ks-kat-icon"><i class="fas fa-seedling"></i></div>
-          <h3 class="ks-kat-name">Produk Olahan</h3>
-          <p class="ks-kat-text">Pengolahan hasil pertanian &amp; perikanan bernilai tambah.</p>
-        </div>
-        <div class="ks-kat-card" data-reveal style="--d:4">
-          <div class="ks-kat-icon"><i class="fas fa-chart-line"></i></div>
-          <h3 class="ks-kat-name">Bisnis &amp; Keuangan</h3>
-          <p class="ks-kat-text">Layanan perbankan syariah &amp; administrasi keuangan.</p>
-        </div>
+        @foreach($cats as $c)
+          <div class="ks-kat-card" data-reveal style="--d:{{ $loop->index % 6 }}">
+            <div class="ks-kat-icon"><i class="fas {{ $c->icon }}"></i></div>
+            <h3 class="ks-kat-name">{{ $c->label }}</h3>
+            @if(trim((string) $c->description) !== '')<p class="ks-kat-text">{{ $c->description }}</p>@endif
+          </div>
+        @endforeach
       </div>
     </div>
   </section>
+  @endif
 
   <!-- 4. PRODUK KARYA SISWA -->
+  @if($products->isNotEmpty())
   <section class="ks-prestasi">
-    <div class="home-orn" aria-hidden="true">
-      <span class="ho-chevron"></span>
-      <span class="ho-line"></span>
-      <span class="ho-dots"></span>
-      <span class="ho-ring"></span>
-      <span class="ho-gold"></span>
-      <span class="ho-square"></span>
-    </div>
+    {!! $orn !!}
 
     <div class="ks-section">
       <div class="ks-prestasi-head" data-reveal>
-        <h2 class="big-heading">Produk nyata, <span>karya siswa sendiri.</span></h2>
-        <p class="ks-prestasi-note">Sebagian produk hasil tangan peserta didik Skaneda — dari aplikasi, kuliner, desain, hingga olahan pertanian dan layanan keuangan syariah.</p>
+        <h2 class="big-heading">{{ $s['prod_title'] }}@if($has('prod_title_em')) <span>{{ $s['prod_title_em'] }}</span>@endif</h2>
+        @if($has('prod_note'))<p class="ks-prestasi-note">{{ $s['prod_note'] }}</p>@endif
       </div>
 
       <div class="ks-prestasi-grid">
-        @if(isset($studentWorks) && count($studentWorks) > 0)
-          @foreach($studentWorks as $index => $item)
-            <div class="ks-prestasi-card" data-reveal style="--d:{{ $index % 6 }}">
-              <div class="ks-prestasi-media">
-                @if($item->media_url || $item->image_url)
-                  <img src="{{ asset($item->media_url ?? $item->image_url) }}" alt="{{ $item->title }}" loading="lazy">
-                @else
-                  <img src="{{ asset('images/karya/multimie.jpeg') }}" alt="{{ $item->title }}" loading="lazy">
-                @endif
-                <div class="ks-prestasi-medal"><i class="fas fa-lightbulb"></i></div>
-              </div>
-              <div class="ks-prestasi-body">
-                <h3>{{ $item->title }}</h3>
-                <p>{{ $item->description }}</p>
-                <span class="ks-prestasi-year">{{ $item->major->name ?? $item->student_name }} &middot; {{ $item->student_name }}</span>
-              </div>
-            </div>
-          @endforeach
-        @else
-          <div class="ks-prestasi-card" data-reveal>
+        @foreach($products as $w)
+          <div class="ks-prestasi-card" data-reveal style="--d:{{ $loop->index % 6 }}">
             <div class="ks-prestasi-media">
-              <img src="{{ asset('images/karya/multimie.jpeg') }}" alt="MultiMie" loading="lazy">
-              <div class="ks-prestasi-medal"><i class="fas fa-utensils"></i></div>
+              <img src="{{ $w->cover }}" alt="{{ $w->title }}" loading="lazy" onerror="this.onerror=null;this.src='{{ $fallback }}'">
+              <div class="ks-prestasi-medal"><i class="fas {{ $w->tag_icon }}"></i></div>
             </div>
             <div class="ks-prestasi-body">
-              <h3>MultiMie</h3>
-              <p>Mi instan praktis dengan bumbu siap seduh — produk inovasi siswa APHP.</p>
-              <span class="ks-prestasi-year">APHP &middot; 2025</span>
+              <h3>{{ $w->title }}</h3>
+              @if($w->desc !== '')<p>{{ $w->desc }}</p>@endif
+              @if($w->pill !== '')<span class="ks-prestasi-year">{{ $w->pill }}</span>@endif
             </div>
           </div>
-          <div class="ks-prestasi-card" data-reveal style="--d:1">
-            <div class="ks-prestasi-media">
-              <img src="{{ asset('images/karya/bungatelang.jpeg') }}" alt="Sari Bunga Telang" loading="lazy">
-              <div class="ks-prestasi-medal"><i class="fas fa-bottle-water"></i></div>
-            </div>
-            <div class="ks-prestasi-body">
-              <h3>Sari Bunga Telang</h3>
-              <p>Minuman herbal alami dari ekstrak bunga telang dengan warna biru khas dan cita rasa menyegarkan — inovasi olahan kreatif siswa APHP.</p>
-              <span class="ks-prestasi-year">APHP &middot; 2025</span>
-            </div>
-          </div>
-          <div class="ks-prestasi-card" data-reveal style="--d:2">
-            <div class="ks-prestasi-media">
-              <img src="{{ asset('images/karya/nirmana.jpeg') }}" alt="Nirmana 3D" loading="lazy">
-              <div class="ks-prestasi-medal"><i class="fas fa-palette"></i></div>
-            </div>
-            <div class="ks-prestasi-body">
-              <h3>Nirmana 3D</h3>
-              <p>Mengeksplorasi bentuk, ruang, tekstur, dan komposisi untuk menghasilkan karya tiga dimensi yang harmonis dan menarik.</p>
-              <span class="ks-prestasi-year">DKV &middot; 2024</span>
-            </div>
-          </div>
-          <div class="ks-prestasi-card" data-reveal style="--d:3">
-            <div class="ks-prestasi-media">
-              <img src="{{ asset('images/karya/beimie.jpeg') }}" alt="Bei Mie" loading="lazy">
-              <div class="ks-prestasi-medal"><i class="fas fa-utensils"></i></div>
-            </div>
-            <div class="ks-prestasi-body">
-              <h3>Bei Mie</h3>
-              <p>Mie unik berbahan dasar daun murbei yang alami dan kaya manfaat, perpaduan cita rasa lezat dengan pilihan yang lebih sehat.</p>
-              <span class="ks-prestasi-year">Kuliner &middot; 2025</span>
-            </div>
-          </div>
-          <div class="ks-prestasi-card" data-reveal style="--d:4">
-            <div class="ks-prestasi-media">
-              <img src="{{ asset('images/karya/estrakmojo.jpeg') }}" alt="Maja Mojo" loading="lazy">
-              <div class="ks-prestasi-medal"><i class="fas fa-bottle-water"></i></div>
-            </div>
-            <div class="ks-prestasi-body">
-              <h3>Maja Mojo</h3>
-              <p>Minuman olahan berbahan dasar buah mojo dengan cita rasa unik, inovasi kreatif siswa RPL dalam memanfaatkan bahan pangan lokal.</p>
-              <span class="ks-prestasi-year">RPL &middot; 2024</span>
-            </div>
-          </div>
-          <div class="ks-prestasi-card" data-reveal style="--d:5">
-            <div class="ks-prestasi-media">
-              <img src="{{ asset('images/karya/dapur-produksi.png') }}" alt="Bakery &amp; Pastry karya siswa Kuliner" loading="lazy">
-              <div class="ks-prestasi-medal"><i class="fas fa-utensils"></i></div>
-            </div>
-            <div class="ks-prestasi-body">
-              <h3>Bakery &amp; Pastry</h3>
-              <p>Kreasi dessert bercita rasa khas Indonesia, hasil inovasi menu siswa jurusan Kuliner.</p>
-              <span class="ks-prestasi-year">Kuliner &middot; 2025</span>
-            </div>
-          </div>
-        @endif
+        @endforeach
       </div>
     </div>
   </section>
+  @endif
 
   <!-- CTA -->
   <section class="ks-cta">
@@ -797,10 +591,10 @@ html body.theme-dark .ks-page .ks-cta{background:linear-gradient(135deg,#0a1a2c 
       <span class="ho-square"></span>
       <span class="ho-corner"></span>
     </div>
-    <h2>Karya berikutnya bisa jadi <em>karyamu.</em></h2>
-    <p>Bergabunglah bersama SMK Negeri 2 Mojokerto dan wujudkan kreativitasmu menjadi karya nyata — didukung guru profesional, fasilitas lengkap, dan kemitraan dunia usaha &amp; industri.</p>
-    <a href="{{ route('kontak') }}" class="ks-cta-btn"><i class="fas fa-paper-plane"></i> Hubungi Sekolah</a>
-    <div class="ks-cta-note"><i class="fas fa-info-circle"></i> Informasi resmi: smkn2mojokerto.sch.id · #DisiplinBerprestasi</div>
+    <h2>{{ $s['cta_title'] }}@if($has('cta_title_em')) <em>{{ $s['cta_title_em'] }}</em>@endif</h2>
+    @if($has('cta_text'))<p>{{ $s['cta_text'] }}</p>@endif
+    <a href="{{ $k['ctaUrl'] }}" class="ks-cta-btn"><i class="fas fa-paper-plane"></i> {{ $s['cta_btn_text'] }}</a>
+    @if($has('cta_note'))<div class="ks-cta-note"><i class="fas fa-info-circle"></i> {{ $s['cta_note'] }}</div>@endif
   </section>
 
 </div>
@@ -808,96 +602,94 @@ html body.theme-dark .ks-page .ks-cta{background:linear-gradient(135deg,#0a1a2c 
 
 @push('scripts')
 <script>
-  /* ---- Scroll Reveal ---- */
-  (function () {
-    var revealEls = document.querySelectorAll('[data-reveal]');
-    if (!('IntersectionObserver' in window)) {
-      revealEls.forEach(function (el) { el.classList.add('revealed'); });
-      return;
-    }
+(function () {
+  'use strict';
+
+  /* ---------- SCROLL REVEAL ---------- */
+  var revealEls = document.querySelectorAll('[data-reveal]');
+  if ('IntersectionObserver' in window) {
     var obs = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
         if (e.isIntersecting) { e.target.classList.add('revealed'); obs.unobserve(e.target); }
       });
     }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
     revealEls.forEach(function (el) { obs.observe(el); });
+  } else {
+    revealEls.forEach(function (el) { el.classList.add('revealed'); });
+  }
 
-    setTimeout(function () {
-      revealEls.forEach(function (el) { el.classList.add('revealed'); });
-    }, 1200);
+  /* ---------- CAROUSEL KARYA SISWA ---------- */
+  var track = document.getElementById('ksTrack');
+  if (!track || !track.children.length) return;
 
-    var pending = Array.prototype.slice.call(revealEls);
-    var checks = 0;
-    var iv = setInterval(function () {
-      checks++;
-      var vh = window.innerHeight;
-      pending = pending.filter(function (el) {
-        if (el.classList.contains('revealed')) return false;
-        var r = el.getBoundingClientRect();
-        if (r.top < vh + 220 && r.bottom > -40) { el.classList.add('revealed'); return false; }
-        return true;
-      });
-      if (checks >= 8) {
-        pending.forEach(function (el) { el.classList.add('revealed'); });
-        clearInterval(iv);
-      } else if (pending.length === 0) {
-        clearInterval(iv);
-      }
-    }, 450);
-  })();
+  var slides = track.children;
+  var total = slides.length;
+  var cur = 0;
+  var viewport = document.getElementById('ksViewport');
+  var dotsWrap = document.getElementById('ksDots');
+  var curLabel = document.getElementById('ksCur');
+  var autoTimer = null;
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ---- CAROUSEL / SLIDER KARYA SISWA ---- */
-  (function () {
-    var track = document.getElementById('ksTrack');
-    var slides = track.children;
-    var total = slides.length;
-    var cur = 0;
-    var dotsWrap = document.getElementById('ksDots');
-    var curLabel = document.getElementById('ksCur');
-    var totalLabel = document.getElementById('ksTotal');
-    var autoTimer = null;
+  var dots = [];
+  for (var i = 0; i < total; i++) {
+    var d = document.createElement('button');
+    d.className = 'ks-dot' + (i === 0 ? ' active' : '');
+    d.type = 'button';
+    d.setAttribute('aria-label', 'Karya ke-' + (i + 1));
+    d.addEventListener('click', (function (idx) { return function () { go(idx); restart(); }; })(i));
+    dotsWrap.appendChild(d);
+    dots.push(d);
+  }
 
-    totalLabel.textContent = total;
-
+  function go(idx) {
+    cur = (idx + total) % total;
+    track.style.transform = 'translateX(-' + (cur * 100) + '%)';
     for (var i = 0; i < total; i++) {
-      var d = document.createElement('button');
-      d.className = 'ks-dot' + (i === 0 ? ' active' : '');
-      d.type = 'button';
-      d.setAttribute('aria-label', 'Karya ke-' + (i + 1));
-      d.addEventListener('click', (function (idx) { return function () { go(idx); restart(); }; })(i));
-      dotsWrap.appendChild(d);
+      dots[i].classList.toggle('active', i === cur);
+      slides[i].setAttribute('aria-hidden', i === cur ? 'false' : 'true');
     }
-    var dots = dotsWrap.children;
+    curLabel.textContent = cur + 1;
+  }
 
-    function go(idx) {
-      cur = (idx + total) % total;
-      track.style.transform = 'translateX(-' + (cur * 100) + '%)';
-      for (var i = 0; i < total; i++) {
-        dots[i].className = 'ks-dot' + (i === cur ? ' active' : '');
-      }
-      curLabel.textContent = cur + 1;
-    }
+  function stop() { if (autoTimer) { clearInterval(autoTimer); autoTimer = null; } }
+  function restart() {
+    stop();
+    if (total < 2 || reduceMotion || document.hidden) return;
+    autoTimer = setInterval(function () { go(cur + 1); }, 6000);
+  }
 
-    document.getElementById('ksPrev').addEventListener('click', function () { go(cur - 1); restart(); });
-    document.getElementById('ksNext').addEventListener('click', function () { go(cur + 1); restart(); });
+  document.getElementById('ksPrev').addEventListener('click', function () { go(cur - 1); restart(); });
+  document.getElementById('ksNext').addEventListener('click', function () { go(cur + 1); restart(); });
 
-    function restart() {
-      if (autoTimer) clearInterval(autoTimer);
-      autoTimer = setInterval(function () { go(cur + 1); }, 6000);
+  /* jeda saat kursor di atas slider / fokus keyboard / tab tidak aktif */
+  var box = viewport.parentNode;
+  box.addEventListener('mouseenter', stop);
+  box.addEventListener('mouseleave', restart);
+  box.addEventListener('focusin', stop);
+  box.addEventListener('focusout', restart);
+  document.addEventListener('visibilitychange', function () { document.hidden ? stop() : restart(); });
+
+  /* panah keyboard saat slider difokuskan */
+  viewport.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowLeft') { e.preventDefault(); go(cur - 1); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); go(cur + 1); }
+  });
+
+  /* geser jari kiri/kanan di HP */
+  var startX = null;
+  viewport.addEventListener('touchstart', function (e) { startX = e.touches[0].clientX; stop(); }, { passive: true });
+  viewport.addEventListener('touchend', function (e) {
+    if (startX !== null) {
+      var dx = e.changedTouches[0].clientX - startX;
+      if (Math.abs(dx) > 48) go(cur + (dx < 0 ? 1 : -1));
+      startX = null;
     }
     restart();
+  }, { passive: true });
 
-    var startX = null;
-    var vp = track.parentElement;
-    vp.addEventListener('touchstart', function (e) { startX = e.touches[0].clientX; }, { passive: true });
-    vp.addEventListener('touchend', function (e) {
-      if (startX === null) return;
-      var dx = e.changedTouches[0].clientX - startX;
-      if (Math.abs(dx) > 48) { go(cur + (dx < 0 ? 1 : -1)); restart(); }
-      startX = null;
-    }, { passive: true });
-
-    slides[0].querySelector('img').loading = 'eager';
-  })();
+  go(0);
+  restart();
+})();
 </script>
 @endpush

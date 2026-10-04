@@ -22,6 +22,33 @@ use App\Http\Controllers\Admin\LpsAdminController;
 use App\Http\Controllers\Admin\RplAdminController;
 use App\Http\Controllers\Admin\BkkAdminController;
 use App\Http\Controllers\Admin\KegiatanAdminController;
+use App\Http\Controllers\Admin\KaryaAdminController;
+
+Route::middleware(['auth'])            // <- samakan dengan grup admin kamu
+    ->prefix('admin/karya')
+    ->name('admin.karya.')
+    ->group(function () {
+        Route::get('/', [KaryaAdminController::class, 'index'])->name('index');
+
+        // teks halaman
+        Route::put('/settings', [KaryaAdminController::class, 'updateSettings'])->name('settings.update');
+
+        // karya
+        Route::post('/works', [KaryaAdminController::class, 'storeWork'])->name('works.store');
+        Route::put('/works/{work}', [KaryaAdminController::class, 'updateWork'])->name('works.update');
+        Route::delete('/works/{work}', [KaryaAdminController::class, 'destroyWork'])->name('works.destroy');
+        Route::post('/works/{work}/toggle', [KaryaAdminController::class, 'toggleWork'])->name('works.toggle');
+        Route::post('/works/{work}/move/{direction}', [KaryaAdminController::class, 'moveWork'])
+            ->whereIn('direction', ['up', 'down'])->name('works.move');
+
+        // bidang / kategori
+        Route::post('/categories', [KaryaAdminController::class, 'storeCategory'])->name('categories.store');
+        Route::put('/categories/{category}', [KaryaAdminController::class, 'updateCategory'])->name('categories.update');
+        Route::delete('/categories/{category}', [KaryaAdminController::class, 'destroyCategory'])->name('categories.destroy');
+        Route::post('/categories/{category}/move/{direction}', [KaryaAdminController::class, 'moveCategory'])
+            ->whereIn('direction', ['up', 'down'])->name('categories.move');
+    });
+
 
 Route::middleware(['auth'])            // <- samakan dengan grup admin kamu
     ->prefix('admin/kegiatan')
