@@ -397,7 +397,7 @@
     .ft-map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
     .ft-map[data-reveal]{transform:scale(.98)}
     .ft-map[data-reveal].revealed{transform:none}
-    .ft-pin{position:absolute;top:16%;left:50%;z-index:3;display:flex;flex-direction:column;align-items:center;pointer-events:none}
+    .ft-pin{position:absolute;top:50%;left:50%;transform:translate(-50%,calc(-100% - 11px));z-index:3;display:flex;flex-direction:column;align-items:center;pointer-events:none}
     .ft-pin-badge{position:relative;z-index:2;width:54px;height:54px;border-radius:50% 50% 50% 4px;transform:rotate(-45deg);background:linear-gradient(135deg,#f59e0b,#ffb43a);display:flex;align-items:center;justify-content:center;box-shadow:0 12px 26px rgba(245,158,11,.5);border:3px solid #fff}
     .ft-pin-badge img{width:28px;height:28px;transform:rotate(45deg);object-fit:contain}
     .ft-pin-ring{position:absolute;top:27px;left:0;width:54px;height:54px;border-radius:50%;background:rgba(245,158,11,.4);animation:ftPulse 2.8s cubic-bezier(.22,.61,.36,1) infinite}
@@ -2620,12 +2620,16 @@
 
 <!-- ================= KONTAK & FOOTER ================= -->
 @php
-  $contactAddress = \App\Models\SiteSetting::get('contact_address');
+  $contactAddress = \App\Models\SiteSetting::get('contact_address')
+      ?: 'Jl. Raya Pulorejo, Mergelo, Pulorejo, Kec. Prajurit Kulon, Kota Mojokerto, Jawa Timur 61325';
   $contactPhone   = \App\Models\SiteSetting::get('contact_phone');
   $contactEmail   = \App\Models\SiteSetting::get('contact_email');
   $contactHours   = \App\Models\SiteSetting::get('contact_hours');
-  $mapEmbedUrl    = 'https://www.google.com/maps?q=' . rawurlencode($contactAddress) . '&output=embed';
-  $mapOpenUrl     = 'https://www.google.com/maps/search/?api=1&query=' . urlencode($contactAddress);
+
+  // Lokasi peta: pakai NAMA TEMPAT sekolah (bukan alamat jalan)
+  $mapQuery    = 'SMK Negeri 2 Kota Mojokerto';
+  $mapEmbedUrl = 'https://www.google.com/maps?q=' . rawurlencode($mapQuery) . '&hl=id&z=17&output=embed';
+  $mapOpenUrl  = 'https://www.google.com/maps/search/?api=1&query=' . urlencode($mapQuery);
 @endphp
 <section class="kontak-section section-py" id="kontak" aria-label="Kontak dan lokasi sekolah">
   <div class="container">
