@@ -546,7 +546,7 @@
       <div data-reveal="right">
         <div class="ek-intro-visual">
           <span class="ek-intro-badge"><i class="fas fa-camera"></i> #SkanedaBerkarakter</span>
-          <img src="{{ asset('images/ekstra/paskibra.jpg') }}" alt="Pasukan pengibar bendera SMK Negeri 2 Mojokerto" loading="eager">
+          <img src="{{ asset('images/ekstra/paskibra.jpeg') }}" alt="Pasukan pengibar bendera SMK Negeri 2 Mojokerto" loading="eager">
           <div class="ek-intro-cap"><strong>Skaneda Berkarakter</strong><span>Latihan Paskibra — kedisiplinan baris-berbaris.</span></div>
         </div>
       </div>

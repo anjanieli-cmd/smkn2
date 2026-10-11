@@ -43,10 +43,6 @@ class PromptGuardService
         'lagu',
         'crypto',
         'kripto',
-        'menu kantin',
-        'persiapan',
-        'dipersiapkan',
-        'diperlukan',
         'benci',
         'suka',
         'cinta',
@@ -58,9 +54,6 @@ class PromptGuardService
         'baju',
         'sepatu',
         'celana',
-        'laptop',
-        'smartphone',
-        'handphone',
         'tokopedia',
         'shopee',
         'lazada',
@@ -73,9 +66,6 @@ class PromptGuardService
         'bengkel',
         'wisata',
         'hotel',
-        'restoran',
-        'makanan',
-        'minuman',
     ];
 
     /**
@@ -91,10 +81,10 @@ class PromptGuardService
         'afirmasi', 'bkk', 'loker', 'lowongan', 'dudi', 'industri', 'pkl', 'magang',
         'alumni', 'portofolio', 'evoice', 'e-voice', 'aspirasi', 'factcheck', 'fact check',
         'hoaks', 'hoax', 'berita', 'karya', 'prestasi', 'lks', 'virtual tour', 'tour', '360',
-        'kawi laras', 'kawilaras', 'matchmaker', 'jadwal', 'jam belajar', 'kbm',
+        'kawi laras', 'kawilaras', 'matchmaker', 'jadwal', 'jam belajar', 'pembelajaran', 'jam pembelajaran', 'kbm',
         'alamat', 'kontak', 'telepon', 'email', 'lokasi', 'tempat', 'fasilitas', 'perpus', 'perpustakaan', 'buku', 'literasi', 'baca',
         'lab', 'studio', 'masjid', 'musholla', 'kantin', 'gerbang', 'lobi', 'lapangan',
-        'aula', 'parkir', 'dapur', 'ruang', 'gedung', 'area', 'visi', 'misi', 'profil', 'sejarah', 'struktur', 'komite', 'berdiri', 'pendirian', 'kranggan', 'adiwiyata', 'pk', 'tefa', 'tanya', 'mau tanya', 'nanya', 'mau nanya', 'nanya dong', 'nanya-nanya', 'aku mau nanya', 'nara'
+        'aula', 'parkir', 'dapur', 'ruang', 'gedung', 'area', 'visi', 'misi', 'profil', 'sejarah', 'struktur', 'komite', 'berdiri', 'pendirian', 'kranggan', 'adiwiyata', 'pk', 'tefa', 'tanya', 'mau tanya', 'nanya', 'mau nanya', 'nanya dong', 'nanya-nanya', 'nanya untuk bertanya', 'bertanya', 'aku mau nanya', 'nara'
     ];
 
     /**

@@ -255,9 +255,14 @@ class KnowledgeRetrieverService
             $fallbackContexts[] = "[Struktur Organisasi] SMKN 2 Mojokerto dipimpin oleh Kepala Sekolah Drs. Iswahyudi, M.Pd., didampingi Komite Sekolah, Wakil Kepala Sekolah (Waka), Ketua Program Keahlian (Kaprog) 5 Jurusan, serta Dewan Guru & Staf Tata Usaha.";
         }
 
-        // Check Jam Belajar & Operasional
-        if (str_contains($normalizedMessage, 'jam belajar') || str_contains($normalizedMessage, 'jadwal masuk') || str_contains($normalizedMessage, 'jam masuk') || str_contains($normalizedMessage, 'jam pulang') || str_contains($normalizedMessage, 'operasional')) {
-            $fallbackContexts[] = "[Tata Tertib] Jam Belajar dan Operasional Sekolah: Kegiatan Belajar Mengajar (KBM) dan operasional sekolah di SMKN 2 Mojokerto berlangsung hari Senin hingga Jumat pukul 07.00 WIB - 16.00 WIB. Gerbang sekolah ditutup tepat pukul 07.00 WIB. Hari Sabtu dan Minggu libur.";
+        // Check Jam Belajar / Jam Pembelajaran Siswa
+        if (str_contains($normalizedMessage, 'jam belajar') || str_contains($normalizedMessage, 'pembelajaran') || str_contains($normalizedMessage, 'jam pembelajaran') || str_contains($normalizedMessage, 'jadwal belajar') || str_contains($normalizedMessage, 'jam masuk') || str_contains($normalizedMessage, 'jam pulang') || str_contains($normalizedMessage, 'kbm')) {
+            $fallbackContexts[] = "[Jam Belajar / Pembelajaran Siswa] Jam Belajar / Pembelajaran (Kegiatan Belajar Mengajar / KBM Siswa) SMKN 2 Mojokerto berlangsung pada Hari Senin hingga Jumat pukul 06.45 WIB – 15.00 WIB. Pintu gerbang sekolah ditutup tepat pukul 06.45 WIB. Hari Sabtu dan Minggu Libur.";
+        }
+
+        // Check Jam Operasional Sekolah / Pelayanan Kantor TU
+        if (str_contains($normalizedMessage, 'operasional') || str_contains($normalizedMessage, 'jam operasional') || str_contains($normalizedMessage, 'jam kantor') || str_contains($normalizedMessage, 'pelayanan tu') || str_contains($normalizedMessage, 'kantor tu') || str_contains($normalizedMessage, 'tata usaha')) {
+            $fallbackContexts[] = "[Jam Operasional Sekolah / Pelayanan Kantor TU] Jam Operasional Sekolah & Pelayanan Kantor TU SMKN 2 Mojokerto berlangsung pada Hari Senin hingga Jumat pukul 07.00 WIB – 16.00 WIB. Hari Sabtu dan Minggu Libur.";
         }
 
         // Check Extracurriculars (Requires specific valid ekskul keyword or general list request)

@@ -7,6 +7,7 @@ use App\Models\Extracurricular;
 use App\Support\ApiResponse;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Str;
 
 class ExtracurricularAdminController extends Controller
@@ -67,6 +68,7 @@ class ExtracurricularAdminController extends Controller
         $validated['is_active'] = $validated['is_active'] ?? true;
 
         $extra = Extracurricular::create($validated);
+        Cache::forget('extracurriculars.active');
 
         return ApiResponse::success($extra, 'Ekstrakurikuler baru berhasil ditambahkan.', null, 201);
     }
@@ -125,6 +127,7 @@ class ExtracurricularAdminController extends Controller
         }
 
         $extra->update($validated);
+        Cache::forget('extracurriculars.active');
 
         return ApiResponse::success($extra, 'Data ekstrakurikuler berhasil diperbarui.');
     }
@@ -138,6 +141,7 @@ class ExtracurricularAdminController extends Controller
         }
 
         $extra->delete();
+        Cache::forget('extracurriculars.active');
 
         return ApiResponse::success(null, 'Ekstrakurikuler berhasil dihapus.');
     }

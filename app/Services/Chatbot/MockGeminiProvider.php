@@ -282,9 +282,14 @@ class MockGeminiProvider implements AIProviderInterface
             return "Halo! 👋 Informasi Pendaftaran PPDB SMKN 2 Kota Mojokerto:\n\n✨ **Biaya Pendaftaran**: **GRATIS (100% TIDAK DIPUNGUT BIAYA)**.\n📌 **4 Jalur Masuk**: 1. Jalur Afirmasi, 2. Jalur Prestasi (Rapor & Kejuaraan), 3. Jalur Zonasi, 4. Jalur Mutasi Orang Tua.\n📋 **Syarat Umum**: Lulusan SMP/MTs, Ijazah/SKL, usia maks 21 tahun, sehat jasmani & rohani. 😊";
         }
 
-        // 4b. Jam Belajar & Jam Operasional Sekolah
-        if (str_contains($promptLower, 'jam belajar') || str_contains($promptLower, 'jam operasional') || str_contains($promptLower, 'jadwal belajar') || str_contains($promptLower, 'jam masuk') || str_contains($promptLower, 'jam pulang') || str_contains($promptLower, 'operasional')) {
-            return "Halo! 👋 **Jam Belajar & Operasional Resmi SMKN 2 Kota Mojokerto**:\n\n⏰ **Jam Operasional / Belajar**: Senin – Jumat · 07.00 – 16.00 WIB\n🚪 **Pintu Gerbang**: Ditutup tepat pukul 07.00 WIB demi kedisiplinan & ketertiban siswa.\n🗓️ **Hari Libur**: Sabtu & Minggu Libur.\n\nInformasi ini sesuai dengan data resmi pada halaman kontak & informasi sekolah. 😊";
+        // 4b. Jam Belajar / Pembelajaran Siswa (06.45 - 15.00 WIB)
+        if (str_contains($promptLower, 'jam belajar') || str_contains($promptLower, 'pembelajaran') || str_contains($promptLower, 'jam pembelajaran') || str_contains($promptLower, 'jadwal belajar') || str_contains($promptLower, 'jam masuk') || str_contains($promptLower, 'jam pulang') || str_contains($promptLower, 'kbm')) {
+            return "Halo! 👋 **Jam Belajar / Pembelajaran Siswa SMKN 2 Kota Mojokerto**:\n\n🎒 **Jam Belajar (KBM Siswa)**: Senin – Jumat · 06.45 – 15.00 WIB\n🚪 **Pintu Gerbang**: Ditutup tepat pukul 06.45 WIB demi kedisiplinan & ketertiban siswa.\n🗓️ **Hari Libur**: Sabtu & Minggu Libur. 😊";
+        }
+
+        // 4c. Jam Operasional Sekolah & Pelayanan Kantor TU (07.00 - 16.00 WIB)
+        if (str_contains($promptLower, 'operasional') || str_contains($promptLower, 'jam operasional') || str_contains($promptLower, 'jam kantor') || str_contains($promptLower, 'pelayanan tu') || str_contains($promptLower, 'kantor tu')) {
+            return "Halo! 👋 **Jam Operasional Sekolah & Pelayanan Kantor TU SMKN 2 Kota Mojokerto**:\n\n🏢 **Jam Operasional / Pelayanan TU**: Senin – Jumat · 07.00 – 16.00 WIB\n🗓️ **Hari Libur**: Sabtu & Minggu Libur. 😊";
         }
 
         // 5. Profil & Alamat

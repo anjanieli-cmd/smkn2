@@ -101,7 +101,7 @@ class DatabaseSeeder extends Seeder
         // Digabung: updateOrCreate (aman dijalankan ulang) + image_url dari versi terbaru.
         $pramuka = Extracurricular::updateOrCreate(['slug' => 'pramuka'], ['name' => 'Pramuka', 'category' => 'Kepanduan', 'image_url' => 'images/ekstra/pramuka.jpg', 'description' => 'Membentuk kemandirian, kepemimpinan, kepedulian lingkungan, dan keterampilan melalui kegiatan kepanduan.']);
         $paskibra = Extracurricular::updateOrCreate(['slug' => 'paskib'], ['name' => 'Paskib', 'category' => 'Kedisiplinan', 'image_url' => 'images/ekstra/paskibra.jpg', 'description' => 'Membentuk kedisiplinan, keteguhan, tanggung jawab, dan kekompakan melalui latihan baris-berbaris.']);
-        $robotik = Extracurricular::updateOrCreate(['slug' => 'robotik-coding-club'], ['name' => 'Robotik & Coding Club', 'category' => 'Teknologi', 'image_url' => 'images/ekstra/robotik.jpg', 'description' => 'Pengembangan minat bakat di bidang mikrokontroler, IoT, perakitan robot, dan pemrograman.']);
+        Extracurricular::where('slug', 'robotik-coding-club')->delete();
         $banjari = Extracurricular::updateOrCreate(['slug' => 'banjari'], ['name' => 'Banjari', 'category' => 'Keagamaan', 'image_url' => 'images/ekstra/banjari.jpg', 'description' => 'Mengembangkan seni musik Islami melalui lantunan shalawat, kekompakan, dan penampilan dalam kegiatan sekolah.']);
         $basket = Extracurricular::updateOrCreate(['slug' => 'basket'], ['name' => 'Basket', 'category' => 'Olahraga', 'image_url' => 'images/ekstra/basket.jpg', 'description' => 'Melatih teknik permainan, kebugaran, sportivitas, dan kerja sama tim melalui latihan serta pertandingan pelajar.']);
         $voli = Extracurricular::updateOrCreate(['slug' => 'bola-voli'], ['name' => 'Bola Voli', 'category' => 'Olahraga', 'image_url' => 'images/ekstra/voly.jpg', 'description' => 'Membangun kekompakan tim melalui latihan teknik dasar, strategi permainan, dan kompetisi antarpelajar.']);
@@ -127,7 +127,7 @@ class DatabaseSeeder extends Seeder
             'question_id' => $q1->id,
             'option_text' => 'Merakit elektronik atau membuat program komputer',
         ], [
-            'extracurricular_scores' => ['Robotik & Coding Club' => 10, 'Pramuka' => 2],
+            'extracurricular_scores' => ['Pramuka' => 10, 'Jurnalistik' => 5],
         ]);
 
         ExtracurricularOption::firstOrCreate([
@@ -1027,10 +1027,20 @@ class DatabaseSeeder extends Seeder
             'published_at' => now(),
         ]);
 
-        ChatbotKnowledge::updateOrCreate(['title' => 'Jam Belajar dan Operational Sekolah'], [
+        ChatbotKnowledge::updateOrCreate(['title' => 'Jam Belajar dan Pembelajaran Siswa'], [
             'category' => 'Tata Tertib',
-            'content' => 'Kegiatan Belajar Mengajar (KBM) dan jam operasional sekolah di SMKN 2 Mojokerto berlangsung hari Senin hingga Jumat pukul 07.00 WIB - 16.00 WIB. Gerbang sekolah ditutup tepat pukul 07.00 WIB. Hari Sabtu dan Minggu libur.',
-            'keywords' => ['jam', 'waktu', 'jadwal', 'masuk', 'pulang', 'belajar', 'operasional'],
+            'content' => 'Jam Belajar / Pembelajaran (Kegiatan Belajar Mengajar / KBM Siswa): Hari Senin hingga Jumat pukul 06.45 WIB – 15.00 WIB. Gerbang sekolah ditutup tepat pukul 06.45 WIB. Hari Sabtu dan Minggu Libur.',
+            'keywords' => ['jam', 'waktu', 'jadwal', 'masuk', 'pulang', 'belajar', 'pembelajaran', 'jam pembelajaran', 'jam belajar', 'jam sekolah', 'jam kbm', 'kbm', 'nanya', 'bertanya'],
+            'status' => ChatbotKnowledgeStatus::PUBLISHED,
+            'is_ai_allowed' => true,
+            'priority' => 9,
+            'published_at' => now(),
+        ]);
+
+        ChatbotKnowledge::updateOrCreate(['title' => 'Jam Operasional Sekolah dan Kantor TU'], [
+            'category' => 'Tata Tertib',
+            'content' => 'Jam Operasional Sekolah / Pelayanan Kantor TU: Hari Senin hingga Jumat pukul 07.00 WIB – 16.00 WIB. Hari Sabtu dan Minggu Libur.',
+            'keywords' => ['jam operasional', 'operasional', 'jam kantor', 'kantor tu', 'pelayanan tu', 'tata usaha', 'pelayanan'],
             'status' => ChatbotKnowledgeStatus::PUBLISHED,
             'is_ai_allowed' => true,
             'priority' => 9,
@@ -1328,6 +1338,57 @@ class DatabaseSeeder extends Seeder
             'priority' => 8,
             'published_at' => now(),
         ]);
+
+        ChatbotKnowledge::updateOrCreate(['title' => 'Virtual Tour 360 dan Jelajah Kampus'], [
+            'category' => 'Fasilitas',
+            'content' => 'SMKN 2 Mojokerto memiliki fitur Virtual Tour 360° interaktif di halaman /profile/tour. Pengunjung dapat menelusuri sudut kampus secara virtual meliputi: Perpustakaan Digital, Gerbang Utama, Lobi & Ruang Tunggu, Lapangan Utama/Basket, Aula Serbaguna, Kantin Sekolah, Musholla, serta Laboratorium RPL, DKV, LPS, APHP & Dapur Praktik Kuliner.',
+            'keywords' => ['virtual tour', 'tour 360', '360', 'jelajah kampus', 'fasilitas 360', 'perpus 360', 'lobi', 'gerbang', 'ruang tunggu'],
+            'status' => ChatbotKnowledgeStatus::PUBLISHED,
+            'is_ai_allowed' => true,
+            'priority' => 9,
+            'published_at' => now(),
+        ]);
+
+        ChatbotKnowledge::updateOrCreate(['title' => 'Karya Siswa dan Teaching Factory Skaneda'], [
+            'category' => 'Inovasi',
+            'content' => 'SMKN 2 Mojokerto memamerkan hasil karya siswa dan Teaching Factory unggulan di setiap jurusan: 1. RPL: Aplikasi Web & Mobile, Sistem Informasi Sekolah. 2. DKV: Desain Grafis, Banner, Animasi, Visual Branding & Portofolio Karya. 3. APHP: Pengolahan Hasil Agriculture, Minuman Herbal & Olahan Pangan Sehat. 4. Kuliner: Catering, Pastry, Bakery & Hidangan Nusantara/Western. 5. LPS: Layanan Perbankan & Mini Bank Syariah.',
+            'keywords' => ['karya siswa', 'karya', 'teaching factory', 'tefa', 'produk rpl', 'produk dkv', 'produk aphp', 'produk kuliner', 'mini bank'],
+            'status' => ChatbotKnowledgeStatus::PUBLISHED,
+            'is_ai_allowed' => true,
+            'priority' => 9,
+            'published_at' => now(),
+        ]);
+
+        ChatbotKnowledge::updateOrCreate(['title' => 'Kotak Aspirasi dan Laporan E-Voice Skaneda'], [
+            'category' => 'Layanan',
+            'content' => 'E-Voice Skaneda adalah wadah resmi aspirasi, pengaduan, dan saran dari siswa, wali murid, serta masyarakat untuk kemajuan SMKN 2 Mojokerto. Setiap laporan diproses secara transparan dengan nomor tiket unik.',
+            'keywords' => ['e-voice', 'evoice', 'aspirasi', 'pengaduan', 'saran', 'laporan', 'kotak saran', 'tiket'],
+            'status' => ChatbotKnowledgeStatus::PUBLISHED,
+            'is_ai_allowed' => true,
+            'priority' => 9,
+            'published_at' => now(),
+        ]);
+
+        ChatbotKnowledge::updateOrCreate(['title' => 'Berita, Pengumuman dan Agenda Sekolah'], [
+            'category' => 'Informasi',
+            'content' => 'Halaman Berita menyajikan informasi terbaru seputar prestasi siswa, agenda sekolah, liputan kegiatan ekstrakurikuler, kunjungan industri, serta pengumuman resmi SMKN 2 Mojokerto.',
+            'keywords' => ['berita', 'kabar', 'pengumuman', 'agenda', 'kegiatan sekolah', 'prestasi'],
+            'status' => ChatbotKnowledgeStatus::PUBLISHED,
+            'is_ai_allowed' => true,
+            'priority' => 9,
+            'published_at' => now(),
+        ]);
+
+        ChatbotKnowledge::updateOrCreate(['title' => 'Lowongan Kerja dan Karir Alumni (BKK)'], [
+            'category' => 'Karir',
+            'content' => 'Bursa Kerja Khusus (BKK) SMKN 2 Mojokerto menyediakan portal lowongan kerja terkini yang bekerja sama dengan perusahaan DUDI ternama untuk menyalurkan lulusan dan alumni langsung ke dunia kerja.',
+            'keywords' => ['lowongan kerja', 'loker', 'karir', 'bkk', 'kerja', 'rekruitmen', 'alumni kerja'],
+            'status' => ChatbotKnowledgeStatus::PUBLISHED,
+            'is_ai_allowed' => true,
+            'priority' => 9,
+            'published_at' => now(),
+        ]);
+
 
         // 8. Alumni & Map Aggregation Data
         Alumni::updateOrCreate(
