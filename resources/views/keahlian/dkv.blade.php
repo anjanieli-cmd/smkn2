@@ -95,10 +95,10 @@
   .history-title{font-size:clamp(4rem,11vw,7rem)!important}
 }
 @media(max-width:700px){
-  .history-hero{align-items:flex-start}
-  .history-hero::after{opacity:.6}
-  .history-hero-inner{width:90%}
-  .history-title{font-size:clamp(3rem,14vw,5rem)!important}
+  .history-hero{min-height:420px;align-items:flex-start}
+  .history-hero::after{font-size:clamp(5rem,22vw,9rem)!important;left:-4%!important;opacity:.6}
+  .history-hero-inner{width:90%;padding:3.2rem 1.25rem 3.5rem!important}
+  .history-title{font-size:clamp(2rem,9.5vw,3.4rem)!important;line-height:1.02!important}
   .history-vt-cta{width:min(100%,340px)}
   .history-vt-cta .history-vt-arrow{margin-left:auto}
 }
@@ -478,8 +478,210 @@
 .aphp-page .vt-title{margin:.8rem 0 1.1rem;color:#0d3a66;font-family:var(--font-display);font-size:clamp(2.8rem,5vw,4.8rem);font-weight:900;line-height:.98;letter-spacing:-.045em;max-width:620px}.aphp-page .vt-gold{display:block;background:linear-gradient(90deg,#ffd54a,#ff8a00);-webkit-background-clip:text;background-clip:text;color:transparent}.aphp-page .vt-sub{display:block;margin-top:.55rem;font-size:.38em;line-height:1.1;letter-spacing:.02em;color:#315b80;font-weight:800}
 .aphp-page .vt-desc{max-width:590px;color:#667b90;line-height:1.9;font-size:.98rem;margin-top:.2rem}.aphp-page .vt-feats{display:flex;flex-wrap:wrap;gap:.55rem;margin:1.25rem 0}.aphp-page .vt-feat{display:inline-flex;align-items:center;gap:.4rem;padding:.55rem .75rem;border-radius:999px;background:#fff;border:1px solid rgba(13,58,102,.1);color:#315b80;font-size:.74rem;font-weight:800}.aphp-page .vt-feat i{color:#ff9f00}.aphp-page .vt-btn{display:inline-flex;align-items:center;justify-content:center;gap:.65rem;padding:.9rem 1.2rem;border-radius:14px;background:linear-gradient(135deg,#0d3a66,#164e80);color:#fff;text-decoration:none;font-weight:900;box-shadow:0 14px 32px rgba(13,58,102,.2);transition:transform .3s ease,box-shadow .3s ease}.aphp-page .vt-btn:hover{transform:translateY(-4px);box-shadow:0 20px 40px rgba(13,58,102,.28)}
 @media(max-width:900px){.aphp-page .vt-inner{grid-template-columns:1fr;gap:2.5rem}.aphp-page .vt-copy{max-width:700px}.aphp-page .vt-title{font-size:clamp(2.6rem,10vw,4rem)}}
-@media(max-width:600px){.aphp-page .vt-section{padding:85px 0 95px}.aphp-page .vt-inner{width:92%;gap:2rem}.aphp-page .vt-frame{aspect-ratio:4/3;border-radius:22px}.aphp-page .vt-play{width:64px;height:64px}.aphp-page .vt-caption{left:1rem;right:1rem;bottom:1rem}.aphp-page .vt-caption strong{font-size:1rem}.aphp-page .vt-caption span{font-size:.7rem}.aphp-page .vt-cam{display:none!important}.aphp-page .vt-title{font-size:clamp(2.35rem,12vw,3.3rem)}.aphp-page .vt-decor-ring{width:190px;height:190px;right:-80px}.aphp-page .vt-decor-dots{width:90px;height:90px;background-size:14px 14px}}
 
+/* =========================================================
+   MOBILE RESPONSIVE — ACUAN STRUKTUR ORGANISASI
+   Khusus Mobile (<= 768px & <= 480px).
+   Tampilan Desktop TIDAK DIUBAH sama sekali.
+   ========================================================= */
+@media(max-width:768px){
+  /* Spacing Section */
+  .section-pad{padding:50px 0 60px!important}
+  .aphp-wide{width:min(100%,92%)}
+
+  /* Unifikasi Background Section persis APHP */
+  .aphp-page{background:#f8fbff}
+  .vid-section{background:linear-gradient(180deg,#F8FBFF 0%,#EEF5FB 100%)!important;padding:50px 0 60px!important}
+  .tentang-section{background:linear-gradient(135deg,#f8fbff 0%,#eef5fb 55%,#e7f1f8 100%)!important;padding-top:52px!important;padding-bottom:60px!important}
+  .industry-collab{background:linear-gradient(180deg,#ffffff 0%,#f8fbff 100%)!important;padding-top:48px!important;padding-bottom:38px!important}
+  .belajar-section{background:linear-gradient(180deg,#eef5fb 0%,#f8fbff 100%)!important}
+  .praktik-section{background:#ffffff!important}
+  .fasilitas-section{background:linear-gradient(180deg,#f8fbff 0%,#eef5fb 100%)!important}
+  .produk-section{background:#ffffff!important}
+  .kegiatan-section{background:linear-gradient(180deg,#eef5fb 0%,#f8fbff 100%)!important}
+  .prospek-section{background:#ffffff!important}
+  .aphp-page .vt-section{background:linear-gradient(180deg,#eef5fb 0%,#ffffff 48%,#f3f7fb 100%)!important;padding:50px 0 60px!important}
+  .aphp-cta{background:linear-gradient(135deg,#0d3a66 0%,#0a2a4e 50%,#0B5FA5 100%)!important}
+
+  /* Hero Section (Acuan: Struktur Organisasi) */
+  .history-hero{min-height:420px!important}
+  .history-hero-inner{padding:3.2rem 1.25rem 3.5rem!important}
+  .history-kicker{font-size:.65rem!important;padding:.45rem .75rem!important;margin-bottom:.85rem!important;letter-spacing:.14em!important}
+  .history-title{font-size:clamp(2rem,9.5vw,3.4rem)!important;line-height:1.02!important}
+  .history-lead{font-size:.82rem!important;line-height:1.6!important;margin:1rem 0 0!important}
+  .history-hero::after{font-size:clamp(5rem,22vw,9rem)!important;left:-4%!important}
+  .history-vt-cta{width:min(100%,340px)!important;padding:.7rem .9rem!important;margin-top:1.4rem!important;border-radius:14px!important}
+  .history-vt-cta .history-vt-arrow{margin-left:auto}
+  .history-vt-icon{width:40px!important;height:40px!important;border-radius:12px!important;font-size:.82rem!important}
+  .history-vt-cta strong{font-size:.88rem!important}
+  .history-vt-cta small{font-size:.68rem!important}
+
+  /* Judul Section & Eyebrow (Acuan: Struktur Organisasi) */
+  .eyebrow{font-size:.68rem!important;letter-spacing:.15em!important;margin-bottom:.6rem!important}
+  .big-heading{font-size:clamp(1.55rem,6.2vw,2.15rem)!important;line-height:1.15!important;letter-spacing:0!important;color:#0d3a66!important}
+  .big-heading span{background:linear-gradient(135deg,#FFD54A 0%,#FFB300 45%,#FF8A00 100%)!important;-webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent!important;color:transparent!important}
+
+  /* Deskripsi Headings */
+  .belajar-head,.praktik-head,.fasilitas-head,.kegiatan-head,.prospek-head{margin:0 auto 2rem!important}
+  .belajar-head p,.praktik-head p,.fasilitas-head p,.kegiatan-head p,.prospek-head p,.industry-collab .ic-head p,.produk-note{font-size:.8rem!important;line-height:1.6!important;margin-top:.6rem!important;color:#5f7186!important}
+
+  /* Section 1: Video Pengenalan */
+  .vid-wrap{grid-template-columns:1fr!important;gap:2rem!important}
+  .vid-side{display:none!important}
+  .vid-stage::before,.vid-stage::after{display:none!important}
+  .vid-copy h2{font-size:clamp(1.55rem,6.2vw,2.15rem)!important;line-height:1.15!important;margin-bottom:.8rem!important;color:#0d3a66!important}
+  .vid-copy h2 .t-gold{background:linear-gradient(135deg,#FFD54A 0%,#FFB300 45%,#FF8A00 100%)!important;-webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent!important;color:transparent!important}
+  .vid-copy .vc-desc{font-size:.82rem!important;line-height:1.6!important;margin-bottom:1.1rem!important;color:#5f7186!important}
+  .vid-cards{grid-template-columns:1fr!important;gap:.55rem!important}
+  .vid-card{padding:.7rem .8rem!important;border-radius:12px!important}
+  .vid-card .vc-ic{width:34px!important;height:34px!important;font-size:.82rem!important;border-radius:10px!important}
+  .vid-card b{font-size:.72rem!important}
+  .vid-card span{font-size:.62rem!important}
+  .vid-play{width:58px!important;height:58px!important;font-size:1.25rem!important}
+  .vid-player{border-radius:20px!important}
+  .vid-ring{width:90px!important;height:90px!important;right:-14px!important;top:-14px!important}
+
+  /* Section 2: Tentang (Ukuran Card & Font Diperkecil) */
+  .tentang-grid{grid-template-columns:1fr!important;gap:2.2rem!important}
+  .tentang-copy h2{font-size:clamp(1.55rem,6.2vw,2.15rem)!important;line-height:1.15!important;margin-bottom:.9rem!important;color:#0d3a66!important}
+  .tentang-copy h2 span{background:linear-gradient(135deg,#FFD54A 0%,#FFB300 48%,#FF8A00 100%)!important;-webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent!important;color:transparent!important}
+  .tentang-copy .tc-lead{font-size:.84rem!important;line-height:1.65!important;color:#526a82!important}
+  .tentang-copy .tc-sub{font-size:.78rem!important;line-height:1.6!important;margin-top:.6rem!important;color:#718399!important}
+  .tentang-mini{grid-template-columns:1fr!important;gap:.6rem!important;margin-top:1.2rem!important}
+  .tentang-mini-card{padding:.65rem .8rem!important;border-radius:13px!important}
+  .tentang-mini-card .tm-ic{flex:0 0 32px!important;width:32px!important;height:32px!important;font-size:.78rem!important;border-radius:9px!important}
+  .tentang-mini-card span{font-size:.68rem!important}
+  .tentang-visual{min-height:auto!important}
+  .tentang-visual::before,.tentang-visual::after{display:none!important}
+  .tv-panel{min-height:auto!important;border-radius:20px!important;padding-bottom:1rem!important}
+  .tv-top{padding:.9rem 1rem!important}
+  .tv-top-label{font-size:.62rem!important}
+  .tv-top-code{font-size:.65rem!important}
+  .tv-core{width:112px!important;height:112px!important}
+  .tv-core i{font-size:1.1rem!important;margin-bottom:.2rem!important}
+  .tv-core strong{font-size:1.3rem!important}
+  .tv-core small{font-size:.48rem!important}
+  .tv-flow{grid-template-columns:1fr!important;gap:.6rem!important;padding:.9rem 1rem!important}
+  .tv-step{min-height:48px!important;padding:.55rem .7rem!important;border-radius:11px!important}
+  .tv-step .ts-ic{flex:0 0 30px!important;width:30px!important;height:30px!important;font-size:.72rem!important;border-radius:8px!important}
+  .tv-step .ts-copy strong{font-size:.68rem!important}
+  .tv-step .ts-copy small{font-size:.55rem!important}
+  .tv-bottom{left:.9rem!important;right:.9rem!important}
+
+  /* Section 3: Mitra Industri */
+  .industry-collab{padding-top:48px!important;padding-bottom:38px!important}
+  .industry-collab .ic-head .big-heading{font-size:clamp(1.55rem,6.2vw,2.15rem)!important}
+  .industry-collab .ic-marquee-wrap{margin-top:1.8rem!important;padding:.5rem 0!important}
+  .industry-collab .ic-marquee-wrap::before,.industry-collab .ic-marquee-wrap::after{width:40px!important}
+  .industry-collab .ic-logo{width:110px!important;height:75px!important}
+  .industry-collab .ic-logo-only{width:90px!important;height:55px!important}
+  .industry-collab .ic-footer{font-size:.68rem!important;margin-top:.9rem!important}
+
+  /* Section 4: Pembelajaran 6 Kartu (Card Diperkecil) */
+  .belajar-grid{grid-template-columns:1fr!important;gap:.9rem!important}
+  .belajar-card{padding:1.15rem 1rem!important;border-radius:16px!important}
+  .belajar-card .bc-ic{width:40px!important;height:40px!important;font-size:.95rem!important;border-radius:12px!important;margin-bottom:.6rem!important}
+  .belajar-card h4{font-size:.88rem!important;margin-bottom:.25rem!important}
+  .belajar-card p{font-size:.75rem!important;line-height:1.55!important}
+  .belajar-card::after{font-size:2.8rem!important;right:8px!important;bottom:-10px!important}
+
+  /* Section 5: Praktik (Card Diperkecil) */
+  .praktik-grid{grid-template-columns:1fr!important;gap:1rem!important}
+  .praktik-card{min-height:240px!important;max-height:290px!important;border-radius:16px!important}
+  .praktik-card .pc-body{padding:1rem!important}
+  .praktik-card .pc-body h4{font-size:.95rem!important;margin-bottom:.2rem!important}
+  .praktik-card .pc-body p{font-size:.74rem!important;line-height:1.5!important}
+  .praktik-card .pc-badge{font-size:.55rem!important;padding:.25rem .55rem!important;top:10px!important;left:10px!important}
+
+  /* Section 6: Fasilitas (Card Diperkecil) */
+  .fasilitas-grid{grid-template-columns:1fr!important;gap:.9rem!important;width:min(100%,94%)!important}
+  .fasilitas-card{padding:1.15rem .95rem!important;border-radius:16px!important}
+  .fasilitas-card .fc-ic{width:42px!important;height:42px!important;font-size:1rem!important;border-radius:12px!important;margin-bottom:.5rem!important}
+  .fasilitas-card h4{font-size:.86rem!important;margin-bottom:.2rem!important}
+  .fasilitas-card p{font-size:.72rem!important;line-height:1.55!important}
+  .fasilitas-cta{padding:1.3rem 1.1rem!important;border-radius:16px!important;gap:1.1rem!important;flex-direction:column!important;text-align:center!important}
+  .fasilitas-cta .fcta-copy h3{font-size:1.1rem!important}
+  .fasilitas-cta .fcta-copy p{font-size:.76rem!important;line-height:1.5!important}
+  .fasilitas-cta .fcta-btn{padding:.65rem 1.25rem!important;font-size:.76rem!important}
+
+  /* Section 7: Karya Siswa / Produk (Card Diperkecil) */
+  .produk-head{margin-bottom:1.6rem!important;flex-direction:column!important;align-items:flex-start!important;gap:.8rem!important}
+  .produk-card{flex-basis:100%!important;border-radius:16px!important}
+  .produk-card .pc-body{padding:.85rem .95rem .95rem!important}
+  .produk-card .pc-body h3{font-size:.9rem!important;margin-bottom:.2rem!important}
+  .produk-card .pc-body p{font-size:.72rem!important;line-height:1.5!important;margin-bottom:.4rem!important}
+  .produk-card .pc-foot{font-size:.62rem!important}
+  .produk-badge{font-size:.52rem!important;padding:.25rem .5rem!important;top:10px!important;left:10px!important}
+  .pf-btn{padding:.38rem .8rem!important;font-size:.64rem!important}
+  .produk-arrow{width:36px!important;height:36px!important;font-size:.82rem!important}
+  .produk-arrow.prev{left:-8px!important}
+  .produk-arrow.next{right:-8px!important}
+
+  /* Section 8: Kegiatan & Prestasi (Card Diperkecil) */
+  .kegiatan-grid{grid-template-columns:1fr!important;gap:.9rem!important}
+  .kegiatan-card{min-height:210px!important;border-radius:16px!important}
+  .kegiatan-card.tall{min-height:240px!important}
+  .kegiatan-card .kg-body{padding:.9rem!important}
+  .kegiatan-card .kg-body h4{font-size:.88rem!important;margin-bottom:.15rem!important}
+  .kegiatan-card .kg-body span{font-size:.62rem!important}
+  .kegiatan-card .kg-badge{font-size:.52rem!important;padding:.22rem .5rem!important;top:10px!important;left:10px!important}
+
+  /* Section 9: Prospek Lulusan (Card Diperkecil) */
+  .prospek-grid{grid-template-columns:1fr!important;gap:.95rem!important}
+  .prospek-card{min-height:auto!important;border-radius:16px!important}
+  .prospek-card .ps-photo{height:135px!important}
+  .prospek-card .ps-photo i{width:34px!important;height:34px!important;font-size:.82rem!important;left:10px!important;bottom:8px!important;border-radius:10px!important}
+  .prospek-card .ps-photo .ps-num{font-size:.6rem!important;padding:.2rem .45rem!important;top:8px!important;right:8px!important}
+  .prospek-card .ps-body{padding:.95rem 1rem 1.1rem!important}
+  .prospek-card .ps-body h4{font-size:.94rem!important;margin-bottom:.25rem!important}
+  .prospek-card .ps-body p{font-size:.74rem!important;line-height:1.55!important;margin-bottom:.6rem!important}
+  .prospek-card .ps-body .ps-tags span{font-size:.58rem!important;padding:.2rem .5rem!important}
+
+  /* Section 10: Virtual Tour / Lab Tour */
+  .aphp-page .vt-inner{width:92%!important;grid-template-columns:1fr!important;gap:1.8rem!important}
+  .aphp-page .vt-copy{max-width:100%!important}
+  .aphp-page .vt-frame{border-radius:18px!important;aspect-ratio:4/3!important}
+  .aphp-page .vt-play{width:56px!important;height:56px!important;font-size:1.15rem!important}
+  .aphp-page .vt-badge{font-size:.62rem!important;padding:.38rem .65rem!important;top:10px!important;left:10px!important}
+  .aphp-page .vt-caption{left:.9rem!important;right:.9rem!important;bottom:.9rem!important}
+  .aphp-page .vt-caption strong{font-size:.92rem!important}
+  .aphp-page .vt-caption span{font-size:.65rem!important}
+  .aphp-page .vt-cam{display:none!important}
+  .aphp-page .vt-title{font-size:clamp(1.55rem,6.2vw,2.15rem)!important;line-height:1.1!important;margin:.6rem 0 .8rem!important;color:#0d3a66!important}
+  .aphp-page .vt-gold{background:linear-gradient(90deg,#ffd54a,#ff8a00)!important;-webkit-background-clip:text!important;background-clip:text!important;color:transparent!important}
+  .aphp-page .vt-sub{font-size:.36em!important}
+  .aphp-page .vt-desc{font-size:.8rem!important;line-height:1.6!important;margin-top:.2rem!important}
+  .aphp-page .vt-chip{padding:.55rem .75rem!important;border-radius:12px!important;margin-top:.7rem!important}
+  .aphp-page .vt-chip>i{width:32px!important;height:32px!important;font-size:.78rem!important;border-radius:9px!important}
+  .aphp-page .vt-chip strong{font-size:.76rem!important}
+  .aphp-page .vt-chip span{font-size:.6rem!important}
+  .aphp-page .vt-feat{font-size:.66rem!important;padding:.35rem .6rem!important}
+  .aphp-page .vt-btn{padding:.72rem 1.1rem!important;font-size:.78rem!important;border-radius:12px!important}
+
+  /* Section 11: Final CTA */
+  .aphp-cta{margin:10px auto 40px!important;padding:36px 1.1rem 40px!important;border-radius:18px!important}
+  .aphp-cta h2{font-size:clamp(1.4rem,5.5vw,1.85rem)!important;line-height:1.15!important;margin-bottom:.6rem!important}
+  .aphp-cta p{font-size:.78rem!important;line-height:1.6!important;margin-bottom:1.3rem!important}
+  .aphp-cta-btn{padding:.72rem 1.4rem!important;font-size:.78rem!important}
+  .aphp-cta-ghost{padding:.72rem 1.3rem!important;font-size:.75rem!important}
+  .aphp-cta::after{font-size:clamp(3.5rem,14vw,6rem)!important;bottom:-15px!important}
+
+  /* Ornamen di Mobile */
+  .orn .o-chevron{width:160px;height:160px}
+  .orn .o-dots{width:60px;height:60px;background-size:10px 10px}
+  .orn .o-ring{width:80px;height:80px}
+  .orn .o-line{width:120px}
+  .orn .o-square{width:30px;height:30px}
+  .orn .o-corner{width:50px;height:50px}
+}
+
+@media(max-width:480px){
+  .history-hero{min-height:380px!important}
+  .history-title{font-size:clamp(1.85rem,9vw,2.5rem)!important}
+  .big-heading{font-size:clamp(1.4rem,6vw,1.85rem)!important}
+  .history-hero-inner{padding:2.8rem 1rem 3rem!important}
+  .history-hero::after{font-size:clamp(4rem,20vw,7rem)!important}
+}
 </style>
 
 <style id="dkv-dark-mode">
@@ -621,6 +823,14 @@ html body.theme-dark .aphp-page .vt-btn{background:linear-gradient(135deg,#ffd54
 /* ---------- FINAL CTA ---------- */
 html body.theme-dark .aphp-page .aphp-cta{background:linear-gradient(135deg,#0a1a2c 0%,#0c2038 50%,#0e2542 100%);border:1px solid rgba(255,255,255,.08);box-shadow:0 24px 55px rgba(0,0,0,.55)}
 html body.theme-dark .aphp-page .aphp-cta::after{color:rgba(255,255,255,.03)}
+@media(max-width:768px){
+  html body.theme-dark .aphp-page .big-heading,
+  html body.theme-dark .aphp-page .vid-copy h2,
+  html body.theme-dark .aphp-page .tentang-copy h2,
+  html body.theme-dark .aphp-page .vt-title{
+    color:#fff!important;
+  }
+}
 </style>
 @endpush
 

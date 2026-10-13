@@ -357,6 +357,64 @@
   .am-runner{grid-template-columns:110px 1fr 40px;gap:.7rem}
   .am-join-box{flex-direction:column;align-items:flex-start;text-align:left}
 }
+@media(max-width:768px){
+  .am-wrap{width:min(92%,100%);margin:0 auto;padding:18px 0 50px}
+  .am-hero{padding:1.3rem 1.1rem;border-radius:20px;margin-bottom:1.4rem}
+  .am-badge-ai{font-size:.65rem;padding:.4rem .75rem;margin-bottom:.75rem}
+  .am-hero h1{font-size:clamp(1.55rem,6.2vw,2.15rem);line-height:1.12}
+  .am-hero p{font-size:.80rem;line-height:1.6;margin-top:.6rem}
+  .am-hero-cta{margin-top:1.2rem;padding:.85rem 1.2rem;border-radius:16px;width:100%;justify-content:center}
+  .am-hero-cta-icon{width:40px;height:40px;flex:0 0 40px;font-size:.90rem}
+  .am-hero-cta strong{font-size:.88rem}
+  .am-hero-cta small{font-size:.68rem}
+  .am-hero-live{font-size:.68rem;padding:.4rem .8rem;margin-top:1rem;position:static;display:inline-flex}
+  .am-hero-side{padding:1.1rem 1rem;border-radius:18px;margin-top:1.4rem}
+  .am-hero-step{gap:.7rem;padding-bottom:1rem}
+  .am-hero-step-num{width:26px;height:26px;flex:0 0 26px;font-size:.74rem}
+  .am-hero-step-info strong{font-size:.78rem}
+  .am-hero-step-info small{font-size:.68rem}
+  .am-hero-side-meta{gap:.4rem;margin-top:1rem;padding-top:1rem}
+  .am-meta-chip{font-size:.66rem;padding:.4rem .65rem}
+  .am-section-head h2{font-size:clamp(1.55rem,6.2vw,2.15rem)!important;line-height:1.15}
+  .am-section-head span.tag{font-size:.68rem;letter-spacing:.15em;margin-bottom:.5rem}
+  .am-section-head p{font-size:.80rem;line-height:1.6;margin-top:.5rem}
+  .am-card{padding:1.1rem 1rem;border-radius:18px}
+  .qz-stage{padding:1.1rem 1rem;border-radius:18px}
+  .qz-qcounter{font-size:.70rem;padding:.4rem .8rem}
+  .qz-timer{width:38px;height:38px;flex:0 0 38px}
+  .qz-timer span{font-size:.70rem}
+  .qz-question{font-size:clamp(1.05rem,4.5vw,1.25rem);line-height:1.35;margin-bottom:1.2rem}
+  .qz-opt{padding:.85rem 1rem;border-radius:14px}
+  .qz-opt-key{width:26px;height:26px;flex:0 0 26px;font-size:.72rem}
+  .qz-opt-text{font-size:.80rem;line-height:1.45}
+  .am-proc-ring{width:90px;height:90px}
+  .am-proc h2{font-size:1.1rem}
+  .am-proc-line{font-size:.74rem}
+  .am-narrative{padding:.9rem 1rem;border-radius:14px;gap:.7rem}
+  .am-narrative p{font-size:.76rem;line-height:1.6}
+  .am-podium-title{font-size:clamp(1.35rem,5.5vw,1.85rem)}
+  .am-podium-sub{font-size:.78rem;line-height:1.6;margin-bottom:1.5rem}
+  .am-podium{min-height:240px;gap:.4rem}
+  .am-podium-spot{width:29vw}
+  .am-podium-icon{width:44px;height:44px;font-size:1.1rem;border-radius:12px}
+  .am-podium-rank1 .am-podium-icon{width:52px;height:52px;font-size:1.25rem}
+  .am-podium-name{font-size:.82rem}
+  .am-podium-rank1 .am-podium-name{font-size:.90rem}
+  .am-podium-pct{font-size:.70rem}
+  .am-podium-base{font-size:1.5rem}
+  .am-podium-rank1 .am-podium-base{height:95px;font-size:1.9rem}
+  .am-podium-rank2 .am-podium-base{height:70px;font-size:1.5rem}
+  .am-podium-rank3 .am-podium-base{height:50px;font-size:1.5rem}
+  .am-eks-tab{padding:.45rem .85rem;font-size:.70rem}
+  .am-eks-desc{font-size:.78rem;line-height:1.7;margin-bottom:1rem}
+  .am-eks-info-list li, .am-eks-act-list li{font-size:.74rem;line-height:1.55}
+  .am-join-box{padding:1.2rem 1rem;border-radius:18px}
+  .am-join-icon{width:42px;height:42px;flex:0 0 42px;font-size:1rem;border-radius:12px}
+  .am-join-text h3{font-size:1rem}
+  .am-join-text p{font-size:.76rem;line-height:1.6}
+  .am-join-box .am-btn{width:100%;justify-content:center;font-size:.80rem;padding:.75rem 1.2rem}
+  .am-btn{font-size:.80rem;padding:.75rem 1.4rem}
+}
 
 /* =========================================================
    DARK MODE — aktif jika <html> / <body> punya data-theme="dark"

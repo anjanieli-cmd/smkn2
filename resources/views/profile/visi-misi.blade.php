@@ -327,6 +327,95 @@
   .home-orn .ho-square::before{border-color:rgba(143,189,235,.22)!important}
 }
 </style>
+
+<style id="VISI-MOBILE-FIX">
+/* =========================================================
+   REVISI MOBILE (<=768px) — Desktop TIDAK berubah sama sekali.
+   1) Hero "VISI MISI" disamakan dengan hero Struktur Organisasi
+      versi mobile (ukuran judul, tinggi, padding, watermark).
+   2) Semua font & ukuran elemen diperkecil, nilainya mengikuti
+      halaman Struktur Organisasi.
+   ========================================================= */
+@media (max-width: 768px) {
+
+  /* ---------- 1. HERO = samakan dengan Struktur Organisasi ---------- */
+  .visi-hero {
+    min-height: 440px;
+  }
+  .visi-hero::after {
+    left: 2%;
+    top: 58%;
+    bottom: auto;
+    transform: translateY(-50%);
+    font-size: clamp(10rem, 25vw, 25rem);
+    font-weight: 900;
+    line-height: .78;
+    letter-spacing: .015em;
+    opacity: 1;
+  }
+  .visi-hero-inner {
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: clamp(5.5rem, 12vh, 8.5rem) clamp(1.5rem, 5vw, 5rem) clamp(5rem, 10vh, 7.5rem);
+  }
+  .visi-kicker {
+    font-size: .72rem;
+    letter-spacing: .18em;
+    padding: .55rem .85rem;
+    gap: .65rem;
+    margin-bottom: 1.2rem;
+  }
+  .visi-title {
+    margin: 0;
+    font-size: clamp(2rem, 10vw, 3.6rem);
+    line-height: .94;
+    letter-spacing: -.02em;
+    font-weight: 900;
+  }
+  .visi-title .visi-gold { letter-spacing: -.025em; }
+  .visi-lead { font-size: .74rem; line-height: 1.7; margin-top: 1.1rem; }
+  .visi-hero-meta { gap: .5rem; margin-top: 1.1rem; }
+  .visi-pill { font-size: .6rem; padding: .55rem .85rem; border-radius: 12px; gap: .4rem; }
+
+  /* ---------- 2. JUDUL SECTION (sama seperti Struktur Organisasi) ---------- */
+  .eyebrow { font-size: .58rem; letter-spacing: .12em; }
+  .big-heading { font-size: clamp(1.25rem, 5.8vw, 1.6rem); }
+
+  /* ---------- 3. VISI ---------- */
+  .visi-card { padding: 1.6rem 1.2rem; border-radius: 22px; }
+  .visi-card-icon { width: 58px; height: 58px; font-size: 1.3rem; border-radius: 18px; margin-bottom: 1.1rem; }
+  .visi-statement { font-size: clamp(1rem, 4.6vw, 1.2rem); line-height: 1.55; }
+  .visi-tags { gap: .4rem; margin-top: 1.3rem; }
+  .visi-tag { font-size: .58rem; padding: .4rem .7rem; }
+
+  /* ---------- 4. MISI ---------- */
+  .misi-desc { font-size: .74rem; line-height: 1.7; }
+  .misi-card { padding: 1.5rem 1.2rem 1.4rem; border-radius: 18px; }
+  .misi-num { font-size: 3rem; }
+  .misi-icon { width: 46px; height: 46px; font-size: 1.05rem; border-radius: 14px; margin-bottom: .85rem; }
+  .misi-title { font-size: .92rem; }
+  .misi-text { font-size: .72rem; line-height: 1.65; }
+
+  /* ---------- 5. TUJUAN ---------- */
+  .tujuan-card { padding: 1.3rem 1.1rem; border-radius: 16px; }
+  .tujuan-num { font-size: 1.5rem; }
+  .tujuan-title { font-size: .9rem; }
+  .tujuan-text { font-size: .7rem; line-height: 1.65; }
+
+  /* ---------- 6. NILAI ---------- */
+  .nilai-card { padding: 1.4rem 1.2rem; border-radius: 16px; }
+  .nilai-icon { width: 42px; height: 42px; font-size: 1rem; border-radius: 12px; }
+  .nilai-no { font-size: 1.25rem; }
+  .nilai-title { font-size: .92rem; }
+  .nilai-text { font-size: .72rem; line-height: 1.65; }
+
+  /* ---------- 7. CTA PENUTUP ---------- */
+  .visi-cta h2 { font-size: clamp(1.35rem, 6vw, 1.75rem); }
+  .visi-cta p { font-size: .76rem; line-height: 1.65; }
+  .visi-cta-btn { font-size: .72rem; padding: .75rem 1.4rem; }
+}
+</style>
 @endpush
 
 @section('content')
@@ -369,4 +458,78 @@
     }, 450);
   })();
 </script>
+<style id="VISI-DESKTOP-ALL-SECTIONS">
+@media (min-width: 769px) {
+
+  /* ---------- JUDUL SECTION ---------- */
+  .visi-page .eyebrow { font-size: .74rem !important; letter-spacing: .18em !important; }
+  .visi-page .big-heading { font-size: clamp(2.1rem, 4.4vw, 4.2rem) !important; line-height: 1.02 !important; }
+
+  /* ---------- VISI ---------- */
+  .visi-page .visi-section { padding: 96px 0 110px !important; }
+  .visi-page .visi-card {
+    width: min(1280px, 92%) !important;
+    padding: clamp(2.6rem, 5vw, 4.5rem) !important;
+    border-radius: 28px !important;
+  }
+  .visi-page .visi-card-icon { width: 74px !important; height: 74px !important; font-size: 1.7rem !important; border-radius: 22px !important; margin-bottom: 1.3rem !important; }
+  .visi-page .visi-statement { font-size: clamp(1.7rem, 3.2vw, 2.6rem) !important; line-height: 1.5 !important; max-width: 1000px !important; }
+  .visi-page .visi-tags { gap: .6rem !important; margin-top: 1.8rem !important; }
+  .visi-page .visi-tag { font-size: .8rem !important; padding: .55rem 1rem !important; }
+
+  /* ---------- MISI ---------- */
+  .visi-page .misi-section { padding: 110px 0 120px !important; }
+  .visi-page .misi-head { width: min(1380px, 92%) !important; }
+  .visi-page .misi-desc { font-size: 1.05rem !important; line-height: 1.9 !important; max-width: 780px !important; }
+  .visi-page .misi-grid {
+    width: min(1380px, 92%) !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 1.6rem !important;
+  }
+  .visi-page .misi-card { padding: 2.2rem 1.9rem 2.1rem !important; border-radius: 22px !important; }
+  .visi-page .misi-num { font-size: 4.6rem !important; }
+  .visi-page .misi-icon { width: 62px !important; height: 62px !important; font-size: 1.4rem !important; border-radius: 18px !important; margin-bottom: 1.2rem !important; }
+  .visi-page .misi-title { font-size: 1.3rem !important; }
+  .visi-page .misi-text { font-size: .94rem !important; line-height: 1.8 !important; }
+
+  /* ---------- TUJUAN ---------- */
+  .visi-page .tujuan-section { padding: 110px 0 120px !important; }
+  .visi-page .tujuan-inner { width: min(1380px, 92%) !important; }
+  .visi-page .tujuan-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: 1.4rem !important;
+    margin-top: 2.8rem !important;
+  }
+  .visi-page .tujuan-card { padding: 2rem 1.6rem !important; border-radius: 20px !important; }
+  .visi-page .tujuan-num { font-size: 2.3rem !important; }
+  .visi-page .tujuan-title { font-size: 1.18rem !important; }
+  .visi-page .tujuan-text { font-size: .9rem !important; line-height: 1.7 !important; }
+
+  /* ---------- NILAI ---------- */
+  .visi-page .nilai-section { padding: 110px 0 120px !important; }
+  .visi-page .nilai-head { width: min(1380px, 92%) !important; }
+  .visi-page .nilai-grid {
+    width: min(1380px, 92%) !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 1.5rem !important;
+  }
+  .visi-page .nilai-card { padding: 2rem 1.8rem !important; border-radius: 20px !important; }
+  .visi-page .nilai-icon { width: 58px !important; height: 58px !important; font-size: 1.3rem !important; border-radius: 16px !important; }
+  .visi-page .nilai-no { font-size: 1.8rem !important; }
+  .visi-page .nilai-title { font-size: 1.25rem !important; }
+  .visi-page .nilai-text { font-size: .94rem !important; line-height: 1.75 !important; }
+
+  /* ---------- CTA PENUTUP ---------- */
+  .visi-page .visi-cta { padding: 82px 0 96px !important; }
+  .visi-page .visi-cta-inner {
+    width: min(1280px, 88%) !important;
+    min-height: 380px !important;
+    padding: 76px 7% 70px !important;
+    border-radius: 28px !important;
+  }
+  .visi-page .visi-cta h2 { font-size: clamp(2.25rem, 4.6vw, 4rem) !important; }
+  .visi-page .visi-cta p { font-size: 1.08rem !important; line-height: 1.8 !important; max-width: 760px !important; }
+  .visi-page .visi-cta-btn { font-size: .98rem !important; padding: 1.05rem 2.3rem !important; }
+}
+</style>
 @endpush

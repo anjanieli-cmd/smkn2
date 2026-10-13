@@ -187,12 +187,54 @@ body:has(.vt360-fullpage) .app-header{display:none !important}
   box-shadow:0 0 0 4px rgba(230,69,69,.35),0 6px 16px rgba(0,0,0,.4)}
 
 /* ---------- responsive ---------- */
-@media(max-width:700px){
-  .vt360-info-card{max-width:calc(100% - 2rem);left:1rem;right:1rem;bottom:1rem;padding:.8rem 1rem}
-  .vt360-navpanel{width:min(280px,88vw);left:1rem;top:1rem;max-height:calc(100% - 2rem)}
-  .vt360-exit-btn{top:1rem;right:1rem;width:38px;height:38px;font-size:.9rem}
-  .vt360-navtoggle{top:1rem;left:1rem;padding:.55rem .95rem;font-size:.76rem}
+@media(max-width:768px){
+  .vt360-fullpage{height:100vh;height:100dvh}
+  .vt360-info-card{
+    left:1rem;right:1rem;bottom:calc(1rem + env(safe-area-inset-bottom,0px));
+    max-width:min(360px,calc(100% - 2rem));margin:0 auto;padding:.75rem 1rem;
+    border-radius:14px;box-shadow:0 12px 32px rgba(13,58,102,.22)
+  }
+  .vt360-info-eyebrow{font-size:.58rem;margin-bottom:.15rem}
+  .vt360-info-card h3{font-size:.95rem;margin-bottom:.2rem}
+  .vt360-info-card p{font-size:.74rem;line-height:1.45;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+
+  .vt360-navpanel{
+    width:calc(100% - 2rem);max-width:320px;left:1rem;
+    top:calc(1rem + env(safe-area-inset-top,0px));
+    max-height:calc(100dvh - 2rem - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));
+    z-index:30;border-radius:16px
+  }
+  .vt360-navpanel-head{padding:.85rem 1rem}
+  .vt360-cat-tabs{padding:.6rem .75rem 0;gap:.3rem}
+  .vt360-cat-btn{font-size:.65rem;padding:.32rem .6rem}
+  .vt360-navitem{font-size:.8rem;padding:.6rem .75rem}
+
+  .vt360-exit-btn{
+    top:calc(1rem + env(safe-area-inset-top,0px));right:1rem;
+    width:40px;height:40px;font-size:.9rem;z-index:25
+  }
+  .vt360-navtoggle{
+    top:calc(1rem + env(safe-area-inset-top,0px));left:1rem;
+    padding:.55rem .95rem;font-size:.76rem;z-index:24
+  }
+  .vt360-hotspot{width:44px;height:44px}
+  .vt360-hotspot.expanded .vt360-hotspot-label{max-width:130px;font-size:.72rem}
   .vt360-calib-btn{display:none !important}
+}
+
+@media(max-width:480px){
+  .vt360-info-card{
+    left:.75rem;right:.75rem;bottom:calc(.75rem + env(safe-area-inset-bottom,0px));
+    max-width:min(340px,calc(100% - 1.5rem));padding:.65rem .85rem
+  }
+  .vt360-info-card h3{font-size:.9rem}
+  .vt360-info-card p{font-size:.7rem}
+  .vt360-navpanel{
+    width:calc(100% - 1.5rem);left:.75rem;
+    top:calc(.75rem + env(safe-area-inset-top,0px))
+  }
+  .vt360-exit-btn{top:calc(.75rem + env(safe-area-inset-top,0px));right:.75rem}
+  .vt360-navtoggle{top:calc(.75rem + env(safe-area-inset-top,0px));left:.75rem}
 }
 </style>
 

@@ -1323,4 +1323,105 @@ html.theme-dark body .so-modal-avatar.has-photo{border-color:rgba(255,255,255,.2
   }
 }
 </style>
+
+<style id="SO-MOBILE-FONT-FIX">
+/* =========================================================
+   REVISI:
+   1) Desktop (>=951px): Level 1, Level 2, Level 3 -> ukuran kartu SAMA
+      (1 kartu = 1/4 lebar baris, mengikuti Level 2)
+   2) Mobile (<=768px): HANYA font yang diperkecil
+   Hero/judul atas tidak disentuh.
+   ========================================================= */
+
+/* ---------- 1. DESKTOP: SEMUA LEVEL UKURAN KARTU SAMA ---------- */
+@media (min-width: 951px) {
+  #level-2 .so-grid,
+  #level-3 .so-grid.cols-5 {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: 1.4rem !important;
+  }
+  /* Level 1: 1 kartu selebar 1 kolom Level 2, di tengah */
+  .so-level-root .so-grid {
+    max-width: calc((100% - 4.2rem) / 4) !important;
+    width: 100% !important;
+    margin: 0 auto 3rem !important;
+  }
+  .so-level-root .so-card {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+}
+
+/* ---------- 2. MOBILE: FONT LEBIH KECIL (layout tidak diubah) ---------- */
+@media (max-width: 768px) {
+
+  /* Judul section & deskripsi (bukan hero) */
+  .so-page .eyebrow { font-size: .58rem; letter-spacing: .12em; }
+  .so-page .big-heading { font-size: clamp(1.25rem, 5.8vw, 1.6rem); }
+  .so-sec-desc { font-size: .74rem; line-height: 1.65; }
+
+  /* Toolbar */
+  .so-search input { font-size: .74rem; }
+  .so-filter-label { font-size: .56rem; }
+  .so-fchip { font-size: .56rem; }
+  /* Tombol filter: turun ke baris berikutnya, tidak kepotong/scroll */
+  .so-filters {
+    overflow: visible !important;
+    flex-wrap: wrap !important;
+    white-space: normal !important;
+    padding-bottom: 0 !important;
+    gap: .4rem !important;
+  }
+  .so-fchip { white-space: nowrap; flex: 0 0 auto; }
+  .so-level-badge { font-size: .56rem; }
+  .so-empty { font-size: .72rem; }
+
+  /* Kartu organisasi (Level 1, 2 & 3) */
+  .so-feed-account strong { font-size: .56rem !important; }
+  .so-feed-account span { font-size: .42rem !important; }
+  .so-feed-more { font-size: .6rem; }
+  .so-feed-actions { font-size: .72rem !important; }
+  .so-card-name { font-size: .72rem !important; line-height: 1.3 !important; }
+  .so-card-person { font-size: .58rem !important; }
+  .so-card-role { font-size: .46rem !important; }
+  .so-card-unit { font-size: .52rem !important; line-height: 1.5 !important; }
+  .so-photo-tag { font-size: .5rem; }
+
+  /* Level 1 (Pimpinan): lebar kartu dikecilkan sesuai revisi sebelumnya */
+  .so-level-root .so-grid { max-width: 230px !important; }
+  .so-level-root .so-card { max-width: 230px !important; width: 100% !important; }
+  .so-level-root .so-card-name { font-size: .78rem !important; }
+  .so-level-root .so-card-person { font-size: .62rem !important; }
+
+  /* Virtual Tour */
+  .vt-title { font-size: clamp(1.5rem, 7.5vw, 2rem); }
+  .vt-desc { font-size: .74rem; line-height: 1.7; }
+  .vt-kicker { font-size: .58rem; }
+  .vt-badge { font-size: .54rem; }
+  .vt-caption strong { font-size: .78rem; }
+  .vt-caption span { font-size: .56rem; }
+  .vt-chip strong { font-size: .66rem; }
+  .vt-chip span { font-size: .52rem; }
+  .vt-feat { font-size: .58rem; }
+  .vt-btn { font-size: .72rem; }
+
+  /* Peran & Tugas */
+  .so-role-card h4 { font-size: .86rem; }
+  .so-role-card p { font-size: .7rem; line-height: 1.6; }
+  .so-role-step { font-size: 1.1rem; }
+
+  /* CTA penutup */
+  .so-cta h3 { font-size: clamp(1.15rem, 5vw, 1.5rem); }
+  .so-cta p { font-size: .74rem; line-height: 1.65; }
+  .so-cta-btn { font-size: .72rem; }
+
+  /* Modal detail */
+  .so-modal-name { font-size: 1.05rem; }
+  .so-modal-role { font-size: .58rem; }
+  .so-modal-label { font-size: .56rem; }
+  .so-tag { font-size: .56rem; }
+  .so-modal-tasks li { font-size: .68rem; }
+  .so-modal-note { font-size: .64rem; }
+}
+</style>
 @endpush

@@ -271,24 +271,59 @@
 }
 @media(max-width:768px){
   .ks-hero{min-height:0;align-items:flex-start}
-  .ks-hero-inner{padding:clamp(3rem,8vh,4.5rem) 5% 3.6rem;width:100%}
+  .ks-hero-inner{padding:clamp(2.8rem,7vh,4rem) 5% 2.8rem;width:100%}
   .ks-hero::after{display:none!important}
-  .ks-title{font-size:clamp(3.6rem,13vw,6.2rem);margin-top:0}
-  .ks-intro,.ks-slider,.ks-kategori,.ks-prestasi{padding:48px 0 54px}
-  .ks-intro-grid{gap:2rem}
-  .ks-cta{padding:42px 1.2rem 48px;margin-bottom:3.5rem;width:100%;border-radius:20px}
-  .ks-kat-grid{grid-template-columns:1fr 1fr;gap:.8rem}
-  .ks-kat-grid .ks-kat-card:last-child:nth-child(odd){grid-column:1/-1}
-  .ks-mini-stats{grid-template-columns:1fr;gap:.8rem}
-  .ks-arrow{width:40px;height:40px;font-size:.85rem}
+  .ks-kicker{font-size:.68rem;padding:.42rem .8rem;margin-bottom:.9rem}
+  .ks-title{font-size:clamp(2rem,10vw,3.6rem);margin-top:0;line-height:.96}
+  .ks-section{width:min(100%,92%)}
+  .ks-intro,.ks-slider,.ks-kategori,.ks-prestasi{padding:45px 0 52px}
+  .ks-intro-grid{gap:1.8rem}
+  .big-heading{font-size:clamp(1.55rem,6.2vw,2.15rem)!important;line-height:1.15}
+  .ks-intro-note,.ks-slider-note,.ks-prestasi-note,.ks-blurb{font-size:.82rem!important;line-height:1.65}
+  .ks-cat-line{font-size:.72rem;margin-top:1.6rem}
+  .ks-chip{font-size:.68rem;padding:.38rem .7rem}
+  .ks-mini-stats{grid-template-columns:repeat(3,1fr);gap:.65rem;margin-top:1.4rem}
+  .ks-mini{padding:.8rem .6rem;border-radius:14px}
+  .ks-mini b{font-size:1.3rem}
+  .ks-mini span{font-size:.62rem;margin-top:.3rem}
+  .ks-carousel{margin-top:1.8rem}
+  .ks-arrow{width:36px;height:36px;font-size:.78rem}
   .ks-arrow.ks-prev{left:6px}
   .ks-arrow.ks-next{right:6px}
-  .ks-slide{height:clamp(320px,95vw,420px)}
-  .ks-slide-cap{padding:0 1rem 1.2rem}
-  .ks-slide-cap h3{font-size:1.35rem}
-  .ks-slide-meta span{font-size:.72rem;padding:.35rem .7rem}
+  .ks-slide{height:clamp(260px,78vw,360px)}
+  .ks-slide-cap{padding:0 1rem 1.1rem}
+  .ks-slide-cap h3{font-size:clamp(1.05rem,4.5vw,1.25rem);line-height:1.25}
+  .ks-slide-cap p{font-size:.76rem;line-height:1.5;margin-top:.3rem}
+  .ks-slide-meta{gap:.4rem;margin-top:.6rem}
+  .ks-slide-meta span{font-size:.64rem;padding:.26rem .55rem}
+  .ks-slide-tag{top:.9rem;left:.9rem;font-size:.62rem;padding:.36rem .7rem}
+  .ks-slide-no{top:.9rem;right:1rem;font-size:.84rem}
+  .ks-kat-grid{grid-template-columns:1fr 1fr;gap:.75rem;margin-top:1.8rem}
+  .ks-kat-grid .ks-kat-card:last-child:nth-child(odd){grid-column:1/-1}
+  .ks-kat-card{padding:1rem .85rem;border-radius:16px}
+  .ks-kat-icon{width:44px;height:44px;font-size:1.15rem;border-radius:14px;margin-bottom:.55rem}
+  .ks-kat-name{font-size:.88rem;margin:.55rem 0 .2rem}
+  .ks-kat-text{font-size:.72rem;line-height:1.55}
+  .ks-prestasi-grid{grid-template-columns:1fr;gap:.85rem;margin-top:1.8rem}
+  .ks-prestasi-card{padding:.85rem .95rem;border-radius:16px;gap:.85rem}
+  .ks-prestasi-media{flex:0 0 68px;width:68px;height:68px;border-radius:12px}
+  .ks-prestasi-medal{width:24px;height:24px;font-size:.65rem;border-radius:8px}
+  .ks-prestasi-body h3{font-size:.92rem;line-height:1.3}
+  .ks-prestasi-body p{font-size:.75rem;line-height:1.55;margin-top:.25rem}
+  .ks-prestasi-year{font-size:.62rem;padding:.18rem .5rem;margin-top:.4rem}
+  .ks-cta{padding:34px 1.1rem 38px;margin-bottom:3rem;width:100%;border-radius:18px}
+  .ks-cta h2{font-size:clamp(1.35rem,5.5vw,1.85rem);line-height:1.2}
+  .ks-cta p{font-size:.82rem;line-height:1.6;margin:.75rem auto 1.3rem}
+  .ks-cta-btn{padding:.75rem 1.4rem;font-size:.84rem}
+  .ks-cta-note{font-size:.70rem;margin-top:.8rem}
   .home-orn,.ks-prestasi::before{display:none!important}
   [data-reveal]{opacity:1!important;transform:none!important}
+}
+@media(max-width:480px){
+  .ks-mini-stats{grid-template-columns:1fr;gap:.55rem}
+  .ks-kat-grid{gap:.6rem}
+  .ks-prestasi-card{padding:.75rem .85rem;gap:.75rem}
+  .ks-prestasi-media{flex:0 0 62px;width:62px;height:62px}
 }
 @media(prefers-reduced-motion:reduce){
   .ks-track,.ks-prestasi-media img,.ks-kat-icon,.ks-mini,.ks-kat-card,.ks-prestasi-card{transition:none!important}

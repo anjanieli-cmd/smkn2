@@ -439,6 +439,88 @@ html body.theme-dark .pd-page .pd-faq-a p{color:#a9bbcd}
 
 html body.theme-dark .pd-page .pd-cta{background:linear-gradient(135deg,#0a1a2c 0%,#0c2038 55%,#0e2542 100%);border:1px solid rgba(255,255,255,.08);box-shadow:0 34px 80px rgba(0,0,0,.6)}
 </style>
+
+<style id="PPDB-MOBILE-FIX">
+/* =========================================================
+   REVISI MOBILE (<=768px) — Desktop TIDAK berubah sama sekali.
+   Hanya memperkecil font dan card yang terlalu besar.
+   Susunan layout (grid, urutan, kolom) tidak diubah.
+   ========================================================= */
+@media (max-width: 768px) {
+
+  /* ---------- HERO ---------- */
+  .pd-title { font-size: clamp(1.9rem, 8.2vw, 2.8rem) !important; }
+  .pd-kicker { font-size: .58rem !important; padding: .38rem .65rem !important; letter-spacing: .14em !important; }
+  .pd-lead { font-size: .78rem !important; line-height: 1.65 !important; }
+  .pd-pill { font-size: .6rem !important; padding: .42rem .7rem !important; }
+
+  /* ---------- JUDUL SECTION ---------- */
+  .big-heading { font-size: clamp(1.25rem, 5.6vw, 1.6rem) !important; line-height: 1.18 !important; }
+  .pd-intro-note,
+  .pd-track-note { font-size: .72rem !important; line-height: 1.7 !important; }
+
+  /* ---------- 1. PENGERTIAN PPDB ---------- */
+  .pd-def-row { padding: .8rem .9rem !important; gap: .75rem !important; border-radius: 12px !important; }
+  .pd-def-index { width: 38px !important; min-width: 38px !important; height: 38px !important; font-size: 1rem !important; border-radius: 10px !important; }
+  .pd-def-text h3 { font-size: .85rem !important; }
+  .pd-def-text p { font-size: .7rem !important; line-height: 1.6 !important; }
+  .pd-banner { border-radius: 18px !important; }
+  .pd-banner-flag { padding: .8rem 1rem !important; }
+  .pd-banner-flag strong { font-size: .86rem !important; }
+  .pd-banner-flag span { font-size: .64rem !important; }
+
+  /* ---------- 2. JALUR PENDAFTARAN ---------- */
+  .pd-track-card { padding: 1.1rem 1rem !important; border-radius: 16px !important; }
+  .pd-track-no { font-size: 1.4rem !important; }
+  .pd-track-icon { width: 42px !important; height: 42px !important; font-size: 1rem !important; border-radius: 12px !important; }
+  .pd-track-name { font-size: .92rem !important; margin: .75rem 0 .3rem !important; }
+  .pd-track-kuota { font-size: .6rem !important; padding: .18rem .5rem !important; }
+  .pd-track-text { font-size: .72rem !important; line-height: 1.65 !important; }
+
+  /* ---------- 3. PERSYARATAN ---------- */
+  .pd-req-card { padding: 1.2rem 1rem !important; border-radius: 16px !important; }
+  .pd-req-item i { font-size: .85rem !important; }
+  .pd-req-item strong { font-size: .78rem !important; }
+  .pd-req-item span { font-size: .68rem !important; line-height: 1.55 !important; }
+  .pd-req-note { font-size: .68rem !important; line-height: 1.6 !important; padding: .75rem .85rem !important; }
+
+  /* ---------- 4. ALUR PENDAFTARAN ---------- */
+  .pd-flow-dot { width: 44px !important; height: 44px !important; font-size: .95rem !important; }
+  .pd-flow-title { font-size: .78rem !important; }
+  .pd-flow-text { font-size: .66rem !important; line-height: 1.55 !important; }
+
+  /* ---------- 5. JADWAL PENTING ---------- */
+  .pd-jadwal-card { border-radius: 16px !important; }
+  .pd-jadwal-head { padding: .95rem 1rem !important; }
+  .pd-jadwal-head h3 { font-size: .9rem !important; }
+  .pd-jadwal-badge { font-size: .6rem !important; padding: .35rem .65rem !important; }
+  .pd-jadwal-table th { font-size: .62rem !important; padding: .6rem .9rem !important; }
+  .pd-jadwal-table td { font-size: .7rem !important; padding: .65rem .9rem !important; }
+  .pd-jadwal-foot { font-size: .66rem !important; padding: .75rem 1rem !important; line-height: 1.6 !important; }
+
+  /* ---------- 6. PROGRAM KEAHLIAN ---------- */
+  .pd-jurusan-card { border-radius: 16px !important; }
+  .pd-jurusan-photo { height: 130px !important; }
+  .pd-jurusan-body { padding: .95rem 1rem 1.05rem !important; }
+  .pd-jurusan-tag { font-size: .56rem !important; padding: .18rem .5rem !important; }
+  .pd-jurusan-name { font-size: .92rem !important; }
+  .pd-jurusan-text { font-size: .72rem !important; line-height: 1.65 !important; }
+  .pd-jurusan-more { font-size: .72rem !important; margin-top: .75rem !important; }
+
+  /* ---------- 7. FAQ ---------- */
+  .pd-faq-item { border-radius: 12px !important; }
+  .pd-faq-q { font-size: .78rem !important; padding: .8rem .95rem !important; }
+  .pd-faq-q i { font-size: .72rem !important; }
+  .pd-faq-a p { font-size: .72rem !important; line-height: 1.7 !important; padding: 0 .95rem .9rem !important; }
+
+  /* ---------- CTA PENUTUP ---------- */
+  .pd-cta { padding: 1.8rem 1rem !important; border-radius: 18px !important; }
+  .pd-cta h2 { font-size: clamp(1.25rem, 5.6vw, 1.7rem) !important; }
+  .pd-cta p { font-size: .74rem !important; line-height: 1.7 !important; }
+  .pd-cta-btn { font-size: .74rem !important; padding: .75rem 1.2rem !important; }
+  .pd-cta-note { font-size: .62rem !important; }
+}
+</style>
 @endpush
 
 @section('content')

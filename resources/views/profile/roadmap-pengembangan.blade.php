@@ -773,6 +773,131 @@ body.theme-dark .rm-cta{
   box-shadow:0 28px 70px rgba(0,0,0,.55)}
 body.theme-dark .rm-cta p{color:var(--rm-d-text)}
 </style>
+
+<style id="RM-MOBILE-FIX">
+/* =========================================================
+   REVISI MOBILE (<=768px) — Desktop TIDAK berubah sama sekali.
+   1) Hero "ROADMAP SKANEDA" disamakan dengan hero
+      Struktur Organisasi versi mobile.
+   2) Semua font & ukuran elemen diperkecil menyesuaikan HP.
+   ========================================================= */
+@media (max-width: 768px) {
+
+  /* ---------- 1. HERO = samakan dengan Struktur Organisasi ---------- */
+  .sg-history-hero {
+    height: auto !important;
+    min-height: 440px !important;
+  }
+  .sg-history-hero::after {
+    left: 2% !important;
+    top: 58% !important;
+    bottom: auto !important;
+    transform: translateY(-50%) !important;
+    font-size: clamp(10rem, 25vw, 25rem) !important;
+    line-height: .78 !important;
+  }
+  .sg-history-hero .history-hero-inner {
+    height: auto !important;
+    min-height: 440px !important;
+    /* padding atas = padding Struktur Organisasi + tinggi kicker kosong,
+       supaya posisi judul sama persis dengan halaman Struktur Organisasi */
+    padding: calc(clamp(5.5rem, 12vh, 8.5rem) + 3.1rem) clamp(1.5rem, 5vw, 5rem) clamp(5rem, 10vh, 7.5rem) !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+  }
+  .sg-history-hero .sg-history-copy {
+    padding-top: 0 !important;
+  }
+  .sg-history-hero .history-title {
+    font-size: clamp(2rem, 10vw, 3.6rem) !important;
+    line-height: .94 !important;
+    letter-spacing: -.02em !important;
+  }
+
+  /* ---------- 2. JUDUL SECTION ---------- */
+  .eyebrow { font-size: .58rem; letter-spacing: .12em; }
+  .big-heading { font-size: clamp(1.25rem, 5.8vw, 1.6rem); }
+  .timeline-head .big-heading { font-size: clamp(1.25rem, 5.8vw, 1.6rem); }
+  .rm-sec-desc { font-size: .74rem; line-height: 1.65; }
+  .timeline-note { font-size: .7rem; line-height: 1.6; }
+
+  /* ---------- 3. INTRO & STATISTIK ---------- */
+  .intro-copy { font-size: .76rem; line-height: 1.75; }
+  .stat-box { padding: 1rem; min-height: 110px; border-radius: 18px; }
+  .stat-num { font-size: clamp(1.5rem, 7vw, 1.9rem); }
+  .stat-label { font-size: .58rem; margin-top: .45rem; }
+
+  /* ---------- 4. PILAR STRATEGIS ---------- */
+  .pillar-card { padding: 1.3rem 1.1rem; border-radius: 18px; }
+  .pillar-icon { width: 44px; height: 44px; font-size: 1.05rem; border-radius: 13px; margin-bottom: .85rem; }
+  .pillar-no { font-size: .56rem; }
+  .pillar-title { font-size: .9rem; }
+  .pillar-text { font-size: .72rem; line-height: 1.65; }
+
+  /* ---------- 5. TIMELINE / FASE ---------- */
+  .rm-phase-no { font-size: 1.7rem; }
+  .rm-phase-kick { font-size: .54rem; padding: .25rem .5rem; }
+  .rm-phase-year { font-size: .95rem; }
+  .rm-phase-title { font-size: .9rem; }
+  .rm-phase-text { font-size: .72rem; line-height: 1.65; }
+  .rm-phase-list li { font-size: .68rem; line-height: 1.6; padding-left: 1.05rem; }
+  .rm-phase-list li::before { font-size: .54rem; }
+  .rm-phase-tag { font-size: .54rem; padding: .28rem .55rem; }
+  .rm-phase-goal-badge { font-size: .54rem; padding: .28rem .55rem; }
+  .rm-phase-node i { font-size: .8rem; }
+  .rm-phase-node span { font-size: .42rem; }
+
+  /* Destination 2030 */
+  .rm-dest-node b { font-size: 1.05rem; }
+  .rm-dest-label { font-size: .64rem; }
+  .rm-dest-sub { font-size: .72rem; line-height: 1.6; }
+
+  /* ---------- 6. TARGET 2030 ---------- */
+  .rm-future-card { padding: 1.5rem; border-radius: 20px; }
+  .rm-future-card h3 { font-size: clamp(1.25rem, 5.5vw, 1.55rem); }
+  .rm-future-card p { font-size: .76rem; line-height: 1.7; }
+  .rm-target { padding: .75rem .9rem; border-radius: 14px; }
+  .rm-target i { font-size: .8rem; }
+  .rm-target strong { font-size: .76rem; }
+  .rm-target span { font-size: .66rem; }
+  .rm-goal { padding: 1.5rem; border-radius: 20px; }
+  .rm-goal-num { font-size: clamp(2.8rem, 14vw, 3.8rem); }
+  .rm-goal-label { font-size: .6rem; }
+  .rm-goal h4 { font-size: 1.05rem; }
+  .rm-goal p { font-size: .72rem; line-height: 1.7; }
+  .rm-goal-metric { padding: .7rem .85rem; }
+  .rm-goal-metric b { font-size: 1rem; }
+  .rm-goal-metric span { font-size: .56rem; }
+
+  /* ---------- 7. CTA PENUTUP ---------- */
+  .rm-cta h3 { font-size: clamp(1.35rem, 6vw, 1.75rem); }
+  .rm-cta p { font-size: .76rem; line-height: 1.65; }
+  .rm-cta-btn { font-size: .72rem; padding: .7rem 1.25rem; }
+}
+</style>
+
+<style id="RM-DEST-FIX">
+/* =========================================================
+   FIX: garis vertikal tidak lagi menembus teks "Tujuan 2030".
+   Blok tujuan dipindah ke luar #rmRoute, jadi garis utama
+   berhenti di fase terakhir dan hanya konektor emas yang
+   menyambung ke bulatan 2030. Deskripsi tampil di bawahnya.
+   ========================================================= */
+.rm-dest-wrap{position:relative;width:min(1240px,92%);margin:0 auto;display:flow-root}
+
+/* Mobile/tablet: garis kiri tetap menyambung sampai tujuan */
+@media (max-width:1100px){
+  .rm-dest-wrap::before{content:"";position:absolute;left:28px;top:0;bottom:0;width:3px;
+    transform:translateX(-50%);border-radius:99px;z-index:0;
+    background:linear-gradient(180deg,#ffb300,#ff8a00);
+    opacity:0;transition:opacity .4s ease 1.2s}
+  .rm-route.rm-route--go + .rm-dest-wrap::before{opacity:1}
+}
+@media (max-width:700px){
+  .rm-dest-wrap::before{left:26px}
+}
+</style>
 @endpush
 
 @section('content')
@@ -1031,6 +1156,9 @@ body.theme-dark .rm-cta p{color:var(--rm-d-text)}
         <div class="rm-phase-side rm-phase-side--empty" aria-hidden="true"></div>
       </article>
 
+    </div>
+
+    <div class="rm-dest-wrap">
       <div class="rm-dest" data-reveal>
         <div class="rm-dest-node"><b>2030</b><span>Destination</span></div>
         <div class="rm-dest-label">Tujuan <span>2030</span></div>
@@ -1164,4 +1292,89 @@ body.theme-dark .rm-cta p{color:var(--rm-d-text)}
     }
   })();
 </script>
+<style id="RM-MOBILE-TIMELINE-FULL">
+@media (max-width: 768px) {
+  /* semua elemen timeline langsung tampil penuh, tanpa geser/menghilang */
+  .rm-timeline-section [data-reveal],
+  .rm-dest-wrap [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  /* judul section timeline */
+  .timeline-head {
+    width: 92% !important;
+    margin: 0 auto 36px !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: .8rem !important;
+  }
+  .timeline-head > div { min-width: 0; max-width: 100%; }
+  .timeline-head .big-heading {
+    max-width: 100% !important;
+    overflow-wrap: break-word;
+    word-break: normal;
+    line-height: 1.12;
+  }
+  .timeline-note { text-align: left !important; max-width: 100% !important; }
+
+  /* jalur & kartu fase tidak boleh melebihi layar */
+  .rm-route { width: 92% !important; }
+  .rm-phase { max-width: 100%; }
+  .rm-phase-side--card,
+  .rm-phase-card { min-width: 0; max-width: 100%; }
+  .rm-phase-title,
+  .rm-phase-text,
+  .rm-phase-list li { overflow-wrap: break-word; }
+
+  .rm-dest-wrap { width: 92% !important; }
+}
+</style>
+<style id="HERO-BG-MOBILE-SMALL">
+@media (max-width: 768px) {
+  section.history-hero .history-ref-ornaments {
+    overflow: hidden !important;
+  }
+  section.history-hero .history-ref-ornament-image {
+    position: absolute !important;
+    inset: auto !important;
+    left: 0 !important;
+    right: auto !important;
+    top: 50% !important;
+    bottom: auto !important;
+    transform: translateY(-50%) !important;
+    width: 100% !important;
+    height: auto !important;
+    max-width: 100% !important;
+    object-fit: contain !important;
+    object-position: center center !important;
+  }
+}
+</style>
+<style id="HERO-MOBILE-TIGHT">
+@media (max-width: 768px) {
+  /* hero lebih pendek, judul naik ke atas */
+  section.history-hero {
+    min-height: 300px !important;
+    height: auto !important;
+  }
+  section.history-hero .history-hero-inner {
+    min-height: 0 !important;
+    height: auto !important;
+    padding: 3rem 1.25rem 2.2rem !important;
+    padding-right: 1.25rem !important;
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+  }
+  section.history-hero .sg-history-copy { padding-top: 0 !important; }
+  section.history-hero::after { top: 48% !important; }
+
+  /* jarak ke section di bawah hero dirapatkan */
+  .rm-intro,
+  .history-intro {
+    padding-top: 45px !important;
+    padding-bottom: 60px !important;
+  }
+}
+</style>
 @endpush

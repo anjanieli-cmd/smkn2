@@ -228,6 +228,59 @@
       .al-brand-name .al-role-line{font-size:.68rem}
     }
   </style>
+  <style id="ADMIN-LOGIN-MOBILE-FIX">
+@media (max-width: 768px) {
+
+  .al-page { padding: 1.6rem 1rem; align-items: flex-start; padding-top: 2.4rem; }
+  .al-wrap { gap: 1.5rem; max-width: 400px; }
+  .al-form-col { max-width: 400px; }
+
+  /* ---------- Info kiri (jadi atas) ---------- */
+  .al-eyebrow {
+    font-size: .56rem; letter-spacing: .14em;
+    padding: .4rem .8rem; gap: .5rem; margin-bottom: 1.1rem;
+  }
+  .al-eyebrow-dot { width: 6px; height: 6px; flex-basis: 6px; }
+
+  .al-brand-row { gap: .7rem; margin-bottom: 1.2rem; }
+  .al-brand-row img { width: 44px; height: 44px; flex: 0 0 44px; }
+  .al-brand-name { padding-left: .7rem; }
+  .al-brand-name .al-school-line { font-size: 1.1rem; }
+  .al-brand-name .al-role-line { font-size: .56rem; letter-spacing: .16em; margin-top: .3rem; }
+
+  .al-title { font-size: clamp(1.35rem, 6.5vw, 1.7rem); margin-bottom: .6rem; }
+  .al-desc { font-size: .74rem; line-height: 1.6; max-width: 320px; }
+
+  /* ---------- Kartu form ---------- */
+  .al-card {
+    padding: 1.4rem 1.2rem;
+    border-radius: 18px;
+    outline-offset: 4px;
+  }
+  .al-group { margin-bottom: .9rem; }
+  .al-label { font-size: .64rem; margin-bottom: .38rem; }
+  .al-input { font-size: .76rem; padding: .66rem .85rem .66rem 2.2rem; border-radius: 11px; }
+  .al-input-wrap i.al-icon { left: 13px; font-size: .74rem; }
+  .al-toggle-pass { right: 12px; font-size: .76rem; }
+  .al-field-error { font-size: .6rem; margin-top: .35rem; }
+
+  .al-row { margin-bottom: 1.2rem; }
+  .al-remember input[type="checkbox"] { width: 14px; height: 14px; }
+  .al-remember label, .al-forgot { font-size: .64rem; }
+
+  .al-btn { font-size: .74rem; padding: .72rem .9rem; border-radius: 11px; gap: .45rem; }
+
+  .al-alert { font-size: .66rem; padding: .6rem .75rem; margin-bottom: 1rem; border-radius: 10px; }
+
+  .al-divider { margin: 1.3rem 0 1rem; }
+  .al-back { font-size: .68rem; }
+  .al-footnote { font-size: .56rem; margin-top: 1.2rem; }
+
+  /* ornamen dekor diperkecil */
+  .al-diamond { width: 38px; height: 38px; }
+  .al-dots { width: 56px; height: 56px; background-size: 11px 11px; }
+}
+</style>
 </head>
 <body>
 

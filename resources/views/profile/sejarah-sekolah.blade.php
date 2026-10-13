@@ -1078,7 +1078,6 @@
       <div class="history-book-side-title">
         <span class="side-title-kicker">ARSIP PERJALANAN</span>
         <h2>PERJALANAN<br><b>SEJARAH</b><b>SKANEDA</b></h2>
-        <p>Telusuri perjalanan SMK Negeri 2 Mojokerto sejak berdiri pada 2013, berpindah ke gedung baru, hingga berkembang dengan lima bidang keahlian.</p>
         <span class="side-title-line"></span>
       </div>
 
@@ -1400,4 +1399,250 @@
     render();
   })();
 </script>
+<style id="SEJARAH-MOBILE-FIX">
+/* =========================================================
+   SEJARAH SEKOLAH — MOBILE FIX (<= 768px)
+   Desktop tidak berubah (kecuali kartu statistik 2x2, sesuai permintaan).
+   ========================================================= */
+
+/* ---------- Kartu statistik: 2 kolom x 2 baris (desktop & mobile) ---------- */
+.history-intro .stat-strip{
+  display:grid !important;
+  grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+  gap:1rem !important;
+}
+
+@media (max-width: 768px) {
+
+  /* semua elemen langsung tampil penuh */
+  [data-reveal]{opacity:1 !important;transform:none !important;transition:none !important}
+
+  /* ---------- 1. HERO: disamakan dengan Struktur Organisasi ---------- */
+  .history-hero{min-height:440px !important}
+  .history-hero::after{
+    display:block !important;
+    content:"SEJARAH" !important;
+    left:2% !important;
+    top:58% !important;
+    font-size:clamp(10rem,25vw,25rem) !important;
+    line-height:.78 !important;
+    opacity:1 !important;
+  }
+  .history-hero .history-hero-inner{
+    padding:5rem 1.25rem 4.5rem !important;
+    padding-right:1.25rem !important;
+    width:100% !important;
+  }
+  .history-hero .history-title{
+    font-size:clamp(2rem,10vw,3.6rem) !important;
+    line-height:.94 !important;
+    letter-spacing:-.02em !important;
+    max-width:100% !important;
+  }
+
+  /* tombol Virtual Tour di hero */
+  .history-vt-cta{
+    gap:.55rem !important;
+    padding:.55rem .75rem !important;
+    margin-top:1.2rem !important;
+    border-radius:12px !important;
+    width:min(100%,250px) !important;
+  }
+  .history-vt-icon{
+    flex:0 0 32px !important;
+    width:32px !important;
+    height:32px !important;
+    border-radius:10px !important;
+    font-size:.65rem !important;
+  }
+  .history-vt-cta strong{font-size:.72rem !important;line-height:1.15 !important}
+  .history-vt-cta small{font-size:.52rem !important;margin-top:.15rem !important}
+  .history-vt-arrow{font-size:.7rem !important;margin-left:auto !important}
+
+  /* ---------- JUDUL SECTION (sama dengan Struktur Organisasi) ---------- */
+  .history-page .eyebrow{font-size:.58rem;letter-spacing:.12em;margin-bottom:.6rem}
+  .history-page .eyebrow::before{width:20px;height:2px}
+  .history-page .big-heading,
+  .principal-head .big-heading,
+  .mosaic-head .big-heading{
+    font-size:clamp(1.25rem,5.8vw,1.6rem) !important;
+    line-height:1.12 !important;
+    letter-spacing:.01em !important;
+    max-width:100%;
+    overflow-wrap:break-word;
+    word-break:normal;
+  }
+  .mosaic-head,.principal-head{width:92% !important}
+  .principal-head{margin-bottom:1.8rem !important}
+  .principal-desc{font-size:.74rem;line-height:1.65;margin-top:.7rem}
+
+  /* ---------- INTRO & STATISTIK ---------- */
+  .intro-copy{font-size:.76rem;line-height:1.75;margin-top:.9rem}
+  .history-intro .stat-strip{gap:.75rem !important}
+  .stat-box{padding:1rem;min-height:100px;border-radius:18px}
+  .stat-num{font-size:1.6rem}
+  .stat-label{font-size:.56rem;margin-top:.4rem;letter-spacing:.05em}
+
+  /* ---------- JUDUL BUKU ---------- */
+  .side-title-kicker{font-size:8px !important;margin-bottom:10px !important}
+  .history-book-side-title h2{
+    font-size:clamp(1.5rem,7vw,2rem) !important;
+    line-height:1.05 !important;
+    letter-spacing:-.02em !important;
+  }
+  .history-book-side-title p{font-size:.72rem !important;line-height:1.65 !important}
+
+  /* ---------- ISI BUKU ---------- */
+  .history-book .book-page h4{font-size:1.05rem !important;line-height:1.2 !important}
+  .history-book .book-page p{font-size:.72rem !important;line-height:1.6 !important}
+  .history-book .book-page .lead{font-size:.78rem !important}
+  .history-book .page-note{font-size:.64rem !important;line-height:1.5 !important}
+  .history-book .page-corner{font-size:7px}
+  .history-book .page-kicker{font-size:6px}
+  .history-book .page-number-big{font-size:2.6rem !important}
+  .history-book .page-footer{font-size:5px}
+  .book-nav{width:28px;height:28px;font-size:8px}
+  .book-count{font-size:8px;min-width:40px}
+  .book-count b{font-size:12px}
+  .book-actions{gap:10px}
+
+  /* ---------- STORY BAND ---------- */
+  .story-content .eyebrow{font-size:.58rem}
+  .story-content h2{font-size:clamp(1.3rem,5.8vw,1.6rem) !important;line-height:1.05 !important}
+  .story-content p{font-size:.74rem !important;line-height:1.65 !important}
+  .story-chip{font-size:.62rem !important;min-height:42px;padding:.55rem .7rem !important}
+  .story-chip i{width:16px;height:16px;font-size:.5rem}
+
+  /* ---------- 2. MOSAIC: 4 FOTO TAMPIL SEMUA (2 x 2) ---------- */
+  .mosaic{
+    width:92% !important;
+    display:grid !important;
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+    grid-template-rows:none !important;
+    grid-auto-rows:150px !important;
+    gap:.7rem !important;
+  }
+  .mosaic-card,
+  .mosaic-card.big{
+    grid-column:auto !important;
+    grid-row:auto !important;
+    height:150px !important;
+    min-height:0 !important;
+    border-radius:14px !important;
+    opacity:1 !important;
+    transform:none !important;
+  }
+  .mosaic-label{left:.6rem;right:.6rem;bottom:.6rem}
+  .mosaic-label small{font-size:.46rem;letter-spacing:.12em}
+  .mosaic-label strong{font-size:.72rem;margin-top:.15rem}
+
+  /* ---------- 3. KEPALA SEKOLAH: TETAP SLIDER ---------- */
+  .principal-stage{
+    display:flex !important;
+    align-items:center !important;
+    width:100% !important;
+    gap:.3rem !important;
+  }
+  .principal-viewport{
+    flex:1 !important;
+    min-width:0 !important;
+    overflow:hidden !important;
+    padding:6px 2px 14px !important;
+    border-radius:20px !important;
+  }
+  .principal-track{
+    display:flex !important;
+    gap:1rem !important;
+    /* transform diatur JS, jangan dimatikan */
+  }
+  .principal-post{
+    flex:0 0 100% !important;
+    width:100% !important;
+    max-width:100% !important;
+    min-width:0 !important;
+    border-radius:18px !important;
+  }
+  .principal-arrow{
+    display:grid !important;
+    flex:0 0 32px !important;
+    width:32px !important;
+    height:32px !important;
+    font-size:.72rem !important;
+  }
+  .principal-dots{display:flex !important;margin-top:.6rem}
+
+  .principal-post-head{height:50px !important;padding:.55rem .7rem !important}
+  .principal-avatar{width:28px !important;height:28px !important;flex-basis:28px !important}
+  .principal-avatar img{width:26px !important;height:26px !important}
+  .principal-profile strong{font-size:.64rem}
+  .principal-profile span{font-size:.5rem}
+  .principal-more{font-size:.75rem}
+  .principal-photo{height:220px !important;max-height:220px !important;aspect-ratio:auto !important}
+  .principal-current{font-size:.5rem;padding:.3rem .5rem}
+  .principal-post-actions{font-size:.85rem;gap:.7rem;padding:.6rem .8rem .3rem}
+  .principal-post-body{padding:0 .8rem 1rem}
+  .principal-like{font-size:.66rem}
+  .principal-caption{font-size:.62rem;line-height:1.6}
+  .principal-period{font-size:.54rem;padding:.32rem .55rem}
+
+  /* ---------- VIRTUAL TOUR (section bawah) ---------- */
+  .vt-title{font-size:clamp(1.5rem,7.5vw,2rem) !important}
+  .vt-desc{font-size:.74rem;line-height:1.7}
+  .vt-kicker{font-size:.58rem}
+  .vt-badge{font-size:.54rem}
+  .vt-caption strong{font-size:.78rem}
+  .vt-caption span{font-size:.56rem}
+  .vt-chip strong{font-size:.66rem}
+  .vt-chip span{font-size:.52rem}
+  .vt-feat{font-size:.58rem}
+  .vt-btn{font-size:.66rem;padding:.6rem 1rem;border-radius:11px;gap:.5rem}
+}
+</style>
+<style id="HERO-BG-MOBILE-SMALL">
+@media (max-width: 768px) {
+  section.history-hero .history-ref-ornaments {
+    overflow: hidden !important;
+  }
+  section.history-hero .history-ref-ornament-image {
+    position: absolute !important;
+    inset: auto !important;
+    left: 0 !important;
+    right: auto !important;
+    top: 50% !important;
+    bottom: auto !important;
+    transform: translateY(-50%) !important;
+    width: 100% !important;
+    height: auto !important;
+    max-width: 100% !important;
+    object-fit: contain !important;
+    object-position: center center !important;
+  }
+}
+</style>
+<style id="HERO-MOBILE-TIGHT">
+@media (max-width: 768px) {
+  /* hero lebih pendek, judul naik ke atas */
+  section.history-hero {
+    min-height: 300px !important;
+    height: auto !important;
+  }
+  section.history-hero .history-hero-inner {
+    min-height: 0 !important;
+    height: auto !important;
+    padding: 3rem 1.25rem 2.2rem !important;
+    padding-right: 1.25rem !important;
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+  }
+  section.history-hero .sg-history-copy { padding-top: 0 !important; }
+  section.history-hero::after { top: 48% !important; }
+
+  /* jarak ke section di bawah hero dirapatkan */
+  .rm-intro,
+  .history-intro {
+    padding-top: 45px !important;
+    padding-bottom: 60px !important;
+  }
+}
+</style>
 @endpush

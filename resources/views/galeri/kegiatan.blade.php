@@ -60,7 +60,10 @@
 @media(max-width:700px){.kg-hero{align-items:flex-start;min-height:0}
   .kg-hero-inner{width:100%;padding:clamp(2.8rem,7vh,4rem) 1.25rem 2.8rem}
   .kg-hero::after{font-size:clamp(3.2rem,20vw,5.4rem);opacity:.6;left:-2%}
-  .kg-title{font-size:clamp(2.4rem,11vw,3.6rem)}}
+  .kg-kicker{font-size:.68rem;padding:.42rem .8rem;margin-bottom:.9rem}
+  .kg-title{font-size:clamp(2rem,10vw,3.6rem);line-height:.96}
+  .kg-lead{font-size:.82rem;line-height:1.65;margin:1rem 0 0}
+  .kg-pill{font-size:.65rem;padding:.4rem .7rem}}
 @media(max-width:560px){.kg-ref-ornament-image{opacity:.62}}
 
 /* ---------- HOME-ORN (ornamen geometris, IDENTIK referensi) ---------- */
@@ -311,47 +314,53 @@
   .kg-timeline{grid-template-columns:repeat(2,1fr)}
   .kg-pick-side{grid-template-columns:1fr 1fr}
 }
-@media (max-width:640px){
-  .kg-sec{padding:2.2rem 1rem}
+@media (max-width:768px){
+  .kg-sec{padding:45px 0 52px}
+  .kg-container{width:min(92%,100%)}
+  .kg-eyebrow{font-size:.68rem;letter-spacing:.15em;margin-bottom:.5rem}
+  .kg-section-title{font-size:clamp(1.55rem,6.2vw,2.15rem)!important;line-height:1.15}
+  .kg-section-sub{font-size:.82rem!important;line-height:1.65;margin-top:.6rem}
   .kg-stats-row{grid-template-columns:1fr 1fr;gap:.65rem}
-  .kg-stat{padding:.9rem .75rem;border-radius:14px}
-  .kg-stat-num{font-size:1.45rem}
+  .kg-stat{padding:.85rem .7rem;border-radius:14px}
+  .kg-stat-num{font-size:1.35rem}
   .kg-stat-label{font-size:.6rem;letter-spacing:.08em;margin-top:.3rem}
+  .kg-feat{border-radius:18px}
   .kg-feat-media{aspect-ratio:16/10}
-  .kg-feat-body{padding:1.2rem 1rem}
-  .kg-feat-title{font-size:clamp(1.3rem,5vw,1.75rem);line-height:1.2;margin:.5rem 0 0}
-  .kg-feat-desc{font-size:.85rem;line-height:1.65;margin:.4rem 0 0}
-  .kg-feat-btn{margin-top:.9rem;padding:.6rem 1.1rem;font-size:.74rem}
+  .kg-feat-body{padding:1.1rem 1rem}
+  .kg-feat-title{font-size:clamp(1.15rem,4.5vw,1.45rem);line-height:1.25;margin:.5rem 0 0}
+  .kg-feat-desc{font-size:.80rem;line-height:1.6;margin:.35rem 0 0}
+  .kg-feat-btn{margin-top:.8rem;padding:.55rem 1rem;font-size:.72rem}
   .kg-filters{flex-wrap:nowrap;overflow-x:auto;padding-bottom:.5rem;-webkit-overflow-scrolling:touch;margin:0 0 .5rem}
   .kg-fbtn{white-space:nowrap;padding:.45rem .85rem;font-size:.68rem}
   .kg-masonry{grid-template-columns:repeat(2,1fr);grid-auto-rows:auto;gap:.75rem}
-  .kg-card{grid-column:span 1!important;grid-row:auto!important;min-height:220px;aspect-ratio:4/3;border-radius:14px}
+  .kg-card{grid-column:span 1!important;grid-row:auto!important;min-height:200px;aspect-ratio:4/3;border-radius:14px}
   .kg-card--wide{grid-column:span 2!important}
-  /* PERBAIKAN: saat difilter di HP, kartu tidak lagi memakai "span 3 baris" (jadi terlalu tinggi) */
   .kg-masonry.is-filtered .kg-card{grid-column:span 1!important;grid-row:auto!important}
-  .kg-card-info{transform:translateY(0);opacity:1;padding:.85rem .9rem}
-  .kg-card-title{font-size:.9rem;line-height:1.25}
+  .kg-card-info{transform:translateY(0);opacity:1;padding:.75rem .85rem}
+  .kg-card-title{font-size:.88rem;line-height:1.25}
+  .kg-card-cat{font-size:.56rem}
+  .kg-card-date{font-size:.62rem}
   .kg-timeline{grid-template-columns:1fr;gap:.75rem}
-  .kg-month{display:flex;align-items:flex-start;gap:.85rem;padding:1rem .9rem;border-radius:14px;border-left:3px solid #ffd54a}
-  .kg-month-no{margin-bottom:0;flex-shrink:0;width:32px;height:32px;font-size:.64rem}
-  .kg-month-name{font-size:.95rem}
-  .kg-month-evt{font-size:.76rem;margin-top:.2rem}
-  .kg-month-note{font-size:.64rem;margin-top:.2rem}
+  .kg-month{display:flex;align-items:flex-start;gap:.85rem;padding:.9rem .8rem;border-radius:14px;border-left:3px solid #ffd54a}
+  .kg-month-no{margin-bottom:0;flex-shrink:0;width:30px;height:30px;font-size:.62rem}
+  .kg-month-name{font-size:.90rem}
+  .kg-month-evt{font-size:.74rem;margin-top:.2rem}
+  .kg-month-note{font-size:.62rem;margin-top:.2rem}
   .kg-picks{gap:1rem}
-  .kg-pick-big{min-height:260px;aspect-ratio:16/10;border-radius:16px}
+  .kg-pick-big{min-height:240px;aspect-ratio:16/10;border-radius:16px}
   .kg-pick-caption{left:1rem;right:1rem;bottom:1rem}
-  .kg-pick-caption strong{font-size:1.05rem}
+  .kg-pick-caption strong{font-size:clamp(1rem,4vw,1.25rem)}
   .kg-pick-side{grid-template-columns:1fr 1fr;gap:.75rem}
-  .kg-pick-small{min-height:140px;border-radius:14px}
-  .kg-pick-small span{left:.75rem;bottom:.75rem;font-size:.65rem}
-  .kg-cta{padding:2.2rem 1.1rem;border-radius:20px}
-  .kg-cta h3{font-size:1.45rem;line-height:1.15}
-  .kg-cta p{font-size:.88rem;line-height:1.65;margin-top:.75rem}
-  .kg-cta-btn{width:100%;justify-content:center;margin-top:1.2rem;padding:.75rem 1.2rem;font-size:.78rem}
+  .kg-pick-small{min-height:130px;border-radius:14px}
+  .kg-pick-small span{left:.75rem;bottom:.75rem;font-size:.64rem}
+  .kg-cta{padding:30px 1.1rem 34px;border-radius:18px}
+  .kg-cta h3{font-size:clamp(1.35rem,5.5vw,1.85rem);line-height:1.2}
+  .kg-cta p{font-size:.82rem;line-height:1.6;margin-top:.65rem}
+  .kg-cta-btn{width:100%;justify-content:center;margin-top:1rem;padding:.75rem 1.2rem;font-size:.82rem}
 }
 @media (max-width:480px){
-  .kg-masonry{grid-template-columns:1fr;gap:.85rem}
-  .kg-card,.kg-card--wide{grid-column:span 1!important;min-height:210px;aspect-ratio:16/10}
+  .kg-masonry{grid-template-columns:1fr;gap:.75rem}
+  .kg-card,.kg-card--wide{grid-column:span 1!important;min-height:190px;aspect-ratio:16/10}
   .kg-pick-side{grid-template-columns:1fr 1fr}
 }
 

@@ -857,4 +857,104 @@ html body.theme-dark .sg-page .sg-cta .home-orn .ho-line{display:none}
     }, 450);
   })();
 </script>
+<style id="SG-MOBILE-FONT-FIX">
+/* =========================================================
+   STAFF & GURU — MOBILE FONT FIX
+   Hanya aktif di layar <= 768px. Desktop tidak tersentuh.
+   Hero tidak diubah. Judul section mengikuti Struktur Organisasi.
+   ========================================================= */
+@media (max-width: 768px) {
+
+  /* ---------- JUDUL SECTION (sama dengan Struktur Organisasi) ---------- */
+  .sg-page .eyebrow { font-size: .58rem; letter-spacing: .12em; margin-bottom: .6rem; }
+  .sg-page .eyebrow::before { width: 20px; height: 2px; }
+  .sg-page .big-heading {
+    font-size: clamp(1.25rem, 5.8vw, 1.6rem);
+    line-height: 1.12;
+    overflow-wrap: break-word;
+    word-break: normal;
+    max-width: 100%;
+  }
+  .sg-sec-desc { font-size: .74rem; line-height: 1.65; margin-top: .7rem; }
+  .sg-sec-head { max-width: 100%; }
+
+  /* ---------- INTRO & STATISTIK ---------- */
+  .intro-copy { font-size: .74rem; line-height: 1.7; margin-top: .9rem; }
+  .stat-box { padding: 1rem; min-height: 105px; border-radius: 18px; }
+  .stat-num { font-size: clamp(1.5rem, 7vw, 1.9rem); }
+  .stat-label { font-size: .56rem; letter-spacing: .03em; margin-top: .45rem; }
+
+  /* ---------- TOOLBAR (search & filter) ---------- */
+  .sg-search input { font-size: .74rem; }
+  .sg-filter-label { font-size: .56rem; }
+  .sg-fchip { font-size: .58rem; padding: .42rem .8rem; }
+  .sg-fchip i { font-size: .58rem; }
+  .sg-empty { font-size: .72rem; }
+  .sg-empty strong { font-size: 1rem; }
+  .sg-empty i { font-size: 1.8rem; }
+  .sg-scroll-hint { font-size: .58rem; }
+
+  /* ---------- KARTU ID — DEPAN ---------- */
+  .idh-school { font-size: .56rem !important; }
+  .idh-sub { font-size: .38rem !important; }
+  .idh-chip { font-size: .42rem !important; }
+  .idh-chip i { font-size: .46rem; }
+  .idh-serial { font-size: .38rem !important; }
+  .idh-cat { font-size: .4rem !important; }
+  .idh-cat i { font-size: .42rem; }
+  .idh-name { font-size: .72rem !important; line-height: 1.25; }
+  .idh-lbl { font-size: .4rem !important; flex-basis: 36px !important; }
+  .idh-val { font-size: .52rem !important; }
+  .idh-meta { font-size: .4rem !important; }
+  .idh-id { font-size: .4rem !important; }
+  .idh-flip { font-size: .4rem !important; }
+  .id-hint { font-size: .55rem; width: 21px; height: 21px; }
+
+  /* ---------- KARTU ID — BELAKANG ---------- */
+  .idback-head .id-school { font-size: .7rem; }
+  .idback-head .id-school-sub { font-size: .5rem; }
+  .idback-label { font-size: .54rem; }
+  .idback-bio { font-size: .62rem; line-height: 1.45; }
+  .idback-quote p { font-size: .6rem; }
+  .idback-foot span { font-size: .48rem; }
+
+  /* ---------- VIRTUAL TOUR ---------- */
+  .vt-title { font-size: clamp(1.5rem, 7.5vw, 2rem); }
+  .vt-desc { font-size: .74rem; line-height: 1.7; }
+  .vt-kicker { font-size: .58rem; }
+  .vt-badge { font-size: .54rem; }
+  .vt-caption strong { font-size: .78rem; }
+  .vt-caption span { font-size: .56rem; }
+  .vt-chip strong { font-size: .66rem; }
+  .vt-chip span { font-size: .52rem; }
+  .vt-feat { font-size: .58rem; }
+  .vt-btn { font-size: .72rem; }
+
+  /* ---------- CTA PENUTUP ---------- */
+  .sg-cta h3 { font-size: clamp(1.15rem, 5vw, 1.5rem); }
+  .sg-cta p { font-size: .74rem; line-height: 1.65; }
+  .sg-cta-btn { font-size: .72rem; }
+}
+</style>
+<style id="SG-MOBILE-VT-BUTTON">
+@media (max-width: 768px) {
+  .history-vt-cta {
+    gap: .55rem !important;
+    padding: .55rem .75rem !important;
+    margin-top: 1.2rem !important;
+    border-radius: 12px !important;
+    width: min(100%, 250px) !important;
+  }
+  .history-vt-icon {
+    flex: 0 0 32px !important;
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 10px !important;
+    font-size: .65rem !important;
+  }
+  .history-vt-cta strong { font-size: .72rem !important; line-height: 1.15 !important; }
+  .history-vt-cta small { font-size: .52rem !important; margin-top: .15rem !important; }
+  .history-vt-arrow { font-size: .7rem !important; margin-left: auto !important; }
+}
+</style>
 @endpush

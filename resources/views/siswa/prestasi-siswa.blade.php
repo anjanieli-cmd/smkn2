@@ -62,14 +62,62 @@
   .psk-hero{align-items:flex-start;min-height:0}
   .psk-hero-inner{width:min(92%,100%);margin:0 auto;padding:clamp(2.8rem,7vh,4rem) 0 2.8rem}
   .psk-hero::after, .psk-prestasi::before, .psk-quote-orn, .psk-cabinet-orn{display:none!important}
-  .psk-title{font-size:clamp(2.8rem,11vw,4.5rem)}
-  .psk-opening .psk-section, .psk-featured .psk-section, .psk-archive-head, .psk-cta-box{grid-template-columns:1fr!important;gap:2rem}
-  .psk-opening-meta{grid-template-columns:1fr!important;gap:.8rem}
-  .psk-om{border-left-width:3px;padding:.8rem 1rem}
-  .psk-cabinet{min-height:360px}
-  .psk-cabinet-body{padding:1.5rem 1.2rem}
-  .psk-cta-btn{justify-self:center;margin-top:1.2rem}
+  .psk-kicker{font-size:.68rem;padding:.42rem .8rem;margin-bottom:.9rem}
+  .psk-title{font-size:clamp(2rem,10vw,3.6rem);line-height:.96}
+  .psk-lead{font-size:.82rem;line-height:1.65;margin:1rem 0 0}
+  .psk-pill{font-size:.65rem;padding:.4rem .7rem}
+  .psk-section{padding:45px 0 52px;width:min(92%,100%)}
+  .psk-eyebrow{font-size:.68rem;letter-spacing:.15em;margin-bottom:.5rem}
+  .psk-section-title{font-size:clamp(1.55rem,6.2vw,2.15rem)!important;line-height:1.15}
+  .psk-subtitle{font-size:.82rem!important;line-height:1.65;margin-top:.6rem}
+  .psk-opening .psk-section, .psk-featured .psk-section, .psk-archive-head, .psk-cta-box{grid-template-columns:1fr!important;gap:1.8rem}
+  .psk-opening-desc{font-size:.84rem;line-height:1.7;margin-top:.8rem}
+  .psk-opening-meta{grid-template-columns:repeat(3,1fr)!important;gap:.65rem;margin-top:1.4rem}
+  .psk-om{border-left-width:3px;padding:.75rem .8rem;border-radius:0 14px 14px 0}
+  .psk-om b{font-size:1.35rem}
+  .psk-om span{font-size:.62rem;margin-top:.25rem}
+  .psk-cabinet{min-height:280px;border-radius:20px}
+  .psk-cabinet-body{padding:1.3rem 1.1rem}
+  .psk-cabinet-tag{font-size:.62rem;padding:.35rem .7rem}
+  .psk-cabinet-body h3{font-size:clamp(1.15rem,4.5vw,1.45rem);margin:.5rem 0 .2rem}
+  .psk-cabinet-body p{font-size:.78rem;line-height:1.55}
+  .psk-cabinet-foot{gap:.4rem;margin-top:.9rem}
+  .psk-cabinet-foot span{font-size:.64rem;padding:.3rem .6rem}
+  .psk-feat-photo{aspect-ratio:16/10;border-radius:18px}
+  .psk-feat-badge{font-size:.64rem;padding:.4rem .75rem}
+  .psk-feat-year{font-size:2rem;right:1rem;bottom:.8rem}
+  .psk-feat-rank{font-size:.66rem;padding:.38rem .75rem}
+  .psk-feat-info h3{font-size:clamp(1.15rem,4.5vw,1.45rem);line-height:1.2}
+  .psk-feat-desc{font-size:.80rem;line-height:1.6;margin:.7rem 0 1rem}
+  .psk-feat-meta{gap:.45rem}
+  .psk-feat-meta span{font-size:.68rem;padding:.4rem .7rem}
+  .psk-achv-grid{grid-template-columns:1fr!important;gap:.85rem;margin-top:1.5rem}
+  .psk-achv-card{border-radius:16px}
+  .psk-achv-body{padding:1rem 1.1rem;gap:.45rem}
+  .psk-achv-body h3{font-size:.92rem;line-height:1.3}
+  .psk-achv-body p{font-size:.76rem;line-height:1.55}
+  .psk-achv-rank{font-size:.60rem;padding:.3rem .6rem}
+  .psk-achv-level{font-size:.58rem;padding:.3rem .55rem}
+  .psk-achv-tag{font-size:.66rem}
+  .psk-achv-year{font-size:.65rem}
+  .psk-fbtn{font-size:.70rem;padding:.45rem .85rem}
+  .psk-ybtn{min-width:38px;height:38px;font-size:.84rem;border-radius:10px}
+  .psk-slider-arrow{width:38px;height:38px;font-size:.85rem}
+  .psk-moment-grid{grid-template-columns:1fr!important;grid-auto-rows:auto!important;gap:.75rem}
+  .psk-photo.psk-mo-a,.psk-photo.psk-mo-b,.psk-photo.psk-mo-c,.psk-photo.psk-mo-d{grid-column:1/2!important;grid-row:auto!important;aspect-ratio:16/9;height:auto}
+  .psk-photo{border-radius:16px}
+  .psk-photo-cap strong{font-size:.84rem}
+  .psk-photo-cap span{font-size:.62rem}
+  .psk-quote .psk-section{padding-top:45px;padding-bottom:45px}
+  .psk-quote-mark{font-size:3.5rem}
+  .psk-quote-text{font-size:clamp(1.1rem,4.5vw,1.45rem);line-height:1.35;margin:.9rem auto 0}
+  .psk-quote-src{font-size:.70rem;margin-top:1.2rem}
+  .psk-archive-badge{justify-self:start;font-size:.68rem}
+  .psk-cta-btn{justify-self:center;margin-top:1.2rem;padding:.75rem 1.4rem;font-size:.82rem}
   [data-reveal]{opacity:1!important;transform:none!important}
+}
+@media(max-width:480px){
+  .psk-opening-meta{grid-template-columns:1fr!important}
 }
 @media(max-width:560px){.psk-ref-ornament-image{opacity:.62}}
 

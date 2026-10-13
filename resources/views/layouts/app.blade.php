@@ -1039,21 +1039,20 @@
         animation: ticker 26s linear infinite;
         width: max-content;
       }
-      .site-header {
+      #navbar {
+        position: relative;
+        top: auto;
+        width: 100% !important;
+        transition: background .3s var(--ease), box-shadow .3s var(--ease);
+      }
+      #navbar.is-fixed {
         position: fixed !important;
         top: 0 !important;
         left: 0 !important;
         right: 0 !important;
         width: 100% !important;
         z-index: 9999 !important;
-      }
-      #navbar {
-        position: relative !important;
-        top: auto !important;
-        width: 100% !important;
-      }
-      .header-spacer {
-        height: 78px !important;
+        box-shadow: 0 6px 22px rgba(13, 58, 102, 0.4) !important;
       }
       .section-py{padding:72px 0}
       .nav-inner {
@@ -1152,14 +1151,6 @@
     .footer-sig-name{font-family:var(--font-display);font-size:clamp(2.2rem,5vw,3.8rem);line-height:1.06;letter-spacing:.02em;color:#fff;text-transform:uppercase}
     .footer-sig-name .num-2{color:#F59E0B;font-size:1.14em}
     .footer-sig-sub{font-size:.88rem;font-weight:700;letter-spacing:.18em;color:#ffd54a;margin-top:.8rem;text-transform:uppercase}
-    .footer-sig-tagline{font-size:.92rem;line-height:1.75;color:rgba(255,255,255,.75);max-width:580px;margin:.7rem auto 0}
-    .footer-divider{height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent);margin:2.4rem auto;max-width:960px}
-    .footer-nav{display:grid;grid-template-columns:repeat(4,1fr);gap:2.2rem;max-width:1100px;margin:0 auto;text-align:left}
-    .footer-nav-group-title{font-size:.74rem;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#F59E0B;margin-bottom:1rem;display:flex;align-items:center;gap:.4rem}
-    .footer-nav-group-title::before{content:"";width:12px;height:2px;background:#F59E0B;border-radius:99px}
-    .footer-nav-links{display:flex;flex-direction:column;gap:.6rem}
-    .footer-nav-links a{font-size:.88rem;color:rgba(255,255,255,.8);text-decoration:none;transition:all .25s ease;display:inline-flex;align-items:center;gap:.4rem}
-    .footer-nav-links a:hover{color:#F59E0B;transform:translateX(4px)}
     .footer-social{display:flex;flex-direction:column;align-items:center;gap:1rem;padding:2.6rem 0 0}
     .footer-social-label{font-size:.72rem;font-weight:800;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.6)}
     .footer-social-row{display:flex;gap:.9rem}
@@ -1187,20 +1178,11 @@
     .footer-admin-link{display:inline-flex;align-items:center;gap:.35rem;color:rgba(255,255,255,.5) !important;border:1px solid rgba(255,255,255,.2);border-radius:8px;padding:.3rem .7rem;font-size:.78rem;transition:all .25s}
     .footer-admin-link:hover{color:#F59E0B !important;border-color:rgba(245,158,11,.6);background:rgba(245,158,11,.1)}
 
-    @media(max-width:991px){
-      .footer-nav { grid-template-columns: repeat(2, 1fr); gap: 1.8rem 1.2rem; padding: 0 1rem; }
-    }
     @media(max-width:768px){
       .footer-main { padding: 32px 0 0; }
       .footer-accent { margin: 0 auto 1.2rem; height: 3px; width: 56px; }
       .footer-sig-name { font-size: clamp(1.6rem, 6.5vw, 2.4rem); }
       .footer-sig-sub { font-size: .76rem; margin-top: .4rem; letter-spacing: .14em; }
-      .footer-sig-tagline { font-size: .8rem; line-height: 1.55; margin: .5rem auto 0; padding: 0 1rem; max-width: 90%; }
-      .footer-divider { margin: 1.2rem auto; }
-      .footer-nav { grid-template-columns: repeat(2, 1fr); gap: 1.2rem .8rem; padding: 0 .8rem; }
-      .footer-nav-group-title { font-size: .68rem; margin-bottom: .6rem; }
-      .footer-nav-links { gap: .45rem; }
-      .footer-nav-links a { font-size: .8rem; }
       .footer-social { padding: 1.2rem 0 0; gap: .6rem; }
       .footer-social-label { font-size: .65rem; }
       .footer-social-row { gap: .6rem; }
@@ -1216,7 +1198,6 @@
       .footer-legal { justify-content: center; flex-wrap: wrap; gap: .6rem 1rem; font-size: .76rem; }
     }
     @media(max-width:540px){
-      .footer-nav { grid-template-columns: repeat(2, 1fr); gap: 1.1rem .6rem; padding: 0 .5rem; text-align: left; }
       .footer-sig-name { font-size: 1.5rem; }
     }
 
@@ -2585,6 +2566,38 @@ html body.theme-dark .vt-chip strong{color:#fff !important}
 html body.theme-dark .vt-chip span{color:#8fa3b8 !important}
 html body.theme-dark .vt-btn{background:linear-gradient(135deg,#ffd54a,#ff8a00) !important;color:#0d3a66 !important}
   </style>
+  <style id="FOOTER-MOBILE-FIX">
+@media (max-width: 768px) {
+
+  .footer-main { padding: 24px 0 0 !important; }
+  .footer-main .container { padding-left: 1rem !important; padding-right: 1rem !important; }
+
+  /* nama & subjudul */
+  .footer-accent { width: 44px !important; height: 3px !important; margin: 0 auto .9rem !important; }
+  .footer-sig-name { font-size: clamp(1.2rem, 5.2vw, 1.55rem) !important; line-height: 1.12 !important; }
+  .footer-sig-sub { font-size: .56rem !important; letter-spacing: .1em !important; margin-top: .35rem !important; line-height: 1.5 !important; }
+
+  /* sosial media */
+  .footer-social { padding: 1rem 0 0 !important; gap: .5rem !important; }
+  .footer-social-label { font-size: .54rem !important; letter-spacing: .16em !important; }
+  .footer-social-row { gap: .5rem !important; }
+  .footer-social-row a { width: 32px !important; height: 32px !important; font-size: .78rem !important; }
+
+  /* mitra */
+  .footer-partners { padding: 1rem 0 0 !important; }
+  .footer-partners-label { font-size: .54rem !important; letter-spacing: .16em !important; margin-bottom: .7rem !important; }
+  .footer-partners-row { gap: .6rem 1.1rem !important; }
+  .footer-partner-logo img { height: 20px !important; max-width: 72px !important; }
+
+  /* bar bawah */
+  .footer-bottom { margin-top: 1.2rem !important; padding: .8rem .5rem 78px !important; }
+  .footer-bottom .container { padding-left: .5rem !important; padding-right: .5rem !important; }
+  .footer-bottom-inner { gap: .45rem !important; }
+  .footer-copy { font-size: .6rem !important; gap: .15rem !important; }
+  .footer-legal { font-size: .6rem !important; gap: .4rem .8rem !important; }
+  .footer-admin-link { font-size: .58rem !important; padding: .22rem .55rem !important; }
+}
+</style>
 </head>
 <body>
 
@@ -2718,49 +2731,7 @@ html body.theme-dark .vt-btn{background:linear-gradient(135deg,#ffd54a,#ff8a00) 
     <div class="footer-statement">
       <div class="footer-sig-name">SMK Negeri <span class="num-2">2</span><br>Mojokerto</div>
       <div class="footer-sig-sub">Sekolah Menengah Kejuruan Unggulan Kota Mojokerto</div>
-      <p class="footer-sig-tagline">Mencetak lulusan vokasi berkualitas, berkarakter mulia, dan siap bersaing di era global.</p>
     </div>
-    <div class="footer-divider"></div>
-    <nav class="footer-nav" aria-label="Navigasi footer">
-      <div class="footer-nav-group">
-        <div class="footer-nav-group-title">Jelajahi</div>
-        <div class="footer-nav-links">
-          <a href="{{ route('home') }}"><i class="fas fa-chevron-right" style="font-size:0.65rem"></i> Beranda</a>
-          <a href="{{ route('profil.sejarah-sekolah') }}"><i class="fas fa-chevron-right" style="font-size:0.65rem"></i> Sejarah Sekolah</a>
-          <a href="{{ route('profil.visi-misi') }}"><i class="fas fa-chevron-right" style="font-size:0.65rem"></i> Visi &amp; Misi</a>
-          <a href="{{ route('profil.guru-staf') }}"><i class="fas fa-chevron-right" style="font-size:0.65rem"></i> Staff &amp; Guru</a>
-          <a href="{{ route('profil.struktur-organisasi') }}"><i class="fas fa-chevron-right" style="font-size:0.65rem"></i> Struktur Organisasi</a>
-        </div>
-      </div>
-      <div class="footer-nav-group">
-        <div class="footer-nav-group-title">Program Keahlian</div>
-        <div class="footer-nav-links">
-          <a href="{{ route('rpl') }}"><i class="fas fa-chevron-right" style="font-size:0.65rem"></i> Rekayasa Perangkat Lunak</a>
-          <a href="{{ route('dkv') }}"><i class="fas fa-chevron-right" style="font-size:0.65rem"></i> Desain Komunikasi Visual</a>
-          <a href="{{ route('aphp') }}"><i class="fas fa-chevron-right" style="font-size:0.65rem"></i> Agribisnis Hasil Pertanian</a>
-          <a href="{{ route('kuliner') }}"><i class="fas fa-chevron-right" style="font-size:0.65rem"></i> Kuliner / Tata Boga</a>
-          <a href="{{ route('lps') }}"><i class="fas fa-chevron-right" style="font-size:0.65rem"></i> Perbankan Syariah</a>
-        </div>
-      </div>
-      <div class="footer-nav-group">
-        <div class="footer-nav-group-title">Informasi &amp; BKK</div>
-        <div class="footer-nav-links">
-          <a href="{{ route('ppdb') }}"><i class="fas fa-chevron-right" style="font-size:0.65rem"></i> PPDB Online</a>
-          <a href="{{ route('bkk-loker') }}"><i class="fas fa-chevron-right" style="font-size:0.65rem"></i> BKK &amp; Lowongan Kerja</a>
-          <a href="{{ route('karya-siswa') }}"><i class="fas fa-chevron-right" style="font-size:0.65rem"></i> Galeri Karya Siswa</a>
-          <a href="{{ route('ekstrakurikuler') }}"><i class="fas fa-chevron-right" style="font-size:0.65rem"></i> Ekstrakurikuler</a>
-          <a href="{{ route('kontak') }}"><i class="fas fa-chevron-right" style="font-size:0.65rem"></i> Kontak &amp; Lokasi</a>
-        </div>
-      </div>
-      <div class="footer-nav-group">
-        <div class="footer-nav-group-title">Kontak Sekolah</div>
-        <div class="footer-nav-links">
-          <span style="font-size:0.84rem;color:rgba(255,255,255,.75)"><i class="fas fa-location-dot" style="color:#F59E0B;margin-right:4px"></i> Jl. Raya Pulorejo, Kec. Prajurit Kulon, Kota Mojokerto</span>
-          <span style="font-size:0.84rem;color:rgba(255,255,255,.75)"><i class="fas fa-clock" style="color:#F59E0B;margin-right:4px"></i> Senin–Jumat · 07.00–16.00 WIB</span>
-          <span style="font-size:0.84rem;color:rgba(255,255,255,.75)"><i class="fas fa-envelope" style="color:#F59E0B;margin-right:4px"></i> info@smkn2mojokerto.sch.id</span>
-        </div>
-      </div>
-    </nav>
     @php
   $socialLinks = array_filter([
     ['url' => \App\Models\SiteSetting::get('footer_instagram'), 'icon' => 'fa-instagram',  'label' => 'Instagram'],
@@ -2977,8 +2948,10 @@ html body.theme-dark .vt-btn{background:linear-gradient(135deg,#ffd54a,#ff8a00) 
       if (!navbar) return;
       const announceHeight = announceBar ? announceBar.offsetHeight : 34;
       const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+      const isMobile = window.innerWidth <= 900;
+      const threshold = isMobile ? Math.min(announceHeight, 20) : announceHeight;
 
-      if (currentScroll >= announceHeight && currentScroll > 5) {
+      if (currentScroll >= threshold && currentScroll > 5) {
         navbar.classList.add('is-fixed', 'scrolled');
         if (navbarSpacer) {
           navbarSpacer.style.height = navbar.offsetHeight + 'px';
@@ -3358,4 +3331,4 @@ html body.theme-dark .vt-btn{background:linear-gradient(135deg,#ffd54a,#ff8a00) 
   @stack('scripts')
 
 </body>
-</html>
+</html> 

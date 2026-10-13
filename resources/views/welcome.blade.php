@@ -2433,7 +2433,173 @@
 .out-ptn .out-dots .out-dot{width:9px;height:9px;padding:0;border:0;border-radius:50%;background:#c8d0d8;cursor:pointer;transition:all .25s ease}
 .out-ptn .out-dots .out-dot.active{width:26px;border-radius:99px;background:#ffb300}
 .out-ptn .out-ptn-destination-card{height:470px;min-height:470px;box-sizing:border-box}
-@media(max-width:700px){.out-ptn .out-ptn-destination-card{height:auto;min-height:470px}}
+
+/* =========================================================
+   MOBILE RESPONSIVE — ACUAN STRUKTUR ORGANISASI
+   Khusus Mobile (<= 768px & <= 480px).
+   Tampilan Desktop TIDAK DIUBAH sama sekali.
+   ========================================================= */
+@media(max-width:768px){
+  /* Spacing Section */
+  .section-py,.window-section,.jurusan-section,.out-sec,.prestasi-section,.vt-section,.kontak-section{
+    padding:48px 0 56px!important;
+  }
+
+  /* Hero Section (Acuan: Struktur Organisasi) */
+  .hd-hero{min-height:420px!important;padding:0!important}
+  .hd-hero-inner{padding:3.2rem 1.25rem 3.5rem!important}
+  .hd-eyebrow{font-size:.65rem!important;letter-spacing:.14em!important;margin-bottom:.75rem!important}
+  .hd-title{font-size:clamp(2rem,9.5vw,3.4rem)!important;line-height:1.02!important}
+  .hd-desc{font-size:.82rem!important;line-height:1.6!important;margin:.8rem 0 1.2rem!important}
+  .hd-btn{padding:.75rem 1.25rem!important;font-size:.78rem!important;border-radius:999px!important}
+  .hd-actions{gap:.7rem!important}
+
+  /* Section Titles & Labels (Acuan: Struktur Organisasi) */
+  .section-title,
+  .jurusan-section .section-title,
+  .out-title,
+  .prestasi-section .prestasi-title,
+  .vt-title{
+    font-size:clamp(1.55rem,6.2vw,2.15rem)!important;
+    line-height:1.15!important;
+    letter-spacing:0!important;
+  }
+  .wk-title{
+    font-size:clamp(1.1rem,4.4vw,1.35rem)!important;
+    line-height:1.15!important;
+    letter-spacing:0!important;
+  }
+  .section-label,
+  .ws-kicker,
+  .out-kicker,
+  .prestasi-section .prestasi-kicker,
+  .wk-label{
+    font-size:.68rem!important;
+    letter-spacing:.15em!important;
+    margin-bottom:.55rem!important;
+  }
+  .section-desc,
+  .out-desc,
+  .prestasi-section .prestasi-desc,
+  .vt-desc{
+    font-size:.82rem!important;
+    line-height:1.6!important;
+    margin-top:.5rem!important;
+  }
+
+  /* Virtual Tour Section */
+  .vt-inner{width:min(100%,92%)!important;gap:1.6rem!important}
+  .vt-frame img{height:210px!important}
+  .vt-play{width:54px!important;height:54px!important;font-size:1.1rem!important}
+  .vt-caption strong{font-size:.95rem!important}
+  .vt-caption span{font-size:.65rem!important}
+  .vt-chip{padding:.6rem .8rem!important;font-size:.74rem!important;margin-top:.8rem!important;border-radius:12px!important}
+  .vt-feat{font-size:.66rem!important;padding:.4rem .65rem!important}
+  .vt-btn{padding:.72rem 1.1rem!important;font-size:.78rem!important}
+
+  /* Sambutan Kepala Sekolah (Jendela) */
+  .window-stage{margin-top:1.4rem!important}
+  .window-frame{min-height:380px!important;border-radius:16px!important}
+  .ws-inner{padding:1.1rem .9rem!important;gap:.8rem!important}
+  .ws-photo-frame{width:min(115px,45%)!important}
+  .ws-welcome{font-size:.92rem!important;line-height:1.2!important}
+  .ws-quote{font-size:.82rem!important;line-height:1.5!important;margin-top:.45rem!important;padding-top:.4rem!important}
+  .ws-msg{font-size:.76rem!important;line-height:1.55!important;margin-top:.45rem!important}
+  .ws-sign-name{font-size:.88rem!important}
+  .ws-sign-role{font-size:.6rem!important}
+  .wk-btn{padding:.65rem 1.2rem!important;font-size:.7rem!important;letter-spacing:.12em!important}
+
+  /* Jurusan Carousel */
+  .jurusan-carousel{margin-top:2rem!important}
+  .carousel-stage{min-height:390px!important}
+  .cc-photo{height:200px!important}
+  .cc-photo img{height:200px!important;max-height:200px!important}
+  .cc-body{padding:.8rem .75rem!important;border-radius:0 0 16px 16px!important}
+  .cc-abbr{font-size:1.15rem!important}
+  .cc-full{font-size:.8rem!important;line-height:1.35!important}
+  .cc-cta{padding:.52rem .8rem!important;font-size:.72rem!important;border-radius:10px!important}
+  .carousel-nav-btn{width:40px!important;height:40px!important;font-size:.85rem!important}
+
+  /* Lulusan Terbaik */
+  .out-id-card{border-radius:16px!important;min-height:auto!important}
+  .out-id-photo{height:180px!important;min-height:180px!important;margin:.8rem .8rem 0!important;border-radius:12px!important}
+  .out-id-photo .placeholder{min-height:180px!important}
+  .out-id-info{padding:.9rem!important}
+  .out-id-name{font-size:.95rem!important}
+  .out-id-role{font-size:.72rem!important}
+  .out-id-meta{font-size:.68rem!important;gap:.4rem!important}
+  .out-id-quote{font-size:.74rem!important;line-height:1.5!important;margin-top:.6rem!important}
+
+  /* Kerja Sama Industri Marquee */
+  .out-logo-card{width:105px!important;height:72px!important}
+  .out-logo-only{width:85px!important;height:52px!important}
+
+  /* Lulusan PTN */
+  .out-ptn .out-ptn-destination-card{height:auto!important;min-height:320px!important;padding:.9rem!important;border-radius:16px!important}
+  .out-ptn-card{gap:.65rem!important;padding:.75rem!important;min-height:auto!important}
+  .out-ptn-avatar{width:56px!important;height:72px!important;border-radius:8px!important}
+  .out-ptn-name{font-size:.9rem!important}
+  .out-ptn-major{font-size:.72rem!important}
+  .out-ptn-univ{font-size:.78rem!important}
+  .out-ptn .ptn-student-detail{font-size:.68rem!important}
+
+  /* Prestasi Carousel */
+  .prestasi-section .prestasi-feed{flex-basis:90%!important;border-radius:16px!important}
+  .prestasi-section .prestasi-feed-body h3{font-size:.88rem!important}
+  .prestasi-section .prestasi-feed-meta{font-size:.68rem!important}
+  .prestasi-section .prestasi-feed-tag{font-size:.6rem!important;padding:.2rem .5rem!important}
+  .prestasi-section .prestasi-arrow{width:38px!important;height:38px!important;font-size:.85rem!important}
+
+  /* Temukan Kami (Kontak & Maps) */
+  .kontak-section{padding:45px 0 52px!important}
+  .ft-head{margin-bottom:1.5rem!important}
+  .ft-title{font-size:clamp(1.55rem,6.2vw,2.15rem)!important;line-height:1.15!important}
+  .ft-eyebrow{font-size:.68rem!important;letter-spacing:.15em!important}
+  .ft-sub,.ft-line{font-size:.80rem!important;line-height:1.6!important}
+  .ft-grid{grid-template-columns:1fr!important;gap:1rem!important}
+
+  /* Maps diperkecil di mobile */
+  .ft-map{min-height:220px!important;height:220px!important;border-radius:16px!important}
+
+  /* Informasi & Kontak diperkecil di mobile */
+  .ft-card{padding:.95rem .85rem!important;border-radius:16px!important}
+  .ft-card-head{margin-bottom:.65rem!important;gap:.6rem!important}
+  .ft-card-logo{width:36px!important;height:36px!important;border-radius:9px!important}
+  .ft-card-logo img{width:24px!important;height:24px!important}
+  .ft-card-title{font-size:.85rem!important;line-height:1.2!important}
+  .ft-card-title small{font-size:.60rem!important;letter-spacing:.08em!important}
+  .ft-card-div{margin:0 0 .45rem!important}
+  .ft-row{gap:.6rem!important;padding:.28rem 0!important}
+  .ft-row-icon{width:28px!important;height:28px!important;border-radius:8px!important;font-size:.72rem!important}
+  .ft-row-label{font-size:.60rem!important}
+  .ft-row-value{font-size:.76rem!important;line-height:1.4!important}
+  .ft-map-btn{padding:.62rem .95rem!important;font-size:.74rem!important;border-radius:10px!important;margin-top:.4rem!important}
+  .ft-cta{padding:1rem .9rem!important;border-radius:14px!important;margin-top:1rem!important}
+  .ft-cta p{font-size:.76rem!important;line-height:1.5!important}
+  .ft-cta-btn{padding:.58rem 1rem!important;font-size:.74rem!important}
+  .ft-evoice{padding:.95rem .85rem!important;border-radius:16px!important;margin-top:.9rem!important;gap:.7rem!important}
+  .ft-evoice-icon{width:34px!important;height:34px!important;font-size:.82rem!important}
+  .ft-evoice-text h3{font-size:.86rem!important}
+  .ft-evoice-text p{font-size:.72rem!important;line-height:1.45!important}
+  .ft-evoice-btn{padding:.55rem .95rem!important;font-size:.72rem!important}
+}
+
+@media(max-width:480px){
+  .hd-hero{min-height:380px!important}
+  .hd-title{font-size:clamp(1.85rem,9vw,2.5rem)!important}
+  .section-title,
+  .jurusan-section .section-title,
+  .out-title,
+  .prestasi-section .prestasi-title,
+  .vt-title{
+    font-size:clamp(1.4rem,6vw,1.85rem)!important;
+  }
+  .wk-title{font-size:1.12rem!important}
+  .ws-welcome{font-size:.88rem!important}
+  .ft-map{min-height:200px!important;height:200px!important}
+  .ft-card{padding:.85rem .8rem!important}
+  .ft-row-value{font-size:.74rem!important}
+}
 </style>
 <script>
 (function(){
