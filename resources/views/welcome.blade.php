@@ -1187,7 +1187,7 @@
 </style>
 
 <!-- ================= JENDELA KEPALA SEKOLAH (corporate glass window) ================= -->
-<section class="window-section" id="sambutan">
+<section class="window-section open" id="sambutan">
   <div class="window-bg"></div>
   <div class="principal-section-ornament principal-section-ornament-left" aria-hidden="true"><span></span><i></i><b></b></div>
   <div class="principal-section-ornament principal-section-ornament-right" aria-hidden="true"><span></span><i></i><b></b></div>
@@ -1224,27 +1224,6 @@
             </div>
           </div>
         </div>
-
-        <!-- KACA JENDELA -->
-        <div class="window-glass left">
-          <div class="window-pane-glass"></div>
-        </div>
-        <div class="window-glass right">
-          <div class="window-pane-glass"></div>
-        </div>
-
-        <!-- STATE TERTUTUP: FROM THE PRINCIPAL'S OFFICE -->
-        <div class="window-knock">
-          <div class="wk-label">From The Principal&rsquo;s Office</div>
-          <div class="wk-title">Sambutan<br />Kepala Sekolah</div>
-          <div class="wk-silhouette"><img src="{{ asset('images/pak-is.jpeg') }}" alt="" loading="lazy" /></div>
-          <button class="wk-btn" id="kepsekKnockBtn">[ Open Message ] <i class="fas fa-arrow-right"></i></button>
-        </div>
-
-        <!-- CAHAYA MASUK -->
-        <div class="ws-glow"></div>
-
-        <button class="ws-close" id="kepsekCloseBtn"><i class="fas fa-times"></i> Tutup Jendela</button>
       </div>
     </div>
   </div>
@@ -3041,49 +3020,6 @@ html body.theme-dark .prestasi-section .prestasi-desc{color:#a9bbcd!important}
 
 </script>
 <script>
-    // ---------- JENDELA KEPALA SEKOLAH (corporate glass window) ----------
-    (function(){
-      var winSection=document.getElementById('sambutan');
-      var frame=document.getElementById('kepsekWindow');
-      var btn=document.getElementById('kepsekKnockBtn');
-      var closeBtn=document.getElementById('kepsekCloseBtn');
-      if(!frame||!winSection)return;
-
-      function openWindow(){
-        if(winSection.classList.contains('open'))return;
-        winSection.classList.add('open');
-      }
-      function closeWindow(){winSection.classList.remove('open');}
-
-      if(btn){btn.addEventListener('click',function(e){e.stopPropagation();openWindow();});}
-      if(closeBtn){closeBtn.addEventListener('click',function(e){e.stopPropagation();closeWindow();});}
-      if(frame){frame.addEventListener('click',function(e){
-        if(e.target===closeBtn)return;
-        if(!winSection.classList.contains('open')){openWindow();}
-      });}
-      if(btn){btn.addEventListener('keydown',function(e){
-        if(e.key==='Enter'||e.key===' '){e.preventDefault();openWindow();}
-      });}
-
-      // ---------- AUTO-OPEN SAAT SCROLL (IntersectionObserver) ----------
-      // Buka jendela otomatis SEKALI saja ketika section sambutan masuk viewport (>= 30%).
-      // Tidak memakai setInterval/scroll berulang; observer di-disconnect setelah trigger.
-      if('IntersectionObserver' in window){
-        var hasAutoOpened=false;
-        var autoObs=new IntersectionObserver(function(entries){
-          if(hasAutoOpened)return;
-          if(!entries.length)return;
-          if(!entries[0].isIntersecting)return;
-          // Jika user sudah membuka manual lebih dulu, jangan jalankan animasi lagi.
-          if(winSection.classList.contains('open')){hasAutoOpened=true;}
-          else{openWindow();hasAutoOpened=true;}
-          autoObs.disconnect();
-        },{root:null,threshold:0.3});
-        autoObs.observe(winSection);
-      }
-    })();
-</script>
-<script>
     // ---------- JURUSAN: CAROUSEL 3 KARTU (center active, loop infinite) ----------
   (function(){
     var stage = document.getElementById('carouselStage');
@@ -3162,8 +3098,6 @@ html body.theme-dark .prestasi-section .prestasi-desc{color:#a9bbcd!important}
     });
 
     document.addEventListener('keydown', function(e){
-      var s = document.getElementById('sambutan');
-      if(s && s.classList.contains('open')) return;
       if(e.key === 'ArrowLeft') goPrev();
       if(e.key === 'ArrowRight') goNext();
     });
