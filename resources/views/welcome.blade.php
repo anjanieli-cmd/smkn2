@@ -397,7 +397,7 @@
     .ft-map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
     .ft-map[data-reveal]{transform:scale(.98)}
     .ft-map[data-reveal].revealed{transform:none}
-    .ft-pin{position:absolute;top:50%;left:50%;transform:translate(-50%,calc(-100% - 11px));z-index:3;display:flex;flex-direction:column;align-items:center;pointer-events:none}
+    .ft-pin{position:absolute;top:16%;left:50%;z-index:3;display:flex;flex-direction:column;align-items:center;pointer-events:none}
     .ft-pin-badge{position:relative;z-index:2;width:54px;height:54px;border-radius:50% 50% 50% 4px;transform:rotate(-45deg);background:linear-gradient(135deg,#f59e0b,#ffb43a);display:flex;align-items:center;justify-content:center;box-shadow:0 12px 26px rgba(245,158,11,.5);border:3px solid #fff}
     .ft-pin-badge img{width:28px;height:28px;transform:rotate(45deg);object-fit:contain}
     .ft-pin-ring{position:absolute;top:27px;left:0;width:54px;height:54px;border-radius:50%;background:rgba(245,158,11,.4);animation:ftPulse 2.8s cubic-bezier(.22,.61,.36,1) infinite}
@@ -441,12 +441,8 @@
     @media(max-width:640px){
       .ft-card{padding:1.3rem 1.2rem}
       .ft-map{min-height:320px;height:320px}
-      .ft-evoice{padding:1rem 1.1rem;gap:.85rem;border-radius:16px;margin-top:1rem;flex-direction:column;align-items:flex-start;text-align:left}
-      .ft-evoice-icon{width:42px;height:42px;flex:0 0 42px;font-size:1.05rem;border-radius:12px}
-      .ft-evoice-text{min-width:0;flex:1 1 auto}
-      .ft-evoice-text h3{font-size:.92rem;margin-bottom:.15rem}
-      .ft-evoice-text p{font-size:.76rem;line-height:1.5}
-      .ft-evoice-btn{width:100%;justify-content:center;padding:.55rem 1rem;font-size:.76rem}
+      .ft-evoice{flex-direction:column;align-items:flex-start;text-align:left}
+      .ft-evoice-btn{width:100%;justify-content:center}
     }
 
     /* ---------- RESPONSIVE ---------- */
@@ -1434,18 +1430,7 @@
 .out-ind-pills{display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin-top:1.2rem}
 .out-ind-pills span{display:inline-flex;align-items:center;gap:.45rem;padding:.62rem 1rem;background:#fff;border:1px solid rgba(13,58,102,.1);border-radius:99px;color:#17446c;font-size:.72rem;font-weight:800;box-shadow:0 6px 16px rgba(13,58,102,.05)}
 .out-ind-pills i{color:#ffb300}
-@media(max-width:768px){
-  .out-sec.out-industry{padding:2.5rem 0 !important}
-  .out-industry .out-title{font-size:clamp(1.7rem,6vw,2.4rem)}
-  .out-industry .out-desc{font-size:.88rem;line-height:1.65}
-  .out-logo-window{margin-top:1.5rem;padding:.5rem 0}
-  .out-logo-window::before,.out-logo-window::after{width:70px}
-  .out-logo-card{width:132px;height:100px}
-  .out-logo-only{width:110px;height:80px}
-  .out-ind-pills{gap:.5rem;margin-top:1rem}
-  .out-ind-pills span{padding:.48rem .8rem;font-size:.7rem}
-}
-@media(max-width:640px){.industry-jurusan-decor{opacity:1}}
+@media(max-width:640px){.industry-jurusan-decor{opacity:1}.out-logo-card{width:132px;height:100px}.out-logo-only{width:110px;height:80px}}
 
 /* ---------- LULUSAN PTN — EDITORIAL UNIVERSITY DESTINATIONS ---------- */
 .out-ptn{position:relative;background:#fff;overflow:hidden}
@@ -2786,16 +2771,12 @@
 
 <!-- ================= KONTAK & FOOTER ================= -->
 @php
-  $contactAddress = \App\Models\SiteSetting::get('contact_address')
-      ?: 'Jl. Raya Pulorejo, Mergelo, Pulorejo, Kec. Prajurit Kulon, Kota Mojokerto, Jawa Timur 61325';
+  $contactAddress = \App\Models\SiteSetting::get('contact_address');
   $contactPhone   = \App\Models\SiteSetting::get('contact_phone');
   $contactEmail   = \App\Models\SiteSetting::get('contact_email');
   $contactHours   = \App\Models\SiteSetting::get('contact_hours');
-
-  // Lokasi peta: pakai NAMA TEMPAT sekolah (bukan alamat jalan)
-  $mapQuery    = 'SMK Negeri 2 Kota Mojokerto';
-  $mapEmbedUrl = 'https://www.google.com/maps?q=' . rawurlencode($mapQuery) . '&hl=id&z=17&output=embed';
-  $mapOpenUrl  = 'https://www.google.com/maps/search/?api=1&query=' . urlencode($mapQuery);
+  $mapEmbedUrl    = 'https://www.google.com/maps?q=' . rawurlencode($contactAddress) . '&output=embed';
+  $mapOpenUrl     = 'https://www.google.com/maps/search/?api=1&query=' . urlencode($contactAddress);
 @endphp
 <section class="kontak-section section-py" id="kontak" aria-label="Kontak dan lokasi sekolah">
   <div class="container">
