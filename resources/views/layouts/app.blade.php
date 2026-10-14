@@ -2565,6 +2565,62 @@ html body.theme-dark .vt-feat{color:#cfe3f7 !important}
 html body.theme-dark .vt-chip strong{color:#fff !important}
 html body.theme-dark .vt-chip span{color:#8fa3b8 !important}
 html body.theme-dark .vt-btn{background:linear-gradient(135deg,#ffd54a,#ff8a00) !important;color:#0d3a66 !important}
+
+    /* ============================================================
+       NARA SKANEDA — JENDELA CHAT LEBIH KOMPAK DI MOBILE (desktop tidak berubah)
+       ============================================================ */
+    @media (max-width: 600px) {
+      .nara-window,
+      .nara-window.edge-top {
+        left: 12px !important;
+        right: 12px !important;
+        top: auto !important;
+        bottom: 140px !important;
+        width: auto !important;
+        height: auto !important;
+        max-height: min(440px, calc(100vh - 190px)) !important;
+        max-height: min(440px, calc(100dvh - 190px)) !important;
+        border-radius: 18px;
+      }
+
+      /* Header / hero lebih ramping */
+      .nara-hero {
+        margin: 10px 10px 6px;
+        padding: 10px 28px 10px 10px;
+        border-radius: 14px;
+        gap: 10px;
+      }
+      .nara-hero-spark { display: none; }
+      .nara-hero-mascot { flex: 0 0 44px; width: 44px; height: 44px; }
+      .nara-hero-greet { font-size: .76rem; }
+      .nara-hero-name { font-size: .78rem; }
+      .nara-hero-name span { font-size: .68rem; }
+      .nara-hero-by { font-size: .58rem; margin-top: 3px; }
+      .nara-close-float { top: 8px; right: 8px; width: 26px; height: 26px; font-size: .7rem; }
+
+      /* Area pesan mengikuti sisa ruang, tidak lagi dikunci 280px */
+      .nara-messages {
+        height: auto !important;
+        min-height: 0;
+        flex: 1 1 auto;
+        padding: 6px 10px;
+        gap: 10px;
+      }
+      .nara-msg { max-width: 92%; }
+      .nara-bubble { font-size: .76rem; padding: .55rem .8rem; }
+
+      /* Kartu tombol cepat lebih kecil */
+      .nara-quick-inchat { gap: 6px; }
+      .nara-quick-card { padding: 6px 8px; gap: 6px; }
+      .nara-qc-icon { width: 22px; height: 22px; flex: 0 0 22px; font-size: .64rem; }
+      .nara-qc-text { font-size: .68rem; }
+
+      /* Kolom input lebih tipis */
+      .nara-input-pill { margin: 8px 10px 12px; padding: 4px 4px 4px 12px; }
+      .nara-input { font-size: .78rem; }
+      .nara-clear { width: 28px; height: 28px; flex: 0 0 28px; }
+      .nara-send { width: 36px; height: 36px; flex: 0 0 36px; }
+    }
   </style>
   <style id="FOOTER-MOBILE-FIX">
 @media (max-width: 768px) {
